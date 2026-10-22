@@ -1,0 +1,238 @@
+{
+  "snapshot_id": "snap_prep_T1",
+  "version": 1,
+  "origin_at": "2026-09-12T00:00:00+00:00",
+  "simulation_time_s": 0,
+  "rule_version": "prep-v1",
+  "orders": [
+    {
+      "order_id": "ord_T1_O1",
+      "version": 1,
+      "warehouse_id": "wh_T1_H1",
+      "batch_id": "batch_T1_C1",
+      "delivery_node_id": "node_T1_C1",
+      "quantity_units": 1,
+      "weight_kg": 400,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 600
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 600,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:T1:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_T1_O2",
+      "version": 1,
+      "warehouse_id": "wh_T1_H1",
+      "batch_id": "batch_T1_C2",
+      "delivery_node_id": "node_T1_C2",
+      "quantity_units": 1,
+      "weight_kg": 400,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 1200
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 1200,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:T1:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    }
+  ],
+  "vehicles": [
+    {
+      "vehicle_id": "veh_T1_H1V1",
+      "version": 1,
+      "warehouse_id": "wh_T1_H1",
+      "start_node_id": "node_T1_D1",
+      "end_node_id": "node_T1_D1",
+      "current_node_id": "node_T1_D1",
+      "capacity_weight_kg": 800,
+      "capacity_volume_l": 2000,
+      "remaining_weight_kg": 800,
+      "remaining_volume_l": 2000,
+      "temperature_zone": "chilled",
+      "shift_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "available_at_s": 0,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:T1:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    }
+  ],
+  "warehouses": [
+    {
+      "warehouse_id": "wh_T1_H1",
+      "version": 1,
+      "node_id": "node_T1_D1",
+      "temperature_zones": [
+        "chilled"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "res_T1_H1D",
+      "warehouse_id": "wh_T1_H1",
+      "version": 1,
+      "resource_kind": "dock",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 3600
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_T1_H1W1",
+      "warehouse_id": "wh_T1_H1",
+      "version": 1,
+      "resource_kind": "worker",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 3600
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_T1_H1W2",
+      "warehouse_id": "wh_T1_H1",
+      "version": 1,
+      "resource_kind": "worker",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 3600
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_T1_H1sorting",
+      "warehouse_id": "wh_T1_H1",
+      "version": 1,
+      "resource_kind": "sorting",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 3600
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_T1_H1handling",
+      "warehouse_id": "wh_T1_H1",
+      "version": 1,
+      "resource_kind": "handling",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 3600
+        }
+      ],
+      "unavailable_windows": []
+    }
+  ],
+  "stock_lots": [
+    {
+      "batch_id": "batch_T1_C1",
+      "warehouse_id": "wh_T1_H1",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_T1_C2",
+      "warehouse_id": "wh_T1_H1",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    }
+  ],
+  "operations": [],
+  "frozen_operations": [],
+  "matrix": {
+    "matrix_id": "mtx_prep_T1",
+    "version": 1,
+    "node_ids": [
+      "node_T1_D1",
+      "node_T1_C1",
+      "node_T1_C2"
+    ],
+    "duration_s": [
+      [
+        0,
+        300,
+        700
+      ],
+      [
+        500,
+        0,
+        200
+      ],
+      [
+        400,
+        600,
+        0
+      ]
+    ],
+    "distance_m": [
+      [
+        0,
+        3000,
+        7000
+      ],
+      [
+        5000,
+        0,
+        2000
+      ],
+      [
+        4000,
+        6000,
+        0
+      ]
+    ],
+    "source": {
+      "source_kind": "simulation",
+      "source_ref": "preparation-v1:T1:fixture_asymmetric",
+      "observed_at": "2026-09-12T00:00:00+00:00",
+      "rule_version": "prep-v1"
+    }
+  }
+}

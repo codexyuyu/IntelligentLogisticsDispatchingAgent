@@ -1,0 +1,90 @@
+[
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          3600
+        ]
+      ],
+      "version": 0
+    },
+    "capacity": 1,
+    "code": "H1D",
+    "id": "53d22dd1-caf2-5c68-b9ec-b1ef30fffec8",
+    "initial_setup_class": "40",
+    "kind": "Dock",
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "setup_duration_s": 0,
+    "source": "synthetic",
+    "warehouse_id": "7cbb263f-0229-518a-9190-490db79766ea"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity": 1,
+    "code": "H1D",
+    "id": "69cab403-933c-5359-9b7a-2fae6c781373",
+    "initial_setup_class": "40",
+    "kind": "Dock",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "setup_duration_s": 0,
+    "source": "synthetic",
+    "warehouse_id": "f6984808-3bf2-5ff2-bc03-3b1b598cd7ae"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity": 1,
+    "code": "H1D",
+    "id": "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29",
+    "initial_setup_class": "40",
+    "kind": "Dock",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_duration_s": 30,
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity": 1,
+    "code": "H2D",
+    "id": "d12e7a53-1768-540b-a04f-34ee747d8e38",
+    "initial_setup_class": "40",
+    "kind": "Dock",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_duration_s": 30,
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2"
+  }
+]

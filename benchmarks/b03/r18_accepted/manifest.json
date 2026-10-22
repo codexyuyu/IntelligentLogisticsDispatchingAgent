@@ -1,0 +1,59 @@
+{
+  "protocol": "r18-b06-multiscene-paired-1.0",
+  "source_scenario_sha256": "592ece17d7f190cad52cc53b594a2da060586255e16dafa039121866773be2df",
+  "source_scenario_filename": "two_warehouses_20_orders.json",
+  "per_mode_total_budget_ms": 90000,
+  "generation": "stratified by warehouse x temperature, independent random seed, order subset + loading release + service duration",
+  "cases": [
+    {
+      "case": "s12_seed17",
+      "size": 12,
+      "seed": 17,
+      "scenario_sha256": "780b663c8ab1ec0de390856a0507163b82710204207faa75a84bfe20b82b57e1",
+      "scenario_file": "scenarios\\s12_seed17.json",
+      "mode_budget_ms": 90000,
+      "status": "complete_validated_pair"
+    },
+    {
+      "case": "s16_seed42",
+      "size": 16,
+      "seed": 42,
+      "scenario_sha256": "d7f7a295350f40ac449369858e3766af722738d43d5292115609b9cbccfb6a09",
+      "scenario_file": "scenarios\\s16_seed42.json",
+      "mode_budget_ms": 90000,
+      "status": "complete_validated_pair"
+    },
+    {
+      "case": "s20_seed66",
+      "size": 20,
+      "seed": 66,
+      "scenario_sha256": "958dc32f82dcfb35b8783d39e0e6f7196272292a4d2560910236ae4a44accab6",
+      "scenario_file": "scenarios\\s20_seed66.json",
+      "mode_budget_ms": 90000,
+      "status": "complete_validated_pair"
+    },
+    {
+      "case": "s20_seed88",
+      "size": 20,
+      "seed": 88,
+      "scenario_sha256": "85984ef8c0095dca8e625cd975247c60469dd30bc727af925cc502db9dc6ecf8",
+      "scenario_file": "scenarios\\s20_seed88.json",
+      "mode_budget_ms": 90000,
+      "status": "complete_validated_pair"
+    },
+    {
+      "case": "s20_seed101",
+      "size": 20,
+      "seed": 101,
+      "scenario_sha256": "e0836e7fe97b2c4a4a36360412338376e2db0bcb0ec75f2e7ea82c2fdcc45287",
+      "scenario_file": "scenarios\\s20_seed101.json",
+      "mode_budget_ms": 90000,
+      "status": "complete_validated_pair"
+    }
+  ],
+  "mode_order": [
+    "sequential",
+    "deep"
+  ],
+  "scope": "synthetic scenario paired evaluation; not R17 accepted evidence replacement"
+}

@@ -1,0 +1,198 @@
+[
+  {
+    "allowed_cargo_types_mapping": "pending",
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          3600
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 2000000,
+    "capacity_weight_g": 800000,
+    "code": "H1V1",
+    "driver_id": "61026380-43b8-5ead-8162-e961bbb0a60a",
+    "end_node_id": "9c03f1fa-126b-5004-8ac2-b0913217a625",
+    "fixed_cost_cents": 500,
+    "id": "0bf4f40e-826a-5d8e-b695-651756690461",
+    "kind": "Vehicle",
+    "rate_cents_per_km": 100,
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": 40,
+    "single_trip": true,
+    "source": "synthetic",
+    "start_node_id": "9c03f1fa-126b-5004-8ac2-b0913217a625"
+  },
+  {
+    "allowed_cargo_types_mapping": "pending",
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 10000000,
+    "capacity_weight_g": 1000000,
+    "code": "H1V1",
+    "driver_id": "dde09d06-e1df-5381-98ff-c66248e632ab",
+    "end_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "fixed_cost_cents": 500,
+    "id": "2b7c4c9c-8306-5904-9561-e5ea432471bb",
+    "kind": "Vehicle",
+    "rate_cents_per_km": 100,
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": 40,
+    "single_trip": true,
+    "source": "synthetic",
+    "start_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8"
+  },
+  {
+    "allowed_cargo_types_mapping": "pending",
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 10000000,
+    "capacity_weight_g": 1000000,
+    "code": "H1V2",
+    "driver_id": "fbf04671-a228-5420-aab3-4611aa6a2dc7",
+    "end_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "fixed_cost_cents": 500,
+    "id": "63b89889-8d06-5c26-bff2-9731ffce2ddf",
+    "kind": "Vehicle",
+    "rate_cents_per_km": 100,
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": -200,
+    "single_trip": true,
+    "source": "synthetic",
+    "start_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8"
+  },
+  {
+    "allowed_cargo_types_mapping": "pending",
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 10000000,
+    "capacity_weight_g": 1000000,
+    "code": "H1V1",
+    "driver_id": "c1ee1318-a55e-5145-b5c6-cc4bbb86d00a",
+    "end_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "fixed_cost_cents": 500,
+    "id": "18d42d75-2aef-5bee-93fd-88d67c894368",
+    "kind": "Vehicle",
+    "rate_cents_per_km": 100,
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": 40,
+    "single_trip": true,
+    "source": "synthetic",
+    "start_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67"
+  },
+  {
+    "allowed_cargo_types_mapping": "pending",
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 10000000,
+    "capacity_weight_g": 1000000,
+    "code": "H1V2",
+    "driver_id": "35223ee5-f536-5bcb-8f32-e74e75c43ab0",
+    "end_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "fixed_cost_cents": 500,
+    "id": "3229fe13-3303-5e1e-8e57-2fc70fae8cfa",
+    "kind": "Vehicle",
+    "rate_cents_per_km": 100,
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": -200,
+    "single_trip": true,
+    "source": "synthetic",
+    "start_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67"
+  },
+  {
+    "allowed_cargo_types_mapping": "pending",
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 10000000,
+    "capacity_weight_g": 1000000,
+    "code": "H2V1",
+    "driver_id": "d3ccd82e-2d28-5408-93cd-1b8fc590e24b",
+    "end_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "fixed_cost_cents": 500,
+    "id": "fe84ff3a-106f-5433-b8ff-dd4df974105f",
+    "kind": "Vehicle",
+    "rate_cents_per_km": 100,
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": 40,
+    "single_trip": true,
+    "source": "synthetic",
+    "start_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6"
+  },
+  {
+    "allowed_cargo_types_mapping": "pending",
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 10000000,
+    "capacity_weight_g": 1000000,
+    "code": "H2V2",
+    "driver_id": "dabf595a-433c-5dec-a67e-1157c3502e38",
+    "end_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "fixed_cost_cents": 500,
+    "id": "fd4da6fa-5f1f-557b-847a-3a0eebc3dadf",
+    "kind": "Vehicle",
+    "rate_cents_per_km": 100,
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": -200,
+    "single_trip": true,
+    "source": "synthetic",
+    "start_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6"
+  }
+]

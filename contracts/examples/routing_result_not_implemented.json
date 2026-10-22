@@ -1,0 +1,16 @@
+{
+  "snapshot_id": "snap_initial",
+  "snapshot_version": 1,
+  "metadata": {
+    "status": "unsupported",
+    "raw_status": "SCAFFOLD",
+    "engine": "not_implemented",
+    "engine_version": "0",
+    "has_solution": false,
+    "proof_scope": "No solving performed; exchange-shape example only",
+    "solve_ms": 0
+  },
+  "routes": [],
+  "warehouse_arrivals": [],
+  "unserved_orders": []
+}

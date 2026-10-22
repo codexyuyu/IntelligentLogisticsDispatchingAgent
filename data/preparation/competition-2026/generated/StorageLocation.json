@@ -1,0 +1,149 @@
+[
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          3600
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "code": "H1L1",
+    "id": "afa7647b-063c-5730-884e-64693d88cb9e",
+    "kind": "StorageLocation",
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "zone_id": "6fd41b3a-dea6-5bb7-b4fd-f517004cc5e8"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "code": "H1L1",
+    "id": "ce05165f-64f8-57b1-b4a4-3d1f662ba74e",
+    "kind": "StorageLocation",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "zone_id": "6085beb2-7da2-5116-96c5-64a8b6a4d405"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "code": "H1L2",
+    "id": "3073798e-2c51-5d69-a297-757d602ea2d7",
+    "kind": "StorageLocation",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "zone_id": "6e2283e2-4db3-5897-8417-b3a286f89ec6"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "code": "H1L1",
+    "id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "StorageLocation",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "zone_id": "a8c6546d-5255-5866-958a-58c9c2100275"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "code": "H1L2",
+    "id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "StorageLocation",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "zone_id": "a62a34a6-f61c-5b11-b058-384759046401"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "code": "H2L1",
+    "id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "StorageLocation",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "zone_id": "94647c53-f3e9-56ec-87f8-612358e5cb79"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "code": "H2L2",
+    "id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "StorageLocation",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "zone_id": "ffb1a8c4-13d6-567f-8da8-03f385f8f24b"
+  }
+]

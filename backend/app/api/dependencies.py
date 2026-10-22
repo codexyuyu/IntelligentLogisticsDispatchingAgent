@@ -1,0 +1,5 @@
+"""SHARED: transport-level dependencies, no business decisions."""
+from typing import Annotated
+from fastapi import Header
+
+IdempotencyKey = Annotated[str, Header(alias='Idempotency-Key', min_length=1, max_length=128)]
