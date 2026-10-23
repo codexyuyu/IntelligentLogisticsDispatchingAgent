@@ -134,10 +134,8 @@ def validate_warehouse(problem: WarehouseProblem,
                     entity_refs=(), field_path="assignment.start_s",
                     actual=str(assignment.start_s), expected=f">= {predecessor.end_s}",
                     message="task starts before its predecessor finishes"))
-    location_weight = defaultdict(int)
-    location_volume = defaultdict(int)
-    zone_weight = defaultdict(int)
-    zone_volume = defaultdict(int)
+    location_intervals = defaultdict(list)
+    zone_intervals = defaultdict(list)
     for interval in solution.storage_allocations:
         location = locations.get(interval.location_id)
         if location is None:
@@ -146,8 +144,6 @@ def validate_warehouse(problem: WarehouseProblem,
                 actual=str(interval.location_id), expected="location in snapshot",
                 message="storage allocation references an unknown location"))
             continue
-        location_weight[interval.location_id] += interval.weight_g
-        location_volume[interval.location_id] += interval.volume_cm3
         zone = zones.get(location.zone_id)
         if zone is None:
             violations.append(Violation(code="unknown_zone", severity=Severity.HARD,
@@ -155,34 +151,73 @@ def validate_warehouse(problem: WarehouseProblem,
                 actual=str(location.zone_id), expected="zone in snapshot",
                 message="storage location references an unknown zone"))
             continue
-        zone_weight[location.zone_id] += interval.weight_g
-        zone_volume[location.zone_id] += interval.volume_cm3
+        location_intervals[interval.location_id].append(interval)
+        zone_intervals[location.zone_id].append(interval)
         cargo_item = cargo.get(interval.cargo_id)
         if cargo_item is None:
             violations.append(Violation(code="unknown_cargo", severity=Severity.HARD,
                 entity_refs=(), field_path="storage.cargo_id",
                 actual=str(interval.cargo_id), expected="cargo in snapshot",
                 message="storage allocation references unknown cargo"))
-        elif not cargo_item.min_temp_decic <= zone.setpoint_decic <= cargo_item.max_temp_decic:
+            continue
+        if (interval.quantity_units > cargo_item.quantity_units
+                or interval.weight_g > cargo_item.weight_g
+                or interval.volume_cm3 > cargo_item.volume_cm3):
+            violations.append(Violation(code="cargo_over_allocated", severity=Severity.HARD,
+                entity_refs=(), field_path="storage.cargo_id", actual=str(interval.cargo_id),
+                expected="allocation <= cargo quantity/weight/volume",
+                message="storage allocation exceeds the registered cargo"))
+        if not cargo_item.min_temp_decic <= zone.setpoint_decic <= cargo_item.max_temp_decic:
             violations.append(Violation(code="temperature_setpoint", severity=Severity.HARD,
                 entity_refs=(), field_path="storage.zone_id",
                 actual=str(zone.setpoint_decic),
                 expected=f"[{cargo_item.min_temp_decic},{cargo_item.max_temp_decic}]",
                 message="zone setpoint is outside the cargo temperature range"))
-    for location_id, weight in location_weight.items():
+    for location_id, intervals in location_intervals.items():
         location = locations[location_id]
-        if weight > location.capacity_weight_g or location_volume[location_id] > location.capacity_volume_cm3:
+        peak_weight = _peak(intervals, "weight_g")
+        peak_volume = _peak(intervals, "volume_cm3")
+        if peak_weight > location.capacity_weight_g or peak_volume > location.capacity_volume_cm3:
             violations.append(Violation(code="location_capacity", severity=Severity.HARD,
                 entity_refs=(), field_path="storage.location_id", actual=str(location_id),
-                expected=f"weight<={location.capacity_weight_g}, volume<={location.capacity_volume_cm3}",
+                expected=f"peak_weight<={location.capacity_weight_g}, peak_volume<={location.capacity_volume_cm3}",
                 message="storage allocation exceeds location capacity"))
-    for zone_id, weight in zone_weight.items():
+    for zone_id, intervals in zone_intervals.items():
         zone = zones[zone_id]
-        if weight > zone.capacity_weight_g or zone_volume[zone_id] > zone.capacity_volume_cm3:
+        peak_weight = _peak(intervals, "weight_g")
+        peak_volume = _peak(intervals, "volume_cm3")
+        if peak_weight > zone.capacity_weight_g or peak_volume > zone.capacity_volume_cm3:
             violations.append(Violation(code="zone_capacity", severity=Severity.HARD,
                 entity_refs=(), field_path="storage.zone_id", actual=str(zone_id),
-                expected=f"weight<={zone.capacity_weight_g}, volume<={zone.capacity_volume_cm3}",
+                expected=f"peak_weight<={zone.capacity_weight_g}, peak_volume<={zone.capacity_volume_cm3}",
                 message="storage allocation exceeds zone capacity"))
+    setup_by_resource = defaultdict(list)
+    for setup in solution.setup_operations:
+        if setup.resource_id not in resource_by_id:
+            violations.append(Violation(code="unknown_setup_resource", severity=Severity.HARD,
+                entity_refs=(), field_path="setup.resource_id",
+                actual=str(setup.resource_id), expected="resource in snapshot",
+                message="setup references an unknown resource"))
+        if setup.cost_cents < 0:
+            violations.append(Violation(code="negative_setup_cost", severity=Severity.HARD,
+                entity_refs=(), field_path="setup.cost_cents", actual=str(setup.cost_cents),
+                expected=">= 0", message="setup cost is negative"))
+        for assignment in by_resource.get(setup.resource_id, ()):
+            if setup.start_s < assignment.end_s and assignment.start_s < setup.end_s:
+                violations.append(Violation(code="setup_assignment_overlap",
+                    severity=Severity.HARD, entity_refs=(),
+                    field_path="setup.resource_id", actual=str(setup.resource_id),
+                    expected="no overlap with assignments",
+                    message="setup overlaps a production assignment on the resource"))
+        setup_by_resource[setup.resource_id].append(setup)
+    for resource_id, setups in setup_by_resource.items():
+        setups.sort(key=lambda item: item.start_s)
+        for left, right in zip(setups, setups[1:]):
+            if left.end_s > right.start_s:
+                violations.append(Violation(code="setup_overlap", severity=Severity.HARD,
+                    entity_refs=(), field_path="setup.resource_id",
+                    actual=str(resource_id), expected="no setup overlap",
+                    message="two setup operations overlap on the same resource"))
     cost = solution.objective.business_cost_cents if solution.objective is not None else None
     if cost is not None and cost < 0:
         violations.append(Violation(code="negative_cost", severity=Severity.HARD,
@@ -196,6 +231,19 @@ def validate_warehouse(problem: WarehouseProblem,
         required_codes=(), checked_codes=(), unsupported_codes=(),
         violations=tuple(violations),
         validated_at=datetime.now(timezone.utc).replace(microsecond=0))
+
+
+def _peak(intervals, attribute: str) -> int:
+    events = []
+    for interval in intervals:
+        value = getattr(interval, attribute)
+        events.append((interval.start_s, value))
+        events.append((interval.end_s, -value))
+    active = peak = 0
+    for _, delta in sorted(events, key=lambda pair: (pair[0], pair[1])):
+        active += delta
+        peak = max(peak, active)
+    return peak
 
 
 __all__ = ["validate_warehouse"]
