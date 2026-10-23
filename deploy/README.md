@@ -21,5 +21,6 @@ docker compose run --rm seed
 打开 <http://localhost:8080>，开发 token 为 `dev-operator-token`（hash 在 compose 的
 `LOGISTICS_SETTINGS_JSON`，仅限本地）。API 直连 <http://localhost:8000/api/v1/health>。
 
-- 本环境 Docker Hub token 交换不可达，镜像未实际构建；只有 compose 配置通过 `docker compose config`。
+- 本环境通过镜像站拉取基础镜像后已成功构建 backend/frontend/seed，并启动 db/backend/worker/frontend；health 与登录订单查询返回 200。
+- 已知问题：通过 Docker worker 提交的真实运输求解作业在 1s/3s budget 下未及时返回，55s deadline 后被标记 failed/dependency_unavailable；本地直连服务求解正常，容器内 solver 性能/时限行为仍需定位。
 - 这是本地产品候选，不是 Gate 签收版本。

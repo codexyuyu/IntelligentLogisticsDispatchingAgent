@@ -79,9 +79,13 @@ docker compose run --rm seed
 
 Open <http://localhost:8080>.
 
-Known environment limitation: in this workspace Docker Hub token exchange timed out over IPv6,
-so images were **not** built here. With a reachable registry/proxy, `docker compose build` is the
-intended path; the compose file itself validates.
+Known environment note: Docker Hub token exchange timed out over IPv6, but base images were pulled
+from a registry mirror and tagged locally; backend/frontend/seed built successfully, the stack
+started, and `/api/v1/health` plus authenticated `/orders` returned 200.
+
+Known issue: a transport optimization Job submitted through the Docker worker did not return
+within its 1s/3s solver budget and was failed at the 55s deadline. The same seed problem solves
+locally; container solver time-limit behavior still needs investigation.
 
 ## Known product gaps
 
