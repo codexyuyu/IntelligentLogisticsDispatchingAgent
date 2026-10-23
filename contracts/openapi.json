@@ -7488,6 +7488,14 @@
             "title": "Predecessor Ids",
             "type": "array"
           },
+          "required_skills": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Required Skills",
+            "type": "array"
+          },
           "requirements": {
             "items": {
               "$ref": "#/components/schemas/ResourceRequirementDTO"

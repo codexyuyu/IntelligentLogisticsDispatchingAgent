@@ -288,7 +288,7 @@ def warehouse_task_dto(task: domain.WarehouseTask) -> WarehouseTaskDTO:
         requirements=tuple(ResourceRequirementDTO(
             resource_kind=value.resource_kind, eligible_ids=value.eligible_ids,
             units=value.units) for value in task.requirements),
-        setup_class=task.setup_class)
+        setup_class=task.setup_class, required_skills=task.required_skills)
 
 
 def operation_assignment_dto(value: domain.OperationAssignment) -> OperationAssignmentDTO:

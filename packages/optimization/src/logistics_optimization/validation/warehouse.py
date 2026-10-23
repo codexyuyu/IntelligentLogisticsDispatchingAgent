@@ -20,6 +20,7 @@ def validate_warehouse(problem: WarehouseProblem,
         *resources.docks, *resources.workers, *resources.equipment)}
     equipment = {item.id: item for item in resources.equipment}
     docks = {item.id: item for item in resources.docks}
+    workers = {item.id: item for item in resources.workers}
     locations = {item.id: item for item in resources.locations}
     zones = {item.id: item for item in resources.zones}
     cargo = {item.id: item for item in problem.snapshot.cargo}
@@ -72,6 +73,24 @@ def validate_warehouse(problem: WarehouseProblem,
                     actual=str(assignment.units),
                     expected=f"<= {equipment_item.quantity_capacity}",
                     message="assignment exceeds equipment quantity capacity"))
+            worker = workers.get(assignment.resource_id)
+            if task.required_skills:
+                if worker is None:
+                    violations.append(Violation(code="skill_resource",
+                        severity=Severity.HARD, entity_refs=(),
+                        field_path="assignment.resource_id",
+                        actual=str(assignment.resource_id),
+                        expected="worker resource with required skills",
+                        message="skill-bearing task is assigned to a non-worker"))
+                else:
+                    missing_skills = set(task.required_skills) - set(worker.skills)
+                    if missing_skills:
+                        violations.append(Violation(code="worker_skills",
+                            severity=Severity.HARD, entity_refs=(),
+                            field_path="assignment.resource_id",
+                            actual=",".join(sorted(missing_skills)),
+                            expected="all required skills",
+                            message="worker lacks a required skill"))
             matching = [requirement for requirement in task.requirements
                         if assignment.resource_id in requirement.eligible_ids]
             for requirement in matching:

@@ -27147,6 +27147,14 @@
           "title": "Predecessor Ids",
           "type": "array"
         },
+        "required_skills": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Skills",
+          "type": "array"
+        },
         "requirements": {
           "items": {
             "$ref": "#/$defs/ResourceRequirementDTO"
@@ -36035,6 +36043,14 @@
               "title": "Predecessor Ids",
               "type": "array"
             },
+            "required_skills": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Required Skills",
+              "type": "array"
+            },
             "requirements": {
               "items": {
                 "$ref": "#/$defs/ResourceRequirementDTO"
@@ -38682,6 +38698,14 @@
                 "type": "string"
               },
               "title": "Predecessor Ids",
+              "type": "array"
+            },
+            "required_skills": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Required Skills",
               "type": "array"
             },
             "requirements": {
@@ -49133,6 +49157,14 @@
               "title": "Predecessor Ids",
               "type": "array"
             },
+            "required_skills": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Required Skills",
+              "type": "array"
+            },
             "requirements": {
               "items": {
                 "$ref": "#/$defs/ResourceRequirementDTO"
@@ -53639,6 +53671,14 @@
               "title": "Predecessor Ids",
               "type": "array"
             },
+            "required_skills": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Required Skills",
+              "type": "array"
+            },
             "requirements": {
               "items": {
                 "$ref": "#/$defs/ResourceRequirementDTO"
@@ -55426,6 +55466,14 @@
               "title": "Predecessor Ids",
               "type": "array"
             },
+            "required_skills": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Required Skills",
+              "type": "array"
+            },
             "requirements": {
               "items": {
                 "$ref": "#/$defs/ResourceRequirementDTO"
@@ -56023,6 +56071,14 @@
                 "type": "string"
               },
               "title": "Predecessor Ids",
+              "type": "array"
+            },
+            "required_skills": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "title": "Required Skills",
               "type": "array"
             },
             "requirements": {

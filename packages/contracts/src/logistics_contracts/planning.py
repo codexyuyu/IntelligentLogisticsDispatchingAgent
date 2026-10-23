@@ -288,6 +288,15 @@ class WarehouseTaskDTO(PlanningEntityDTO):
     predecessor_ids: tuple[UUID, ...]
     requirements: tuple[ResourceRequirementDTO, ...]
     setup_class: str
+    required_skills: tuple[str, ...] = ()
+
+    def to_domain(self):
+        from logistics_domain.resources import Skill
+
+        values = {key: _convert(value) for key, value in self.__dict__.items()
+                  if key != "required_skills"}
+        values["required_skills"] = tuple(Skill(value) for value in self.required_skills)
+        return domain.WarehouseTask(**values)
 
 
 class RouteDTO(PlanningEntityDTO):

@@ -50,6 +50,7 @@ from logistics_domain.resources import (
     OperationKind,
     ResourceBundle,
     ResourceCalendarBinding,
+    Skill,
     Vehicle,
 )
 from logistics_domain.states import (
@@ -348,6 +349,7 @@ class WarehouseTask(Entity):
     predecessor_ids: tuple[UUID, ...]
     requirements: tuple[ResourceRequirement, ...]
     setup_class: str
+    required_skills: tuple[Skill, ...] = ()
 
     def __post_init__(self) -> None:
         Entity.__post_init__(self)
@@ -368,6 +370,13 @@ class WarehouseTask(Entity):
                 raise InvalidInputError(
                     f"WarehouseTask.requirements[{index}] must be a ResourceRequirement")
         _require_safe_code(self.setup_class, field="WarehouseTask.setup_class")
+        if not isinstance(self.required_skills, tuple):
+            raise InvalidInputError("WarehouseTask.required_skills must be a tuple")
+        if len(set(self.required_skills)) != len(self.required_skills):
+            raise InvalidInputError("WarehouseTask.required_skills must be unique")
+        for index, skill in enumerate(self.required_skills):
+            if not isinstance(skill, Skill):
+                raise InvalidInputError(f"required_skills[{index}] must be Skill")
 
 
 @dataclass(frozen=True, slots=True)
