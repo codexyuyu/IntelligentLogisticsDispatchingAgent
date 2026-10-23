@@ -1,0 +1,22 @@
+{
+  "task_id": "P01-01",
+  "round": "n03-r02-f01",
+  "reason": "byte-for-byte archive of the N03-R02 evidence and seal before the F01 metadata correction",
+  "file_count": 2,
+  "entries": [
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/evidence.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02-f01/evidence.json",
+      "bytes": 29091,
+      "sha256": "18b2ccc1fa0f38160f795ba42e65d565e174f91fd76b6db853a8a64e07c40ca8",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/seal.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02-f01/seal.json",
+      "bytes": 6674,
+      "sha256": "ab46b6925c9142bfb01ba891375335fa2556078019911ad0746366454ef862b9",
+      "byte_identical": true
+    }
+  ]
+}

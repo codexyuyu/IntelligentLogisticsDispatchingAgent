@@ -1,0 +1,21 @@
+{
+  "name": "logistics-dispatching-agent",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Cold-chain-first logistics dispatching monorepo (workspace root).",
+  "type": "module",
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "workspaces": [
+    "apps/frontend"
+  ],
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:list": "playwright test --list",
+    "pw:install": "playwright install --with-deps chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}

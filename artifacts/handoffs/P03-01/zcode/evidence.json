@@ -1,0 +1,620 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P03-01",
+  "scene": "resource-schema",
+  "phase": 3,
+  "phase_gate": "G03",
+  "reviewer": "ZCode",
+  "review_role": "independent-pre-acceptance",
+  "status": "BLOCKED",
+  "verdict_reason": "P03-01 has no implementation candidate: the six code-and-test deliverables do not exist and only the two BLOCKED-report documents were written. The single declared dependency G02 has no record at all and the transitive prerequisite G01 is status=failed, so Phase 02 (0/15 files) is entirely undelivered. DSH's own BLOCKED verdict is independently confirmed; nothing could be pre-accepted.",
+  "reviewed_at_local": "2026-09-15T04:54:25.631267-07:00",
+  "candidate": {
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "vcs": "no .git in this checkout; located by content hash (scripts/gates.py compute_revision)",
+    "revision_label_during_this_review": "content-sha256:b07a3b05412dd28c83da59d2dec45699dd408b0db2a3763d4b0e1cc78d75eed6",
+    "revision_label_is_self_perturbing": "by construction this label is one step stale: compute_revision() covers this record's own directory, so writing evidence.json and precheck.json moves the label again. Recompute it with the same call to compare; an exact match is impossible until defect D9 is fixed.",
+    "previous_gate_recorded_revision": "content-sha256:ab054daf9c6c1373c6503f603805756ef3ef9c5a60400d07d8e938d6987e532b"
+  },
+  "deliverable_presence": {
+    "alembic.ini": false,
+    "apps/backend/migrations/env.py": false,
+    "apps/backend/migrations/versions/0001_resources.py": false,
+    "apps/backend/src/logistics_backend/persistence/resource_models.py": false,
+    "docs/implementation/P03-01.md": true,
+    "docs/implementation/reports/P03-01.md": true,
+    "tests/integration/test_p03_01_resource_schema.py": false,
+    "tests/unit/test_p03_01_resource_schema.py": false
+  },
+  "deliverable_present_count": 2,
+  "deliverable_expected_count": 8,
+  "code_and_test_presence": {
+    "alembic.ini": false,
+    "apps/backend/migrations/env.py": false,
+    "apps/backend/migrations/versions/0001_resources.py": false,
+    "apps/backend/src/logistics_backend/persistence/resource_models.py": false,
+    "tests/integration/test_p03_01_resource_schema.py": false,
+    "tests/unit/test_p03_01_resource_schema.py": false
+  },
+  "code_and_test_present_count": 0,
+  "code_and_test_expected_count": 6,
+  "dsh_submission": {
+    "handoff_path": "docs/handoffs/P03-01/dsh.md",
+    "evidence_path": "artifacts/handoffs/P03-01/dsh/evidence.json",
+    "present": true,
+    "claimed_status": "BLOCKED",
+    "claimed_verdict_reason": "P03-01 cannot be started: its only declared dependency G02 has no record at all (artifacts/gates/G02.json missing) and the phase-02 gate probe reports 5/27 checks passed; the cross-phase prerequisite G01 is status=failed with failed_checks=[zcode-precheck:P01-01, zcode-precheck:P01-02, zcode-precheck:P01-03, codex-review]. docs/plan/PHASE_GATES.md states that a failed Gate blocks every later phase, and TASK_GRAPH.md:58 makes G02 the sole dependency of P03-01. Zero of the four P03-01 implementation files and zero of the two test files were created, because creating them would either skip a Gate barrier or duplicate the Phase 02 domain model that P03-01 must map. No ZCode pre-acceptance is requested.",
+    "claim_summary": "DSH reports that P03-01 was deliberately not started, that 0/8 deliverables were created, that the blocker is G02 (no record) plus G01 (failed) plus the absence of any reachable PostgreSQL, and that it did not fabricate DDL on purpose",
+    "independent_verification": {
+      "log_hashes": "ALL MATCH (see commands[dsh-evidence-integrity])",
+      "input_hashes": "ALL MATCH, no stale recorded input",
+      "environment_claims": "independently reproduced (no psql/pg_ctl/postgres/initdb, Docker daemon unreachable, TEST_DATABASE_URL unset)",
+      "dependency_claims": "independently reproduced (G02 record absent, G01 failed, Phase 02 files 0/15)",
+      "lock_claims": "independently reproduced (uv.lock has no alembic/sqlalchemy/psycopg)",
+      "conftest_claim": "independently reproduced by reading tests/conftest.py: database_url and db_connection call pytest.fail, never skip",
+      "overclaim_check": "the DSH report explicitly states it does not claim any unrun test passed and does not claim P03-01 is implemented - no overclaim found",
+      "corrections": [
+        "DSH's deliverable_present_count field says 0/8, but its own two report documents now exist, so the true count is 2/8; the field is a snapshot taken before it wrote them",
+        "DSH's G03 probe reported 5/28; the same probe now reports 7/28 because the two doc checks pass (5 + 2 = 7). Both numbers are correct for their moment"
+      ]
+    },
+    "verdict_on_submission": "honest and accurate: the blocker analysis holds up under independent recomputation, and the refusal to write DDL without the Phase 02 domain types is the correct choice under Architecture Constraint 6"
+  },
+  "dependency_presence": {
+    "artifacts/gates/G02.json": false,
+    "artifacts/handoffs/P02-01/dsh/evidence.json": false,
+    "artifacts/handoffs/P02-02/dsh/evidence.json": false,
+    "artifacts/handoffs/P02-03/dsh/evidence.json": false,
+    "artifacts/handoffs/P02-04/dsh/evidence.json": false,
+    "docs/implementation/P02-01.md": false,
+    "docs/implementation/P02-04.md": false,
+    "packages/domain/src/logistics_domain/ids.py": false,
+    "packages/domain/src/logistics_domain/units.py": false,
+    "packages/domain/src/logistics_domain/states.py": false,
+    "packages/domain/src/logistics_domain/entities.py": false,
+    "packages/domain/src/logistics_domain/orders.py": false,
+    "packages/domain/src/logistics_domain/resources.py": false,
+    "packages/domain/src/logistics_domain/planning.py": false,
+    "packages/domain/src/logistics_domain/execution.py": false,
+    "packages/domain/src/logistics_domain/runtime.py": false,
+    "packages/contracts/src/logistics_contracts/common.py": false,
+    "packages/contracts/src/logistics_contracts/runtime.py": false,
+    "packages/contracts/src/logistics_contracts/entities.py": false,
+    "packages/contracts/src/logistics_contracts/planning.py": false,
+    "scripts/export_contracts.py": false,
+    "contracts/schemas.json": false
+  },
+  "dependency_present_count": 0,
+  "dependency_expected_count": 22,
+  "prerequisites": {
+    "G01": {
+      "status": "failed",
+      "failed_checks": [
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ],
+      "acceptance_assertions_all_passed": true,
+      "source": "artifacts/gates/G01.json + logs/gates-phase03-sandbox.log",
+      "blocks": "Phase 02 and later per docs/plan/PHASE_GATES.md"
+    },
+    "G02": {
+      "status": "not_signed",
+      "record_exists": false,
+      "sandbox_result": "G02: 5/27 checks passed",
+      "declared_by": "TASK_MANIFEST.json deps [G02]; TASK_GRAPH.md:58"
+    },
+    "G03": {
+      "status": "not_signed",
+      "sandbox_result": "G03: 7/28 checks passed"
+    }
+  },
+  "environment": {
+    "postgresql_client": "psql not found on PATH",
+    "postgresql_server": "pg_ctl / postgres / initdb not found on PATH",
+    "docker_cli": "present",
+    "docker_daemon": "unreachable (npipe:////./pipe/dockerDesktopLinuxEngine)",
+    "test_database_url_set": false,
+    "conftest_behaviour_when_url_absent": "pytest.fail, never skip (tests/conftest.py)",
+    "conftest_behaviour_when_psycopg_absent": "pytest.fail with 'psycopg is not installed in this environment'",
+    "isolated_postgres_reachable": false,
+    "environment_manual_present": false,
+    "note": "no secret, credential or personal datum is recorded here; TEST_DATABASE_URL was only checked for presence, never echoed"
+  },
+  "gate_phase03_required_records": {
+    "P03-01": {
+      "task_doc": null,
+      "report": null,
+      "dsh_evidence": null,
+      "zcode_precheck": null
+    },
+    "P03-02": {
+      "task_doc": null,
+      "report": null,
+      "dsh_evidence": null,
+      "zcode_precheck": null
+    },
+    "P03-03": {
+      "task_doc": null,
+      "report": null,
+      "dsh_evidence": null,
+      "zcode_precheck": null
+    },
+    "P03-04": {
+      "task_doc": null,
+      "report": null,
+      "dsh_evidence": null,
+      "zcode_precheck": null
+    }
+  },
+  "frozen_interface": {
+    "declared": "alembic upgrade head -> PostgreSQL resource tables",
+    "domain_model_expected": [
+      "Order",
+      "Cargo",
+      "Vehicle",
+      "Driver",
+      "Warehouse",
+      "WarehouseZone",
+      "StorageLocation",
+      "Dock",
+      "Worker",
+      "Equipment"
+    ],
+    "business_rules_expected": [
+      "FK, CHECK, unique keys, timestamptz, row_version",
+      "SQLite must not stand in for the real database in acceptance",
+      "objects referenced by history are only deactivated, never deleted"
+    ],
+    "algorithm_expected": [
+      "create tables in relational topological order",
+      "express the database-representable part of the domain constraints",
+      "give enums and checks explicit names so migrations stay readable"
+    ]
+  },
+  "commands": [
+    {
+      "check_id": "P03-01-cmd1",
+      "argv": "uv run pytest tests/unit/test_p03_01_resource_schema.py tests/integration/test_p03_01_resource_schema.py -q",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4,
+      "result": "ERROR: file or directory not found: tests/unit/test_p03_01_resource_schema.py; no tests ran in 0.00s",
+      "log_path": "artifacts/handoffs/P03-01/zcode/logs/cmd1-pytest.log",
+      "mandatory": true,
+      "passed": false,
+      "agrees_with_dsh": true
+    },
+    {
+      "check_id": "P03-01-cmd2",
+      "argv": "uv run python scripts/check_architecture.py",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0",
+      "log_path": "artifacts/handoffs/P03-01/zcode/logs/cmd2-architecture.log",
+      "mandatory": true,
+      "passed": true,
+      "agrees_with_dsh": true,
+      "caveat": "vacuous pass: the 7 scanned modules are the untouched P01-01 stubs and P03-01 added no code; not acceptance evidence"
+    },
+    {
+      "check_id": "regression",
+      "argv": "uv run pytest -q",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "187 passed",
+      "log_path": "artifacts/handoffs/P03-01/zcode/logs/regression-pytest.log",
+      "mandatory": false,
+      "passed": true
+    },
+    {
+      "check_id": "gates-phase03-sandbox",
+      "argv": "uv run python scripts/gates.py --phase 03 --revision auto --out-dir tmp/zcode-g03-dryrun",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "G03: 7/28 checks passed; previous-gate:G01 status=failed; previous-gate:G02 missing; dsh-evidence:P03-01 unexpected status='BLOCKED'; docs:docs/implementation/P03-01.md present and reports/P03-01.md present; all four P03-0X-cmd1 exit_code=4; zcode-precheck and codex-review missing",
+      "log_path": "artifacts/handoffs/P03-01/zcode/logs/gates-phase03-sandbox.log",
+      "mandatory": false,
+      "passed": false,
+      "note": "sandbox out-dir; artifacts/gates/G03.json was NOT written. The count reconciles with DSH's reported 5/28: DSH probed before writing its two docs, and those two doc checks now pass (5 + 2 = 7)."
+    },
+    {
+      "check_id": "dsh-evidence-integrity",
+      "argv": "independent recomputation of the hashes recorded in artifacts/handoffs/P03-01/dsh/evidence.json",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "all 4 command-log hashes match; all 16 recorded input hashes match; no stale recorded input",
+      "log_path": "artifacts/handoffs/P03-01/zcode/logs/dsh-evidence-integrity.log",
+      "mandatory": false,
+      "passed": true,
+      "note": "confirms the DSH blocker report is internally consistent and binds to the current tree"
+    },
+    {
+      "check_id": "environment-availability",
+      "argv": "which psql pg_ctl postgres initdb ; docker info ; echo $TEST_DATABASE_URL",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "psql/pg_ctl/postgres/initdb all absent from PATH; docker CLI present but the daemon is unreachable (npipe:////./pipe/dockerDesktopLinuxEngine); TEST_DATABASE_URL is not set",
+      "log_path": "artifacts/handoffs/P03-01/zcode/logs/baseline-checks.log",
+      "mandatory": false,
+      "passed": false,
+      "note": "independently reproduces DSH's environment finding: no PostgreSQL of any kind is reachable"
+    },
+    {
+      "check_id": "baseline-checks",
+      "argv": "check_ownership.py --json ; uv lock --check ; uv sync --frozen ; credential find ; secret grep ; injection grep ; SQL-assembly grep",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "ownership passed=True violations=0 fallbacks=[] (995 files scanned); uv lock --check exit 0; uv sync --frozen exit 0; no credential files; no sk-/AKIA literals; no shell=True/os.system/eval/exec/pickle.loads; no SQL string assembly (no DB code exists yet)",
+      "log_path": "artifacts/handoffs/P03-01/zcode/logs/baseline-checks.log",
+      "mandatory": false,
+      "passed": true
+    }
+  ],
+  "test_cases": {
+    "1": {
+      "input": "Cargo.order_id referencing a non-existent order",
+      "expected": "rejected by the foreign key",
+      "status": "NOT_VERIFIABLE",
+      "reason": "no implementation and no test files exist (exit_code=4, 0 tests ran); no PostgreSQL is reachable either"
+    },
+    "2": {
+      "input": "two warehouses with the same warehouse_code",
+      "expected": "rejected by the unique constraint",
+      "status": "NOT_VERIFIABLE",
+      "reason": "no implementation and no test files exist (exit_code=4, 0 tests ran); no PostgreSQL is reachable either"
+    },
+    "coverage": "0 of 2 required test cases"
+  },
+  "acceptance_recheck_plan": {
+    "purpose": "what to verify when P03-01 is re-issued after G02 is signed, so the review does not have to be re-derived",
+    "preconditions": [
+      "G02 signed, or at minimum the Phase 02 domain types present, because the DDL must map 1:1 from the real Python types rather than being reverse-engineered from DDL",
+      "an isolated PostgreSQL reachable and TEST_DATABASE_URL exported as a *test*-named database (conftest refuses other names)",
+      "apps/backend/pyproject.toml + uv.lock permitted to gain psycopg/SQLAlchemy/Alembic (see D3) and uv lock --check still passing"
+    ],
+    "checks": [
+      "alembic upgrade head applies 0001_resources to a real PostgreSQL, and downgrade returns to the empty schema, both without leaving objects behind",
+      "test case 1: inserting a Cargo whose order_id does not exist is rejected by the FK, with no partial row written",
+      "test case 2: inserting a second warehouse with a duplicated warehouse_code is rejected by the unique constraint",
+      "every table carries id (UUID), status enum, created_at/updated_at timestamptz, row_version and schema_version; no naive timestamps",
+      "CHECK constraints exist for the non-negative and range rules from DOMAIN_CATALOG; enums and checks have explicit names",
+      "deactivating a referenced object is a status change, not a delete (verify no ON DELETE CASCADE against history-bearing tables)",
+      "the migration must not be validated against SQLite - confirm the DSN in the test run is postgresql, not sqlite",
+      "the 10 mapped tables correspond to the real Python types in packages/domain (not to a hand-invented schema)"
+    ]
+  },
+  "defects": [
+    {
+      "id": "D1",
+      "severity": "blocking",
+      "task": "P03-01",
+      "title": "No implementation candidate exists: 0/6 code-and-test deliverables were written (only the two BLOCKED report documents exist, 2/8 paths present)",
+      "evidence": [
+        "logs/cmd1-pytest.log exit 4 (0 tests ran)",
+        "logs/gates-phase03-sandbox.log: P03-01-cmd1 exit_code=4, docs present but no code",
+        "logs/dsh-evidence-integrity.log: DSH's own deliverable_presence recorded 0/8 before it wrote its two docs; those two are present now, the other six are not"
+      ],
+      "status": "unfixed",
+      "owner": "DSH / P03-01 (deliberately not started; see D2)",
+      "note": "DSH did not create partial DDL on purpose, to avoid defining a second domain model - the right call"
+    },
+    {
+      "id": "D2",
+      "severity": "blocking",
+      "task": "G02 + G01",
+      "title": "The only declared dependency G02 has no record at all, and the transitive prerequisite G01 is status=failed",
+      "evidence": [
+        "artifacts/gates/G02.json does not exist; the phase-02 sandbox probe reports G02: 5/27",
+        "artifacts/gates/G01.json status=failed, failed_checks=[zcode-precheck:P01-01, zcode-precheck:P01-02, zcode-precheck:P01-03, codex-review] (all 5 acceptance assertions passed)",
+        "TASK_MANIFEST.json deps for P03-01 = [G02]; TASK_GRAPH.md:58 agrees",
+        "Phase 02 deliverable files present: 0/15 (verified in this pass)",
+        "docs/plan/PHASE_GATES.md: G01 failure blocks Phase 02 and later"
+      ],
+      "status": "unfixed",
+      "owner": "Codex (G01 review) + ZCode (P01-01..P01-03 prechecks) + role A/DSH (P02-01..P02-04)"
+    },
+    {
+      "id": "D3",
+      "severity": "blocking-for-this-task-when-reissued",
+      "task": "P03-01 scope / planning",
+      "title": "The task's 8-file allow-list does not include the dependency manifests it needs, so alembic and psycopg cannot be added without editing out-of-scope files",
+      "evidence": [
+        "allowed_files = [alembic.ini, apps/backend/migrations/env.py, apps/backend/migrations/versions/0001_resources.py, apps/backend/src/logistics_backend/persistence/resource_models.py, both docs, both tests] - apps/backend/pyproject.toml and uv.lock are absent",
+        "uv.lock has 40 packages and none of them is alembic, sqlalchemy, psycopg or psycopg-binary",
+        "the frozen interface is literally 'alembic upgrade head -> PostgreSQL resource tables'",
+        "tests/conftest.py db_connection fails when psycopg is missing",
+        "DSH flagged the same need as its suggested action 3 (allow a Phase 03 task to add psycopg/SQLAlchemy/Alembic to the workspace lock)"
+      ],
+      "impact": "a re-issued P03-01 has only two ways out: edit pyproject.toml + uv.lock (outside its allow-list, which the task book forbids) or fake the schema without a real migration tool and driver (which the task book also forbids and which DSH explicitly predicted as risk R5)",
+      "status": "unfixed",
+      "owner": "project management / planning: extend the allow-list or authorise a dependency task"
+    },
+    {
+      "id": "D4",
+      "severity": "blocking-for-acceptance",
+      "task": "P01-01 (environment manual)",
+      "title": "The Phase 01 environment manual that defines the isolated PostgreSQL startup does not exist, although both code and a frozen convention reference it",
+      "evidence": [
+        "tests/conftest.py:158 tells the reader to 'see the Phase 01 environment manual' when TEST_DATABASE_URL is absent",
+        "docs/architecture/IMPLEMENTATION_CONVENTIONS.md:9 states 'P01环境手册给出Docker PostgreSQL与本地PostgreSQL两种明确启动方式'",
+        "no file matching manual/environment/postgres exists under docs/ (searched)",
+        "this host has no psql/pg_ctl/postgres/initdb and no running Docker daemon"
+      ],
+      "impact": "every Phase 03 database assertion currently fails by fixture rather than by product defect, and no documented way exists to obtain a working database; G03's 'real PostgreSQL migration/rollback/FK' criterion cannot be produced",
+      "status": "unfixed",
+      "owner": "Phase 01 environment documentation owner (project management side)"
+    },
+    {
+      "id": "D5",
+      "severity": "non-blocking (contract gap)",
+      "task": "P01-02 / ARCH-0004",
+      "title": "The gate runner has no accepted state for a prerequisite-blocked handoff, so an honest BLOCKED report is reported as an unexpected status",
+      "evidence": [
+        "logs/gates-phase03-sandbox.log: dsh-evidence:P03-01: unexpected status='BLOCKED'",
+        "scripts/gates.py accepts only READY_FOR_ZCODE and Z_PRECHECK_PASSED for DSH evidence",
+        "every task book orders a BLOCKED report with a concrete blocking reason when prerequisites are missing (P03-01 prompt, Current State section)"
+      ],
+      "impact": "the two documents disagree: the task books define BLOCKED as a legitimate outcome, the runner treats it as malformed evidence. It does not change any verdict (the gate fails either way), but the diagnostic text misleads a reader into thinking DSH wrote a bad record",
+      "recommendation": "either accept BLOCKED as a known DSH status with its own message, or state in the handoff contract that a blocked handoff must not be written to artifacts/handoffs/<task>/dsh/",
+      "status": "unfixed",
+      "owner": "P01-02 + ARCH-0004 decision"
+    },
+    {
+      "id": "D6",
+      "severity": "non-blocking-for-P03-01",
+      "task": "P01-01",
+      "title": "apps/frontend declares test=vitest run without devDependencies, so vitest is missing and the CI frontend job step fails",
+      "evidence": [
+        "apps/frontend/package.json",
+        ".github/workflows/ci.yml:95",
+        "carried over from the 2026-09-14 P02-02 review where the command exited 1"
+      ],
+      "status": "unfixed",
+      "owner": "P01-01 (or P24-01)",
+      "reverified_this_pass": false
+    },
+    {
+      "id": "D7",
+      "severity": "non-blocking-for-P03-01",
+      "task": "P01-02",
+      "title": "npm run test:e2e:list exits 1 with zero specs while CI treats it as a required step",
+      "evidence": [
+        ".github/workflows/ci.yml:98",
+        "playwright.config.ts comment claims an empty listing is legitimate",
+        "carried over from the 2026-09-14 P02-02 review"
+      ],
+      "status": "unfixed",
+      "owner": "P01-02",
+      "reverified_this_pass": false
+    },
+    {
+      "id": "D8",
+      "severity": "non-blocking",
+      "task": "engineering config",
+      "title": "ruff is configured but never executed in CI, and its RUF001/RUF002 rules conflict with the project-wide Chinese fullwidth punctuation convention",
+      "evidence": [
+        "pyproject.toml [tool.ruff]",
+        ".github/workflows/ci.yml (no ruff step)",
+        "carried over from the 2026-09-14 P02-02 review: 39 errors in the target tree"
+      ],
+      "status": "unfixed",
+      "owner": "engineering config / P01-02",
+      "reverified_this_pass": false
+    },
+    {
+      "id": "D9",
+      "severity": "non-blocking",
+      "task": "P01-02",
+      "title": "Gate revision is built from volatile session/scratch files (.mimosa/**, tmp/**), so a recorded code_revision is unreproducible from the next agent action",
+      "evidence": [
+        "scripts/gates.py:43 EXCLUDED_FROM_REVISION excludes only artifacts/gates and artifacts/e2e",
+        "scripts/gates.py:327-342 compute_revision enumerates the whole tree; measured 1167 rows of which .mimosa/** is 451 and tmp/** is 423",
+        ".mimosa/hook-state/<session>.json is rewritten by the agent host on every tool call",
+        "artifacts/handoffs/P02-02/zcode/logs/revision-volatility.log holds the reproduction",
+        "DSH independently reached the same conclusion in its handoff (candidate.revision_label_is_self_perturbing)"
+      ],
+      "status": "unfixed",
+      "confidence": "proven by reproduction with the runner's own compute_revision(); independently corroborated by DSH",
+      "owner": "P01-02",
+      "reverified_this_pass": true
+    },
+    {
+      "id": "D10",
+      "severity": "observation",
+      "task": "P01-01",
+      "title": "The _PENDING_APIS registries name capabilities but not the modules Phase 02/03 create, so probing those surfaces yields a bare AttributeError",
+      "evidence": [
+        "logistics_domain._PENDING_APIS keys = ['entities','ids','ports','states','units']",
+        "logistics_contracts._PENDING_APIS keys = ['dto','errors','export_schema','mapping']",
+        "artifacts/handoffs/P02-03/zcode/logs/probe-interfaces.log and P02-04 logs/probe-interfaces.log"
+      ],
+      "status": "unfixed",
+      "owner": "P01-01"
+    }
+  ],
+  "fixed_by_zcode": [],
+  "unfixed": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "D8",
+    "D9",
+    "D10"
+  ],
+  "not_verified": [
+    "All ten P03-01 business requirements (FK/CHECK/unique/timestamptz/row_version DDL, both test cases, a real 'alembic upgrade head') are UNVERIFIED: nothing was implemented and no database exists",
+    "The 'alembic upgrade head' interface was not exercised: alembic.ini and apps/backend/migrations/ do not exist and alembic is not in the workspace lock",
+    "G03 exit criteria (real PostgreSQL migration/rollback/FK, consistent snapshot, exactly-one concurrent resource commit, no half version on transaction failure) belong to Phase 03 as a whole and mostly depend on P03-02..P03-04",
+    "Static type checking: no mypy/pyright configuration exists",
+    "npm ci, the frontend workspace test and the Playwright listing were NOT re-run in this pass (no frontend file is in P03-01's scope); D6/D7/D8 rest on the 2026-09-14 command output and are flagged reverified_this_pass=false",
+    "CI as written cannot run in this checkout (no .git), so its git ls-files / git grep / git diff steps cannot execute as written"
+  ],
+  "security_review": {
+    "scope": "the current change set is documentation plus DSH evidence; the deliverable itself is a database migration task, so this section also states the controls a re-issued P03-01 must satisfy",
+    "credential_files": "none found (.env / .env.* / *.pem / *.p12 / id_rsa*) in the target tree",
+    "secret_literals": "0 hits for sk-[A-Za-z0-9]{20,} and AKIA[0-9A-Z]{16}",
+    "test_database_url_handling": "only checked for presence; never printed, and no connection was attempted",
+    "sql_injection": "no database access code exists yet, so there is nothing to verify; conftest's own guard rejects a URL whose name does not contain 'test' and refuses obvious default/production databases before connecting. Every parameter used by P03-01/P03-02/P03-03 must be bound, never interpolated, per the project security constraint - this is a forward-looking requirement, not a verified pass",
+    "command_injection": "no shell=True / os.system / eval / exec / pickle.loads in apps|packages|scripts|tests; the gate runner and conftest execute argv arrays without a shell",
+    "auth_scope_logging": "no HTTP boundary or worker exists yet; belongs to P05-01/P37",
+    "dependency_changes": "none in this change set; uv lock --check exit 0",
+    "external_targets_scanned": "none - only localhost tool availability was probed, no external host was contacted",
+    "zcode_own_artifacts": "the evidence builder for this record starts no subprocess and contains no shell invocation"
+  },
+  "tool_versions": {
+    "python": "3.12.10",
+    "python_executable": "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python_pin": "3.12",
+    "node_pin": "22",
+    "node_local_and_g01_fingerprint": "v24.18.0",
+    "uv_recorded_in_g01": "uv 0.12.13 (0ebbd9274 2026-09-10 x86_64-pc-windows-msvc)",
+    "g01_fingerprint_os": "Windows 11",
+    "os": "Windows 11",
+    "note": "uv/node are quoted from the G01 environment fingerprint because this evidence builder deliberately starts no process"
+  },
+  "verified_input_hashes": {
+    "docs/prompts/03-database/P03-01-resource-schema.md": "a84d8f7ff8387c43c2d4f68d3f473f5e07e22f4ffd8a4d310717570b22999064",
+    "docs/prompts/02-domain/P02-04-runtime-contract-export.md": "e2e73ebdef66e8255bf2ab3252e64f23ced5bf0bc1afca6e55f89a7dbdfcbb5b",
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "docs/plan/TASK_MANIFEST.json": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/architecture/DATA_CONTRACTS.md": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+    "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+    "docs/architecture/issues/README.md": "93bd4ed9a23fa988001c5d535f28a9b86a923fc37c75512b5eb3e73002671695",
+    "docs/api/API_CONTRACT.md": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+    "packages/domain/src/logistics_domain/__init__.py": "8093a7e57882419f66c72b64f2a84f9f1f0055b60d1ad088392a048b658efa91",
+    "packages/contracts/src/logistics_contracts/__init__.py": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67",
+    "apps/backend/pyproject.toml": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "scripts/gates.py": "67351df627a747f9cb1d5ea5c8ddcdc01093a10e161f198cc9c35a92ecf49873",
+    "scripts/check_architecture.py": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5",
+    "scripts/check_ownership.py": "63bf2bf43263b2f8251c4e5d09b771f8b4c948a94592bccdbc3f5b121c02fa5a",
+    "OWNERSHIP.json": "bc86773d0d4c72e9c2e4b0c1e366a6f9488db2a6628e63981b689b6413e65b8a",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "package-lock.json": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+    ".github/workflows/ci.yml": "139d37c92f1bdf8d82c0771b081bb82d674dfbf6da22fa50135d27bd19a10e35",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "artifacts/gates/G01.json": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+    "artifacts/handoffs/P03-01/dsh/evidence.json": "1d99c996ca9b1c0d06338e1bec1c2d4983d93363612bc72ed6398fe45956d736",
+    "docs/handoffs/P03-01/dsh.md": "d68f9eae194fc4825a340394e7e326caff467cf2f9c55aba07273f0ee5b2963e",
+    "docs/implementation/P03-01.md": "49592290e13540c497af6c0cb839bcc30c12da8a90ac237febd2162332b9d875",
+    "docs/implementation/reports/P03-01.md": "6e871d050834cfc6caaf2e5f958e533738e46f9056302e499d6d47861d69cf6b",
+    "artifacts/handoffs/P02-04/zcode/precheck.json": "fe6f3ff967211a8f54a97bdc10b29977e0517d23ce9e360e138568a06745231b"
+  },
+  "evidence_logs": {
+    "artifacts/handoffs/P03-01/zcode/logs/baseline-checks.log": {
+      "sha256": "58a1d0e99579751e1e9752fd2b2df7d1f905aa843495fdc325762098397e87bd",
+      "bytes": 482,
+      "exit_code": null
+    },
+    "artifacts/handoffs/P03-01/zcode/logs/cmd1-pytest.log": {
+      "sha256": "27526f7f4a139ac5e90dd0e7f0e75ee32f65dc2a9e3725165a4169ea76f7e724",
+      "bytes": 243,
+      "exit_code": 4
+    },
+    "artifacts/handoffs/P03-01/zcode/logs/cmd2-architecture.log": {
+      "sha256": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "bytes": 147,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P03-01/zcode/logs/dsh-evidence-integrity.log": {
+      "sha256": "be29a5c554628dd34559f56fc0ea5903f7f81599354b0b91f282eb34cf9b2453",
+      "bytes": 1428,
+      "exit_code": null
+    },
+    "artifacts/handoffs/P03-01/zcode/logs/gates-phase03-sandbox.log": {
+      "sha256": "acbc73d35b94836ac3bbe875f3062ac058a85a02b08e86c43c76ad76659d1613",
+      "bytes": 2770,
+      "exit_code": 1
+    },
+    "artifacts/handoffs/P03-01/zcode/logs/regression-pytest.log": {
+      "sha256": "9925cecd7350f5b3279797f0d7407d0036e28fa047227a34afa471df89f6d629",
+      "bytes": 317,
+      "exit_code": 0
+    }
+  },
+  "evidence_builder": {
+    "path": "artifacts/handoffs/P03-01/zcode/build-evidence.py",
+    "sha256": "a60dd2dfdf3f94950d4d9bbd3e1bdb0c0fab4910f2959033b4ad7fcffc78e6fe",
+    "note": "this record's own generator; rerun it from the repository root to rebuild evidence.json and precheck.json"
+  },
+  "sandbox_gate_evidence": {
+    "tmp/zcode-g03-dryrun/G03-logs/P03-01-cmd1.log": {
+      "sha256": "f090d1076a5c761da5ea1bc846065d262fb8e237f69f7b231d562a2a815815c1",
+      "bytes": 576
+    },
+    "tmp/zcode-g03-dryrun/G03-logs/P03-01-cmd2.log": {
+      "sha256": "a6cea06a8ec79b83b2fea7e72a613e1464de5fff49296b4267b9fb882a670647",
+      "bytes": 474
+    },
+    "tmp/zcode-g03-dryrun/G03-logs/P03-02-cmd1.log": {
+      "sha256": "c01fcb6a06fa575a824ef6c8552ea4259d337532644ca471d641d90455ea1347",
+      "bytes": 576
+    },
+    "tmp/zcode-g03-dryrun/G03-logs/P03-02-cmd2.log": {
+      "sha256": "027a8be9f00440c1473743029477a148621c865ca1d2e9992995537ada3745a5",
+      "bytes": 474
+    },
+    "tmp/zcode-g03-dryrun/G03-logs/P03-03-cmd1.log": {
+      "sha256": "25c26393e36e0c44e97949de6f254b52fd86b024d00d0e4e37d1451d20ae20ca",
+      "bytes": 606
+    },
+    "tmp/zcode-g03-dryrun/G03-logs/P03-03-cmd2.log": {
+      "sha256": "f82c62034070260c50b1775f9dba2129f5daa73fe93f9552e5b996d224886458",
+      "bytes": 474
+    },
+    "tmp/zcode-g03-dryrun/G03-logs/P03-04-cmd1.log": {
+      "sha256": "595985e26a3ed200e3c8a4c47296399e610d36c95a0a9b5d2c273d9a0432ac1f",
+      "bytes": 591
+    },
+    "tmp/zcode-g03-dryrun/G03-logs/P03-04-cmd2.log": {
+      "sha256": "ee7ee5ce21d2ca1ebeff2ebdf4f2940dc62c1fc8046c59ab3119905de221ab8d",
+      "bytes": 474
+    },
+    "tmp/zcode-g03-dryrun/G03.json": {
+      "sha256": "3ca19f939a3fc26da925b9f763e9afc44ae3c0ee6e77b003f3bdc72f19941fc9",
+      "bytes": 14279
+    }
+  },
+  "files_added_by_zcode": [
+    "docs/handoffs/P03-01/zcode.md",
+    "artifacts/handoffs/P03-01/zcode/evidence.json",
+    "artifacts/handoffs/P03-01/zcode/precheck.json",
+    "artifacts/handoffs/P03-01/zcode/build-evidence.py",
+    "artifacts/handoffs/P03-01/zcode/logs/ (raw command logs)",
+    "tmp/zcode-g03-dryrun/ (non-official G03 sandbox evidence, under the gitignored tmp/)"
+  ],
+  "files_modified_by_zcode": [],
+  "preserved_dsh_report": [
+    "docs/handoffs/P03-01/dsh.md",
+    "artifacts/handoffs/P03-01/dsh/evidence.json",
+    "artifacts/handoffs/P03-01/dsh/logs/",
+    "docs/implementation/P03-01.md",
+    "docs/implementation/reports/P03-01.md",
+    "note: none of these was created, rewritten or reformatted by this role; only hashed and read"
+  ],
+  "signs_gate": false,
+  "gate_signed": null,
+  "limitations": [
+    "This record is BLOCKED on purpose: scripts/gates.py compares status against 'Z_PRECHECK_PASSED' and fails closed. It agrees with DSH's own BLOCKED verdict; the task must be re-issued after G02 is signed.",
+    "P03-01-cmd2 (check_architecture.py) exit 0 is vacuous and is not acceptance evidence.",
+    "docs/workflow/README.md and HANDOFF_CONTRACT.md do not exist (ARCH-0004); this record follows the user instruction plus the path hardcoded in scripts/gates.py:305-311, and the record layout still needs a project-side contract decision.",
+    "D6/D7/D8 were not re-executed in this pass because no frontend or lint artifact is in P03-01's scope; they carry the 2026-09-14 evidence and are flagged reverified_this_pass=false."
+  ],
+  "next_actions": [
+    "Codex: record the G01 codex review and decide the revision-staleness policy (D9); G01 also needs the three zcode precheck records for P01-01..P01-03 before it can be re-run and signed.",
+    "ZCode: those three P01 precheck records are this role's own gap and are the entire remaining cause of G01 failing (all five of its acceptance assertions already pass).",
+    "Role A / DSH: deliver P02-01, P02-02, P02-03, P02-04 in order, then assemble G02.",
+    "Project management: resolve D3 (allow psycopg/SQLAlchemy/Alembic into the workspace lock) and D4 (write the Phase 01 environment manual) before re-issuing P03-01, otherwise the re-issue cannot succeed as scoped.",
+    "Then re-issue P03-01 and run the acceptance_recheck_plan checks above."
+  ]
+}

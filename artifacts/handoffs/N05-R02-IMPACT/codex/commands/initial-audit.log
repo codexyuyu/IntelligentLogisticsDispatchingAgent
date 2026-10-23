@@ -1,0 +1,11 @@
+# argv: [".venv\\Scripts\\python.exe", "-B", "C:/Users/30382/AppData/Local/Temp/IntelligentLogisticsDispatchingAgent-n05-r02-impact/audit.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T08:42:30.210853+00:00
+# system_temp: C:\Users\30382\AppData\Local\Temp\IntelligentLogisticsDispatchingAgent-n05-r02-impact
+
+## stdout
+{'passed': True, 'revision': 'content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c', 'dirty': 'content-sha256:eaea942624f00e5da16e89a3e744d3a2c1c659fcf9eeda0a23787116681d636f', 'files': 82, 'precheck_inputs': 123, 'precheck_commands': 29, 'old_review_drift_count': 10, 'current_review_closure_inputs': 174, 'layer_modules': 10, 'archived_files': 19}
+
+## stderr
+
+## exit_code: 0

@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python",
+    "tmp/N02-R01/closure_probe.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T03:25:03.831117+00:00",
+  "finished_at": "2026-10-04T03:25:04.018561+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N02-R01/codex/closure-probe.log",
+  "log_hash": "3de4f009d5d1d4cff6dd3994590e03d8d273f4d0b535c911215cbae60b70d481",
+  "log_bytes": 1740,
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

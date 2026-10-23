@@ -1,0 +1,62 @@
+{
+ "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+ "independent_candidate": {
+  "file_count": 82,
+  "code_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+  "dirty_tree_hash": "content-sha256:eaea942624f00e5da16e89a3e744d3a2c1c659fcf9eeda0a23787116681d636f"
+ },
+ "runner_cross_check": {
+  "file_count": 82,
+  "code_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+  "dirty_tree_hash": "content-sha256:eaea942624f00e5da16e89a3e744d3a2c1c659fcf9eeda0a23787116681d636f"
+ },
+ "file_sets_identical": true,
+ "g00": {
+  "status": "passed",
+  "finished_at": "2026-10-04T14:48:59.955285+00:00",
+  "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+  "code_revision": "content-sha256:5cee2f258fc7d49e3a1fb18209236782cc99fcc91544ec5d05cebd70bed54114",
+  "input_count": 25,
+  "missing_inputs": [],
+  "drifted_inputs": [],
+  "log_hash_recorded": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+  "log_hash_actual": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+  "dependency_hashes": {},
+  "schema": "planner"
+ },
+ "g00_runner_previous_gate_problems": [],
+ "legacy_demo": {
+  "demo_zip_sha256_expected": "e0350b75239807047b1dbdb25f69fed5c6c26e34929731d0658db83a58f0e904",
+  "demo_zip_sha256_actual": "e0350b75239807047b1dbdb25f69fed5c6c26e34929731d0658db83a58f0e904",
+  "demo_zip_match": true,
+  "inventory_entries": 173,
+  "mismatched_count": 0,
+  "mismatched_first": []
+ },
+ "ownership": {
+  "agents_md_explicit_rule": true
+ },
+ "workbuddy_root_files": [],
+ "locks_vs_p01_01_evidence": {
+  "uv.lock(uv_lock)": {
+   "recorded": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+   "actual": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+   "match": true
+  },
+  "package-lock.json(package_lock)": {
+   "recorded": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+   "actual": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+   "match": true
+  },
+  "uv.lock(uv.lock)": {
+   "recorded": null,
+   "actual": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+   "match": false
+  },
+  "package-lock.json(package-lock.json)": {
+   "recorded": null,
+   "actual": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+   "match": false
+  }
+ }
+}

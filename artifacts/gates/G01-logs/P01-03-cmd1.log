@@ -1,0 +1,21 @@
+# check: P01-03-cmd1
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "pytest", "tests/unit/test_p01_03_migration_governance.py", "tests/integration/test_p01_03_migration_governance.py", "-q"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T09:19:28.866936+00:00
+# expectation: manifest command must succeed
+
+## stdout
+........................................................................ [ 97%]
+..                                                                       [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\_pytest\cacheprovider.py:469
+  D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.venv\Lib\site-packages\_pytest\cacheprovider.py:469: PytestCacheWarning: could not create cache path D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.pytest_cache\v\cache\nodeids: [WinError 5] 拒绝访问。: 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+74 passed, 1 warning in 27.67s
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 28172

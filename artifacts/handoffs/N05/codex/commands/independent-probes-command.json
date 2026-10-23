@@ -1,0 +1,14 @@
+{
+  "check_id": "independent-probes",
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+    "-B",
+    "tmp/N05/probes.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-04T20:33:57.637002+00:00",
+  "finished_at": "2026-10-04T20:34:05.710998+00:00",
+  "log_path": "artifacts/handoffs/N05/codex/commands/independent-probes.log",
+  "log_sha256": "b392a8e61ec1379404377d65a860d90c979b0263980f458e18c6e9ba33bb20bc"
+}

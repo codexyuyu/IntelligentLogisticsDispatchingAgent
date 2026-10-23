@@ -1,0 +1,95 @@
+{
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "git_directory_exists": false,
+  "git_probe_exit_code": 128,
+  "git_probe_stdout": "",
+  "git_probe_stderr": "fatal: not a git repository (or any of the parent directories): .git",
+  "reviewed_at": "2026-10-03T12:48:57.752726+00:00",
+  "review_context": "/root/n02_independent",
+  "isolation": "fork_turns=none; no N01 implementation history inherited",
+  "model": "inherited current model; no override",
+  "candidate": {
+    "total": 75,
+    "matched": 75,
+    "mismatches": [],
+    "recomputed_revision": "content-sha256:3525ed5b78851ea5d4fc7b5305b6b2e9f45bfedf7ee8742e3478ce6174e585a4",
+    "recomputed_dirty_tree_hash": "content-sha256:a3f7e8b9addb3ff67f7a2e25068ce729ccb986866060e02e56250057c3cb9d8e",
+    "expected_revision": "content-sha256:3525ed5b78851ea5d4fc7b5305b6b2e9f45bfedf7ee8742e3478ce6174e585a4",
+    "expected_dirty_tree_hash": "content-sha256:a3f7e8b9addb3ff67f7a2e25068ce729ccb986866060e02e56250057c3cb9d8e",
+    "independently_walked_file_count": 75,
+    "file_set_equal": true,
+    "revision_equal": true,
+    "dirty_tree_equal": true
+  },
+  "governance": {
+    "actual_difference_count": 129,
+    "all_before_verified": true,
+    "all_after_verified": true,
+    "all_whitelisted": true,
+    "protected": {
+      "total": 287,
+      "matched": 287,
+      "mismatches": []
+    },
+    "scope_hash_verified": true,
+    "correction_scope_hash_verified": true
+  },
+  "freeze": {
+    "total": 12,
+    "matched": 11,
+    "mismatches": [
+      {
+        "path": "docs/architecture/DATA_CONTRACTS.md",
+        "expected": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+        "actual": "8091763a21416f57b70a5b71b6c408ba02b19c051ad0ab52f754814981e0ec2e",
+        "passed": false
+      }
+    ]
+  },
+  "baseline": {
+    "total": 173,
+    "matched": 173,
+    "mismatches": []
+  },
+  "baseline_boundaries": [
+    {
+      "prefix": "demo/frontend/node_modules/",
+      "directory_exists": true,
+      "expected_count": 10984,
+      "expected_sha256": "c4ed3194a1889cd613f54c993b27cc0b2796c81a10dce0535cf522154885c46b",
+      "status": "NOT_RUN",
+      "reason": "Derived directories are excluded from the 173 registered legacy assets; optional complete traversal was interrupted after it exceeded the audit need."
+    },
+    {
+      "prefix": "demo/.venv/",
+      "directory_exists": true,
+      "expected_count": 1476,
+      "expected_sha256": "ef48c5103b603664ced96ce2bac1d4227af1a036076a45a9f0e2e0485628fbd0",
+      "status": "NOT_RUN",
+      "reason": "Derived directories are excluded from the 173 registered legacy assets; optional complete traversal was interrupted after it exceeded the audit need."
+    }
+  ],
+  "g00_inputs": {
+    "total": 25,
+    "matched": 23,
+    "mismatches": [
+      {
+        "path": "docs/architecture/issues/README.md",
+        "expected": "93bd4ed9a23fa988001c5d535f28a9b86a923fc37c75512b5eb3e73002671695",
+        "actual": "a3588b546b09f86fbb7e8298a220c3b64741f1620e51593bc6eb89e2432f83ff",
+        "passed": false
+      },
+      {
+        "path": "docs/architecture/DATA_CONTRACTS.md",
+        "expected": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+        "actual": "8091763a21416f57b70a5b71b6c408ba02b19c051ad0ab52f754814981e0ec2e",
+        "passed": false
+      }
+    ]
+  },
+  "g00_current_runner_problems": [
+    "frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+  ],
+  "input_log_references_match": true
+}

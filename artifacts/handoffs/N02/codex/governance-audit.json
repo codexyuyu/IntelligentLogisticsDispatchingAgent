@@ -1,0 +1,3029 @@
+{
+  "differences": [
+    {
+      "path": "artifacts/handoffs/N01/codex/candidate-files.json",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "6eb29af5353e759bad5cd134efef7c9abee00e0f4c5c721c202f1e880b1ef7fb",
+      "actual_after": "6eb29af5353e759bad5cd134efef7c9abee00e0f4c5c721c202f1e880b1ef7fb",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "artifacts/handoffs/N01/codex/plan-check.log",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "817f4ed13a69622fc4f296f9402ad1e8a43838c1e685760804d3f419c69efcc3",
+      "actual_after": "817f4ed13a69622fc4f296f9402ad1e8a43838c1e685760804d3f419c69efcc3",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "artifacts/handoffs/N01/codex/render.log",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "actual_after": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "artifacts/handoffs/N01/codex/validation.log",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "f9b499709884d73a88f7740cf5cd3f1d859a52f9aa317f4fa5cbba75402d84ca",
+      "actual_after": "f9b499709884d73a88f7740cf5cd3f1d859a52f9aa317f4fa5cbba75402d84ca",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "contracts/changes/N01-governance-1.0.1.md",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "35ddc2f9c3ed2f14ed95cdad44bf737686befdd84d8992793c610f72d807594c",
+      "actual_after": "35ddc2f9c3ed2f14ed95cdad44bf737686befdd84d8992793c610f72d807594c",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "expected_before": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+      "actual_before": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+      "before_verified": true,
+      "expected_after": "8091763a21416f57b70a5b71b6c408ba02b19c051ad0ab52f754814981e0ec2e",
+      "actual_after": "8091763a21416f57b70a5b71b6c408ba02b19c051ad0ab52f754814981e0ec2e",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "bf77dcfcd119306b7852843b18f761a4fe2ac2702309b71b5c9c2681aff0ffcf",
+      "actual_after": "bf77dcfcd119306b7852843b18f761a4fe2ac2702309b71b5c9c2681aff0ffcf",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md",
+      "expected_before": "28bd3e765d43a59d5aeed967252b4d6e7968e3e36ec9254644a08952edca2a13",
+      "actual_before": "28bd3e765d43a59d5aeed967252b4d6e7968e3e36ec9254644a08952edca2a13",
+      "before_verified": true,
+      "expected_after": "861a8332b50799d3c76cb50992a437dee74c2a10bb151563337695924966d5c1",
+      "actual_after": "861a8332b50799d3c76cb50992a437dee74c2a10bb151563337695924966d5c1",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/architecture/issues/ARCH-0007-early-named-types.md",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "84c09d14b4b9f0183c17ce7d2b8ffad1410e67a2c0b3b2bf885249ab5bba4f42",
+      "actual_after": "84c09d14b4b9f0183c17ce7d2b8ffad1410e67a2c0b3b2bf885249ab5bba4f42",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/architecture/issues/ARCH-0008-p36-02-ownership.md",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "5cbfc6fbddef9edecce0855773409f20c5af945a4b9f715ca3b36b103d001c6f",
+      "actual_after": "5cbfc6fbddef9edecce0855773409f20c5af945a4b9f715ca3b36b103d001c6f",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/architecture/issues/README.md",
+      "expected_before": "924e579f4b16e5ca698441cadafb11b930f2b5a854e34c35b81fe7ec7a7a3f20",
+      "actual_before": "924e579f4b16e5ca698441cadafb11b930f2b5a854e34c35b81fe7ec7a7a3f20",
+      "before_verified": true,
+      "expected_after": "a3588b546b09f86fbb7e8298a220c3b64741f1620e51593bc6eb89e2432f83ff",
+      "actual_after": "a3588b546b09f86fbb7e8298a220c3b64741f1620e51593bc6eb89e2432f83ff",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/handoffs/N01/codex.md",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43",
+      "actual_after": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/plan/TASK_MANIFEST.json",
+      "expected_before": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+      "actual_before": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+      "before_verified": true,
+      "expected_after": "6196c9ccf1e2490639186fe05b7b8a4d20013fe869f354d7b6d38280f5869a0e",
+      "actual_after": "6196c9ccf1e2490639186fe05b7b8a4d20013fe869f354d7b6d38280f5869a0e",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/00-master/P00-01-baseline-inventory.md",
+      "expected_before": "144c485b59837ca9bcafb971bda3d0856df38f92f4e48720ad5e6de014c4bbdd",
+      "actual_before": "144c485b59837ca9bcafb971bda3d0856df38f92f4e48720ad5e6de014c4bbdd",
+      "before_verified": true,
+      "expected_after": "9489f156ed6c49f82a86f3a428a9f9226bef195868e8ef7091a2275bf68b75fb",
+      "actual_after": "9489f156ed6c49f82a86f3a428a9f9226bef195868e8ef7091a2275bf68b75fb",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/00-master/P00-02-freeze-contracts.md",
+      "expected_before": "b876502ad4b14ce0fced8b96928b9324f27a1ae13a2bb978ee283903ebd9fdec",
+      "actual_before": "b876502ad4b14ce0fced8b96928b9324f27a1ae13a2bb978ee283903ebd9fdec",
+      "before_verified": true,
+      "expected_after": "77deee031781d2cade644a511af6eea43dc065381d87e1911c22e60e783cef95",
+      "actual_after": "77deee031781d2cade644a511af6eea43dc065381d87e1911c22e60e783cef95",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/00-master/P00-03-gate-contract.md",
+      "expected_before": "d09b31e837c4f2e4ed1b8dd483df9217a733835e10c282906247d4f7fad8d307",
+      "actual_before": "d09b31e837c4f2e4ed1b8dd483df9217a733835e10c282906247d4f7fad8d307",
+      "before_verified": true,
+      "expected_after": "8dd8d52b9cb54b48756fa72dd94461e073476902331f2e5304ea2c211721a423",
+      "actual_after": "8dd8d52b9cb54b48756fa72dd94461e073476902331f2e5304ea2c211721a423",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P01-01-workspace-bootstrap.md",
+      "expected_before": "afd1c884cfab57852e5056c43b6d5a0e48f703ac6feedfca715600e9543de89a",
+      "actual_before": "afd1c884cfab57852e5056c43b6d5a0e48f703ac6feedfca715600e9543de89a",
+      "before_verified": true,
+      "expected_after": "dce7769c314c96c8552a3bc9bc18de27fbdb9e520fab67c9430ebe5f90244bdd",
+      "actual_after": "dce7769c314c96c8552a3bc9bc18de27fbdb9e520fab67c9430ebe5f90244bdd",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P01-02-checks-and-gate-runner.md",
+      "expected_before": "34e1425ccbbb40ff2406bb17e4750efb4bdd956424052df6fb363466222382b5",
+      "actual_before": "34e1425ccbbb40ff2406bb17e4750efb4bdd956424052df6fb363466222382b5",
+      "before_verified": true,
+      "expected_after": "28a4aaaed1a249919d5d895b9890602d7015cf56ed55cba09fe87fe79bf69a75",
+      "actual_after": "28a4aaaed1a249919d5d895b9890602d7015cf56ed55cba09fe87fe79bf69a75",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P01-03-migration-governance.md",
+      "expected_before": "39313ee001c0770bc5d7eb129b7e430ad1561e917e0a33d9b900d1a51d2d9e6d",
+      "actual_before": "39313ee001c0770bc5d7eb129b7e430ad1561e917e0a33d9b900d1a51d2d9e6d",
+      "before_verified": true,
+      "expected_after": "01f0d712049f980c62a7e5faac634ecd18ae6ca3231b4d177df361133b589363",
+      "actual_after": "01f0d712049f980c62a7e5faac634ecd18ae6ca3231b4d177df361133b589363",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P04-01-canonical-fixtures.md",
+      "expected_before": "64633b4f1e266cef69131aa279b514265d08734b7f7894b83ddd0c1b0721edbc",
+      "actual_before": "64633b4f1e266cef69131aa279b514265d08734b7f7894b83ddd0c1b0721edbc",
+      "before_verified": true,
+      "expected_after": "91793ba234c8c2bb12f4507f8d33eb026281207fae7fae4bc7d0604e5d2d23da",
+      "actual_after": "91793ba234c8c2bb12f4507f8d33eb026281207fae7fae4bc7d0604e5d2d23da",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P04-02-database-seed.md",
+      "expected_before": "c584c3d6fe800e6b9d76ee7a423a425ff2c9f3cf1880f3dbde78b20afcffd9db",
+      "actual_before": "c584c3d6fe800e6b9d76ee7a423a425ff2c9f3cf1880f3dbde78b20afcffd9db",
+      "before_verified": true,
+      "expected_after": "b45d1460d4a98947290b9a86cda4f5f1606e3b4f225d78afbe3a54fa7f866259",
+      "actual_after": "b45d1460d4a98947290b9a86cda4f5f1606e3b4f225d78afbe3a54fa7f866259",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-01-primitives-and-states.md",
+      "expected_before": "fdbb1a8829e997f3ad85267aba85f21c3c515d88279c47d98cc6cfd470d027cf",
+      "actual_before": "fdbb1a8829e997f3ad85267aba85f21c3c515d88279c47d98cc6cfd470d027cf",
+      "before_verified": true,
+      "expected_after": "7087f8738aa222e12578e37ac5d6ff5078a3111d35ed972f87564bcaa6352d73",
+      "actual_after": "7087f8738aa222e12578e37ac5d6ff5078a3111d35ed972f87564bcaa6352d73",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-02-master-entities.md",
+      "expected_before": "a0eb2d5e091183613dca012dda736fe07dedfb07df52c5b88cc0e375f8ed11cf",
+      "actual_before": "a0eb2d5e091183613dca012dda736fe07dedfb07df52c5b88cc0e375f8ed11cf",
+      "before_verified": true,
+      "expected_after": "bd207eba29e5d2fb81f06ef0bb7243a579f34fbc7a9097764aba8d856743c3e0",
+      "actual_after": "bd207eba29e5d2fb81f06ef0bb7243a579f34fbc7a9097764aba8d856743c3e0",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-03-planning-entities.md",
+      "expected_before": "58a5ef7094e593bcef6c6c65df5513dbd143e347e5f77efa19049b1332af4093",
+      "actual_before": "58a5ef7094e593bcef6c6c65df5513dbd143e347e5f77efa19049b1332af4093",
+      "before_verified": true,
+      "expected_after": "7f322519a7c76a572a95fb3e14f1a97402b11cb7158b6b648a25229a3976e0f7",
+      "actual_after": "7f322519a7c76a572a95fb3e14f1a97402b11cb7158b6b648a25229a3976e0f7",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-04-runtime-contract-export.md",
+      "expected_before": "e2e73ebdef66e8255bf2ab3252e64f23ced5bf0bc1afca6e55f89a7dbdfcbb5b",
+      "actual_before": "e2e73ebdef66e8255bf2ab3252e64f23ced5bf0bc1afca6e55f89a7dbdfcbb5b",
+      "before_verified": true,
+      "expected_after": "b1c37480dade64fc95dc0757fcbe7bec6d409c95361d6a6baf67fff31ae38c2a",
+      "actual_after": "b1c37480dade64fc95dc0757fcbe7bec6d409c95361d6a6baf67fff31ae38c2a",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/03-database/P03-01-resource-schema.md",
+      "expected_before": "a84d8f7ff8387c43c2d4f68d3f473f5e07e22f4ffd8a4d310717570b22999064",
+      "actual_before": "a84d8f7ff8387c43c2d4f68d3f473f5e07e22f4ffd8a4d310717570b22999064",
+      "before_verified": true,
+      "expected_after": "3054ceec34e2124dda2b84f0e4dfe89a1e5c92d3c703642018f2933fbbdd2dc9",
+      "actual_after": "3054ceec34e2124dda2b84f0e4dfe89a1e5c92d3c703642018f2933fbbdd2dc9",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/03-database/P03-02-planning-schema.md",
+      "expected_before": "47bfdae1e363352bc4de347b4c72dcc920ca6f4212438de32385f84b7dab3fc8",
+      "actual_before": "47bfdae1e363352bc4de347b4c72dcc920ca6f4212438de32385f84b7dab3fc8",
+      "before_verified": true,
+      "expected_after": "a924b91f6e394aa1fcfcd5913f5667e1ab4356718e468a329fd0b6eb87d57c30",
+      "actual_after": "a924b91f6e394aa1fcfcd5913f5667e1ab4356718e468a329fd0b6eb87d57c30",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/03-database/P03-03-repositories-and-snapshot.md",
+      "expected_before": "24e665229955cc9f0c0fb77d0c3318b1b7cc2e3551d65b30cbf07e8ad62be677",
+      "actual_before": "24e665229955cc9f0c0fb77d0c3318b1b7cc2e3551d65b30cbf07e8ad62be677",
+      "before_verified": true,
+      "expected_after": "cf921e377294d519b9287a55858301cd395b5e0f256c7ae922a935de315b1797",
+      "actual_after": "cf921e377294d519b9287a55858301cd395b5e0f256c7ae922a935de315b1797",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/03-database/P03-04-atomic-version-store.md",
+      "expected_before": "3d2a8865dd263757a2a70387f0f80e38dae07187f7082bcfd7f25671c31991df",
+      "actual_before": "3d2a8865dd263757a2a70387f0f80e38dae07187f7082bcfd7f25671c31991df",
+      "before_verified": true,
+      "expected_after": "d674a8316de27edc469076ba0446fb6ced30dff6cebaedae06c9d4deaca54fe6",
+      "actual_after": "d674a8316de27edc469076ba0446fb6ced30dff6cebaedae06c9d4deaca54fe6",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/04-api/P05-01-api-composition.md",
+      "expected_before": "b282fd14bddd9b18ee8fee31723abf72a4cfd92457e45b7492ad6be6e346382f",
+      "actual_before": "b282fd14bddd9b18ee8fee31723abf72a4cfd92457e45b7492ad6be6e346382f",
+      "before_verified": true,
+      "expected_after": "835906c9a2c9a120b27ce7045cae339698b1e38c06f449296646996f4e7a2d52",
+      "actual_after": "835906c9a2c9a120b27ce7045cae339698b1e38c06f449296646996f4e7a2d52",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/04-api/P05-02-master-data-services.md",
+      "expected_before": "53c55552bd4946c618f6e68afdaaebfaedfc16dc2a216385ba2feb129560df9a",
+      "actual_before": "53c55552bd4946c618f6e68afdaaebfaedfc16dc2a216385ba2feb129560df9a",
+      "before_verified": true,
+      "expected_after": "4c58498a296f069a82e6099fc70da4edfc32a1139bb7ca4abd94ecb401e59d14",
+      "actual_after": "4c58498a296f069a82e6099fc70da4edfc32a1139bb7ca4abd94ecb401e59d14",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/04-api/P05-03-durable-jobs.md",
+      "expected_before": "62f8bf9386358212a3c07dd8fff7424ed9bb11d1837d59526be5ac393b5f38ae",
+      "actual_before": "62f8bf9386358212a3c07dd8fff7424ed9bb11d1837d59526be5ac393b5f38ae",
+      "before_verified": true,
+      "expected_after": "791b1489671645bfb4dc5174ea75736161de87b0e54c2c0560b79757c24eef21",
+      "actual_after": "791b1489671645bfb4dc5174ea75736161de87b0e54c2c0560b79757c24eef21",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/04-api/P16-01-optimization-job-api.md",
+      "expected_before": "2099936dbcd9c40c7dfccff30a1692cc48738d72af29e421b1d17ae3904788dd",
+      "actual_before": "2099936dbcd9c40c7dfccff30a1692cc48738d72af29e421b1d17ae3904788dd",
+      "before_verified": true,
+      "expected_after": "7b27f1664fc2caf5c8e233d4b2b4408fe933b471e5e7f05813264bcbeeebc4c8",
+      "actual_after": "7b27f1664fc2caf5c8e233d4b2b4408fe933b471e5e7f05813264bcbeeebc4c8",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/04-api/P16-02-joint-planning-service.md",
+      "expected_before": "3155bd853155ec3b52c0fe3067c22f5af7b271b235f487dab43d9ee4b3b67d0d",
+      "actual_before": "3155bd853155ec3b52c0fe3067c22f5af7b271b235f487dab43d9ee4b3b67d0d",
+      "before_verified": true,
+      "expected_after": "3db06519a61f0e512c25c52dceaf0701f8aa525b9ec05fee8c96900b7daa238f",
+      "actual_after": "3db06519a61f0e512c25c52dceaf0701f8aa525b9ec05fee8c96900b7daa238f",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/04-api/P16-03-validated-commit-api.md",
+      "expected_before": "9c11bb944c4e110f59efb0e7d92f0930183b498b43d94f044f7a7e199f4a0511",
+      "actual_before": "9c11bb944c4e110f59efb0e7d92f0930183b498b43d94f044f7a7e199f4a0511",
+      "before_verified": true,
+      "expected_after": "00cf1029236dfe11f006215eb383e2de61c5011ef7e6da43c1cf7a0d1dd0367d",
+      "actual_after": "00cf1029236dfe11f006215eb383e2de61c5011ef7e6da43c1cf7a0d1dd0367d",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/04-api/P16-04-simulation-query-api.md",
+      "expected_before": "37491596a4b7d699575c3da8718a502b2640aa910d4d1b06e6b83979029f685a",
+      "actual_before": "37491596a4b7d699575c3da8718a502b2640aa910d4d1b06e6b83979029f685a",
+      "before_verified": true,
+      "expected_after": "6b0e8aaa219a48f144dc7dffdd229b3d764e891863f85f3987c10fd5e30ec054",
+      "actual_after": "6b0e8aaa219a48f144dc7dffdd229b3d764e891863f85f3987c10fd5e30ec054",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P06-01-transport-contract.md",
+      "expected_before": "e4634f715a07a1f79816004e339aa064e54e18d02e00af22b22b6b7eb5682ed5",
+      "actual_before": "e4634f715a07a1f79816004e339aa064e54e18d02e00af22b22b6b7eb5682ed5",
+      "before_verified": true,
+      "expected_after": "8477b858e444fb9971341051b99af3c10353688ec268a23051da6ac944545c1d",
+      "actual_after": "8477b858e444fb9971341051b99af3c10353688ec268a23051da6ac944545c1d",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P06-02-distance-matrix.md",
+      "expected_before": "35f6baffc79bc881e4e0ec88a2603c69ff66b3dfcfcd62b5a34709e5884ae428",
+      "actual_before": "35f6baffc79bc881e4e0ec88a2603c69ff66b3dfcfcd62b5a34709e5884ae428",
+      "before_verified": true,
+      "expected_after": "c778b932eff968a5d0de40a41da67501cb26d2cbef4d716b5db8c5e7b7be7c4b",
+      "actual_after": "c778b932eff968a5d0de40a41da67501cb26d2cbef4d716b5db8c5e7b7be7c4b",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-01-vrp-base.md",
+      "expected_before": "0c6f25d779436ff1b8639f6541857a2b367cd9b183fa923877b145d01ceea4d3",
+      "actual_before": "0c6f25d779436ff1b8639f6541857a2b367cd9b183fa923877b145d01ceea4d3",
+      "before_verified": true,
+      "expected_after": "97b177ecd4445346543307404898b09c2f1818e425f59d6ff591dbcc763c7b3a",
+      "actual_after": "97b177ecd4445346543307404898b09c2f1818e425f59d6ff591dbcc763c7b3a",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-02-capacity-and-pickup.md",
+      "expected_before": "b0764818de6c9a7c29e98f2a3462039ef8a919de68386ff4b3296ce58d6a5dc7",
+      "actual_before": "b0764818de6c9a7c29e98f2a3462039ef8a919de68386ff4b3296ce58d6a5dc7",
+      "before_verified": true,
+      "expected_after": "064dbdd35321c15419bd5e9e8d9c78ca893840dbf46bec52197e37f060013cc8",
+      "actual_after": "064dbdd35321c15419bd5e9e8d9c78ca893840dbf46bec52197e37f060013cc8",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-03-time-windows.md",
+      "expected_before": "9d52e2198aed05f7eb80b85766286a5aff745edaa7e613348db39f345b9a400e",
+      "actual_before": "9d52e2198aed05f7eb80b85766286a5aff745edaa7e613348db39f345b9a400e",
+      "before_verified": true,
+      "expected_after": "b3719712d24d13cf29f8fa75476db67a436acd04fa7d99b1a04e68e1020b61b6",
+      "actual_after": "b3719712d24d13cf29f8fa75476db67a436acd04fa7d99b1a04e68e1020b61b6",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-04-temperature-and-cargo.md",
+      "expected_before": "36cb0c6c3ee12a814890861020fb7c0cbc7c4bb52e8c8a3d42eb580e585652e4",
+      "actual_before": "36cb0c6c3ee12a814890861020fb7c0cbc7c4bb52e8c8a3d42eb580e585652e4",
+      "before_verified": true,
+      "expected_after": "6c178b4328de376a4f422b15b97ce7a2e64abd07a15207cb703a1a4477edb62b",
+      "actual_after": "6c178b4328de376a4f422b15b97ce7a2e64abd07a15207cb703a1a4477edb62b",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-05-objective-function.md",
+      "expected_before": "1c0da24eeccdbcd0d33f8dd13b4717576db769f6ff8ddb04506ade0e9c0c8d69",
+      "actual_before": "1c0da24eeccdbcd0d33f8dd13b4717576db769f6ff8ddb04506ade0e9c0c8d69",
+      "before_verified": true,
+      "expected_after": "d6ac5551922bf888f5278bc222a631522e2976ba4667c4c765e8472df33b1a63",
+      "actual_after": "d6ac5551922bf888f5278bc222a631522e2976ba4667c4c765e8472df33b1a63",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-06-result-status-validation.md",
+      "expected_before": "4e46187b039814be47c534e2cbc55cdb20eb578b8ebc6c9f1aaca5f28578d587",
+      "actual_before": "4e46187b039814be47c534e2cbc55cdb20eb578b8ebc6c9f1aaca5f28578d587",
+      "before_verified": true,
+      "expected_after": "a7b6c41c709ecfc88a967dc1aec77540fa10952fd489d7ee0474ca37deab71fd",
+      "actual_after": "a7b6c41c709ecfc88a967dc1aec77540fa10952fd489d7ee0474ca37deab71fd",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-07-transport-adapter.md",
+      "expected_before": "bda5fed1e9eb2b80ba17ec59180bd253b19bc0b79ddafbdc8835c75418ed668b",
+      "actual_before": "bda5fed1e9eb2b80ba17ec59180bd253b19bc0b79ddafbdc8835c75418ed668b",
+      "before_verified": true,
+      "expected_after": "a5d2c069fbca5dbbfe1f510f1f4c1129a687490417374029f9953286e8eaf980",
+      "actual_after": "a5d2c069fbca5dbbfe1f510f1f4c1129a687490417374029f9953286e8eaf980",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P08-01-warehouse-contract.md",
+      "expected_before": "249358470596be1ee21b893277557f282786df46e7aed71f17d5c444f18e9eca",
+      "actual_before": "249358470596be1ee21b893277557f282786df46e7aed71f17d5c444f18e9eca",
+      "before_verified": true,
+      "expected_after": "6da8d3cd9ca75ef3ed24e76ab95445ab831611a0269ba69ddb537890d16e5d62",
+      "actual_after": "6da8d3cd9ca75ef3ed24e76ab95445ab831611a0269ba69ddb537890d16e5d62",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P08-02-inventory-and-handoffs.md",
+      "expected_before": "949116854f9a49b46b5e55f29d64a3bc890caace4d76d8eb1bc0811ae14b6960",
+      "actual_before": "949116854f9a49b46b5e55f29d64a3bc890caace4d76d8eb1bc0811ae14b6960",
+      "before_verified": true,
+      "expected_after": "d42937dcc37df099825122c78237448e1ecb3660bafd0c038ede1c19ecadde1c",
+      "actual_after": "d42937dcc37df099825122c78237448e1ecb3660bafd0c038ede1c19ecadde1c",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-01-intervals-precedence.md",
+      "expected_before": "3baed1aef32cb6c485450274e40cbcad2fa1ee3f26cdad1a35b65e448ceaab97",
+      "actual_before": "3baed1aef32cb6c485450274e40cbcad2fa1ee3f26cdad1a35b65e448ceaab97",
+      "before_verified": true,
+      "expected_after": "81f2b132321921985130b07c3304a7bf1a5b894444696dc1e682cdaedee8d15a",
+      "actual_after": "81f2b132321921985130b07c3304a7bf1a5b894444696dc1e682cdaedee8d15a",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-02-cumulative-resources.md",
+      "expected_before": "e75bedee0b83214ce6bdee488b1deeb3383c93b84f088a68c8706a18ebda23fc",
+      "actual_before": "e75bedee0b83214ce6bdee488b1deeb3383c93b84f088a68c8706a18ebda23fc",
+      "before_verified": true,
+      "expected_after": "9532eb92c57389f43b4487272b96913b1b41f989215b8a06a59c6c56a0e60511",
+      "actual_after": "9532eb92c57389f43b4487272b96913b1b41f989215b8a06a59c6c56a0e60511",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-03-storage-capacity.md",
+      "expected_before": "115ed204cde10884b4b21e333169a049c3dad3389f429c7a8fa838ed6a1de5c3",
+      "actual_before": "115ed204cde10884b4b21e333169a049c3dad3389f429c7a8fa838ed6a1de5c3",
+      "before_verified": true,
+      "expected_after": "0d09f5229193f83507b7a72fa6b52eb3472405468105c0c93a1c0f3980f9511f",
+      "actual_after": "0d09f5229193f83507b7a72fa6b52eb3472405468105c0c93a1c0f3980f9511f",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-04-sequence-setup.md",
+      "expected_before": "4fbe505c12a8fbf4d0c1f581f77987f0b153fb3f257a9c938a3c791ce1a67b66",
+      "actual_before": "4fbe505c12a8fbf4d0c1f581f77987f0b153fb3f257a9c938a3c791ce1a67b66",
+      "before_verified": true,
+      "expected_after": "c6ec254b5e0b601b4cd41d689e1671dcb21df831693bff2b00851ab053afa2cb",
+      "actual_after": "c6ec254b5e0b601b4cd41d689e1671dcb21df831693bff2b00851ab053afa2cb",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-05-warehouse-result.md",
+      "expected_before": "21bc516adc3484052e9a1f7a7ef8429ec74588b22969d64c64828c383261f005",
+      "actual_before": "21bc516adc3484052e9a1f7a7ef8429ec74588b22969d64c64828c383261f005",
+      "before_verified": true,
+      "expected_after": "57810a156a3a50dec529b88c30459a61165406a643cf080e9c7f172c30c04d82",
+      "actual_after": "57810a156a3a50dec529b88c30459a61165406a643cf080e9c7f172c30c04d82",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P10-01-validator-protocol.md",
+      "expected_before": "61be461161d6333886a31eb7b6d76ef2c9e804a6cb06429ac5392c0e75b47ad9",
+      "actual_before": "61be461161d6333886a31eb7b6d76ef2c9e804a6cb06429ac5392c0e75b47ad9",
+      "before_verified": true,
+      "expected_after": "af43ad05d7dca1666f148e4b522bf0c85e958818acf77216417e444114488103",
+      "actual_after": "af43ad05d7dca1666f148e4b522bf0c85e958818acf77216417e444114488103",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P10-02-joint-validator.md",
+      "expected_before": "aaec504e84a53e656bd84b4c3de79e523e2de34775de2a889fd17c8544bf1d8d",
+      "actual_before": "aaec504e84a53e656bd84b4c3de79e523e2de34775de2a889fd17c8544bf1d8d",
+      "before_verified": true,
+      "expected_after": "be16e374403c5bf49814b9a7a321049608e496ca786c43e30de23cdca3a4cfc1",
+      "actual_after": "be16e374403c5bf49814b9a7a321049608e496ca786c43e30de23cdca3a4cfc1",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P10-03-validator-adversarial-suite.md",
+      "expected_before": "c133a179eac65831dc476113d53f8337ab08e4bb7aeed5a10799dbcb081b1d6e",
+      "actual_before": "c133a179eac65831dc476113d53f8337ab08e4bb7aeed5a10799dbcb081b1d6e",
+      "before_verified": true,
+      "expected_after": "88e73f0a426d86059d152f4dddbc83118afdd21dcef6bc623d907bc64b2c563c",
+      "actual_after": "88e73f0a426d86059d152f4dddbc83118afdd21dcef6bc623d907bc64b2c563c",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P11-01-simulation-contract.md",
+      "expected_before": "3fdf41bb4e03b0a9a04dc4ba577492d24aa89f441cb531957621f60de518a2a5",
+      "actual_before": "3fdf41bb4e03b0a9a04dc4ba577492d24aa89f441cb531957621f60de518a2a5",
+      "before_verified": true,
+      "expected_after": "6eed2f33b4ae39c89fcae075ed7606b00b74dae2a525308537dae9ff2b637100",
+      "actual_after": "6eed2f33b4ae39c89fcae075ed7606b00b74dae2a525308537dae9ff2b637100",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P11-02-execution-state-machine.md",
+      "expected_before": "252f2db00c0e48f5fd4d8dd2bb0bfdc4fe594f8f7e218ba5c83d45432545ae06",
+      "actual_before": "252f2db00c0e48f5fd4d8dd2bb0bfdc4fe594f8f7e218ba5c83d45432545ae06",
+      "before_verified": true,
+      "expected_after": "25ff0f596ec175ecb8a000b05867f069b1d3abdd13514a5655651e63f485a5e6",
+      "actual_after": "25ff0f596ec175ecb8a000b05867f069b1d3abdd13514a5655651e63f485a5e6",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-01-simpy-kernel.md",
+      "expected_before": "ed2f59c54dc77f6125bcdfb22f53e7ee1db6a1ecaf05247a9fbb5b359ce03cda",
+      "actual_before": "ed2f59c54dc77f6125bcdfb22f53e7ee1db6a1ecaf05247a9fbb5b359ce03cda",
+      "before_verified": true,
+      "expected_after": "d0edaaa5efc1c2715c7e67f436a819e128550d0280f29250648d3fe556bfde23",
+      "actual_after": "d0edaaa5efc1c2715c7e67f436a819e128550d0280f29250648d3fe556bfde23",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-02-transport-execution.md",
+      "expected_before": "3341d00c37b1cc3eef60f5e46cbe3baea8a7d8ed93605f59c79442b663ddd1c7",
+      "actual_before": "3341d00c37b1cc3eef60f5e46cbe3baea8a7d8ed93605f59c79442b663ddd1c7",
+      "before_verified": true,
+      "expected_after": "b29cd54e5e9f7ac1f8ead8a412bdc8f660f99a2859b204234028140f9a85e196",
+      "actual_after": "b29cd54e5e9f7ac1f8ead8a412bdc8f660f99a2859b204234028140f9a85e196",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-03-warehouse-execution.md",
+      "expected_before": "ff617fafed3541341e19dda23ced384019f29a715934952d523e1d6dbe5c48b1",
+      "actual_before": "ff617fafed3541341e19dda23ced384019f29a715934952d523e1d6dbe5c48b1",
+      "before_verified": true,
+      "expected_after": "d9a243bc36100d4dacd05e25e6d2f622542ed2974e382ea0f04d081330fb13fa",
+      "actual_after": "d9a243bc36100d4dacd05e25e6d2f622542ed2974e382ea0f04d081330fb13fa",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-04-snapshot-replay.md",
+      "expected_before": "7b13d489eae6940623d8878e28691dcdf1f75bf395a4797014259df918187aa5",
+      "actual_before": "7b13d489eae6940623d8878e28691dcdf1f75bf395a4797014259df918187aa5",
+      "before_verified": true,
+      "expected_after": "0a63d65d4d4e4b951ce0738e2ab6654e347339df7ef65f4d31c8329270e301ce",
+      "actual_after": "0a63d65d4d4e4b951ce0738e2ab6654e347339df7ef65f4d31c8329270e301ce",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P13-01-event-ingestion.md",
+      "expected_before": "6ab53f50690b3673eaeb975aecfafd2c3dd6916430ce7f71c7218926e6f2a15c",
+      "actual_before": "6ab53f50690b3673eaeb975aecfafd2c3dd6916430ce7f71c7218926e6f2a15c",
+      "before_verified": true,
+      "expected_after": "0d96c64a30e42b60a4f03f48996b417d5589d296bead5e6c31ed76cf66fe5265",
+      "actual_after": "0d96c64a30e42b60a4f03f48996b417d5589d296bead5e6c31ed76cf66fe5265",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P13-02-event-api-and-outbox.md",
+      "expected_before": "9fc1e6607281e57fe71b590c865190f12a82b02bbf6d1fff1e28a9dace5fc941",
+      "actual_before": "9fc1e6607281e57fe71b590c865190f12a82b02bbf6d1fff1e28a9dace5fc941",
+      "before_verified": true,
+      "expected_after": "feea9920565254adbd150b9efb97c5ce427484b6cdb1af2e00fe449b812431c9",
+      "actual_after": "feea9920565254adbd150b9efb97c5ce427484b6cdb1af2e00fe449b812431c9",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P14-01-impact-graph.md",
+      "expected_before": "6b650503b67aaa0c6343b78f0d5a9c3b99918d625c9160049c2344f303dc78af",
+      "actual_before": "6b650503b67aaa0c6343b78f0d5a9c3b99918d625c9160049c2344f303dc78af",
+      "before_verified": true,
+      "expected_after": "567e47eb9c5224bdbf6ed9bb2b2a764de02106ba5e7fd575babb54984f15a939",
+      "actual_after": "567e47eb9c5224bdbf6ed9bb2b2a764de02106ba5e7fd575babb54984f15a939",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P14-02-execution-freeze.md",
+      "expected_before": "89f6a339b04083afa4f95ef912488700bbcc2b8a96c74449c0d1700b2411b635",
+      "actual_before": "89f6a339b04083afa4f95ef912488700bbcc2b8a96c74449c0d1700b2411b635",
+      "before_verified": true,
+      "expected_after": "679b8775b66207ad5ddd9c84ee035b98a1bfb60c1aac48d12f62d77e503462c5",
+      "actual_after": "679b8775b66207ad5ddd9c84ee035b98a1bfb60c1aac48d12f62d77e503462c5",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-01-candidate-policies.md",
+      "expected_before": "7be0fd288ab18a1fd7e39e754924bd7c7cb836ebd002c7fbb791629052099e10",
+      "actual_before": "7be0fd288ab18a1fd7e39e754924bd7c7cb836ebd002c7fbb791629052099e10",
+      "before_verified": true,
+      "expected_after": "821de9ae128da1f966f048f5fa9982d371c151c05c8406a26089c4a4246934eb",
+      "actual_after": "821de9ae128da1f966f048f5fa9982d371c151c05c8406a26089c4a4246934eb",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-02-local-solve.md",
+      "expected_before": "d4b208b1ae0ddd15155e75d375910285bf7e1bda6a18d7634ddc614ce944fadf",
+      "actual_before": "d4b208b1ae0ddd15155e75d375910285bf7e1bda6a18d7634ddc614ce944fadf",
+      "before_verified": true,
+      "expected_after": "2d7522602e412a915e68eaacfda3c487885ac0a9323fa153111ad749c7b32766",
+      "actual_after": "2d7522602e412a915e68eaacfda3c487885ac0a9323fa153111ad749c7b32766",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-03-bounded-escalation.md",
+      "expected_before": "30ef162d02bdfe14c110d7111d90fba3c26a02bfc75f1a4690855e15fd23a0de",
+      "actual_before": "30ef162d02bdfe14c110d7111d90fba3c26a02bfc75f1a4690855e15fd23a0de",
+      "before_verified": true,
+      "expected_after": "203acec19b0b6e03b3bdf51aa8483bb55a51ed14570bd57c9707a6fa137297bd",
+      "actual_after": "203acec19b0b6e03b3bdf51aa8483bb55a51ed14570bd57c9707a6fa137297bd",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-04-version-diff.md",
+      "expected_before": "af69282cdd6b61548daf3f954778e9b2681cf2c7855db64371ce9f9977155451",
+      "actual_before": "af69282cdd6b61548daf3f954778e9b2681cf2c7855db64371ce9f9977155451",
+      "before_verified": true,
+      "expected_after": "029e798cd551fb15b657c57b35e4f9cd27ec197b717c448e1ba6a3c333c44a7a",
+      "actual_after": "029e798cd551fb15b657c57b35e4f9cd27ec197b717c448e1ba6a3c333c44a7a",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P17-01-tool-schemas.md",
+      "expected_before": "0e13e564a4e871fb30a7f9905e3493758a6aee8b39df4600951259bfa666fc78",
+      "actual_before": "0e13e564a4e871fb30a7f9905e3493758a6aee8b39df4600951259bfa666fc78",
+      "before_verified": true,
+      "expected_after": "eb4b84a86049cd63f4c97d168aa449f35b74fdae74516adb666cb79ade5eb899",
+      "actual_after": "eb4b84a86049cd63f4c97d168aa449f35b74fdae74516adb666cb79ade5eb899",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P17-02-business-tools.md",
+      "expected_before": "e5b77bbbee3677396e813a789669235f9d9ce7cc85f9b39c611152995a65dfe3",
+      "actual_before": "e5b77bbbee3677396e813a789669235f9d9ce7cc85f9b39c611152995a65dfe3",
+      "before_verified": true,
+      "expected_after": "140cd8b5a055c639a7e9714c59b96c9e0b9659efaf70dccdbb134f765ccde8a7",
+      "actual_after": "140cd8b5a055c639a7e9714c59b96c9e0b9659efaf70dccdbb134f765ccde8a7",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P18-01-llm-provider.md",
+      "expected_before": "fac5f4f3a8fc22bd976f65c2596afd7cc48b72eff497a3a4a6f5abbbb51e80b2",
+      "actual_before": "fac5f4f3a8fc22bd976f65c2596afd7cc48b72eff497a3a4a6f5abbbb51e80b2",
+      "before_verified": true,
+      "expected_after": "2d73dd1d7c29c8428c7f1b06d5e1c311d8bf643e6c20f12c2ed637f6267378ac",
+      "actual_after": "2d73dd1d7c29c8428c7f1b06d5e1c311d8bf643e6c20f12c2ed637f6267378ac",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P18-02-llm-resilience.md",
+      "expected_before": "d838050e8fb17aee340ab43fd5d77eea981915ef71aab3e1cc50f17218fcd821",
+      "actual_before": "d838050e8fb17aee340ab43fd5d77eea981915ef71aab3e1cc50f17218fcd821",
+      "before_verified": true,
+      "expected_after": "8e0c289fb62b32c28e30825b178bd78d638e97047bff7d93e2c0889e9d1ed2c4",
+      "actual_after": "8e0c289fb62b32c28e30825b178bd78d638e97047bff7d93e2c0889e9d1ed2c4",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P19-01-intent-extraction.md",
+      "expected_before": "313db67c5ed4168b5a58fc2c5c24372cdb28cc34af841aebf9e8a6ebab402f56",
+      "actual_before": "313db67c5ed4168b5a58fc2c5c24372cdb28cc34af841aebf9e8a6ebab402f56",
+      "before_verified": true,
+      "expected_after": "68b166a717720a82bb214f1b623928b23821221869247d40695fc282ae7c2b57",
+      "actual_after": "68b166a717720a82bb214f1b623928b23821221869247d40695fc282ae7c2b57",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P19-02-coordinator-state-machine.md",
+      "expected_before": "a870e4b25726decd5153363097b65b4c18d6cb40639d2389b7d65ce3141f14be",
+      "actual_before": "a870e4b25726decd5153363097b65b4c18d6cb40639d2389b7d65ce3141f14be",
+      "before_verified": true,
+      "expected_after": "738a39a04828bd87ab25a7cd9b3cde5a343055bf4b3fb9c1ddcc33d8f4ae7d77",
+      "actual_after": "738a39a04828bd87ab25a7cd9b3cde5a343055bf4b3fb9c1ddcc33d8f4ae7d77",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P20-01-transport-agent-tools.md",
+      "expected_before": "8867c764bcd3f1712d84f326782691631c05670e88c3877f41b06f43e2978bfc",
+      "actual_before": "8867c764bcd3f1712d84f326782691631c05670e88c3877f41b06f43e2978bfc",
+      "before_verified": true,
+      "expected_after": "024e4b4308b4621b33b3090a086cf339272055d9121b09f497a42c13aed72ba5",
+      "actual_after": "024e4b4308b4621b33b3090a086cf339272055d9121b09f497a42c13aed72ba5",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P20-02-transport-explanation.md",
+      "expected_before": "cfc8e0a4c60f18c601a7581722440944839a2d66ad35f3af9259549dead72ed5",
+      "actual_before": "cfc8e0a4c60f18c601a7581722440944839a2d66ad35f3af9259549dead72ed5",
+      "before_verified": true,
+      "expected_after": "e80cf17ab749356a197c364fcfb5448bce112fdf5f50d905829a51ef60dbe030",
+      "actual_after": "e80cf17ab749356a197c364fcfb5448bce112fdf5f50d905829a51ef60dbe030",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P21-01-warehouse-agent-tools.md",
+      "expected_before": "90022c322e33074540cdfb161c6c7169754a91e1e80d98abe3d04d8169faab13",
+      "actual_before": "90022c322e33074540cdfb161c6c7169754a91e1e80d98abe3d04d8169faab13",
+      "before_verified": true,
+      "expected_after": "8d3644705b36ff6f39e41f3b70bc85717b93b8d2d2429438935611a5e243f7bd",
+      "actual_after": "8d3644705b36ff6f39e41f3b70bc85717b93b8d2d2429438935611a5e243f7bd",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P21-02-warehouse-explanation.md",
+      "expected_before": "c9833fa8eb0eb7a4c591301115d3fb4779cb136c6cef914f1acd87a5a4a82299",
+      "actual_before": "c9833fa8eb0eb7a4c591301115d3fb4779cb136c6cef914f1acd87a5a4a82299",
+      "before_verified": true,
+      "expected_after": "55018e5c12ef99ed96b777ec5eec7929adf842790e25f85ef87f3f6eaf1a850b",
+      "actual_after": "55018e5c12ef99ed96b777ec5eec7929adf842790e25f85ef87f3f6eaf1a850b",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P22-01-exception-agent-tools.md",
+      "expected_before": "e4df76811cbce2a8df8f030901f22268093dbf66fbc841e4be5de5fc3c3d08ce",
+      "actual_before": "e4df76811cbce2a8df8f030901f22268093dbf66fbc841e4be5de5fc3c3d08ce",
+      "before_verified": true,
+      "expected_after": "164c1afacc6105c8764d01fd0a23893bf2acbfe298e2533c4bcab0a63a9e3c8b",
+      "actual_after": "164c1afacc6105c8764d01fd0a23893bf2acbfe298e2533c4bcab0a63a9e3c8b",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P22-02-exception-explanation.md",
+      "expected_before": "028f89760999436eb8964eb8d9e799370fd1efdc2d57366aada09a5e211c72d4",
+      "actual_before": "028f89760999436eb8964eb8d9e799370fd1efdc2d57366aada09a5e211c72d4",
+      "before_verified": true,
+      "expected_after": "b3440f93672afd0fb40c6ea486d54f1e7c7b2de4727415c2685d468a301dcc57",
+      "actual_after": "b3440f93672afd0fb40c6ea486d54f1e7c7b2de4727415c2685d468a301dcc57",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P23-01-agent-orchestration.md",
+      "expected_before": "b37406a20d7cf6346f7eeb9efad8ba9b0b31cb8e4e7a115f6f71303e38e1caa6",
+      "actual_before": "b37406a20d7cf6346f7eeb9efad8ba9b0b31cb8e4e7a115f6f71303e38e1caa6",
+      "before_verified": true,
+      "expected_after": "46cff243c5c9b0162a3b1f27ba81dcfaa59b7dc298ce2c5e5ef391567be7eb08",
+      "actual_after": "46cff243c5c9b0162a3b1f27ba81dcfaa59b7dc298ce2c5e5ef391567be7eb08",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P23-02-agent-api-safety.md",
+      "expected_before": "0826f1b0efdad23dc5050304b8793bd61979c2a6c694779f3e7b6428dab7d2b8",
+      "actual_before": "0826f1b0efdad23dc5050304b8793bd61979c2a6c694779f3e7b6428dab7d2b8",
+      "before_verified": true,
+      "expected_after": "ec5d5008af41d3f52dbd406f54d81acc36a764f8a768d959e966a25e1062f4f8",
+      "actual_after": "ec5d5008af41d3f52dbd406f54d81acc36a764f8a768d959e966a25e1062f4f8",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P24-01-react-shell.md",
+      "expected_before": "2a15e96be0b43418c3ca2d347ebb8a288e5fa6e84ca145052bf4033188c3f62c",
+      "actual_before": "2a15e96be0b43418c3ca2d347ebb8a288e5fa6e84ca145052bf4033188c3f62c",
+      "before_verified": true,
+      "expected_after": "9fb56bdf34eadae02a2e8b910b20341331051f1af0c846b44b4bdfa2d8d43814",
+      "actual_after": "9fb56bdf34eadae02a2e8b910b20341331051f1af0c846b44b4bdfa2d8d43814",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P24-02-generated-api-client.md",
+      "expected_before": "5018de3ca09e8208daa2bf805c30df15681691d1cf6e5f30bff43dd96b6462e9",
+      "actual_before": "5018de3ca09e8208daa2bf805c30df15681691d1cf6e5f30bff43dd96b6462e9",
+      "before_verified": true,
+      "expected_after": "7fe774ea52bc20e0cd5cce322fe07dde56980ebbacf9f704d86f4c764dda6693",
+      "actual_after": "7fe774ea52bc20e0cd5cce322fe07dde56980ebbacf9f704d86f4c764dda6693",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P25-01-orders-ui.md",
+      "expected_before": "f3b644fe9018e9d7e3542064a5d1b689f209202e2f8d73bf6db456faedf44261",
+      "actual_before": "f3b644fe9018e9d7e3542064a5d1b689f209202e2f8d73bf6db456faedf44261",
+      "before_verified": true,
+      "expected_after": "3107eed255d740fec0cf9c0c820e210fb4b7fcfe284d70b9fdfde147cc68bd7b",
+      "actual_after": "3107eed255d740fec0cf9c0c820e210fb4b7fcfe284d70b9fdfde147cc68bd7b",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P25-02-vehicles-ui.md",
+      "expected_before": "991b3c91df0ba465216942a8ff7d6690c12dc73900f48635c165fe913d150b18",
+      "actual_before": "991b3c91df0ba465216942a8ff7d6690c12dc73900f48635c165fe913d150b18",
+      "before_verified": true,
+      "expected_after": "bb597987c0ea3aaf017e7e7002028fe051496d8aae31dc1d04ba0a8574f6f7ea",
+      "actual_after": "bb597987c0ea3aaf017e7e7002028fe051496d8aae31dc1d04ba0a8574f6f7ea",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P25-03-warehouses-ui.md",
+      "expected_before": "c0c15a2fc1e1bb1e68ada2acef8b0a5d789417f2f620b40c872c44335a5bfae6",
+      "actual_before": "c0c15a2fc1e1bb1e68ada2acef8b0a5d789417f2f620b40c872c44335a5bfae6",
+      "before_verified": true,
+      "expected_after": "24d48ebaf39d04c1370700d3be2bb6361c63a655ebeb34f7c60c96682dd2b905",
+      "actual_after": "24d48ebaf39d04c1370700d3be2bb6361c63a655ebeb34f7c60c96682dd2b905",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P26-01-transport-request-ui.md",
+      "expected_before": "bd82b57e3500ace875d82eda7dd57a7d3c6e7805f61e4dcd0d485226b9aa4a84",
+      "actual_before": "bd82b57e3500ace875d82eda7dd57a7d3c6e7805f61e4dcd0d485226b9aa4a84",
+      "before_verified": true,
+      "expected_after": "7fc8924e450ee85eb0e2f2be1262f0ed1714cef21cfcd03c1c9c185b170f70af",
+      "actual_after": "7fc8924e450ee85eb0e2f2be1262f0ed1714cef21cfcd03c1c9c185b170f70af",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P26-02-transport-plan-ui.md",
+      "expected_before": "4d2e81340adc013fa1a9d27d94eb4144dc5fe58b4a026616aea7ecef5fe9e754",
+      "actual_before": "4d2e81340adc013fa1a9d27d94eb4144dc5fe58b4a026616aea7ecef5fe9e754",
+      "before_verified": true,
+      "expected_after": "14ec523209bfcc69825644cc368315d0f1b20e7539dee73616f3c187aa672334",
+      "actual_after": "14ec523209bfcc69825644cc368315d0f1b20e7539dee73616f3c187aa672334",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P27-01-warehouse-gantt-ui.md",
+      "expected_before": "68e521e9e8163aead8dae3c9da0b95c2c6e7c8cf13901362a78a4a6e69939fd3",
+      "actual_before": "68e521e9e8163aead8dae3c9da0b95c2c6e7c8cf13901362a78a4a6e69939fd3",
+      "before_verified": true,
+      "expected_after": "7be7c60dd17e73b0543f66b756497cb6e9047c3479fdc6557d9aece2a56f210b",
+      "actual_after": "7be7c60dd17e73b0543f66b756497cb6e9047c3479fdc6557d9aece2a56f210b",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P27-02-joint-handoff-ui.md",
+      "expected_before": "5f5e9a6a77573b81fc24add51a254dcdea7160b1de2a7f27f4871a50e7f2ebd5",
+      "actual_before": "5f5e9a6a77573b81fc24add51a254dcdea7160b1de2a7f27f4871a50e7f2ebd5",
+      "before_verified": true,
+      "expected_after": "ac64201d952b403e97a49a608a9d7a34bb2cf4acae92dcbbf25e6dfc306e6c50",
+      "actual_after": "ac64201d952b403e97a49a608a9d7a34bb2cf4acae92dcbbf25e6dfc306e6c50",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P28-01-simulation-controls-ui.md",
+      "expected_before": "9230d8912deefa756597d0efa05f5aa73fc309bad0dbe35260883ac032d75ffb",
+      "actual_before": "9230d8912deefa756597d0efa05f5aa73fc309bad0dbe35260883ac032d75ffb",
+      "before_verified": true,
+      "expected_after": "a0ca1cedf7df53dde151f041db760108690ed4f0b70e5ef5dfa4f89e3d96d398",
+      "actual_after": "a0ca1cedf7df53dde151f041db760108690ed4f0b70e5ef5dfa4f89e3d96d398",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P28-02-replay-comparison-ui.md",
+      "expected_before": "4327aae9da5f28909e0615a41c1308a845aa8c94947c8cb3fe5db502d86eb796",
+      "actual_before": "4327aae9da5f28909e0615a41c1308a845aa8c94947c8cb3fe5db502d86eb796",
+      "before_verified": true,
+      "expected_after": "ea973fd3864251a44da8dbed8baf91b8af32b75f47b469ae47b8954b5e93f8c8",
+      "actual_after": "ea973fd3864251a44da8dbed8baf91b8af32b75f47b469ae47b8954b5e93f8c8",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P29-01-exception-center-ui.md",
+      "expected_before": "f3e19ab40a73348e4541e760dc8a6a8e5228985af9dd3769351f96c051c46ab9",
+      "actual_before": "f3e19ab40a73348e4541e760dc8a6a8e5228985af9dd3769351f96c051c46ab9",
+      "before_verified": true,
+      "expected_after": "f3a2010b8674ebc9536c42c03f8619f087203454657d35be18c9d6f89d994af9",
+      "actual_after": "f3a2010b8674ebc9536c42c03f8619f087203454657d35be18c9d6f89d994af9",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P29-02-reschedule-diff-ui.md",
+      "expected_before": "7c55c4b1d11107a2d959627aa6628fa69874ba37cc8804961c265848ae17fe0a",
+      "actual_before": "7c55c4b1d11107a2d959627aa6628fa69874ba37cc8804961c265848ae17fe0a",
+      "before_verified": true,
+      "expected_after": "8ac9dddeb559a62ca6d17f5442abad24f909f78e181d06bab4aed2a6b4596b44",
+      "actual_after": "8ac9dddeb559a62ca6d17f5442abad24f909f78e181d06bab4aed2a6b4596b44",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P30-01-agent-chat-ui.md",
+      "expected_before": "6500b257d4aa2dea069d62c6066d71b9197946123f66e6b9fa6dd89a23eaf927",
+      "actual_before": "6500b257d4aa2dea069d62c6066d71b9197946123f66e6b9fa6dd89a23eaf927",
+      "before_verified": true,
+      "expected_after": "9fd6ddbc2fad855b20fd0ea64ab5102594341378e599f2f7d02ef643eab3a91b",
+      "actual_after": "9fd6ddbc2fad855b20fd0ea64ab5102594341378e599f2f7d02ef643eab3a91b",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P30-02-agent-confirmation-ui.md",
+      "expected_before": "cd1a77e62c0cd559aaaefdd9fc602a661589e7864bc6fe68d6d71dab48452a7f",
+      "actual_before": "cd1a77e62c0cd559aaaefdd9fc602a661589e7864bc6fe68d6d71dab48452a7f",
+      "before_verified": true,
+      "expected_after": "c61a1f360891478fe6596fd38aec20a1db8b6214c1954f01f04752050f0ded34",
+      "actual_after": "c61a1f360891478fe6596fd38aec20a1db8b6214c1954f01f04752050f0ded34",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P31-01-websocket-events.md",
+      "expected_before": "a14cbeb3e74080459dd28753162925521acce4cc44aff293196e277363e7266e",
+      "actual_before": "a14cbeb3e74080459dd28753162925521acce4cc44aff293196e277363e7266e",
+      "before_verified": true,
+      "expected_after": "abdcf880bbfbe879ece7063209acb116b7a2709c347a198103e0547510dfca67",
+      "actual_after": "abdcf880bbfbe879ece7063209acb116b7a2709c347a198103e0547510dfca67",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P31-02-frontend-realtime.md",
+      "expected_before": "7af6522f7e6625d848b3db7c5eb90a9191e9434b031ed682fa488b7cf8ad4443",
+      "actual_before": "7af6522f7e6625d848b3db7c5eb90a9191e9434b031ed682fa488b7cf8ad4443",
+      "before_verified": true,
+      "expected_after": "61fe7b6327a0366b02583c46c135055b7eae621b6e161793496e7967da075f48",
+      "actual_after": "61fe7b6327a0366b02583c46c135055b7eae621b6e161793496e7967da075f48",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P32-01-metric-calculators.md",
+      "expected_before": "d781d5406595d19b053f180f4a0223cc297ea123b6e7d4c05d7f0034cd8b3aaf",
+      "actual_before": "d781d5406595d19b053f180f4a0223cc297ea123b6e7d4c05d7f0034cd8b3aaf",
+      "before_verified": true,
+      "expected_after": "f2c40a2c5de30e41509f6fb760340afb1cc4545091a38248ae880d672a66b2db",
+      "actual_after": "f2c40a2c5de30e41509f6fb760340afb1cc4545091a38248ae880d672a66b2db",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P32-02-metrics-api.md",
+      "expected_before": "2426ed0006c94170e1cab93d996c3e7005245eb034c35951945a0a13d00a4384",
+      "actual_before": "2426ed0006c94170e1cab93d996c3e7005245eb034c35951945a0a13d00a4384",
+      "before_verified": true,
+      "expected_after": "efeb660285249d7263a4921ee63a82d4cc6a7521cbac354dace42d2f78257fe8",
+      "actual_after": "efeb660285249d7263a4921ee63a82d4cc6a7521cbac354dace42d2f78257fe8",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P32-03-metrics-dashboard-ui.md",
+      "expected_before": "20ccffc4733a5cc1edd5755f6ff67699d4c784e32a3b57abc38f97603f77e7f6",
+      "actual_before": "20ccffc4733a5cc1edd5755f6ff67699d4c784e32a3b57abc38f97603f77e7f6",
+      "before_verified": true,
+      "expected_after": "7a40aa0fc836543eeba49226451dfdafa1fd93cd9666ba49512a9cb602cb33ca",
+      "actual_after": "7a40aa0fc836543eeba49226451dfdafa1fd93cd9666ba49512a9cb602cb33ca",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P33-01-experiment-runner.md",
+      "expected_before": "e581f8b69afd4627320cf09a336f8a0b6841f1a872a237bb9ffbb1ab1049b690",
+      "actual_before": "e581f8b69afd4627320cf09a336f8a0b6841f1a872a237bb9ffbb1ab1049b690",
+      "before_verified": true,
+      "expected_after": "5bc95d53c35bb663e90e9bfa7736f9f5249a01daefa2443c148ec181af07e005",
+      "actual_after": "5bc95d53c35bb663e90e9bfa7736f9f5249a01daefa2443c148ec181af07e005",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P33-02-experiments-api-ui.md",
+      "expected_before": "222ca0e4d4ef04f599ad0d5e7c544ba1ae2a4d26480613df809fef3d73882c4c",
+      "actual_before": "222ca0e4d4ef04f599ad0d5e7c544ba1ae2a4d26480613df809fef3d73882c4c",
+      "before_verified": true,
+      "expected_after": "6fa25fec4ef7a4d091c7b1ede3d97e6c0bbd9cce755dc5eb78b54855cd5556cc",
+      "actual_after": "6fa25fec4ef7a4d091c7b1ede3d97e6c0bbd9cce755dc5eb78b54855cd5556cc",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P34-01-transport-e2e.md",
+      "expected_before": "d8eddab0e7d366c78698eebdaa69f118ceb3d1dfac7a4b1d4013b7a18917d9f1",
+      "actual_before": "d8eddab0e7d366c78698eebdaa69f118ceb3d1dfac7a4b1d4013b7a18917d9f1",
+      "before_verified": true,
+      "expected_after": "97511ee4d13429403a46da8fd4187a82625308e1e88cd75d306be4e287aded4f",
+      "actual_after": "97511ee4d13429403a46da8fd4187a82625308e1e88cd75d306be4e287aded4f",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P34-02-joint-exception-e2e.md",
+      "expected_before": "870c6d3f7b4c97fcfa0afc22bbd082c722d1a374d509c38a4d9619f426b3e799",
+      "actual_before": "870c6d3f7b4c97fcfa0afc22bbd082c722d1a374d509c38a4d9619f426b3e799",
+      "before_verified": true,
+      "expected_after": "1bef45c90dd3cb36a9579009014eb83699b606801beedf5faf3b90092fefa710",
+      "actual_after": "1bef45c90dd3cb36a9579009014eb83699b606801beedf5faf3b90092fefa710",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P34-03-failure-recovery-e2e.md",
+      "expected_before": "0cb8e7ff84c663ae68b38da465b020733b4bc9478defe1cbde4bba26c22112f1",
+      "actual_before": "0cb8e7ff84c663ae68b38da465b020733b4bc9478defe1cbde4bba26c22112f1",
+      "before_verified": true,
+      "expected_after": "e4e05ca813300ee535773516b479c0f26ae757809c0c22594a9af1f00c007c95",
+      "actual_after": "e4e05ca813300ee535773516b479c0f26ae757809c0c22594a9af1f00c007c95",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-01-demo-normal.md",
+      "expected_before": "08689a08e912472abe2924ecbd50c381f271b13fe4b3b4a13e8b238a845d2d29",
+      "actual_before": "08689a08e912472abe2924ecbd50c381f271b13fe4b3b4a13e8b238a845d2d29",
+      "before_verified": true,
+      "expected_after": "8350efd7ebe13d89d0085b53e3c4ac2a46592923ee8e390c58dd1aa2a5d868a2",
+      "actual_after": "8350efd7ebe13d89d0085b53e3c4ac2a46592923ee8e390c58dd1aa2a5d868a2",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-02-demo-joint.md",
+      "expected_before": "89cfb3520987852e53a11305c097681e5870af4b814f498f6e3e937248147550",
+      "actual_before": "89cfb3520987852e53a11305c097681e5870af4b814f498f6e3e937248147550",
+      "before_verified": true,
+      "expected_after": "c8527dd48aa43c1dae12d01ac94b2af9835eb1f923b60cdd74abd9e5c5979b5e",
+      "actual_after": "c8527dd48aa43c1dae12d01ac94b2af9835eb1f923b60cdd74abd9e5c5979b5e",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-03-demo-vehicle-failure.md",
+      "expected_before": "dc00c090497c3933e059e417daa16e718d68069ee4e387b1ad06197d90e82e1b",
+      "actual_before": "dc00c090497c3933e059e417daa16e718d68069ee4e387b1ad06197d90e82e1b",
+      "before_verified": true,
+      "expected_after": "f00d00e4c0dd90dd80e463af8c4524a1ded271d517a52095bc5ff51b63b46508",
+      "actual_after": "f00d00e4c0dd90dd80e463af8c4524a1ded271d517a52095bc5ff51b63b46508",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-04-demo-order-cancel.md",
+      "expected_before": "542dbcc6fe25a32b3f693631ef3b992c9ab3784bcfaeff8732187780c0077d95",
+      "actual_before": "542dbcc6fe25a32b3f693631ef3b992c9ab3784bcfaeff8732187780c0077d95",
+      "before_verified": true,
+      "expected_after": "0edcca86885bc5bce40d8562c7ff5cb63c454ab9a0658358bf5f7b58ae856be5",
+      "actual_after": "0edcca86885bc5bce40d8562c7ff5cb63c454ab9a0658358bf5f7b58ae856be5",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-05-demo-weather.md",
+      "expected_before": "e8df46a3b0843bdbfd5ff83e671b9e019ab87ac7402fb5f27decb21c5e17216d",
+      "actual_before": "e8df46a3b0843bdbfd5ff83e671b9e019ab87ac7402fb5f27decb21c5e17216d",
+      "before_verified": true,
+      "expected_after": "6b1a9f74a44e0b96cb7a3b6b561180ea9544d70a1036f9c8d80568803bdb09a5",
+      "actual_after": "6b1a9f74a44e0b96cb7a3b6b561180ea9544d70a1036f9c8d80568803bdb09a5",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P36-01-benchmark-harness.md",
+      "expected_before": "234f3e3301dc58b0b26ed5f0edb4f014d87591bd5d126dbdaca5adefc3897322",
+      "actual_before": "234f3e3301dc58b0b26ed5f0edb4f014d87591bd5d126dbdaca5adefc3897322",
+      "before_verified": true,
+      "expected_after": "20da272d1d01fbe1d44e20abeea0f18254eb4580b2a1331bccb378bca3e94cfa",
+      "actual_after": "20da272d1d01fbe1d44e20abeea0f18254eb4580b2a1331bccb378bca3e94cfa",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P36-02-bounded-performance-fix.md",
+      "expected_before": "968db9c67507b25546fb1a89f24823640452658db09090f5aa97aa62c2a3501d",
+      "actual_before": "968db9c67507b25546fb1a89f24823640452658db09090f5aa97aa62c2a3501d",
+      "before_verified": true,
+      "expected_after": "8228edca5820714a7b5bf4e951c7d7a712935ac7b2b43b21cce745805da5af57",
+      "actual_after": "8228edca5820714a7b5bf4e951c7d7a712935ac7b2b43b21cce745805da5af57",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P37-01-security-boundary.md",
+      "expected_before": "dda7b70f9c822ef3980ae2d36a668a76a9a6bd9c4a37da6b09293e889236ca93",
+      "actual_before": "dda7b70f9c822ef3980ae2d36a668a76a9a6bd9c4a37da6b09293e889236ca93",
+      "before_verified": true,
+      "expected_after": "32307e464c4b5138c40bd10c563ec881f9966d8f2a0a44334d90601b29510b30",
+      "actual_after": "32307e464c4b5138c40bd10c563ec881f9966d8f2a0a44334d90601b29510b30",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P37-02-observability-audit.md",
+      "expected_before": "74084800c7d958e3679ae0c9a7897023cc3597be9b56047a015bb4c345daafcc",
+      "actual_before": "74084800c7d958e3679ae0c9a7897023cc3597be9b56047a015bb4c345daafcc",
+      "before_verified": true,
+      "expected_after": "2fa4f49d0f6dfb4857115b7b08a626e1c1d338aea5b90b1632c410498636f7b3",
+      "actual_after": "2fa4f49d0f6dfb4857115b7b08a626e1c1d338aea5b90b1632c410498636f7b3",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P37-03-backup-and-recovery.md",
+      "expected_before": "579a9207cd841361f1eb344827bf46f2ef3ce01cd421ff508079e90fb8ab577d",
+      "actual_before": "579a9207cd841361f1eb344827bf46f2ef3ce01cd421ff508079e90fb8ab577d",
+      "before_verified": true,
+      "expected_after": "05c206ed57d38c9e5727eb2a69ac215d2ed8436d62cba8d49c9d108a88572fe0",
+      "actual_after": "05c206ed57d38c9e5727eb2a69ac215d2ed8436d62cba8d49c9d108a88572fe0",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/13-release/P38-01-developer-docs.md",
+      "expected_before": "352816b2aed62c19ad2458747d1bb068eae78fc88305686b8d1420ce1245987b",
+      "actual_before": "352816b2aed62c19ad2458747d1bb068eae78fc88305686b8d1420ce1245987b",
+      "before_verified": true,
+      "expected_after": "d59178e92372bad6403b888c61e09a1c4ac83d9bcff24453ef41d64ac79a4225",
+      "actual_after": "d59178e92372bad6403b888c61e09a1c4ac83d9bcff24453ef41d64ac79a4225",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/13-release/P38-02-operator-docs.md",
+      "expected_before": "eb33b427b5990816f89db23598d4f082705086dbee22035cf6d39da2ea706b57",
+      "actual_before": "eb33b427b5990816f89db23598d4f082705086dbee22035cf6d39da2ea706b57",
+      "before_verified": true,
+      "expected_after": "c0d9ca7e4decd23caa9a01ead5f4c4554e1bd72522fefa28490c671d8548ee84",
+      "actual_after": "c0d9ca7e4decd23caa9a01ead5f4c4554e1bd72522fefa28490c671d8548ee84",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/13-release/P39-01-release-candidate.md",
+      "expected_before": "ceea4f6745561642dad1d39a9acf128289c19ae2c58cf9a9315627f7acf7bced",
+      "actual_before": "ceea4f6745561642dad1d39a9acf128289c19ae2c58cf9a9315627f7acf7bced",
+      "before_verified": true,
+      "expected_after": "2d32fc5cec3fb441ac99855cab23959fefe4658b8b570bce6ebeb5ea0b3bd832",
+      "actual_after": "2d32fc5cec3fb441ac99855cab23959fefe4658b8b570bce6ebeb5ea0b3bd832",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/13-release/P39-02-release-gate.md",
+      "expected_before": "8e96310f060ebff3dfda0a49863bc9b978d8f2c419925a34334795f2ba4db462",
+      "actual_before": "8e96310f060ebff3dfda0a49863bc9b978d8f2c419925a34334795f2ba4db462",
+      "before_verified": true,
+      "expected_after": "d8f259e99687686203c4578ee1b4b2639897711eb94bf172d2a8cbf29312d726",
+      "actual_after": "d8f259e99687686203c4578ee1b4b2639897711eb94bf172d2a8cbf29312d726",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/prompts/README.md",
+      "expected_before": "352d31a3567b40ecdfe8499d64ea6fe81754c5ff336e742acefe114462bead7c",
+      "actual_before": "352d31a3567b40ecdfe8499d64ea6fe81754c5ff336e742acefe114462bead7c",
+      "before_verified": true,
+      "expected_after": "423d12bce688ccc958da56c71eb22264d087e846d97c4c0cb27a03640b12e518",
+      "actual_after": "423d12bce688ccc958da56c71eb22264d087e846d97c4c0cb27a03640b12e518",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/workflow/02-ZCODE-PRECHECK.md",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "f05e310fc1a20e610457719c2ca1ba3afad4b33206247f66f992f6c422a3372d",
+      "actual_after": "f05e310fc1a20e610457719c2ca1ba3afad4b33206247f66f992f6c422a3372d",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/workflow/HANDOFF_CONTRACT.md",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "7c40a6429e73059543375dfabf81e0642809347f88493e0393a7b68456269280",
+      "actual_after": "7c40a6429e73059543375dfabf81e0642809347f88493e0393a7b68456269280",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "docs/workflow/README.md",
+      "expected_before": null,
+      "actual_before": null,
+      "before_verified": true,
+      "expected_after": "bcfada4ddf8b82d8ab0e2912bac895a92cf0f3136dfc84b8a104ba3c31de1e14",
+      "actual_after": "bcfada4ddf8b82d8ab0e2912bac895a92cf0f3136dfc84b8a104ba3c31de1e14",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "tools/ai_coding_plan/build_catalog.py",
+      "expected_before": "b0796990c3e3eb62f133fef5b61a8b4bd41e89cd9f59263f7aadc245074069eb",
+      "actual_before": "b0796990c3e3eb62f133fef5b61a8b4bd41e89cd9f59263f7aadc245074069eb",
+      "before_verified": true,
+      "expected_after": "2d72eb86d5ad5da13d65587ee3bbf5ab56a578522d42d777a9490f73b2c04fe4",
+      "actual_after": "2d72eb86d5ad5da13d65587ee3bbf5ab56a578522d42d777a9490f73b2c04fe4",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "tools/ai_coding_plan/render_plan.py",
+      "expected_before": "de39b6f69392755ad60678fc05f32233cfa0c6cfef2bf2d76dbb07810105209f",
+      "actual_before": "de39b6f69392755ad60678fc05f32233cfa0c6cfef2bf2d76dbb07810105209f",
+      "before_verified": true,
+      "expected_after": "d6e20b697f1c7dab8e376dc1a656705fceb25e76edecd95f4af56a6c686f202c",
+      "actual_after": "d6e20b697f1c7dab8e376dc1a656705fceb25e76edecd95f4af56a6c686f202c",
+      "after_verified": true,
+      "whitelisted": true
+    },
+    {
+      "path": "tools/ai_coding_plan/validate_plan.py",
+      "expected_before": "46c52ac1342c36c7ac9eece5d2cf45d0c8c5ed07e74180f4b55f9c2849b8b675",
+      "actual_before": "46c52ac1342c36c7ac9eece5d2cf45d0c8c5ed07e74180f4b55f9c2849b8b675",
+      "before_verified": true,
+      "expected_after": "9b78001aee05849b8d90aada72333ae532116628d95f9876370a4cda8eb2d41b",
+      "actual_after": "9b78001aee05849b8d90aada72333ae532116628d95f9876370a4cda8eb2d41b",
+      "after_verified": true,
+      "whitelisted": true
+    }
+  ],
+  "actual_difference_count": 129,
+  "all_before_verified": true,
+  "all_after_verified": true,
+  "all_whitelisted": true,
+  "protected": {
+    "total": 287,
+    "matched": 287,
+    "mismatches": []
+  },
+  "protected_files": [
+    {
+      "path": "artifacts/gates/G00-checks.log",
+      "expected": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "actual": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G00.json",
+      "expected": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "actual": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01.json",
+      "expected": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "actual": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/clean-install-imports.log",
+      "expected": "c844004887cf60881505507a12f6caf43d1ac7d449b275524bed625f8a73fba2",
+      "actual": "c844004887cf60881505507a12f6caf43d1ac7d449b275524bed625f8a73fba2",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "expected": "991449a0cbcae350577e9e76d23a72b78ad4bea1f926b34c51091d15ef75bb7c",
+      "actual": "991449a0cbcae350577e9e76d23a72b78ad4bea1f926b34c51091d15ef75bb7c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/layer-boundaries.log",
+      "expected": "6fef6bd196c19eca8ae632dcb1205de70516d1631f6643dbdcd8a43f9442a3bc",
+      "actual": "6fef6bd196c19eca8ae632dcb1205de70516d1631f6643dbdcd8a43f9442a3bc",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/lock-reproducible.log",
+      "expected": "54b25e770e09fb3b373ca8856e5f8d32259133172d552fde6f67b386f853d3d8",
+      "actual": "54b25e770e09fb3b373ca8856e5f8d32259133172d552fde6f67b386f853d3d8",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "expected": "011042b19a36c8f0f122ee8761321a960c9ab5c085d848b39e2394f99cbc89cb",
+      "actual": "011042b19a36c8f0f122ee8761321a960c9ab5c085d848b39e2394f99cbc89cb",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "expected": "35dca72995d08ef89be87d1f4f593e8e8df27ec2a548ac043e1a6a0e99d8d1fa",
+      "actual": "35dca72995d08ef89be87d1f4f593e8e8df27ec2a548ac043e1a6a0e99d8d1fa",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "expected": "0957b19f924802a13bb0e1637a4bd97fc65e19792e7c3bd2fcb0d1d00589d52b",
+      "actual": "0957b19f924802a13bb0e1637a4bd97fc65e19792e7c3bd2fcb0d1d00589d52b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "expected": "3f4658c01541e83b22a9763fcb9f6fbc31aafcf737a44b29d6eccf6a882b2047",
+      "actual": "3f4658c01541e83b22a9763fcb9f6fbc31aafcf737a44b29d6eccf6a882b2047",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "expected": "660dfb04b5af188f79831398a16d5e17da3e669f28b9cabe34d0d6bfe662b158",
+      "actual": "660dfb04b5af188f79831398a16d5e17da3e669f28b9cabe34d0d6bfe662b158",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "expected": "f6a03aaf6a84896dc7ad188479773cab8e73d5edb251b7cdbb31786571b5600b",
+      "actual": "f6a03aaf6a84896dc7ad188479773cab8e73d5edb251b7cdbb31786571b5600b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "expected": "42466048dd925d3ece2a5a8e21ad5620ddd9054e19e8f6b7ba30b0dc5e6cff52",
+      "actual": "42466048dd925d3ece2a5a8e21ad5620ddd9054e19e8f6b7ba30b0dc5e6cff52",
+      "passed": true
+    },
+    {
+      "path": "artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "expected": "e0cde6b9b1a90e0aef79bd1b5c540370df172283cf7df2d3ab1ec306a98df0c9",
+      "actual": "e0cde6b9b1a90e0aef79bd1b5c540370df172283cf7df2d3ab1ec306a98df0c9",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/evidence.json",
+      "expected": "aff5d7939f0ce47c8357b6e3bbe6c7717590b8e5d817bea3c9589182900bafe1",
+      "actual": "aff5d7939f0ce47c8357b6e3bbe6c7717590b8e5d817bea3c9589182900bafe1",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/build-evidence.py",
+      "expected": "dc4feeff6b212cf0f300ab508bc65232f1aba1e84c69471cd2d3ce41deb28a66",
+      "actual": "dc4feeff6b212cf0f300ab508bc65232f1aba1e84c69471cd2d3ce41deb28a66",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/evidence.json",
+      "expected": "c95b1287cbb5b69dddefa45b3f4d692ca063b52a2f4cda71599dfd397a5ed644",
+      "actual": "c95b1287cbb5b69dddefa45b3f4d692ca063b52a2f4cda71599dfd397a5ed644",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/npm-ci.log",
+      "expected": "b488c8d693a8a30fc7687fd399b56247dd4417df019e13f7d93e221481d80e0a",
+      "actual": "b488c8d693a8a30fc7687fd399b56247dd4417df019e13f7d93e221481d80e0a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/precheck.json",
+      "expected": "6b85198d783f367474d82b55c1c58703929a57109424be5d9b96b148d0e73878",
+      "actual": "6b85198d783f367474d82b55c1c58703929a57109424be5d9b96b148d0e73878",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/pytest.log",
+      "expected": "f4e7603a8a8de2fe85dfb2347e63a3b9445051e0a3d14d829d04646310511169",
+      "actual": "f4e7603a8a8de2fe85dfb2347e63a3b9445051e0a3d14d829d04646310511169",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/uv-sync-frozen.log",
+      "expected": "811e7aee9aad5e28cb417e89d67cf5c4a3a6b73fe1f7fb687192af1d46aff7f4",
+      "actual": "811e7aee9aad5e28cb417e89d67cf5c4a3a6b73fe1f7fb687192af1d46aff7f4",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/npm_ci.log",
+      "expected": "1f2fc355303c54f283d3bbe356360857394a3230238c51775b1a9f76edfa955d",
+      "actual": "1f2fc355303c54f283d3bbe356360857394a3230238c51775b1a9f76edfa955d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/pytest.log",
+      "expected": "75fa0e13c0a2b243cbe1c5386ed7b3f721372501255b9ccf7e1d42a7ac748bb2",
+      "actual": "75fa0e13c0a2b243cbe1c5386ed7b3f721372501255b9ccf7e1d42a7ac748bb2",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/uv_sync_frozen.log",
+      "expected": "3226cdb567e9e722372b86e8fb391aa32f7f037e8a41781ec6223701741ffe90",
+      "actual": "3226cdb567e9e722372b86e8fb391aa32f7f037e8a41781ec6223701741ffe90",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/validation-summary.json",
+      "expected": "7acce9b3c46401a79c96e9fbf13732568519a52f5e00224926d58e43065fed96",
+      "actual": "7acce9b3c46401a79c96e9fbf13732568519a52f5e00224926d58e43065fed96",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-architecture.log",
+      "expected": "2c49b7696234ac864a40381559921c0cf10d5620c457b427c8964f6dad5f9b02",
+      "actual": "2c49b7696234ac864a40381559921c0cf10d5620c457b427c8964f6dad5f9b02",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-cmd1-pytest.log",
+      "expected": "74300fcb6a93a6b67aca20cc1307b92abd768f935e9a6df661f949be51c7e456",
+      "actual": "74300fcb6a93a6b67aca20cc1307b92abd768f935e9a6df661f949be51c7e456",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-cmd2-uv-sync-frozen.log",
+      "expected": "4d0049d59970840daca55200f132032c890ef90ea30fa0b1e765796d4da657cc",
+      "actual": "4d0049d59970840daca55200f132032c890ef90ea30fa0b1e765796d4da657cc",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-cmd3-npm-ci.log",
+      "expected": "fe84940380e7541a8ab6e0587f2deea23960ee30e32bb3ab91a4327c30c7e62b",
+      "actual": "fe84940380e7541a8ab6e0587f2deea23960ee30e32bb3ab91a4327c30c7e62b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-demo-and-hash-drift.log",
+      "expected": "87e4040d7be895cda71bcbbd25a9f7950cf6ccea28f506d6e59042b1210b6a43",
+      "actual": "87e4040d7be895cda71bcbbd25a9f7950cf6ccea28f506d6e59042b1210b6a43",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-fail-closed.log",
+      "expected": "2d32b00e57837783d00f35744cc6df71ad3b95c0d8b546b46680da57a168a325",
+      "actual": "2d32b00e57837783d00f35744cc6df71ad3b95c0d8b546b46680da57a168a325",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-frontend-test.log",
+      "expected": "8f7a946ce45e5c72699996cec66b53ae305d7b44bc818e08ace0284afe5af851",
+      "actual": "8f7a946ce45e5c72699996cec66b53ae305d7b44bc818e08ace0284afe5af851",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-gates-probe-g01-after.log",
+      "expected": "cac3365b92e0458a8489e81a68e615bc644c58e261544590380ae54f6faf6dc5",
+      "actual": "cac3365b92e0458a8489e81a68e615bc644c58e261544590380ae54f6faf6dc5",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-gates-probe-g01.log",
+      "expected": "66aa9022220a75618c6314f5e1c5b3c5b813f0f1ce2fff2729e195d19e3b6b5d",
+      "actual": "66aa9022220a75618c6314f5e1c5b3c5b813f0f1ce2fff2729e195d19e3b6b5d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-import-isolation.log",
+      "expected": "b61745e7d176f1f9a87e090f377d2cac2949f4a50c0dc630c253e9524cc2d0b7",
+      "actual": "b61745e7d176f1f9a87e090f377d2cac2949f4a50c0dc630c253e9524cc2d0b7",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-lock-check.log",
+      "expected": "03d058d0396d13d0b2f984808a7997ea5d32e178c0b87307a06565f8b45b51a4",
+      "actual": "03d058d0396d13d0b2f984808a7997ea5d32e178c0b87307a06565f8b45b51a4",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-ownership.log",
+      "expected": "958f8d80548dcdd33ce25f9a54dff9b6b9f5ac0a45d0b21c5000c19945f4b379",
+      "actual": "958f8d80548dcdd33ce25f9a54dff9b6b9f5ac0a45d0b21c5000c19945f4b379",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/logs/r2-regression.log",
+      "expected": "3bfffd9bcfe73fca973fd209aaa6d06a36a936ba6e51a7e322f49ebcbe60f2db",
+      "actual": "3bfffd9bcfe73fca973fd209aaa6d06a36a936ba6e51a7e322f49ebcbe60f2db",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/evidence.json",
+      "expected": "f5b16179dd2754bcd591cd14beac33621bb72d7b7d518a97da2efd5711392f24",
+      "actual": "f5b16179dd2754bcd591cd14beac33621bb72d7b7d518a97da2efd5711392f24",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/zcode/check-architecture.log",
+      "expected": "cabb9484368a603f7310b1a115a7405ec6fba8d4d64e0090acd37fa1ddd27b6e",
+      "actual": "cabb9484368a603f7310b1a115a7405ec6fba8d4d64e0090acd37fa1ddd27b6e",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/zcode/pytest.log",
+      "expected": "5ad9d7b6eefc9b878a9f2b4831f72e47113e17fa58da1a009dd3695fcff359bf",
+      "actual": "5ad9d7b6eefc9b878a9f2b4831f72e47113e17fa58da1a009dd3695fcff359bf",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/logs/check_architecture.log",
+      "expected": "cef34d0963c81da7ab04f4086c81963a1da800787a2fc6d721a78be6f325ef08",
+      "actual": "cef34d0963c81da7ab04f4086c81963a1da800787a2fc6d721a78be6f325ef08",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/logs/gate-g01.log",
+      "expected": "5aa90c8119b6af4fbf54bc9a311ea82abbfa3cad6134cc115453e78264163a73",
+      "actual": "5aa90c8119b6af4fbf54bc9a311ea82abbfa3cad6134cc115453e78264163a73",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/logs/pytest.log",
+      "expected": "81c2da86b07d369dacb22e81caa72ba91b48af8fd441cc07c9824f18798280ce",
+      "actual": "81c2da86b07d369dacb22e81caa72ba91b48af8fd441cc07c9824f18798280ce",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/baseline-p01-02-suites.log",
+      "expected": "94cad97806ba4078cc0b44dc3580874702ee3c9c8e642fcdc98fee04a5137b4d",
+      "actual": "94cad97806ba4078cc0b44dc3580874702ee3c9c8e642fcdc98fee04a5137b4d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/build-evidence.log",
+      "expected": "482779a9244ea53d638eb684ffefcd30b54d9291ce2643adfcade6b625c8fd36",
+      "actual": "482779a9244ea53d638eb684ffefcd30b54d9291ce2643adfcade6b625c8fd36",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/build-evidence.py",
+      "expected": "a4ddcfdccd3dd737f9fb0c9e9351acce36892cbdd33a325f63399ae8b6892ccb",
+      "actual": "a4ddcfdccd3dd737f9fb0c9e9351acce36892cbdd33a325f63399ae8b6892ccb",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd1-p01-02-suites.log",
+      "expected": "7226c1c34c5f6f954a6fa706798788a2757bc6060a2d6f47f29a385891dfa992",
+      "actual": "7226c1c34c5f6f954a6fa706798788a2757bc6060a2d6f47f29a385891dfa992",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd2-check-architecture.log",
+      "expected": "3374b32c9c5e8ee09bf5b7154fa5d5372a73d54ecca683838476ac925dd0cbd8",
+      "actual": "3374b32c9c5e8ee09bf5b7154fa5d5372a73d54ecca683838476ac925dd0cbd8",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd3-full-suites.log",
+      "expected": "2d19c3e5f3be08bcc1039089f2292d681abcd34ea7253b566eb178d1c9092d44",
+      "actual": "2d19c3e5f3be08bcc1039089f2292d681abcd34ea7253b566eb178d1c9092d44",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd4-gate-check-only.log",
+      "expected": "3e339129854c879cbe58337c8ddda057ceca6a303fa43f6cc4877a615a119adf",
+      "actual": "3e339129854c879cbe58337c8ddda057ceca6a303fa43f6cc4877a615a119adf",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/env-lock-check.log",
+      "expected": "e9ce1e339592ab5521241f8b4f9e004d443a33c8bcef1a8b1f4dd14e2b155bba",
+      "actual": "e9ce1e339592ab5521241f8b4f9e004d443a33c8bcef1a8b1f4dd14e2b155bba",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/env-uv-run.log",
+      "expected": "caabe6c6b94556b3f4f3ebcf1248390a9e5df429e46e60b7b93370c650774fed",
+      "actual": "caabe6c6b94556b3f4f3ebcf1248390a9e5df429e46e60b7b93370c650774fed",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/evidence-self-consistency.log",
+      "expected": "7f3c5d608dd20002ba00403cf1e04c770729c84bf6924a9ca3a839e0cab245c8",
+      "actual": "7f3c5d608dd20002ba00403cf1e04c770729c84bf6924a9ca3a839e0cab245c8",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/gate-record-freshness-before-round.log",
+      "expected": "8a07cfdfb1558c920d96626812b45a1a4f0542397d6b23b3b377048cdf2fda2d",
+      "actual": "8a07cfdfb1558c920d96626812b45a1a4f0542397d6b23b3b377048cdf2fda2d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/integration-run-intermediate.log",
+      "expected": "dbce546108b5f2697af7f7c9f28ea3fd06b955a641510b2a0b657524c5c28931",
+      "actual": "dbce546108b5f2697af7f7c9f28ea3fd06b955a641510b2a0b657524c5c28931",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/manifest-and-precheck-survey.log",
+      "expected": "aa9a572f5969c5cd054b3545bfe32584a9578be991acf6d1bf0be6168baa27ed",
+      "actual": "aa9a572f5969c5cd054b3545bfe32584a9578be991acf6d1bf0be6168baa27ed",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/negative-probes.log",
+      "expected": "2b70b6996897909899b36a506d6876469a78a747710d6675b68b3a23e9627844",
+      "actual": "2b70b6996897909899b36a506d6876469a78a747710d6675b68b3a23e9627844",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/negative-probes.py",
+      "expected": "bb324032cbf457950e9940a55f1afd80b393bbb0225c54bead14ddaff9123ef0",
+      "actual": "bb324032cbf457950e9940a55f1afd80b393bbb0225c54bead14ddaff9123ef0",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/ownership-fallback-proof.log",
+      "expected": "8d7a5e48a12d9d2e7f58b440fb92ef8306a2bbff56d928758561d45af01839d1",
+      "actual": "8d7a5e48a12d9d2e7f58b440fb92ef8306a2bbff56d928758561d45af01839d1",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/p01-03-pre-existing-failures.log",
+      "expected": "b086d9422a07235905f15321f7c8a267f9948914e9689e3f2a35f2ede472d00a",
+      "actual": "b086d9422a07235905f15321f7c8a267f9948914e9689e3f2a35f2ede472d00a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/pre-change-hashes.txt",
+      "expected": "f483ba4485ce8aa5112b8608d99962dc1d68482a611e2a2a331fefc6b5d452c8",
+      "actual": "f483ba4485ce8aa5112b8608d99962dc1d68482a611e2a2a331fefc6b5d452c8",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/previous-round-evidence.json",
+      "expected": "f216a3e9693002cb6aebdfbe3e09083217e5ef5378aa75354b97ec8236d56f30",
+      "actual": "f216a3e9693002cb6aebdfbe3e09083217e5ef5378aa75354b97ec8236d56f30",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/revision-stability-probe.log",
+      "expected": "d3f67e2af32bcbc7096cdeac1b36c92b5ec61ab8e565cac9d1f3b3985c99a98b",
+      "actual": "d3f67e2af32bcbc7096cdeac1b36c92b5ec61ab8e565cac9d1f3b3985c99a98b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/unit-run-intermediate.log",
+      "expected": "1c8929e7c0b15c66afd950ac1d2c2c22657620e51c869c92936d4f5f1d7b2316",
+      "actual": "1c8929e7c0b15c66afd950ac1d2c2c22657620e51c869c92936d4f5f1d7b2316",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/evidence.json",
+      "expected": "1e3aef2fe57fdb445cad4deeef988d6f70f06f9fec8e8244f55018d60bd8c10e",
+      "actual": "1e3aef2fe57fdb445cad4deeef988d6f70f06f9fec8e8244f55018d60bd8c10e",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/zcode/pytest.log",
+      "expected": "09ccb301da206b5f09abecfc687f447a2f7616cba1ad71d2fcddcaf7b660cc1c",
+      "actual": "09ccb301da206b5f09abecfc687f447a2f7616cba1ad71d2fcddcaf7b660cc1c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/logs/check_architecture.log",
+      "expected": "cef34d0963c81da7ab04f4086c81963a1da800787a2fc6d721a78be6f325ef08",
+      "actual": "cef34d0963c81da7ab04f4086c81963a1da800787a2fc6d721a78be6f325ef08",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/logs/check_ownership.log",
+      "expected": "572c9bf8081f56ed12a39f9b7eb7fb00626510eac44d1f6f68aa55a25365ad97",
+      "actual": "572c9bf8081f56ed12a39f9b7eb7fb00626510eac44d1f6f68aa55a25365ad97",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/logs/gate-g01.log",
+      "expected": "c86a6a3d83b17078a11fb9ff93eaede3489622bb3f07038d1af31bfadfbb93fa",
+      "actual": "c86a6a3d83b17078a11fb9ff93eaede3489622bb3f07038d1af31bfadfbb93fa",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/logs/pytest.log",
+      "expected": "d12b60d0de3341800d7b9c3e85644b05797c219d3eb1e150d32f58281b8d1633",
+      "actual": "d12b60d0de3341800d7b9c3e85644b05797c219d3eb1e150d32f58281b8d1633",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/build-evidence.py",
+      "expected": "32b5174e15c5373a2464538d7f59d775253a2632c46f868f507396598fb6d253",
+      "actual": "32b5174e15c5373a2464538d7f59d775253a2632c46f868f507396598fb6d253",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/evidence.json",
+      "expected": "dddc2ab72abc5f24b87aa329a7fe661b4a76269f6d934c213c0e05f483ce3f79",
+      "actual": "dddc2ab72abc5f24b87aa329a7fe661b4a76269f6d934c213c0e05f483ce3f79",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/precheck.json",
+      "expected": "dddc2ab72abc5f24b87aa329a7fe661b4a76269f6d934c213c0e05f483ce3f79",
+      "actual": "dddc2ab72abc5f24b87aa329a7fe661b4a76269f6d934c213c0e05f483ce3f79",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/build-evidence.log",
+      "expected": "c06c625b83813cfe407eceacd38ae63d07399620617e64e72890e27ed120a14d",
+      "actual": "c06c625b83813cfe407eceacd38ae63d07399620617e64e72890e27ed120a14d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/cmd1-pytest.log",
+      "expected": "44285e377cc3baea2e4a1ac2ed7bf5db43c39ea0882b6bcd82dc53c226e7c5ab",
+      "actual": "44285e377cc3baea2e4a1ac2ed7bf5db43c39ea0882b6bcd82dc53c226e7c5ab",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/cmd2-architecture-verbose.log",
+      "expected": "1725548e77f05a3448e06d3c43969a49730c32154882c1c9dce015c9dc61111b",
+      "actual": "1725548e77f05a3448e06d3c43969a49730c32154882c1c9dce015c9dc61111b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/cmd2-architecture.log",
+      "expected": "7e3753da4ee45f20373df95f42dbebd835f694b18b721824de9e49c751fe3b18",
+      "actual": "7e3753da4ee45f20373df95f42dbebd835f694b18b721824de9e49c751fe3b18",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/frontend-e2e-list.log",
+      "expected": "b006d7e3a46956450acd75b0a29317910921ec32e6993f7834975e78e454b7b5",
+      "actual": "b006d7e3a46956450acd75b0a29317910921ec32e6993f7834975e78e454b7b5",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/frontend-test.log",
+      "expected": "7919999d310f187ca79d9f67c0cdd3a46085b9a1509cd986bd1c665977416587",
+      "actual": "7919999d310f187ca79d9f67c0cdd3a46085b9a1509cd986bd1c665977416587",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/gates-phase01-check-only.log",
+      "expected": "4fc749c8729c4863933281ef666dbcc41dbc1955f90d03ca4687e86d578c97c0",
+      "actual": "4fc749c8729c4863933281ef666dbcc41dbc1955f90d03ca4687e86d578c97c0",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/gates-phase02-check-only.log",
+      "expected": "cf122e658f2002a7bbb45f8f4a20de811fcabe684d8a7c5d4f8f80e862a151f1",
+      "actual": "cf122e658f2002a7bbb45f8f4a20de811fcabe684d8a7c5d4f8f80e862a151f1",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/gates-phase02-dryrun.log",
+      "expected": "8e1040918528563a3b6a995d687f31690bc865f26a008d580fde54fbfc387a88",
+      "actual": "8e1040918528563a3b6a995d687f31690bc865f26a008d580fde54fbfc387a88",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/gates-phase02-precheck-recognized.log",
+      "expected": "f30b950350914b1f662f26ba91cad7c6c2219bcf5d8d7babe7d3f7db02b3823c",
+      "actual": "f30b950350914b1f662f26ba91cad7c6c2219bcf5d8d7babe7d3f7db02b3823c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/lint-ruff-scoped.log",
+      "expected": "e7fe8d322f132c74fcf2de5832d2d1a60d5a5f6a9dac9f408f00e796a1354a57",
+      "actual": "e7fe8d322f132c74fcf2de5832d2d1a60d5a5f6a9dac9f408f00e796a1354a57",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/lint-ruff.log",
+      "expected": "9121be12439387c84314d80e4afc014a75ba795d27b69052df30afe47c22f64b",
+      "actual": "9121be12439387c84314d80e4afc014a75ba795d27b69052df30afe47c22f64b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/lock-check.log",
+      "expected": "e21423938558804db302ce2b674e64bbc53f7624c53db467c177f5b75c80bddb",
+      "actual": "e21423938558804db302ce2b674e64bbc53f7624c53db467c177f5b75c80bddb",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/ownership.log",
+      "expected": "3f900701d7efc1c8cfca28b8d19030f0534c1ef9fca3b58fec359ddb97e8f226",
+      "actual": "3f900701d7efc1c8cfca28b8d19030f0534c1ef9fca3b58fec359ddb97e8f226",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/probe-interfaces.log",
+      "expected": "32fe16f55f6bb2a8faefb74cf54468879cce558a64b7003b9e16e66d7737b10a",
+      "actual": "32fe16f55f6bb2a8faefb74cf54468879cce558a64b7003b9e16e66d7737b10a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/pytest-cache-attribution.log",
+      "expected": "2db351f58d26b1542bd9fda6828ce9066e6b90a26186ae171bdc0c37a01f8d5d",
+      "actual": "2db351f58d26b1542bd9fda6828ce9066e6b90a26186ae171bdc0c37a01f8d5d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/regression-pytest.log",
+      "expected": "8af88f21fe52ace4b6e9427d55adf425509cb219af345c6f19f178a5b28c775c",
+      "actual": "8af88f21fe52ace4b6e9427d55adf425509cb219af345c6f19f178a5b28c775c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/reverify-baseline-checks.log",
+      "expected": "092e1c49e3cdc8890f58a1115df7e40209d7d1962bf56c7401197f81bba97d60",
+      "actual": "092e1c49e3cdc8890f58a1115df7e40209d7d1962bf56c7401197f81bba97d60",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/reverify-cmd1-pytest.log",
+      "expected": "0191c8e2e843cbc414b0a53b911975e0bbebeb3901d0bc47ca730a56c56d356c",
+      "actual": "0191c8e2e843cbc414b0a53b911975e0bbebeb3901d0bc47ca730a56c56d356c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/reverify-cmd2-architecture.log",
+      "expected": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "actual": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/reverify-gates-phase02.log",
+      "expected": "d6fb398f20988b4b1c5c43907f4795f6363aa8803fe80a4430f4566eae1f9bdf",
+      "actual": "d6fb398f20988b4b1c5c43907f4795f6363aa8803fe80a4430f4566eae1f9bdf",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/reverify-regression.log",
+      "expected": "a7b7095197794a5ba496fffb503f148ca2b7aec10b7386106c310875c5812baa",
+      "actual": "a7b7095197794a5ba496fffb503f148ca2b7aec10b7386106c310875c5812baa",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/revision-volatility.log",
+      "expected": "c1c42025a1795e2ad85c8ad2c6ca178220d1e07ccbb2dc5952fe575ec1c5e7b4",
+      "actual": "c1c42025a1795e2ad85c8ad2c6ca178220d1e07ccbb2dc5952fe575ec1c5e7b4",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/secret-hygiene.log",
+      "expected": "977653bc41ced99931f9ab734d07e7644214492e4548cce3ad543c57436d2749",
+      "actual": "977653bc41ced99931f9ab734d07e7644214492e4548cce3ad543c57436d2749",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/security-injection-scan.log",
+      "expected": "cd9ded1f9515bae03c733bb2a4b15e81b313106c30c96f418542d7868c7d4d99",
+      "actual": "cd9ded1f9515bae03c733bb2a4b15e81b313106c30c96f418542d7868c7d4d99",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/self-staleness-attribution.log",
+      "expected": "681d69ef9367c60a7ab3b187d8a3870ba87920c049986ed3fe968ab61261cd74",
+      "actual": "681d69ef9367c60a7ab3b187d8a3870ba87920c049986ed3fe968ab61261cd74",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/self-staleness-experiment.log",
+      "expected": "3d731c175077a766a89ad8e25bd6e0cc79c6942ca865d688d62838bb1947742f",
+      "actual": "3d731c175077a766a89ad8e25bd6e0cc79c6942ca865d688d62838bb1947742f",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-02/zcode/logs/uv-sync.log",
+      "expected": "c040a918210e5e89bf1916b7e3249d3831775f016abd766b9afe51dc572e15ef",
+      "actual": "c040a918210e5e89bf1916b7e3249d3831775f016abd766b9afe51dc572e15ef",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/build-evidence.py",
+      "expected": "670501dd6d6bc9c4b5e393ed901623ebef0fbbf3e0e4bfa2784a7daaa3774df6",
+      "actual": "670501dd6d6bc9c4b5e393ed901623ebef0fbbf3e0e4bfa2784a7daaa3774df6",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/evidence.json",
+      "expected": "87061bab5405b058ba26439a681419a6c907fc4f568a053de1b6fd7d286be676",
+      "actual": "87061bab5405b058ba26439a681419a6c907fc4f568a053de1b6fd7d286be676",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/precheck.json",
+      "expected": "87061bab5405b058ba26439a681419a6c907fc4f568a053de1b6fd7d286be676",
+      "actual": "87061bab5405b058ba26439a681419a6c907fc4f568a053de1b6fd7d286be676",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/logs/baseline-checks.log",
+      "expected": "dd3c7b772f699616aa81af071d266ab49c794bf9e959810138582f33540a453c",
+      "actual": "dd3c7b772f699616aa81af071d266ab49c794bf9e959810138582f33540a453c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/logs/build-evidence.log",
+      "expected": "81c6d2d9177433087c18d6798d12583f678fd94189305db018260f965929b6d2",
+      "actual": "81c6d2d9177433087c18d6798d12583f678fd94189305db018260f965929b6d2",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/logs/cmd1-pytest.log",
+      "expected": "2e9dc1cc7d488898f9f852069755455c8654865d2587309df7c82c894cdb660a",
+      "actual": "2e9dc1cc7d488898f9f852069755455c8654865d2587309df7c82c894cdb660a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/logs/cmd2-architecture.log",
+      "expected": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "actual": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/logs/gates-phase02-sandbox.log",
+      "expected": "173b49adcb523ae36bae2e444930410c6ac10fe05aac25269ba8455f0ba4cb05",
+      "actual": "173b49adcb523ae36bae2e444930410c6ac10fe05aac25269ba8455f0ba4cb05",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/logs/probe-interfaces.log",
+      "expected": "996d6e4a21841af1e101db6e881ba548dde1ce5110f73719ba4a9bcbf15f8de3",
+      "actual": "996d6e4a21841af1e101db6e881ba548dde1ce5110f73719ba4a9bcbf15f8de3",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-03/zcode/logs/regression-pytest.log",
+      "expected": "29f8959b0f93af429cb35bb9822e53a897a0c012f960899c1cf82eca046fc423",
+      "actual": "29f8959b0f93af429cb35bb9822e53a897a0c012f960899c1cf82eca046fc423",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/build-evidence.py",
+      "expected": "c37e68a8b840d9e9351a2c959b5f4e08d6ed28f8974409b28fbd575d587c0aa3",
+      "actual": "c37e68a8b840d9e9351a2c959b5f4e08d6ed28f8974409b28fbd575d587c0aa3",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/evidence.json",
+      "expected": "fe6f3ff967211a8f54a97bdc10b29977e0517d23ce9e360e138568a06745231b",
+      "actual": "fe6f3ff967211a8f54a97bdc10b29977e0517d23ce9e360e138568a06745231b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/precheck.json",
+      "expected": "fe6f3ff967211a8f54a97bdc10b29977e0517d23ce9e360e138568a06745231b",
+      "actual": "fe6f3ff967211a8f54a97bdc10b29977e0517d23ce9e360e138568a06745231b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/logs/baseline-checks.log",
+      "expected": "4149bc947e664234b9dfb6e19937db5d9797bfafa05fae63b20f534503c26327",
+      "actual": "4149bc947e664234b9dfb6e19937db5d9797bfafa05fae63b20f534503c26327",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/logs/build-evidence.log",
+      "expected": "40f577ab33112467f777c272cc6697d54e3ae5a0cfbd0f9ceb03fe96ebea053b",
+      "actual": "40f577ab33112467f777c272cc6697d54e3ae5a0cfbd0f9ceb03fe96ebea053b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/logs/cmd1-pytest.log",
+      "expected": "5c56bed78b344f5fd07b5fda40f5a3e0c85e22630d77c6f4b4e4b00dbfeada44",
+      "actual": "5c56bed78b344f5fd07b5fda40f5a3e0c85e22630d77c6f4b4e4b00dbfeada44",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/logs/cmd2-architecture.log",
+      "expected": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "actual": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/logs/gates-phase02-sandbox.log",
+      "expected": "62a07d5ff0ec226c47c66a01066a88190058eb480ba810d1f4c20edaa70bc9ed",
+      "actual": "62a07d5ff0ec226c47c66a01066a88190058eb480ba810d1f4c20edaa70bc9ed",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/logs/probe-interfaces.log",
+      "expected": "72c8eadcb3fa115acb9c7f2b8a2f61bcc93be19ec5d10907efb59b80895a014c",
+      "actual": "72c8eadcb3fa115acb9c7f2b8a2f61bcc93be19ec5d10907efb59b80895a014c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-04/zcode/logs/regression-pytest.log",
+      "expected": "f86aad2d38f31e6d110a5bdb4670972fd4da8608fb741af5542dc0e16fcca2a9",
+      "actual": "f86aad2d38f31e6d110a5bdb4670972fd4da8608fb741af5542dc0e16fcca2a9",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/dsh/evidence.json",
+      "expected": "1d99c996ca9b1c0d06338e1bec1c2d4983d93363612bc72ed6398fe45956d736",
+      "actual": "1d99c996ca9b1c0d06338e1bec1c2d4983d93363612bc72ed6398fe45956d736",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/build-evidence.py",
+      "expected": "a60dd2dfdf3f94950d4d9bbd3e1bdb0c0fab4910f2959033b4ad7fcffc78e6fe",
+      "actual": "a60dd2dfdf3f94950d4d9bbd3e1bdb0c0fab4910f2959033b4ad7fcffc78e6fe",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/evidence.json",
+      "expected": "befba304a189174fa938ca7795728585e593b43430869e70a2a384a9288cf798",
+      "actual": "befba304a189174fa938ca7795728585e593b43430869e70a2a384a9288cf798",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/precheck.json",
+      "expected": "befba304a189174fa938ca7795728585e593b43430869e70a2a384a9288cf798",
+      "actual": "befba304a189174fa938ca7795728585e593b43430869e70a2a384a9288cf798",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/dsh/logs/cmd1-pytest.log",
+      "expected": "6b6bb15e4ceba497046a5ed0abdd52d5fb1672302a214ba0f9c548a79af7eea3",
+      "actual": "6b6bb15e4ceba497046a5ed0abdd52d5fb1672302a214ba0f9c548a79af7eea3",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/dsh/logs/cmd2-architecture.log",
+      "expected": "851bb7bdbfc5c63a4b9c9eb1a004e6d8f019267a3d9a44cc2ced83aa404b73e2",
+      "actual": "851bb7bdbfc5c63a4b9c9eb1a004e6d8f019267a3d9a44cc2ced83aa404b73e2",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/dsh/logs/gates-probe-phase02-phase03.log",
+      "expected": "2586056682397a938768a88577a7e99bd0909116201cc8c8830e9511847aa6ae",
+      "actual": "2586056682397a938768a88577a7e99bd0909116201cc8c8830e9511847aa6ae",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/logs/baseline-checks.log",
+      "expected": "58a1d0e99579751e1e9752fd2b2df7d1f905aa843495fdc325762098397e87bd",
+      "actual": "58a1d0e99579751e1e9752fd2b2df7d1f905aa843495fdc325762098397e87bd",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/logs/build-evidence.log",
+      "expected": "b266ef3b01106b35c41c5a4119025999a595e76aa4a993b9737b7ccf76f57a5d",
+      "actual": "b266ef3b01106b35c41c5a4119025999a595e76aa4a993b9737b7ccf76f57a5d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/logs/cmd1-pytest.log",
+      "expected": "27526f7f4a139ac5e90dd0e7f0e75ee32f65dc2a9e3725165a4169ea76f7e724",
+      "actual": "27526f7f4a139ac5e90dd0e7f0e75ee32f65dc2a9e3725165a4169ea76f7e724",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/logs/cmd2-architecture.log",
+      "expected": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "actual": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/logs/dsh-evidence-integrity.log",
+      "expected": "be29a5c554628dd34559f56fc0ea5903f7f81599354b0b91f282eb34cf9b2453",
+      "actual": "be29a5c554628dd34559f56fc0ea5903f7f81599354b0b91f282eb34cf9b2453",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/logs/gates-phase03-sandbox.log",
+      "expected": "acbc73d35b94836ac3bbe875f3062ac058a85a02b08e86c43c76ad76659d1613",
+      "actual": "acbc73d35b94836ac3bbe875f3062ac058a85a02b08e86c43c76ad76659d1613",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-01/zcode/logs/regression-pytest.log",
+      "expected": "9925cecd7350f5b3279797f0d7407d0036e28fa047227a34afa471df89f6d629",
+      "actual": "9925cecd7350f5b3279797f0d7407d0036e28fa047227a34afa471df89f6d629",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/dsh/evidence.json",
+      "expected": "58078810c39af9d4f06797e3e13871cf6f6d3c6de52c206ee3eae6faf99fb1b8",
+      "actual": "58078810c39af9d4f06797e3e13871cf6f6d3c6de52c206ee3eae6faf99fb1b8",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/build-evidence.py",
+      "expected": "7d210e159edc145627a39fc4ec5bf5e08da906902f22dd652348c7ea8c15787c",
+      "actual": "7d210e159edc145627a39fc4ec5bf5e08da906902f22dd652348c7ea8c15787c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/evidence.json",
+      "expected": "68e85cac8d9dd58e85379ba627afcca6cf33b7b3a7c73412e0203499fa3b1ac4",
+      "actual": "68e85cac8d9dd58e85379ba627afcca6cf33b7b3a7c73412e0203499fa3b1ac4",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/precheck.json",
+      "expected": "68e85cac8d9dd58e85379ba627afcca6cf33b7b3a7c73412e0203499fa3b1ac4",
+      "actual": "68e85cac8d9dd58e85379ba627afcca6cf33b7b3a7c73412e0203499fa3b1ac4",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/dsh/logs/cmd1-pytest.log",
+      "expected": "db560502892033365e221ff6b0092a9d4fdd0f8878941d500edcc2a81196034e",
+      "actual": "db560502892033365e221ff6b0092a9d4fdd0f8878941d500edcc2a81196034e",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/dsh/logs/cmd2-architecture.log",
+      "expected": "753c397bdc2faf3b5d97a7df32ddcf53a93160fb0f450913b1a46403f4d263ac",
+      "actual": "753c397bdc2faf3b5d97a7df32ddcf53a93160fb0f450913b1a46403f4d263ac",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/dsh/logs/gates-probe-phase02-phase03.log",
+      "expected": "dd6bb0614d28e3ffd4e004772d88ba5de786a3c6819d6267175801b69f76d12b",
+      "actual": "dd6bb0614d28e3ffd4e004772d88ba5de786a3c6819d6267175801b69f76d12b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/logs/baseline-checks.log",
+      "expected": "66fa1b4f248fa59b5048132d516413ce9f9ba6eefad33d212db519a120bef7f4",
+      "actual": "66fa1b4f248fa59b5048132d516413ce9f9ba6eefad33d212db519a120bef7f4",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/logs/build-evidence.log",
+      "expected": "45273fbe45d6c52d25d33947d4c4884ca4fe14f9c2ec8ef40add68593561b289",
+      "actual": "45273fbe45d6c52d25d33947d4c4884ca4fe14f9c2ec8ef40add68593561b289",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/logs/cmd1-pytest.log",
+      "expected": "f811e89a66bf85241f3ad8888705d626e1fde8357d6bcd16728ca67a59bd0b4a",
+      "actual": "f811e89a66bf85241f3ad8888705d626e1fde8357d6bcd16728ca67a59bd0b4a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/logs/cmd2-architecture.log",
+      "expected": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "actual": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/logs/dsh-evidence-integrity.log",
+      "expected": "db503475d8465dae4730fb5cadd11014b8fad2926ab29c922284ef6d64a9a51b",
+      "actual": "db503475d8465dae4730fb5cadd11014b8fad2926ab29c922284ef6d64a9a51b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/logs/gates-phase03-sandbox.log",
+      "expected": "60bb851b9d6862185af58fca1b1dd64ea95da419fac41107d46e399180c80810",
+      "actual": "60bb851b9d6862185af58fca1b1dd64ea95da419fac41107d46e399180c80810",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-02/zcode/logs/regression-pytest.log",
+      "expected": "6644d0aaec96e5b45e2f40a509e0a836c47e04f1861eeb58019d2e228d81cdd1",
+      "actual": "6644d0aaec96e5b45e2f40a509e0a836c47e04f1861eeb58019d2e228d81cdd1",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/dsh/evidence.json",
+      "expected": "ae765a710bafacf8452eb3b22857d6d3cf4bc08a8206c4971f745a182a74b7b7",
+      "actual": "ae765a710bafacf8452eb3b22857d6d3cf4bc08a8206c4971f745a182a74b7b7",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/build-evidence.py",
+      "expected": "e673e5f756636e31dfb6cf6add800a6b82cfdfc0d2d973fba22d992684accbec",
+      "actual": "e673e5f756636e31dfb6cf6add800a6b82cfdfc0d2d973fba22d992684accbec",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/evidence.json",
+      "expected": "5a4253823da0e35b68bb7aa76ef7a747761fccdf7c02f499777bc0a4cca4b5a6",
+      "actual": "5a4253823da0e35b68bb7aa76ef7a747761fccdf7c02f499777bc0a4cca4b5a6",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/precheck.json",
+      "expected": "5a4253823da0e35b68bb7aa76ef7a747761fccdf7c02f499777bc0a4cca4b5a6",
+      "actual": "5a4253823da0e35b68bb7aa76ef7a747761fccdf7c02f499777bc0a4cca4b5a6",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/probe-architecture-coverage.py",
+      "expected": "d96df693cee3b69b98a35af86226d0877cb380e41095c4516ca9adeb772fedf7",
+      "actual": "d96df693cee3b69b98a35af86226d0877cb380e41095c4516ca9adeb772fedf7",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/dsh/logs/cmd1-pytest.log",
+      "expected": "cc1bf8ca150813f8d055df509e6849def248d8c122103097fd1d0bf8958533e3",
+      "actual": "cc1bf8ca150813f8d055df509e6849def248d8c122103097fd1d0bf8958533e3",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/dsh/logs/cmd2-architecture.log",
+      "expected": "5c45f26d87d722546e81ff07a249c98fce200f26a9e4831c5424078801e011fe",
+      "actual": "5c45f26d87d722546e81ff07a249c98fce200f26a9e4831c5424078801e011fe",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/dsh/logs/gates-probe-phase02-phase03.log",
+      "expected": "74c191f0d489145885e7bc50b96a13a89c8658c5e5c646a11c64dcc575eb393a",
+      "actual": "74c191f0d489145885e7bc50b96a13a89c8658c5e5c646a11c64dcc575eb393a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/logs/architecture-coverage-probe.log",
+      "expected": "10cd784afc1692f1767ad8448a626242fd9c84d2efe921a8b7f7f96810ceec67",
+      "actual": "10cd784afc1692f1767ad8448a626242fd9c84d2efe921a8b7f7f96810ceec67",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/logs/baseline-checks.log",
+      "expected": "4ec4470a4de81c86cbe5a2c9216072462c2a1dc35a8e8686f49fef6b5feb4336",
+      "actual": "4ec4470a4de81c86cbe5a2c9216072462c2a1dc35a8e8686f49fef6b5feb4336",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/logs/build-evidence.log",
+      "expected": "3f5bff5e97ca0c4d839cd32d7174940f8e74efd9c3969b25d4ab3100790ea14d",
+      "actual": "3f5bff5e97ca0c4d839cd32d7174940f8e74efd9c3969b25d4ab3100790ea14d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/logs/cmd1-pytest.log",
+      "expected": "fdd83d76bb0a93b36f712c142aea09ec1a12319c7f05d86d4f56208e84aa18aa",
+      "actual": "fdd83d76bb0a93b36f712c142aea09ec1a12319c7f05d86d4f56208e84aa18aa",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/logs/cmd2-architecture.log",
+      "expected": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "actual": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/logs/dsh-evidence-integrity.log",
+      "expected": "e3e6ac01be0a17f63a52277531d435b722612ec0da585072504fc93b864f5f46",
+      "actual": "e3e6ac01be0a17f63a52277531d435b722612ec0da585072504fc93b864f5f46",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/logs/gates-phase03-sandbox.log",
+      "expected": "5964ec321159caf3a5a45b06abd49cac3229f31a99c8db87962df6418001de20",
+      "actual": "5964ec321159caf3a5a45b06abd49cac3229f31a99c8db87962df6418001de20",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-03/zcode/logs/regression-pytest.log",
+      "expected": "aca5f9b389971c16b99fc78ee1e791342d88771292ac541642ba3a6ea42d6b36",
+      "actual": "aca5f9b389971c16b99fc78ee1e791342d88771292ac541642ba3a6ea42d6b36",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/dsh/evidence.json",
+      "expected": "87043018ac1a916e8dc18d4e088dddd1a6b14285dc85bde74b6df0e6ce6eb0df",
+      "actual": "87043018ac1a916e8dc18d4e088dddd1a6b14285dc85bde74b6df0e6ce6eb0df",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/build-evidence.py",
+      "expected": "f543d3cfc989b7c0aec402d792144fbaeead6fd19fb092a26a4e3ba1a6706a61",
+      "actual": "f543d3cfc989b7c0aec402d792144fbaeead6fd19fb092a26a4e3ba1a6706a61",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/evidence.json",
+      "expected": "036c4f80ff71fb78e3faeaf23cdbb3e1e03fa6f5db1cfa3370799aa57641aff1",
+      "actual": "036c4f80ff71fb78e3faeaf23cdbb3e1e03fa6f5db1cfa3370799aa57641aff1",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/precheck.json",
+      "expected": "036c4f80ff71fb78e3faeaf23cdbb3e1e03fa6f5db1cfa3370799aa57641aff1",
+      "actual": "036c4f80ff71fb78e3faeaf23cdbb3e1e03fa6f5db1cfa3370799aa57641aff1",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/dsh/logs/cmd1-pytest.log",
+      "expected": "294b84dd7001ed17492b9b952029104c1095c091c90250430fae6f0077cb72e0",
+      "actual": "294b84dd7001ed17492b9b952029104c1095c091c90250430fae6f0077cb72e0",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/dsh/logs/cmd2-architecture.log",
+      "expected": "736db1eeca952654bf753ab2f89084a5c962eeda2d73f04df8d9a07a0fb59d64",
+      "actual": "736db1eeca952654bf753ab2f89084a5c962eeda2d73f04df8d9a07a0fb59d64",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/dsh/logs/gates-probe-phase02-phase03.log",
+      "expected": "6b9c9897bdeb7faba5f72ed5143422ea0bbf56b11d199dcf4a64ceec3bf2053c",
+      "actual": "6b9c9897bdeb7faba5f72ed5143422ea0bbf56b11d199dcf4a64ceec3bf2053c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/architecture-coverage-reverify.log",
+      "expected": "10cd784afc1692f1767ad8448a626242fd9c84d2efe921a8b7f7f96810ceec67",
+      "actual": "10cd784afc1692f1767ad8448a626242fd9c84d2efe921a8b7f7f96810ceec67",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/baseline-checks.log",
+      "expected": "33ea5939327134cb50b03efde514e07862f39bd2a439521e8532010ffbf23666",
+      "actual": "33ea5939327134cb50b03efde514e07862f39bd2a439521e8532010ffbf23666",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/build-evidence.log",
+      "expected": "7e5b16e7ecad0bb278cf2b7245df28fdc849a851fe54cedb1852a68a11d30a0a",
+      "actual": "7e5b16e7ecad0bb278cf2b7245df28fdc849a851fe54cedb1852a68a11d30a0a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/cmd1-pytest.log",
+      "expected": "4faf8c563eab3ff57d2788a2a2e94d4f9de49bb4ca2bb889f0e513ce74c854b5",
+      "actual": "4faf8c563eab3ff57d2788a2a2e94d4f9de49bb4ca2bb889f0e513ce74c854b5",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/cmd2-architecture.log",
+      "expected": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "actual": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/contract-citation-check.log",
+      "expected": "9a8d96bd59ca4854e4611d5a2761ffafb7a40e9b84027db7b4d88023979d3b88",
+      "actual": "9a8d96bd59ca4854e4611d5a2761ffafb7a40e9b84027db7b4d88023979d3b88",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/dsh-evidence-integrity.log",
+      "expected": "d8aa4885fa08659fea338e8187bbe508be1aa3de1f7a0514dd96dd00b9ff9f2c",
+      "actual": "d8aa4885fa08659fea338e8187bbe508be1aa3de1f7a0514dd96dd00b9ff9f2c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/g01-claim-verification.log",
+      "expected": "be85064da798105c24710aa92fa264dc383f3736db474b447dc20ff3aa3e9778",
+      "actual": "be85064da798105c24710aa92fa264dc383f3736db474b447dc20ff3aa3e9778",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/g01-diagnostic.log",
+      "expected": "6cdcd1af8c6db39743f0529ba77b83f1439c1e32b7c798dcf3d60629dab44448",
+      "actual": "6cdcd1af8c6db39743f0529ba77b83f1439c1e32b7c798dcf3d60629dab44448",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/gates-phase03-sandbox.log",
+      "expected": "5ec6d81aeaa59bde8cc923c20112f7a60320d647a0b09099e82384e51d8d9623",
+      "actual": "5ec6d81aeaa59bde8cc923c20112f7a60320d647a0b09099e82384e51d8d9623",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P03-04/zcode/logs/regression-pytest.log",
+      "expected": "808ad9169cd277df9649f223be07eb27e87ef76705465ce3fe06ef947994fb1c",
+      "actual": "808ad9169cd277df9649f223be07eb27e87ef76705465ce3fe06ef947994fb1c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/dsh/evidence.json",
+      "expected": "1bd668e74d7b2835e90f4791b21cc7c892687dff059a93ea12e653336f38c4de",
+      "actual": "1bd668e74d7b2835e90f4791b21cc7c892687dff059a93ea12e653336f38c4de",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/zcode/build-evidence.py",
+      "expected": "f468c759ea12de796bae1f9a30857a7d21b60023e2323f2667425cb92f7fb0bc",
+      "actual": "f468c759ea12de796bae1f9a30857a7d21b60023e2323f2667425cb92f7fb0bc",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/zcode/evidence.json",
+      "expected": "c76f7a79bf2fd7ed643b2911b649823557d1f995f1a8464d7904fc7db1845e31",
+      "actual": "c76f7a79bf2fd7ed643b2911b649823557d1f995f1a8464d7904fc7db1845e31",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/zcode/precheck.json",
+      "expected": "c76f7a79bf2fd7ed643b2911b649823557d1f995f1a8464d7904fc7db1845e31",
+      "actual": "c76f7a79bf2fd7ed643b2911b649823557d1f995f1a8464d7904fc7db1845e31",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/dsh/logs/cmd1-pytest.log",
+      "expected": "1eceb4c7a8a0fab86f3f4be1782c8f815b15d2131352bc134ae4494fc872e870",
+      "actual": "1eceb4c7a8a0fab86f3f4be1782c8f815b15d2131352bc134ae4494fc872e870",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/dsh/logs/cmd2-architecture.log",
+      "expected": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "actual": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/dsh/logs/gates-probe-phase03-phase04.log",
+      "expected": "5eeaab8e9aee763ea9203260d31a66e7300877a6d10aa4af5b81f6e76f0a988b",
+      "actual": "5eeaab8e9aee763ea9203260d31a66e7300877a6d10aa4af5b81f6e76f0a988b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/dsh/logs/r2-cmd1-pytest.log",
+      "expected": "c9072ed55977ad649c9e2f121ed7c166602657c2c33b1ad8b8cc293d10e9404b",
+      "actual": "c9072ed55977ad649c9e2f121ed7c166602657c2c33b1ad8b8cc293d10e9404b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/dsh/logs/r2-cmd2-architecture.log",
+      "expected": "bd2730296fb7a372ef74de1a7a88eb0a0ba4c3063b40020f1acf92322f4acc31",
+      "actual": "bd2730296fb7a372ef74de1a7a88eb0a0ba4c3063b40020f1acf92322f4acc31",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/dsh/logs/r2-gates-probe-phase03.log",
+      "expected": "00ead6ec74c2df9d3a303377ed73e958a8179464e252604ffd7c67fe5388df72",
+      "actual": "00ead6ec74c2df9d3a303377ed73e958a8179464e252604ffd7c67fe5388df72",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/dsh/logs/r2-gates-probe-phase04.log",
+      "expected": "aba2acaf688dccb4cf63d90c7e44c825ea828ed14ac052d2f46c1b521368ee22",
+      "actual": "aba2acaf688dccb4cf63d90c7e44c825ea828ed14ac052d2f46c1b521368ee22",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/zcode/logs/build-evidence.log",
+      "expected": "88edfcb550a3d542c9af06a361311ef1906715f0658bbbee0053f0bb7c52ddac",
+      "actual": "88edfcb550a3d542c9af06a361311ef1906715f0658bbbee0053f0bb7c52ddac",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/zcode/logs/cmd1-pytest.log",
+      "expected": "1bfeade4ad3afce10c7d7f9732636c7cb3c6029818b33fd647b7b61c2068d5fc",
+      "actual": "1bfeade4ad3afce10c7d7f9732636c7cb3c6029818b33fd647b7b61c2068d5fc",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/zcode/logs/cmd2-architecture.log",
+      "expected": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "actual": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/zcode/logs/gates-probe-phase04.log",
+      "expected": "a9b871365e29cfc4c081b5e4511f40b5310e423f243a190d961a786b9d36a336",
+      "actual": "a9b871365e29cfc4c081b5e4511f40b5310e423f243a190d961a786b9d36a336",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-01/zcode/logs/regression-full-pytest.log",
+      "expected": "24393cb0cda8ad49ea148c2f676cc3e1314d810edc452bab5d0dfade9c0a48be",
+      "actual": "24393cb0cda8ad49ea148c2f676cc3e1314d810edc452bab5d0dfade9c0a48be",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/dsh/evidence.json",
+      "expected": "64832b8558c8d102468a7ff9d919186803e990689e85368515f6143df0bb2e75",
+      "actual": "64832b8558c8d102468a7ff9d919186803e990689e85368515f6143df0bb2e75",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/zcode/build-evidence.py",
+      "expected": "578e5cef8b614bee4654606c57b22a2bc9840fdc972217f19b60a5729a4a279f",
+      "actual": "578e5cef8b614bee4654606c57b22a2bc9840fdc972217f19b60a5729a4a279f",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/zcode/evidence.json",
+      "expected": "282bcb6304dde85e184da02436ed8e60103f73b4563821bc6118290145ebd989",
+      "actual": "282bcb6304dde85e184da02436ed8e60103f73b4563821bc6118290145ebd989",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/zcode/precheck.json",
+      "expected": "282bcb6304dde85e184da02436ed8e60103f73b4563821bc6118290145ebd989",
+      "actual": "282bcb6304dde85e184da02436ed8e60103f73b4563821bc6118290145ebd989",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/dsh/logs/cmd1-pytest.log",
+      "expected": "f6df96e9088ca2987aae126446c193cf8826e525ca7494b93ce1643c72769545",
+      "actual": "f6df96e9088ca2987aae126446c193cf8826e525ca7494b93ce1643c72769545",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/dsh/logs/cmd2-architecture.log",
+      "expected": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "actual": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/dsh/logs/gates-probe-phase04.log",
+      "expected": "37dbe3e0b9a287fd848eadb281baefc28c7b600d5e6b6f024d7e63744277aebf",
+      "actual": "37dbe3e0b9a287fd848eadb281baefc28c7b600d5e6b6f024d7e63744277aebf",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/zcode/logs/build-evidence.log",
+      "expected": "22f06f4ac9c2689101d586ab9b83877f5d7e5f3ba851c78688516b80da2439e0",
+      "actual": "22f06f4ac9c2689101d586ab9b83877f5d7e5f3ba851c78688516b80da2439e0",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/zcode/logs/cmd1-pytest.log",
+      "expected": "1474146190df74fd230e358184f85b64e716a16c656c5c01a0383c0a8fba30b1",
+      "actual": "1474146190df74fd230e358184f85b64e716a16c656c5c01a0383c0a8fba30b1",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/zcode/logs/cmd2-architecture.log",
+      "expected": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "actual": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/zcode/logs/environment-probe.log",
+      "expected": "295d4f4a912ffa8bd9ab6cb71ab245f735aee5ed3d42806da6e174610fe0c319",
+      "actual": "295d4f4a912ffa8bd9ab6cb71ab245f735aee5ed3d42806da6e174610fe0c319",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/zcode/logs/gates-probe-phase04.log",
+      "expected": "8ed6e52417ada5717cbbfd7f83f384cbf1c3a455bc548cf6282b04d7f536aa5a",
+      "actual": "8ed6e52417ada5717cbbfd7f83f384cbf1c3a455bc548cf6282b04d7f536aa5a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P04-02/zcode/logs/regression-full-pytest.log",
+      "expected": "473fe4d6ad1e3206ab5ef543fb2da1da3a9d3e40a706000571b42fa481005cdb",
+      "actual": "473fe4d6ad1e3206ab5ef543fb2da1da3a9d3e40a706000571b42fa481005cdb",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/dsh/evidence.json",
+      "expected": "bb53bde6b108f0da488a7a5583a40433de204bfc6bf142b767bf1a234c5e01d9",
+      "actual": "bb53bde6b108f0da488a7a5583a40433de204bfc6bf142b767bf1a234c5e01d9",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/build-evidence.py",
+      "expected": "4a93c9359958523f919e9f3f41a83986beea67a045582e5022e9c1a7131e342a",
+      "actual": "4a93c9359958523f919e9f3f41a83986beea67a045582e5022e9c1a7131e342a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/evidence.json",
+      "expected": "acb7f27260a5ca51d7c323345ea9f1e56e2655fbfbcc6c5e3581a8052cf6da00",
+      "actual": "acb7f27260a5ca51d7c323345ea9f1e56e2655fbfbcc6c5e3581a8052cf6da00",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/precheck.json",
+      "expected": "acb7f27260a5ca51d7c323345ea9f1e56e2655fbfbcc6c5e3581a8052cf6da00",
+      "actual": "acb7f27260a5ca51d7c323345ea9f1e56e2655fbfbcc6c5e3581a8052cf6da00",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/dsh/logs/cmd1-pytest.log",
+      "expected": "7e07928652c56ed72111b5ff23b1936921e9ace2521a8715b0f48f731d1c096e",
+      "actual": "7e07928652c56ed72111b5ff23b1936921e9ace2521a8715b0f48f731d1c096e",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/dsh/logs/cmd2-architecture.log",
+      "expected": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "actual": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/dsh/logs/cmd3-export-contracts.log",
+      "expected": "afa41fd4b48f374ae106e241ccd6021e3ca138c733801ea78ec12b31dcc8a4a8",
+      "actual": "afa41fd4b48f374ae106e241ccd6021e3ca138c733801ea78ec12b31dcc8a4a8",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/dsh/logs/gates-probe-phase05.log",
+      "expected": "8cc48077149c5333c12fbfa48275f9db7caca8adb3af387570a3c26e0001411f",
+      "actual": "8cc48077149c5333c12fbfa48275f9db7caca8adb3af387570a3c26e0001411f",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/logs/build-evidence.log",
+      "expected": "60ca3ee6ae09f3757871b90ab9cad7ebebab263cfe1555453d2b5d8ebd4b97bd",
+      "actual": "60ca3ee6ae09f3757871b90ab9cad7ebebab263cfe1555453d2b5d8ebd4b97bd",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/logs/cmd1-pytest.log",
+      "expected": "2f48a2a6b98ec0a71becb26c97f8e2362b876c0d1a110f843691112d866db74a",
+      "actual": "2f48a2a6b98ec0a71becb26c97f8e2362b876c0d1a110f843691112d866db74a",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/logs/cmd2-architecture.log",
+      "expected": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "actual": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/logs/cmd3-export-contracts.log",
+      "expected": "8406918001f41ad1d0867c6d92ada65942c40a41c724037aa69dc3c59b76daca",
+      "actual": "8406918001f41ad1d0867c6d92ada65942c40a41c724037aa69dc3c59b76daca",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/logs/env-probe.log",
+      "expected": "48f3e0a7d846529947ff90299e07524067f80df8f1c20dd4d0bcdeca3ab20a97",
+      "actual": "48f3e0a7d846529947ff90299e07524067f80df8f1c20dd4d0bcdeca3ab20a97",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/logs/gates-probe-phase05.log",
+      "expected": "7cb4e15795da96293006668321abf43c574d5aede45e9caefc1e3728aa3ec366",
+      "actual": "7cb4e15795da96293006668321abf43c574d5aede45e9caefc1e3728aa3ec366",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-01/zcode/logs/regression-full-pytest.log",
+      "expected": "7e9fb2874338b79cf35e5f60ab8851f0fbe6c5166a56644d8810d990e433e960",
+      "actual": "7e9fb2874338b79cf35e5f60ab8851f0fbe6c5166a56644d8810d990e433e960",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/dsh/evidence.json",
+      "expected": "06686907c7721c21ae79cbef0a6c2276a4a74ab1c907f94dc7784672291313fa",
+      "actual": "06686907c7721c21ae79cbef0a6c2276a4a74ab1c907f94dc7784672291313fa",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/zcode/build-evidence.py",
+      "expected": "87a8d38eb71029eff637b01ffd5d450327cc15ce814b453adce4a5bfe07accc7",
+      "actual": "87a8d38eb71029eff637b01ffd5d450327cc15ce814b453adce4a5bfe07accc7",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/zcode/evidence.json",
+      "expected": "84f61da99e3d299047389c2846181293050bde1a476adfd3c48b0477a818318e",
+      "actual": "84f61da99e3d299047389c2846181293050bde1a476adfd3c48b0477a818318e",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/zcode/precheck.json",
+      "expected": "84f61da99e3d299047389c2846181293050bde1a476adfd3c48b0477a818318e",
+      "actual": "84f61da99e3d299047389c2846181293050bde1a476adfd3c48b0477a818318e",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/dsh/logs/cmd1-pytest.log",
+      "expected": "d098738f8d00dfbafc82f8e08dad888dc966b5f164ebbfc90d11b64c361eef2d",
+      "actual": "d098738f8d00dfbafc82f8e08dad888dc966b5f164ebbfc90d11b64c361eef2d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/dsh/logs/cmd2-architecture.log",
+      "expected": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "actual": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/dsh/logs/cmd3-export-contracts.log",
+      "expected": "afa41fd4b48f374ae106e241ccd6021e3ca138c733801ea78ec12b31dcc8a4a8",
+      "actual": "afa41fd4b48f374ae106e241ccd6021e3ca138c733801ea78ec12b31dcc8a4a8",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/dsh/logs/gates-probe-phase05.log",
+      "expected": "307293e8cbca98b18b3ba2cf4ff125c61463f7212dc4b5d4672db94c49c84a41",
+      "actual": "307293e8cbca98b18b3ba2cf4ff125c61463f7212dc4b5d4672db94c49c84a41",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/cmd1-pytest.log",
+      "expected": "2e6c2b692855319fecc946905d987d8b809ef8cb271c3f8b9cbc815538143496",
+      "actual": "2e6c2b692855319fecc946905d987d8b809ef8cb271c3f8b9cbc815538143496",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/cmd2-architecture.log",
+      "expected": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "actual": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/cmd3-export-contracts.log",
+      "expected": "8406918001f41ad1d0867c6d92ada65942c40a41c724037aa69dc3c59b76daca",
+      "actual": "8406918001f41ad1d0867c6d92ada65942c40a41c724037aa69dc3c59b76daca",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/env-probe.log",
+      "expected": "8360d8d92b7b3d303223fd068b472aa30ff6210507170568f2b775180c3e4679",
+      "actual": "8360d8d92b7b3d303223fd068b472aa30ff6210507170568f2b775180c3e4679",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/gates-probe-phase05.log",
+      "expected": "8b3674150bd4cebe97becd90299764ddb8de49fc153ea7165f6b6c50c26f4f29",
+      "actual": "8b3674150bd4cebe97becd90299764ddb8de49fc153ea7165f6b6c50c26f4f29",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/regression-full-pytest.log",
+      "expected": "7e9fb2874338b79cf35e5f60ab8851f0fbe6c5166a56644d8810d990e433e960",
+      "actual": "7e9fb2874338b79cf35e5f60ab8851f0fbe6c5166a56644d8810d990e433e960",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/dsh/evidence.json",
+      "expected": "682d11306b511e1abbe395a006cf1ab487334726ea0af5ecb84d2f1927083a6b",
+      "actual": "682d11306b511e1abbe395a006cf1ab487334726ea0af5ecb84d2f1927083a6b",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/zcode/build-evidence.py",
+      "expected": "460853ff83c3b92f5f68cdba4a9051e922bfda1f90a0494473aa0ddb6963bca8",
+      "actual": "460853ff83c3b92f5f68cdba4a9051e922bfda1f90a0494473aa0ddb6963bca8",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/zcode/evidence.json",
+      "expected": "33d2809a55d2c2c09a3f494d1623cb9ce443907ca3a2a95d9acdea4fb3360e39",
+      "actual": "33d2809a55d2c2c09a3f494d1623cb9ce443907ca3a2a95d9acdea4fb3360e39",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/zcode/precheck.json",
+      "expected": "33d2809a55d2c2c09a3f494d1623cb9ce443907ca3a2a95d9acdea4fb3360e39",
+      "actual": "33d2809a55d2c2c09a3f494d1623cb9ce443907ca3a2a95d9acdea4fb3360e39",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/dsh/logs/cmd1-pytest.log",
+      "expected": "25f2d0c3c220826022e2b96de6ef874aea0f1bfa82e2171de38480daffdd4710",
+      "actual": "25f2d0c3c220826022e2b96de6ef874aea0f1bfa82e2171de38480daffdd4710",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/dsh/logs/cmd2-architecture.log",
+      "expected": "cabb9484368a603f7310b1a115a7405ec6fba8d4d64e0090acd37fa1ddd27b6e",
+      "actual": "cabb9484368a603f7310b1a115a7405ec6fba8d4d64e0090acd37fa1ddd27b6e",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/dsh/logs/cmd3-export-contracts.log",
+      "expected": "968035c6d4d9698dffd97a4300203823ecf7d9258dbaf1a12d5918b146bc787d",
+      "actual": "968035c6d4d9698dffd97a4300203823ecf7d9258dbaf1a12d5918b146bc787d",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/dsh/logs/env-probe-modules.log",
+      "expected": "7c701c088a9f26588e50794c80e2707cb755be322cd4ae153afe28b646afb734",
+      "actual": "7c701c088a9f26588e50794c80e2707cb755be322cd4ae153afe28b646afb734",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/dsh/logs/gates-probe-phase05.log",
+      "expected": "8e924b9e84ff7c894b090096b4089a03d37950514067cea22c7dd960fc821661",
+      "actual": "8e924b9e84ff7c894b090096b4089a03d37950514067cea22c7dd960fc821661",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/zcode/logs/cmd1-pytest.log",
+      "expected": "ed311be68a324652ea28390c712373ec0ee0a1ced82daa076f32d78c1a991ea2",
+      "actual": "ed311be68a324652ea28390c712373ec0ee0a1ced82daa076f32d78c1a991ea2",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/zcode/logs/cmd2-architecture.log",
+      "expected": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "actual": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/zcode/logs/cmd3-export-contracts.log",
+      "expected": "8406918001f41ad1d0867c6d92ada65942c40a41c724037aa69dc3c59b76daca",
+      "actual": "8406918001f41ad1d0867c6d92ada65942c40a41c724037aa69dc3c59b76daca",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/zcode/logs/env-probe.log",
+      "expected": "537ac2f368209fa5ec68cf706edae3db0a7d128f6479f6a3aaf294cd1478015e",
+      "actual": "537ac2f368209fa5ec68cf706edae3db0a7d128f6479f6a3aaf294cd1478015e",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/zcode/logs/gates-probe-phase05.log",
+      "expected": "4314214b22e2c8add7e7528b3f0a69b3f6dc1328521159a189e661f3c6e7f192",
+      "actual": "4314214b22e2c8add7e7528b3f0a69b3f6dc1328521159a189e661f3c6e7f192",
+      "passed": true
+    },
+    {
+      "path": "artifacts/handoffs/P05-03/zcode/logs/regression-full-pytest.log",
+      "expected": "7e9fb2874338b79cf35e5f60ab8851f0fbe6c5166a56644d8810d990e433e960",
+      "actual": "7e9fb2874338b79cf35e5f60ab8851f0fbe6c5166a56644d8810d990e433e960",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P01-01/dsh.md",
+      "expected": "4b24490d1904d06b7003e1b1598f7e4210765622cf3468bbff9f1f16326f417b",
+      "actual": "4b24490d1904d06b7003e1b1598f7e4210765622cf3468bbff9f1f16326f417b",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P01-01/zcode.md",
+      "expected": "3ff11f914eedb971a71f878644510b8866a7322cb400919b3708d9a8e01563c5",
+      "actual": "3ff11f914eedb971a71f878644510b8866a7322cb400919b3708d9a8e01563c5",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P01-02/dsh.md",
+      "expected": "5cb4862e8bbd37c7711c0edb1a2bac418eb7e171a142c8c0c8ef02e1f379684d",
+      "actual": "5cb4862e8bbd37c7711c0edb1a2bac418eb7e171a142c8c0c8ef02e1f379684d",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P01-03/dsh.md",
+      "expected": "d577e2118a2d98b0123b91d0099409e858b5961021b2e484918870b5f6e373e1",
+      "actual": "d577e2118a2d98b0123b91d0099409e858b5961021b2e484918870b5f6e373e1",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P02-02/zcode.md",
+      "expected": "bf1680b26838b0ed001a3af7f1c79cef81dbc8c428d6c8e11729b7673e690bb8",
+      "actual": "bf1680b26838b0ed001a3af7f1c79cef81dbc8c428d6c8e11729b7673e690bb8",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P02-03/zcode.md",
+      "expected": "0b283001940fe6a0ceb0d344f28d1325e5a823957487c7947bc3b0c8c86db275",
+      "actual": "0b283001940fe6a0ceb0d344f28d1325e5a823957487c7947bc3b0c8c86db275",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P02-04/zcode.md",
+      "expected": "09d7c65de7c994a3e02da9fd587b71b623350626b989df596bd33537db668361",
+      "actual": "09d7c65de7c994a3e02da9fd587b71b623350626b989df596bd33537db668361",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P03-01/dsh.md",
+      "expected": "d68f9eae194fc4825a340394e7e326caff467cf2f9c55aba07273f0ee5b2963e",
+      "actual": "d68f9eae194fc4825a340394e7e326caff467cf2f9c55aba07273f0ee5b2963e",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P03-01/zcode.md",
+      "expected": "361daf9b96201ec1e01de48e0f1930dda88455945fcf0e3d117f3c0cce7df2bd",
+      "actual": "361daf9b96201ec1e01de48e0f1930dda88455945fcf0e3d117f3c0cce7df2bd",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P03-02/dsh.md",
+      "expected": "9f42d1fcd2bc96b0e573e7dbca65cb0b63bfa8405207b450b93a2d1144d41f74",
+      "actual": "9f42d1fcd2bc96b0e573e7dbca65cb0b63bfa8405207b450b93a2d1144d41f74",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P03-02/zcode.md",
+      "expected": "3d7add980ab9fca432dcb3cdf1bc85bfc8a4b356e70d3573cff0b55537e7d4fe",
+      "actual": "3d7add980ab9fca432dcb3cdf1bc85bfc8a4b356e70d3573cff0b55537e7d4fe",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P03-03/dsh.md",
+      "expected": "985abdd2ac81131312d21c0c62e386dafb7bc322c29101966e8e4a852b4aee93",
+      "actual": "985abdd2ac81131312d21c0c62e386dafb7bc322c29101966e8e4a852b4aee93",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P03-03/zcode.md",
+      "expected": "3c751375e3508a1cb695d981aa87789e1ed8e1b855e58b119870355a0dd1fc1f",
+      "actual": "3c751375e3508a1cb695d981aa87789e1ed8e1b855e58b119870355a0dd1fc1f",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P03-04/dsh.md",
+      "expected": "1dab957883e9a8e0a5cc4874b0e5e0db6d67bfd7fe04f14f91aeb9208c8ad7f8",
+      "actual": "1dab957883e9a8e0a5cc4874b0e5e0db6d67bfd7fe04f14f91aeb9208c8ad7f8",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P03-04/zcode.md",
+      "expected": "7d47610a28a3d5c3e96cc33d246edd334e5a68e39857a352e48aafe92cdf0cff",
+      "actual": "7d47610a28a3d5c3e96cc33d246edd334e5a68e39857a352e48aafe92cdf0cff",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P04-01/dsh.md",
+      "expected": "b08ae8506659d3cb2748e311aacd708509972b6a94f617b02a0e94d6fc1299ab",
+      "actual": "b08ae8506659d3cb2748e311aacd708509972b6a94f617b02a0e94d6fc1299ab",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P04-01/zcode.md",
+      "expected": "76e8b3f38e37f830fb443d861f95be1dff8ff214a69f359043958ae783a80884",
+      "actual": "76e8b3f38e37f830fb443d861f95be1dff8ff214a69f359043958ae783a80884",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P04-02/dsh.md",
+      "expected": "755cfa103a41f5f79473b21f11c353038f19c17f9f427f9599c27fca5c59920b",
+      "actual": "755cfa103a41f5f79473b21f11c353038f19c17f9f427f9599c27fca5c59920b",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P04-02/zcode.md",
+      "expected": "9274b5beeab146c35d351208f9e9f423e927e00ec8d02af3160386098bf96878",
+      "actual": "9274b5beeab146c35d351208f9e9f423e927e00ec8d02af3160386098bf96878",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P05-01/dsh.md",
+      "expected": "7450fd2b1d476f2a851f40334ebc90ae19240b396761945f62cf864002cfadd0",
+      "actual": "7450fd2b1d476f2a851f40334ebc90ae19240b396761945f62cf864002cfadd0",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P05-01/zcode.md",
+      "expected": "fb38c3bca3f612dfb6cbeb2df7ce8e5c1c1f8751e639655e3416dcac1b577f58",
+      "actual": "fb38c3bca3f612dfb6cbeb2df7ce8e5c1c1f8751e639655e3416dcac1b577f58",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P05-02/dsh.md",
+      "expected": "4dcd789f21b1e32e47284087a6dce5469edc243d6c41c6f9ebdfb51408fbf09b",
+      "actual": "4dcd789f21b1e32e47284087a6dce5469edc243d6c41c6f9ebdfb51408fbf09b",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P05-02/zcode.md",
+      "expected": "db1c8f2d8f4154d3bd2378773b18e8bd4e264e9148d439358a06a219bd86b5a9",
+      "actual": "db1c8f2d8f4154d3bd2378773b18e8bd4e264e9148d439358a06a219bd86b5a9",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P05-03/dsh.md",
+      "expected": "94b0fa36ff91209eea597247ebaa21e93ff7a79c192e02a0b3f5ba1d74c64744",
+      "actual": "94b0fa36ff91209eea597247ebaa21e93ff7a79c192e02a0b3f5ba1d74c64744",
+      "passed": true
+    },
+    {
+      "path": "docs/handoffs/P05-03/zcode.md",
+      "expected": "77ade7e05d39300774ac53768a42d59ad815844fba3f5ccda6a41bae0226386e",
+      "actual": "77ade7e05d39300774ac53768a42d59ad815844fba3f5ccda6a41bae0226386e",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.json",
+      "expected": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "actual": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.md",
+      "expected": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "actual": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "passed": true
+    },
+    {
+      "path": "OWNERSHIP.json",
+      "expected": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+      "actual": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+      "passed": true
+    },
+    {
+      "path": "scripts/gates.py",
+      "expected": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+      "actual": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+      "passed": true
+    }
+  ],
+  "scope_hash_verified": true,
+  "correction_scope_hash_verified": true
+}

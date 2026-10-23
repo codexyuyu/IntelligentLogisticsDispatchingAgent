@@ -1,0 +1,2202 @@
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "pytest", "tests/unit", "tests/integration", "-q"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:29:52.524077+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+...............................................EEEEEEE.EEEEEEEEEEEEEEEEE [ 31%]
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE.........EE......................... [ 63%]
+...........................EEEEE................EEEEEEEEEEEEEEEEE....... [ 95%]
+.....EEE..                                                               [100%]
+=================================== ERRORS ====================================
+_ ERROR at setup of test_resolve_tool_prefers_path_and_falls_back_to_repo_bootstrap _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_resolve_tool_prefers_path_and_falls_back_to_repo_bootstrap>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+______________ ERROR at setup of test_non_zero_exit_is_rejected _______________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_non_zero_exit_is_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_failing_pytest_counts_are_rejected_even_with_exit_zero _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_failing_pytest_counts_are_rejected_even_with_exit_zero>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+___ ERROR at setup of test_zero_case_pytest_run_is_not_acceptance_evidence ____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_zero_case_pytest_run_is_not_acceptance_evidence>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+______________ ERROR at setup of test_skipped_tests_are_rejected ______________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_skipped_tests_are_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+________________ ERROR at setup of test_empty_log_is_rejected _________________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_empty_log_is_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____________ ERROR at setup of test_passing_command_is_accepted ______________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_passing_command_is_accepted>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____________ ERROR at setup of test_stale_input_hash_is_detected _____________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_stale_input_hash_is_detected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_________ ERROR at setup of test_codex_review_is_required_and_checked _________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_codex_review_is_required_and_checked>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_zcode_precheck_requires_status_task_gate_and_verifiable_inputs _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_zcode_precheck_requires_status_task_gate_and_verifiable_inputs>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+____ ERROR at setup of test_zcode_precheck_must_cover_the_required_inputs _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_zcode_precheck_must_cover_the_required_inputs>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+________ ERROR at setup of test_zcode_precheck_detects_drifted_inputs _________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_zcode_precheck_detects_drifted_inputs>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____ ERROR at setup of test_complete_previous_gate_records_are_accepted ______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_complete_previous_gate_records_are_accepted>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____ ERROR at setup of test_status_only_previous_gate_record_is_rejected _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_status_only_previous_gate_record_is_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_each_missing_previous_gate_element_is_rejected[broken0] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_each_missing_previous_gate_element_is_rejected[broken0]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_each_missing_previous_gate_element_is_rejected[broken1] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_each_missing_previous_gate_element_is_rejected[broken1]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_each_missing_previous_gate_element_is_rejected[broken2] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_each_missing_previous_gate_element_is_rejected[broken2]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_each_missing_previous_gate_element_is_rejected[broken3] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_each_missing_previous_gate_element_is_rejected[broken3]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_each_missing_previous_gate_element_is_rejected[broken4] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_each_missing_previous_gate_element_is_rejected[broken4]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_each_missing_previous_gate_element_is_rejected[broken5] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_each_missing_previous_gate_element_is_rejected[broken5]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_each_missing_previous_gate_element_is_rejected[broken6] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_each_missing_previous_gate_element_is_rejected[broken6]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_each_missing_previous_gate_element_is_rejected[broken7] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_each_missing_previous_gate_element_is_rejected[broken7]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_each_missing_previous_gate_element_is_rejected[broken8] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_each_missing_previous_gate_element_is_rejected[broken8]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_previous_gate_command_exit_codes_must_be_integer_zero[1] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_command_exit_codes_must_be_integer_zero[1]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_previous_gate_command_exit_codes_must_be_integer_zero[None] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_command_exit_codes_must_be_integer_zero[None]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_previous_gate_command_exit_codes_must_be_integer_zero[0.0] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_command_exit_codes_must_be_integer_zero[0.0]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_previous_gate_command_exit_codes_must_be_integer_zero[0] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_command_exit_codes_must_be_integer_zero[0]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_previous_gate_command_exit_codes_must_be_integer_zero[True] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_command_exit_codes_must_be_integer_zero[True]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_previous_gate_command_exit_codes_must_be_integer_zero[False] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_command_exit_codes_must_be_integer_zero[False]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_previous_gate_logs_must_exist_be_non_empty_and_match _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_logs_must_exist_be_non_empty_and_match>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+________ ERROR at setup of test_previous_gate_input_drift_is_rejected _________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_input_drift_is_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_previous_gate_dependency_hashes_must_match_and_be_acyclic _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_dependency_hashes_must_match_and_be_acyclic>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+__ ERROR at setup of test_relevant_file_manifest_is_the_documented_input_set __
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_relevant_file_manifest_is_the_documented_input_set>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+__ ERROR at setup of test_candidate_revision_follows_the_documented_formula ___
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_candidate_revision_follows_the_documented_formula>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_writing_evidence_reports_and_scratch_does_not_change_the_candidate _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_writing_evidence_reports_and_scratch_does_not_change_the_candidate>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[scripts/gates.py] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[scripts/gates.py]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[packages/domain/src/logistics_domain/__init__.py] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[packages/domain/src/logistics_domain/__init__.py]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[tests/unit/example.py] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[tests/unit/example.py]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[pyproject.toml] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[pyproject.toml]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[uv.lock] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[uv.lock]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[OWNERSHIP.json] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[OWNERSHIP.json]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[docs/architecture/DATA_CONTRACTS.md] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[docs/architecture/DATA_CONTRACTS.md]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[docs/plan/TASK_MANIFEST.json] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[docs/plan/TASK_MANIFEST.json]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[contracts/schemas.json] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[contracts/schemas.json]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[.github/workflows/ci.yml] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[.github/workflows/ci.yml]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_changing_a_relevant_input_changes_the_candidate[tools/ai_coding_plan/validate_plan.py] _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_changing_a_relevant_input_changes_the_candidate[tools/ai_coding_plan/validate_plan.py]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_______ ERROR at setup of test_explicit_revision_label_is_used_verbatim _______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_explicit_revision_label_is_used_verbatim>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+____ ERROR at setup of test_unknown_assertion_id_is_a_configuration_error _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_unknown_assertion_id_is_a_configuration_error>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_phase_zero_is_rejected_with_a_pointer_to_the_planner_checker _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_phase_zero_is_rejected_with_a_pointer_to_the_planner_checker>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_______ ERROR at setup of test_domain_importing_fastapi_is_a_violation ________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_domain_importing_fastapi_is_a_violation>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____ ERROR at setup of test_pure_domain_rejects_every_third_party_import _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_pure_domain_rejects_every_third_party_import>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____________ ERROR at setup of test_import_direction_is_enforced _____________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_import_direction_is_enforced>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+______ ERROR at setup of test_agent_layer_may_not_import_solver_engines _______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_agent_layer_may_not_import_solver_engines>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_______ ERROR at setup of test_legacy_and_teaching_imports_are_rejected _______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_legacy_and_teaching_imports_are_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+______ ERROR at setup of test_undeclared_third_party_import_is_rejected _______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_undeclared_third_party_import_is_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_______ ERROR at setup of test_declared_third_party_import_is_accepted ________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_declared_third_party_import_is_accepted>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+________ ERROR at setup of test_private_src_path_imports_are_rejected _________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_private_src_path_imports_are_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+___ ERROR at setup of test_pure_domain_member_may_not_declare_dependencies ____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_pure_domain_member_may_not_declare_dependencies>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+______ ERROR at setup of test_non_parsing_module_is_reported_not_ignored ______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_non_parsing_module_is_reported_not_ignored>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+____ ERROR at setup of test_regular_relative_import_stays_inside_the_layer ____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_regular_relative_import_stays_inside_the_layer>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_out_dir_keeps_a_sandbox_run_away_from_the_official_record _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_out_dir_keeps_a_sandbox_run_away_from_the_official_record>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_______ ERROR at setup of test_check_only_reports_a_non_official_record _______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_check_only_reports_a_non_official_record>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+__ ERROR at setup of test_checker_detects_a_legacy_import_in_a_sandbox_tree ___
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_checker_detects_a_legacy_import_in_a_sandbox_tree>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_checker_detects_a_syntax_error_instead_of_ignoring_it _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_checker_detects_a_syntax_error_instead_of_ignoring_it>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+____ ERROR at setup of test_missing_manifest_is_a_configuration_violation _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_missing_manifest_is_a_configuration_violation>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____ ERROR at setup of test_undefined_owner_in_the_manifest_is_rejected ______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_undefined_owner_in_the_manifest_is_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+____ ERROR at setup of test_pending_b_owned_paths_are_reported_not_failed _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_pending_b_owned_paths_are_reported_not_failed>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+__ ERROR at setup of test_exit_one_command_fails_the_gate_and_exits_nonzero ___
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_exit_one_command_fails_the_gate_and_exits_nonzero>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+____ ERROR at setup of test_passing_phase_writes_a_complete_passed_record _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_passing_phase_writes_a_complete_passed_record>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+____ ERROR at setup of test_domain_importing_fastapi_fails_the_layer_check ____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_domain_importing_fastapi_fails_the_layer_check>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+______ ERROR at setup of test_layer_violation_makes_the_phase_gate_fail _______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_layer_violation_makes_the_phase_gate_fail>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+____ ERROR at setup of test_missing_codex_review_prevents_a_passed_record _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_missing_codex_review_prevents_a_passed_record>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____ ERROR at setup of test_complete_previous_gate_evidence_is_accepted ______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_complete_previous_gate_evidence_is_accepted>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____ ERROR at setup of test_status_only_previous_gate_record_is_rejected _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_status_only_previous_gate_record_is_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+________ ERROR at setup of test_previous_gate_input_drift_is_rejected _________
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_input_drift_is_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_previous_gate_nonzero_command_and_missing_log_are_rejected _
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_previous_gate_nonzero_command_and_missing_log_are_rejected>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+___ ERROR at setup of test_stale_zcode_input_hash_prevents_a_passed_record ____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_stale_zcode_input_hash_prevents_a_passed_record>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+___ ERROR at setup of test_missing_zcode_precheck_prevents_a_passed_record ____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_missing_zcode_precheck_prevents_a_passed_record>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+__ ERROR at setup of test_unfinished_task_evidence_prevents_a_passed_record ___
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_unfinished_task_evidence_prevents_a_passed_record>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+___ ERROR at setup of test_failed_dependency_gate_prevents_a_passed_record ____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_failed_dependency_gate_prevents_a_passed_record>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____ ERROR at setup of test_check_only_does_not_sign_and_does_not_write ______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_check_only_does_not_sign_and_does_not_write>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+___ ERROR at setup of test_check_only_reports_stale_inputs_without_signing ____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_check_only_reports_stale_inputs_without_signing>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_______ ERROR at setup of test_repository_phase_one_gate_is_fail_closed _______
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_repository_phase_one_gate_is_fail_closed>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+____ ERROR at setup of test_real_gate_runner_executes_a_real_probe_command ____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_real_gate_runner_executes_a_real_probe_command>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_ ERROR at setup of test_sandbox_repository_passes_and_reports_pending_paths __
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_sandbox_repository_passes_and_reports_pending_paths>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+_____ ERROR at setup of test_sandbox_with_a_legacy_import_fails_the_check _____
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_sandbox_with_a_legacy_import_fails_the_check>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+___ ERROR at setup of test_sandbox_missing_governance_documents_fail_closed ___
+
+fixturedef = <FixtureDef argname='tmp_path' scope='function' baseid=''>
+request = <SubRequest 'tmp_path' for <Function test_sandbox_missing_governance_documents_fail_closed>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+E               PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\30382\\AppData\\Local\\Temp\\pytest-of-30382'
+
+.venv\Lib\site-packages\pytest_asyncio\plugin.py:924: PermissionError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\_pytest\cacheprovider.py:469
+  D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.venv\Lib\site-packages\_pytest\cacheprovider.py:469: PytestCacheWarning: could not create cache path D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.pytest_cache\v\cache\nodeids: [WinError 5] 拒绝访问。: 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+.venv\Lib\site-packages\_pytest\cacheprovider.py:423
+  D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.venv\Lib\site-packages\_pytest\cacheprovider.py:423: PytestCacheWarning: could not create cache path D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.pytest_cache\v\cache\lastfailed: [WinError 5] 拒绝访问。: 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/lastfailed", self.lastfailed)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_resolve_tool_prefers_path_and_falls_back_to_repo_bootstrap
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_non_zero_exit_is_rejected
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_failing_pytest_counts_are_rejected_even_with_exit_zero
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_zero_case_pytest_run_is_not_acceptance_evidence
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_skipped_tests_are_rejected
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_empty_log_is_rejected
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_passing_command_is_accepted
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_stale_input_hash_is_detected
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_codex_review_is_required_and_checked
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_zcode_precheck_requires_status_task_gate_and_verifiable_inputs
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_zcode_precheck_must_cover_the_required_inputs
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_zcode_precheck_detects_drifted_inputs
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_complete_previous_gate_records_are_accepted
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_status_only_previous_gate_record_is_rejected
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_each_missing_previous_gate_element_is_rejected[broken0]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_each_missing_previous_gate_element_is_rejected[broken1]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_each_missing_previous_gate_element_is_rejected[broken2]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_each_missing_previous_gate_element_is_rejected[broken3]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_each_missing_previous_gate_element_is_rejected[broken4]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_each_missing_previous_gate_element_is_rejected[broken5]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_each_missing_previous_gate_element_is_rejected[broken6]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_each_missing_previous_gate_element_is_rejected[broken7]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_each_missing_previous_gate_element_is_rejected[broken8]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_previous_gate_command_exit_codes_must_be_integer_zero[1]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_previous_gate_command_exit_codes_must_be_integer_zero[None]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_previous_gate_command_exit_codes_must_be_integer_zero[0.0]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_previous_gate_command_exit_codes_must_be_integer_zero[0]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_previous_gate_command_exit_codes_must_be_integer_zero[True]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_previous_gate_command_exit_codes_must_be_integer_zero[False]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_previous_gate_logs_must_exist_be_non_empty_and_match
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_previous_gate_input_drift_is_rejected
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_previous_gate_dependency_hashes_must_match_and_be_acyclic
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_relevant_file_manifest_is_the_documented_input_set
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_candidate_revision_follows_the_documented_formula
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_writing_evidence_reports_and_scratch_does_not_change_the_candidate
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[scripts/gates.py]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[packages/domain/src/logistics_domain/__init__.py]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[tests/unit/example.py]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[pyproject.toml]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[uv.lock]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[OWNERSHIP.json]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[docs/architecture/DATA_CONTRACTS.md]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[docs/plan/TASK_MANIFEST.json]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[contracts/schemas.json]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[.github/workflows/ci.yml]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_changing_a_relevant_input_changes_the_candidate[tools/ai_coding_plan/validate_plan.py]
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_explicit_revision_label_is_used_verbatim
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_unknown_assertion_id_is_a_configuration_error
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_phase_zero_is_rejected_with_a_pointer_to_the_planner_checker
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_domain_importing_fastapi_is_a_violation
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_pure_domain_rejects_every_third_party_import
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_import_direction_is_enforced
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_agent_layer_may_not_import_solver_engines
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_legacy_and_teaching_imports_are_rejected
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_undeclared_third_party_import_is_rejected
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_declared_third_party_import_is_accepted
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_private_src_path_imports_are_rejected
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_pure_domain_member_may_not_declare_dependencies
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_non_parsing_module_is_reported_not_ignored
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_regular_relative_import_stays_inside_the_layer
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_out_dir_keeps_a_sandbox_run_away_from_the_official_record
+ERROR tests/unit/test_p01_02_checks_and_gate_runner.py::test_check_only_reports_a_non_official_record
+ERROR tests/unit/test_p01_03_migration_governance.py::test_checker_detects_a_legacy_import_in_a_sandbox_tree
+ERROR tests/unit/test_p01_03_migration_governance.py::test_checker_detects_a_syntax_error_instead_of_ignoring_it
+ERROR tests/unit/test_p01_03_migration_governance.py::test_missing_manifest_is_a_configuration_violation
+ERROR tests/unit/test_p01_03_migration_governance.py::test_undefined_owner_in_the_manifest_is_rejected
+ERROR tests/unit/test_p01_03_migration_governance.py::test_pending_b_owned_paths_are_reported_not_failed
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_exit_one_command_fails_the_gate_and_exits_nonzero
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_passing_phase_writes_a_complete_passed_record
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_domain_importing_fastapi_fails_the_layer_check
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_layer_violation_makes_the_phase_gate_fail
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_missing_codex_review_prevents_a_passed_record
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_complete_previous_gate_evidence_is_accepted
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_status_only_previous_gate_record_is_rejected
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_previous_gate_input_drift_is_rejected
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_previous_gate_nonzero_command_and_missing_log_are_rejected
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_stale_zcode_input_hash_prevents_a_passed_record
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_missing_zcode_precheck_prevents_a_passed_record
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_unfinished_task_evidence_prevents_a_passed_record
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_failed_dependency_gate_prevents_a_passed_record
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_check_only_does_not_sign_and_does_not_write
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_check_only_reports_stale_inputs_without_signing
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_repository_phase_one_gate_is_fail_closed
+ERROR tests/integration/test_p01_02_checks_and_gate_runner.py::test_real_gate_runner_executes_a_real_probe_command
+ERROR tests/integration/test_p01_03_migration_governance.py::test_sandbox_repository_passes_and_reports_pending_paths
+ERROR tests/integration/test_p01_03_migration_governance.py::test_sandbox_with_a_legacy_import_fails_the_check
+ERROR tests/integration/test_p01_03_migration_governance.py::test_sandbox_missing_governance_documents_fail_closed
+139 passed, 2 warnings, 87 errors in 31.80s
+
+## stderr
+
+## exit_code: 1

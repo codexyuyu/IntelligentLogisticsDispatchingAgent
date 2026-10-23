@@ -1,0 +1,9 @@
+check-only: gate G01 revision content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c
+check-only: recorded status=failed, failed_checks=['zcode-precheck:P01-01', 'zcode-precheck:P01-02', 'zcode-precheck:P01-03', 'codex-review']
+check-only: STALE 5 stale input artifact hash(es), first: OWNERSHIP.json
+check-only: STALE recorded revision 'content-sha256:ab054daf9c6c1373c6503f603805756ef3ef9c5a60400d07d8e938d6987e532b' differs from current 'content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c'
+check-only: STALE artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/dsh/evidence.json has a stale input hash; artifacts/handoffs/P01-01/zcode/precheck.json: docs/handoffs/P01-01/dsh.md has a stale input hash
+check-only: STALE artifacts/handoffs/P01-02/zcode/precheck.json: artifacts/handoffs/P01-02/zcode/precheck.json: artifacts/handoffs/P01-02/dsh/evidence.json has a stale input hash; artifacts/handoffs/P01-02/zcode/precheck.json: docs/handoffs/P01-02/dsh.md has a stale input hash
+check-only: STALE artifacts/handoffs/P01-03/zcode/precheck.json: artifacts/handoffs/P01-03/zcode/precheck.json: artifacts/handoffs/P01-03/dsh/evidence.json has a stale input hash; artifacts/handoffs/P01-03/zcode/precheck.json: docs/handoffs/P01-03/dsh.md has a stale input hash
+check-only: STALE missing artifacts/gates/G01-codex-review.json; a phase gate cannot be signed without the Codex review record
+check-only: gate not signed (no evidence file written)

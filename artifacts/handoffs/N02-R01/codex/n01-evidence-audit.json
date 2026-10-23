@@ -1,0 +1,1316 @@
+{
+  "check_count": 204,
+  "passed": 204,
+  "checks": [
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/candidate-files.json",
+      "expected_sha256": "87b7006203ac0bedf6c275ee846c5817596320d16eb35976f8f299a4429cdfc2",
+      "actual_sha256": "87b7006203ac0bedf6c275ee846c5817596320d16eb35976f8f299a4429cdfc2",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-02-command.json",
+      "expected_sha256": "edfd7729c4dda39157f3e5dccd888c40dc688bb2edee8c4e07fc9b3936b1abf6",
+      "actual_sha256": "edfd7729c4dda39157f3e5dccd888c40dc688bb2edee8c4e07fc9b3936b1abf6",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-02.log",
+      "expected_sha256": "e0a09c9eb132ebde429e4b3500924f9841a40844afe91016a57658b05f44565c",
+      "actual_sha256": "e0a09c9eb132ebde429e4b3500924f9841a40844afe91016a57658b05f44565c",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-03-command.json",
+      "expected_sha256": "d625bc72277df67a46ae6798312013b1ca38a1486c1fd7e8fe11e81cd0fd02f4",
+      "actual_sha256": "d625bc72277df67a46ae6798312013b1ca38a1486c1fd7e8fe11e81cd0fd02f4",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-03.log",
+      "expected_sha256": "e60348dffabbdd76c1b80145189e8036a768c29184d39c67f269802a0c0eab72",
+      "actual_sha256": "e60348dffabbdd76c1b80145189e8036a768c29184d39c67f269802a0c0eab72",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-04-command.json",
+      "expected_sha256": "7aad94163854301d6109ae412bb5ec8790fcf0cb064d5338f31a0144e20c3a2b",
+      "actual_sha256": "7aad94163854301d6109ae412bb5ec8790fcf0cb064d5338f31a0144e20c3a2b",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-04.log",
+      "expected_sha256": "8bec896f656cde71f3b7b4ae76fbb71a51e3ed5f5d64a2b418ebcbcb23ad39c3",
+      "actual_sha256": "8bec896f656cde71f3b7b4ae76fbb71a51e3ed5f5d64a2b418ebcbcb23ad39c3",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-command.json",
+      "expected_sha256": "9796b8c0d0072baaee0cb4a826ead28ec7de07bf4fd9aae32d4db14cf50c8b4d",
+      "actual_sha256": "9796b8c0d0072baaee0cb4a826ead28ec7de07bf4fd9aae32d4db14cf50c8b4d",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-02-command.json",
+      "expected_sha256": "e9d4f397d23a716f98653153c728271ab573bddc4c8e0fd708a942310880f283",
+      "actual_sha256": "e9d4f397d23a716f98653153c728271ab573bddc4c8e0fd708a942310880f283",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-02.log",
+      "expected_sha256": "d6e6a5ba08501803fada2716548acc631a33f1da950b9292e65b6ed9cdda842b",
+      "actual_sha256": "d6e6a5ba08501803fada2716548acc631a33f1da950b9292e65b6ed9cdda842b",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-03-command.json",
+      "expected_sha256": "5db45a5fdb1c69789c3bc0b0e7380e4ae1300c206e2a3a1987e05f0a1ef87321",
+      "actual_sha256": "5db45a5fdb1c69789c3bc0b0e7380e4ae1300c206e2a3a1987e05f0a1ef87321",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-03.log",
+      "expected_sha256": "a87a2fa5969317940ef2a4e821fd531d1f9aa10e8f173aa0303a9d78cebd3700",
+      "actual_sha256": "a87a2fa5969317940ef2a4e821fd531d1f9aa10e8f173aa0303a9d78cebd3700",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-command.json",
+      "expected_sha256": "9896e356fdf678f4779b4eafe47ad7168501f5de8b643775762763c7a259b7a1",
+      "actual_sha256": "9896e356fdf678f4779b4eafe47ad7168501f5de8b643775762763c7a259b7a1",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final.log",
+      "expected_sha256": "731dc51bbd196bea49d5deb01f672e2a24be7b49356efd837bff921902c7664e",
+      "actual_sha256": "731dc51bbd196bea49d5deb01f672e2a24be7b49356efd837bff921902c7664e",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check.log",
+      "expected_sha256": "a1d934975e9c627d7c6b31d27943b99cd6c9318509c7cb8cdd12f3e114761f26",
+      "actual_sha256": "a1d934975e9c627d7c6b31d27943b99cd6c9318509c7cb8cdd12f3e114761f26",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-attempt2.json",
+      "expected_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "actual_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-attempt3.json",
+      "expected_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "actual_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-attempt4.json",
+      "expected_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "actual_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-final.json",
+      "expected_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "actual_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-final02.json",
+      "expected_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "actual_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-final03.json",
+      "expected_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "actual_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples.json",
+      "expected_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "actual_sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-attempt2.json",
+      "expected_sha256": "a3cf70ea2374c0c221c00fcf1724f0b7ecff063a33db040b03dc525e3e0152d5",
+      "actual_sha256": "a3cf70ea2374c0c221c00fcf1724f0b7ecff063a33db040b03dc525e3e0152d5",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-attempt3.json",
+      "expected_sha256": "990fda4353c06a4642b41ca154ad44a7d644eedfd2bce959041c68a5d6961cc2",
+      "actual_sha256": "990fda4353c06a4642b41ca154ad44a7d644eedfd2bce959041c68a5d6961cc2",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-attempt4.json",
+      "expected_sha256": "b9ea686a5cd8ac039f24300e402a51f27557b45b8d259af0cbf027a6e87a6c33",
+      "actual_sha256": "b9ea686a5cd8ac039f24300e402a51f27557b45b8d259af0cbf027a6e87a6c33",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-final.json",
+      "expected_sha256": "b1830531192754c337eb1bddd1bb75d05aedf939a27538bad551ee1ad2d0cd4a",
+      "actual_sha256": "b1830531192754c337eb1bddd1bb75d05aedf939a27538bad551ee1ad2d0cd4a",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-final02.json",
+      "expected_sha256": "eb6dd7a86b498c1c3c3299b61ef8d1a40e7385e712829c0c1ff2fc06b6977ef9",
+      "actual_sha256": "eb6dd7a86b498c1c3c3299b61ef8d1a40e7385e712829c0c1ff2fc06b6977ef9",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-final03.json",
+      "expected_sha256": "5572a852e092636ed78d73dd332db28565d017e78c73e9897ccd834b541c1f47",
+      "actual_sha256": "5572a852e092636ed78d73dd332db28565d017e78c73e9897ccd834b541c1f47",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation.json",
+      "expected_sha256": "e66ce6e848015a4b89a29060e96f121ccd86d2873d66d86040c70426e2781e33",
+      "actual_sha256": "e66ce6e848015a4b89a29060e96f121ccd86d2873d66d86040c70426e2781e33",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/freeze-impact.json",
+      "expected_sha256": "fe60c7fdc12666e6ffebdcf156dce3aa18b514c045d47c452e452a28649f1bc3",
+      "actual_sha256": "fe60c7fdc12666e6ffebdcf156dce3aa18b514c045d47c452e452a28649f1bc3",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/g00-prerequisite-command.json",
+      "expected_sha256": "0c81e5cef21cd692d28d16979ca74728bbb5b6ec9581f3fa8cd38e844f9a6ecb",
+      "actual_sha256": "0c81e5cef21cd692d28d16979ca74728bbb5b6ec9581f3fa8cd38e844f9a6ecb",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/g00-prerequisite.log",
+      "expected_sha256": "4500e604a7f91e679c8591a87a479a567b415aaba9d4a98cae3e3154e333273d",
+      "actual_sha256": "4500e604a7f91e679c8591a87a479a567b415aaba9d4a98cae3e3154e333273d",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/governance-diff.patch",
+      "expected_sha256": "cb0274e3270655bfbb84cf1f69765be8cf56e57e66c424a1ae59649214d04b87",
+      "actual_sha256": "cb0274e3270655bfbb84cf1f69765be8cf56e57e66c424a1ae59649214d04b87",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/governance-files.json",
+      "expected_sha256": "6a5bc8e16f4a1284d00e46c7bbeba98449d45f34f3108092929c637010052ab9",
+      "actual_sha256": "6a5bc8e16f4a1284d00e46c7bbeba98449d45f34f3108092929c637010052ab9",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-02-command.json",
+      "expected_sha256": "7a96362f93b16cbefdb47384cff15d67ed342a44bce5e5f467ea0ef606cb7f3c",
+      "actual_sha256": "7a96362f93b16cbefdb47384cff15d67ed342a44bce5e5f467ea0ef606cb7f3c",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-02.log",
+      "expected_sha256": "0ea9778769a72b57dcd85430740130e1b161391826b9e8880d406447b0d6688f",
+      "actual_sha256": "0ea9778769a72b57dcd85430740130e1b161391826b9e8880d406447b0d6688f",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-command.json",
+      "expected_sha256": "baf37f55528b5f156ea083a33eb0357fe9f16fd8160ae01e908c99fce9f79a25",
+      "actual_sha256": "baf37f55528b5f156ea083a33eb0357fe9f16fd8160ae01e908c99fce9f79a25",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-02-command.json",
+      "expected_sha256": "af182d1878e3454f7aef7477a40f08765c2a6a0f77a6a1c28b6a46b17dcc1576",
+      "actual_sha256": "af182d1878e3454f7aef7477a40f08765c2a6a0f77a6a1c28b6a46b17dcc1576",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-02.log",
+      "expected_sha256": "0c3c2986caf5f8f945cd846358945015d3567e8accf2ff7f1f3ede1a68fd5697",
+      "actual_sha256": "0c3c2986caf5f8f945cd846358945015d3567e8accf2ff7f1f3ede1a68fd5697",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-03-command.json",
+      "expected_sha256": "27d58f485b4b9938e066bb2561b50c871b39c8b8c08c4d7585de5d441a388c88",
+      "actual_sha256": "27d58f485b4b9938e066bb2561b50c871b39c8b8c08c4d7585de5d441a388c88",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-03.log",
+      "expected_sha256": "48e52f29e89c999d57a0e2bb9bf6bb97f199b89657fe0e224281d0134f454c19",
+      "actual_sha256": "48e52f29e89c999d57a0e2bb9bf6bb97f199b89657fe0e224281d0134f454c19",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-command.json",
+      "expected_sha256": "76c9087f801a1e06a3b5f085d971a4fa178eb006fbffc968ffc6c174c841b055",
+      "actual_sha256": "76c9087f801a1e06a3b5f085d971a4fa178eb006fbffc968ffc6c174c841b055",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final.log",
+      "expected_sha256": "e4961ea06f8791ec1e82b44817971d931d8ecf4f8a88af3f1a8c2b83186b22d7",
+      "actual_sha256": "e4961ea06f8791ec1e82b44817971d931d8ecf4f8a88af3f1a8c2b83186b22d7",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check.log",
+      "expected_sha256": "533ea4778bb393b55dd5fc71e60a99ee604b5b3b11ef36458cf5305ff1b6774f",
+      "actual_sha256": "533ea4778bb393b55dd5fc71e60a99ee604b5b3b11ef36458cf5305ff1b6774f",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/protected-comparison.json",
+      "expected_sha256": "316dc7e7dce35bb56f4b1350901f41cc82e9ee1e357cde62cf4288564a598e0f",
+      "actual_sha256": "316dc7e7dce35bb56f4b1350901f41cc82e9ee1e357cde62cf4288564a598e0f",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render-02-command.json",
+      "expected_sha256": "6fa06783f1d3729ef54c15470673a27bb3cf6b3a0f095078ee89440d2a2df4f7",
+      "actual_sha256": "6fa06783f1d3729ef54c15470673a27bb3cf6b3a0f095078ee89440d2a2df4f7",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render-02.log",
+      "expected_sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "actual_sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render-command.json",
+      "expected_sha256": "0bd424e40f9b33bcd16da499bcc23844ac448fcbe4a785964f84a8c1f0707f2a",
+      "actual_sha256": "0bd424e40f9b33bcd16da499bcc23844ac448fcbe4a785964f84a8c1f0707f2a",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render.log",
+      "expected_sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "actual_sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/scope-before.json",
+      "expected_sha256": "d0f24d32215de8c57f2085419adb9b24953214cee702fdaaeee331b33be32d08",
+      "actual_sha256": "d0f24d32215de8c57f2085419adb9b24953214cee702fdaaeee331b33be32d08",
+      "matches": true
+    },
+    {
+      "path": "docs/handoffs/N01-R01/codex.md",
+      "expected_sha256": "e967798512107c7f4b39f8ed90f3c2a53ed23181443db131a5a0e04afd295405",
+      "actual_sha256": "e967798512107c7f4b39f8ed90f3c2a53ed23181443db131a5a0e04afd295405",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-02.log",
+      "expected_sha256": "e0a09c9eb132ebde429e4b3500924f9841a40844afe91016a57658b05f44565c",
+      "actual_sha256": "e0a09c9eb132ebde429e4b3500924f9841a40844afe91016a57658b05f44565c",
+      "matches": true,
+      "declared_exit_code": 1,
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "attempt2"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-03.log",
+      "expected_sha256": "e60348dffabbdd76c1b80145189e8036a768c29184d39c67f269802a0c0eab72",
+      "actual_sha256": "e60348dffabbdd76c1b80145189e8036a768c29184d39c67f269802a0c0eab72",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "attempt3"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-04.log",
+      "expected_sha256": "8bec896f656cde71f3b7b4ae76fbb71a51e3ed5f5d64a2b418ebcbcb23ad39c3",
+      "actual_sha256": "8bec896f656cde71f3b7b4ae76fbb71a51e3ed5f5d64a2b418ebcbcb23ad39c3",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "attempt4"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check.log",
+      "expected_sha256": "a1d934975e9c627d7c6b31d27943b99cd6c9318509c7cb8cdd12f3e114761f26",
+      "actual_sha256": "a1d934975e9c627d7c6b31d27943b99cd6c9318509c7cb8cdd12f3e114761f26",
+      "matches": true,
+      "declared_exit_code": 1,
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-02.log",
+      "expected_sha256": "d6e6a5ba08501803fada2716548acc631a33f1da950b9292e65b6ed9cdda842b",
+      "actual_sha256": "d6e6a5ba08501803fada2716548acc631a33f1da950b9292e65b6ed9cdda842b",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "final02"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-03.log",
+      "expected_sha256": "a87a2fa5969317940ef2a4e821fd531d1f9aa10e8f173aa0303a9d78cebd3700",
+      "actual_sha256": "a87a2fa5969317940ef2a4e821fd531d1f9aa10e8f173aa0303a9d78cebd3700",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "final03"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final.log",
+      "expected_sha256": "731dc51bbd196bea49d5deb01f672e2a24be7b49356efd837bff921902c7664e",
+      "actual_sha256": "731dc51bbd196bea49d5deb01f672e2a24be7b49356efd837bff921902c7664e",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "final"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/g00-prerequisite.log",
+      "expected_sha256": "4500e604a7f91e679c8591a87a479a567b415aaba9d4a98cae3e3154e333273d",
+      "actual_sha256": "4500e604a7f91e679c8591a87a479a567b415aaba9d4a98cae3e3154e333273d",
+      "matches": true,
+      "declared_exit_code": 1,
+      "argv": [
+        "python",
+        "tmp/N01-R01/probe_g00.py"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-02.log",
+      "expected_sha256": "0ea9778769a72b57dcd85430740130e1b161391826b9e8880d406447b0d6688f",
+      "actual_sha256": "0ea9778769a72b57dcd85430740130e1b161391826b9e8880d406447b0d6688f",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check.log",
+      "expected_sha256": "533ea4778bb393b55dd5fc71e60a99ee604b5b3b11ef36458cf5305ff1b6774f",
+      "actual_sha256": "533ea4778bb393b55dd5fc71e60a99ee604b5b3b11ef36458cf5305ff1b6774f",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-02.log",
+      "expected_sha256": "0c3c2986caf5f8f945cd846358945015d3567e8accf2ff7f1f3ede1a68fd5697",
+      "actual_sha256": "0c3c2986caf5f8f945cd846358945015d3567e8accf2ff7f1f3ede1a68fd5697",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-03.log",
+      "expected_sha256": "48e52f29e89c999d57a0e2bb9bf6bb97f199b89657fe0e224281d0134f454c19",
+      "actual_sha256": "48e52f29e89c999d57a0e2bb9bf6bb97f199b89657fe0e224281d0134f454c19",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final.log",
+      "expected_sha256": "e4961ea06f8791ec1e82b44817971d931d8ecf4f8a88af3f1a8c2b83186b22d7",
+      "actual_sha256": "e4961ea06f8791ec1e82b44817971d931d8ecf4f8a88af3f1a8c2b83186b22d7",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render-02.log",
+      "expected_sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "actual_sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/render_plan.py"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render.log",
+      "expected_sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "actual_sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "matches": true,
+      "declared_exit_code": 0,
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/render_plan.py"
+      ]
+    },
+    {
+      "path": "TASK_GRAPH.md",
+      "expected_sha256": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+      "actual_sha256": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+      "matches": true
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-decisions.json",
+      "expected_sha256": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+      "actual_sha256": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+      "matches": true
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+      "expected_sha256": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+      "actual_sha256": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+      "matches": true
+    },
+    {
+      "path": "docs/api/API_CONTRACT.md",
+      "expected_sha256": "b9104cd2bc26f39c7c529924ea68903420560488b514e0845ae953a2794364d9",
+      "actual_sha256": "b9104cd2bc26f39c7c529924ea68903420560488b514e0845ae953a2794364d9",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "expected_sha256": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+      "actual_sha256": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/DOMAIN_CATALOG.md",
+      "expected_sha256": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35",
+      "actual_sha256": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "expected_sha256": "9f24acf68605981f85890d16e614976c4a9f4c6268c7c4e6138609f75d227d91",
+      "actual_sha256": "9f24acf68605981f85890d16e614976c4a9f4c6268c7c4e6138609f75d227d91",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "expected_sha256": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+      "actual_sha256": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md",
+      "expected_sha256": "1c412457afc438905e277cde28414b373d6b0874db84d6cc46b3b5b38a412559",
+      "actual_sha256": "1c412457afc438905e277cde28414b373d6b0874db84d6cc46b3b5b38a412559",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/issues/ARCH-0007-early-named-types.md",
+      "expected_sha256": "2715b6e9788edae25f6ae797290d3384aca0019cff87b8718290c5598ac36ee5",
+      "actual_sha256": "2715b6e9788edae25f6ae797290d3384aca0019cff87b8718290c5598ac36ee5",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/issues/README.md",
+      "expected_sha256": "c0c8c3ff2c88c3fc6de818a8cf9ec866fe644479ba3b88b0c3911024d109256d",
+      "actual_sha256": "c0c8c3ff2c88c3fc6de818a8cf9ec866fe644479ba3b88b0c3911024d109256d",
+      "matches": true
+    },
+    {
+      "path": "docs/plan/PHASE_GATES.md",
+      "expected_sha256": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+      "actual_sha256": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+      "matches": true
+    },
+    {
+      "path": "docs/plan/REQUIREMENTS_TRACEABILITY.md",
+      "expected_sha256": "7edad920eca7eea6f7ae09e689da9e105fe0402bc908a1354e2fb0b7867845a1",
+      "actual_sha256": "7edad920eca7eea6f7ae09e689da9e105fe0402bc908a1354e2fb0b7867845a1",
+      "matches": true
+    },
+    {
+      "path": "docs/plan/TASK_MANIFEST.json",
+      "expected_sha256": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+      "actual_sha256": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/00-master/P00-01-baseline-inventory.md",
+      "expected_sha256": "b064d97fae2c7d21c27acc94fee3d7b437e67f72ff4d4633524f7ca8d376c130",
+      "actual_sha256": "b064d97fae2c7d21c27acc94fee3d7b437e67f72ff4d4633524f7ca8d376c130",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/00-master/P00-02-freeze-contracts.md",
+      "expected_sha256": "49f05a10c865335f6683fbc03d756b943846fae1165a2a4097030b02aa246533",
+      "actual_sha256": "49f05a10c865335f6683fbc03d756b943846fae1165a2a4097030b02aa246533",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/00-master/P00-03-gate-contract.md",
+      "expected_sha256": "07f1c899a25fa3fa54b11dae4709f7f7098c633fa9f8cde6aae52a0621bbc461",
+      "actual_sha256": "07f1c899a25fa3fa54b11dae4709f7f7098c633fa9f8cde6aae52a0621bbc461",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P01-01-workspace-bootstrap.md",
+      "expected_sha256": "f5105b85082a1b1368d7dba501bf2a73ea245ead4d06530c95534b8aa84522f2",
+      "actual_sha256": "f5105b85082a1b1368d7dba501bf2a73ea245ead4d06530c95534b8aa84522f2",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P01-02-checks-and-gate-runner.md",
+      "expected_sha256": "1caa8aaa0c68ecabada3f7f6b2193d5e1cd5a59289c44e8c72c0f944ec5bac81",
+      "actual_sha256": "1caa8aaa0c68ecabada3f7f6b2193d5e1cd5a59289c44e8c72c0f944ec5bac81",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P01-03-migration-governance.md",
+      "expected_sha256": "838f78b7c9252ce1ade2aee17a9ebc849839f97bdcaa4f5c4981f68bdbd1a702",
+      "actual_sha256": "838f78b7c9252ce1ade2aee17a9ebc849839f97bdcaa4f5c4981f68bdbd1a702",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P04-01-canonical-fixtures.md",
+      "expected_sha256": "3526bb42a73a310219c2c38c69c07dbcfe11ca93fbfef734f649bf8f2efa1ffb",
+      "actual_sha256": "3526bb42a73a310219c2c38c69c07dbcfe11ca93fbfef734f649bf8f2efa1ffb",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/01-foundation/P04-02-database-seed.md",
+      "expected_sha256": "08548b28511ed54602dd1ceb7f0ac6e36082e5dfabca4406c2ce796cb04df08f",
+      "actual_sha256": "08548b28511ed54602dd1ceb7f0ac6e36082e5dfabca4406c2ce796cb04df08f",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-01-primitives-and-states.md",
+      "expected_sha256": "d4bbc3c460df9d8e7f2104d92fafceee66cdc0f66882faf735ba825975cdaaa8",
+      "actual_sha256": "d4bbc3c460df9d8e7f2104d92fafceee66cdc0f66882faf735ba825975cdaaa8",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-02-master-entities.md",
+      "expected_sha256": "d6ca684c8e89dcbe56695b339417a8257d4729a0fdfa38daae4a32d84e086562",
+      "actual_sha256": "d6ca684c8e89dcbe56695b339417a8257d4729a0fdfa38daae4a32d84e086562",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-03-planning-entities.md",
+      "expected_sha256": "edd3aaec5dce1f1efde16cc24eab696befcebe3fd24c8306a8694d727ef59592",
+      "actual_sha256": "edd3aaec5dce1f1efde16cc24eab696befcebe3fd24c8306a8694d727ef59592",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-04-runtime-contract-export.md",
+      "expected_sha256": "e67e37f545ad57a670a539c7253d5318051fea9c7c1f883cf741e030aea70cd2",
+      "actual_sha256": "e67e37f545ad57a670a539c7253d5318051fea9c7c1f883cf741e030aea70cd2",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/03-database/P03-01-resource-schema.md",
+      "expected_sha256": "351a3501859b20d48594e7eda588800c5eb430ef626d03a71126880a4737f6ae",
+      "actual_sha256": "351a3501859b20d48594e7eda588800c5eb430ef626d03a71126880a4737f6ae",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/03-database/P03-02-planning-schema.md",
+      "expected_sha256": "e3f2447b9c5587588dfcfd29e0e4d6114ef620003dc279a20e2e01ac2bfce82c",
+      "actual_sha256": "e3f2447b9c5587588dfcfd29e0e4d6114ef620003dc279a20e2e01ac2bfce82c",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/03-database/P03-03-repositories-and-snapshot.md",
+      "expected_sha256": "85f207fd572086a0d6873601c91b7aa2607222f8ef83d78822f659ac793d3fad",
+      "actual_sha256": "85f207fd572086a0d6873601c91b7aa2607222f8ef83d78822f659ac793d3fad",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/03-database/P03-04-atomic-version-store.md",
+      "expected_sha256": "87e68173b6867f08f09e8a78852975876624d22fac3663e37c4b64060fd416ac",
+      "actual_sha256": "87e68173b6867f08f09e8a78852975876624d22fac3663e37c4b64060fd416ac",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/04-api/P05-01-api-composition.md",
+      "expected_sha256": "2ed46fd7650a1439b812449c3481292ac2fcc208f50d399eaa04c989fd7b6b81",
+      "actual_sha256": "2ed46fd7650a1439b812449c3481292ac2fcc208f50d399eaa04c989fd7b6b81",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/04-api/P05-02-master-data-services.md",
+      "expected_sha256": "a1118cfe5c5ac36dbe16fa50a5e854d1dde08cb1351ce8dddd4539c201c7de30",
+      "actual_sha256": "a1118cfe5c5ac36dbe16fa50a5e854d1dde08cb1351ce8dddd4539c201c7de30",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/04-api/P05-03-durable-jobs.md",
+      "expected_sha256": "4078bfd96d1b002d52dace0988be5e9c0934b4b008959c10b899f4f84b1baf44",
+      "actual_sha256": "4078bfd96d1b002d52dace0988be5e9c0934b4b008959c10b899f4f84b1baf44",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/04-api/P16-01-optimization-job-api.md",
+      "expected_sha256": "483ae2ad0f5e52f60e04fb7293048aa2863e5872dca39430ed5c0901dbff7576",
+      "actual_sha256": "483ae2ad0f5e52f60e04fb7293048aa2863e5872dca39430ed5c0901dbff7576",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/04-api/P16-02-joint-planning-service.md",
+      "expected_sha256": "39c38aa07dde9f24cd9c7f3f80c2bf462fe28fed1cf209dc5a026204f8164555",
+      "actual_sha256": "39c38aa07dde9f24cd9c7f3f80c2bf462fe28fed1cf209dc5a026204f8164555",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/04-api/P16-03-validated-commit-api.md",
+      "expected_sha256": "2e341b20a2aa688072ae4f75be646268826b229d984d19375e30cf6c99db7bdf",
+      "actual_sha256": "2e341b20a2aa688072ae4f75be646268826b229d984d19375e30cf6c99db7bdf",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/04-api/P16-04-simulation-query-api.md",
+      "expected_sha256": "94be6d866df3ace03618c59a20f51e7080a4455dd24a74d6d85a20696dd3bd47",
+      "actual_sha256": "94be6d866df3ace03618c59a20f51e7080a4455dd24a74d6d85a20696dd3bd47",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P06-01-transport-contract.md",
+      "expected_sha256": "55175d1cc07785ce631a103ac8f244a23a773396ab929fa09736989d1bbb48a2",
+      "actual_sha256": "55175d1cc07785ce631a103ac8f244a23a773396ab929fa09736989d1bbb48a2",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P06-02-distance-matrix.md",
+      "expected_sha256": "24cd9931289212ec909b5736982ac91652f09b62439c5a72b3c732cf5f79c751",
+      "actual_sha256": "24cd9931289212ec909b5736982ac91652f09b62439c5a72b3c732cf5f79c751",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-01-vrp-base.md",
+      "expected_sha256": "9be863c0dc9b4a3aee5956142bb7dee74889dd4af475fed03a9e03daea22a4dd",
+      "actual_sha256": "9be863c0dc9b4a3aee5956142bb7dee74889dd4af475fed03a9e03daea22a4dd",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-02-capacity-and-pickup.md",
+      "expected_sha256": "7cb127c965eed501e405adcfa2df005abf7f2b305f888727f5bfbbcaf5152ef3",
+      "actual_sha256": "7cb127c965eed501e405adcfa2df005abf7f2b305f888727f5bfbbcaf5152ef3",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-03-time-windows.md",
+      "expected_sha256": "58cc3ec9de317b1f3c17cdd6913a7b55a1238e7b0e4cfaa5fd878ba4f3d2c632",
+      "actual_sha256": "58cc3ec9de317b1f3c17cdd6913a7b55a1238e7b0e4cfaa5fd878ba4f3d2c632",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-04-temperature-and-cargo.md",
+      "expected_sha256": "f55d481b24c8baf3d5f2c10188100e1cc0fc420529a7d36417897d312d230f61",
+      "actual_sha256": "f55d481b24c8baf3d5f2c10188100e1cc0fc420529a7d36417897d312d230f61",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-05-objective-function.md",
+      "expected_sha256": "640bc490024b655a8b37aa8cd95c79a04d915017c13fcc00f5cafcc27d7e5234",
+      "actual_sha256": "640bc490024b655a8b37aa8cd95c79a04d915017c13fcc00f5cafcc27d7e5234",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-06-result-status-validation.md",
+      "expected_sha256": "5c2229507eea0c125a927ec2f5c630dab93693f553aa6c2eacda9b3f426778b3",
+      "actual_sha256": "5c2229507eea0c125a927ec2f5c630dab93693f553aa6c2eacda9b3f426778b3",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-07-transport-adapter.md",
+      "expected_sha256": "3142be84e35e78f2dcd2be02c7f83684c8fa38d490ff2c7732740fd94e90275f",
+      "actual_sha256": "3142be84e35e78f2dcd2be02c7f83684c8fa38d490ff2c7732740fd94e90275f",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P08-01-warehouse-contract.md",
+      "expected_sha256": "2708dc922c0c4a8aa43be3c218f0295fde7d8613b37513543da1110833e8e135",
+      "actual_sha256": "2708dc922c0c4a8aa43be3c218f0295fde7d8613b37513543da1110833e8e135",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P08-02-inventory-and-handoffs.md",
+      "expected_sha256": "cfa640889deb7a90ab452b7f479d68605df3551ed17917bf4d2f58d5ede7c2dd",
+      "actual_sha256": "cfa640889deb7a90ab452b7f479d68605df3551ed17917bf4d2f58d5ede7c2dd",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-01-intervals-precedence.md",
+      "expected_sha256": "f6af8f1ab20d64a8aef37a13a03fc65657d744849710097dbbabfe2b55c54bb4",
+      "actual_sha256": "f6af8f1ab20d64a8aef37a13a03fc65657d744849710097dbbabfe2b55c54bb4",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-02-cumulative-resources.md",
+      "expected_sha256": "090a0a6247cec0c4cf69c806f40257372822645ce382d19cda41b2e2266913db",
+      "actual_sha256": "090a0a6247cec0c4cf69c806f40257372822645ce382d19cda41b2e2266913db",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-03-storage-capacity.md",
+      "expected_sha256": "c5d7678de17682831312f054ee2a258e5c39c18e9928429c74b4191159054d4a",
+      "actual_sha256": "c5d7678de17682831312f054ee2a258e5c39c18e9928429c74b4191159054d4a",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-04-sequence-setup.md",
+      "expected_sha256": "512e13e8190a4dd7590ba6813f7060a25e87a1b9d9c4312f703fa7a9f6c33327",
+      "actual_sha256": "512e13e8190a4dd7590ba6813f7060a25e87a1b9d9c4312f703fa7a9f6c33327",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-05-warehouse-result.md",
+      "expected_sha256": "9e8ed9220a73d78a5eb88c9b1904ff3995f762d53e0d22b628a75c215c19e53f",
+      "actual_sha256": "9e8ed9220a73d78a5eb88c9b1904ff3995f762d53e0d22b628a75c215c19e53f",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P10-01-validator-protocol.md",
+      "expected_sha256": "694fba45905f9a49453ee71ef157357c8b6dedb458ecb797457fdfb8090b3c2a",
+      "actual_sha256": "694fba45905f9a49453ee71ef157357c8b6dedb458ecb797457fdfb8090b3c2a",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P10-02-joint-validator.md",
+      "expected_sha256": "0573d73f312d0ff6274dfe815d2beac5c5206206a340efd86b5ff626c3d64fb8",
+      "actual_sha256": "0573d73f312d0ff6274dfe815d2beac5c5206206a340efd86b5ff626c3d64fb8",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P10-03-validator-adversarial-suite.md",
+      "expected_sha256": "c4bbb23d4a2324eb4a78a3b08cafc4095c269b8878193bd3e685ea11eb2e5182",
+      "actual_sha256": "c4bbb23d4a2324eb4a78a3b08cafc4095c269b8878193bd3e685ea11eb2e5182",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P11-01-simulation-contract.md",
+      "expected_sha256": "3e0fd9389d7fb9951793bbd4c9b276cde0af3917ae6bd20626798cdc7cc8c3ee",
+      "actual_sha256": "3e0fd9389d7fb9951793bbd4c9b276cde0af3917ae6bd20626798cdc7cc8c3ee",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P11-02-execution-state-machine.md",
+      "expected_sha256": "fd43c6a452d4ab8be011bf0948c040e74aa7137bed851792dab6e5aa33c2a72e",
+      "actual_sha256": "fd43c6a452d4ab8be011bf0948c040e74aa7137bed851792dab6e5aa33c2a72e",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-01-simpy-kernel.md",
+      "expected_sha256": "69b68349bdf058abbfd218b8b59255f51d6db008c8bd68bdc37734672dc82c4a",
+      "actual_sha256": "69b68349bdf058abbfd218b8b59255f51d6db008c8bd68bdc37734672dc82c4a",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-02-transport-execution.md",
+      "expected_sha256": "0fdaedd4422ed33e3109d8f4ed99eb1928f226fb808da04ba509fe63fa6f8bd8",
+      "actual_sha256": "0fdaedd4422ed33e3109d8f4ed99eb1928f226fb808da04ba509fe63fa6f8bd8",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-03-warehouse-execution.md",
+      "expected_sha256": "62c16f770c2cafa374073f0ef874453a6a3c3f1478210e76ebe41df28c385d07",
+      "actual_sha256": "62c16f770c2cafa374073f0ef874453a6a3c3f1478210e76ebe41df28c385d07",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-04-snapshot-replay.md",
+      "expected_sha256": "ebed576849a942c9a274fc73c6ad1abd0b1b77a4ff138fb6506cbe89c121560d",
+      "actual_sha256": "ebed576849a942c9a274fc73c6ad1abd0b1b77a4ff138fb6506cbe89c121560d",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P13-01-event-ingestion.md",
+      "expected_sha256": "70662d81d6fe58a02bdf30fe9dc6094083a09dc9c3390f6842f4c1491d24d8b9",
+      "actual_sha256": "70662d81d6fe58a02bdf30fe9dc6094083a09dc9c3390f6842f4c1491d24d8b9",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/07-simulation/P13-02-event-api-and-outbox.md",
+      "expected_sha256": "36f65fbce6355bc157bfda01c01ad9d337af41d7b0853df0b4dc62fcd047bef4",
+      "actual_sha256": "36f65fbce6355bc157bfda01c01ad9d337af41d7b0853df0b4dc62fcd047bef4",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P14-01-impact-graph.md",
+      "expected_sha256": "5544cbd284582f0adc71e465e9d0c3bc6509a8b9cd5f3301355b22f537f21a05",
+      "actual_sha256": "5544cbd284582f0adc71e465e9d0c3bc6509a8b9cd5f3301355b22f537f21a05",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P14-02-execution-freeze.md",
+      "expected_sha256": "d222ad78f11593b7177a4e28e6940e9bdf9b0fcdf4d2da0f28ba3e800ee20ea5",
+      "actual_sha256": "d222ad78f11593b7177a4e28e6940e9bdf9b0fcdf4d2da0f28ba3e800ee20ea5",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-01-candidate-policies.md",
+      "expected_sha256": "d48491b8af88f97e8ccd7487a1617523398cefddc147319c645969907ed07d7e",
+      "actual_sha256": "d48491b8af88f97e8ccd7487a1617523398cefddc147319c645969907ed07d7e",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-02-local-solve.md",
+      "expected_sha256": "d70d0fcb9e8a8ca03572d06f6252f63fea47b9cb8c86d2753f565662be7c0836",
+      "actual_sha256": "d70d0fcb9e8a8ca03572d06f6252f63fea47b9cb8c86d2753f565662be7c0836",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-03-bounded-escalation.md",
+      "expected_sha256": "8f6da8db1f0860a7a4142215ebeebd2322e0b1e6b6107879e231619025f28240",
+      "actual_sha256": "8f6da8db1f0860a7a4142215ebeebd2322e0b1e6b6107879e231619025f28240",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-04-version-diff.md",
+      "expected_sha256": "73c86a869cd962a693571dbb820286a5e593839c8a9f7e610cdaab1ccf0dc86d",
+      "actual_sha256": "73c86a869cd962a693571dbb820286a5e593839c8a9f7e610cdaab1ccf0dc86d",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P17-01-tool-schemas.md",
+      "expected_sha256": "ed5f09e642aa889e6e6647abdb8cf9220ea78255b7280eff7d895ab5f74dcb16",
+      "actual_sha256": "ed5f09e642aa889e6e6647abdb8cf9220ea78255b7280eff7d895ab5f74dcb16",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P17-02-business-tools.md",
+      "expected_sha256": "690b9d56251d642e44cb18ad093d82a431f70e50e495e255bb96303eacbf0598",
+      "actual_sha256": "690b9d56251d642e44cb18ad093d82a431f70e50e495e255bb96303eacbf0598",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P18-01-llm-provider.md",
+      "expected_sha256": "aa61878a3d9e97f17e5c065c3f412d55659b22386d70ef7734ffdc36806c79d7",
+      "actual_sha256": "aa61878a3d9e97f17e5c065c3f412d55659b22386d70ef7734ffdc36806c79d7",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P18-02-llm-resilience.md",
+      "expected_sha256": "7b8236ae41583cf6959b97e010b9746ec5436905932bc0f8ed09603e01e6ff9a",
+      "actual_sha256": "7b8236ae41583cf6959b97e010b9746ec5436905932bc0f8ed09603e01e6ff9a",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P19-01-intent-extraction.md",
+      "expected_sha256": "ce16f0a4543da19778112d5ef1598f0963f722f0e0e7bc1d25e590c6d43e0a94",
+      "actual_sha256": "ce16f0a4543da19778112d5ef1598f0963f722f0e0e7bc1d25e590c6d43e0a94",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P19-02-coordinator-state-machine.md",
+      "expected_sha256": "2dafb6d0f4f91330b50cf4380fe7a2aa4bf5de92543f9d535f21f773786f9890",
+      "actual_sha256": "2dafb6d0f4f91330b50cf4380fe7a2aa4bf5de92543f9d535f21f773786f9890",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P20-01-transport-agent-tools.md",
+      "expected_sha256": "c700d3e78107eae77074d145ba440a592e0d4b4a83c5a9b768ea24a32b2ad50a",
+      "actual_sha256": "c700d3e78107eae77074d145ba440a592e0d4b4a83c5a9b768ea24a32b2ad50a",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P20-02-transport-explanation.md",
+      "expected_sha256": "9ab308ca64c0c4119bc4faccc2800f2470eed80a0e087d32c32d6b36467444fb",
+      "actual_sha256": "9ab308ca64c0c4119bc4faccc2800f2470eed80a0e087d32c32d6b36467444fb",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P21-01-warehouse-agent-tools.md",
+      "expected_sha256": "8d4c46b3313986dec1a4e38b77e30f4ff9248894d781211a7d3c125a1b432155",
+      "actual_sha256": "8d4c46b3313986dec1a4e38b77e30f4ff9248894d781211a7d3c125a1b432155",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P21-02-warehouse-explanation.md",
+      "expected_sha256": "949440105e88d622d1fc881d0299e422876a86d7a384bac0c70bf5f800450528",
+      "actual_sha256": "949440105e88d622d1fc881d0299e422876a86d7a384bac0c70bf5f800450528",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P22-01-exception-agent-tools.md",
+      "expected_sha256": "dfb9a2ab5432a0e8fa743b509037744c2bf916c8e532f0325771a671974998f0",
+      "actual_sha256": "dfb9a2ab5432a0e8fa743b509037744c2bf916c8e532f0325771a671974998f0",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P22-02-exception-explanation.md",
+      "expected_sha256": "c8d41a8e0f23f64aef552c18a9474753736e6397dfcacf50062c4137e4a4facf",
+      "actual_sha256": "c8d41a8e0f23f64aef552c18a9474753736e6397dfcacf50062c4137e4a4facf",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P23-01-agent-orchestration.md",
+      "expected_sha256": "d7ca0960b8d7b8343cec096ee1fc6fc78771da55ecf04bd817827eb135346ad4",
+      "actual_sha256": "d7ca0960b8d7b8343cec096ee1fc6fc78771da55ecf04bd817827eb135346ad4",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/09-agents/P23-02-agent-api-safety.md",
+      "expected_sha256": "ebced7f15f4730e6c1b695d43da2e68ce55fde7bc1883a14cac5d6659bee3e36",
+      "actual_sha256": "ebced7f15f4730e6c1b695d43da2e68ce55fde7bc1883a14cac5d6659bee3e36",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P24-01-react-shell.md",
+      "expected_sha256": "775452b171e2045b12e34edf67cdc4c0666773c9d51048807aed2d79d66908db",
+      "actual_sha256": "775452b171e2045b12e34edf67cdc4c0666773c9d51048807aed2d79d66908db",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P24-02-generated-api-client.md",
+      "expected_sha256": "cc83a33a841fcce663b0ed25863f6843933dd9a13c4a3b35d62a265a1d9c949c",
+      "actual_sha256": "cc83a33a841fcce663b0ed25863f6843933dd9a13c4a3b35d62a265a1d9c949c",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P25-01-orders-ui.md",
+      "expected_sha256": "7664cd54474a25edb500008a3a1fba208d8f68d3a845907d074d2ea89c718f6e",
+      "actual_sha256": "7664cd54474a25edb500008a3a1fba208d8f68d3a845907d074d2ea89c718f6e",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P25-02-vehicles-ui.md",
+      "expected_sha256": "a5748a804ed9aa55f62a683b7647b4055279201c81f0d9aa155493adbdb0da78",
+      "actual_sha256": "a5748a804ed9aa55f62a683b7647b4055279201c81f0d9aa155493adbdb0da78",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P25-03-warehouses-ui.md",
+      "expected_sha256": "66459a73afc234498bb9382bf91b594d1bcddab89b32eb159a88d6920c057ec5",
+      "actual_sha256": "66459a73afc234498bb9382bf91b594d1bcddab89b32eb159a88d6920c057ec5",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P26-01-transport-request-ui.md",
+      "expected_sha256": "0e7934503cc330240cbca78d804bb0335efd4c97f56439a8054b1c13653beefc",
+      "actual_sha256": "0e7934503cc330240cbca78d804bb0335efd4c97f56439a8054b1c13653beefc",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P26-02-transport-plan-ui.md",
+      "expected_sha256": "919b872c38608d09482206c541b5b00fe9c898d444eb263ab4392d07de0493f7",
+      "actual_sha256": "919b872c38608d09482206c541b5b00fe9c898d444eb263ab4392d07de0493f7",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P27-01-warehouse-gantt-ui.md",
+      "expected_sha256": "ee70d7feb2eacd78b9e45608d959800f8c7e74ad43012acf7a900408452dacaa",
+      "actual_sha256": "ee70d7feb2eacd78b9e45608d959800f8c7e74ad43012acf7a900408452dacaa",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P27-02-joint-handoff-ui.md",
+      "expected_sha256": "6458afcd01e007245fb10f440b8159b8f28af4b66c59ff9361ddf66ec38c8974",
+      "actual_sha256": "6458afcd01e007245fb10f440b8159b8f28af4b66c59ff9361ddf66ec38c8974",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P28-01-simulation-controls-ui.md",
+      "expected_sha256": "08723b98f644f3e3c93d871c6f12d85d1768c6be24af2109843d6bbbc03452de",
+      "actual_sha256": "08723b98f644f3e3c93d871c6f12d85d1768c6be24af2109843d6bbbc03452de",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P28-02-replay-comparison-ui.md",
+      "expected_sha256": "8a3ba45a43d188cfa5f2a448b6c8125c0a1c57a9af60b686af2c55eab683c6cb",
+      "actual_sha256": "8a3ba45a43d188cfa5f2a448b6c8125c0a1c57a9af60b686af2c55eab683c6cb",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P29-01-exception-center-ui.md",
+      "expected_sha256": "4faf481cf6546f04ee54ca73f06788e319fc85397556cfc22bb95dccb281e596",
+      "actual_sha256": "4faf481cf6546f04ee54ca73f06788e319fc85397556cfc22bb95dccb281e596",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P29-02-reschedule-diff-ui.md",
+      "expected_sha256": "9414a9de6137c00f0ebdd8006395bbccacd7c5958b3d4099187786fca00c895e",
+      "actual_sha256": "9414a9de6137c00f0ebdd8006395bbccacd7c5958b3d4099187786fca00c895e",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P30-01-agent-chat-ui.md",
+      "expected_sha256": "d02bdade2f4457971b403ef86cfff8b92bda8a951a4420b6952db10cbf4a0b46",
+      "actual_sha256": "d02bdade2f4457971b403ef86cfff8b92bda8a951a4420b6952db10cbf4a0b46",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P30-02-agent-confirmation-ui.md",
+      "expected_sha256": "b8373f84d2554e087ca11b8b17e000140f2a7ba3d7a7cd00f50259af0aca635b",
+      "actual_sha256": "b8373f84d2554e087ca11b8b17e000140f2a7ba3d7a7cd00f50259af0aca635b",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P31-01-websocket-events.md",
+      "expected_sha256": "672a27e39fbf9b28c34761b50350488fae0df5a5f39f38744761875fe932277f",
+      "actual_sha256": "672a27e39fbf9b28c34761b50350488fae0df5a5f39f38744761875fe932277f",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/10-frontend/P31-02-frontend-realtime.md",
+      "expected_sha256": "25ca797683f517e5ee8c4bf7076231c70b300f233019f369fe88669d0954e190",
+      "actual_sha256": "25ca797683f517e5ee8c4bf7076231c70b300f233019f369fe88669d0954e190",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P32-01-metric-calculators.md",
+      "expected_sha256": "c98658b9d1330aa626d022bca5a5b6c451a004d30e41c5fb272caf7c21353ea6",
+      "actual_sha256": "c98658b9d1330aa626d022bca5a5b6c451a004d30e41c5fb272caf7c21353ea6",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P32-02-metrics-api.md",
+      "expected_sha256": "f1dbf1db10618be7fdf15ea9938e32774872305ae4a97a9cb866e57ca9382f4b",
+      "actual_sha256": "f1dbf1db10618be7fdf15ea9938e32774872305ae4a97a9cb866e57ca9382f4b",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P32-03-metrics-dashboard-ui.md",
+      "expected_sha256": "f526bf4974dedc32b93f6ffe0cd29602e6b48c8a00cd0f232c7123c8432bb07f",
+      "actual_sha256": "f526bf4974dedc32b93f6ffe0cd29602e6b48c8a00cd0f232c7123c8432bb07f",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P33-01-experiment-runner.md",
+      "expected_sha256": "ac48ed08813e8807905861822bef3d325b0a5e16cfc962f8ed301029fb1ccffd",
+      "actual_sha256": "ac48ed08813e8807905861822bef3d325b0a5e16cfc962f8ed301029fb1ccffd",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P33-02-experiments-api-ui.md",
+      "expected_sha256": "2b8b7d1c28b931a2beb71a02b4c0bcce09d2e0db33ae860b07c8c5629226246e",
+      "actual_sha256": "2b8b7d1c28b931a2beb71a02b4c0bcce09d2e0db33ae860b07c8c5629226246e",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P34-01-transport-e2e.md",
+      "expected_sha256": "72875a37dc2cd11b301a7ca4e9de27d94f06701fab7ab0054faadb0424d7dc2e",
+      "actual_sha256": "72875a37dc2cd11b301a7ca4e9de27d94f06701fab7ab0054faadb0424d7dc2e",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P34-02-joint-exception-e2e.md",
+      "expected_sha256": "fc898ab7376f6f0e5799f6a45ad8a432f0bb43cfdbb870b44fc3d72a420a42ac",
+      "actual_sha256": "fc898ab7376f6f0e5799f6a45ad8a432f0bb43cfdbb870b44fc3d72a420a42ac",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P34-03-failure-recovery-e2e.md",
+      "expected_sha256": "ff6f1aed7d1a581993ad92a0b2e8059dc4fd13999f6e909cdd7594ea5ec63cde",
+      "actual_sha256": "ff6f1aed7d1a581993ad92a0b2e8059dc4fd13999f6e909cdd7594ea5ec63cde",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-01-demo-normal.md",
+      "expected_sha256": "9dbb043de9e4d613c26df562f76d2441ab2ea73e884f3384f956d15488e36352",
+      "actual_sha256": "9dbb043de9e4d613c26df562f76d2441ab2ea73e884f3384f956d15488e36352",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-02-demo-joint.md",
+      "expected_sha256": "beb5acb1cb4661d993b6cb97314f2f2a5e13978576ff7ff94b391bcaecfd700a",
+      "actual_sha256": "beb5acb1cb4661d993b6cb97314f2f2a5e13978576ff7ff94b391bcaecfd700a",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-03-demo-vehicle-failure.md",
+      "expected_sha256": "504c582d3ca430250ae1af4d480b7aced211e92ecf099ad9e8342819c5ddd86c",
+      "actual_sha256": "504c582d3ca430250ae1af4d480b7aced211e92ecf099ad9e8342819c5ddd86c",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-04-demo-order-cancel.md",
+      "expected_sha256": "d936e21d5a2867a5b107d64678ec6a1610eed02e04195602f73b7cd92a460db8",
+      "actual_sha256": "d936e21d5a2867a5b107d64678ec6a1610eed02e04195602f73b7cd92a460db8",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-05-demo-weather.md",
+      "expected_sha256": "dc41fa6477dcaa80beb0a9fb75ab9712090b98f134d32ca6098de95fbcfd2ea1",
+      "actual_sha256": "dc41fa6477dcaa80beb0a9fb75ab9712090b98f134d32ca6098de95fbcfd2ea1",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P36-01-benchmark-harness.md",
+      "expected_sha256": "2bb069f8b47ba3223d87f21d2ad965965f85392ff97f048b401edd0ac549356c",
+      "actual_sha256": "2bb069f8b47ba3223d87f21d2ad965965f85392ff97f048b401edd0ac549356c",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P36-02-bounded-performance-fix.md",
+      "expected_sha256": "e66b8d318eee087361bea9de7fffb072dfa8856d2e994673a3478ecc260da83e",
+      "actual_sha256": "e66b8d318eee087361bea9de7fffb072dfa8856d2e994673a3478ecc260da83e",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P37-01-security-boundary.md",
+      "expected_sha256": "f673d8153b2900a476bf2f175517398121d2b75dae00bfaa01c3e5ed80176e88",
+      "actual_sha256": "f673d8153b2900a476bf2f175517398121d2b75dae00bfaa01c3e5ed80176e88",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P37-02-observability-audit.md",
+      "expected_sha256": "58c9cb43a6516ce93b166fc91890770859d18d8f4d68b4a008132bfe758d4962",
+      "actual_sha256": "58c9cb43a6516ce93b166fc91890770859d18d8f4d68b4a008132bfe758d4962",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/12-integration/P37-03-backup-and-recovery.md",
+      "expected_sha256": "e1296d49763843a08e1e9bba9652a4c32706ac9f93b5fac3dd525e8f053807a4",
+      "actual_sha256": "e1296d49763843a08e1e9bba9652a4c32706ac9f93b5fac3dd525e8f053807a4",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/13-release/P38-01-developer-docs.md",
+      "expected_sha256": "3a4e7bd3d10b61b273d7be7c2367db822f83d49aa444eab2c9b3761d818e0dc6",
+      "actual_sha256": "3a4e7bd3d10b61b273d7be7c2367db822f83d49aa444eab2c9b3761d818e0dc6",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/13-release/P38-02-operator-docs.md",
+      "expected_sha256": "79edc15812004e9bb06ac44975100b3d3a66ac471eebb345f8b79f3ed339267f",
+      "actual_sha256": "79edc15812004e9bb06ac44975100b3d3a66ac471eebb345f8b79f3ed339267f",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/13-release/P39-01-release-candidate.md",
+      "expected_sha256": "fc0deb826fb020fba7d14e82727021f5764f1a5492d013974a263837d304396e",
+      "actual_sha256": "fc0deb826fb020fba7d14e82727021f5764f1a5492d013974a263837d304396e",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/13-release/P39-02-release-gate.md",
+      "expected_sha256": "c08271107a271209a9ad036f7222eb56b12ca8a67b1520bdb3638837b9ed6c68",
+      "actual_sha256": "c08271107a271209a9ad036f7222eb56b12ca8a67b1520bdb3638837b9ed6c68",
+      "matches": true
+    },
+    {
+      "path": "docs/prompts/README.md",
+      "expected_sha256": "423d12bce688ccc958da56c71eb22264d087e846d97c4c0cb27a03640b12e518",
+      "actual_sha256": "423d12bce688ccc958da56c71eb22264d087e846d97c4c0cb27a03640b12e518",
+      "matches": true
+    },
+    {
+      "path": "tools/ai_coding_plan/build_catalog.py",
+      "expected_sha256": "d9f52f8f437526fb3c96413b3bb1e49517bbaf1369211ba42fb3ab5db5c76ce1",
+      "actual_sha256": "d9f52f8f437526fb3c96413b3bb1e49517bbaf1369211ba42fb3ab5db5c76ce1",
+      "matches": true
+    },
+    {
+      "path": "tools/ai_coding_plan/render_plan.py",
+      "expected_sha256": "049699b81267c49c2794a5c3ef71aee5c8fbe202df79cfd100565ffc2fb5249b",
+      "actual_sha256": "049699b81267c49c2794a5c3ef71aee5c8fbe202df79cfd100565ffc2fb5249b",
+      "matches": true
+    },
+    {
+      "path": "tools/ai_coding_plan/validate_plan.py",
+      "expected_sha256": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+      "actual_sha256": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+      "matches": true
+    },
+    {
+      "path": "AGENTS.md",
+      "expected_sha256": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+      "actual_sha256": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+      "matches": true
+    },
+    {
+      "path": "OWNERSHIP.json",
+      "expected_sha256": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+      "actual_sha256": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+      "matches": true
+    },
+    {
+      "path": "docs/handoffs/N02/codex.md",
+      "expected_sha256": "4cdf3f4f42983c4d93b50303326562489066afedd61df7b2b716e248932dabcf",
+      "actual_sha256": "4cdf3f4f42983c4d93b50303326562489066afedd61df7b2b716e248932dabcf",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/findings.json",
+      "expected_sha256": "ac7fb36a9024165d6b5bf3d7a7c8bc0a63a00a2620ecb5c5f556435c204eb883",
+      "actual_sha256": "ac7fb36a9024165d6b5bf3d7a7c8bc0a63a00a2620ecb5c5f556435c204eb883",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/evidence.json",
+      "expected_sha256": "e9f6aae266b0230283165052f8a642e0c527c581ed268fb8ebfcabc8f2fadf40",
+      "actual_sha256": "e9f6aae266b0230283165052f8a642e0c527c581ed268fb8ebfcabc8f2fadf40",
+      "matches": true
+    },
+    {
+      "path": "docs/handoffs/N01/codex.md",
+      "expected_sha256": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43",
+      "actual_sha256": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43",
+      "matches": true
+    },
+    {
+      "path": "artifacts/handoffs/N01/codex/evidence.json",
+      "expected_sha256": "4f545890ef6562478e570153656ba35f9ef124eaaca99dcc73197cbde6f267d9",
+      "actual_sha256": "4f545890ef6562478e570153656ba35f9ef124eaaca99dcc73197cbde6f267d9",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.json",
+      "expected_sha256": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "actual_sha256": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.md",
+      "expected_sha256": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "actual_sha256": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "matches": true
+    },
+    {
+      "path": "artifacts/gates/G00.json",
+      "expected_sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "actual_sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "matches": true
+    },
+    {
+      "path": "artifacts/gates/G00-checks.log",
+      "expected_sha256": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "actual_sha256": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "matches": true
+    }
+  ]
+}

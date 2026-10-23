@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P02-01",
+  "round": "p02-01-f01-2026-10-05",
+  "role": "dsh",
+  "status": "READY_FOR_ZCODE",
+  "signs_gate": false,
+  "generated_at": "2026-10-05T04:21:20.055810+00:00",
+  "generation_order": "archive -> source fix -> tests -> docs -> required runs -> evidence -> handoffs -> this seal",
+  "defect_repaired": "ZC-P02-01-F01",
+  "candidate": {
+    "code_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+    "dirty_tree_hash": "content-sha256:eaea942624f00e5da16e89a3e744d3a2c1c659fcf9eeda0a23787116681d636f",
+    "relevant_file_count": 82,
+    "previous_candidate": "content-sha256:dadad19614a86a39dff880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "declared": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+    "recomputed_by": "F01 seal writer via GateRunner.relevant_manifest_rows()"
+  },
+  "dependency_evidence": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "status": "passed",
+      "finished_at": "2026-10-04T14:48:59.955285+00:00",
+      "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+      "recorded_inputs_stale": []
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+      "status": "passed",
+      "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+      "recorded_inputs_total": 40,
+      "recorded_inputs_stale": [],
+      "validity": "the record bytes are unchanged, but the source/test changes of this authorised rework make part of its recorded inputs stale; independent restoration by the dispatcher is required",
+      "ds actionable": "DSH did not edit, re-sign or re-run the gate; the old record is preserved byte-for-byte",
+      "was_valid_at_rework_start": true,
+      "code_revision_matches_current": false,
+      "is_stale": true,
+      "staleness_cause": "recorded code_revision is the previous candidate; the 40 recorded input hashes themselves are all fresh"
+    },
+    "G01_review": {
+      "path": "artifacts/gates/G01-codex-review.json",
+      "sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+      "status": "approved",
+      "reviewer": "Codex N05-R01 /root/n05_independent (original independent reviewer; no candidate implementation edits)",
+      "verified_inputs_total": 262,
+      "verified_inputs_stale": [
+        "docs/implementation/P02-01.md",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ],
+      "validity": "the review bytes are unchanged; the same source/test changes make part of its inputs stale",
+      "code_revision_matches_current": false,
+      "verified_inputs_stale_count": 8,
+      "is_stale": true
+    },
+    "P01-01_zcode_precheck": {
+      "path": "artifacts/handoffs/P01-01/zcode/precheck.json",
+      "sha256": "7ae3e9d6f22c86c4b6a62679dcebdbab291317bfc2901147437ec331afa8180b",
+      "status": "Z_PRECHECK_PASSED",
+      "verified_inputs_total": 57,
+      "verified_inputs_stale": [
+        "artifacts/handoffs/P02-01/dsh/evidence.json",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ],
+      "note": "this phase-1 pre-acceptance had also bound P02-01 files, so the rework staled those inputs; DSH did not modify it"
+    }
+  },
+  "evidence": {
+    "path": "artifacts/handoffs/P02-01/dsh/evidence.json",
+    "sha256": "eac21615a8511ea371f12dc593f54f7e9b8aa7869da1bc8fdb5c921f6eb4281c",
+    "bytes": 18216
+  },
+  "handoffs": {
+    "docs/handoffs/P02-01/dsh-f01.md": {
+      "sha256": "1d6d715cea0f52d5e209067ef221e30e510e2e114f5f6e51250eb57894dae689",
+      "bytes": 5329
+    },
+    "docs/handoffs/P02-01/dsh.md": {
+      "sha256": "073e819119b4f920febc17d656b519d04641ff003b512bb2a25ad9590899b862",
+      "bytes": 6312,
+      "note": "delivery-round text preserved with an appended pointer"
+    },
+    "docs/handoffs/P02-01/dsh-r01.md": {
+      "sha256": "7b2d70d1dbad44f1231117161691afae54bc1a74febfcaa766e5c70411f12286",
+      "note": "NOT rewritten; historical attachment"
+    }
+  },
+  "commands": [
+    {
+      "id": "required-cmd1-pytest",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p02_01_primitives_and_states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "observed": {
+        "passed": 52,
+        "failed": 0
+      },
+      "expectation": "exit 0 with real passing P02-01 tests after the F01 Reservation fix",
+      "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-f01-2026-10-05/required-cmd1-pytest.log",
+      "log_sha256": "6399b5daab7e05b57cb5e626bfc18b87f10b77061657afd49633d0d15da0b69d",
+      "exit_code_and_counts_read_from_log": true,
+      "ran_this_round": true
+    },
+    {
+      "id": "required-cmd2-check-architecture",
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/check_architecture.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "observed": {
+        "violations": 0
+      },
+      "expectation": "exit 0; layer violations = 0",
+      "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-f01-2026-10-05/required-cmd2-check-architecture.log",
+      "log_sha256": "0f1ae76e098139f8404166790a63bac1b9707d707b3ba7a3e2e59933106ac745",
+      "exit_code_and_counts_read_from_log": true,
+      "ran_this_round": true
+    }
+  ],
+  "counts": {
+    "task_suites": {
+      "passed": 52,
+      "failed": 0
+    },
+    "architecture": {
+      "violations": 0
+    },
+    "phase_regression_new_candidate": null
+  },
+  "prior_bytes_archive": {
+    "root": "artifacts/handoffs/P02-01/dsh/archive/f01-before",
+    "manifest": "artifacts/handoffs/P02-01/dsh/archive/f01-before/archive-manifest.json",
+    "manifest_sha256": "97e8f3ce85947e5b4a49f426f04fb14adae6862b477562dd773f2b2ac9affbe5",
+    "file_count": 5
+  },
+  "evidence_invalidated_by_this_round": [
+    {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+      "record_bytes_changed": false,
+      "stale_reason": "recorded code_revision is the previous candidate; recorded input hashes stale = 0"
+    },
+    {
+      "path": "artifacts/gates/G01-codex-review.json",
+      "sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+      "record_bytes_changed": false,
+      "stale_reason": "8 verified inputs stale; recorded code_revision is the previous candidate",
+      "stale_inputs": [
+        "artifacts/handoffs/P02-01/dsh/evidence.json",
+        "artifacts/handoffs/P02-01/dsh/seal.json",
+        "docs/handoffs/P02-01/dsh.md",
+        "docs/implementation/P02-01.md",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/precheck.json",
+      "sha256": "7ae3e9d6f22c86c4b6a62679dcebdbab291317bfc2901147437ec331afa8180b",
+      "record_bytes_changed": false,
+      "stale_reason": "5 verified inputs stale",
+      "stale_inputs": [
+        "artifacts/handoffs/P02-01/dsh/evidence.json",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/zcode/precheck.json",
+      "sha256": "e517feec33e50cc56f4627bc1c74ccb698b8fb288090aeee40f1ed32d0e32394",
+      "record_bytes_changed": false,
+      "stale_reason": "FAILED record bound to the previous candidate and its evidence"
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/dsh/evidence.json",
+      "sha256": "36f08ff6a8b983c8ba749ef1bbf6fc4b0ae157059e4036f1e6f7917ec274c4c8",
+      "record_bytes_changed": true,
+      "stale_reason": "previous candidate; archived byte-for-byte in dsh/archive/f01-before/"
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/dsh/seal.json",
+      "sha256": "cd6731c117a11215dbceb1d1878415db890172fdf35e6af1fa9516eb40b9ba1b",
+      "record_bytes_changed": true,
+      "stale_reason": "previous candidate; archived byte-for-byte"
+    },
+    {
+      "path": "docs/handoffs/P02-01/dsh.md",
+      "sha256": "b3de54ebb24300388bcec4c6911964252a2358eb6bf82fae2e9c2c7a13364d49",
+      "record_bytes_changed": true,
+      "stale_reason": "previous candidate; delivery text preserved with an appended pointer, original bytes archived"
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/*",
+      "record_bytes_changed": false,
+      "stale_reason": "belong to the previous candidate; not overwritten"
+    }
+  ],
+  "no_full_regression_claim": true,
+  "executor_probe_after_rework": {
+    "argv": [
+      "uv",
+      "run",
+      "python",
+      "scripts/gates.py",
+      "--phase",
+      "01",
+      "--revision",
+      "auto",
+      "--check-only"
+    ],
+    "exit_code": 1,
+    "observed": [
+      "recorded revision 'dadad196...' differs from current 'content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c'",
+      "codex-review covers revision 'dadad196...', current is 'content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c'",
+      "codex-review stale inputs: ['artifacts/handoffs/P02-01/dsh/evidence.json', 'artifacts/handoffs/P02-01/dsh/seal.json', 'docs/handoffs/P02-01/dsh.md', 'docs/implementation/P02-01.md', 'docs/implementation/reports/P02-01.md', 'packages/domain/src/logistics_domain/states.py', 'tests/integration/test_p02_01_primitives_and_states.py', 'tests/unit/test_p02_01_primitives_and_states.py']",
+      "P01-01 precheck stale inputs: ['artifacts/handoffs/P02-01/dsh/evidence.json', 'docs/implementation/reports/P02-01.md', 'packages/domain/src/logistics_domain/states.py', 'tests/integration/test_p02_01_primitives_and_states.py', 'tests/unit/test_p02_01_primitives_and_states.py']"
+    ],
+    "log": "tmp/P02-01/F01/check-only-after-f01.log",
+    "note": "read-only probe; it wrote no gate record. It documents the exact drift handed to the dispatcher for independent restoration."
+  }
+}

@@ -1,0 +1,498 @@
+########## SCOPED LINT: uv run ruff check apps/backend/src packages/*/src tests scripts
+RUF022 [*] `__all__` is not sorted
+  --> apps\backend\src\logistics_backend\__init__.py:21:11
+   |
+19 | API_PREFIX = "/api/v1"
+20 |
+21 | __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "API_PREFIX"]
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22 |
+23 | _PENDING_APIS: dict[str, str] = {
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+20 |
+   - __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "API_PREFIX"]
+21 + __all__ = ["API_PREFIX", "LAYER", "PACKAGE_NAME", "SCHEMA_VERSION"]
+22 |
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> packages\agents\src\logistics_agents\__init__.py:21:11
+   |
+19 | LLM_DECISION_SCOPE = "extract|decompose|call_tools|explain"
+20 |
+21 | __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "AGENT_ROLES", "LLM_DECISION_SCOPE"]
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22 |
+23 | _PENDING_APIS: dict[str, str] = {
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+20 |
+   - __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "AGENT_ROLES", "LLM_DECISION_SCOPE"]
+21 + __all__ = ["AGENT_ROLES", "LAYER", "LLM_DECISION_SCOPE", "PACKAGE_NAME", "SCHEMA_VERSION"]
+22 |
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> packages\contracts\src\logistics_contracts\__init__.py:17:11
+   |
+15 | LAYER = "contracts"
+16 |
+17 | __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER"]
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18 |
+19 | _PENDING_APIS: dict[str, str] = {
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+16 |
+   - __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER"]
+17 + __all__ = ["LAYER", "PACKAGE_NAME", "SCHEMA_VERSION"]
+18 |
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> packages\domain\src\logistics_domain\__init__.py:24:11
+   |
+22 |   LEGACY_CONTRACT_VERSION = "0.1.0"
+23 |
+24 |   __all__ = [
+   |  ___________^
+25 | |     "SCHEMA_VERSION",
+26 | |     "CONTRACT_VERSION",
+27 | |     "LEGACY_CONTRACT_VERSION",
+28 | |     "PACKAGE_NAME",
+29 | |     "DOMAIN_LAYER",
+30 | | ]
+   | |_^
+31 |
+32 |   # Public API surface owned by later tasks. Declared here so that an accidental
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+24 | __all__ = [
+   -     "SCHEMA_VERSION",
+25 |     "CONTRACT_VERSION",
+26 +     "DOMAIN_LAYER",
+27 |     "LEGACY_CONTRACT_VERSION",
+28 |     "PACKAGE_NAME",
+   -     "DOMAIN_LAYER",
+29 +     "SCHEMA_VERSION",
+30 | ]
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> packages\evaluation\src\logistics_evaluation\__init__.py:19:11
+   |
+17 | METRIC_COUNT = 14
+18 |
+19 | __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "METRIC_COUNT"]
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+20 |
+21 | _PENDING_APIS: dict[str, str] = {
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+18 |
+   - __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "METRIC_COUNT"]
+19 + __all__ = ["LAYER", "METRIC_COUNT", "PACKAGE_NAME", "SCHEMA_VERSION"]
+20 |
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> packages\optimization\src\logistics_optimization\__init__.py:22:11
+   |
+20 | SOLVER_ENGINE = "ortools"
+21 |
+22 | __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "SOLVER_ENGINE"]
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23 |
+24 | _PENDING_APIS: dict[str, str] = {
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+21 |
+   - __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "SOLVER_ENGINE"]
+22 + __all__ = ["LAYER", "PACKAGE_NAME", "SCHEMA_VERSION", "SOLVER_ENGINE"]
+23 |
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> packages\simulation\src\logistics_simulation\__init__.py:20:11
+   |
+18 | SIMULATION_ENGINE = "simpy"
+19 |
+20 | __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "SIMULATION_ENGINE"]
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21 |
+22 | _PENDING_APIS: dict[str, str] = {
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+19 |
+   - __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "SIMULATION_ENGINE"]
+20 + __all__ = ["LAYER", "PACKAGE_NAME", "SCHEMA_VERSION", "SIMULATION_ENGINE"]
+21 |
+   |
+
+RUF001 String contains ambiguous `，` (FULLWIDTH COMMA). Did you mean `,` (COMMA)?
+   --> scripts\check_ownership.py:176:55
+    |
+174 | def _target_rule(kind: str, legacy_value: str, target: str | None) -> str:
+175 |     if target is None:
+176 |         return f"v0.1 {kind}.{legacy_value} 在 v1 没有对应值，按不迁移处理（不静默改写）"
+    |                                                             ^^
+177 |     return f"v0.1 {kind}.{legacy_value} -> v1 {target.split(':', 1)[1]}"
+    |
+
+RUF001 String contains ambiguous `（` (FULLWIDTH LEFT PARENTHESIS). Did you mean `(` (LEFT PARENTHESIS)?
+   --> scripts\check_ownership.py:176:62
+    |
+174 | def _target_rule(kind: str, legacy_value: str, target: str | None) -> str:
+175 |     if target is None:
+176 |         return f"v0.1 {kind}.{legacy_value} 在 v1 没有对应值，按不迁移处理（不静默改写）"
+    |                                                                           ^^
+177 |     return f"v0.1 {kind}.{legacy_value} -> v1 {target.split(':', 1)[1]}"
+    |
+
+RUF001 String contains ambiguous `）` (FULLWIDTH RIGHT PARENTHESIS). Did you mean `)` (RIGHT PARENTHESIS)?
+   --> scripts\check_ownership.py:176:68
+    |
+174 | def _target_rule(kind: str, legacy_value: str, target: str | None) -> str:
+175 |     if target is None:
+176 |         return f"v0.1 {kind}.{legacy_value} 在 v1 没有对应值，按不迁移处理（不静默改写）"
+    |                                                                                       ^^
+177 |     return f"v0.1 {kind}.{legacy_value} -> v1 {target.split(':', 1)[1]}"
+    |
+
+RUF001 String contains ambiguous `（` (FULLWIDTH LEFT PARENTHESIS). Did you mean `(` (LEFT PARENTHESIS)?
+   --> scripts\check_ownership.py:217:60
+    |
+215 |         source_value=str(value),
+216 |         target_value=str(value * 60),
+217 |         rule=f"v0.1 {field}={value} 分钟 -> v1 {value * 60} 秒（整数秒，向上不取整；记录旧版本 {LEGACY_CONTRACT_VERSION}）",
+    |                                                               ^^
+218 |     )
+    |
+
+RUF001 String contains ambiguous `，` (FULLWIDTH COMMA). Did you mean `,` (COMMA)?
+   --> scripts\check_ownership.py:217:64
+    |
+215 |         source_value=str(value),
+216 |         target_value=str(value * 60),
+217 |         rule=f"v0.1 {field}={value} 分钟 -> v1 {value * 60} 秒（整数秒，向上不取整；记录旧版本 {LEGACY_CONTRACT_VERSION}）",
+    |                                                                       ^^
+218 |     )
+    |
+
+RUF001 String contains ambiguous `；` (FULLWIDTH SEMICOLON). Did you mean `;` (SEMICOLON)?
+   --> scripts\check_ownership.py:217:70
+    |
+215 |         source_value=str(value),
+216 |         target_value=str(value * 60),
+217 |         rule=f"v0.1 {field}={value} 分钟 -> v1 {value * 60} 秒（整数秒，向上不取整；记录旧版本 {LEGACY_CONTRACT_VERSION}）",
+    |                                                                                   ^^
+218 |     )
+    |
+
+RUF001 String contains ambiguous `）` (FULLWIDTH RIGHT PARENTHESIS). Did you mean `)` (RIGHT PARENTHESIS)?
+   --> scripts\check_ownership.py:217:102
+    |
+215 |         source_value=str(value),
+216 |         target_value=str(value * 60),
+217 |         rule=f"v0.1 {field}={value} 分钟 -> v1 {value * 60} 秒（整数秒，向上不取整；记录旧版本 {LEGACY_CONTRACT_VERSION}）",
+    |                                                                                                                         ^^
+218 |     )
+    |
+
+RUF001 String contains ambiguous `（` (FULLWIDTH LEFT PARENTHESIS). Did you mean `(` (LEFT PARENTHESIS)?
+  --> scripts\gates.py:73:25
+   |
+71 |             "clean-install-imports",
+72 |             "G01",
+73 |             "干净安装后六个包可导入（仓库外 cwd 亦可），且解析到各自 workspace src 目录",
+   |                                    ^^
+74 |             None,  # implemented by GateRunner.check_imports_from_outside_cwd (writes its own probe)
+75 |         ),
+   |
+
+RUF001 String contains ambiguous `）` (FULLWIDTH RIGHT PARENTHESIS). Did you mean `)` (RIGHT PARENTHESIS)?
+  --> scripts\gates.py:73:36
+   |
+71 |             "clean-install-imports",
+72 |             "G01",
+73 |             "干净安装后六个包可导入（仓库外 cwd 亦可），且解析到各自 workspace src 目录",
+   |                                                     ^^
+74 |             None,  # implemented by GateRunner.check_imports_from_outside_cwd (writes its own probe)
+75 |         ),
+   |
+
+RUF001 String contains ambiguous `，` (FULLWIDTH COMMA). Did you mean `,` (COMMA)?
+  --> scripts\gates.py:73:37
+   |
+71 |             "clean-install-imports",
+72 |             "G01",
+73 |             "干净安装后六个包可导入（仓库外 cwd 亦可），且解析到各自 workspace src 目录",
+   |                                                       ^^
+74 |             None,  # implemented by GateRunner.check_imports_from_outside_cwd (writes its own probe)
+75 |         ),
+   |
+
+RUF001 String contains ambiguous `：` (FULLWIDTH COLON). Did you mean `:` (COLON)?
+  --> scripts\gates.py:79:20
+   |
+77 |             "layer-boundaries",
+78 |             "G01",
+79 |             "分层检查通过：层依赖方向正确、domain 无第三方导入",
+   |                          ^^
+80 |             CommandSpec("uv run python scripts/check_architecture.py", "exit code 0 and no violations"),
+81 |         ),
+   |
+
+RUF001 String contains ambiguous `：` (FULLWIDTH COLON). Did you mean `:` (COLON)?
+  --> scripts\gates.py:85:20
+   |
+83 |             "lock-reproducible",
+84 |             "G01",
+85 |             "依赖锁可复现：uv.lock 与各成员清单一致，且 npm 锁未漂移",
+   |                          ^^
+86 |             CommandSpec("uv lock --check", "exit code 0"),
+87 |         ),
+   |
+
+RUF001 String contains ambiguous `，` (FULLWIDTH COMMA). Did you mean `,` (COMMA)?
+  --> scripts\gates.py:85:37
+   |
+83 |             "lock-reproducible",
+84 |             "G01",
+85 |             "依赖锁可复现：uv.lock 与各成员清单一致，且 npm 锁未漂移",
+   |                                                    ^^
+86 |             CommandSpec("uv lock --check", "exit code 0"),
+87 |         ),
+   |
+
+RUF001 String contains ambiguous `：` (FULLWIDTH COLON). Did you mean `:` (COLON)?
+  --> scripts\gates.py:91:29
+   |
+89 |             "runner-fails-closed",
+90 |             "G01",
+91 |             "Gate 执行器非零命令必失败：exit=1 的探查命令必须被判定为失败",
+   |                                       ^^
+92 |             None,  # implemented by GateRunner.check_runner_fails_closed
+93 |         ),
+   |
+
+RUF001 String contains ambiguous `：` (FULLWIDTH COLON). Did you mean `:` (COLON)?
+  --> scripts\gates.py:97:25
+   |
+95 |             "legacy-demo-untouched",
+96 |             "G01",
+97 |             "旧 demo 未被覆盖：登记文件指纹与 demo.zip 哈希仍与 P01-01 基线证据一致",
+   |                              ^^
+98 |             None,  # implemented by GateRunner.check_legacy_demo_untouched
+99 |         ),
+   |
+
+UP017 [*] Use `datetime.UTC` alias
+   --> scripts\gates.py:129:28
+    |
+128 | def utc_now() -> str:
+129 |     return dt.datetime.now(dt.timezone.utc).isoformat()
+    |                            ^^^^^^^^^^^^^^^
+help: Convert to `datetime.UTC` alias
+    |
+128 | def utc_now() -> str:
+    -     return dt.datetime.now(dt.timezone.utc).isoformat()
+129 +     return dt.datetime.now(dt.UTC).isoformat()
+130 |
+    |
+
+RUF001 String contains ambiguous `，` (FULLWIDTH COMMA). Did you mean `,` (COMMA)?
+   --> scripts\gates.py:432:41
+    |
+430 |     def check_imports_from_outside_cwd(self) -> CheckResult:
+431 |         """Test case 1: after a frozen install the six packages import from anywhere."""
+432 |         expectation = "六个包在仓库外 cwd 下仍可导入，且解析到各自 workspace src 目录"
+    |                                                     ^^
+433 |         probe_path = self.root / f".gate-probe-{self.gate_id}.py"
+434 |         probe_path.write_text(
+    |
+
+RUF005 Consider `[*zcode, codex]` instead of concatenation
+   --> scripts\gates.py:825:51
+    |
+823 |         zcode = self.check_zcode_precheck()
+824 |         codex = self.check_codex_review()
+825 |         problems.extend(check.detail for check in zcode + [codex] if not check.passed)
+    |                                                   ^^^^^^^^^^^^^^^
+826 |         status = payload.get("status")
+827 |         print(f"check-only: recorded status={status}, failed_checks={payload.get('failed_checks', [])}")
+    |
+help: Replace with `[*zcode, codex]`
+
+UP031 Use format specifiers instead of percent format
+   --> tests\integration\test_p01_01_workspace_bootstrap.py:287:16
+    |
+286 | def test_python_runtime_satisfies_the_pinned_baseline(evidence: dict) -> None:
+287 |     reported = "%d.%d.%d" % sys.version_info[:3]
+    |                ^^^^^^^^^^
+288 |     assert (REPO_ROOT / ".python-version").read_text(encoding="utf-8").strip() == "3.12"
+289 |     assert sys.version_info[:2] == (3, 12), f"the workspace environment must run CPython 3.12, got {reported}"
+    |
+help: Replace with format specifiers
+
+RUF002 Docstring contains ambiguous `，` (FULLWIDTH COMMA). Did you mean `,` (COMMA)?
+  --> tests\integration\test_p01_02_checks_and_gate_runner.py:11:34
+   |
+ 9 | 2. ``domain 导入 fastapi => 层边界检查失败``
+10 | 3. ``Codex review 缺失或 ZCode 输入哈希过期 => 不写 passed``
+11 | 4. ``--check-only 全部成功 => 仅输出检查结果，不签收 Gate``
+   |                                             ^^
+12 | """
+   |
+
+UP031 Use format specifiers instead of percent format
+   --> tests\integration\test_p01_02_checks_and_gate_runner.py:172:24
+    |
+170 |             "deps": [task_id],
+171 |             "status": "not_run",
+172 |             "blocks": ["G%02d" % (phase + 1)],
+    |                        ^^^^^^^
+173 |         }
+174 |         tasks = [
+    |
+help: Replace with format specifiers
+
+RUF002 Docstring contains ambiguous `，` (FULLWIDTH COMMA). Did you mean `,` (COMMA)?
+   --> tests\integration\test_p01_02_checks_and_gate_runner.py:493:49
+    |
+491 |     synthetic_repo: SyntheticRepo, run_command, python_executable
+492 | ) -> None:
+493 |     """Test Case 4: --check-only 全部成功 => 仅输出检查结果，不签收 Gate."""
+    |                                                            ^^
+494 |     revision = satisfiable_phase(synthetic_repo, python_executable=python_executable)
+    |
+
+F401 [*] `tomllib` imported but unused
+  --> tests\unit\test_p01_02_checks_and_gate_runner.py:13:8
+   |
+11 | import ast
+12 | import json
+13 | import tomllib
+   |        ^^^^^^^
+14 | from pathlib import Path
+   |
+help: Remove unused import: `tomllib`
+   |
+12 | import json
+   - import tomllib
+13 | from pathlib import Path
+   |
+
+RUF002 Docstring contains ambiguous `（` (FULLWIDTH LEFT PARENTHESIS). Did you mean `(` (LEFT PARENTHESIS)?
+  --> tests\unit\test_p01_02_checks_and_gate_runner.py:85:25
+   |
+84 | def test_non_zero_exit_is_rejected(gate_runner_module, tmp_path: Path) -> None:
+85 |     """命令 exit=1 => 判定失败（进程非零由集成测试断言）。"""
+   |                               ^^
+86 |     runner = gate_runner_module.GateRunner(root=tmp_path, phase=1, revision="auto")
+87 |     (tmp_path / "artifacts/gates/G01-logs").mkdir(parents=True, exist_ok=True)
+   |
+
+RUF002 Docstring contains ambiguous `）` (FULLWIDTH RIGHT PARENTHESIS). Did you mean `)` (RIGHT PARENTHESIS)?
+  --> tests\unit\test_p01_02_checks_and_gate_runner.py:85:37
+   |
+84 | def test_non_zero_exit_is_rejected(gate_runner_module, tmp_path: Path) -> None:
+85 |     """命令 exit=1 => 判定失败（进程非零由集成测试断言）。"""
+   |                                                       ^^
+86 |     runner = gate_runner_module.GateRunner(root=tmp_path, phase=1, revision="auto")
+87 |     (tmp_path / "artifacts/gates/G01-logs").mkdir(parents=True, exist_ok=True)
+   |
+
+RUF002 Docstring contains ambiguous `；` (FULLWIDTH SEMICOLON). Did you mean `;` (SEMICOLON)?
+   --> tests\unit\test_p01_02_checks_and_gate_runner.py:181:36
+    |
+180 | def test_codex_review_is_required_and_checked(gate_runner_module, tmp_path: Path) -> None:
+181 |     """Codex review 缺失 => 不写 passed；revision 不匹配或输入哈希过期同样拒绝。"""
+    |                                        ^^
+182 |     runner = gate_runner_module.GateRunner(root=tmp_path, phase=1, revision="content-sha256:current")
+183 |     review_path = tmp_path / "artifacts/gates/G01-codex-review.json"
+    |
+
+RUF002 Docstring contains ambiguous `（` (FULLWIDTH LEFT PARENTHESIS). Did you mean `(` (LEFT PARENTHESIS)?
+   --> tests\unit\test_p01_02_checks_and_gate_runner.py:288:36
+    |
+287 | def test_domain_importing_fastapi_is_a_violation(architecture_module, tmp_path: Path) -> None:
+288 |     """domain 导入 fastapi => 层边界检查失败（退出码由集成测试断言）。"""
+    |                                             ^^
+289 |     write_module(tmp_path / "packages/domain/src/logistics_domain/__init__.py", "import fastapi\n")
+290 |     report = architecture_module.run_checks(tmp_path)
+    |
+
+RUF002 Docstring contains ambiguous `）` (FULLWIDTH RIGHT PARENTHESIS). Did you mean `)` (RIGHT PARENTHESIS)?
+   --> tests\unit\test_p01_02_checks_and_gate_runner.py:288:47
+    |
+287 | def test_domain_importing_fastapi_is_a_violation(architecture_module, tmp_path: Path) -> None:
+288 |     """domain 导入 fastapi => 层边界检查失败（退出码由集成测试断言）。"""
+    |                                                                   ^^
+289 |     write_module(tmp_path / "packages/domain/src/logistics_domain/__init__.py", "import fastapi\n")
+290 |     report = architecture_module.run_checks(tmp_path)
+    |
+
+SIM300 [*] Yoda condition detected
+   --> tests\unit\test_p01_02_checks_and_gate_runner.py:303:53
+    |
+301 |         report = architecture_module.run_checks(root)
+302 |         assert report["passed"] is False, f"domain must reject {module}"
+303 |         assert all("domain" in violation["rule"] or "PURITY" == violation["code"] for violation in report["violations"])
+    |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: Rewrite as `violation["code"] == "PURITY"`
+    |
+302 |         assert report["passed"] is False, f"domain must reject {module}"
+    -         assert all("domain" in violation["rule"] or "PURITY" == violation["code"] for violation in report["violations"])
+303 +         assert all("domain" in violation["rule"] or violation["code"] == "PURITY" for violation in report["violations"])
+304 |
+    |
+
+F841 Local variable `literals` is assigned to but never used
+   --> tests\unit\test_p01_02_checks_and_gate_runner.py:422:5
+    |
+420 |     assert "status\": \"failed\"" in source or '"failed"' in source
+421 |     tree = ast.parse(source)
+422 |     literals = {node.value for node in ast.walk(tree) if isinstance(node, ast.Constant) and isinstance(node.value, str)}
+    |     ^^^^^^^^
+423 |     assert "shell=True" not in source, "commands must be executed with argv arrays, never a shell"
+    |
+help: Remove assignment to unused variable `literals`
+
+F841 Local variable `tree` is assigned to but never used
+   --> tests\unit\test_p01_02_checks_and_gate_runner.py:529:5
+    |
+527 |     assert "TEST_DATABASE_URL" in source
+528 |     assert "rollback" in source.lower()
+529 |     tree = ast.parse(source)
+    |     ^^^^
+help: Remove assignment to unused variable `tree`
+
+SIM300 [*] Yoda condition detected
+   --> tests\unit\test_p01_03_migration_governance.py:221:12
+    |
+219 |     with pytest.raises(ownership_module.LegacyConversionError):
+220 |         ownership_module.convert_legacy_status("PlanStatus", "cancelled")
+221 |     assert ownership_module.LEGACY_STATUS_TABLES == before
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+222 |     assert "cancelled" not in ownership_module.LEGACY_STATUS_TABLES["PlanStatus"]
+    |
+help: Rewrite as `before == ownership_module.LEGACY_STATUS_TABLES`
+    |
+220 |         ownership_module.convert_legacy_status("PlanStatus", "cancelled")
+    -     assert ownership_module.LEGACY_STATUS_TABLES == before
+221 +     assert before == ownership_module.LEGACY_STATUS_TABLES
+222 |     assert "cancelled" not in ownership_module.LEGACY_STATUS_TABLES["PlanStatus"]
+    |
+
+Found 39 errors.
+[*] 11 fixable with the `--fix` option (3 hidden fixes can be enabled with the `--unsafe-fixes` option).
+EXIT_CODE=1

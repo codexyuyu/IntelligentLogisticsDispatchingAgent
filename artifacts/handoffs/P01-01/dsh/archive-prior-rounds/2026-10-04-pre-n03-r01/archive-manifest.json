@@ -1,0 +1,86 @@
+{
+  "task_id": "P01-01",
+  "round": "2026-10-04-pre-n03-r01",
+  "reason": "byte-for-byte archive of the schema-incompatible N03 evidence round before the N03-R01 repair",
+  "file_count": 13,
+  "entries": [
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/evidence.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/evidence.json",
+      "bytes": 21195,
+      "sha256": "98a46cdf685ce94392820d874d5dc5898156495858d7c9cef83a6fa936c015f0"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd1-pytest.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/n03-2026-10-04/p01-01-cmd1-pytest.log",
+      "bytes": 765,
+      "sha256": "daa2f15e45cc65c8f04a4b6eac4d1eaba11ddfbbe56e90a7c6a77edd53d84869"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd2-uv-sync-frozen.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/n03-2026-10-04/p01-01-cmd2-uv-sync-frozen.log",
+      "bytes": 609,
+      "sha256": "404bfcaa0849c3e35eaebddba2b5b142acfc52c7482fd1b2471cd13a427e1d30"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3-npm-ci-run1.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/n03-2026-10-04/p01-01-cmd3-npm-ci-run1.log",
+      "bytes": 551,
+      "sha256": "6a720051f56ffc2401d8dd116b856aaf35cb7412fa8c30495d323c557969e0a7"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3b-npm-ci-run2.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/n03-2026-10-04/p01-01-cmd3b-npm-ci-run2.log",
+      "bytes": 666,
+      "sha256": "8b9bdf00e72ca2b5cee1dcfee57ae9e36442598fc3bda98c00ae68def37267a2"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt1.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/n03-2026-10-04/phase01-full-regression-attempt1.log",
+      "bytes": 4076,
+      "sha256": "2a2151a9bade2f9f55f8baad9f9ccc19c664d588f9b1dc67119169e8170608d2"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt2.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/n03-2026-10-04/phase01-full-regression-attempt2.log",
+      "bytes": 4183,
+      "sha256": "4ba550f6c0eecb74b3128f775fda7d1f8f0419c8d6b55f4e8d52c78aad7898ba"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/npm_ci.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/npm_ci.log",
+      "bytes": 294,
+      "sha256": "1f2fc355303c54f283d3bbe356360857394a3230238c51775b1a9f76edfa955d"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/pytest.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/pytest.log",
+      "bytes": 490,
+      "sha256": "75fa0e13c0a2b243cbe1c5386ed7b3f721372501255b9ccf7e1d42a7ac748bb2"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/uv_sync_frozen.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/uv_sync_frozen.log",
+      "bytes": 309,
+      "sha256": "3226cdb567e9e722372b86e8fb391aa32f7f037e8a41781ec6223701741ffe90"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/validation-summary.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/logs/validation-summary.json",
+      "bytes": 1929,
+      "sha256": "7acce9b3c46401a79c96e9fbf13732568519a52f5e00224926d58e43065fed96"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/seal.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/seal.json",
+      "bytes": 4367,
+      "sha256": "254bf14c5a3bbff215adabb97e856cce66ebb9361862d3a1a697aa42d516d1f5"
+    },
+    {
+      "path": "docs/handoffs/P01-01/dsh.md",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/docs-handoff-dsh.md",
+      "bytes": 12586,
+      "sha256": "76d154cbb058e1d9f936d2e0750ea772b98ff58abd9e9c11dd3f20ab6c4b41a7"
+    }
+  ]
+}

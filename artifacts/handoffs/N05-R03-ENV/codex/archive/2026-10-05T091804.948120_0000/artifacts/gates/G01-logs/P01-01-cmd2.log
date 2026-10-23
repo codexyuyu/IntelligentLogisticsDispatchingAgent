@@ -1,0 +1,13 @@
+# check: P01-01-cmd2
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "sync", "--frozen"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T09:03:06.438317+00:00
+# expectation: manifest command must succeed
+
+## stdout
+
+## stderr
+Checked 39 packages in 4ms
+
+## exit_code: 0
+## duration_ms: 63

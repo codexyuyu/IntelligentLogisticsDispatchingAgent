@@ -1,0 +1,30 @@
+﻿wrote tmp/dsh-p0502/g05/G05.json (status: failed)
+G05: 6/27 checks passed
+  [FAIL] P05-01-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P05-01-cmd2: manifest command must succeed
+  [FAIL] P05-01-cmd3: exit_code=2 (expected 0)
+  [FAIL] P05-02-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P05-02-cmd2: manifest command must succeed
+  [FAIL] P05-02-cmd3: exit_code=2 (expected 0)
+  [FAIL] P05-03-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P05-03-cmd2: manifest command must succeed
+  [FAIL] P05-03-cmd3: exit_code=2 (expected 0)
+  [PASS] previous-gate:G00: status=passed
+  [FAIL] previous-gate:G01: status=failed
+  [FAIL] previous-gate:G02: missing artifacts/gates/G02.json
+  [FAIL] previous-gate:G03: missing artifacts/gates/G03.json
+  [FAIL] previous-gate:G04: missing artifacts/gates/G04.json
+  [FAIL] dsh-evidence:P05-01: unexpected status='BLOCKED'
+  [FAIL] dsh-evidence:P05-02: missing artifacts/handoffs/P05-02/dsh/evidence.json
+  [FAIL] dsh-evidence:P05-03: missing artifacts/handoffs/P05-03/dsh/evidence.json
+  [PASS] docs:docs/implementation/P05-01.md: present
+  [PASS] docs:docs/implementation/reports/P05-01.md: present
+  [FAIL] docs:docs/implementation/P05-02.md: missing docs/implementation/P05-02.md
+  [FAIL] docs:docs/implementation/reports/P05-02.md: missing docs/implementation/reports/P05-02.md
+  [FAIL] docs:docs/implementation/P05-03.md: missing docs/implementation/P05-03.md
+  [FAIL] docs:docs/implementation/reports/P05-03.md: missing docs/implementation/reports/P05-03.md
+  [FAIL] zcode-precheck:P05-01: missing artifacts/handoffs/P05-01/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] zcode-precheck:P05-02: missing artifacts/handoffs/P05-02/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] zcode-precheck:P05-03: missing artifacts/handoffs/P05-03/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] codex-review: missing artifacts/gates/G05-codex-review.json; a phase gate cannot be signed without the Codex review record
+  commands: 9, median 186 ms, total 2263 ms

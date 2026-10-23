@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "reviewer": "Codex N02-R02 /root/n02_r02_independent",
+  "checked_at": "2026-10-04T14:39:05.580737+00:00",
+  "reviewed_candidate": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "file_count": 77,
+  "governance_changed_files": [
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "before_sha256": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+      "after_sha256": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+      "before_bytes": 69687,
+      "after_bytes": 79824
+    },
+    {
+      "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "before_sha256": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+      "after_sha256": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+      "before_bytes": 38568,
+      "after_bytes": 40830
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-decisions.json",
+      "before_sha256": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+      "after_sha256": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+      "before_bytes": 94064,
+      "after_bytes": 109715
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+      "before_sha256": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+      "after_sha256": "9bf3e3c00513cb04ad5549b2344d12cae553914a49935135bcffaba60cba8ab8",
+      "before_bytes": 3047,
+      "after_bytes": 5382
+    },
+    {
+      "path": "tools/ai_coding_plan/validate_plan.py",
+      "before_sha256": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+      "after_sha256": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+      "before_bytes": 48040,
+      "after_bytes": 65385
+    }
+  ],
+  "protected_count": 3786,
+  "protected_changes": [],
+  "observed_external_additions": [
+    {
+      "path": "docs/agent-toolchain/13-partitioned-parallel-dispatch.md",
+      "sha256": "fee78af5909960f7aaae9bd581523927d951857c9b24d6bfb4c5ddffb76c4a40",
+      "bytes": 6281,
+      "last_write_utc": "2026-10-04T14:34:32.047625+00:00",
+      "classification": "after N01-R02 seal, before this review; process-only, candidate-excluded; provenance separately confirmed by parent"
+    }
+  ],
+  "type_count": 196,
+  "modified_types": [
+    "CargoAnomalyPayload",
+    "DemandDecreasePayload",
+    "DemandIncreasePayload",
+    "EntityKind",
+    "EntityRef",
+    "EquipmentFailurePayload",
+    "OrderCancellationPayload",
+    "TrafficDisruptionPayload",
+    "TransportDelayPayload",
+    "VehicleFailurePayload",
+    "WarehouseResourceUnavailablePayload",
+    "WeatherChangePayload"
+  ],
+  "preserved_self_tests": 43,
+  "current_self_tests": 73,
+  "record_g00_ast_unchanged": true,
+  "legacy_entries": 173,
+  "old_freeze_drift": [
+    "docs/architecture/DOMAIN_CATALOG.md",
+    "docs/architecture/DATA_CONTRACTS.md",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+    "docs/api/API_CONTRACT.md"
+  ],
+  "old_g00_problems": [
+    "frozen input docs/api/API_CONTRACT.md drifted after the gate was recorded",
+    "frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/DOMAIN_CATALOG.md drifted after the gate was recorded",
+    "frozen input docs/architecture/IMPLEMENTATION_CONVENTIONS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+  ]
+}

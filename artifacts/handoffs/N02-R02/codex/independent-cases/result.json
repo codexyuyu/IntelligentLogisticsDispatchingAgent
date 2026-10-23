@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "candidate": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "counts": {
+    "total": 189,
+    "positive": 92,
+    "negative": 97,
+    "matched": 189,
+    "mismatched": 0
+  },
+  "source_inputs_unchanged": true,
+  "use_of_inherited_helpers": {
+    "prefix_stop": "before u=lambda",
+    "prefix_sha256": "b58c410b76f8bac0965335df03e88772b254c5f4f1af88300ba926293d3a4baa",
+    "original_source_sha256": "e14029df2f34a12d189a42e1c2aa9b7da0f3854f75922cc958ef08ff1cf80008",
+    "removed_in_memory_statements": [
+      "OUT.mkdir(parents=True,exist_ok=True)"
+    ],
+    "whole_script_executed": false,
+    "old_run_examples_executed": false
+  },
+  "findings": [],
+  "limitations": [
+    "Bounded current-snapshot design predicates only; no business handler, HTTP, database, solver, simulation or Gate acceptance.",
+    "The inherited parse adapter is partial for existing domain types, state enums, CargoType, FK/scope consistency and calendar semantics; these are not reopened by this C01 probe.",
+    "General 45-kind cases prove shape and serialization closure; ten event branches separately check the target semantics supported by the fixture.",
+    "Fixture facts are synthetic and no mutable live store is queried; historical audit reference semantics are not runtime-tested.",
+    "Normative source unchanged; schema sabotage is applied to deep copies in memory only."
+  ],
+  "actual_execution": {
+    "argv": [
+      "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "tmp/N02-R02/independent-cases/probe.py"
+    ],
+    "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "started_at_utc": "2026-10-04T14:45:55.697819+00:00",
+    "finished_at_utc": "2026-10-04T14:45:56.792917+00:00",
+    "exit_code": 0,
+    "log_path": "artifacts/handoffs/N02-R02/codex/independent-cases/run.log",
+    "log_sha256": "caa96d1f7ca7dd215343d6615d418d041c9cadd3ae2351a191d86c726a28bc75",
+    "python_executable_sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    "capture_argv": [
+      "tmp/N02-R02/independent-cases/capture.py"
+    ],
+    "capture_cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "capture_sha256": "7834225664de5c2e320ab6a7f2e564007b803dfdc8ef46d7a7d5c1c6b640a9b5"
+  },
+  "evidence_hashes": {
+    "cases.json": "b0740181c3e3f8175f11543825ddc793588bee7f8992b4a83aafe4413d2da0ec",
+    "command.json": "4a9344c71070275cf3c5b70f83c7eb96b96c00aab1e822779783de73b96187a9",
+    "fixture.json": "0946fa67998f58c58d424616fe0a29b79435b0c4b4dc4d19d15bee33efa5b1a6",
+    "run.log": "caa96d1f7ca7dd215343d6615d418d041c9cadd3ae2351a191d86c726a28bc75",
+    "source-inputs.json": "d8c5bf78d888742cc1b8c1493e4be2cb6db08d9fda51cc558029c06fb40063ba",
+    "summary.json": "097f7f4bed9e3478a49c9cb2d69e857c358222af48666e890c0e0f05fcfa8cc9"
+  }
+}

@@ -1,0 +1,54 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe", "tmp/N01/verify.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+## stdout
+{"name": "zcode complete required inputs accepted in sandbox", "passed": true, "detail": null}
+{"name": "zcode rejects empty hashes", "passed": true, "detail": null}
+{"name": "zcode rejects wrong task", "passed": true, "detail": null}
+{"name": "zcode rejects wrong gate", "passed": true, "detail": null}
+{"name": "zcode rejects missing reviewer", "passed": true, "detail": null}
+{"name": "zcode rejects blocked status", "passed": true, "detail": null}
+{"name": "zcode rejects missing prompt", "passed": true, "detail": null}
+{"name": "zcode rejects invalid digest", "passed": true, "detail": null}
+{"name": "zcode rejects one changed input byte", "passed": true, "detail": null}
+{"name": "codex rejects missing review", "passed": true, "detail": null}
+{"name": "codex nonempty fresh map accepted by current reader", "passed": true, "detail": null}
+{"name": "codex rejects empty map", "passed": true, "detail": null}
+{"name": "codex rejects wrong revision", "passed": true, "detail": null}
+{"name": "status-only previous gate rejected", "passed": true, "detail": null}
+{"name": "complete command fixture accepted", "passed": true, "detail": null}
+{"name": "nonzero command fixture rejected", "passed": true, "detail": null}
+{"name": "missing exit code rejected", "passed": true, "detail": null}
+{"name": "missing raw log rejected", "passed": true, "detail": null}
+check-only: gate G01 revision synthetic-revision
+check-only: no existing evidence at D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\tmp\N01\examples-6o19d9p4\tmp\probe\G01.json (nothing signed yet)
+check-only: gate not signed (no evidence file written)
+{"name": "check-only no official record is not signoff and writes nothing", "passed": true, "detail": null}
+Rendered 109 prompts, 40 gates, task graph and indexes.
+{"name": "generated outputs reproduce exactly", "passed": true, "detail": []}
+{"name": "Job enum audit and legal carrier agree on P02-01 states", "passed": true, "detail": null}
+{"name": "master data named-type audit has each required row", "passed": true, "detail": null}
+{"name": "P36 contributions disjoint and cover whitelist", "passed": true, "detail": null}
+{"name": "P36 contributions match actual path ownership", "passed": true, "detail": []}
+{"name": "P36 B test is a required command input", "passed": true, "detail": null}
+{"name": "planning version and initial states preserved", "passed": true, "detail": null}
+{"name": "P01-02 four cases rendered and compared", "passed": true, "detail": null}
+{"name": "P02-04 legal carrier", "passed": true, "detail": null}
+{"name": "P04-02 legal carrier", "passed": true, "detail": null}
+{"name": "P05-01 legal carrier", "passed": true, "detail": null}
+{"name": "P05-03 legal carrier", "passed": true, "detail": null}
+{"name": "all prompts eliminate undefined error-code instruction", "passed": true, "detail": []}
+{"name": "new-document local links exist and stay in root", "passed": true, "detail": []}
+{"name": "all historical gates/handoffs/freeze/runner/ownership unchanged", "passed": true, "detail": []}
+{"name": "freeze drift limited to declared DATA_CONTRACTS migration", "passed": true, "detail": ["docs/architecture/DATA_CONTRACTS.md"]}
+{"name": "current candidate revision independently recomputed", "passed": true, "detail": null}
+{
+  "checks": 36,
+  "passed": 36,
+  "failed": [],
+  "candidate": "content-sha256:3525ed5b78851ea5d4fc7b5305b6b2e9f45bfedf7ee8742e3478ce6174e585a4",
+  "dirty_tree_hash": "content-sha256:a3f7e8b9addb3ff67f7a2e25068ce729ccb986866060e02e56250057c3cb9d8e"
+}
+
+## stderr
+
+## exit_code: 0

@@ -1,0 +1,52 @@
+{
+ "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+ "independent_candidate": {
+  "file_count": 77,
+  "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+  "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3"
+ },
+ "runner_cross_check": {
+  "file_count": 77,
+  "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+  "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3"
+ },
+ "file_sets_identical": true,
+ "g00": {
+  "status": "passed",
+  "finished_at": "2026-10-04T14:48:59.955285+00:00",
+  "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+  "code_revision": "content-sha256:5cee2f258fc7d49e3a1fb18209236782cc99fcc91544ec5d05cebd70bed54114",
+  "input_count": 25,
+  "missing_inputs": [],
+  "drifted_inputs": [],
+  "log_hash_recorded": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+  "log_hash_actual": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+  "dependency_hashes": {},
+  "schema": "planner"
+ },
+ "g00_runner_previous_gate_problems": [],
+ "legacy_demo": {
+  "demo_zip_sha256_expected": "e0350b75239807047b1dbdb25f69fed5c6c26e34929731d0658db83a58f0e904",
+  "demo_zip_sha256_actual": "e0350b75239807047b1dbdb25f69fed5c6c26e34929731d0658db83a58f0e904",
+  "demo_zip_match": true,
+  "inventory_entries": 173,
+  "mismatched_count": 0,
+  "mismatched_first": []
+ },
+ "ownership": {
+  "agents_md_explicit_rule": true
+ },
+ "workbuddy_root_files": [],
+ "locks_vs_p01_01_evidence": {
+  "uv.lock": {
+   "recorded": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+   "actual": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+   "match": true
+  },
+  "package-lock.json": {
+   "recorded": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+   "actual": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+   "match": true
+  }
+ }
+}

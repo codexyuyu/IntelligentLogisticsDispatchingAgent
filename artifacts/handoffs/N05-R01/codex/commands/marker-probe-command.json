@@ -1,0 +1,14 @@
+{
+  "check_id": "marker-probe",
+  "argv": [
+    ".venv\\Scripts\\python.exe",
+    "-B",
+    "tmp/N05-R01/marker_probe.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-05T03:36:11.063030+00:00",
+  "finished_at": "2026-10-05T03:36:11.899977+00:00",
+  "log_path": "artifacts/handoffs/N05-R01/codex/commands/marker-probe.log",
+  "log_sha256": "16cbd0828dc68f6499be7d6775fc7930596c9448f6e6c9e5160dae1300c3b48b"
+}

@@ -1,0 +1,8 @@
+########## Experiment: does running the mandatory pytest change the runner's own revision?
+-- step 1: revision via the runner's own compute_revision()
+REV_BEFORE = content-sha256:28c10448a189ebd73b103731b24b35179857791489a70034b124d4f2b945667b
+-- step 2: run the mandatory test command (writes .pytest_cache)
+.............................................                            [100%]
+45 passed in 0.06s
+-- step 3: recompute with the same function
+REV_AFTER  = content-sha256:f27139a43d2a2eb9fad000d79c7bd7d426abfd373d86f4b19a416f86f9cd84ab

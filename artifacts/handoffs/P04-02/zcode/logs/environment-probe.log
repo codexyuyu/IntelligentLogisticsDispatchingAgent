@@ -1,0 +1,51 @@
+# P04-02 environment probe (ZCode independent re-run)
+# workdir: /d/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent
+
+$ which psql
+which: no psql in (/c/Users/30382/.local/bin:/c/Users/30382/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/usr/bin:/c/Users/30382/bin:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/c/Program Files/nodejs:/cmd:/c/Program Files/dotnet:/c/Program Files/Microsoft SQL Server/170/Tools/Binn:/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn:/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit:/c/Program Files/Docker/Docker/resources/bin:/c/Program Files/Tailscale:/c/Users/30382/.local/bin:/c/Users/30382/AppData/Local/Programs/Python/Python312/Scripts:/c/Users/30382/AppData/Local/Programs/Python/Python312:/c/Users/30382/AppData/Local/Programs/Python/Launcher:/c/Users/30382/AppData/Local/Microsoft/WindowsApps:/c/Users/30382/AppData/Roaming/npm:/c/Program Files/JetBrains/IntelliJ IDEA 2026.2/bin:/c/Users/30382/AppData/Local/Programs/Microsoft VS Code/bin:/c/Users/30382/AppData/Local/Kingsoft/WPS Office/12.1.0.27458/clitool:/c/Users/30382/.dotnet/tools:/c/Program Files/Obsidian:/c/Users/30382/AppData/Local/Programs/Ollama:/c/Users/30382/AppData/Roaming/npm/node_modules/bun/bin:/c/Users/30382/AppData/Local/Programs/ZCode/resources/tools/ripgrep:/c/Users/30382/AppData/Local/Programs/ZCode/resources/tools/ugrep:/c/Program Files/nodejs:/usr/bin/vendor_perl:/usr/bin/core_perl)
+psql NOT FOUND
+
+$ which pg_ctl
+which: no pg_ctl in (/c/Users/30382/.local/bin:/c/Users/30382/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/usr/bin:/c/Users/30382/bin:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/c/Program Files/nodejs:/cmd:/c/Program Files/dotnet:/c/Program Files/Microsoft SQL Server/170/Tools/Binn:/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn:/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit:/c/Program Files/Docker/Docker/resources/bin:/c/Program Files/Tailscale:/c/Users/30382/.local/bin:/c/Users/30382/AppData/Local/Programs/Python/Python312/Scripts:/c/Users/30382/AppData/Local/Programs/Python/Python312:/c/Users/30382/AppData/Local/Programs/Python/Launcher:/c/Users/30382/AppData/Local/Microsoft/WindowsApps:/c/Users/30382/AppData/Roaming/npm:/c/Program Files/JetBrains/IntelliJ IDEA 2026.2/bin:/c/Users/30382/AppData/Local/Programs/Microsoft VS Code/bin:/c/Users/30382/AppData/Local/Kingsoft/WPS Office/12.1.0.27458/clitool:/c/Users/30382/.dotnet/tools:/c/Program Files/Obsidian:/c/Users/30382/AppData/Local/Programs/Ollama:/c/Users/30382/AppData/Roaming/npm/node_modules/bun/bin:/c/Users/30382/AppData/Local/Programs/ZCode/resources/tools/ripgrep:/c/Users/30382/AppData/Local/Programs/ZCode/resources/tools/ugrep:/c/Program Files/nodejs:/usr/bin/vendor_perl:/usr/bin/core_perl)
+pg_ctl NOT FOUND
+
+$ which docker
+/c/Program Files/Docker/Docker/resources/bin/docker
+
+$ docker version
+ OS/Arch:           windows/amd64
+ Context:           desktop-linux
+failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
+
+$ docker ps
+failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
+
+$ echo $TEST_DATABASE_URL
+TEST_DATABASE_URL=<unset>
+
+$ python -c 'socket connect 127.0.0.1:5432/5433'
+port 5432: no listener (ConnectionRefusedError)
+port 5433: no listener (ConnectionRefusedError)
+
+$ grep -ci 'psycopg|sqlalchemy|alembic|asyncpg' uv.lock
+0
+
+$ grep -n 'dependencies' -A10 apps/backend/pyproject.toml
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.32",
+    "logistics-contracts",
+    "logistics-domain",
+    "logistics-agents",
+    "logistics-optimization",
+    "logistics-simulation",
+    "logistics-evaluation",
+]
+
+$ python -c 'import logistics_backend.cli'
+FAIL logistics_backend.cli -> ModuleNotFoundError: No module named 'logistics_backend.cli'
+FAIL logistics_backend.cli.seed -> ModuleNotFoundError: No module named 'logistics_backend.cli'
+
+$ dir data/seed
+ls: cannot access 'data/seed': No such file or directory

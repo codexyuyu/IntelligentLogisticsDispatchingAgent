@@ -1,0 +1,1137 @@
+{
+  "context": {
+    "scenario_input": {
+      "snapshot": {
+        "id": "d7dceef5-be67-58b6-b05a-ba48b8e372b7",
+        "scope": {
+          "order_ids": [
+            "2c3cc20c-c9d1-5e3e-90ff-37024acb9029"
+          ],
+          "warehouse_ids": [
+            "2f0332b7-c05f-5094-bd72-26433816c87a"
+          ],
+          "vehicle_ids": [
+            "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4"
+          ],
+          "epoch_utc": "2026-10-04T00:00:00Z",
+          "horizon_s": 100
+        },
+        "orders": [
+          {
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "status": "accepted",
+            "created_at": "2026-10-04T00:00:00Z",
+            "updated_at": "2026-10-04T00:00:00Z",
+            "row_version": 3,
+            "schema_version": "2.0.0",
+            "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+            "external_ref": "N01-R02-design-order",
+            "pickup_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+            "delivery_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+            "cargo_ids": [
+              "c2819b34-7b4d-5beb-aea2-b6db4742576b"
+            ],
+            "pickup_window": {
+              "earliest_s": 0,
+              "latest_s": 100
+            },
+            "delivery_window": {
+              "earliest_s": 0,
+              "latest_s": 100
+            },
+            "service_s": 1,
+            "soft_due_at_s": null,
+            "must_serve": true,
+            "priority": 1
+          }
+        ],
+        "cargo": [
+          {
+            "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+            "status": "registered",
+            "created_at": "2026-10-04T00:00:00Z",
+            "updated_at": "2026-10-04T00:00:00Z",
+            "row_version": 3,
+            "schema_version": "2.0.0",
+            "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+            "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "cargo_type": "design_fixture_unvalidated_cargo_type",
+            "quantity_units": 1,
+            "weight_g": 100,
+            "volume_cm3": 100,
+            "min_temp_decic": 0,
+            "max_temp_decic": 100,
+            "max_exposure_s": 100,
+            "batch_ref": "N01-R02-design-batch"
+          }
+        ],
+        "vehicles": [
+          {
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "status": "available",
+            "created_at": "2026-10-04T00:00:00Z",
+            "updated_at": "2026-10-04T00:00:00Z",
+            "row_version": 3,
+            "schema_version": "2.0.0",
+            "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+            "code": "N01-R02-V1",
+            "capacity_weight_g": 1000,
+            "capacity_volume_cm3": 1000,
+            "setpoint_decic": 50,
+            "allowed_cargo_types": [],
+            "start_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+            "end_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+            "calendar": {
+              "epoch_utc": "2026-10-04T00:00:00Z",
+              "intervals": [
+                {
+                  "start_s": 0,
+                  "end_s": 100,
+                  "available_units": 1
+                }
+              ],
+              "version": 3
+            },
+            "driver_id": "46d5fdb0-2d58-55f9-95bd-84dd37475b03",
+            "fixed_cost_cents": 1,
+            "rate_cents_per_km": 1
+          }
+        ],
+        "drivers": [
+          {
+            "id": "46d5fdb0-2d58-55f9-95bd-84dd37475b03",
+            "status": "active",
+            "created_at": "2026-10-04T00:00:00Z",
+            "updated_at": "2026-10-04T00:00:00Z",
+            "row_version": 3,
+            "schema_version": "2.0.0",
+            "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+            "code": "N01-R02-D1",
+            "qualifications": [],
+            "shift": {
+              "earliest_s": 0,
+              "latest_s": 100
+            },
+            "max_drive_s": 100,
+            "max_work_s": 100
+          }
+        ],
+        "resources": {
+          "warehouses": [
+            {
+              "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+              "status": "active",
+              "created_at": "2026-10-04T00:00:00Z",
+              "updated_at": "2026-10-04T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "code": "N01-R02-W1",
+              "name": "Design Warehouse",
+              "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "timezone": "UTC",
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            }
+          ],
+          "zones": [
+            {
+              "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+              "status": "active",
+              "created_at": "2026-10-04T00:00:00Z",
+              "updated_at": "2026-10-04T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "warehouse_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+              "code": "N01-R02-Z1",
+              "setpoint_decic": 50,
+              "capacity_weight_g": 1000,
+              "capacity_volume_cm3": 1000,
+              "allowed_cargo_types": []
+            }
+          ],
+          "locations": [
+            {
+              "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+              "status": "available",
+              "created_at": "2026-10-04T00:00:00Z",
+              "updated_at": "2026-10-04T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "zone_id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+              "code": "N01-R02-L1",
+              "capacity_weight_g": 1000,
+              "capacity_volume_cm3": 1000,
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            }
+          ],
+          "docks": [
+            {
+              "id": "83d42d20-95be-5239-9506-293ef372baf9",
+              "status": "available",
+              "created_at": "2026-10-04T00:00:00Z",
+              "updated_at": "2026-10-04T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "warehouse_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+              "code": "N01-R02-DO1",
+              "supported_operations": [],
+              "allowed_zone_ids": [
+                "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e"
+              ],
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            }
+          ],
+          "workers": [
+            {
+              "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+              "status": "available",
+              "created_at": "2026-10-04T00:00:00Z",
+              "updated_at": "2026-10-04T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "warehouse_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+              "skills": [],
+              "allowed_zone_ids": [
+                "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e"
+              ],
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              },
+              "pool_id": null
+            }
+          ],
+          "equipment": [
+            {
+              "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+              "status": "available",
+              "created_at": "2026-10-04T00:00:00Z",
+              "updated_at": "2026-10-04T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "warehouse_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+              "kind": "handling",
+              "quantity_capacity": 2,
+              "allowed_zone_ids": [
+                "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e"
+              ],
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            }
+          ],
+          "calendars": [
+            {
+              "resource_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+              "source_calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              },
+              "source_hash": "64b5568eb7ae13df10ea245f8e6fe867815786fc481253b02eae2bd60702850f",
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            },
+            {
+              "resource_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+              "source_calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              },
+              "source_hash": "64b5568eb7ae13df10ea245f8e6fe867815786fc481253b02eae2bd60702850f",
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            },
+            {
+              "resource_id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+              "source_calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              },
+              "source_hash": "64b5568eb7ae13df10ea245f8e6fe867815786fc481253b02eae2bd60702850f",
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            },
+            {
+              "resource_id": "83d42d20-95be-5239-9506-293ef372baf9",
+              "source_calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              },
+              "source_hash": "64b5568eb7ae13df10ea245f8e6fe867815786fc481253b02eae2bd60702850f",
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            },
+            {
+              "resource_id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+              "source_calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              },
+              "source_hash": "64b5568eb7ae13df10ea245f8e6fe867815786fc481253b02eae2bd60702850f",
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            },
+            {
+              "resource_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+              "source_calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              },
+              "source_hash": "64b5568eb7ae13df10ea245f8e6fe867815786fc481253b02eae2bd60702850f",
+              "calendar": {
+                "epoch_utc": "2026-10-04T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              }
+            }
+          ]
+        },
+        "inventory": [],
+        "revisions": [
+          {
+            "entity_ref": {
+              "kind": "order",
+              "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "cargo",
+              "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "driver",
+              "id": "46d5fdb0-2d58-55f9-95bd-84dd37475b03",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "vehicle",
+              "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "warehouse",
+              "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "zone",
+              "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "location",
+              "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "dock",
+              "id": "83d42d20-95be-5239-9506-293ef372baf9",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "worker",
+              "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "equipment",
+              "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+              "revision": 3
+            },
+            "row_version": 3
+          },
+          {
+            "entity_ref": {
+              "kind": "transport_task",
+              "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+              "revision": 3
+            },
+            "row_version": 3
+          }
+        ],
+        "matrices": [
+          {
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "version": 3,
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "01121757-264e-52b3-9b5d-1935f7d4e556"
+            ],
+            "distance_m": [
+              [
+                0,
+                10,
+                10
+              ],
+              [
+                10,
+                0,
+                10
+              ],
+              [
+                10,
+                10,
+                0
+              ]
+            ],
+            "travel_s": [
+              [
+                0,
+                10,
+                10
+              ],
+              [
+                10,
+                0,
+                10
+              ],
+              [
+                10,
+                10,
+                0
+              ]
+            ],
+            "source": "N01-R02 synthetic design fixture",
+            "observed_at": "2026-10-04T00:00:00Z",
+            "hash": "cb88e64ae48a5642b0ffb843ee21eab7b30124c5a2bbf0d2fad10652406b10c0"
+          },
+          {
+            "id": "c618acd7-312a-507f-b004-2f8f03e1ac92",
+            "version": 7,
+            "node_ids": [
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f",
+              "9552b9b0-3c1d-512b-bcee-f4dc6bc7ed85"
+            ],
+            "distance_m": [
+              [
+                0,
+                10,
+                10
+              ],
+              [
+                10,
+                0,
+                10
+              ],
+              [
+                10,
+                10,
+                0
+              ]
+            ],
+            "travel_s": [
+              [
+                0,
+                10,
+                10
+              ],
+              [
+                10,
+                0,
+                10
+              ],
+              [
+                10,
+                10,
+                0
+              ]
+            ],
+            "source": "N01-R02 synthetic design fixture",
+            "observed_at": "2026-10-04T00:00:00Z",
+            "hash": "6d5447a434c0a0b7c2a592902c54bfed4e4110b0b4de520f31cff309fb386bb8"
+          }
+        ],
+        "hash": "06a580c65dc8f39458281efd8bb2153e2d7136e640fd1f78be7f663860bb9397"
+      },
+      "transport_tasks": [
+        {
+          "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+          "status": "pending",
+          "created_at": "2026-10-04T00:00:00Z",
+          "updated_at": "2026-10-04T00:00:00Z",
+          "row_version": 3,
+          "schema_version": "2.0.0",
+          "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "leg_no": 1,
+          "pickup_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+          "delivery_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+          "cargo_ids": [
+            "c2819b34-7b4d-5beb-aea2-b6db4742576b"
+          ],
+          "predecessor_ids": [],
+          "service_s": 1
+        }
+      ],
+      "warehouse_tasks": []
+    },
+    "prior_region_refs": [
+      {
+        "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+        "node_ids": [
+          "13f617a8-9969-5b1c-81ba-ea31fef48431",
+          "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+          "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+          "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+        ]
+      }
+    ]
+  },
+  "independently_composed_base_events": {
+    "vehicle_failure": {
+      "kind": "vehicle_failure",
+      "entity_ref": {
+        "kind": "vehicle",
+        "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+        "revision": 3
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+      "location": {
+        "kind": "at_node",
+        "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+      },
+      "unavailable_until_s": 99,
+      "cargo_condition": "intact"
+    },
+    "transport_delay": {
+      "kind": "transport_delay",
+      "entity_ref": {
+        "kind": "transport_task",
+        "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+        "revision": 3
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "transport_task_id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+      "additional_seconds": 11
+    },
+    "traffic_disruption": {
+      "kind": "traffic_disruption",
+      "entity_ref": {
+        "kind": "travel_matrix",
+        "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+        "revision": 3
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "arc_refs": [
+        {
+          "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+          "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+        }
+      ],
+      "closure": false,
+      "travel_multiplier": {
+        "numerator": 5,
+        "denominator": 4
+      },
+      "new_matrix_version": 11
+    },
+    "weather_change": {
+      "kind": "weather_change",
+      "entity_ref": {
+        "kind": "region",
+        "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+        "revision": null
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "region_ref": {
+        "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+        "node_ids": [
+          "13f617a8-9969-5b1c-81ba-ea31fef48431",
+          "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+          "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+          "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+        ]
+      },
+      "profile": "rain",
+      "travel_multiplier": {
+        "numerator": 5,
+        "denominator": 4
+      },
+      "new_matrix_version": 11
+    },
+    "cargo_anomaly": {
+      "kind": "cargo_anomaly",
+      "entity_ref": {
+        "kind": "cargo",
+        "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+        "revision": 3
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "cargo_id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+      "condition": "damaged",
+      "quantity_units": 1,
+      "measured_temp_decic": null
+    },
+    "order_cancellation": {
+      "kind": "order_cancellation",
+      "entity_ref": {
+        "kind": "order",
+        "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+        "revision": 3
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+      "disposition_policy": "return_to_origin"
+    },
+    "demand_increase": {
+      "kind": "demand_increase",
+      "entity_ref": {
+        "kind": "order",
+        "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+        "revision": 3
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+      "delta_quantity": 2,
+      "delta_weight_g": 10,
+      "delta_volume_cm3": 20
+    },
+    "demand_decrease": {
+      "kind": "demand_decrease",
+      "entity_ref": {
+        "kind": "order",
+        "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+        "revision": 3
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+      "delta_quantity": 1,
+      "delta_weight_g": 10,
+      "delta_volume_cm3": 20
+    },
+    "equipment_failure": {
+      "kind": "equipment_failure",
+      "entity_ref": {
+        "kind": "equipment",
+        "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+        "revision": 3
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "equipment_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+      "unavailable_until_s": 99,
+      "remaining_capacity_units": 1
+    },
+    "warehouse_resource_unavailable": {
+      "kind": "warehouse_resource_unavailable",
+      "entity_ref": {
+        "kind": "worker",
+        "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+        "revision": 3
+      },
+      "effective_at_s": 37,
+      "reason": "Independent N02-R02 C01 boundary",
+      "resource_ref": {
+        "kind": "worker",
+        "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+        "revision": 3
+      },
+      "unavailable_window": {
+        "earliest_s": 37,
+        "latest_s": 63
+      },
+      "remaining_capacity_units": 0
+    }
+  },
+  "doc_members": {
+    "ORDER": "order",
+    "CARGO": "cargo",
+    "VEHICLE": "vehicle",
+    "DRIVER": "driver",
+    "WAREHOUSE": "warehouse",
+    "WAREHOUSE_ZONE": "zone",
+    "STORAGE_LOCATION": "location",
+    "DOCK": "dock",
+    "WORKER": "worker",
+    "EQUIPMENT": "equipment",
+    "TRANSPORT_TASK": "transport_task",
+    "WAREHOUSE_TASK": "warehouse_task",
+    "ROUTE": "route",
+    "ROUTE_STOP": "route_stop",
+    "SCHEDULE": "schedule",
+    "SCHEDULE_TASK": "schedule_task",
+    "SCHEDULE_VERSION": "schedule_version",
+    "CONSTRAINT": "constraint",
+    "OPTIMIZATION_REQUEST": "optimization_request",
+    "OPTIMIZATION_RESULT": "optimization_result",
+    "SIMULATION": "simulation",
+    "SIMULATION_SNAPSHOT": "simulation_snapshot",
+    "EVENT": "event",
+    "EXCEPTION_EVENT": "exception_event",
+    "RESCHEDULE_REQUEST": "reschedule_request",
+    "RESCHEDULE_RESULT": "reschedule_result",
+    "AGENT_RUN": "agent_run",
+    "TOOL_CALL": "tool_call",
+    "DECISION_RECORD": "decision_record",
+    "EXPERIMENT": "experiment",
+    "METRIC": "metric",
+    "EXPERIMENT_RESULT": "experiment_result",
+    "PLANNING_SNAPSHOT": "planning_snapshot",
+    "JOB": "job",
+    "JOB_ATTEMPT": "job_attempt",
+    "IDEMPOTENCY": "idempotency",
+    "RESERVATION": "reservation",
+    "INVENTORY_LEDGER": "inventory_ledger",
+    "OUTBOX": "outbox",
+    "AUDIT_ENTRY": "audit_entry",
+    "LIFECYCLE_EVENT": "lifecycle_event",
+    "EXECUTION_SNAPSHOT": "execution_snapshot",
+    "CONFIRMATION_TOKEN": "confirmation_token",
+    "TRAVEL_MATRIX": "travel_matrix",
+    "REGION": "region"
+  },
+  "doc_targets": {
+    "order": {
+      "type": "Order",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "cargo": {
+      "type": "Cargo",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "vehicle": {
+      "type": "Vehicle",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "driver": {
+      "type": "Driver",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "warehouse": {
+      "type": "Warehouse",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "zone": {
+      "type": "WarehouseZone",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "location": {
+      "type": "StorageLocation",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "dock": {
+      "type": "Dock",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "worker": {
+      "type": "Worker",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "equipment": {
+      "type": "Equipment",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "transport_task": {
+      "type": "TransportTask",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "warehouse_task": {
+      "type": "WarehouseTask",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "route": {
+      "type": "Route",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "route_stop": {
+      "type": "RouteStop",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "schedule": {
+      "type": "Schedule",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "schedule_task": {
+      "type": "ScheduleTask",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "schedule_version": {
+      "type": "ScheduleVersion",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "constraint": {
+      "type": "Constraint",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "optimization_request": {
+      "type": "OptimizationRequest",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "optimization_result": {
+      "type": "OptimizationResult",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "simulation": {
+      "type": "Simulation",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "simulation_snapshot": {
+      "type": "SimulationSnapshot",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "event": {
+      "type": "Event",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "exception_event": {
+      "type": "ExceptionEvent",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "reschedule_request": {
+      "type": "RescheduleRequest",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "reschedule_result": {
+      "type": "RescheduleResult",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "agent_run": {
+      "type": "AgentRun",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "tool_call": {
+      "type": "ToolCall",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "decision_record": {
+      "type": "DecisionRecord",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "experiment": {
+      "type": "Experiment",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "metric": {
+      "type": "Metric",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "experiment_result": {
+      "type": "ExperimentResult",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "planning_snapshot": {
+      "type": "PlanningSnapshot",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "job": {
+      "type": "Job",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "job_attempt": {
+      "type": "JobAttempt",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "idempotency": {
+      "type": "Idempotency",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "reservation": {
+      "type": "Reservation",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "inventory_ledger": {
+      "type": "InventoryLedger",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "outbox": {
+      "type": "Outbox",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "audit_entry": {
+      "type": "AuditEntry",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "lifecycle_event": {
+      "type": "LifecycleEvent",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "execution_snapshot": {
+      "type": "ExecutionSnapshot",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "confirmation_token": {
+      "type": "ConfirmationToken",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "travel_matrix": {
+      "type": "TravelMatrix",
+      "identity_field": "id",
+      "revision_field": "version",
+      "category": "pure_value"
+    },
+    "region": {
+      "type": "RegionRef",
+      "identity_field": "region_id",
+      "revision_field": null,
+      "category": "inline_value"
+    }
+  }
+}

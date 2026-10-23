@@ -1,0 +1,20 @@
+{
+  "check_id": "post-sign-check-only",
+  "argv": [
+    "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+    "run",
+    "python",
+    "scripts/gates.py",
+    "--phase",
+    "01",
+    "--revision",
+    "auto",
+    "--check-only"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-05T09:22:32.154322+00:00",
+  "finished_at": "2026-10-05T09:22:32.422473+00:00",
+  "log_path": "artifacts/handoffs/N05-R03-ENV/codex/commands/post-sign-check-only.log",
+  "log_sha256": "174d4ba5d5323f1b18e54592ef37f4583fadbaa9282869ad25ee453d456b35c7"
+}

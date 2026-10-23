@@ -1,0 +1,15 @@
+{
+  "check_id": "clean-env-outside-imports-r02",
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe",
+    "-I",
+    "-c",
+    "import importlib,json,pathlib,sys\nnames=['logistics_domain','logistics_contracts','logistics_optimization','logistics_simulation','logistics_agents','logistics_evaluation']\nout={n:str(pathlib.Path(importlib.import_module(n).__file__).resolve()) for n in names}\nprint(json.dumps({'executable':sys.executable,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'resolved':out}))\n"
+  ],
+  "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\outside-cwd",
+  "exit_code": 0,
+  "started_at": "2026-10-04T20:43:18.138608+00:00",
+  "finished_at": "2026-10-04T20:43:18.282269+00:00",
+  "log_path": "artifacts/handoffs/N05/codex/commands/clean-env-outside-imports-r02.log",
+  "log_sha256": "085d1ba8e3da8b628df329441f07917ca485fc023c217cc3e4fb00f0e3817ed2"
+}

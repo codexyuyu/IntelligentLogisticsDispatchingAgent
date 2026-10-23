@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-09-28",
+  "agent": "zcode",
+  "purpose": "structured probe results for the initial ZCode environment check (05-zcode-precheck.md)",
+  "host": {
+    "app": "ZCode Desktop",
+    "version": "3.14.3",
+    "installed_at": "C:\\Users\\30382\\AppData\\Local\\Programs\\ZCode",
+    "config_scopes": {
+      "user": "C:\\Users\\30382\\.zcode",
+      "project": "none (no .zcode / .zcode-plugin / .claude-plugin / .mcp.json in the workspace)"
+    },
+    "session_model_route": {
+      "providerId": "4b759684-9f16-4a4a-a315-d666c9464e62",
+      "providerName": "DeepSeek",
+      "model": "deepseek-v4-pro",
+      "apiType": "anthropic-messages",
+      "auth": "api-key present (value not recorded)"
+    }
+  },
+  "plugins": {
+    "cli_enabled_plugins": [
+      "android-emulator@zcode-plugins-official",
+      "ios-simulator@zcode-plugins-official",
+      "cloudbase-skills@zcode-plugins-official",
+      "restore-legacy-sessions@zcode-plugins-official",
+      "mimosa@zcode-plugins-official",
+      "chrome-devtools-mcp@claude-plugins-official",
+      "huggingface-skills@claude-plugins-official"
+    ],
+    "skills_loaded_in_session": [
+      "android-emulator 0.1.0", "browser-use 0.5.1", "chrome-devtools-mcp 1.6.0",
+      "cloudbase-skills 0.1.0", "documents 0.1.7", "huggingface-skills 1.0.23",
+      "ios-simulator 0.1.0", "mimosa 1.0.3", "pdf 0.1.7", "plugin-creator 0.1.1",
+      "presentations 0.1.7", "restore-legacy-sessions 0.1.0", "skill-creator 0.1.0",
+      "spreadsheets 0.1.7", "zcode-guide 0.3.0", "dynamic-workflows (bundled)"
+    ],
+    "agents_loaded": [
+      "documents:visual-judge", "pdf:visual-judge",
+      "presentations:visual-judge", "spreadsheets:visual-judge"
+    ],
+    "hooks": {
+      "declared": "mimosa 1.0.3 hooks/hooks.json (outer + payload): PreToolUse, PostToolUse, UserPromptSubmit, SessionStart, Stop; matchers Edit|Write|MultiEdit and Bash",
+      "observed_active": "UserPromptSubmit hook injected the Mimosa security constraints into this session; PreToolUse/PostToolUse hooks attached to edit/bash tools",
+      "other_plugins": "android-emulator and ios-simulator declare empty hooks {}"
+    },
+    "manifest_compatibility": {
+      ".zcode-plugin/plugin.json": "recognized and loaded (android-emulator, ios-simulator, documents, pdf, presentations, spreadsheets, zcode-guide, browser-use, plugin-creator, skill-creator, mimosa payload)",
+      ".claude-plugin/plugin.json": "recognized and loaded (chrome-devtools-mcp 1.6.0, cloudbase-skills 0.1.0)",
+      "not_loadable_as_zcode_plugins": [
+        "OpenCode JS plugins (~/.opencode, opencode.jsonc)",
+        "DSH Cordis plugins (~/.dsh web profile dependencies)",
+        "pi extensions (~/.pi user settings)"
+      ]
+    }
+  },
+  "mcp_probes": [
+    {
+      "mcp": "chrome-devtools",
+      "valid_call": "list_pages -> ok (1 page, about:blank)",
+      "error_input": "click uid=nonexistent-uid-000 -> structured error 'No snapshot found for page 1'",
+      "verdict": "usable for frontend pre-acceptance"
+    },
+    {
+      "mcp": "cloudbase",
+      "valid_call": "queryEnv(action=list) -> {ok:false, code:AUTH_REQUIRED, message:未登录}",
+      "error_input": "n/a (auth required before any call)",
+      "verdict": "tool schema ready; external service requires user login (auth start_auth device) - recorded as missing-login, not a compatibility failure"
+    },
+    {
+      "mcp": "mimosa",
+      "valid_call": "not exercised (no scan requested in this session)",
+      "error_input": "security_scan_status(jobId=bogus-job-id-000) -> structured error '非法 security scan job id'",
+      "verdict": "graceful degradation confirmed"
+    },
+    {
+      "mcp": "android-emulator",
+      "valid_call": "android_preflight -> SDK/adb present (adb 1.0.41, SDK C:\\Users\\30382\\AppData\\Local\\Android\\Sdk); emulator/Java/Gradle/AVD missing; 0 adb devices",
+      "verdict": "environment facts reported truthfully; emulator toolchain not installed on host"
+    },
+    {
+      "mcp": "ios-simulator",
+      "valid_call": "ios_preflight -> macOS required; host is win32; xcode tools absent",
+      "verdict": "not applicable on this host (expected)"
+    },
+    {
+      "mcp": "node-repl",
+      "verdict": "browser-use/computer-use dedicated; not used as a general runtime per its contract"
+    }
+  ],
+  "cancel_restart_probe": {
+    "cancel": "background bash task exec_ea6e33eb (sleep 40) -> TaskStop -> status killed",
+    "restart": "new background bash task exec_1c2dbb1a -> completed exit 0",
+    "verdict": "cancel and restart semantics work"
+  },
+  "not_performed": [
+    "process-level cold start/restart of preloaded MCP servers (host-managed lifecycles; not restarted in-session)",
+    "per-command cold start of plugins' commands/*.md entries (no task required them)",
+    "temp-project plugin cold start (no new plugin installed; live session serves as the loaded-state probe)"
+  ],
+  "capability_decisions": {
+    "context7": "NOT installed - WebSearch/WebFetch already cover documentation lookup (official plugin docs fetched OK)",
+    "playwright_mcp": "NOT installed - chrome-devtools-mcp is loaded and functional for frontend checks",
+    "rationale": "00-common.md: reuse equivalent existing capabilities; add channels only for real gaps"
+  },
+  "failures": [
+    "cloudbase MCP: AUTH_REQUIRED (user login needed; recovery: auth start_auth device)",
+    "android emulator toolchain: Java/Gradle/emulator/AVD missing (recovery: Android Studio + JDK 17, or a real device)"
+  ],
+  "secrets_recorded": "none (existence-only statements; api key values were masked and are not present in any artifact)"
+}

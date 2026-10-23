@@ -1,0 +1,2 @@
+G02: 5/27 checks passed
+  [FAIL] zcode-precheck:P02-02: artifacts/handoffs/P02-02/zcode/precheck.json: status='BLOCKED' (expected 'Z_PRECHECK_PASSED')

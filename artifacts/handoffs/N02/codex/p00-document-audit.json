@@ -1,0 +1,124 @@
+{
+  "tasks": [
+    {
+      "task_id": "P00-01",
+      "declared_dependencies": [],
+      "documents": [
+        {
+          "path": "docs/architecture/BASELINE_INVENTORY.json",
+          "exists": true,
+          "sha256": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93"
+        },
+        {
+          "path": "docs/architecture/BASELINE_INVENTORY.md",
+          "exists": true,
+          "sha256": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694"
+        },
+        {
+          "path": "docs/architecture/MIGRATION_MAP.md",
+          "exists": true,
+          "sha256": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b"
+        },
+        {
+          "path": "docs/implementation/P00-01.md",
+          "exists": true,
+          "sha256": "ce86f77f11cfab16e8c08b9ff00edcf9835351d0e1b3f87d3d91e63b984b1833"
+        },
+        {
+          "path": "docs/implementation/reports/P00-01.md",
+          "exists": true,
+          "sha256": "888e208ee01519ffc30868ca7902fe9c42b78d41e5f6006e6e746b98f2405865"
+        }
+      ],
+      "report_sections_present": {
+        "Files created": true,
+        "Files modified": true,
+        "Tests added": true,
+        "Commands executed": true,
+        "Test results": true,
+        "Known limitations": true,
+        "Remaining risks": true
+      },
+      "runtime_acceptance": "NOT_RUN; freeze blockers found before acceptance"
+    },
+    {
+      "task_id": "P00-02",
+      "declared_dependencies": [
+        "P00-01"
+      ],
+      "documents": [
+        {
+          "path": "docs/architecture/CONTRACT_FREEZE.json",
+          "exists": true,
+          "sha256": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2"
+        },
+        {
+          "path": "docs/architecture/CONTRACT_FREEZE.md",
+          "exists": true,
+          "sha256": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+        },
+        {
+          "path": "docs/architecture/issues/README.md",
+          "exists": true,
+          "sha256": "a3588b546b09f86fbb7e8298a220c3b64741f1620e51593bc6eb89e2432f83ff"
+        },
+        {
+          "path": "docs/implementation/P00-02.md",
+          "exists": true,
+          "sha256": "a0eae411e5e68b9dc358b8ac100ebe0919fbf01a0350453ef3a44342918f73f4"
+        },
+        {
+          "path": "docs/implementation/reports/P00-02.md",
+          "exists": true,
+          "sha256": "dba5fe5f8a3bd5c05bbc5e331b4ee126ca95af4e2b1c00637dfd10497133dff2"
+        }
+      ],
+      "report_sections_present": {
+        "Files created": true,
+        "Files modified": true,
+        "Tests added": true,
+        "Commands executed": true,
+        "Test results": true,
+        "Known limitations": true,
+        "Remaining risks": true
+      },
+      "runtime_acceptance": "NOT_RUN; freeze blockers found before acceptance"
+    },
+    {
+      "task_id": "P00-03",
+      "declared_dependencies": [
+        "P00-02"
+      ],
+      "documents": [
+        {
+          "path": "docs/plan/GATE_EXECUTION_CONTRACT.md",
+          "exists": true,
+          "sha256": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa"
+        },
+        {
+          "path": "docs/implementation/P00-03.md",
+          "exists": true,
+          "sha256": "dddda2c1a9b9619cb86625e6c825b0e2280bf833b19256ae4e5dc5430469a688"
+        },
+        {
+          "path": "docs/implementation/reports/P00-03.md",
+          "exists": true,
+          "sha256": "61fa11c736daeb59e7515303c6bff1db4a2cda55e11965936b50fb0eac33279c"
+        }
+      ],
+      "report_sections_present": {
+        "Files created": true,
+        "Files modified": true,
+        "Tests added": true,
+        "Commands executed": true,
+        "Test results": true,
+        "Known limitations": true,
+        "Remaining risks": true
+      },
+      "runtime_acceptance": "NOT_RUN; freeze blockers found before acceptance"
+    }
+  ],
+  "p36_contribution_intersection": [],
+  "p36_contribution_union_matches_allowed_files": true,
+  "p36_solver_test_in_required_command": true
+}

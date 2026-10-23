@@ -1,0 +1,11 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE", "-B", "tmp/N05/seed_cache.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:43:02.518297+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+{"locked_registry_package_count": 32, "archive_count": 32}
+
+## stderr
+
+## exit_code: 0

@@ -1,0 +1,21 @@
+[PASS] A1 exit-1 command recorded exit_code: observed=1 expected=1
+[PASS] A2 exit-1 command evaluated as failed: observed=False expected=False
+[PASS] A3 exit-0-with-failed-pytest-counts rejected: observed=False expected=False
+[PASS] A4 zero-case pytest run rejected: observed=False expected=False
+[PASS] B1 empty verified_input_hashes rejected: observed=True expected=True
+[PASS] B2 complete fresh map accepted: observed=[] expected=[]
+[PASS] B3 stale digest rejected: observed=True expected=True
+[PASS] B4 missing required input rejected: observed=True expected=True
+[PASS] C1 status-only previous gate rejected: observed=True expected=True
+[PASS] C2 complete planner-schema previous gate accepted: observed=[] expected=[]
+[PASS] C3 previous-gate log drift rejected: observed=True expected=True
+[PASS] C4 boolean exit_code rejected: observed=True expected=True
+[PASS] C5 command without any log-hash field rejected: observed=True expected=True
+[PASS] C6 self-referencing dependency rejected: observed=True expected=True
+[PASS] D1 excluded writes leave revision unchanged: observed='content-sha256:3174b7e60b1832702a1299efa9ea229547a8fe3c8c2334a3929e938397d1942a' expected='content-sha256:3174b7e60b1832702a1299efa9ea229547a8fe3c8c2334a3929e938397d1942a'
+[PASS] D2 relevant source change moves revision: observed=True expected=True
+[PASS] D3 dirty_tree_hash differs from code_revision: observed=True expected=True
+[PASS] E1 domain-imports-fastapi checker exit: observed=1 expected=1
+[PASS] E2 violation names fastapi/domain: observed=True expected=True
+    checker output tail: ["  packages/domain/src/logistics_domain/__init__.py:1: [ARCH-PURITY] pure/forbidden layer domain imports 'fastapi'"]
+{"probes": 19, "all_match": true}

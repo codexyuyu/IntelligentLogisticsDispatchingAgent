@@ -1,0 +1,11 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE", "-B", "tmp/N05/review_and_archive.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:43:44.596520+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+{"approved": true, "revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c", "review_sha256": "1cfd47668b64b49062c14eb0af648d8fd23eaf86748bc0b68ecb3421331e185d", "verified_input_count": 371, "archive_count": 13}
+
+## stderr
+
+## exit_code: 0

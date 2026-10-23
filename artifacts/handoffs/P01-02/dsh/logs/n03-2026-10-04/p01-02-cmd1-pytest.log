@@ -1,0 +1,18 @@
+# check: p01-02-cmd1-pytest
+# argv: ["uv", "run", "pytest", "tests/unit/test_p01_02_checks_and_gate_runner.py", "tests/integration/test_p01_02_checks_and_gate_runner.py", "-q"]
+# resolved_executable: C:\Users\30382\.local\bin\uv.EXE
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T15:56:07.802151+00:00
+# expectation: exit 0 with real passing tests
+# package-lock.json sha256 before: fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+# package-lock.json sha256 after:  fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+
+## stdout
+........................................................................ [ 75%]
+........................                                                 [100%]
+96 passed in 25.29s
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 25953

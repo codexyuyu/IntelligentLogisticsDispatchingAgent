@@ -1,0 +1,13 @@
+# check: affected-p01-01-suites-f01-confirm
+# argv: ["uv", "run", "pytest", "tests/unit/test_p01_01_workspace_bootstrap.py", "tests/integration/test_p01_01_workspace_bootstrap.py", "-q"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T21:28:08.959753+00:00
+# note: confirmation run on the F01-corrected, final delivered evidence bytes
+
+## stdout
+........................................................                 [100%]
+56 passed in 2.66s
+
+## stderr
+
+## exit_code: 0

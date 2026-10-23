@@ -1,0 +1,783 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P02-02",
+  "scene": "master-entities",
+  "phase": 2,
+  "phase_gate": "G02",
+  "reviewer": "ZCode",
+  "review_role": "independent-pre-acceptance",
+  "status": "BLOCKED",
+  "verdict_reason": "P02-02 has no candidate at all: 0/7 Files paths exist, no DSH handoff was submitted, prerequisite P02-01 is undelivered and previous gate G01 is status=failed. Nothing could be pre-accepted.",
+  "reviewed_at_local": "2026-09-15T03:49:37.050623-07:00",
+  "verification_passes": {
+    "first_review_at_local": "2026-09-14T23:42:43.662877-07:00",
+    "reverified_at_local": "2026-09-15T03:49:37.050623-07:00",
+    "purpose": "P02-02 was requested again on 2026-09-15; the tree was re-checked instead of reusing the first verdict.",
+    "frozen_input_drift": "all 29 verified_input_hashes from the first pass were recomputed and are byte-identical, so the prompts, manifests, contracts, locks and gate records this verdict binds to have not changed",
+    "deliverable_count_pass1": 0,
+    "deliverable_count_pass2": 0,
+    "mandatory_command_result_pass1": "cmd1 exit 4 / cmd2 exit 0 (vacuous)",
+    "mandatory_command_result_pass2": "cmd1 exit 4 / cmd2 exit 0 (vacuous)",
+    "regression_pass1": "187 passed",
+    "regression_pass2": "187 passed",
+    "gate_state_pass1": "G02 sandbox 5/27, previous-gate:G01 failed",
+    "gate_state_pass2": "G02 sandbox 5/27, previous-gate:G01 failed (unchanged)",
+    "conclusion": "verdict unchanged: BLOCKED - no candidate exists to pre-accept"
+  },
+  "candidate": {
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "vcs": "no .git in this checkout; located by content hash (scripts/gates.py compute_revision)",
+    "revision_label_at_review_start": "content-sha256:1332161037086ddec70e4766df94d137743db391d55c6cd68b6329a8f0bef73a",
+    "revision_label_mid_review": "content-sha256:94eafe09d58ffb18a24217b4b86169b4e408f53c54fcd26cd88fa11138c61e23",
+    "revision_label_late_review": "content-sha256:f9ba8e61d5d9bdf18a859631f020c19ba0a2451613148bd4d9c5f2249952fdf9",
+    "revision_note": "the label moved three times during this review because compute_revision() hashes .mimosa/** session state and tmp/** scratch (only artifacts/gates and artifacts/e2e are excluded); the only writes in between were this role's own evidence files (defect D6). The runner recomputes the label on every invocation, so the value recorded here is a point-in-time snapshot, not a reproducible fingerprint.",
+    "previous_gate_recorded_revision": "content-sha256:ab054daf9c6c1373c6503f603805756ef3ef9c5a60400d07d8e938d6987e532b"
+  },
+  "deliverable_presence": {
+    "docs/implementation/P02-02.md": false,
+    "docs/implementation/reports/P02-02.md": false,
+    "packages/contracts/src/logistics_contracts/entities.py": false,
+    "packages/domain/src/logistics_domain/orders.py": false,
+    "packages/domain/src/logistics_domain/resources.py": false,
+    "tests/integration/test_p02_02_master_entities.py": false,
+    "tests/unit/test_p02_02_master_entities.py": false
+  },
+  "deliverable_present_count": 0,
+  "deliverable_expected_count": 7,
+  "dsh_handoff": {
+    "docs/handoffs/P02-02/dsh.md": false,
+    "artifacts/handoffs/P02-02/dsh/evidence.json": false,
+    "preserved_dsh_report": "none existed for P02-02; this role created or rewrote nothing on the DSH side"
+  },
+  "prerequisites": {
+    "G01": {
+      "status": "failed",
+      "failed_checks": [
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ],
+      "source": "artifacts/gates/G01.json + logs/gates-phase01-check-only.log",
+      "blocks": "Phase 02 and later per docs/plan/PHASE_GATES.md"
+    },
+    "P02-01": {
+      "delivered": false,
+      "evidence": "packages/domain/src/logistics_domain/ contains only the P01-01 __init__.py stub; docs/implementation/P02-01.md, reports/P02-01.md and artifacts/handoffs/P02-01/dsh/evidence.json are missing",
+      "required_by": "TASK_GRAPH.md lines 46-47"
+    },
+    "G02": {
+      "status": "not_signed",
+      "sandbox_result": "G02: 5/27 checks passed (logs/gates-phase02-dryrun.log)"
+    }
+  },
+  "gate_phase02_required_records": {
+    "P02-01": {
+      "task_doc": null,
+      "report": null,
+      "dsh_evidence": null,
+      "zcode_precheck": null
+    },
+    "P02-02": {
+      "task_doc": null,
+      "report": null,
+      "dsh_evidence": null,
+      "zcode_precheck": null
+    },
+    "P02-03": {
+      "task_doc": null,
+      "report": null,
+      "dsh_evidence": null,
+      "zcode_precheck": null
+    },
+    "P02-04": {
+      "task_doc": null,
+      "report": null,
+      "dsh_evidence": null,
+      "zcode_precheck": null
+    }
+  },
+  "commands": [
+    {
+      "check_id": "P02-02-cmd1",
+      "argv": "uv run pytest tests/unit/test_p02_02_master_entities.py tests/integration/test_p02_02_master_entities.py -q",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4,
+      "result": "ERROR: file or directory not found: tests/unit/test_p02_02_master_entities.py; no tests ran in 0.00s",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/cmd1-pytest.log",
+      "mandatory": true,
+      "passed": false
+    },
+    {
+      "check_id": "P02-02-cmd2",
+      "argv": "uv run python scripts/check_architecture.py",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/cmd2-architecture.log",
+      "mandatory": true,
+      "passed": true,
+      "caveat": "vacuous pass: the 7 scanned modules are the untouched P01-01 stubs and P02-02 added no domain code; must not be cited as task acceptance evidence"
+    },
+    {
+      "check_id": "regression",
+      "argv": "uv run pytest -q",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "187 passed",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/regression-pytest.log",
+      "mandatory": false,
+      "passed": true
+    },
+    {
+      "check_id": "architecture-verbose",
+      "argv": "uv run python scripts/check_architecture.py --verbose",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "7 layers / 7 modules, violations=0",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/cmd2-architecture-verbose.log",
+      "mandatory": false,
+      "passed": true
+    },
+    {
+      "check_id": "ownership",
+      "argv": "uv run python scripts/check_ownership.py --json",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "passed=true, violations=[], default_owner_fallbacks=[], 865 files scanned",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/ownership.log",
+      "mandatory": false,
+      "passed": true
+    },
+    {
+      "check_id": "lock-check",
+      "argv": "uv lock --check",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "Resolved 40 packages",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/lock-check.log",
+      "mandatory": false,
+      "passed": true
+    },
+    {
+      "check_id": "uv-sync-frozen",
+      "argv": "uv sync --frozen",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "Checked 39 packages",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/uv-sync.log",
+      "mandatory": false,
+      "passed": true
+    },
+    {
+      "check_id": "gates-phase01-check-only",
+      "argv": "uv run python scripts/gates.py --phase 01 --revision auto --check-only",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "status=failed; failed_checks=[zcode-precheck:P01-01, zcode-precheck:P01-02, zcode-precheck:P01-03, codex-review]; recorded revision is STALE",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/gates-phase01-check-only.log",
+      "mandatory": false,
+      "passed": false
+    },
+    {
+      "check_id": "gates-phase02-check-only",
+      "argv": "uv run python scripts/gates.py --phase 02 --revision auto --check-only",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "no existing evidence at artifacts/gates/G02.json (nothing signed yet)",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/gates-phase02-check-only.log",
+      "mandatory": false,
+      "passed": true,
+      "caveat": "NO-OP trap: on a never-signed gate --check-only runs nothing and exits 0; exit 0 here does NOT mean Phase 02 is ready"
+    },
+    {
+      "check_id": "gates-phase02-sandbox",
+      "argv": "uv run python scripts/gates.py --phase 02 --revision auto --out-dir tmp/zcode-g02-dryrun",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "G02: 5/27 checks passed; all four P02-0X-cmd1 exit 4; previous-gate:G01 status=failed; DSH evidence / task docs / reports / zcode prechecks missing for all four Phase 02 tasks; codex-review missing",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/gates-phase02-dryrun.log",
+      "mandatory": false,
+      "passed": false,
+      "note": "deliberately written to a non-official out-dir so this review neither signs nor overwrites artifacts/gates/G02.json"
+    },
+    {
+      "check_id": "lint-ruff-scoped",
+      "argv": "uv run ruff check apps/backend/src packages/*/src tests scripts",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "39 errors (RUF022, RUF001/RUF002 fullwidth punctuation, UP017, UP031, SIM300, F401, F841, RUF005); none from P02-02 because P02-02 has no files",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/lint-ruff-scoped.log",
+      "mandatory": false,
+      "passed": false,
+      "established": false,
+      "note": "ruff is declared in pyproject [dependency-groups].dev but no CI step or script runs it, so it is not an enforced project check yet"
+    },
+    {
+      "check_id": "lint-ruff-repo",
+      "argv": "uv run ruff check .",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "thousands of findings, including the read-only demo/ baseline; output 1571029 bytes",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/lint-ruff.log",
+      "mandatory": false,
+      "passed": false,
+      "established": false
+    },
+    {
+      "check_id": "frontend-workspace-test",
+      "argv": "npm --workspace @logistics/frontend run test --if-present",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "'vitest' is not recognized; apps/frontend declares test=vitest run but installs no devDependencies",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/frontend-test.log",
+      "mandatory": false,
+      "passed": false,
+      "scoped_to": "P01-01 / CI, not P02-02"
+    },
+    {
+      "check_id": "frontend-e2e-list",
+      "argv": "npm run test:e2e:list",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "Error: No tests found / Total: 0 tests in 0 files",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/frontend-e2e-list.log",
+      "mandatory": false,
+      "passed": false,
+      "scoped_to": "P01-02 / CI, not P02-02"
+    },
+    {
+      "check_id": "secret-hygiene",
+      "argv": "find/grep equivalent of the ci.yml secret-hygiene job (no git in this checkout)",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "no .env/*.pem/*.p12/id_rsa files and no sk-/AKIA literals in the target tree",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/secret-hygiene.log",
+      "mandatory": false,
+      "passed": true,
+      "substituted_for": "the ci.yml secret-hygiene job (git ls-files / git grep cannot run without .git)"
+    },
+    {
+      "check_id": "injection-scan",
+      "argv": "grep -rnE 'shell=True|os.system|subprocess shell|eval|exec|pickle.loads' apps packages scripts tests",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "0 hits; no SQL string-assembly entry points; no database layer yet",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/security-injection-scan.log",
+      "mandatory": false,
+      "passed": true
+    },
+    {
+      "check_id": "revision-volatility",
+      "argv": "snapshot of GateRunner.compute_revision() rows across two consecutive tool calls",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "1167 rows; .mimosa/** 451 rows (~39%) and tmp/** 423 rows (~36%); the only difference between the two snapshots was .mimosa/hook-state/<session>.json (plus this role's own new evidence files)",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/revision-volatility.log",
+      "mandatory": false,
+      "passed": true,
+      "note": "supports defect D6 with a reproduction using the runner's own enumeration"
+    },
+    {
+      "check_id": "pytest-cache-attribution",
+      "argv": "sha256 of .pytest_cache/v/cache/{nodeids,lastfailed} before and after a 62-test run inside one shell call",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "both hashes unchanged -> the hypothesis that pytest itself shifts the gate revision is REFUTED",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/pytest-cache-attribution.log",
+      "mandatory": false,
+      "passed": true,
+      "note": "recorded so the refuted hypothesis is not re-derived later"
+    },
+    {
+      "check_id": "gate-precheck-recognition",
+      "argv": "uv run python scripts/gates.py --phase 02 --revision auto --out-dir tmp/zcode-g02-dryrun2",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "[FAIL] zcode-precheck:P02-02: artifacts/handoffs/P02-02/zcode/precheck.json: status='BLOCKED' (expected 'Z_PRECHECK_PASSED')",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/gates-phase02-precheck-recognized.log",
+      "mandatory": false,
+      "passed": true,
+      "note": "proves the record path/fields are recognised and that a BLOCKED record fails closed instead of being mistaken for a pass"
+    },
+    {
+      "check_id": "interface-probe",
+      "argv": "uv run python -c 'import logistics_domain, logistics_contracts; getattr(...)'",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "logistics_domain.entities/states/units/ids and logistics_contracts.dto/mapping/export_schema all raise NotImplementedError with an explicit pending owner",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/probe-interfaces.log",
+      "mandatory": false,
+      "passed": true,
+      "note": "reproducible proof that the P02-01/P02-02/P02-04 interfaces are absent; the fail-loudly stub design itself is correct"
+    },
+    {
+      "check_id": "reverify-cmd1",
+      "pass": 2,
+      "argv": "uv run pytest tests/unit/test_p02_02_master_entities.py tests/integration/test_p02_02_master_entities.py -q",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4,
+      "result": "ERROR: file or directory not found: tests/unit/test_p02_02_master_entities.py; no tests ran in 0.00s",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/reverify-cmd1-pytest.log",
+      "mandatory": true,
+      "passed": false
+    },
+    {
+      "check_id": "reverify-cmd2",
+      "pass": 2,
+      "argv": "uv run python scripts/check_architecture.py",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/reverify-cmd2-architecture.log",
+      "mandatory": true,
+      "passed": true,
+      "caveat": "vacuous pass, same as pass 1: the scan sees the untouched P01-01 stubs only"
+    },
+    {
+      "check_id": "reverify-regression",
+      "pass": 2,
+      "argv": "uv run pytest -q",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "187 passed",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/reverify-regression.log",
+      "mandatory": false,
+      "passed": true
+    },
+    {
+      "check_id": "reverify-gates-phase02",
+      "pass": 2,
+      "argv": "uv run python scripts/gates.py --phase 02 --revision auto --out-dir tmp/zcode-g02-dryrun-p2",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "G02: 5/27 checks passed; zcode-precheck:P02-02 now reported as status='BLOCKED' (expected 'Z_PRECHECK_PASSED'); previous-gate:G01 still status=failed",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/reverify-gates-phase02.log",
+      "mandatory": false,
+      "passed": false,
+      "note": "sandbox out-dir; the official artifacts/gates/G02.json was not written"
+    },
+    {
+      "check_id": "reverify-baseline",
+      "pass": 2,
+      "argv": "check_ownership.py --json ; uv lock --check ; credential-file find ; secret-literal grep ; injection grep",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "ownership passed=True violations=0 fallbacks=[] (915 files scanned, up from 865 purely because of this role's own evidence files); uv lock --check exit 0; no credential files; no sk-/AKIA literals; no shell=True/os.system/eval/exec/pickle.loads",
+      "log_path": "artifacts/handoffs/P02-02/zcode/logs/reverify-baseline-checks.log",
+      "mandatory": false,
+      "passed": true
+    }
+  ],
+  "test_cases": {
+    "1": {
+      "input": "requirement 1001g vs vehicle 1000g",
+      "expected": "representable data, allocation rule reports a capacity violation",
+      "status": "NOT_VERIFIABLE",
+      "reason": "no implementation and no test files exist (exit_code=4, 0 tests ran)"
+    },
+    "2": {
+      "input": "cargo.temperature=[80,20]",
+      "expected": "invalid input rejected",
+      "status": "NOT_VERIFIABLE",
+      "reason": "no implementation and no test files exist (exit_code=4, 0 tests ran)"
+    },
+    "coverage": "0 of 2 required test cases"
+  },
+  "defects": [
+    {
+      "id": "D1",
+      "severity": "blocking",
+      "task": "P02-02",
+      "title": "P02-02 has no deliverable at all (0/7 Files paths)",
+      "evidence": [
+        "logs/cmd1-pytest.log exit 4",
+        "logs/gates-phase02-dryrun.log: P02-02-cmd1 exit_code=4; dsh-evidence:P02-02 missing; docs missing"
+      ],
+      "status": "unfixed",
+      "owner": "DSH / P02-02"
+    },
+    {
+      "id": "D2",
+      "severity": "blocking",
+      "task": "P02-01 + G01",
+      "title": "Prerequisite P02-01 is undelivered and previous gate G01 is status=failed",
+      "evidence": [
+        "artifacts/gates/G01.json status=failed",
+        "logs/gates-phase01-check-only.log",
+        "TASK_GRAPH.md:46-47",
+        "docs/plan/PHASE_GATES.md G01 row"
+      ],
+      "status": "unfixed",
+      "owner": "DSH / P02-01, P01-01..P01-03 + Codex review"
+    },
+    {
+      "id": "D3",
+      "severity": "non-blocking-for-P02-02",
+      "task": "P01-01",
+      "title": "apps/frontend declares test=vitest run without devDependencies, so vitest is missing and the CI frontend job step fails",
+      "evidence": [
+        "apps/frontend/package.json",
+        "logs/frontend-test.log exit 1",
+        ".github/workflows/ci.yml:95"
+      ],
+      "status": "unfixed",
+      "owner": "P01-01 (or P24-01)"
+    },
+    {
+      "id": "D4",
+      "severity": "non-blocking-for-P02-02",
+      "task": "P01-02",
+      "title": "npm run test:e2e:list exits 1 with zero specs while CI treats it as a required step",
+      "evidence": [
+        "logs/frontend-e2e-list.log exit 1",
+        ".github/workflows/ci.yml:98",
+        "playwright.config.ts comment claims an empty listing is legitimate"
+      ],
+      "status": "unfixed",
+      "owner": "P01-02"
+    },
+    {
+      "id": "D5",
+      "severity": "non-blocking",
+      "task": "engineering config",
+      "title": "ruff is configured but never executed in CI, and its RUF001/RUF002 rules conflict with the project-wide Chinese fullwidth punctuation convention",
+      "evidence": [
+        "pyproject.toml [tool.ruff]",
+        ".github/workflows/ci.yml (no ruff step)",
+        "logs/lint-ruff-scoped.log 39 errors"
+      ],
+      "status": "unfixed",
+      "owner": "engineering config / P01-02"
+    },
+    {
+      "id": "D6",
+      "severity": "non-blocking",
+      "task": "P01-02",
+      "title": "Gate revision is built from volatile session/scratch files (.mimosa/**, tmp/**), so a recorded code_revision is unreproducible from the next agent action",
+      "evidence": [
+        "scripts/gates.py:43 EXCLUDED_FROM_REVISION excludes only artifacts/gates and artifacts/e2e",
+        "scripts/gates.py:327-342 compute_revision enumerates the whole tree: 1167 rows, of which .mimosa/** is 451 rows (~39%) and tmp/** is 423 rows (~36%)",
+        ".mimosa/hook-state/<session>.json is rewritten by the agent host on every tool call; two snapshots one tool call apart differ exactly in that file (logs/revision-volatility.log)",
+        "the G02 revision label moved 13321610... -> 94eafe09... -> f9ba8e61... during this review while only this role's own evidence files were written",
+        "logs/gates-phase01-check-only.log: STALE recorded revision (ab054daf... can no longer be reproduced)"
+      ],
+      "status": "unfixed",
+      "confidence": "proven by reproduction with the runner's own compute_revision(); the earlier pytest-cache hypothesis was tested and REFUTED (logs/pytest-cache-attribution.log: nodeids/lastfailed hashes unchanged after a 62-test run)",
+      "owner": "P01-02"
+    },
+    {
+      "id": "D7",
+      "severity": "non-blocking (blocks G01 sign-off)",
+      "task": "project management + P01-03",
+      "title": "Handoff contract documents are absent (ARCH-0004 still open), so the record format has no contract source",
+      "evidence": [
+        "docs/architecture/issues/README.md ARCH-0004",
+        "scripts/gates.py:305-311 comment"
+      ],
+      "status": "unfixed",
+      "owner": "project management + P01-03"
+    },
+    {
+      "id": "D8",
+      "severity": "observation",
+      "task": "environment baseline",
+      "title": "Node baseline drift: .node-version pins 22 (what CI installs) while the local runtime and the G01 fingerprint record v24.18.0",
+      "evidence": [
+        ".node-version = 22",
+        "package.json engines: node >=22 <25",
+        "artifacts/gates/G01.json environment_fingerprint.node = v24.18.0",
+        ".github/workflows/ci.yml uses node-version-file: .node-version"
+      ],
+      "status": "unfixed",
+      "owner": "P01-01 / CI"
+    }
+  ],
+  "fixed_by_zcode": [],
+  "unfixed": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "D8"
+  ],
+  "not_verified": [
+    "Schema / OpenAPI / generated-client consistency: the generators do not exist yet (scripts/export_contracts.py is P02-04, apps/frontend/scripts/generate-contracts.mjs is P24-02) - recorded as tool-not-built, NOT as a pass",
+    "Static type checking: no mypy/pyright configuration exists; check_architecture.py covers import direction only",
+    "Real PostgreSQL, real OR-Tools, SimPy, browser E2E: phases not reached",
+    "npm ci: not re-run (it would rebuild node_modules); relies on the G01 record of exit 0",
+    "CI as written cannot run in this checkout (no .git), so its git ls-files / git grep / git diff steps were replaced by a git-free equivalent",
+    "Real CI on Node 22 was not executed; only the local Node runtime was used (see D8)",
+    "Domain semantics beyond representation (solver capacity, time windows, temperature chain, storage occupancy, inventory, handover): no object exists at this phase"
+  ],
+  "security_review": {
+    "scope": "current change set (empty for P02-02) plus a minimal baseline check",
+    "credential_files": "none found (.env / .env.* / *.pem / *.p12 / id_rsa*) in the target tree",
+    "secret_literals": "0 hits for sk-[A-Za-z0-9]{20,} and AKIA[0-9A-Z]{16}",
+    "gitignore_covers": [
+      ".env",
+      ".env.*",
+      "tools/bin/",
+      "node_modules/",
+      ".venv/",
+      "artifacts/e2e/"
+    ],
+    "command_injection": "no shell=True / os.system / eval / exec / pickle.loads in apps|packages|scripts|tests; the gate runner executes argv arrays without a shell",
+    "sql_injection": "no database access code exists yet (P03+); parameter binding is NOT APPLICABLE to this change set rather than verified",
+    "auth_scope_logging": "P02-02 is a pure domain model (no framework, no telemetry, no logging backend); the HTTP boundary and redaction belong to P05-01/P37, nothing testable here",
+    "dependency_changes": "none in this change set; uv lock --check exit 0",
+    "external_targets_scanned": "none - no external production target was scanned",
+    "zcode_own_artifacts": "the evidence builder for this record starts no subprocess and contains no shell invocation"
+  },
+  "tool_versions": {
+    "python": "3.12.10",
+    "python_executable": "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python_pin": "3.12",
+    "node_pin": "22",
+    "node_local_and_g01_fingerprint": "v24.18.0",
+    "npm_recorded_in_g01": "11.16.0",
+    "uv_recorded_in_g01": "uv 0.12.13 (0ebbd9274 2026-09-10 x86_64-pc-windows-msvc)",
+    "g01_fingerprint_os": "Windows 11",
+    "os": "Windows 11",
+    "note": "uv/node/npm are quoted from the G01 environment fingerprint because this evidence builder deliberately starts no process"
+  },
+  "verified_input_hashes": {
+    "docs/prompts/02-domain/P02-02-master-entities.md": "a0eb2d5e091183613dca012dda736fe07dedfb07df52c5b88cc0e375f8ed11cf",
+    "docs/prompts/02-domain/P02-01-primitives-and-states.md": "fdbb1a8829e997f3ad85267aba85f21c3c515d88279c47d98cc6cfd470d027cf",
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "docs/plan/TASK_MANIFEST.json": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/architecture/DATA_CONTRACTS.md": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+    "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+    "docs/architecture/issues/README.md": "93bd4ed9a23fa988001c5d535f28a9b86a923fc37c75512b5eb3e73002671695",
+    "docs/api/API_CONTRACT.md": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+    "docs/algorithms/OPTIMIZATION_CONTRACT.md": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+    "docs/algorithms/SIMULATION_CONTRACT.md": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+    "docs/algorithms/METRICS_CONTRACT.md": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+    "packages/domain/src/logistics_domain/__init__.py": "8093a7e57882419f66c72b64f2a84f9f1f0055b60d1ad088392a048b658efa91",
+    "packages/contracts/src/logistics_contracts/__init__.py": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67",
+    "scripts/gates.py": "67351df627a747f9cb1d5ea5c8ddcdc01093a10e161f198cc9c35a92ecf49873",
+    "scripts/check_architecture.py": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5",
+    "scripts/check_ownership.py": "63bf2bf43263b2f8251c4e5d09b771f8b4c948a94592bccdbc3f5b121c02fa5a",
+    "OWNERSHIP.json": "bc86773d0d4c72e9c2e4b0c1e366a6f9488db2a6628e63981b689b6413e65b8a",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "package-lock.json": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+    ".github/workflows/ci.yml": "139d37c92f1bdf8d82c0771b081bb82d674dfbf6da22fa50135d27bd19a10e35",
+    "playwright.config.ts": "1bba66b20430fac67663744d35f847228ca65ab42f821dae9d0d4a9ac6378d15",
+    "apps/frontend/package.json": "7a38cc372c366b088043d919f76430ac2716beebba16a2dd1f78d27e1c740b31",
+    "artifacts/gates/G01.json": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+    "artifacts/handoffs/P01-03/dsh/evidence.json": "1e3aef2fe57fdb445cad4deeef988d6f70f06f9fec8e8244f55018d60bd8c10e"
+  },
+  "evidence_logs": {
+    "artifacts/handoffs/P02-02/zcode/logs/build-evidence.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "exit_code": null
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/cmd1-pytest.log": {
+      "sha256": "44285e377cc3baea2e4a1ac2ed7bf5db43c39ea0882b6bcd82dc53c226e7c5ab",
+      "bytes": 243,
+      "exit_code": 4
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/cmd2-architecture-verbose.log": {
+      "sha256": "1725548e77f05a3448e06d3c43969a49730c32154882c1c9dce015c9dc61111b",
+      "bytes": 372,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/cmd2-architecture.log": {
+      "sha256": "7e3753da4ee45f20373df95f42dbebd835f694b18b721824de9e49c751fe3b18",
+      "bytes": 147,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/frontend-e2e-list.log": {
+      "sha256": "b006d7e3a46956450acd75b0a29317910921ec32e6993f7834975e78e454b7b5",
+      "bytes": 186,
+      "exit_code": 1
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/frontend-test.log": {
+      "sha256": "7919999d310f187ca79d9f67c0cdd3a46085b9a1509cd986bd1c665977416587",
+      "bytes": 619,
+      "exit_code": 1
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/gates-phase01-check-only.log": {
+      "sha256": "4fc749c8729c4863933281ef666dbcc41dbc1955f90d03ca4687e86d578c97c0",
+      "bytes": 1156,
+      "exit_code": 1
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/gates-phase02-check-only.log": {
+      "sha256": "cf122e658f2002a7bbb45f8f4a20de811fcabe684d8a7c5d4f8f80e862a151f1",
+      "bytes": 406,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/gates-phase02-dryrun.log": {
+      "sha256": "8e1040918528563a3b6a995d687f31690bc865f26a008d580fde54fbfc387a88",
+      "bytes": 2819,
+      "exit_code": 1
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/gates-phase02-precheck-recognized.log": {
+      "sha256": "f30b950350914b1f662f26ba91cad7c6c2219bcf5d8d7babe7d3f7db02b3823c",
+      "bytes": 153,
+      "exit_code": null
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/lint-ruff-scoped.log": {
+      "sha256": "e7fe8d322f132c74fcf2de5832d2d1a60d5a5f6a9dac9f408f00e796a1354a57",
+      "bytes": 20949,
+      "exit_code": 1
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/lint-ruff.log": {
+      "sha256": "9121be12439387c84314d80e4afc014a75ba795d27b69052df30afe47c22f64b",
+      "bytes": 1571029,
+      "exit_code": 1
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/lock-check.log": {
+      "sha256": "e21423938558804db302ce2b674e64bbc53f7624c53db467c177f5b75c80bddb",
+      "bytes": 67,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/ownership.log": {
+      "sha256": "3f900701d7efc1c8cfca28b8d19030f0534c1ef9fca3b58fec359ddb97e8f226",
+      "bytes": 1651,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/probe-interfaces.log": {
+      "sha256": "32fe16f55f6bb2a8faefb74cf54468879cce558a64b7003b9e16e66d7737b10a",
+      "bytes": 2080,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/pytest-cache-attribution.log": {
+      "sha256": "2db351f58d26b1542bd9fda6828ce9066e6b90a26186ae171bdc0c37a01f8d5d",
+      "bytes": 569,
+      "exit_code": null
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/regression-pytest.log": {
+      "sha256": "8af88f21fe52ace4b6e9427d55adf425509cb219af345c6f19f178a5b28c775c",
+      "bytes": 330,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/reverify-baseline-checks.log": {
+      "sha256": "092e1c49e3cdc8890f58a1115df7e40209d7d1962bf56c7401197f81bba97d60",
+      "bytes": 370,
+      "exit_code": null
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/reverify-cmd1-pytest.log": {
+      "sha256": "0191c8e2e843cbc414b0a53b911975e0bbebeb3901d0bc47ca730a56c56d356c",
+      "bytes": 290,
+      "exit_code": 4
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/reverify-cmd2-architecture.log": {
+      "sha256": "1a743dfd37284375b9dcd7a423c0b631131a32ec6cd5494362afbd505741e778",
+      "bytes": 147,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/reverify-gates-phase02.log": {
+      "sha256": "d6fb398f20988b4b1c5c43907f4795f6363aa8803fe80a4430f4566eae1f9bdf",
+      "bytes": 2797,
+      "exit_code": 1
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/reverify-regression.log": {
+      "sha256": "a7b7095197794a5ba496fffb503f148ca2b7aec10b7386106c310875c5812baa",
+      "bytes": 347,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/revision-volatility.log": {
+      "sha256": "c1c42025a1795e2ad85c8ad2c6ca178220d1e07ccbb2dc5952fe575ec1c5e7b4",
+      "bytes": 348,
+      "exit_code": null
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/secret-hygiene.log": {
+      "sha256": "977653bc41ced99931f9ab734d07e7644214492e4548cce3ad543c57436d2749",
+      "bytes": 231,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/security-injection-scan.log": {
+      "sha256": "cd9ded1f9515bae03c733bb2a4b15e81b313106c30c96f418542d7868c7d4d99",
+      "bytes": 737,
+      "exit_code": 0
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/self-staleness-attribution.log": {
+      "sha256": "681d69ef9367c60a7ab3b187d8a3870ba87920c049986ed3fe968ab61261cd74",
+      "bytes": 64,
+      "exit_code": null
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/self-staleness-experiment.log": {
+      "sha256": "3d731c175077a766a89ad8e25bd6e0cc79c6942ca865d688d62838bb1947742f",
+      "bytes": 549,
+      "exit_code": null
+    },
+    "artifacts/handoffs/P02-02/zcode/logs/uv-sync.log": {
+      "sha256": "c040a918210e5e89bf1916b7e3249d3831775f016abd766b9afe51dc572e15ef",
+      "bytes": 67,
+      "exit_code": 0
+    }
+  },
+  "sandbox_gate_evidence": {
+    "tmp/zcode-g02-dryrun/G02-logs/P02-01-cmd1.log": {
+      "sha256": "195fba500617f505550ee5c74658f1989314d3631ddb632bfea325572bb240ed",
+      "bytes": 594
+    },
+    "tmp/zcode-g02-dryrun/G02-logs/P02-01-cmd2.log": {
+      "sha256": "3d3bb7b1dffc4165de890e9d1f883c882ddd993d1d8c3873ec2926a22ffb5a55",
+      "bytes": 474
+    },
+    "tmp/zcode-g02-dryrun/G02-logs/P02-02-cmd1.log": {
+      "sha256": "ed89351b2083f05c31d510188d3d501fd587abad3b48ae68aaeaf9d40f7260b4",
+      "bytes": 576
+    },
+    "tmp/zcode-g02-dryrun/G02-logs/P02-02-cmd2.log": {
+      "sha256": "988bb04327da21ac321302a77ceae08b346865c1d90e1a71d887a325cda81206",
+      "bytes": 474
+    },
+    "tmp/zcode-g02-dryrun/G02-logs/P02-03-cmd1.log": {
+      "sha256": "6443e2b5456f17f3c1285824379ff3e9cdaee0b0ef6f4b3b518bf0aa013cd61c",
+      "bytes": 582
+    },
+    "tmp/zcode-g02-dryrun/G02-logs/P02-03-cmd2.log": {
+      "sha256": "6948a3c2a2fe4a12051d856f7182a284c40893274765b160366d43d4c9fc5036",
+      "bytes": 474
+    },
+    "tmp/zcode-g02-dryrun/G02-logs/P02-04-cmd1.log": {
+      "sha256": "b7acdbc499e3262b7c01451f897d40530d3767c9f44a17b5434b3ae49f144c9a",
+      "bytes": 600
+    },
+    "tmp/zcode-g02-dryrun/G02-logs/P02-04-cmd2.log": {
+      "sha256": "740d803c9989bf50680bf0094073704e69d4e536c847a86b5d95bb70166683c9",
+      "bytes": 474
+    },
+    "tmp/zcode-g02-dryrun/G02.json": {
+      "sha256": "57015f83862746e6a4e82f0e91cb448662ac55361b455612f61889538fbde1ae",
+      "bytes": 14027
+    }
+  },
+  "files_added_by_zcode": [
+    "docs/handoffs/P02-02/zcode.md",
+    "artifacts/handoffs/P02-02/zcode/evidence.json",
+    "artifacts/handoffs/P02-02/zcode/precheck.json",
+    "artifacts/handoffs/P02-02/zcode/build-evidence.py",
+    "artifacts/handoffs/P02-02/zcode/logs/ (raw command logs for both verification passes)",
+    "tmp/zcode-g02-dryrun/ and tmp/zcode-g02-dryrun-p2/ (non-official G02 sandbox evidence, under the gitignored tmp/)"
+  ],
+  "files_modified_by_zcode": [],
+  "signs_gate": false,
+  "gate_signed": null,
+  "limitations": [
+    "This record is BLOCKED on purpose: scripts/gates.py compares status against 'Z_PRECHECK_PASSED' and fails closed. DSH must re-deliver and re-request pre-acceptance; this record must not be reused.",
+    "The record covers two verification passes (2026-09-14 and 2026-09-15) over the same unchanged tree; pass 2 re-ran every mandatory and adjacent check rather than reusing pass 1 output.",
+    "P02-02-cmd2 (check_architecture.py) exit 0 is vacuous and is not acceptance evidence.",
+    "docs/workflow/README.md and HANDOFF_CONTRACT.md do not exist (ARCH-0004); this record follows the user instruction plus the path hardcoded in scripts/gates.py:305-311, and the record layout still needs a project-side contract decision.",
+    "The G02 revision label is not stable across this review for the reason in D6."
+  ],
+  "next_actions": [
+    "Codex: decide the revision-staleness policy (D6) and record the G01 codex review; G01 also needs the three zcode precheck records for P01-01..P01-03 before it can be signed.",
+    "DSH: deliver P02-01 first, then P02-02 (task doc, report, DSH evidence, unit + integration tests), then request pre-acceptance again.",
+    "Fix or explicitly defer D3/D4 so the CI frontend job is not permanently red.",
+    "Decide the ruff policy (D5) before Chinese-docstring domain files land.",
+    "Align .node-version with the intended Node baseline or record why local Node 24 is acceptable (D8)."
+  ]
+}

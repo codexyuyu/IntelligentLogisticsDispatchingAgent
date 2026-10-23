@@ -1,0 +1,162 @@
+[
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          3600
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1W1",
+    "id": "7e763ead-1d91-516e-8cf4-03713c4e710b",
+    "kind": "Worker",
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "skills_mapping": "pending",
+    "source": "synthetic",
+    "warehouse_id": "7cbb263f-0229-518a-9190-490db79766ea"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          3600
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1W2",
+    "id": "554e11f1-9e80-5101-9982-a800d9b9d0cf",
+    "kind": "Worker",
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "skills_mapping": "pending",
+    "source": "synthetic",
+    "warehouse_id": "7cbb263f-0229-518a-9190-490db79766ea"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1W1",
+    "id": "b46e54cd-5d76-55cd-a30e-982d013145dc",
+    "kind": "Worker",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "skills_mapping": "pending",
+    "source": "synthetic",
+    "warehouse_id": "f6984808-3bf2-5ff2-bc03-3b1b598cd7ae"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1W2",
+    "id": "adcef2ee-aab7-50c0-8e3e-38b5fdea15af",
+    "kind": "Worker",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "skills_mapping": "pending",
+    "source": "synthetic",
+    "warehouse_id": "f6984808-3bf2-5ff2-bc03-3b1b598cd7ae"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1W1",
+    "id": "fad0a93e-d346-5ffa-904a-47973dc6b293",
+    "kind": "Worker",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "skills_mapping": "pending",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1W2",
+    "id": "76716d9b-e43f-5055-9a39-16b55ceee226",
+    "kind": "Worker",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "skills_mapping": "pending",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H2W1",
+    "id": "4cc81100-c617-5db3-a87c-272768632529",
+    "kind": "Worker",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "skills_mapping": "pending",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H2W2",
+    "id": "1c37252f-1a71-594a-b415-0716eadf8f27",
+    "kind": "Worker",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "skills_mapping": "pending",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2"
+  }
+]

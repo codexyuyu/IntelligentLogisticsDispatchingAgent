@@ -1,0 +1,41 @@
+{
+  "exit_code": 0,
+  "before": {
+    "artifacts/gates/G00.json": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+    "artifacts/gates/G00-checks.log": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+    "artifacts/gates/G01.json": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+    "artifacts/gates/G01-codex-review.json": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+    "artifacts/gates/G01-logs/clean-install-imports.log": "a4e1f14d61e596e6d1575c3225f3825300e97a52e521d9c9e133f3e7e95a2ee8",
+    "artifacts/gates/G01-logs/layer-boundaries-json.log": "3b36342254828fc4f42bcb656aebff811cb63296876d0a9bea1a2cd25713a276",
+    "artifacts/gates/G01-logs/layer-boundaries.log": "9b34025934d32087b1b96602ba06fa176e285f92de69acc9bf34d0de09c2aa74",
+    "artifacts/gates/G01-logs/lock-reproducible.log": "9c24d57ee0b4efdf73d2e20fa25a8ec420f6f77010e39f8f9b84b20320874e18",
+    "artifacts/gates/G01-logs/P01-01-cmd1.log": "95b6f8d96d90d504f6d757a642238740c041324b2f587bdc18960f6a26f26bd2",
+    "artifacts/gates/G01-logs/P01-01-cmd2.log": "5f502835131921c3f5d046ef462e513e64cada1a337b75fbb3e42d1d3024f665",
+    "artifacts/gates/G01-logs/P01-01-cmd3.log": "7b4082d9dd9fa1107c31242e54af49c75d4d8c2ed98099a897898cf72d9294e3",
+    "artifacts/gates/G01-logs/P01-02-cmd1.log": "26d850500c6937c757092169326e5c13673ede42ba5e8bdf1994183055356c68",
+    "artifacts/gates/G01-logs/P01-02-cmd2.log": "946dea8d22ecd6f67c863a9aaa940d1ba1ce6f7f64bf05502e24b5c6153303b0",
+    "artifacts/gates/G01-logs/P01-03-cmd1.log": "e7373358fd1ef24801a8d7544ce084aa7d2f05aab8815d1ca8a4a19242231f67",
+    "artifacts/gates/G01-logs/P01-03-cmd2.log": "0705f854aff1f7935b3b0b699f13da0448e493c3fa107c1f67ee4467280eec78",
+    "artifacts/gates/G01-logs/runner-fails-closed-probe.log": "6a2d65cd1eac94b24b7f89588f69be776158b2584f3f20d3b17f7b91fa5577a5"
+  },
+  "after": {
+    "artifacts/gates/G00.json": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+    "artifacts/gates/G00-checks.log": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+    "artifacts/gates/G01.json": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+    "artifacts/gates/G01-codex-review.json": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+    "artifacts/gates/G01-logs/clean-install-imports.log": "a4e1f14d61e596e6d1575c3225f3825300e97a52e521d9c9e133f3e7e95a2ee8",
+    "artifacts/gates/G01-logs/layer-boundaries-json.log": "3b36342254828fc4f42bcb656aebff811cb63296876d0a9bea1a2cd25713a276",
+    "artifacts/gates/G01-logs/layer-boundaries.log": "9b34025934d32087b1b96602ba06fa176e285f92de69acc9bf34d0de09c2aa74",
+    "artifacts/gates/G01-logs/lock-reproducible.log": "9c24d57ee0b4efdf73d2e20fa25a8ec420f6f77010e39f8f9b84b20320874e18",
+    "artifacts/gates/G01-logs/P01-01-cmd1.log": "95b6f8d96d90d504f6d757a642238740c041324b2f587bdc18960f6a26f26bd2",
+    "artifacts/gates/G01-logs/P01-01-cmd2.log": "5f502835131921c3f5d046ef462e513e64cada1a337b75fbb3e42d1d3024f665",
+    "artifacts/gates/G01-logs/P01-01-cmd3.log": "7b4082d9dd9fa1107c31242e54af49c75d4d8c2ed98099a897898cf72d9294e3",
+    "artifacts/gates/G01-logs/P01-02-cmd1.log": "26d850500c6937c757092169326e5c13673ede42ba5e8bdf1994183055356c68",
+    "artifacts/gates/G01-logs/P01-02-cmd2.log": "946dea8d22ecd6f67c863a9aaa940d1ba1ce6f7f64bf05502e24b5c6153303b0",
+    "artifacts/gates/G01-logs/P01-03-cmd1.log": "e7373358fd1ef24801a8d7544ce084aa7d2f05aab8815d1ca8a4a19242231f67",
+    "artifacts/gates/G01-logs/P01-03-cmd2.log": "0705f854aff1f7935b3b0b699f13da0448e493c3fa107c1f67ee4467280eec78",
+    "artifacts/gates/G01-logs/runner-fails-closed-probe.log": "6a2d65cd1eac94b24b7f89588f69be776158b2584f3f20d3b17f7b91fa5577a5"
+  },
+  "all_bytes_unchanged": true,
+  "file_count": 16
+}

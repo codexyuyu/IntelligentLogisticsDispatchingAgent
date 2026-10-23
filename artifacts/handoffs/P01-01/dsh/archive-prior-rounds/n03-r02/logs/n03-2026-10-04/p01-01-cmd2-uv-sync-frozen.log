@@ -1,0 +1,16 @@
+# check: p01-01-cmd2-uv-sync-frozen
+# argv: ["uv", "sync", "--frozen"]
+# resolved_executable: C:\Users\30382\.local\bin\uv.EXE
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T15:55:01.409396+00:00
+# expectation: exit 0; frozen lock honoured, nothing re-resolved
+# package-lock.json sha256 before: fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+# package-lock.json sha256 after:  fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+
+## stdout
+
+## stderr
+Checked 39 packages in 5ms
+
+## exit_code: 0
+## duration_ms: 62

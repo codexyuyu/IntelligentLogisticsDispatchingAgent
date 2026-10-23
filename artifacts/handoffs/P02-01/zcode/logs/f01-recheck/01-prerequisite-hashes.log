@@ -1,0 +1,9 @@
+artifacts/gates/G01.json 50bae8ac3b797086
+artifacts/gates/G01-codex-review.json e64827a62caa4c49
+docs/handoffs/P02-01/codex-dependency-r02.md ffd9d7f34fa4b0be
+artifacts/handoffs/P02-01/codex-dependency-r02/evidence.json 0e01aadde44df594
+artifacts/handoffs/P02-01/codex-dependency-r02/seal.json c00ecce3383c6dc9
+artifacts/handoffs/P02-01/dsh/evidence.json eac21615a8511ea3
+artifacts/handoffs/P02-01/dsh/seal.json 32d2a882b442bb25
+G01: passed | revision: content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aed | failed: []
+review: approved | reviewer: Codex N05-R02-IMPACT /root/n05_independent (origin | inputs: 184

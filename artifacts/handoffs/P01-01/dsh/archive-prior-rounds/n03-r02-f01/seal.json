@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-01",
+  "round": "n03-r02-2026-10-04",
+  "role": "dsh",
+  "status": "READY_FOR_ZCODE",
+  "signs_gate": false,
+  "generated_at": "2026-10-04T21:19:09.136884+00:00",
+  "generation_order": "archive -> affected runs -> evidence -> confirmation runs -> handoff -> this seal",
+  "trigger": "legal P02-01 package-marker edit changed packages/domain/src/logistics_domain/__init__.py",
+  "candidate": {
+    "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297",
+    "relevant_file_count": 82,
+    "declared": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "recomputed_by": "seal writer via GateRunner.relevant_manifest_rows()"
+  },
+  "dependency_evidence": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "status": "passed"
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8",
+      "status": "passed"
+    }
+  },
+  "g01_drift": {
+    "record_unchanged": true,
+    "recorded_inputs_total": 40,
+    "recorded_inputs_stale": [
+      "packages/domain/src/logistics_domain/__init__.py"
+    ],
+    "p01_01_precheck_recorded_inputs_stale": [
+      "packages/domain/src/logistics_domain/__init__.py"
+    ],
+    "p01_02_precheck_stale": 0,
+    "p01_03_precheck_stale": 0
+  },
+  "evidence": {
+    "path": "artifacts/handoffs/P01-01/dsh/evidence.json",
+    "sha256": "18b2ccc1fa0f38160f795ba42e65d565e174f91fd76b6db853a8a64e07c40ca8",
+    "bytes": 29091
+  },
+  "handoff": {
+    "path": "docs/handoffs/P01-01/dsh.md",
+    "sha256": "9c9fe118777d7b7572775a00a90aec690e50e6b2fafba3f2a8de612b148a5623",
+    "bytes": 24952
+  },
+  "ran_this_round": [
+    {
+      "id": "cmd1-affected-p01-01-suites",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_01_workspace_bootstrap.py",
+        "tests/integration/test_p01_01_workspace_bootstrap.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0; the affected P01-01 suites after the legal P02-01 package-marker change",
+      "observed": {
+        "passed": 56,
+        "failed": 0
+      },
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-r02-2026-10-04/affected-p01-01-suites.log",
+      "log_sha256": "08beba5add6bf1915571d6cfec31df03065ead4a2a3b2f73d374714b749a992d",
+      "exit_code_and_counts_read_from_log": true,
+      "run_by_this_round": true
+    },
+    {
+      "id": "cmd2-six-package-isolated-import",
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "tmp/N03-R02/six_package_probe.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0; six packages import from an isolated interpreter outside the repository",
+      "observed": {
+        "problems": 0
+      },
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-r02-2026-10-04/six-package-isolated-import.log",
+      "log_sha256": "7497e954e6c94839600e20c7c71444bb235b70434e5ab36cd7a5bde3f239a016",
+      "exit_code_and_counts_read_from_log": true,
+      "run_by_this_round": true
+    }
+  ],
+  "reused_not_rerun": {
+    "uv_sync_frozen": {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd2-uv-sync-frozen.log",
+      "sha256": "404bfcaa0849c3e35eaebddba2b5b142acfc52c7482fd1b2471cd13a427e1d30",
+      "bytes": 609,
+      "run_round": "n03-2026-10-04",
+      "reused_not_rerun": true,
+      "basis": "uv.lock and package-lock.json are byte-identical to that round, so the install behaviour is unchanged; this round did NOT re-run uv sync or npm ci"
+    },
+    "npm_ci_run1": {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3-npm-ci-run1.log",
+      "sha256": "6a720051f56ffc2401d8dd116b856aaf35cb7412fa8c30495d323c557969e0a7",
+      "bytes": 551,
+      "run_round": "n03-2026-10-04",
+      "reused_not_rerun": true,
+      "basis": "uv.lock and package-lock.json are byte-identical to that round, so the install behaviour is unchanged; this round did NOT re-run uv sync or npm ci"
+    },
+    "npm_ci_run2": {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3b-npm-ci-run2.log",
+      "sha256": "8b9bdf00e72ca2b5cee1dcfee57ae9e36442598fc3bda98c00ae68def37267a2",
+      "bytes": 666,
+      "run_round": "n03-2026-10-04",
+      "reused_not_rerun": true,
+      "basis": "uv.lock and package-lock.json are byte-identical to that round, so the install behaviour is unchanged; this round did NOT re-run uv sync or npm ci"
+    }
+  },
+  "referenced_not_rerun": {
+    "path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/full-regression.log",
+    "sha256": "e2522e091ae2463ebc80623f1fd8ecc22d39cfb126cf50fcf1fabd98a81ded7a",
+    "exit_code": 0,
+    "observed": {
+      "passed": 272,
+      "failed": 0
+    },
+    "provenance": "produced by the P02-01 DSH round on the current candidate (dadad196...); N03-R02 did NOT re-run the phase regression",
+    "why_referenced": "the card forbids repeating the full regression; the log was recomputed and its source is stated explicitly"
+  },
+  "confirmation_runs": {
+    "affected-p01-01-suites-confirm.log": {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-r02-2026-10-04/affected-p01-01-suites-confirm.log",
+      "sha256": "8c3a40034a823ee8f2aacea677ab21246f225f37feb684a1a201069100187648"
+    },
+    "six-package-isolated-import-confirm.log": {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-r02-2026-10-04/six-package-isolated-import-confirm.log",
+      "sha256": "c2ee2c633d26feab0a40eabc94574d2a336e2d36871d5c79657999ce96fca86e"
+    }
+  },
+  "archive": {
+    "root": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02",
+    "manifest": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/archive-manifest.json",
+    "manifest_sha256": "f115b120e2693e979b3cad00d1cd2c26b9b963c68140a9bc8fc57aaddecf9c3b",
+    "file_count": 16
+  },
+  "other_handoffs_untouched": {
+    "docs/handoffs/P01-02/dsh.md": "60ffb5ec9ab6a895970727ff4dd66c8b6ce992b5403d6bd79731daa6f7ef32be",
+    "docs/handoffs/P01-03/dsh.md": "0c2edd83e6af39b68b4ebb4519168084a170f3526cc7955639d30500220d2dcc"
+  }
+}

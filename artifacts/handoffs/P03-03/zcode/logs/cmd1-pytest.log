@@ -1,0 +1,6 @@
+########## cmd1: uv run pytest tests/unit/test_p03_03_repositories_and_snapshot.py tests/integration/test_p03_03_repositories_and_snapshot.py -q
+ERROR: file or directory not found: tests/unit/test_p03_03_repositories_and_snapshot.py
+
+
+no tests ran in 0.00s
+EXIT_CODE=4

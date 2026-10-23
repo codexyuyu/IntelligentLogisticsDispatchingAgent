@@ -1,0 +1,48 @@
+{
+  "references": [
+    {
+      "role": "candidate_manifest",
+      "path": "artifacts/handoffs/N01/codex/candidate-files.json",
+      "expected": "6eb29af5353e759bad5cd134efef7c9abee00e0f4c5c721c202f1e880b1ef7fb",
+      "actual": "6eb29af5353e759bad5cd134efef7c9abee00e0f4c5c721c202f1e880b1ef7fb",
+      "passed": true
+    },
+    {
+      "role": "governance_diff",
+      "path": "artifacts/handoffs/N01/codex/governance-files.json",
+      "expected": "8e13f3d9245b9202bf9af28d83cef454beff2e889ac4a2b907ded8c7203cf849",
+      "actual": "8e13f3d9245b9202bf9af28d83cef454beff2e889ac4a2b907ded8c7203cf849",
+      "passed": true
+    },
+    {
+      "role": "handoff",
+      "path": "docs/handoffs/N01/codex.md",
+      "expected": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43",
+      "actual": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43",
+      "passed": true
+    },
+    {
+      "role": "N01 command raw log",
+      "path": "artifacts/handoffs/N01/codex/plan-check.log",
+      "expected": "817f4ed13a69622fc4f296f9402ad1e8a43838c1e685760804d3f419c69efcc3",
+      "actual": "817f4ed13a69622fc4f296f9402ad1e8a43838c1e685760804d3f419c69efcc3",
+      "passed": true
+    },
+    {
+      "role": "N01 command raw log",
+      "path": "artifacts/handoffs/N01/codex/validation.log",
+      "expected": "f9b499709884d73a88f7740cf5cd3f1d859a52f9aa317f4fa5cbba75402d84ca",
+      "actual": "f9b499709884d73a88f7740cf5cd3f1d859a52f9aa317f4fa5cbba75402d84ca",
+      "passed": true
+    },
+    {
+      "role": "historical G00 raw log",
+      "path": "artifacts/gates/G00-checks.log",
+      "expected": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "actual": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "passed": true,
+      "recorded_exit_code": 0
+    }
+  ],
+  "all_references_match": true
+}

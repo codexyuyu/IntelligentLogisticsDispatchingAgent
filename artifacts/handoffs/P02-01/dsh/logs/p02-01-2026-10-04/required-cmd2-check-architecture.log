@@ -1,0 +1,14 @@
+# check: required-cmd2-check-architecture
+# argv: ["uv", "run", "python", "scripts/check_architecture.py"]
+# resolved_executable: C:\Users\30382\.local\bin\uv.EXE
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T21:07:47.359023+00:00
+# expectation: exit 0; layer violations = 0 with the new domain modules present
+
+## stdout
+architecture-layers: scanned 10 module(s) across 7 layer(s); violations=0
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 172

@@ -1,0 +1,92 @@
+[
+ {
+  "note": "Round r2 (2026-09-28) same-role records archived on 2026-10-04 by the N04 ZCode pre-acceptance session. The r2 precheck.json was already stale at that time (its verified_input_hashes had drifted; see logs/2026-10-04/04-checkonly-run.log) and had been replaced in place by the new round record at precheck.json; its exact former bytes were not separately archived before replacement. Old evidence.json, its generator script and all r2 logs are preserved byte-identically here.",
+  "paths": [
+   {
+    "path": "archive/r2-2026-09-28/evidence.json",
+    "sha256": "c95b1287cbb5b69dddefa45b3f4d692ca063b52a2f4cda71599dfd397a5ed644",
+    "bytes": 25054
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-architecture.log",
+    "sha256": "2c49b7696234ac864a40381559921c0cf10d5620c457b427c8964f6dad5f9b02",
+    "bytes": 302
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-cmd1-pytest.log",
+    "sha256": "74300fcb6a93a6b67aca20cc1307b92abd768f935e9a6df661f949be51c7e456",
+    "bytes": 108
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-cmd2-uv-sync-frozen.log",
+    "sha256": "4d0049d59970840daca55200f132032c890ef90ea30fa0b1e765796d4da657cc",
+    "bytes": 34
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-cmd3-npm-ci.log",
+    "sha256": "fe84940380e7541a8ab6e0587f2deea23960ee30e32bb3ab91a4327c30c7e62b",
+    "bytes": 80
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-demo-and-hash-drift.log",
+    "sha256": "87e4040d7be895cda71bcbbd25a9f7950cf6ccea28f506d6e59042b1210b6a43",
+    "bytes": 346
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-fail-closed.log",
+    "sha256": "2d32b00e57837783d00f35744cc6df71ad3b95c0d8b546b46680da57a168a325",
+    "bytes": 587
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-frontend-test.log",
+    "sha256": "8f7a946ce45e5c72699996cec66b53ae305d7b44bc818e08ace0284afe5af851",
+    "bytes": 545
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-gates-probe-g01-after.log",
+    "sha256": "cac3365b92e0458a8489e81a68e615bc644c58e261544590380ae54f6faf6dc5",
+    "bytes": 2263
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-gates-probe-g01.log",
+    "sha256": "66aa9022220a75618c6314f5e1c5b3c5b813f0f1ce2fff2729e195d19e3b6b5d",
+    "bytes": 2255
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-import-isolation.log",
+    "sha256": "b61745e7d176f1f9a87e090f377d2cac2949f4a50c0dc630c253e9524cc2d0b7",
+    "bytes": 69
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-lock-check.log",
+    "sha256": "03d058d0396d13d0b2f984808a7997ea5d32e178c0b87307a06565f8b45b51a4",
+    "bytes": 35
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-ownership.log",
+    "sha256": "958f8d80548dcdd33ce25f9a54dff9b6b9f5ac0a45d0b21c5000c19945f4b379",
+    "bytes": 1691
+   },
+   {
+    "path": "archive/r2-2026-09-28/logs/r2-regression.log",
+    "sha256": "3bfffd9bcfe73fca973fd209aaa6d06a36a936ba6e51a7e322f49ebcbe60f2db",
+    "bytes": 272
+   },
+   {
+    "path": "archive/r2-2026-09-28/npm-ci.log",
+    "sha256": "b488c8d693a8a30fc7687fd399b56247dd4417df019e13f7d93e221481d80e0a",
+    "bytes": 73
+   },
+   {
+    "path": "archive/r2-2026-09-28/pytest.log",
+    "sha256": "f4e7603a8a8de2fe85dfb2347e63a3b9445051e0a3d14d829d04646310511169",
+    "bytes": 101
+   },
+   {
+    "path": "archive/r2-2026-09-28/uv-sync-frozen.log",
+    "sha256": "811e7aee9aad5e28cb417e89d67cf5c4a3a6b73fe1f7fb687192af1d46aff7f4",
+    "bytes": 27
+   }
+  ]
+ }
+]

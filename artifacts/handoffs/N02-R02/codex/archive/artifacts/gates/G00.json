@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "gate_id": "G00",
+  "status": "passed",
+  "scope": "Phase00 document contract verification only",
+  "finished_at": "2026-09-14T06:54:19.635873+00:00",
+  "checker_counts": {
+    "tasks": 109,
+    "gates": 40,
+    "prompt_groups": 14,
+    "required_prompt_sections": 24,
+    "required_entities": 32,
+    "markdown_files": 131,
+    "selected_prompts": 109
+  },
+  "code_revision": "content-sha256:b82eec9d08aab71ed6cc38d83939960d0b157c97866dc45ecd53cfe2c9a05392",
+  "input_artifact_hashes": {
+    "docs/architecture/BASELINE_INVENTORY.json": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+    "docs/architecture/BASELINE_INVENTORY.md": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694",
+    "docs/architecture/MIGRATION_MAP.md": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b",
+    "docs/implementation/P00-01.md": "ce86f77f11cfab16e8c08b9ff00edcf9835351d0e1b3f87d3d91e63b984b1833",
+    "docs/implementation/reports/P00-01.md": "888e208ee01519ffc30868ca7902fe9c42b78d41e5f6006e6e746b98f2405865",
+    "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+    "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+    "docs/architecture/issues/README.md": "93bd4ed9a23fa988001c5d535f28a9b86a923fc37c75512b5eb3e73002671695",
+    "docs/implementation/P00-02.md": "a0eae411e5e68b9dc358b8ac100ebe0919fbf01a0350453ef3a44342918f73f4",
+    "docs/implementation/reports/P00-02.md": "dba5fe5f8a3bd5c05bbc5e331b4ee126ca95af4e2b1c00637dfd10497133dff2",
+    "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+    "docs/implementation/P00-03.md": "dddda2c1a9b9619cb86625e6c825b0e2280bf833b19256ae4e5dc5430469a688",
+    "docs/implementation/reports/P00-03.md": "61fa11c736daeb59e7515303c6bff1db4a2cda55e11965936b50fb0eac33279c",
+    "PROJECT_MASTER_PLAN.md": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "docs/algorithms/METRICS_CONTRACT.md": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+    "docs/algorithms/OPTIMIZATION_CONTRACT.md": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+    "docs/algorithms/SIMULATION_CONTRACT.md": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+    "docs/api/API_CONTRACT.md": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+    "docs/architecture/ARCHITECTURE_OVERVIEW.md": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+    "docs/architecture/DATA_CONTRACTS.md": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f"
+  },
+  "dependency_evidence_hashes": {},
+  "environment_fingerprint": {
+    "python": "3.12.10",
+    "os": "Windows"
+  },
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test",
+        "--record-g00"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/gates/G00-checks.log",
+      "log_hash": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56"
+    }
+  ],
+  "reviewer": "planner-checker:tools/ai_coding_plan/validate_plan.py --self-test --record-g00",
+  "limitations": [
+    "No application gate has been executed. G01 must establish the runtime gate runner."
+  ]
+}

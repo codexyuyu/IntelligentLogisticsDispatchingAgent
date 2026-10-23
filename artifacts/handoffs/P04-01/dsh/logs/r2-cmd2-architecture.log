@@ -1,0 +1,18 @@
+$ uv run python scripts/check_architecture.py
+cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+uv resolved to: tools\bin\uv.exe (uv 0.12.13)
+
+--- stdout ---
+architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0
+
+--- stderr ---
+(none)
+
+--- exit code ---
+0
+
+--- interpretation ---
+VACUOUS PASS. The 7 scanned modules are the untouched P01-01 placeholder packages;
+P04-01 added no code. This command also cannot detect the failure mode it is meant to
+guard here (Constraint 1, "cross-boundary undefined dict") because no fixture generator
+and no scenario Schema exist. It must not be cited as P04-01 acceptance evidence.

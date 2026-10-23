@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-01",
+  "round": "n03-2026-10-04",
+  "role": "dsh",
+  "status": "READY_FOR_ZCODE",
+  "signs_gate": false,
+  "generated_at": "2026-10-04T16:01:57.491224+00:00",
+  "generation_order": "logs -> evidence.json -> docs/handoffs/<task>/dsh.md -> this seal",
+  "candidate": {
+    "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+    "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+    "relevant_file_count": 77,
+    "recomputed_by": "tmp/N03/candidate/candidate-identity.py via GateRunner.relevant_manifest_rows() of scripts/gates.py"
+  },
+  "dependency_evidence": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "status": "passed",
+      "finished_at": "2026-10-04T14:48:59.955285+00:00",
+      "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)"
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "status": "failed",
+      "finished_at": "2026-09-14T13:15:11.596614+00:00",
+      "reviewer": "dsh-scripts/gates.py"
+    }
+  },
+  "evidence": {
+    "path": "artifacts/handoffs/P01-01/dsh/evidence.json",
+    "sha256": "98a46cdf685ce94392820d874d5dc5898156495858d7c9cef83a6fa936c015f0",
+    "bytes": 21195
+  },
+  "handoff": {
+    "path": "docs/handoffs/P01-01/dsh.md",
+    "sha256": "76d154cbb058e1d9f936d2e0750ea772b98ff58abd9e9c11dd3f20ab6c4b41a7",
+    "bytes": 12586
+  },
+  "prior_rounds_archive": {
+    "manifest": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/archive-manifest.json",
+    "manifest_sha256": "7a642cfc12862d5d0340d7ee3713868108061e48c0880fde341bcc99c4233683",
+    "file_count": 5,
+    "prior_handoff_copy": {
+      "path": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/docs-handoff-dsh.md",
+      "exists": true,
+      "bytes": 6071,
+      "sha256": "4b24490d1904d06b7003e1b1598f7e4210765622cf3468bbff9f1f16326f417b"
+    }
+  },
+  "required_command_exit_codes": {
+    "cmd1-pytest": {
+      "exit_code": 0,
+      "observed": {
+        "passed": 56,
+        "failed": 0
+      }
+    },
+    "cmd2-uv-sync-frozen": {
+      "exit_code": 0,
+      "observed": {}
+    },
+    "cmd3-npm-ci-run1": {
+      "exit_code": 0,
+      "observed": {}
+    },
+    "cmd3b-npm-ci-run2": {
+      "exit_code": 0,
+      "observed": {}
+    }
+  },
+  "supplementary_command_exit_codes": {
+    "phase01-full-regression-attempt1": {
+      "exit_code": 1,
+      "observed": {
+        "passed": 225,
+        "failed": 1
+      }
+    },
+    "phase01-full-regression-attempt2": {
+      "exit_code": 1,
+      "observed": {
+        "passed": 225,
+        "failed": 1
+      }
+    }
+  },
+  "command_log_hashes": {
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd1-pytest.log": {
+      "sha256": "daa2f15e45cc65c8f04a4b6eac4d1eaba11ddfbbe56e90a7c6a77edd53d84869",
+      "bytes": 765
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd2-uv-sync-frozen.log": {
+      "sha256": "404bfcaa0849c3e35eaebddba2b5b142acfc52c7482fd1b2471cd13a427e1d30",
+      "bytes": 609
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3-npm-ci-run1.log": {
+      "sha256": "6a720051f56ffc2401d8dd116b856aaf35cb7412fa8c30495d323c557969e0a7",
+      "bytes": 551
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3b-npm-ci-run2.log": {
+      "sha256": "8b9bdf00e72ca2b5cee1dcfee57ae9e36442598fc3bda98c00ae68def37267a2",
+      "bytes": 666
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt1.log": {
+      "sha256": "2a2151a9bade2f9f55f8baad9f9ccc19c664d588f9b1dc67119169e8170608d2",
+      "bytes": 4076
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt2.log": {
+      "sha256": "4ba550f6c0eecb74b3128f775fda7d1f8f0419c8d6b55f4e8d52c78aad7898ba",
+      "bytes": 4183
+    }
+  },
+  "defects_reported_this_round": [
+    "DEF-N03-01 (resolved before delivery)",
+    "DEF-N03-02 (open)"
+  ]
+}

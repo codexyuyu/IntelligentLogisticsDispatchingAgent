@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-02",
+  "scene": "checks-and-gate-runner",
+  "phase_gate": "G01",
+  "status": "READY_FOR_ZCODE",
+  "generated_at": "2026-09-12T00:00:00+00:00",
+  "code_revision": "content-sha256:979c10b4ea7b8cacca93afbd032e4de12c9d0fadb3e5bb7cc351ac99124b493e",
+  "artifacts": {
+    "gates": {
+      "path": "scripts/gates.py",
+      "sha256": "67351df627a747f9cb1d5ea5c8ddcdc01093a10e161f198cc9c35a92ecf49873"
+    },
+    "check_architecture": {
+      "path": "scripts/check_architecture.py",
+      "sha256": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5"
+    },
+    "conftest": {
+      "path": "tests/conftest.py",
+      "sha256": "95ad3430baec228b737b150debc97e71dd19297ebc76715584938b10ab58607a"
+    },
+    "ci_workflow": {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "139d37c92f1bdf8d82c0771b081bb82d674dfbf6da22fa50135d27bd19a10e35"
+    },
+    "vitest_config": {
+      "path": "apps/frontend/vitest.config.ts",
+      "sha256": "3f5c86e2273cd9becf71d0edeb32d3cecdab7dbf0432c95caa9ebed8a1f10e9c"
+    },
+    "frontend_test_setup": {
+      "path": "apps/frontend/src/test/setup.ts",
+      "sha256": "322a23afd1a0070b4ca7d27d52bc15d84f36d190dd444a35163c08f2b6d8003a"
+    },
+    "unit_test": {
+      "path": "tests/unit/test_p01_02_checks_and_gate_runner.py",
+      "sha256": "63e70c5cc056e101839017b20028d77fc9a03f9420dee023b258734814f2a050"
+    },
+    "integration_test": {
+      "path": "tests/integration/test_p01_02_checks_and_gate_runner.py",
+      "sha256": "7bb931157eee2caaea5eca625e2b30e37ed18cbc79b1bc4dfdfe23dee917dea9"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5"
+    },
+    "package_lock": {
+      "path": "package-lock.json",
+      "sha256": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458"
+    },
+    "phase_gate_evidence": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "e9e4395d2fd513df4b966a0a5f57a4738622e7a96c1891a04628bd2bf557e97d"
+    }
+  },
+  "command_logs": {
+    "pytest": {
+      "path": "artifacts/handoffs/P01-02/dsh/logs/pytest.log",
+      "sha256": "81c2da86b07d369dacb22e81caa72ba91b48af8fd441cc07c9824f18798280ce",
+      "bytes": 228
+    },
+    "check_architecture": {
+      "path": "artifacts/handoffs/P01-02/dsh/logs/check_architecture.log",
+      "sha256": "cef34d0963c81da7ab04f4086c81963a1da800787a2fc6d721a78be6f325ef08",
+      "bytes": 592
+    },
+    "gate_g01": {
+      "path": "artifacts/handoffs/P01-02/dsh/logs/gate-g01.log",
+      "sha256": "5aa90c8119b6af4fbf54bc9a311ea82abbfa3cad6134cc115453e78264163a73",
+      "bytes": 4418
+    }
+  },
+  "delivered_interfaces": {
+    "gate_runner": "python scripts/gates.py --phase NN --revision REV -> artifacts/gates/GNN.json",
+    "layer_check": "python scripts/check_architecture.py [--root PATH] [--json] [--verbose]"
+  },
+  "gate_runner_modes": {
+    "default": "executes manifest commands and phase assertions, writes GNN.json, exit 0 only when passed",
+    "check_only": "freshness verification only: runs nothing, writes nothing, never signs",
+    "skip_commands": "evidence/record verification only; always fails, each skipped assertion says so",
+    "assertion_filter": "runs only the named assertion ids",
+    "out_dir": "writes evidence to an alternate directory; the record is marked official_gate_record=false and never overwrites artifacts/gates/GNN.json"
+  },
+  "phase_assertions": [
+    "clean-install-imports",
+    "layer-boundaries",
+    "lock-reproducible",
+    "runner-fails-closed",
+    "legacy-demo-untouched"
+  ],
+  "phase_assertion_results": {
+    "clean-install-imports": true,
+    "layer-boundaries": true,
+    "lock-reproducible": true,
+    "runner-fails-closed": true,
+    "legacy-demo-untouched": true
+  },
+  "test_cases": {
+    "1": {
+      "spec": "命令 exit=1 => G01 failed 且进程非零",
+      "tests": [
+        "tests/integration/...::test_exit_one_command_fails_the_gate_and_exits_nonzero"
+      ],
+      "asserted": [
+        "evidence status == failed",
+        "P01-01-cmd1 in failed_checks",
+        "recorded exit_code == 1",
+        "raw log exists with a matching sha256",
+        "runner process exit code != 0"
+      ]
+    },
+    "2": {
+      "spec": "domain 导入 fastapi => 层边界检查失败",
+      "tests": [
+        "tests/integration/...::test_domain_importing_fastapi_fails_the_layer_check",
+        "tests/integration/...::test_layer_violation_makes_the_phase_gate_fail"
+      ],
+      "asserted": [
+        "checker exit code != 0",
+        "violation code ARCH-PURITY with exact path and line",
+        "the same violation also fails the phase acceptance assertion"
+      ]
+    },
+    "3": {
+      "spec": "Codex review 缺失或 ZCode 输入哈希过期 => 不写 passed",
+      "tests": [
+        "tests/integration/...::test_missing_codex_review_prevents_a_passed_record",
+        "tests/integration/...::test_stale_zcode_input_hash_prevents_a_passed_record",
+        "tests/integration/...::test_missing_zcode_precheck_prevents_a_passed_record"
+      ],
+      "asserted": [
+        "status == failed whenever the review or pre-acceptance record is missing",
+        "status == failed whenever a recorded input hash no longer matches disk"
+      ]
+    },
+    "4": {
+      "spec": "--check-only 全部成功 => 仅输出检查结果，不签收 Gate",
+      "tests": [
+        "tests/integration/...::test_check_only_does_not_sign_and_does_not_write"
+      ],
+      "asserted": [
+        "no evidence file is created or modified",
+        "no command log directory is created",
+        "stdout states the gate was not signed"
+      ]
+    }
+  },
+  "counts": {
+    "unit_tests": 39,
+    "integration_tests": 18,
+    "total_tests": 57,
+    "layer_check_modules_scanned": 7,
+    "layer_check_violations": 0,
+    "gate_checks_total": 26,
+    "gate_checks_failed": 8
+  },
+  "tool_versions": {
+    "python": "3.12.10",
+    "python_executable": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.venv\\Scripts\\python.exe",
+    "uv": "uv 0.12.13 (0ebbd9274 2026-09-10 x86_64-pc-windows-msvc)",
+    "uv_executable": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe",
+    "node": "v24.18.0",
+    "npm": "11.16.0",
+    "os": "Windows 11"
+  },
+  "environment_variables_referenced": [
+    "TEST_DATABASE_URL",
+    "PLAYWRIGHT_BASE_URL",
+    "UV_LINK_MODE"
+  ],
+  "secrets_recorded": [],
+  "gate_state": {
+    "gate_id": "G01",
+    "status": "failed",
+    "failed_checks": [
+      "P01-03-cmd1",
+      "dsh-evidence:P01-03",
+      "docs:docs/implementation/P01-03.md",
+      "docs:docs/implementation/reports/P01-03.md",
+      "zcode-precheck:P01-01",
+      "zcode-precheck:P01-02",
+      "zcode-precheck:P01-03",
+      "codex-review"
+    ],
+    "note": "G01 stays failed by design: P01-03 has not delivered, and the ZCode pre-acceptance and Codex review records are not written by the development role. DSH self-test passing is not a gate sign-off."
+  },
+  "limitations": [
+    "G01 is NOT signed: artifacts/gates/G01.json records status=failed until P01-03 delivers and the ZCode/Codex records exist.",
+    "docs/workflow/HANDOFF_CONTRACT.md does not exist; this task fixes the record format itself and documents the deviation.",
+    "The layer checker's third-party import table is a whitelist: an unlisted new dependency is not flagged, so it must be added to the table when introduced.",
+    "CI is validated locally by static assertions only; no GitHub Actions run exists for this repository.",
+    "No database, solver, simulation, LLM or browser acceptance is in scope for Phase 01."
+  ]
+}

@@ -1,0 +1,18 @@
+[project]
+name = "logistics-agents"
+version = "0.1.0"
+description = "Coordinator/Transport/Warehouse/Exception agents, tool protocol and LLM provider abstraction."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "logistics-contracts",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+logistics-contracts = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/logistics_agents"]

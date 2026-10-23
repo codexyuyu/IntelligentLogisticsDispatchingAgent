@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\tmp\N02-R02\review_core.py", line 111, in <module>
+    if sys.argv[1]=='audit':initial_audit()
+                            ^^^^^^^^^^^^^^^
+  File "D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\tmp\N02-R02\review_core.py", line 62, in initial_audit
+    assert patch.decode()==original
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

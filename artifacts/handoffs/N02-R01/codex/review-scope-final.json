@@ -1,0 +1,14 @@
+{
+  "existing_tree_files": 1098,
+  "changed_or_added_outside_delivery_and_scratch": [],
+  "protected_files": 3418,
+  "protected_unchanged": 3418,
+  "frozen_records_unchanged": true,
+  "official_G00_G01_and_old_logs_unchanged": true,
+  "scope": "non-derived project files; dependency/cache/.mimosa trees excluded as declared",
+  "all_actual_writes": [
+    "tmp/N02-R01/**",
+    "artifacts/handoffs/N02-R01/codex/**",
+    "docs/handoffs/N02-R01/codex.md"
+  ]
+}

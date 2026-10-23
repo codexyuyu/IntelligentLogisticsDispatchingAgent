@@ -1,0 +1,19 @@
+[project]
+name = "logistics-optimization"
+version = "0.1.0"
+description = "Transport/Warehouse/Reschedule solvers, distance matrices and independent hard-constraint validation."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "logistics-domain",
+    "ortools>=9.11",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+logistics-domain = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/logistics_optimization"]

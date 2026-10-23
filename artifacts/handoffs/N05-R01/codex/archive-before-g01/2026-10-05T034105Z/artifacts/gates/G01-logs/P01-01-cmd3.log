@@ -1,0 +1,16 @@
+# check: P01-01-cmd3
+# argv: ["C:\\Program Files\\nodejs\\npm.CMD", "ci"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:44:02.139525+00:00
+# expectation: manifest command must succeed
+
+## stdout
+
+added 4 packages, and audited 6 packages in 1s
+
+found 0 vulnerabilities
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 1625

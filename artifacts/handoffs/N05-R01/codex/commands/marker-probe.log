@@ -1,0 +1,17 @@
+# argv: [".venv\\Scripts\\python.exe", "-B", "tmp/N05-R01/marker_probe.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T03:36:11.063030+00:00
+# temp: C:\Users\30382\AppData\Local\Temp\N05-R01-independent\2026-10-04-main
+
+## stdout
+{"order": ["errors", "primitives", "states"], "exit_code": 0, "third_party_roots": [], "pending": {"entities": "NotImplementedError", "ids": "NotImplementedError", "units": "NotImplementedError", "ports": "NotImplementedError"}}
+{"order": ["errors", "states", "primitives"], "exit_code": 0, "third_party_roots": [], "pending": {"entities": "NotImplementedError", "ids": "NotImplementedError", "units": "NotImplementedError", "ports": "NotImplementedError"}}
+{"order": ["primitives", "errors", "states"], "exit_code": 0, "third_party_roots": [], "pending": {"entities": "NotImplementedError", "ids": "NotImplementedError", "units": "NotImplementedError", "ports": "NotImplementedError"}}
+{"order": ["primitives", "states", "errors"], "exit_code": 0, "third_party_roots": [], "pending": {"entities": "NotImplementedError", "ids": "NotImplementedError", "units": "NotImplementedError", "ports": "NotImplementedError"}}
+{"order": ["states", "errors", "primitives"], "exit_code": 0, "third_party_roots": [], "pending": {"entities": "NotImplementedError", "ids": "NotImplementedError", "units": "NotImplementedError", "ports": "NotImplementedError"}}
+{"order": ["states", "primitives", "errors"], "exit_code": 0, "third_party_roots": [], "pending": {"entities": "NotImplementedError", "ids": "NotImplementedError", "units": "NotImplementedError", "ports": "NotImplementedError"}}
+MARKER_IMPORT_ORDER_AND_FAILURE_PURITY=PASS
+
+## stderr
+
+## exit_code: 0

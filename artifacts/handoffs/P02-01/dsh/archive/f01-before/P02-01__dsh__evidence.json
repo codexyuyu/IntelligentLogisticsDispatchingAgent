@@ -1,0 +1,279 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P02-01",
+  "round": "p02-01-2026-10-04",
+  "scene": "primitives-and-states",
+  "title": "实现领域 ID、单位与唯一状态枚举",
+  "phase_gate": "G02",
+  "status": "READY_FOR_ZCODE",
+  "role": "dsh",
+  "owner": "A",
+  "signs_gate": false,
+  "next_executor": "ZCode N04 independent pre-acceptance (does not sign G02)",
+  "generated_at": "2026-10-04T21:09:11.438746+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "contract_versions": {
+    "plan": "1.0.3",
+    "business": "2.0.0",
+    "gate_evidence_schema": "1.0.0",
+    "handoff_contract": "docs/workflow/HANDOFF_CONTRACT.md v1.0.0"
+  },
+  "candidate": {
+    "vcs": "no .git in this checkout; identity is the content-sha256 candidate manifest",
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "formula": "content-sha256: + sha256(\"\\n\".join(path + \"\\0\" + sha256(file_bytes)))",
+    "dirty_tree_formula": "content-sha256: + sha256(\"\\n\".join(path + \"\\0\" + size + \"\\0\" + sha256(file_bytes)))",
+    "relevant_file_count": 82,
+    "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297",
+    "recomputed_by": "tmp/P02-01/recon/gather-facts.py via GateRunner.relevant_manifest_rows() of scripts/gates.py",
+    "previous_phase01_candidate": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+    "note": "P02-01 adds five files to the whitelist, so the revision necessarily moved from the G01 candidate"
+  },
+  "dependency_evidence": {
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8",
+      "status": "passed",
+      "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+      "reviewer": "dsh-scripts/gates.py",
+      "finished_at": "2026-10-04T20:44:50.643501+00:00",
+      "review": "artifacts/gates/G01-codex-review.json",
+      "review_sha256": "1cfd47668b64b49062c14eb0af648d8fd23eaf86748bc0b68ecb3421331e185d",
+      "independent_recheck": "tmp/P02-01/precondition/verify-g01.py -> 40/40 inputs fresh, 7/7 command logs match, dependency G00 fresh, exit 0",
+      "log": "tmp/P02-01/precondition/verify-g01.log"
+    },
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "status": "passed",
+      "finished_at": "2026-10-04T14:48:59.955285+00:00",
+      "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)"
+    }
+  },
+  "partition_contributions": [
+    {
+      "partition_id": "P02-01/impl",
+      "author": "DSH-A (this session, sole main writer)",
+      "role": "main implementer of every file of this task",
+      "files": [
+        "docs/implementation/P02-01.md",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/__init__.py",
+        "packages/domain/src/logistics_domain/errors.py",
+        "packages/domain/src/logistics_domain/primitives.py",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ]
+    },
+    {
+      "partition_id": "P02-01/implementation-docs",
+      "author": "DSH-A (this session)",
+      "role": "task document and completion report",
+      "files": [
+        "docs/implementation/P02-01.md",
+        "docs/implementation/reports/P02-01.md"
+      ]
+    },
+    {
+      "partition_id": "P02-01/round-p02-01-2026-10-04",
+      "author": "DSH-A (this session)",
+      "role": "handoff and machine evidence",
+      "files": [
+        "docs/handoffs/P02-01/dsh.md",
+        "artifacts/handoffs/P02-01/dsh/evidence.json",
+        "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/"
+      ]
+    },
+    {
+      "partition_id": "N05/G01",
+      "author": "independent Codex N05 session (2026-10-04)",
+      "role": "signed the phase-1 gate on the phase-1 candidate; not produced by DSH",
+      "files": [
+        "artifacts/gates/G01.json",
+        "artifacts/gates/G01-codex-review.json",
+        "docs/handoffs/N05/codex.md"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/implementation/P02-01.md",
+      "bytes": 7331,
+      "sha256": "ac9b8f0e0dabcadba0218bd772cd6f25e1b7eb1e42228457cb2a8d06a823ce57"
+    },
+    {
+      "path": "docs/implementation/reports/P02-01.md",
+      "bytes": 7720,
+      "sha256": "c3e518b5d24d6132ff679609916567f03b530f8810f913cb81b581374115d8f1"
+    },
+    {
+      "path": "packages/domain/src/logistics_domain/__init__.py",
+      "bytes": 2669,
+      "sha256": "21334c02c11a33f45445a12324be954187a5ed8ae775010158a0608946c50076"
+    },
+    {
+      "path": "packages/domain/src/logistics_domain/errors.py",
+      "bytes": 3180,
+      "sha256": "feb045410bcba16658d5def4143c746649386fe7fad9d9bc6ed31db4da11a56b"
+    },
+    {
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "bytes": 15734,
+      "sha256": "f86e18a4738f3841b45e14509bcc6bea80a5eebf30861f28ff919bf06c660304"
+    },
+    {
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "bytes": 35962,
+      "sha256": "0a3da52dc111ba5becd0e3e84572c85abd26b80492480445e2910a9b83caecaa"
+    },
+    {
+      "path": "tests/integration/test_p02_01_primitives_and_states.py",
+      "bytes": 9438,
+      "sha256": "ebaed4a42dc895be8bc1638311df808e9986266e600fa24d138baa1bf9d6f151"
+    },
+    {
+      "path": "tests/unit/test_p02_01_primitives_and_states.py",
+      "bytes": 23703,
+      "sha256": "c66f2d51aae63187730ca6617c07510fbbb1503c4a9a05f3fe0d2cda4a429f56"
+    }
+  ],
+  "commands_executed": [
+    {
+      "id": "cmd1-p02-01-suites",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p02_01_primitives_and_states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0 with real passing P02-01 tests",
+      "observed": {
+        "passed": 46,
+        "failed": 0
+      },
+      "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/required-cmd1-pytest.log",
+      "log_sha256": "1c568359352411db1a4dda13684f23306af4f780882597f9b255d8e6d58febce",
+      "exit_code_and_counts_read_from_log": true
+    },
+    {
+      "id": "cmd2-check-architecture",
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/check_architecture.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0; layer violations = 0",
+      "observed": {
+        "violations": 0,
+        "modules": 10,
+        "layers": 7
+      },
+      "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/required-cmd2-check-architecture.log",
+      "log_sha256": "2765f682de19440dc4391bcd0cd4a2d37fd34720a98d58a02bb036532fb8c2d7",
+      "exit_code_and_counts_read_from_log": true
+    }
+  ],
+  "supplementary_commands": [
+    {
+      "id": "cmd3-phase-regression",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0; the P01 suites still pass after the package-marker change",
+      "observed": {
+        "passed": 272,
+        "failed": 0
+      },
+      "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/full-regression.log",
+      "log_sha256": "e2522e091ae2463ebc80623f1fd8ecc22d39cfb126cf50fcf1fabd98a81ded7a",
+      "exit_code_and_counts_read_from_log": true
+    }
+  ],
+  "counts": {
+    "task_suites": {
+      "passed": 46,
+      "failed": 0
+    },
+    "unit_file_alone": {
+      "passed": 37,
+      "failed": 0
+    },
+    "integration_file_alone": {
+      "passed": 9,
+      "failed": 0
+    },
+    "phase_regression": {
+      "passed": 272,
+      "failed": 0
+    }
+  },
+  "interface_contracts_implemented": {
+    "TimeWindow": "TimeWindow(earliest_s: int, latest_s: int) - closed service start window",
+    "transition": "transition(state: EntityState, event: Transition) -> EntityState"
+  },
+  "whitelist_exception": {
+    "path": "packages/domain/src/logistics_domain/__init__.py",
+    "reason": "the original P02-01 task allows editing the package marker when required to export this task's types, provided the exact path is listed in the completion report; _PENDING_APIS still listed 'states' so `from logistics_domain import states` raised NotImplementedError",
+    "change": "removed 'states' from _PENDING_APIS and added `from . import errors, primitives, states`",
+    "preserved": "entities/ids/units/ports still raise NotImplementedError; __getattr__ and the loud-failure test stay valid"
+  },
+  "issues_to_register": [
+    {
+      "id": "ARCH-P02-01-A",
+      "title": "ConstraintCode / ViolationCode 被归 P02-01 但没有冻结成员表",
+      "status": "open",
+      "evidence": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md 第 25 行把 ConstraintCode 归 P02-01/`states.py`，kind=existing（继承 DATA_CONTRACTS.md#公共类型与状态）；但该节只写 `ConstraintParameters` 按 ConstraintCode 判别，未列任何成员值；contracts/changes/N01-R01-contract-decisions.json 同样只给 name/kind/path。ViolationCode 在 196 项类型表中不存在，仅出现在 P02-01 任务 manifest 的 model 行。",
+      "impact": "P02-01 只交付类型名（NewType(..., str)），不臆造成员；P10-01 的覆盖注册表（constraint_id/version）是唯一合法来源。下游若在此之前自行发明约束码，将产生第二套定义。",
+      "owner": "治理/契约（N01 系列）与 P10-01",
+      "fix": "在冻结契约中登记约束码词表或在 P10-01 明确注册表为唯一来源，并在 TYPE_DEFINITION_OWNERSHIP 标注。"
+    },
+    {
+      "id": "ARCH-P02-01-B",
+      "title": "SafeArtifactPath 被 ArtifactRef 引用但无形状定义",
+      "status": "open",
+      "evidence": "docs/architecture/DATA_CONTRACTS.md 第 7 行 `ArtifactRef(id, media_type, sha256, relative_path:SafeArtifactPath)`；全仓检索 docs/ 与 contracts/ 均无 SafeArtifactPath 的定义或示例。",
+      "impact": "P02-01 按最小安全读法实现：相对 POSIX、正斜杠、无盘符/UNC、无空段/'.'/'..'；若治理要求别的形状（例如允许绝对路径或要求扩展名白名单），需更新契约并重验。",
+      "owner": "治理/契约",
+      "fix": "在 DATA_CONTRACTS 的标量小节登记 SafeArtifactPath 形状。"
+    },
+    {
+      "id": "ARCH-P02-01-C",
+      "title": "包 marker 的 _PENDING_APIS 与已交付子模块冲突（已在本任务修复）",
+      "status": "resolved-in-task",
+      "evidence": "修复前 `from logistics_domain import states` 抛 NotImplementedError（`from logistics_domain.states import …` 正常），且失败取决于导入顺序：先导入 `primitives`（其内部导入 states）则碰巧可用。复现：uv run python -c \"from logistics_domain import states\"",
+      "impact": "任何按 `from package import submodule` 书写的消费者（含 pytest 单文件收集）会随机失败。",
+      "owner": "P02-01（已改 packages/domain/src/logistics_domain/__init__.py，白名单外唯一改动）",
+      "fix": "已从 _PENDING_APIS 移除 states 并显式导入三个子模块；后续每个交付子模块的任务都需同步该表。"
+    }
+  ],
+  "limitations": [
+    "Only the P02-01 types are delivered; no entity, JSON Schema, OpenAPI or TS export exists yet, so the G02 '32 entities expressible + deterministic schema export' criterion is not met by this task alone.",
+    "ConstraintCode / ViolationCode have no frozen member list; this task delivers the typed name only and P10-01 owns the registry.",
+    "SafeArtifactPath has no frozen shape; a minimal safe relative-path reading was implemented.",
+    "Money does not constrain the sign because the same value object expresses cost deltas.",
+    "transition() judges legality against the union of catalog lifecycles because the frozen signature has no entity parameter.",
+    "docs/architecture/issues/README.md is outside this task's whitelist; the three issue texts above are provided verbatim for the governance session to register."
+  ],
+  "remaining_risks": [
+    "The package-marker change makes phase-1 evidence bound to the previous candidate stale; the full regression (272 passed) confirms no behavioural regression.",
+    "Lifecycle edges were transcribed from the DOMAIN_CATALOG wording; a few branch semantics still need independent review.",
+    "EntityState is a cross-entity union; later tasks must not use it as a per-entity status."
+  ],
+  "secrets_recorded": []
+}

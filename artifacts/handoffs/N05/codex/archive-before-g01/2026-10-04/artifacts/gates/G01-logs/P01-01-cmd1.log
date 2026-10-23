@@ -1,0 +1,14 @@
+# check: P01-01-cmd1
+# argv: ["D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe", "run", "pytest", "tests/unit/test_p01_01_workspace_bootstrap.py", "tests/integration/test_p01_01_workspace_bootstrap.py", "-q"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-09-14T13:13:55.595559+00:00
+# expectation: manifest command must succeed
+
+## stdout
+........................................................                 [100%]
+56 passed in 2.12s
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 2500

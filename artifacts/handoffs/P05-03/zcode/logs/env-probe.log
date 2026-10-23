@@ -1,0 +1,44 @@
+# P05-03 environment probe (ZCode independent re-run)
+# workdir: /d/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent
+
+$ python -c 'import http/db drivers and framework'
+FAIL httpx -> ModuleNotFoundError
+FAIL psycopg -> ModuleNotFoundError
+FAIL psycopg2 -> ModuleNotFoundError
+FAIL sqlalchemy -> ModuleNotFoundError
+FAIL alembic -> ModuleNotFoundError
+FAIL asyncpg -> ModuleNotFoundError
+OK   fastapi 0.141.1
+OK   starlette 1.6.0
+OK   pydantic 2.13.5
+OK   pytest 9.1.1
+TestClient FAIL -> RuntimeError The starlette.testclient module requires the httpx2 package to be installed.
+
+$ python -c 'import the modules this task must create'
+FAIL logistics_backend.api -> ModuleNotFoundError
+FAIL logistics_backend.application -> ModuleNotFoundError
+FAIL logistics_backend.persistence -> ModuleNotFoundError
+FAIL logistics_backend.worker -> ModuleNotFoundError
+FAIL logistics_backend.bootstrap -> ModuleNotFoundError
+FAIL logistics_domain.jobs -> ModuleNotFoundError
+FAIL logistics_contracts.jobs -> ModuleNotFoundError
+FAIL logistics_contracts.dto -> ModuleNotFoundError
+
+$ ls apps/backend/src/logistics_backend/ packages/domain/src/logistics_domain/
+__init__.py
+__pycache__/
+__init__.py
+__pycache__/
+
+$ echo $TEST_DATABASE_URL
+TEST_DATABASE_URL=<unset>
+
+$ which psql pg_ctl
+psql NOT FOUND
+pg_ctl NOT FOUND
+
+$ docker ps
+failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
+
+$ grep -ci 'psycopg|sqlalchemy|alembic|asyncpg' uv.lock
+0

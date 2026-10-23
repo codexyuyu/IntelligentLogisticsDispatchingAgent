@@ -1,0 +1,1518 @@
+{
+  "schema_version": "N02-R02-independent-review-1",
+  "task_id": "N02-R02",
+  "status": "ACCEPTED_G00_RESTORED",
+  "author": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+  "delivered_at": "2026-10-04T14:53:53.093850+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "git_present": false,
+  "inherited_model_no_override": true,
+  "versions": {
+    "plan": "1.0.3",
+    "business_contract": "2.0.0",
+    "official_evidence": "1.0.0"
+  },
+  "independence": {
+    "main_agent": "/root/n02_r02_independent",
+    "not_N01_implementer": true,
+    "fresh_auxiliary_agents": [
+      "/root/n02_r02_independent/reference_audit",
+      "/root/n02_r02_independent/independent_cases"
+    ],
+    "fresh_fork_turns": "none",
+    "main_owns_judgment_and_recovery": true
+  },
+  "finding": {
+    "id": "N02-R01-F02-C01",
+    "status": "RESOLVED"
+  },
+  "reviewed_code_revision": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "current_code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+  "current_dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+  "candidate_manifest": "artifacts/handoffs/N02-R02/codex/current-candidate.json",
+  "candidate_file_count": 77,
+  "candidate_changes_after_review": [
+    "docs/architecture/CONTRACT_FREEZE.json",
+    "docs/architecture/CONTRACT_FREEZE.md"
+  ],
+  "input_artifact_hashes": {
+    ".github/workflows/ci.yml": "139d37c92f1bdf8d82c0771b081bb82d674dfbf6da22fa50135d27bd19a10e35",
+    ".node-version": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
+    ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "PROJECT_MASTER_PLAN.md": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "apps/backend/pyproject.toml": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344",
+    "apps/backend/src/logistics_backend/__init__.py": "01a2b2aeae06be11ca9888649fb22376da8984099707512ea70b7f0e40ff4ff1",
+    "apps/frontend/package.json": "7a38cc372c366b088043d919f76430ac2716beebba16a2dd1f78d27e1c740b31",
+    "apps/frontend/src/test/setup.ts": "322a23afd1a0070b4ca7d27d52bc15d84f36d190dd444a35163c08f2b6d8003a",
+    "apps/frontend/vitest.config.ts": "3f5c86e2273cd9becf71d0edeb32d3cecdab7dbf0432c95caa9ebed8a1f10e9c",
+    "contracts/README.md": "d0a4ea110736e6cf73d64387346ebc954b5e25de9f511b2b62c22e313e31335a",
+    "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+    "contracts/changes/N01-R01-contract-freeze-2.0.0.md": "9bf3e3c00513cb04ad5549b2344d12cae553914a49935135bcffaba60cba8ab8",
+    "contracts/changes/N01-governance-1.0.1.md": "35ddc2f9c3ed2f14ed95cdad44bf737686befdd84d8992793c610f72d807594c",
+    "contracts/changes/README.md": "2a695d21ffaf8681d4e7c8903c98a8beb6af8fff9340bfcff13cb5ee672e85c5",
+    "data/scenarios/README.md": "aeb9c3013e9da650ec2d86f10eb415e612625df78d2cd10ba4b5f9223a525439",
+    "deploy/README.md": "caa9177a9b8ce20f819c48cf287e5cef37561dd52294150e8223bf2b301c3fda",
+    "docs/algorithms/METRICS_CONTRACT.md": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+    "docs/algorithms/OPTIMIZATION_CONTRACT.md": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+    "docs/algorithms/SIMULATION_CONTRACT.md": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+    "docs/api/API_CONTRACT.md": "b9104cd2bc26f39c7c529924ea68903420560488b514e0845ae953a2794364d9",
+    "docs/architecture/ARCHITECTURE_OVERVIEW.md": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+    "docs/architecture/BASELINE_INVENTORY.json": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+    "docs/architecture/BASELINE_INVENTORY.md": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694",
+    "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+    "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82",
+    "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+    "docs/architecture/DOMAIN_CATALOG.md": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9f24acf68605981f85890d16e614976c4a9f4c6268c7c4e6138609f75d227d91",
+    "docs/architecture/LEGACY_ADAPTATION.md": "adfd5345fd6c7ecf63b39bb04fb437fdf6a4ca34a4162855dfc4b7f14cfbd214",
+    "docs/architecture/MIGRATION_MAP.md": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+    "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md": "1c412457afc438905e277cde28414b373d6b0874db84d6cc46b3b5b38a412559",
+    "docs/architecture/issues/ARCH-0007-early-named-types.md": "2715b6e9788edae25f6ae797290d3384aca0019cff87b8718290c5598ac36ee5",
+    "docs/architecture/issues/ARCH-0008-p36-02-ownership.md": "5cbfc6fbddef9edecce0855773409f20c5af945a4b9f715ca3b36b103d001c6f",
+    "docs/architecture/issues/README.md": "c0c8c3ff2c88c3fc6de818a8cf9ec866fe644479ba3b88b0c3911024d109256d",
+    "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+    "package-lock.json": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+    "package.json": "ce0558100177c7d49889bedf4527e1995a52c066d5f7d6e737b03c6be63f7755",
+    "packages/agents/pyproject.toml": "39e80e877bc134cdf99f60c31aba1a9194d4eac699008d892ed08a0d3e557140",
+    "packages/agents/src/logistics_agents/__init__.py": "13233646cf62444aa2452351f69a4c7fdb60ae0b5b7c9b17c1e0302871dc3d1b",
+    "packages/contracts/pyproject.toml": "25bdb3a6d7f85ba1b114ac10668b955b5e98c981fe5ef6cdfb7f283950c10a0c",
+    "packages/contracts/src/logistics_contracts/__init__.py": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67",
+    "packages/domain/pyproject.toml": "f4d4e90bd87b0161f980b51129312a815cd7a99ca657a81ee26b0424259ebf64",
+    "packages/domain/src/logistics_domain/__init__.py": "8093a7e57882419f66c72b64f2a84f9f1f0055b60d1ad088392a048b658efa91",
+    "packages/evaluation/pyproject.toml": "3e25b4617df419c8a72d4056bd9bf1e53a7b1ad56ee41037f7ce12c8d5989c15",
+    "packages/evaluation/src/logistics_evaluation/__init__.py": "2dd2b07402f79594cee052f14f0f31f6fbfa505f0757e7753d9e953ae61caed9",
+    "packages/optimization/pyproject.toml": "cdc1172cb720fb2446adf66f6347acfbdf34342df28c170159f0194f14710643",
+    "packages/optimization/src/logistics_optimization/__init__.py": "52e301b5ceaa4fc656702979b82fcf1832e86e6f876280c82a0505f7d937acc1",
+    "packages/simulation/pyproject.toml": "000af2c9be683a8fd176cde8d054308f28419dc8ebbe1a3b0471241f9964d165",
+    "packages/simulation/src/logistics_simulation/__init__.py": "cf73c5463a41d33a8815cd4512b3fcc236fc2a7983d03e101b7b07db3f876789",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "scripts/check_architecture.py": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5",
+    "scripts/check_ownership.py": "63bf2bf43263b2f8251c4e5d09b771f8b4c948a94592bccdbc3f5b121c02fa5a",
+    "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "tests/integration/test_p01_01_workspace_bootstrap.py": "160c74f89cb6ae51d828d240d0a59c7e878861beceb7731508d6a5571ff8092e",
+    "tests/integration/test_p01_02_checks_and_gate_runner.py": "c2563290c021b5ed8a42084ff6fd4cb15c4ccee2a978a3e91527a9bdc6234414",
+    "tests/integration/test_p01_03_migration_governance.py": "d534312ba79d96fdcb547ee9c231df2c1d839a97fc983f6546457040aada2120",
+    "tests/unit/test_p01_01_workspace_bootstrap.py": "4210258a3f3ebb92a7c0b2a48139375f165e585232ce0b6eb4e3ecc23eb36c26",
+    "tests/unit/test_p01_02_checks_and_gate_runner.py": "8537ac2d7da78ddfe523a1fc82b31e71569bae2c009b6c4995a81bc6c0a10d63",
+    "tests/unit/test_p01_03_migration_governance.py": "10a12609375d0d22409fea4fb321e10e7a21287016f2dfbe2c0cd4bab2a968fb",
+    "tools/ai_coding_plan/baseline_inventory_generate.py": "d23a3a8c327274e0bf7cf646bf8df0f4e10a2f78ccc376b3bb6a11728ee97c74",
+    "tools/ai_coding_plan/build_catalog.py": "d9f52f8f437526fb3c96413b3bb1e49517bbaf1369211ba42fb3ab5db5c76ce1",
+    "tools/ai_coding_plan/check_gate_contract.py": "8328b7c3b59f20cc1414207ce64dc28f949194b579c0d745c823efbb8bfbd619",
+    "tools/ai_coding_plan/contract_freeze_generate.py": "e8c31bc0d0c2f29bef92d5ab003112c7b5b6a1a4c53ca9d8414755b3ef09d8db",
+    "tools/ai_coding_plan/p01_01_evidence_generate.py": "2ba963b2967730b8f86c2343842b3603758d035d29bdb45eab848f97ffd1a066",
+    "tools/ai_coding_plan/p01_01_run_validation.py": "9c1ce4cf134a20f57db18f62d9e6f748632f6d233ed50cfdef3d2ff9ba8d320e",
+    "tools/ai_coding_plan/p01_02_evidence_generate.py": "8d5b6f5340db54c15e743289391c660e702907fc0f0201c5ae9efb74ca5dd255",
+    "tools/ai_coding_plan/p01_03_evidence_generate.py": "dd48c0a79887fd534e2ceb469d380649132ebc9b89098c89953553d7c30f0177",
+    "tools/ai_coding_plan/render_plan.py": "049699b81267c49c2794a5c3ef71aee5c8fbe202df79cfd100565ffc2fb5249b",
+    "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+    "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+    "docs/handoffs/N01-R02/codex.md": "a45ade0e6115ae6f95e81943b5755563cb4259c0aaed01e145a238171e7a3d37",
+    "artifacts/handoffs/N01-R02/codex/evidence.json": "6f6a4ae811ac608db9d880a6daec2a2fc40af9936a997bcb58b1b17cac7fda09",
+    "docs/handoffs/N02-R01/codex.md": "1c7088ce69c7a5be78bbec6c0ce5e33e115b0d398979a529daa494ac8ae3e489",
+    "artifacts/handoffs/N02-R01/codex/blocker.json": "ad5d946c306bcc894ce859a22f39324aa34b1232597d7326deeb06bc07d81e33"
+  },
+  "verified_dependency_evidence_hashes": {
+    "N01-R02": "6f6a4ae811ac608db9d880a6daec2a2fc40af9936a997bcb58b1b17cac7fda09",
+    "N02-R01-blocker": "ad5d946c306bcc894ce859a22f39324aa34b1232597d7326deeb06bc07d81e33"
+  },
+  "commands_index": "artifacts/handoffs/N02-R02/codex/commands-index.json",
+  "commands": [
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/archive-and-freeze-command.json",
+      "descriptor_sha256": "33255c5f774861a8e2c24de39a3ef49b5253a95f80af46f19633ef19ed47e79b",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/archive_and_freeze.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:48:47.784698+00:00",
+      "finished_at": "2026-10-04T14:48:50.556931+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/archive-and-freeze.log",
+      "log_sha256": "2e638be951da8a3102adc0ed12343ce345d70b570e6c1460133e5f21d4300a1d",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-02-command.json",
+      "descriptor_sha256": "215ad04b3e353e7b50921aae8a52e1142ca78b54a166e3688eeb1189abc90ca2",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:44:59.198453+00:00",
+      "finished_at": "2026-10-04T14:45:01.544132+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-02.log",
+      "log_sha256": "5ac12b02f2fcad09703bef51cc4e560ddb3d0aa32965972497ad65a8ecd8ec0a",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-command.json",
+      "descriptor_sha256": "17ceba346edc12947ea5d074d4ba3d7751a73d54ef2fb6e0b5786e1001b672ee",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:44:29.128257+00:00",
+      "finished_at": "2026-10-04T14:44:31.882334+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final.log",
+      "log_sha256": "e8d915146a5c7d316dd7feff63e083e0553f50882ce827bf41acbf8817aa7c30",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/case-witness-command.json",
+      "descriptor_sha256": "c8bc3d88c6e329a7d143a4ad4510469216ff7cb573425340b47956fdd8c55750",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/case_witness.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:48:10.311286+00:00",
+      "finished_at": "2026-10-04T14:48:10.946845+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/case-witness.log",
+      "log_sha256": "3e4879661b8cc95d4b00cfb7b29732bdc5dc376f7d173e8d8ddb5d688089cf10",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/contract-replay-command.json",
+      "descriptor_sha256": "f1289f918119b6a19c022cc7528436f8060a9a0ac9a34b241507ecce4a6cfd5e",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/examples/verify_design_examples.py",
+        "independent"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:39:42.874138+00:00",
+      "finished_at": "2026-10-04T14:39:45.603780+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/contract-replay.log",
+      "log_sha256": "fa5b6236f083db5a4d8f0a9f272a63bf0ee3ea96ad92cbe28bce8ee5b4609699",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-02-command.json",
+      "descriptor_sha256": "91d36f95331a5962cb21edb24bb1c047b1ac8f6771969a3609370b59a1bb2562",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/final_scope.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:50:29.096553+00:00",
+      "finished_at": "2026-10-04T14:50:31.942333+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-02.log",
+      "log_sha256": "ce46ddadac0afc7f48b9f1321bc7c7e39f6517d1397202178f372719b11b8f90",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-03-command.json",
+      "descriptor_sha256": "c83059276f5609bdeea3579cfce82772ad3672aea83ce1d1b9c04aaf898fee9a",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/final_scope.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:51:17.688263+00:00",
+      "finished_at": "2026-10-04T14:51:20.542763+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-03.log",
+      "log_sha256": "bb4fbb1ea8d13c81b488be109a4fc8fac3304391d80e6ad3595969f2d8608618",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-command.json",
+      "descriptor_sha256": "29dafd51ddabbde85519dc6d49f2334711856371ec749baf2e670fe844cc5f95",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/final_scope.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:50:00.972043+00:00",
+      "finished_at": "2026-10-04T14:50:03.524005+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope.log",
+      "log_sha256": "2f805822f7857c9dad0a540e179f1d297f111fca68513a62d3446608e7064087",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/g00-after-command.json",
+      "descriptor_sha256": "795cf0d17798712f6f0b1e8cac1792365115b204a11c458662bada6380c99ba8",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/probe_g00.py",
+        "after"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:49:01.414750+00:00",
+      "finished_at": "2026-10-04T14:49:01.628472+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/g00-after.log",
+      "log_sha256": "e0f49dbe825da885566b1049269a383c2b08a76e13cc3402165a14efa5078972",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/g00-before-command.json",
+      "descriptor_sha256": "b9ae0b525cc86b0f92b9d3cedeec20bee6896f9373ac11a5df7262c2f4dbe601",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/probe_g00.py",
+        "before"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:41:41.589287+00:00",
+      "finished_at": "2026-10-04T14:41:41.764725+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/g00-before.log",
+      "log_sha256": "354575e87ea10de2e554bf2038cbfe827a6a66e605e484adf2c83b42973d0e19",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-02-command.json",
+      "descriptor_sha256": "25b99f4c6fbdce3c96256b7fbd2cb658805c96b7206910dc879a5676dc385c7d",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:38:18.737793+00:00",
+      "finished_at": "2026-10-04T14:38:21.085640+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-02.log",
+      "log_sha256": "a6583f4f8e561931342fabd5e3848613cddb16d49c4cb71109d3b5be48dd1207",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-03-command.json",
+      "descriptor_sha256": "5e8ff35571f29070ad75fbbd8c77af3e420a869d2666f650e757bbbfef68314b",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:39:03.259557+00:00",
+      "finished_at": "2026-10-04T14:39:05.591318+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-03.log",
+      "log_sha256": "6a58acf7dd511326da4f62b98dfe09864aaaae464988ea180ba6f4c624908abb",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-command.json",
+      "descriptor_sha256": "913ad2be6523206bd79632723603914ab4e08396a5eb5100ea5cb85d002f5779",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:37:40.961602+00:00",
+      "finished_at": "2026-10-04T14:37:42.072126+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit.log",
+      "log_sha256": "16580e204bf5361c3bcdd0e85651b479637dde6d70e3c22d7cfb2dad2a785115",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/normative-probe-command.json",
+      "descriptor_sha256": "e4913a8c0e1260a3e7ab561cc17eb5fe9923f6230404030f96ff1b2144c9a85d",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/normative_probe.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:44:12.681637+00:00",
+      "finished_at": "2026-10-04T14:44:15.993609+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/normative-probe.log",
+      "log_sha256": "d868bf9cd84b67ebec53ec34a84d9e4ecba069da748eb47f4d314df262a5b60e",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/plan-preflight-command.json",
+      "descriptor_sha256": "86b239a42f60b1de71ce130d033ddf853873d5f393cae6aa57cbe71480892f06",
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:37:41.333053+00:00",
+      "finished_at": "2026-10-04T14:37:42.240433+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/plan-preflight.log",
+      "log_sha256": "254ff192606dd6cb2c19bee4ace454b49255a58a861309e34a8abaca3de1823e",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/record-g00-command.json",
+      "descriptor_sha256": "2eb75c912ec9ebffc3f3862da65ab7b85cd7e9b7008653ca8a41710cfd2673e6",
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test",
+        "--record-g00"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:48:58.756782+00:00",
+      "finished_at": "2026-10-04T14:49:00.049094+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/record-g00.log",
+      "log_sha256": "5a342c0e62794731779380c81de3dfd471ba4b20b8126fc42365eacee4dcde86",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    }
+  ],
+  "results": {
+    "planner_self_tests": 73,
+    "isolated_replay": 268,
+    "actual_registry_negative_mutations": 134,
+    "fresh_independent_cases": 189,
+    "main_key_reproductions": 19,
+    "runner_negative_controls": 9,
+    "baseline_registered_files": 173,
+    "freeze_source_hashes": 15,
+    "protected_unchanged_before_recovery": 3786,
+    "protected_unchanged_after_recovery": 3782
+  },
+  "official_record_hashes": {
+    "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+    "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82",
+    "artifacts/gates/G00.json": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+    "artifacts/gates/G00-checks.log": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488"
+  },
+  "official_G00_planner_revision": "content-sha256:5cee2f258fc7d49e3a1fb18209236782cc99fcc91544ec5d05cebd70bed54114",
+  "G00_currently_valid": true,
+  "N03_may_start": true,
+  "G01_signed_by_this_review": false,
+  "N03_started_by_this_review": false,
+  "P02_started_by_this_review": false,
+  "authorized_existing_changes": [
+    {
+      "path": "artifacts/gates/G00-checks.log",
+      "before_sha256": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "after_sha256": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488"
+    },
+    {
+      "path": "artifacts/gates/G00.json",
+      "before_sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "after_sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4"
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.json",
+      "before_sha256": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "after_sha256": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812"
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.md",
+      "before_sha256": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "after_sha256": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+    }
+  ],
+  "archive_manifest": "artifacts/handoffs/N02-R02/codex/archive-manifest.json",
+  "external_activity_observations": [
+    {
+      "path": "tmp/N03/defects/DEF-N03-01-workbuddy-ownership-pollution.md",
+      "sha256": "38d2793c4c14204f828da9fc9b73687fb56b390783d5bdc95e61f0457e25f2fd",
+      "bytes": 4168
+    },
+    {
+      "path": "tmp/N03/inventory/phase01-hash-inventory.log",
+      "sha256": "64a80b2be3beccfea47194079a2eb6779d5af28da26d913804ae458e444650c7",
+      "bytes": 364
+    },
+    {
+      "path": "tmp/N03/inventory/phase01-hash-inventory.py",
+      "sha256": "4c060207be937554ee01b2e7df93231ef91d01d995fa4600394e272ae18d6931",
+      "bytes": 4637
+    },
+    {
+      "path": "tmp/N03/inventory/phase01-hashes.json",
+      "sha256": "47d549d4728b595558ba5982f9b5e1a53e7df1c1e791653ebd2354e3dd3871b2",
+      "bytes": 19348
+    },
+    {
+      "path": "tmp/N03/precondition/g00-drift-audit-after-n02r02.log",
+      "sha256": "a1aadb6eaaaa8ed80bcefc718825ca99fa2fd6e7e6fe8f22db87d150d6d4678e",
+      "bytes": 984
+    },
+    {
+      "path": "tmp/N03/precondition/g00-drift-audit.log",
+      "sha256": "3d70ecea3ab24df689038def0f2bc864c69bf7fdeb792f21c983852bc0fe9a1e",
+      "bytes": 3006
+    },
+    {
+      "path": "tmp/N03/precondition/g00-drift-audit.py",
+      "sha256": "329e6bbafd7abb3d7a9722e0b59d433c7d8b24e57c1677e249512bc9a6821e58",
+      "bytes": 2600
+    },
+    {
+      "path": "tmp/N03/precondition/gates-check-only-after-n02r02.log",
+      "sha256": "393a71b50280074497f151b9b6b3b92daa0758a813cba5d58c599ddb321a6a94",
+      "bytes": 3434
+    },
+    {
+      "path": "tmp/N03/precondition/gates-check-only.log",
+      "sha256": "0f125df06e9b51d03b102a3c570d73085531d2ed9012a383414c7921448a27a6",
+      "bytes": 4330
+    },
+    {
+      "path": "tmp/N03/precondition/N03-blocker.json",
+      "sha256": "1905bf3b87d19c181c9010158a16612a25b0b5be910165368700257e7d6d3be3",
+      "bytes": 7023
+    },
+    {
+      "path": "tmp/N03/reverify/p01-01-cmd1-pytest.log",
+      "sha256": "a233ca4364d37f35ab7acea5f8afaea1f7ed61018f53fff97b2b2b4f8dd52bc1",
+      "bytes": 204
+    },
+    {
+      "path": "tmp/N03/reverify/p01-01-cmd2-uv-sync-frozen.log",
+      "sha256": "16bd9acf6bd150056e2b1ad2b132f049f8a5a23c046ea9b3cdb2a9ba7f67cd0e",
+      "bytes": 616
+    },
+    {
+      "path": "tmp/N03/reverify/p01-01-cmd3-npm-ci-run1.log",
+      "sha256": "64026800ecfa2a3a68a8faed8e24435b9f28b9774f3adb903b6240a8fd1418d6",
+      "bytes": 156
+    },
+    {
+      "path": "tmp/N03/reverify/p01-01-cmd3b-npm-ci-run2.log",
+      "sha256": "c8b483bb7244c846175dee7791cd8dc94dcc9303c86dc2f6eb6082ed2d01b4af",
+      "bytes": 156
+    },
+    {
+      "path": "tmp/N03/reverify/p01-02-cmd1-pytest.log",
+      "sha256": "c8384d72465a57807646ab31e88e8b99205fb7dd6f944a7d9f434d6e19089dd9",
+      "bytes": 368
+    },
+    {
+      "path": "tmp/N03/reverify/p01-02-cmd2-check-architecture.log",
+      "sha256": "3374b32c9c5e8ee09bf5b7154fa5d5372a73d54ecca683838476ac925dd0cbd8",
+      "bytes": 150
+    },
+    {
+      "path": "tmp/N03/reverify/p01-03-cmd1-pytest.log",
+      "sha256": "56027176dea2ce16f6bca5fef62b4b1d381020aed7e909546b33184b09391ae9",
+      "bytes": 5900
+    },
+    {
+      "path": "tmp/N03/reverify/p01-03-cmd2-check-architecture.log",
+      "sha256": "3374b32c9c5e8ee09bf5b7154fa5d5372a73d54ecca683838476ac925dd0cbd8",
+      "bytes": 150
+    },
+    {
+      "path": "tmp/N03/uv-cache/.gitignore",
+      "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+      "bytes": 1
+    },
+    {
+      "path": "tmp/N03/uv-cache/.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tmp/N03/uv-cache/CACHEDIR.TAG",
+      "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
+      "bytes": 43
+    },
+    {
+      "path": "tmp/N03/uv-cache/interpreter-v4/ca36bc087edec5e4/175e3cbfca491d5e.msgpack",
+      "sha256": "08e2e09370a6b63bf332ab93b09a1ba247eda4b3c24deed791b582f0ba9231ce",
+      "bytes": 2370
+    },
+    {
+      "path": "tmp/N03/uv-cache/sdists-v9/.git",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tmp/N03/uv-cache/sdists-v9/.gitignore",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tmp/P02-01/precondition/g00-drift-audit.log",
+      "sha256": "3d70ecea3ab24df689038def0f2bc864c69bf7fdeb792f21c983852bc0fe9a1e",
+      "bytes": 3006
+    },
+    {
+      "path": "tmp/P02-01/precondition/g00-drift-audit.py",
+      "sha256": "329e6bbafd7abb3d7a9722e0b59d433c7d8b24e57c1677e249512bc9a6821e58",
+      "bytes": 2600
+    },
+    {
+      "path": "tmp/P02-01/precondition/gates-phase01-check-only.log",
+      "sha256": "0f125df06e9b51d03b102a3c570d73085531d2ed9012a383414c7921448a27a6",
+      "bytes": 4330
+    },
+    {
+      "path": "tmp/P02-01/precondition/gates-phase02-check-only.log",
+      "sha256": "d2da7aff169f3527b824749272e03a457a276535e1f82fb207f6574b35b450a2",
+      "bytes": 626
+    }
+  ],
+  "external_activity_attribution": "unconfirmed; not executed or accepted by this reviewer",
+  "limitations": [
+    "bounded design evidence only, real domain/handler/worker, DB/OR-Tools/SimPy/model/browser acceptance not run",
+    "partial inherited parse adapter does not validate full Scenario FK/scope/calendar, OnArc timing, CargoType, CalendarDTO overlaps",
+    "persistent static checker is limited to C01 target graph, not every payload field; current payload fields independently preserve old bytes and combined shape replay",
+    "unknown attribution of concurrent candidate-excluded process dispatch additions recorded; they do not substitute for this task scope"
+  ],
+  "output_manifest": [
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/archive-manifest.json",
+      "sha256": "e76426e308d009a897b3beca925a6599d603ff812370614b3e4c016f87e8cc33",
+      "bytes": 1332
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/archive/artifacts/gates/G00-checks.log",
+      "sha256": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "bytes": 1254
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/archive/artifacts/gates/G00.json",
+      "sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "bytes": 4068
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/archive/docs/architecture/CONTRACT_FREEZE.json",
+      "sha256": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "bytes": 4804
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/archive/docs/architecture/CONTRACT_FREEZE.md",
+      "sha256": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "bytes": 25740
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/case-witness.json",
+      "sha256": "3e4879661b8cc95d4b00cfb7b29732bdc5dc376f7d173e8d8ddb5d688089cf10",
+      "bytes": 4813
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands-index.json",
+      "sha256": "3c099d3b62638f082f985ce6fe8fe906a1a78a91bd76e120774ad1fc89f492a3",
+      "bytes": 51874
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/archive-and-freeze-command.json",
+      "sha256": "33255c5f774861a8e2c24de39a3ef49b5253a95f80af46f19633ef19ed47e79b",
+      "bytes": 1990
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/archive-and-freeze.log",
+      "sha256": "2e638be951da8a3102adc0ed12343ce345d70b570e6c1460133e5f21d4300a1d",
+      "bytes": 2041
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-02-command.json",
+      "sha256": "215ad04b3e353e7b50921aae8a52e1142ca78b54a166e3688eeb1189abc90ca2",
+      "bytes": 1998
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-02.log",
+      "sha256": "5ac12b02f2fcad09703bef51cc4e560ddb3d0aa32965972497ad65a8ecd8ec0a",
+      "bytes": 12807
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-command.json",
+      "sha256": "17ceba346edc12947ea5d074d4ba3d7751a73d54ef2fb6e0b5786e1001b672ee",
+      "bytes": 1995
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final.log",
+      "sha256": "e8d915146a5c7d316dd7feff63e083e0553f50882ce827bf41acbf8817aa7c30",
+      "bytes": 913
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/case-witness-command.json",
+      "sha256": "c8bc3d88c6e329a7d143a4ad4510469216ff7cb573425340b47956fdd8c55750",
+      "bytes": 1978
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/case-witness.log",
+      "sha256": "3e4879661b8cc95d4b00cfb7b29732bdc5dc376f7d173e8d8ddb5d688089cf10",
+      "bytes": 4813
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/contract-replay-command.json",
+      "sha256": "f1289f918119b6a19c022cc7528436f8060a9a0ac9a34b241507ecce4a6cfd5e",
+      "bytes": 2020
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/contract-replay.log",
+      "sha256": "fa5b6236f083db5a4d8f0a9f272a63bf0ee3ea96ad92cbe28bce8ee5b4609699",
+      "bytes": 30410
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-02-command.json",
+      "sha256": "91d36f95331a5962cb21edb24bb1c047b1ac8f6771969a3609370b59a1bb2562",
+      "bytes": 1979
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-02.log",
+      "sha256": "ce46ddadac0afc7f48b9f1321bc7c7e39f6517d1397202178f372719b11b8f90",
+      "bytes": 8791
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-03-command.json",
+      "sha256": "c83059276f5609bdeea3579cfce82772ad3672aea83ce1d1b9c04aaf898fee9a",
+      "bytes": 1979
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-03.log",
+      "sha256": "bb4fbb1ea8d13c81b488be109a4fc8fac3304391d80e6ad3595969f2d8608618",
+      "bytes": 14401
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-command.json",
+      "sha256": "29dafd51ddabbde85519dc6d49f2334711856371ec749baf2e670fe844cc5f95",
+      "bytes": 1976
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/final-scope.log",
+      "sha256": "2f805822f7857c9dad0a540e179f1d297f111fca68513a62d3446608e7064087",
+      "bytes": 407
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/g00-after-command.json",
+      "sha256": "795cf0d17798712f6f0b1e8cac1792365115b204a11c458662bada6380c99ba8",
+      "bytes": 1986
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/g00-after.log",
+      "sha256": "e0f49dbe825da885566b1049269a383c2b08a76e13cc3402165a14efa5078972",
+      "bytes": 7495
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/g00-before-command.json",
+      "sha256": "b9ae0b525cc86b0f92b9d3cedeec20bee6896f9373ac11a5df7262c2f4dbe601",
+      "bytes": 1988
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/g00-before.log",
+      "sha256": "354575e87ea10de2e554bf2038cbfe827a6a66e605e484adf2c83b42973d0e19",
+      "bytes": 6418
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-02-command.json",
+      "sha256": "25b99f4c6fbdce3c96256b7fbd2cb658805c96b7206910dc879a5676dc385c7d",
+      "bytes": 1995
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-02.log",
+      "sha256": "a6583f4f8e561931342fabd5e3848613cddb16d49c4cb71109d3b5be48dd1207",
+      "bytes": 509
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-03-command.json",
+      "sha256": "5e8ff35571f29070ad75fbbd8c77af3e420a869d2666f650e757bbbfef68314b",
+      "bytes": 1995
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-03.log",
+      "sha256": "6a58acf7dd511326da4f62b98dfe09864aaaae464988ea180ba6f4c624908abb",
+      "bytes": 3624
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-command.json",
+      "sha256": "913ad2be6523206bd79632723603914ab4e08396a5eb5100ea5cb85d002f5779",
+      "bytes": 1992
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit.log",
+      "sha256": "16580e204bf5361c3bcdd0e85651b479637dde6d70e3c22d7cfb2dad2a785115",
+      "bytes": 464
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/normative-probe-command.json",
+      "sha256": "e4913a8c0e1260a3e7ab561cc17eb5fe9923f6230404030f96ff1b2144c9a85d",
+      "bytes": 1984
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/normative-probe.log",
+      "sha256": "d868bf9cd84b67ebec53ec34a84d9e4ecba069da748eb47f4d314df262a5b60e",
+      "bytes": 1514
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/plan-preflight-command.json",
+      "sha256": "86b239a42f60b1de71ce130d033ddf853873d5f393cae6aa57cbe71480892f06",
+      "bytes": 1999
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/plan-preflight.log",
+      "sha256": "254ff192606dd6cb2c19bee4ace454b49255a58a861309e34a8abaca3de1823e",
+      "bytes": 8643
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/record-g00-command.json",
+      "sha256": "2eb75c912ec9ebffc3f3862da65ab7b85cd7e9b7008653ca8a41710cfd2673e6",
+      "bytes": 2016
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/record-g00.log",
+      "sha256": "5a342c0e62794731779380c81de3dfd471ba4b20b8126fc42365eacee4dcde86",
+      "bytes": 8767
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/current-candidate.json",
+      "sha256": "8c34f3a4291d0a54fb48ef3ae73ad639497209f4ef4e078a5a9ec75b0da77333",
+      "bytes": 13869
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/examples/contract-examples-independent.json",
+      "sha256": "921d6dc8a3657b4a8d23d2a4ff7911f75e03184028f249d7beecdcda5bdbe705",
+      "bytes": 163023
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/examples/contract-validation-independent.json",
+      "sha256": "9b2de60ae99824de0dfb4d436495d0f284df218985165bb9917e5eb9a58a8c0b",
+      "bytes": 39428
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/final-scope-audit.json",
+      "sha256": "8bcd387683a58fd76aaaabd6485806fad2248c5512da1e6f884839359c69f987",
+      "bytes": 19671
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/freeze-update.json",
+      "sha256": "2e638be951da8a3102adc0ed12343ce345d70b570e6c1460133e5f21d4300a1d",
+      "bytes": 2041
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/g00-after-audit.json",
+      "sha256": "e0f49dbe825da885566b1049269a383c2b08a76e13cc3402165a14efa5078972",
+      "bytes": 7495
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/g00-before-audit.json",
+      "sha256": "354575e87ea10de2e554bf2038cbfe827a6a66e605e484adf2c83b42973d0e19",
+      "bytes": 6418
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/governance-diff.patch",
+      "sha256": "176385a2334ddc5abd61610e473ca66fd4bab156dd0c01a79349551477b21840",
+      "bytes": 70912
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/cases.json",
+      "sha256": "b0740181c3e3f8175f11543825ddc793588bee7f8992b4a83aafe4413d2da0ec",
+      "bytes": 4354685
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/command.json",
+      "sha256": "4a9344c71070275cf3c5b70f83c7eb96b96c00aab1e822779783de73b96187a9",
+      "bytes": 867
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/fixture.json",
+      "sha256": "0946fa67998f58c58d424616fe0a29b79435b0c4b4dc4d19d15bee33efa5b1a6",
+      "bytes": 34030
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/result.json",
+      "sha256": "000ae33473da878cd9d96f4627a5f3b5c40fb166563f9570d9ab66e71838d9d8",
+      "bytes": 2916
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/run.log",
+      "sha256": "caa96d1f7ca7dd215343d6615d418d041c9cadd3ae2351a191d86c726a28bc75",
+      "bytes": 41614
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/source-inputs.json",
+      "sha256": "d8c5bf78d888742cc1b8c1493e4be2cb6db08d9fda51cc558029c06fb40063ba",
+      "bytes": 4217
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/summary.json",
+      "sha256": "097f7f4bed9e3478a49c9cb2d69e857c358222af48666e890c0e0f05fcfa8cc9",
+      "bytes": 1436
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/initial-audit.json",
+      "sha256": "5ac12b02f2fcad09703bef51cc4e560ddb3d0aa32965972497ad65a8ecd8ec0a",
+      "bytes": 12807
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/input-evidence-audit.json",
+      "sha256": "f67d00c9f24e8217f50b5ee7fc0b5678e5a3779187c684e536662def6c3b81d0",
+      "bytes": 52514
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/normative-probe.json",
+      "sha256": "83a4b0cbdb353a307c7c558c360344e9a95c2cbe398cdd5375ea4e3ab3ea743e",
+      "bytes": 30483
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/replay-preparation.json",
+      "sha256": "1f05776693fb3a942406a1861905c7d244ae439d8cbdd7b7977d8ecac53eb45b",
+      "bytes": 801
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/review-decision.json",
+      "sha256": "19d322d9ccf021abe714395d29afc6c2542205b95159d2193ca2f1e136f32e56",
+      "bytes": 6050
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/reviewed-candidate.json",
+      "sha256": "a56debc6fc6b53a9fda1123bb6f1ed6a6ec85f2f723b3ea51d95451e2333f8d3",
+      "bytes": 13869
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/scope-before.json",
+      "sha256": "0fe11d5debc415f61799ee8f2f43708eb0fc8bbbb92b89aae9d3c16fd7ecb7ce",
+      "bytes": 587469
+    },
+    {
+      "path": "docs/handoffs/N02-R02/codex.md",
+      "sha256": "00706a668ef35e42629f18f936eaedf7d4f5199373dfe015328f126fb88b2720",
+      "bytes": 9052
+    },
+    {
+      "path": "tmp/N02-R02/archive_and_freeze.py",
+      "sha256": "857423f3054ec67df40200d2365c42f2769627eab116cfe2f883a959ce193b77",
+      "bytes": 12722
+    },
+    {
+      "path": "tmp/N02-R02/capture.py",
+      "sha256": "fb8069185598ce8dde926a3ad00dbc44cc5f4da852af6418667ae18d27ea6350",
+      "bytes": 1889
+    },
+    {
+      "path": "tmp/N02-R02/case_witness.py",
+      "sha256": "720dcafb0bf5017b86476e84ecca074df9bbdb19c65b0ce5501092e717b6eb16",
+      "bytes": 2857
+    },
+    {
+      "path": "tmp/N02-R02/deliver.py",
+      "sha256": "bf8ba424afab166d5e406d57867359cdf99ed497b0c8c339ce2691825fcc409f",
+      "bytes": 14989
+    },
+    {
+      "path": "tmp/N02-R02/examples/event_reference_examples.py",
+      "sha256": "fab928af04142838439bdce20256955cdefa84c1b100811cb84a128a39640a58",
+      "bytes": 25540
+    },
+    {
+      "path": "tmp/N02-R02/examples/verify_design_examples.py",
+      "sha256": "e14029df2f34a12d189a42e1c2aa9b7da0f3854f75922cc958ef08ff1cf80008",
+      "bytes": 30442
+    },
+    {
+      "path": "tmp/N02-R02/final_scope.py",
+      "sha256": "40b7bd9a10fd82f99b2e9b264118a1167670c630a543a036812414c5b97c34d2",
+      "bytes": 6415
+    },
+    {
+      "path": "tmp/N02-R02/independent-cases/capture.py",
+      "sha256": "7834225664de5c2e320ab6a7f2e564007b803dfdc8ef46d7a7d5c1c6b640a9b5",
+      "bytes": 2214
+    },
+    {
+      "path": "tmp/N02-R02/independent-cases/probe.py",
+      "sha256": "6413a977d3645a129412c012ceaec82cf6b9c639678f3ccc32ad704713709fb0",
+      "bytes": 22951
+    },
+    {
+      "path": "tmp/N02-R02/normative_probe.py",
+      "sha256": "e4a2bf36e15eb94bd155adb22eb8780b6062eed78fdcbfad75392f53d76d9107",
+      "bytes": 5201
+    },
+    {
+      "path": "tmp/N02-R02/probe_g00.py",
+      "sha256": "cf249b23ea8d78b9f0aed90b5c1e26223b0f132f93f78347162d23e4b0dfe692",
+      "bytes": 3652
+    },
+    {
+      "path": "tmp/N02-R02/review_core.py",
+      "sha256": "b7c74342c5652a6d2975593426388164e75f895b49e624f01abe92aeeb9354bf",
+      "bytes": 10133
+    },
+    {
+      "path": "tmp/N02-R02/seal_check.py",
+      "sha256": "f216762e4f0c309d60849208396823b9d0b3d68bffe35c3c112eb5bf9f49dc87",
+      "bytes": 3077
+    }
+  ],
+  "output_count": 75,
+  "manifest_exclusions": [
+    "artifacts/handoffs/N02-R02/codex/evidence.json",
+    "artifacts/handoffs/N02-R02/codex/seal.json"
+  ],
+  "seal_policy": "The evidence JSON and seal JSON are explicit self-reference exclusions. All other report/artifact/support files existed before this manifest was computed. Seal is independently verified read-only after writing."
+}

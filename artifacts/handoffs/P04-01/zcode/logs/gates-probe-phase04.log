@@ -1,0 +1,21 @@
+wrote tmp/zcode-p04/probe-g04/G04.json (status: failed)
+G04: 7/17 checks passed
+  [FAIL] P04-01-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P04-01-cmd2: manifest command must succeed
+  [FAIL] P04-02-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P04-02-cmd2: manifest command must succeed
+  [PASS] previous-gate:G00: status=passed
+  [FAIL] previous-gate:G01: status=failed
+  [FAIL] previous-gate:G02: missing artifacts/gates/G02.json
+  [FAIL] previous-gate:G03: missing artifacts/gates/G03.json
+  [FAIL] dsh-evidence:P04-01: unexpected status='BLOCKED'
+  [FAIL] dsh-evidence:P04-02: unexpected status='BLOCKED'
+  [PASS] docs:docs/implementation/P04-01.md: present
+  [PASS] docs:docs/implementation/reports/P04-01.md: present
+  [PASS] docs:docs/implementation/P04-02.md: present
+  [PASS] docs:docs/implementation/reports/P04-02.md: present
+  [FAIL] zcode-precheck:P04-01: missing artifacts/handoffs/P04-01/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] zcode-precheck:P04-02: missing artifacts/handoffs/P04-02/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] codex-review: missing artifacts/gates/G04-codex-review.json; a phase gate cannot be signed without the Codex review record
+  commands: 4, median 273 ms, total 1078 ms
+EXIT=1

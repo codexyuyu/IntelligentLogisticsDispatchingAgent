@@ -1,0 +1,747 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "N01-R01",
+  "governance_rework_id_only": true,
+  "role": "A contract governance implementer",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "reviewer": "Codex N01-R01 implementer; not independent acceptance",
+  "created_at": "2026-10-03T16:07:25.853081+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "model": "inherited current session model; no override",
+  "plan_version": "1.0.3",
+  "business_contract_version": "2.0.0",
+  "input_plan_version": "1.0.2",
+  "input_revision": "content-sha256:3525ed5b78851ea5d4fc7b5305b6b2e9f45bfedf7ee8742e3478ce6174e585a4",
+  "code_revision": "content-sha256:adbd8a1ccfa59e8b803acfbb8beb6e23d8fbdad28a51ededbb5862ee0c79ee98",
+  "dirty_tree_hash": "content-sha256:9a48d7b5308b7dce70dee3cf978ad463b0c5ca57774dae2de1acd5eaf4539d68",
+  "verified_input_hashes": {
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "contracts/changes/N01-R01-contract-decisions.json": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+    "contracts/changes/N01-R01-contract-freeze-2.0.0.md": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+    "docs/api/API_CONTRACT.md": "b9104cd2bc26f39c7c529924ea68903420560488b514e0845ae953a2794364d9",
+    "docs/architecture/DATA_CONTRACTS.md": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+    "docs/architecture/DOMAIN_CATALOG.md": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9f24acf68605981f85890d16e614976c4a9f4c6268c7c4e6138609f75d227d91",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+    "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md": "1c412457afc438905e277cde28414b373d6b0874db84d6cc46b3b5b38a412559",
+    "docs/architecture/issues/ARCH-0007-early-named-types.md": "2715b6e9788edae25f6ae797290d3384aca0019cff87b8718290c5598ac36ee5",
+    "docs/architecture/issues/README.md": "c0c8c3ff2c88c3fc6de818a8cf9ec866fe644479ba3b88b0c3911024d109256d",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/REQUIREMENTS_TRACEABILITY.md": "7edad920eca7eea6f7ae09e689da9e105fe0402bc908a1354e2fb0b7867845a1",
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "docs/prompts/00-master/P00-01-baseline-inventory.md": "b064d97fae2c7d21c27acc94fee3d7b437e67f72ff4d4633524f7ca8d376c130",
+    "docs/prompts/00-master/P00-02-freeze-contracts.md": "49f05a10c865335f6683fbc03d756b943846fae1165a2a4097030b02aa246533",
+    "docs/prompts/00-master/P00-03-gate-contract.md": "07f1c899a25fa3fa54b11dae4709f7f7098c633fa9f8cde6aae52a0621bbc461",
+    "docs/prompts/01-foundation/P01-01-workspace-bootstrap.md": "f5105b85082a1b1368d7dba501bf2a73ea245ead4d06530c95534b8aa84522f2",
+    "docs/prompts/01-foundation/P01-02-checks-and-gate-runner.md": "1caa8aaa0c68ecabada3f7f6b2193d5e1cd5a59289c44e8c72c0f944ec5bac81",
+    "docs/prompts/01-foundation/P01-03-migration-governance.md": "838f78b7c9252ce1ade2aee17a9ebc849839f97bdcaa4f5c4981f68bdbd1a702",
+    "docs/prompts/01-foundation/P04-01-canonical-fixtures.md": "3526bb42a73a310219c2c38c69c07dbcfe11ca93fbfef734f649bf8f2efa1ffb",
+    "docs/prompts/01-foundation/P04-02-database-seed.md": "08548b28511ed54602dd1ceb7f0ac6e36082e5dfabca4406c2ce796cb04df08f",
+    "docs/prompts/02-domain/P02-01-primitives-and-states.md": "d4bbc3c460df9d8e7f2104d92fafceee66cdc0f66882faf735ba825975cdaaa8",
+    "docs/prompts/02-domain/P02-02-master-entities.md": "d6ca684c8e89dcbe56695b339417a8257d4729a0fdfa38daae4a32d84e086562",
+    "docs/prompts/02-domain/P02-03-planning-entities.md": "edd3aaec5dce1f1efde16cc24eab696befcebe3fd24c8306a8694d727ef59592",
+    "docs/prompts/02-domain/P02-04-runtime-contract-export.md": "e67e37f545ad57a670a539c7253d5318051fea9c7c1f883cf741e030aea70cd2",
+    "docs/prompts/03-database/P03-01-resource-schema.md": "351a3501859b20d48594e7eda588800c5eb430ef626d03a71126880a4737f6ae",
+    "docs/prompts/03-database/P03-02-planning-schema.md": "e3f2447b9c5587588dfcfd29e0e4d6114ef620003dc279a20e2e01ac2bfce82c",
+    "docs/prompts/03-database/P03-03-repositories-and-snapshot.md": "85f207fd572086a0d6873601c91b7aa2607222f8ef83d78822f659ac793d3fad",
+    "docs/prompts/03-database/P03-04-atomic-version-store.md": "87e68173b6867f08f09e8a78852975876624d22fac3663e37c4b64060fd416ac",
+    "docs/prompts/04-api/P05-01-api-composition.md": "2ed46fd7650a1439b812449c3481292ac2fcc208f50d399eaa04c989fd7b6b81",
+    "docs/prompts/04-api/P05-02-master-data-services.md": "a1118cfe5c5ac36dbe16fa50a5e854d1dde08cb1351ce8dddd4539c201c7de30",
+    "docs/prompts/04-api/P05-03-durable-jobs.md": "4078bfd96d1b002d52dace0988be5e9c0934b4b008959c10b899f4f84b1baf44",
+    "docs/prompts/04-api/P16-01-optimization-job-api.md": "483ae2ad0f5e52f60e04fb7293048aa2863e5872dca39430ed5c0901dbff7576",
+    "docs/prompts/04-api/P16-02-joint-planning-service.md": "39c38aa07dde9f24cd9c7f3f80c2bf462fe28fed1cf209dc5a026204f8164555",
+    "docs/prompts/04-api/P16-03-validated-commit-api.md": "2e341b20a2aa688072ae4f75be646268826b229d984d19375e30cf6c99db7bdf",
+    "docs/prompts/04-api/P16-04-simulation-query-api.md": "94be6d866df3ace03618c59a20f51e7080a4455dd24a74d6d85a20696dd3bd47",
+    "docs/prompts/05-transport-solver/P06-01-transport-contract.md": "55175d1cc07785ce631a103ac8f244a23a773396ab929fa09736989d1bbb48a2",
+    "docs/prompts/05-transport-solver/P06-02-distance-matrix.md": "24cd9931289212ec909b5736982ac91652f09b62439c5a72b3c732cf5f79c751",
+    "docs/prompts/05-transport-solver/P07-01-vrp-base.md": "9be863c0dc9b4a3aee5956142bb7dee74889dd4af475fed03a9e03daea22a4dd",
+    "docs/prompts/05-transport-solver/P07-02-capacity-and-pickup.md": "7cb127c965eed501e405adcfa2df005abf7f2b305f888727f5bfbbcaf5152ef3",
+    "docs/prompts/05-transport-solver/P07-03-time-windows.md": "58cc3ec9de317b1f3c17cdd6913a7b55a1238e7b0e4cfaa5fd878ba4f3d2c632",
+    "docs/prompts/05-transport-solver/P07-04-temperature-and-cargo.md": "f55d481b24c8baf3d5f2c10188100e1cc0fc420529a7d36417897d312d230f61",
+    "docs/prompts/05-transport-solver/P07-05-objective-function.md": "640bc490024b655a8b37aa8cd95c79a04d915017c13fcc00f5cafcc27d7e5234",
+    "docs/prompts/05-transport-solver/P07-06-result-status-validation.md": "5c2229507eea0c125a927ec2f5c630dab93693f553aa6c2eacda9b3f426778b3",
+    "docs/prompts/05-transport-solver/P07-07-transport-adapter.md": "3142be84e35e78f2dcd2be02c7f83684c8fa38d490ff2c7732740fd94e90275f",
+    "docs/prompts/06-warehouse-solver/P08-01-warehouse-contract.md": "2708dc922c0c4a8aa43be3c218f0295fde7d8613b37513543da1110833e8e135",
+    "docs/prompts/06-warehouse-solver/P08-02-inventory-and-handoffs.md": "cfa640889deb7a90ab452b7f479d68605df3551ed17917bf4d2f58d5ede7c2dd",
+    "docs/prompts/06-warehouse-solver/P09-01-intervals-precedence.md": "f6af8f1ab20d64a8aef37a13a03fc65657d744849710097dbbabfe2b55c54bb4",
+    "docs/prompts/06-warehouse-solver/P09-02-cumulative-resources.md": "090a0a6247cec0c4cf69c806f40257372822645ce382d19cda41b2e2266913db",
+    "docs/prompts/06-warehouse-solver/P09-03-storage-capacity.md": "c5d7678de17682831312f054ee2a258e5c39c18e9928429c74b4191159054d4a",
+    "docs/prompts/06-warehouse-solver/P09-04-sequence-setup.md": "512e13e8190a4dd7590ba6813f7060a25e87a1b9d9c4312f703fa7a9f6c33327",
+    "docs/prompts/06-warehouse-solver/P09-05-warehouse-result.md": "9e8ed9220a73d78a5eb88c9b1904ff3995f762d53e0d22b628a75c215c19e53f",
+    "docs/prompts/06-warehouse-solver/P10-01-validator-protocol.md": "694fba45905f9a49453ee71ef157357c8b6dedb458ecb797457fdfb8090b3c2a",
+    "docs/prompts/06-warehouse-solver/P10-02-joint-validator.md": "0573d73f312d0ff6274dfe815d2beac5c5206206a340efd86b5ff626c3d64fb8",
+    "docs/prompts/06-warehouse-solver/P10-03-validator-adversarial-suite.md": "c4bbb23d4a2324eb4a78a3b08cafc4095c269b8878193bd3e685ea11eb2e5182",
+    "docs/prompts/07-simulation/P11-01-simulation-contract.md": "3e0fd9389d7fb9951793bbd4c9b276cde0af3917ae6bd20626798cdc7cc8c3ee",
+    "docs/prompts/07-simulation/P11-02-execution-state-machine.md": "fd43c6a452d4ab8be011bf0948c040e74aa7137bed851792dab6e5aa33c2a72e",
+    "docs/prompts/07-simulation/P12-01-simpy-kernel.md": "69b68349bdf058abbfd218b8b59255f51d6db008c8bd68bdc37734672dc82c4a",
+    "docs/prompts/07-simulation/P12-02-transport-execution.md": "0fdaedd4422ed33e3109d8f4ed99eb1928f226fb808da04ba509fe63fa6f8bd8",
+    "docs/prompts/07-simulation/P12-03-warehouse-execution.md": "62c16f770c2cafa374073f0ef874453a6a3c3f1478210e76ebe41df28c385d07",
+    "docs/prompts/07-simulation/P12-04-snapshot-replay.md": "ebed576849a942c9a274fc73c6ad1abd0b1b77a4ff138fb6506cbe89c121560d",
+    "docs/prompts/07-simulation/P13-01-event-ingestion.md": "70662d81d6fe58a02bdf30fe9dc6094083a09dc9c3390f6842f4c1491d24d8b9",
+    "docs/prompts/07-simulation/P13-02-event-api-and-outbox.md": "36f65fbce6355bc157bfda01c01ad9d337af41d7b0853df0b4dc62fcd047bef4",
+    "docs/prompts/08-exception/P14-01-impact-graph.md": "5544cbd284582f0adc71e465e9d0c3bc6509a8b9cd5f3301355b22f537f21a05",
+    "docs/prompts/08-exception/P14-02-execution-freeze.md": "d222ad78f11593b7177a4e28e6940e9bdf9b0fcdf4d2da0f28ba3e800ee20ea5",
+    "docs/prompts/08-exception/P15-01-candidate-policies.md": "d48491b8af88f97e8ccd7487a1617523398cefddc147319c645969907ed07d7e",
+    "docs/prompts/08-exception/P15-02-local-solve.md": "d70d0fcb9e8a8ca03572d06f6252f63fea47b9cb8c86d2753f565662be7c0836",
+    "docs/prompts/08-exception/P15-03-bounded-escalation.md": "8f6da8db1f0860a7a4142215ebeebd2322e0b1e6b6107879e231619025f28240",
+    "docs/prompts/08-exception/P15-04-version-diff.md": "73c86a869cd962a693571dbb820286a5e593839c8a9f7e610cdaab1ccf0dc86d",
+    "docs/prompts/09-agents/P17-01-tool-schemas.md": "ed5f09e642aa889e6e6647abdb8cf9220ea78255b7280eff7d895ab5f74dcb16",
+    "docs/prompts/09-agents/P17-02-business-tools.md": "690b9d56251d642e44cb18ad093d82a431f70e50e495e255bb96303eacbf0598",
+    "docs/prompts/09-agents/P18-01-llm-provider.md": "aa61878a3d9e97f17e5c065c3f412d55659b22386d70ef7734ffdc36806c79d7",
+    "docs/prompts/09-agents/P18-02-llm-resilience.md": "7b8236ae41583cf6959b97e010b9746ec5436905932bc0f8ed09603e01e6ff9a",
+    "docs/prompts/09-agents/P19-01-intent-extraction.md": "ce16f0a4543da19778112d5ef1598f0963f722f0e0e7bc1d25e590c6d43e0a94",
+    "docs/prompts/09-agents/P19-02-coordinator-state-machine.md": "2dafb6d0f4f91330b50cf4380fe7a2aa4bf5de92543f9d535f21f773786f9890",
+    "docs/prompts/09-agents/P20-01-transport-agent-tools.md": "c700d3e78107eae77074d145ba440a592e0d4b4a83c5a9b768ea24a32b2ad50a",
+    "docs/prompts/09-agents/P20-02-transport-explanation.md": "9ab308ca64c0c4119bc4faccc2800f2470eed80a0e087d32c32d6b36467444fb",
+    "docs/prompts/09-agents/P21-01-warehouse-agent-tools.md": "8d4c46b3313986dec1a4e38b77e30f4ff9248894d781211a7d3c125a1b432155",
+    "docs/prompts/09-agents/P21-02-warehouse-explanation.md": "949440105e88d622d1fc881d0299e422876a86d7a384bac0c70bf5f800450528",
+    "docs/prompts/09-agents/P22-01-exception-agent-tools.md": "dfb9a2ab5432a0e8fa743b509037744c2bf916c8e532f0325771a671974998f0",
+    "docs/prompts/09-agents/P22-02-exception-explanation.md": "c8d41a8e0f23f64aef552c18a9474753736e6397dfcacf50062c4137e4a4facf",
+    "docs/prompts/09-agents/P23-01-agent-orchestration.md": "d7ca0960b8d7b8343cec096ee1fc6fc78771da55ecf04bd817827eb135346ad4",
+    "docs/prompts/09-agents/P23-02-agent-api-safety.md": "ebced7f15f4730e6c1b695d43da2e68ce55fde7bc1883a14cac5d6659bee3e36",
+    "docs/prompts/10-frontend/P24-01-react-shell.md": "775452b171e2045b12e34edf67cdc4c0666773c9d51048807aed2d79d66908db",
+    "docs/prompts/10-frontend/P24-02-generated-api-client.md": "cc83a33a841fcce663b0ed25863f6843933dd9a13c4a3b35d62a265a1d9c949c",
+    "docs/prompts/10-frontend/P25-01-orders-ui.md": "7664cd54474a25edb500008a3a1fba208d8f68d3a845907d074d2ea89c718f6e",
+    "docs/prompts/10-frontend/P25-02-vehicles-ui.md": "a5748a804ed9aa55f62a683b7647b4055279201c81f0d9aa155493adbdb0da78",
+    "docs/prompts/10-frontend/P25-03-warehouses-ui.md": "66459a73afc234498bb9382bf91b594d1bcddab89b32eb159a88d6920c057ec5",
+    "docs/prompts/10-frontend/P26-01-transport-request-ui.md": "0e7934503cc330240cbca78d804bb0335efd4c97f56439a8054b1c13653beefc",
+    "docs/prompts/10-frontend/P26-02-transport-plan-ui.md": "919b872c38608d09482206c541b5b00fe9c898d444eb263ab4392d07de0493f7",
+    "docs/prompts/10-frontend/P27-01-warehouse-gantt-ui.md": "ee70d7feb2eacd78b9e45608d959800f8c7e74ad43012acf7a900408452dacaa",
+    "docs/prompts/10-frontend/P27-02-joint-handoff-ui.md": "6458afcd01e007245fb10f440b8159b8f28af4b66c59ff9361ddf66ec38c8974",
+    "docs/prompts/10-frontend/P28-01-simulation-controls-ui.md": "08723b98f644f3e3c93d871c6f12d85d1768c6be24af2109843d6bbbc03452de",
+    "docs/prompts/10-frontend/P28-02-replay-comparison-ui.md": "8a3ba45a43d188cfa5f2a448b6c8125c0a1c57a9af60b686af2c55eab683c6cb",
+    "docs/prompts/10-frontend/P29-01-exception-center-ui.md": "4faf481cf6546f04ee54ca73f06788e319fc85397556cfc22bb95dccb281e596",
+    "docs/prompts/10-frontend/P29-02-reschedule-diff-ui.md": "9414a9de6137c00f0ebdd8006395bbccacd7c5958b3d4099187786fca00c895e",
+    "docs/prompts/10-frontend/P30-01-agent-chat-ui.md": "d02bdade2f4457971b403ef86cfff8b92bda8a951a4420b6952db10cbf4a0b46",
+    "docs/prompts/10-frontend/P30-02-agent-confirmation-ui.md": "b8373f84d2554e087ca11b8b17e000140f2a7ba3d7a7cd00f50259af0aca635b",
+    "docs/prompts/10-frontend/P31-01-websocket-events.md": "672a27e39fbf9b28c34761b50350488fae0df5a5f39f38744761875fe932277f",
+    "docs/prompts/10-frontend/P31-02-frontend-realtime.md": "25ca797683f517e5ee8c4bf7076231c70b300f233019f369fe88669d0954e190",
+    "docs/prompts/11-evaluation/P32-01-metric-calculators.md": "c98658b9d1330aa626d022bca5a5b6c451a004d30e41c5fb272caf7c21353ea6",
+    "docs/prompts/11-evaluation/P32-02-metrics-api.md": "f1dbf1db10618be7fdf15ea9938e32774872305ae4a97a9cb866e57ca9382f4b",
+    "docs/prompts/11-evaluation/P32-03-metrics-dashboard-ui.md": "f526bf4974dedc32b93f6ffe0cd29602e6b48c8a00cd0f232c7123c8432bb07f",
+    "docs/prompts/11-evaluation/P33-01-experiment-runner.md": "ac48ed08813e8807905861822bef3d325b0a5e16cfc962f8ed301029fb1ccffd",
+    "docs/prompts/11-evaluation/P33-02-experiments-api-ui.md": "2b8b7d1c28b931a2beb71a02b4c0bcce09d2e0db33ae860b07c8c5629226246e",
+    "docs/prompts/12-integration/P34-01-transport-e2e.md": "72875a37dc2cd11b301a7ca4e9de27d94f06701fab7ab0054faadb0424d7dc2e",
+    "docs/prompts/12-integration/P34-02-joint-exception-e2e.md": "fc898ab7376f6f0e5799f6a45ad8a432f0bb43cfdbb870b44fc3d72a420a42ac",
+    "docs/prompts/12-integration/P34-03-failure-recovery-e2e.md": "ff6f1aed7d1a581993ad92a0b2e8059dc4fd13999f6e909cdd7594ea5ec63cde",
+    "docs/prompts/12-integration/P35-01-demo-normal.md": "9dbb043de9e4d613c26df562f76d2441ab2ea73e884f3384f956d15488e36352",
+    "docs/prompts/12-integration/P35-02-demo-joint.md": "beb5acb1cb4661d993b6cb97314f2f2a5e13978576ff7ff94b391bcaecfd700a",
+    "docs/prompts/12-integration/P35-03-demo-vehicle-failure.md": "504c582d3ca430250ae1af4d480b7aced211e92ecf099ad9e8342819c5ddd86c",
+    "docs/prompts/12-integration/P35-04-demo-order-cancel.md": "d936e21d5a2867a5b107d64678ec6a1610eed02e04195602f73b7cd92a460db8",
+    "docs/prompts/12-integration/P35-05-demo-weather.md": "dc41fa6477dcaa80beb0a9fb75ab9712090b98f134d32ca6098de95fbcfd2ea1",
+    "docs/prompts/12-integration/P36-01-benchmark-harness.md": "2bb069f8b47ba3223d87f21d2ad965965f85392ff97f048b401edd0ac549356c",
+    "docs/prompts/12-integration/P36-02-bounded-performance-fix.md": "e66b8d318eee087361bea9de7fffb072dfa8856d2e994673a3478ecc260da83e",
+    "docs/prompts/12-integration/P37-01-security-boundary.md": "f673d8153b2900a476bf2f175517398121d2b75dae00bfaa01c3e5ed80176e88",
+    "docs/prompts/12-integration/P37-02-observability-audit.md": "58c9cb43a6516ce93b166fc91890770859d18d8f4d68b4a008132bfe758d4962",
+    "docs/prompts/12-integration/P37-03-backup-and-recovery.md": "e1296d49763843a08e1e9bba9652a4c32706ac9f93b5fac3dd525e8f053807a4",
+    "docs/prompts/13-release/P38-01-developer-docs.md": "3a4e7bd3d10b61b273d7be7c2367db822f83d49aa444eab2c9b3761d818e0dc6",
+    "docs/prompts/13-release/P38-02-operator-docs.md": "79edc15812004e9bb06ac44975100b3d3a66ac471eebb345f8b79f3ed339267f",
+    "docs/prompts/13-release/P39-01-release-candidate.md": "fc0deb826fb020fba7d14e82727021f5764f1a5492d013974a263837d304396e",
+    "docs/prompts/13-release/P39-02-release-gate.md": "c08271107a271209a9ad036f7222eb56b12ca8a67b1520bdb3638837b9ed6c68",
+    "docs/prompts/README.md": "423d12bce688ccc958da56c71eb22264d087e846d97c4c0cb27a03640b12e518",
+    "tools/ai_coding_plan/build_catalog.py": "d9f52f8f437526fb3c96413b3bb1e49517bbaf1369211ba42fb3ab5db5c76ce1",
+    "tools/ai_coding_plan/render_plan.py": "049699b81267c49c2794a5c3ef71aee5c8fbe202df79cfd100565ffc2fb5249b",
+    "tools/ai_coding_plan/validate_plan.py": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+    "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "docs/handoffs/N02/codex.md": "4cdf3f4f42983c4d93b50303326562489066afedd61df7b2b716e248932dabcf",
+    "artifacts/handoffs/N02/codex/findings.json": "ac7fb36a9024165d6b5bf3d7a7c8bc0a63a00a2620ecb5c5f556435c204eb883",
+    "artifacts/handoffs/N02/codex/evidence.json": "e9f6aae266b0230283165052f8a642e0c527c581ed268fb8ebfcabc8f2fadf40",
+    "docs/handoffs/N01/codex.md": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43",
+    "artifacts/handoffs/N01/codex/evidence.json": "4f545890ef6562478e570153656ba35f9ef124eaaca99dcc73197cbde6f267d9",
+    "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+    "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "artifacts/gates/G00-checks.log": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56"
+  },
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "attempt2"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:44:53.345010+00:00",
+      "finished_at": "2026-10-03T15:44:56.359914+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N01-R01/codex/contract-check-02.log",
+      "log_hash": "e0a09c9eb132ebde429e4b3500924f9841a40844afe91016a57658b05f44565c",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "attempt3"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:45:38.320933+00:00",
+      "finished_at": "2026-10-03T15:45:41.005879+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/contract-check-03.log",
+      "log_hash": "e60348dffabbdd76c1b80145189e8036a768c29184d39c67f269802a0c0eab72",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "attempt4"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:48:10.606089+00:00",
+      "finished_at": "2026-10-03T15:48:13.279783+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/contract-check-04.log",
+      "log_hash": "8bec896f656cde71f3b7b4ae76fbb71a51e3ed5f5d64a2b418ebcbcb23ad39c3",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:42:37.089242+00:00",
+      "finished_at": "2026-10-03T15:42:40.104178+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N01-R01/codex/contract-check.log",
+      "log_hash": "a1d934975e9c627d7c6b31d27943b99cd6c9318509c7cb8cdd12f3e114761f26",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "final02"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T16:06:17.128663+00:00",
+      "finished_at": "2026-10-03T16:06:19.733611+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/contract-check-final-02.log",
+      "log_hash": "d6e6a5ba08501803fada2716548acc631a33f1da950b9292e65b6ed9cdda842b",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "final03"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T16:07:20.391917+00:00",
+      "finished_at": "2026-10-03T16:07:23.304508+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/contract-check-final-03.log",
+      "log_hash": "a87a2fa5969317940ef2a4e821fd531d1f9aa10e8f173aa0303a9d78cebd3700",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N01-R01/verify_contracts.py",
+        "final"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:56:37.382354+00:00",
+      "finished_at": "2026-10-03T15:56:40.249607+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/contract-check-final.log",
+      "log_hash": "731dc51bbd196bea49d5deb01f672e2a24be7b49356efd837bff921902c7664e",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N01-R01/probe_g00.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:58:52.237984+00:00",
+      "finished_at": "2026-10-03T15:58:52.351097+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N01-R01/codex/g00-prerequisite.log",
+      "log_hash": "4500e604a7f91e679c8591a87a479a567b415aaba9d4a98cae3e3154e333273d",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:45:42.058764+00:00",
+      "finished_at": "2026-10-03T15:45:42.773502+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/plan-check-02.log",
+      "log_hash": "0ea9778769a72b57dcd85430740130e1b161391826b9e8880d406447b0d6688f",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:38:08.956870+00:00",
+      "finished_at": "2026-10-03T15:38:11.376230+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/plan-check.log",
+      "log_hash": "533ea4778bb393b55dd5fc71e60a99ee604b5b3b11ef36458cf5305ff1b6774f",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T16:06:15.267427+00:00",
+      "finished_at": "2026-10-03T16:06:16.061382+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/plan-check-final-02.log",
+      "log_hash": "0c3c2986caf5f8f945cd846358945015d3567e8accf2ff7f1f3ede1a68fd5697",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T16:07:18.651075+00:00",
+      "finished_at": "2026-10-03T16:07:19.382537+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/plan-check-final-03.log",
+      "log_hash": "48e52f29e89c999d57a0e2bb9bf6bb97f199b89657fe0e224281d0134f454c19",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:56:34.243688+00:00",
+      "finished_at": "2026-10-03T15:56:36.374212+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/plan-check-final.log",
+      "log_hash": "e4961ea06f8791ec1e82b44817971d931d8ecf4f8a88af3f1a8c2b83186b22d7",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/render_plan.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:52:39.706716+00:00",
+      "finished_at": "2026-10-03T15:52:39.830920+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/render-02.log",
+      "log_hash": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/render_plan.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T15:38:07.540532+00:00",
+      "finished_at": "2026-10-03T15:38:07.695037+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01-R01/codex/render.log",
+      "log_hash": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    }
+  ],
+  "findings_response": [
+    {
+      "id": "N02-F01",
+      "status": "DESIGN_DECIDED_READY_FOR_INDEPENDENT_REVIEW",
+      "owner": "A contract governance",
+      "definition_tasks": [
+        "P02-01"
+      ],
+      "source": "docs/architecture/DATA_CONTRACTS.md#n01-r01-本轮完整契约决定"
+    },
+    {
+      "id": "N02-F02",
+      "status": "DESIGN_DECIDED_READY_FOR_INDEPENDENT_REVIEW",
+      "owner": "A contract governance",
+      "definition_tasks": [
+        "P02-04"
+      ],
+      "source": "docs/architecture/DATA_CONTRACTS.md#n01-r01-本轮完整契约决定"
+    },
+    {
+      "id": "N02-F03",
+      "status": "DESIGN_DECIDED_READY_FOR_INDEPENDENT_REVIEW",
+      "owner": "A contract governance",
+      "definition_tasks": [
+        "P02-01",
+        "P02-02"
+      ],
+      "source": "docs/architecture/DATA_CONTRACTS.md#n01-r01-本轮完整契约决定"
+    },
+    {
+      "id": "N02-F04",
+      "status": "DESIGN_DECIDED_READY_FOR_INDEPENDENT_REVIEW",
+      "owner": "A contract governance",
+      "definition_tasks": [
+        "P02-04",
+        "P05-03"
+      ],
+      "source": "docs/architecture/DATA_CONTRACTS.md#n01-r01-本轮完整契约决定"
+    }
+  ],
+  "validation": {
+    "plan_self_tests": 43,
+    "contract_checks": 95,
+    "passed": 95,
+    "generated_outputs_reproduced": 114,
+    "protected_files_unchanged": 3418
+  },
+  "g00": {
+    "valid": false,
+    "record_g00": "NOT_RUN",
+    "reviewer_updated": false,
+    "input_drift": [
+      "docs/architecture/issues/README.md",
+      "docs/api/API_CONTRACT.md",
+      "docs/architecture/DATA_CONTRACTS.md",
+      "docs/architecture/DOMAIN_CATALOG.md",
+      "docs/architecture/IMPLEMENTATION_CONVENTIONS.md"
+    ],
+    "freeze_drift": [
+      "docs/architecture/DOMAIN_CATALOG.md",
+      "docs/architecture/DATA_CONTRACTS.md",
+      "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "docs/api/API_CONTRACT.md"
+    ]
+  },
+  "handoff": {
+    "path": "docs/handoffs/N01-R01/codex.md",
+    "sha256": "e967798512107c7f4b39f8ed90f3c2a53ed23181443db131a5a0e04afd295405"
+  },
+  "outputs": [
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/candidate-files.json",
+      "sha256": "87b7006203ac0bedf6c275ee846c5817596320d16eb35976f8f299a4429cdfc2",
+      "bytes": 14169
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-02-command.json",
+      "sha256": "edfd7729c4dda39157f3e5dccd888c40dc688bb2edee8c4e07fc9b3936b1abf6",
+      "bytes": 528
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-02.log",
+      "sha256": "e0a09c9eb132ebde429e4b3500924f9841a40844afe91016a57658b05f44565c",
+      "bytes": 15580
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-03-command.json",
+      "sha256": "d625bc72277df67a46ae6798312013b1ca38a1486c1fd7e8fe11e81cd0fd02f4",
+      "bytes": 528
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-03.log",
+      "sha256": "e60348dffabbdd76c1b80145189e8036a768c29184d39c67f269802a0c0eab72",
+      "bytes": 15574
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-04-command.json",
+      "sha256": "7aad94163854301d6109ae412bb5ec8790fcf0cb064d5338f31a0144e20c3a2b",
+      "bytes": 528
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-04.log",
+      "sha256": "8bec896f656cde71f3b7b4ae76fbb71a51e3ed5f5d64a2b418ebcbcb23ad39c3",
+      "bytes": 16931
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-command.json",
+      "sha256": "9796b8c0d0072baaee0cb4a826ead28ec7de07bf4fd9aae32d4db14cf50c8b4d",
+      "bytes": 508
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-02-command.json",
+      "sha256": "e9d4f397d23a716f98653153c728271ab573bddc4c8e0fd708a942310880f283",
+      "bytes": 533
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-02.log",
+      "sha256": "d6e6a5ba08501803fada2716548acc631a33f1da950b9292e65b6ed9cdda842b",
+      "bytes": 17244
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-03-command.json",
+      "sha256": "5db45a5fdb1c69789c3bc0b0e7380e4ae1300c206e2a3a1987e05f0a1ef87321",
+      "bytes": 533
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-03.log",
+      "sha256": "a87a2fa5969317940ef2a4e821fd531d1f9aa10e8f173aa0303a9d78cebd3700",
+      "bytes": 17244
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final-command.json",
+      "sha256": "9896e356fdf678f4779b4eafe47ad7168501f5de8b643775762763c7a259b7a1",
+      "bytes": 528
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check-final.log",
+      "sha256": "731dc51bbd196bea49d5deb01f672e2a24be7b49356efd837bff921902c7664e",
+      "bytes": 17244
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-check.log",
+      "sha256": "a1d934975e9c627d7c6b31d27943b99cd6c9318509c7cb8cdd12f3e114761f26",
+      "bytes": 15572
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-attempt2.json",
+      "sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "bytes": 8805
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-attempt3.json",
+      "sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "bytes": 8805
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-attempt4.json",
+      "sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "bytes": 8805
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-final.json",
+      "sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "bytes": 8805
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-final02.json",
+      "sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "bytes": 8805
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples-final03.json",
+      "sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "bytes": 8805
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-examples.json",
+      "sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "bytes": 8805
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-attempt2.json",
+      "sha256": "a3cf70ea2374c0c221c00fcf1724f0b7ecff063a33db040b03dc525e3e0152d5",
+      "bytes": 18879
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-attempt3.json",
+      "sha256": "990fda4353c06a4642b41ca154ad44a7d644eedfd2bce959041c68a5d6961cc2",
+      "bytes": 18873
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-attempt4.json",
+      "sha256": "b9ea686a5cd8ac039f24300e402a51f27557b45b8d259af0cbf027a6e87a6c33",
+      "bytes": 20626
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-final.json",
+      "sha256": "b1830531192754c337eb1bddd1bb75d05aedf939a27538bad551ee1ad2d0cd4a",
+      "bytes": 21038
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-final02.json",
+      "sha256": "eb6dd7a86b498c1c3c3299b61ef8d1a40e7385e712829c0c1ff2fc06b6977ef9",
+      "bytes": 21038
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation-final03.json",
+      "sha256": "5572a852e092636ed78d73dd332db28565d017e78c73e9897ccd834b541c1f47",
+      "bytes": 21038
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/contract-validation.json",
+      "sha256": "e66ce6e848015a4b89a29060e96f121ccd86d2873d66d86040c70426e2781e33",
+      "bytes": 18871
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/freeze-impact.json",
+      "sha256": "fe60c7fdc12666e6ffebdcf156dce3aa18b514c045d47c452e452a28649f1bc3",
+      "bytes": 1087
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/g00-prerequisite-command.json",
+      "sha256": "0c81e5cef21cd692d28d16979ca74728bbb5b6ec9581f3fa8cd38e844f9a6ecb",
+      "bytes": 503
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/g00-prerequisite.log",
+      "sha256": "4500e604a7f91e679c8591a87a479a567b415aaba9d4a98cae3e3154e333273d",
+      "bytes": 720
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/governance-diff.patch",
+      "sha256": "cb0274e3270655bfbb84cf1f69765be8cf56e57e66c424a1ae59649214d04b87",
+      "bytes": 548034
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/governance-files.json",
+      "sha256": "6a5bc8e16f4a1284d00e46c7bbeba98449d45f34f3108092929c637010052ab9",
+      "bytes": 40184
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-02-command.json",
+      "sha256": "7a96362f93b16cbefdb47384cff15d67ed342a44bce5e5f467ea0ef606cb7f3c",
+      "bytes": 533
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-02.log",
+      "sha256": "0ea9778769a72b57dcd85430740130e1b161391826b9e8880d406447b0d6688f",
+      "bytes": 4552
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-command.json",
+      "sha256": "baf37f55528b5f156ea083a33eb0357fe9f16fd8160ae01e908c99fce9f79a25",
+      "bytes": 530
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-02-command.json",
+      "sha256": "af182d1878e3454f7aef7477a40f08765c2a6a0f77a6a1c28b6a46b17dcc1576",
+      "bytes": 539
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-02.log",
+      "sha256": "0c3c2986caf5f8f945cd846358945015d3567e8accf2ff7f1f3ede1a68fd5697",
+      "bytes": 4673
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-03-command.json",
+      "sha256": "27d58f485b4b9938e066bb2561b50c871b39c8b8c08c4d7585de5d441a388c88",
+      "bytes": 539
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-03.log",
+      "sha256": "48e52f29e89c999d57a0e2bb9bf6bb97f199b89657fe0e224281d0134f454c19",
+      "bytes": 4673
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final-command.json",
+      "sha256": "76c9087f801a1e06a3b5f085d971a4fa178eb006fbffc968ffc6c174c841b055",
+      "bytes": 536
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check-final.log",
+      "sha256": "e4961ea06f8791ec1e82b44817971d931d8ecf4f8a88af3f1a8c2b83186b22d7",
+      "bytes": 4673
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/plan-check.log",
+      "sha256": "533ea4778bb393b55dd5fc71e60a99ee604b5b3b11ef36458cf5305ff1b6774f",
+      "bytes": 4405
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/protected-comparison.json",
+      "sha256": "316dc7e7dce35bb56f4b1350901f41cc82e9ee1e357cde62cf4288564a598e0f",
+      "bytes": 3060
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render-02-command.json",
+      "sha256": "6fa06783f1d3729ef54c15470673a27bb3cf6b3a0f095078ee89440d2a2df4f7",
+      "bytes": 507
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render-02.log",
+      "sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "bytes": 57
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render-command.json",
+      "sha256": "0bd424e40f9b33bcd16da499bcc23844ac448fcbe4a785964f84a8c1f0707f2a",
+      "bytes": 504
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/render.log",
+      "sha256": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+      "bytes": 57
+    },
+    {
+      "path": "artifacts/handoffs/N01-R01/codex/scope-before.json",
+      "sha256": "d0f24d32215de8c57f2085419adb9b24953214cee702fdaaeee331b33be32d08",
+      "bytes": 553513
+    }
+  ],
+  "output_file_count_excluding_evidence": 50,
+  "limitations": [
+    "Executable design examples only, no business classes or HTTP/DB acceptance.",
+    "Existing source leaf fields reused; full inherited schema behavior requires real G02 exports/tests.",
+    "resolve examples check reference metadata and failure ordering only; no real capability parser/worker was run.",
+    "All business acceptance/smokes and business schema exports NOT_RUN; no Gate signed."
+  ],
+  "next_executor": "Independent Codex N02",
+  "n03_dispatch_allowed": false,
+  "delivery_transcription_correction": {
+    "description": "Corrected handoff command argument final to final03 to match preserved final command descriptor; design, candidate, raw logs and validation unchanged.",
+    "original_report_path": "tmp/N01-R01/seal-transcription-before/codex.md",
+    "original_report_sha256": "69c1ca999ca4233c09954170e8d27e9bbde57f6bcc59c8fdd55f71a509b3df29",
+    "original_evidence_path": "tmp/N01-R01/seal-transcription-before/evidence.json",
+    "original_evidence_sha256": "a8fedb869b3c30673f15c4c63dfdea69c5a045e77130f3b0f75c9cb2ab9da681"
+  }
+}

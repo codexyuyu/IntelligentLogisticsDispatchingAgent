@@ -1,0 +1,24 @@
+{
+  "read_only": true,
+  "official_g00_sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+  "official_g00_status": "passed",
+  "current_g00_valid": false,
+  "runner_prerequisite_problems": [
+    "frozen input docs/api/API_CONTRACT.md drifted after the gate was recorded",
+    "frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/DOMAIN_CATALOG.md drifted after the gate was recorded",
+    "frozen input docs/architecture/IMPLEMENTATION_CONVENTIONS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+  ],
+  "old_freeze_artifact_count": 12,
+  "old_freeze_drift": [
+    "docs/architecture/DOMAIN_CATALOG.md",
+    "docs/architecture/DATA_CONTRACTS.md",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+    "docs/api/API_CONTRACT.md"
+  ],
+  "freeze_json_sha256": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+  "freeze_md_sha256": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+  "gate_recording_not_run": true,
+  "N03_may_start": false
+}

@@ -1,0 +1,50 @@
+{
+  "base_scenario": "B20",
+  "prerequisites": [
+    "independently validated and committed B schedule",
+    "actual execution snapshot",
+    "branch per experiment"
+  ],
+  "source": "synthetic",
+  "status": "template_not_occurred",
+  "templates": [
+    {
+      "code": "C1",
+      "kind": "vehicle_failure",
+      "missing_data_outcome": "MANUAL_REQUIRED",
+      "required": [
+        "actual position",
+        "remaining cargo",
+        "explicit rescue vehicle and driver",
+        "rescue travel matrix",
+        "transfer 60s",
+        "exposure <=120s"
+      ],
+      "trigger": "selected actual departure + 150 seconds"
+    },
+    {
+      "code": "C2",
+      "kind": "order_cancel",
+      "required": [
+        "return or explicit disposal for in-transit cargo",
+        "preserve delivered history"
+      ],
+      "trigger": [
+        "before target load",
+        "actual departure + 150 seconds"
+      ]
+    },
+    {
+      "code": "C3",
+      "kind": "weather",
+      "multiplier_denominator": 2,
+      "multiplier_numerator": 3,
+      "required": [
+        "new matrix version",
+        "preserve distance and travelled arc facts"
+      ],
+      "rounding": "ceil",
+      "trigger": "first actual departure with future arcs"
+    }
+  ]
+}

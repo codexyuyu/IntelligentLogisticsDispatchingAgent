@@ -1,0 +1,26 @@
+{
+ "P01-01": {
+  "status": "Z_PRECHECK_PASSED",
+  "round": "2026-10-04-r03f01",
+  "precheck_sha256": "7ae3e9d6f22c86c4b6a62679dcebdbab291317bfc2901147437ec331afa8180b",
+  "inputs": 57,
+  "commands": 6,
+  "problems": []
+ },
+ "P01-02": {
+  "status": "Z_PRECHECK_PASSED",
+  "round": "2026-10-04-r01",
+  "precheck_sha256": "4474dfeb0169a8e5c7ac8ceddcf09e9b44ad0d45f368243766542bd48b3ecae4",
+  "inputs": 36,
+  "commands": 8,
+  "problems": []
+ },
+ "P01-03": {
+  "status": "Z_PRECHECK_PASSED",
+  "round": "2026-10-04-r01",
+  "precheck_sha256": "d9ee646eb4989bc5e1833538aaa9d7de5842250418404c6230f8b81a67b1bfaa",
+  "inputs": 33,
+  "commands": 7,
+  "problems": []
+ }
+}

@@ -1,0 +1,19 @@
+[project]
+name = "logistics-contracts"
+version = "0.1.0"
+description = "Pydantic boundary DTOs, domain mappings and schema export. No database or business execution."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pydantic>=2.9",
+    "logistics-domain",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+logistics-domain = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/logistics_contracts"]

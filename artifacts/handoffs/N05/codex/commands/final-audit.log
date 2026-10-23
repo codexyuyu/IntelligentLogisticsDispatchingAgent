@@ -1,0 +1,11 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE", "-B", "tmp/N05/final_audit.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:46:00.303111+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+{"task_id": "N05", "status": "PASSED", "official_G01_valid": true, "audited_at": "2026-10-04T20:46:00.667968+00:00", "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c", "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3", "candidate_file_count": 77, "G01_sha256": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8", "review_sha256": "1cfd47668b64b49062c14eb0af648d8fd23eaf86748bc0b68ecb3421331e185d", "G00_sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4", "official_input_count": 40, "review_input_count": 371, "official_task_tests": [56, 96, 74], "full_regression_tests": 226, "independent_probe_count": 52, "official_command_count": 7, "assertion_count": 5, "official_run_command": {"check_id": "official-g01", "argv": ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/gates.py", "--phase", "01", "--revision", "auto"], "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent", "exit_code": 0, "started_at": "2026-10-04T20:43:58.837912+00:00", "finished_at": "2026-10-04T20:44:51.159917+00:00", "log_path": "artifacts/handoffs/N05/codex/commands/official-g01.log", "log_sha256": "0dbd52ac9518be07b186f40c90b32b179640db13a6a11895f8737aae9f857d09"}, "archive_count": 13, "problems": []}
+
+## stderr
+
+## exit_code: 0

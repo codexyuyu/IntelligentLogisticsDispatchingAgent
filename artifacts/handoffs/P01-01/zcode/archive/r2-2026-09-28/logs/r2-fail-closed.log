@@ -1,0 +1,6 @@
+OK NotImplementedError: logistics_domain.entities is not implemented yet (P02-02/P02-03: 32 domain entities per DO
+OK NotImplementedError: logistics_domain.units is not implemented yet (P02-01: integer second/metre/gram/cm3/decic
+OK NotImplementedError: logistics_domain.states is not implemented yet (P02-01: single status enum per entity, ill
+OK NotImplementedError: logistics_contracts.dto is not implemented yet (P02-04/P05-01/P06-01: boundary DTOs with e
+OK NotImplementedError: logistics_contracts.mapping is not implemented yet (P02-04: domain<->DTO mapping, no busin
+EXIT=0

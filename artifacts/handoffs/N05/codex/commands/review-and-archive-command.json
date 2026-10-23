@@ -1,0 +1,14 @@
+{
+  "check_id": "review-and-archive",
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+    "-B",
+    "tmp/N05/review_and_archive.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-04T20:43:44.596520+00:00",
+  "finished_at": "2026-10-04T20:43:45.308939+00:00",
+  "log_path": "artifacts/handoffs/N05/codex/commands/review-and-archive.log",
+  "log_sha256": "1e4abd7f25cde58abd773b82c002fa1c15190973fa07330f877cc8d3b9f1e3ec"
+}

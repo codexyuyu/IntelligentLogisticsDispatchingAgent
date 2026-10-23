@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\tmp\N02-R02\review_core.py", line 126, in <module>
+    if sys.argv[1]=='audit':initial_audit()
+                            ^^^^^^^^^^^^^^^
+  File "D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\tmp\N02-R02\review_core.py", line 70, in initial_audit
+    assert outside==['docs/agent-toolchain/13-partitioned-parallel-dispatch.md'], outside
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['artifacts/dispatch/2026-10-04/parallel/messages/dsh/N03.md', 'artifacts/dispatch/2026-10-04/parallel/messages/workbuddy/current-evidence-index.md', 'artifacts/dispatch/2026-10-04/parallel/messages/zcode/N02-R02-contract.md', 'docs/agent-toolchain/13-partitioned-parallel-dispatch.md', 'docs/agent-toolchain/14-agent-prompt-dispatch-checklist.md']

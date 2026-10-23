@@ -1,0 +1,55 @@
+{
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "plan_version": "1.0.0",
+  "dsh_evidence": {
+    "checked": 20,
+    "mismatches": []
+  },
+  "freeze": {
+    "checked": 12,
+    "mismatches": []
+  },
+  "baseline": {
+    "checked": 173,
+    "mismatches": []
+  },
+  "g00_inputs": {
+    "checked": 25,
+    "mismatches": [
+      "docs/architecture/issues/README.md"
+    ]
+  },
+  "tasks": 109,
+  "gates": 40,
+  "remaining_business_tasks": 103,
+  "parallel": {
+    "P06-01": [
+      "P06-02"
+    ],
+    "P06-02": [
+      "P06-01"
+    ],
+    "P12-02": [
+      "P12-03"
+    ],
+    "P12-03": [
+      "P12-02"
+    ],
+    "P25-01": [
+      "P25-02",
+      "P25-03"
+    ],
+    "P25-02": [
+      "P25-01",
+      "P25-03"
+    ],
+    "P25-03": [
+      "P25-01",
+      "P25-02"
+    ]
+  },
+  "official_gate_hashes": {
+    "G00": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "G01": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4"
+  }
+}

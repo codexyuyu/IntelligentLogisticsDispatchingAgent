@@ -1,0 +1,64 @@
+[project]
+name = "logistics-dispatching-agent"
+version = "0.1.0"
+description = "Cold-chain-first logistics dispatching monorepo: deterministic optimization, digital twin and agent tooling."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+# Workspace root aggregates every member so that a plain `uv sync --frozen` in a
+# clean checkout installs all six packages plus the backend, and `uv run pytest`
+# can import all of them from the repository root.
+dependencies = [
+    "logistics-domain",
+    "logistics-contracts",
+    "logistics-optimization",
+    "logistics-simulation",
+    "logistics-agents",
+    "logistics-evaluation",
+    "logistics-backend",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "pytest-timeout>=2.3",
+    "ruff>=0.9",
+]
+
+[tool.uv]
+# Root project is a workspace aggregator only; it ships no importable package.
+package = false
+
+[tool.uv.workspace]
+members = ["packages/*", "apps/backend"]
+
+[tool.uv.sources]
+logistics-domain = { workspace = true }
+logistics-contracts = { workspace = true }
+logistics-optimization = { workspace = true }
+logistics-simulation = { workspace = true }
+logistics-agents = { workspace = true }
+logistics-evaluation = { workspace = true }
+logistics-backend = { workspace = true }
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+# Unit and integration tests deliberately share the same module basename
+# (test_pXX_YY_*.py) as required by the task manifest, so module-name import would
+# collide; importlib mode keeps same-named test modules isolated per directory.
+addopts = "-ra --strict-markers --strict-config --import-mode=importlib"
+markers = [
+    "integration: tests that cross a real module or service boundary",
+    "requires_postgres: needs an isolated PostgreSQL via TEST_DATABASE_URL",
+]
+filterwarnings = ["error::DeprecationWarning:logistics_.*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["apps/backend/src", "packages/*/src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["E501"]

@@ -1,0 +1,14 @@
+{
+  "check_id": "clean-install-driver",
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+    "-B",
+    "tmp/N05/clean_install.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 4294967295,
+  "started_at": "2026-10-04T20:34:15.312834+00:00",
+  "finished_at": "2026-10-04T20:41:10.482690+00:00",
+  "log_path": "artifacts/handoffs/N05/codex/commands/clean-install-driver.log",
+  "log_sha256": "3185a3f3a5d08fd3f33941fd63fac25087dba78d4cdd2c4c47150a3329ad0a12"
+}

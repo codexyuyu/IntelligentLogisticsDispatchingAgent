@@ -1,0 +1,86 @@
+{
+  "created_at": "2026-10-04T20:43:45.161113+00:00",
+  "file_count": 13,
+  "prior_review_existed": false,
+  "byte_identical": true,
+  "files": [
+    {
+      "original_path": "artifacts/gates/G01.json",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01.json",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "bytes": 30348
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/clean-install-imports.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/clean-install-imports.log",
+      "sha256": "c844004887cf60881505507a12f6caf43d1ac7d449b275524bed625f8a73fba2",
+      "bytes": 1312
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "sha256": "991449a0cbcae350577e9e76d23a72b78ad4bea1f926b34c51091d15ef75bb7c",
+      "bytes": 1042
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/layer-boundaries.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/layer-boundaries.log",
+      "sha256": "6fef6bd196c19eca8ae632dcb1205de70516d1631f6643dbdcd8a43f9442a3bc",
+      "bytes": 479
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/lock-reproducible.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/lock-reproducible.log",
+      "sha256": "54b25e770e09fb3b373ca8856e5f8d32259133172d552fde6f67b386f853d3d8",
+      "bytes": 385
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "sha256": "011042b19a36c8f0f122ee8761321a960c9ab5c085d848b39e2394f99cbc89cb",
+      "bytes": 580
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "sha256": "35dca72995d08ef89be87d1f4f593e8e8df27ec2a548ac043e1a6a0e99d8d1fa",
+      "bytes": 398
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "sha256": "0957b19f924802a13bb0e1637a4bd97fc65e19792e7c3bd2fcb0d1d00589d52b",
+      "bytes": 384
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "sha256": "3f4658c01541e83b22a9763fcb9f6fbc31aafcf737a44b29d6eccf6a882b2047",
+      "bytes": 588
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "sha256": "660dfb04b5af188f79831398a16d5e17da3e669f28b9cabe34d0d6bfe662b158",
+      "bytes": 474
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "sha256": "f6a03aaf6a84896dc7ad188479773cab8e73d5edb251b7cdbb31786571b5600b",
+      "bytes": 665
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "sha256": "42466048dd925d3ece2a5a8e21ad5620ddd9054e19e8f6b7ba30b0dc5e6cff52",
+      "bytes": 474
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "archive_path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "sha256": "e0cde6b9b1a90e0aef79bd1b5c540370df172283cf7df2d3ab1ec306a98df0c9",
+      "bytes": 393
+    }
+  ]
+}

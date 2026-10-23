@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tmp/N01-R02/examples/verify_design_examples.py",
+    "final01"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T14:01:58.771648+00:00",
+  "finished_at": "2026-10-04T14:02:01.700368+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-final01.log",
+  "log_hash": "da533b48ca41f9003d107e48f8eaa60f53d035e4cce5dddfe90db8cfcd9a60e2",
+  "verified_input_hashes": {
+    "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "tmp/N01-R02/scope-before.json": "c2318084aab658689467c22f60cf24458f2eef99005d088dd34abbb775ad8299",
+    "tmp/N01-R01/verify_contracts.py": "bf93287d4d68e2a05d7cdb3f482da6d196787e6fe3ce980097a907c4eedbfa42",
+    "tmp/N01-R02/examples/verify_design_examples.py": "596f6977f952acb218e430786cc0f866034672ff97bb3f6d891e1a3b5fb4e118",
+    "tmp/N01-R02/examples/event_reference_examples.py": "fab928af04142838439bdce20256955cdefa84c1b100811cb84a128a39640a58",
+    "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+    "tools/ai_coding_plan/render_plan.py": "049699b81267c49c2794a5c3ef71aee5c8fbe202df79cfd100565ffc2fb5249b"
+  },
+  "result_path": "artifacts/handoffs/N01-R02/codex/examples/contract-validation-final01.json",
+  "examples_path": "artifacts/handoffs/N01-R02/codex/examples/contract-examples-final01.json",
+  "limitation": "Executable design checks only; no Gate signature or business engine acceptance."
+}

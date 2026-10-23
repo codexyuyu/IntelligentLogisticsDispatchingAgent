@@ -1,0 +1,52 @@
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "sync", "--frozen", "--offline"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:43:16.810076+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+
+## stderr
+Using CPython 3.12.10 interpreter at: C:\Users\30382\AppData\Local\Programs\Python\Python312\python.exe
+Creating virtual environment at: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main\fresh-python-env-r02
+Installed 39 packages in 1.22s
+ + absl-py==2.5.0
+ + annotated-doc==0.0.5
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + click==8.5.0
+ + colorama==0.4.6
+ + fastapi==0.141.1
+ + h11==0.16.0
+ + idna==3.19
+ + immutabledict==4.3.1
+ + iniconfig==2.3.0
+ + logistics-agents==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/agents)
+ + logistics-backend==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/apps/backend)
+ + logistics-contracts==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/contracts)
+ + logistics-domain==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/domain)
+ + logistics-evaluation==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/evaluation)
+ + logistics-optimization==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/optimization)
+ + logistics-simulation==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/simulation)
+ + numpy==2.5.3
+ + ortools==9.15.6755
+ + packaging==26.3
+ + pandas==3.0.5
+ + pluggy==1.6.0
+ + protobuf==6.33.6
+ + pydantic==2.13.5
+ + pydantic-core==2.46.5
+ + pygments==2.21.0
+ + pytest==9.1.1
+ + pytest-asyncio==1.4.0
+ + pytest-timeout==2.4.0
+ + python-dateutil==2.9.0.post0
+ + ruff==0.16.7
+ + simpy==4.1.2
+ + six==1.17.0
+ + starlette==1.6.0
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + tzdata==2026.4
+ + uvicorn==0.52.4
+
+## exit_code: 0

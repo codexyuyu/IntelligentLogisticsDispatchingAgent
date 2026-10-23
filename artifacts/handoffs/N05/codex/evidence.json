@@ -1,0 +1,342 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "N05",
+  "phase_gate": "G01",
+  "status": "PASSED",
+  "reviewer": "Codex N05 /root/n05_independent (fresh independent reviewer; not an implementer of this candidate)",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "generated_at": "2026-10-04T20:48:30.347435+00:00",
+  "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+  "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+  "candidate_file_count": 77,
+  "official_G01_valid": true,
+  "official_G01_sha256": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8",
+  "review_sha256": "1cfd47668b64b49062c14eb0af648d8fd23eaf86748bc0b68ecb3421331e185d",
+  "dependency_evidence_hashes": {
+    "G00": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4"
+  },
+  "final_audit": {
+    "task_id": "N05",
+    "status": "PASSED",
+    "official_G01_valid": true,
+    "audited_at": "2026-10-04T20:46:00.667968+00:00",
+    "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+    "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+    "candidate_file_count": 77,
+    "G01_sha256": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8",
+    "review_sha256": "1cfd47668b64b49062c14eb0af648d8fd23eaf86748bc0b68ecb3421331e185d",
+    "G00_sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+    "official_input_count": 40,
+    "review_input_count": 371,
+    "official_task_tests": [
+      56,
+      96,
+      74
+    ],
+    "full_regression_tests": 226,
+    "independent_probe_count": 52,
+    "official_command_count": 7,
+    "assertion_count": 5,
+    "official_raw_log_hashes": {
+      "artifacts/gates/G01-logs/clean-install-imports.log": "94e609489d5b61deb61a3a996eea801adf9aa4bb4ae16d4ac2ee3990a18d4e51",
+      "artifacts/gates/G01-logs/layer-boundaries-json.log": "e2f166bbcf41b33b8df4348310728ebae34ff140347159d0d338330551f4fcc5",
+      "artifacts/gates/G01-logs/layer-boundaries.log": "c1c8e4e9edc50d787732d72ef41a15f0c2c9585441bea8a62c15eae601ca8ce0",
+      "artifacts/gates/G01-logs/lock-reproducible.log": "fb9c0eb138949d2a2ef37d42749aaddb27fa1cd2d65e0a8ba73d28dda12e5761",
+      "artifacts/gates/G01-logs/P01-01-cmd1.log": "0adbbade78d8aac21fceb35faed46e74a371b014eddf3a33e61666c0b941b882",
+      "artifacts/gates/G01-logs/P01-01-cmd2.log": "ec5ecde45f639a1de3cd15f52345a6e8b13235f5895600617f9cd4c3adc15abc",
+      "artifacts/gates/G01-logs/P01-01-cmd3.log": "835438e65f6e120bead9729b16260e752d95a8ac4ca9e35be930195a11537d9d",
+      "artifacts/gates/G01-logs/P01-02-cmd1.log": "249822d1a13dd8774023d8ddaa0846c44274285499348a29da12203a9fef49bf",
+      "artifacts/gates/G01-logs/P01-02-cmd2.log": "1549765c1c71addb73d909c6c78221d08f4bfa7a9ab0dad21ba68325670f1e3b",
+      "artifacts/gates/G01-logs/P01-03-cmd1.log": "687eff690993c43868f1474e8e6719a24ed7a91dbf1e8e28df84e64a7ae1c67a",
+      "artifacts/gates/G01-logs/P01-03-cmd2.log": "257f960ca21c10710a556bd1bfc49d92cde47c4d1c46252e28abca4ebfdeb33d",
+      "artifacts/gates/G01-logs/runner-fails-closed-probe.log": "7d1bf6703821d7200961adb6841462a620ebf1b6ef8c1058d5fe721fae69f4b0"
+    },
+    "official_run_command": {
+      "check_id": "official-g01",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "python",
+        "scripts/gates.py",
+        "--phase",
+        "01",
+        "--revision",
+        "auto"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:43:58.837912+00:00",
+      "finished_at": "2026-10-04T20:44:51.159917+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/official-g01.log",
+      "log_sha256": "0dbd52ac9518be07b186f40c90b32b179640db13a6a11895f8737aae9f857d09"
+    },
+    "archive_count": 13,
+    "problems": []
+  },
+  "commands": [
+    {
+      "check_id": "cache-seed",
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+        "-B",
+        "tmp/N05/seed_cache.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:43:02.518297+00:00",
+      "finished_at": "2026-10-04T20:43:09.665940+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/cache-seed.log",
+      "log_sha256": "5c1cab567f127fdc8a7c55e5714a4f65416efb9c06b1114a0e46aca216a7dd77"
+    },
+    {
+      "check_id": "check-only-driver",
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+        "-B",
+        "tmp/N05/check_only_verify.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:45:51.419018+00:00",
+      "finished_at": "2026-10-04T20:45:51.857302+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/check-only-driver.log",
+      "log_sha256": "d1b94a60a82f11379a983a847863f2c66a921694b109ce5cda6d174251268fc6"
+    },
+    {
+      "check_id": "clean-env-outside-imports-r02",
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import importlib,json,pathlib,sys\nnames=['logistics_domain','logistics_contracts','logistics_optimization','logistics_simulation','logistics_agents','logistics_evaluation']\nout={n:str(pathlib.Path(importlib.import_module(n).__file__).resolve()) for n in names}\nprint(json.dumps({'executable':sys.executable,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'resolved':out}))\n"
+      ],
+      "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\outside-cwd",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:43:18.138608+00:00",
+      "finished_at": "2026-10-04T20:43:18.282269+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/clean-env-outside-imports-r02.log",
+      "log_sha256": "085d1ba8e3da8b628df329441f07917ca485fc023c217cc3e4fb00f0e3817ed2"
+    },
+    {
+      "check_id": "clean-env-sync",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "sync",
+        "--frozen"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4294967295,
+      "started_at": "2026-10-04T20:34:15.396853+00:00",
+      "finished_at": "2026-10-04T20:41:10.462185+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/clean-env-sync.log",
+      "log_sha256": "09280492fe2de6216fbdff1d5caaca573e41380cc49c27238171154c1e417a0b"
+    },
+    {
+      "check_id": "clean-env-sync-r02",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "sync",
+        "--frozen",
+        "--offline"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:43:16.810076+00:00",
+      "finished_at": "2026-10-04T20:43:18.120072+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/clean-env-sync-r02.log",
+      "log_sha256": "3858f6741c9d93c9f080ea08131b9131677a0cd891b5f6140297b41624bfe774"
+    },
+    {
+      "check_id": "clean-install-driver",
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+        "-B",
+        "tmp/N05/clean_install.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4294967295,
+      "started_at": "2026-10-04T20:34:15.312834+00:00",
+      "finished_at": "2026-10-04T20:41:10.482690+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/clean-install-driver.log",
+      "log_sha256": "3185a3f3a5d08fd3f33941fd63fac25087dba78d4cdd2c4c47150a3329ad0a12"
+    },
+    {
+      "check_id": "clean-install-driver-r02",
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+        "-B",
+        "tmp/N05/clean_install.py",
+        "r02"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:43:16.718028+00:00",
+      "finished_at": "2026-10-04T20:43:18.325084+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/clean-install-driver-r02.log",
+      "log_sha256": "a22ccf0b7250ec883f3d8c66ea21ce29a34970283060d4c6da33707a04a470a6"
+    },
+    {
+      "check_id": "final-audit",
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+        "-B",
+        "tmp/N05/final_audit.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:46:00.303111+00:00",
+      "finished_at": "2026-10-04T20:46:00.705966+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/final-audit.log",
+      "log_sha256": "f2da035d33b981b56e2763dcc25c712c2d57f5a74c8ba5439757e5a59637820d"
+    },
+    {
+      "check_id": "full-regression",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "started_at": "2026-10-04T20:29:52.524077+00:00",
+      "finished_at": "2026-10-04T20:30:25.044253+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/full-regression.log",
+      "log_sha256": "bc69959d7f9239c944312c2711cd212a7ce59f0ab0b7a742fe6ddc756b5b2431"
+    },
+    {
+      "check_id": "full-regression-r02",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:30:59.909240+00:00",
+      "finished_at": "2026-10-04T20:31:46.858783+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/full-regression-r02.log",
+      "log_sha256": "608d2e657e53d84cce6391401c6896026c5d22f12bf56e7b1ca8d6449a9eaa4d"
+    },
+    {
+      "check_id": "independent-probes",
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+        "-B",
+        "tmp/N05/probes.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:33:57.637002+00:00",
+      "finished_at": "2026-10-04T20:34:05.710998+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/independent-probes.log",
+      "log_sha256": "b392a8e61ec1379404377d65a860d90c979b0263980f458e18c6e9ba33bb20bc"
+    },
+    {
+      "check_id": "initial-audit",
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+        "-B",
+        "tmp/N05/audit.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:29:22.556591+00:00",
+      "finished_at": "2026-10-04T20:29:22.884557+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/initial-audit.log",
+      "log_sha256": "318d57c9fa0544f18957eb76704228881cb24c4e1fab0dc07b8aff867d9bb136"
+    },
+    {
+      "check_id": "official-check-only",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "python",
+        "scripts/gates.py",
+        "--phase",
+        "01",
+        "--revision",
+        "auto",
+        "--check-only"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:45:51.528449+00:00",
+      "finished_at": "2026-10-04T20:45:51.839879+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/official-check-only.log",
+      "log_sha256": "011e55aafa2f44346c7e3b21def9d345a04027015446b3fbc6940715bcfa97be"
+    },
+    {
+      "check_id": "official-g01",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "python",
+        "scripts/gates.py",
+        "--phase",
+        "01",
+        "--revision",
+        "auto"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:43:58.837912+00:00",
+      "finished_at": "2026-10-04T20:44:51.159917+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/official-g01.log",
+      "log_sha256": "0dbd52ac9518be07b186f40c90b32b179640db13a6a11895f8737aae9f857d09"
+    },
+    {
+      "check_id": "ownership-current",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "python",
+        "scripts/check_ownership.py",
+        "--json"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:36:11.257919+00:00",
+      "finished_at": "2026-10-04T20:36:14.387452+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/ownership-current.log",
+      "log_sha256": "2df3612b07461692a02d407d59d5cc94807ffa9f60ddd459d12f4e05c64cfa6a"
+    },
+    {
+      "check_id": "review-and-archive",
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE",
+        "-B",
+        "tmp/N05/review_and_archive.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-04T20:43:44.596520+00:00",
+      "finished_at": "2026-10-04T20:43:45.308939+00:00",
+      "log_path": "artifacts/handoffs/N05/codex/commands/review-and-archive.log",
+      "log_sha256": "1e4abd7f25cde58abd773b82c002fa1c15190973fa07330f877cc8d3b9f1e3ec"
+    }
+  ],
+  "limitations": [
+    "Phase 01 covers workspace bootstrap, checks, evidence execution and migration governance only. No database, solver, simulation, LLM or browser business acceptance is claimed.",
+    "Git repository and actual GitHub Actions runs are absent. Node runtime is the installed compatible 24.18.0; Node 22 itself was not exercised.",
+    "First N05 full run: 139 passed/87 setup errors because the shared system pytest temp directory denied access. A unique PYTEST_DEBUG_TEMPROOT removed that external condition; unchanged candidate then produced 226 passed/exit0. Both raw logs are retained.",
+    "The first fresh environment installation used an empty cache and was stopped after 415 seconds of incomplete network downloads. The successful fresh installation used --frozen --offline after locked package artifacts from the existing local cache were copied into the task-only cache; no global cache or dependency lock was edited.",
+    "The successful regression reports one non-fatal PytestCacheWarning for the pre-existing repository .pytest_cache permission; tests and assertions were not weakened.",
+    "The runner native import probe executes in the repository cwd; N05 separately verified the required outside-cwd imports using -I and a truly fresh external environment.",
+    "G02-G39 business assertions are not registered in the current runner. This review does not authorize signing those Gates without the separately scoped coverage governance."
+  ],
+  "findings": [],
+  "implementation_edits": [],
+  "precheck_edits": [],
+  "dispatched_tasks": [],
+  "next_executor": "root orchestrator: dispatch only P02-01 after verifying current G01 closure",
+  "report": {
+    "path": "docs/handoffs/N05/codex.md",
+    "sha256": "94b1bc53ac5d0a0f49507946d5bd4ff392f10570e1621017b77fdbbf04a9c238"
+  }
+}

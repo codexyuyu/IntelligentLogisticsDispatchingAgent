@@ -1,0 +1,17 @@
+# check: p01-01-cmd3-npm-ci-run1
+# argv: ["npm", "ci"]
+# resolved_executable: C:\Program Files\nodejs\npm.CMD
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T15:55:01.480989+00:00
+# expectation: exit 0
+# package-lock.json sha256 before: fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+# package-lock.json sha256 after:  fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+
+## stdout
+
+added 4 packages in 53s
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 52858

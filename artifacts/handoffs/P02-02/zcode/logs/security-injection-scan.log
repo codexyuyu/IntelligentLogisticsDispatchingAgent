@@ -1,0 +1,10 @@
+########## SECURITY: shell/injection entry scan (scripts, apps, packages, tests)
+-- shell=True / os.system / eval / exec / pickle.loads:
+-- (empty above = none)
+-- f-string/format/concat SQL entry points:
+tests\integration\test_p01_02_checks_and_gate_runner.py:179:                "task_doc": TASK_DOC.format(task=task_id),
+tests\integration\test_p01_02_checks_and_gate_runner.py:180:                "report": TASK_REPORT.format(task=task_id),
+tests\integration\test_p01_02_checks_and_gate_runner.py:194:        self.write(TASK_DOC.format(task=task_id), "# task doc\n")
+tests\integration\test_p01_02_checks_and_gate_runner.py:195:        self.write(TASK_REPORT.format(task=task_id), "# report\n")
+-- (empty above = none)
+EXIT_CODE=0

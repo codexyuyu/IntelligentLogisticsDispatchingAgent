@@ -1,0 +1,14 @@
+{
+  "check_id": "clean-env-sync",
+  "argv": [
+    "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+    "sync",
+    "--frozen"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 4294967295,
+  "started_at": "2026-10-04T20:34:15.396853+00:00",
+  "finished_at": "2026-10-04T20:41:10.462185+00:00",
+  "log_path": "artifacts/handoffs/N05/codex/commands/clean-env-sync.log",
+  "log_sha256": "09280492fe2de6216fbdff1d5caaca573e41380cc49c27238171154c1e417a0b"
+}

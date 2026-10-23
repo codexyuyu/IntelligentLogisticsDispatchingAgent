@@ -1,0 +1,27 @@
+baseline: 0 violations over 7 modules
+
+RULE TABLES (read from the checker itself):
+  backend layer paths    : ['apps/backend/src']
+  => all of apps/backend/src is ONE layer; no adapter-versus-application sub-rule exists
+  sqlalchemy forbidden in: ['domain']
+  alembic    forbidden in: ['domain']
+  psycopg    forbidden in: ['domain']
+  => ORM/driver imports are hard-forbidden only inside the domain layer
+
+SCENARIO A) backend does NOT declare sqlalchemy
+  violations: 1
+    ARCH-UNDECLARED: imports 'sqlalchemy' but member backend does not declare 'sqlalchemy'
+  ORM import in the API layer: DETECTED
+
+SCENARIO B) backend DOES declare sqlalchemy
+  violations: 0
+  ORM import in the API layer: NOT DETECTED
+
+CONCLUSION
+  Scenario A detection comes only from ARCH-UNDECLARED, i.e. from the dependency not
+  being declared yet. P03-01 must add the ORM to apps/backend/pyproject.toml for the
+  persistence adapter to work at all, which switches the repository into scenario B.
+  In scenario B nothing flags an ORM import in the API or application layer, so the
+  obligation 'ORM must not leave the adapter' has no automated enforcement inside the
+  single backend layer, and acceptance criterion 3 ('dependency boundary check passes')
+  would be a vacuous pass for exactly that obligation.

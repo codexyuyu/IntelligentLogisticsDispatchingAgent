@@ -1,0 +1,221 @@
+{
+  "freeze": [
+    {
+      "path": "PROJECT_MASTER_PLAN.md",
+      "recorded": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+      "actual": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b"
+    },
+    {
+      "path": "TASK_GRAPH.md",
+      "recorded": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+      "actual": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207"
+    },
+    {
+      "path": "docs/architecture/ARCHITECTURE_OVERVIEW.md",
+      "recorded": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+      "actual": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb"
+    },
+    {
+      "path": "docs/architecture/DOMAIN_CATALOG.md",
+      "recorded": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+      "actual": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35"
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "recorded": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+      "actual": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a"
+    },
+    {
+      "path": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "recorded": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+      "actual": "9f24acf68605981f85890d16e614976c4a9f4c6268c7c4e6138609f75d227d91"
+    },
+    {
+      "path": "docs/api/API_CONTRACT.md",
+      "recorded": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+      "actual": "b9104cd2bc26f39c7c529924ea68903420560488b514e0845ae953a2794364d9"
+    },
+    {
+      "path": "docs/algorithms/OPTIMIZATION_CONTRACT.md",
+      "recorded": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+      "actual": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8"
+    },
+    {
+      "path": "docs/algorithms/SIMULATION_CONTRACT.md",
+      "recorded": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+      "actual": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c"
+    },
+    {
+      "path": "docs/algorithms/METRICS_CONTRACT.md",
+      "recorded": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+      "actual": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4"
+    },
+    {
+      "path": "docs/plan/TEST_FIXTURES.md",
+      "recorded": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+      "actual": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f"
+    },
+    {
+      "path": "docs/plan/PHASE_GATES.md",
+      "recorded": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+      "actual": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05"
+    }
+  ],
+  "freeze_drift": [
+    "docs/architecture/DOMAIN_CATALOG.md",
+    "docs/architecture/DATA_CONTRACTS.md",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+    "docs/api/API_CONTRACT.md"
+  ],
+  "g00_inputs": [
+    {
+      "path": "docs/architecture/BASELINE_INVENTORY.json",
+      "recorded": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+      "actual": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93"
+    },
+    {
+      "path": "docs/architecture/BASELINE_INVENTORY.md",
+      "recorded": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694",
+      "actual": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694"
+    },
+    {
+      "path": "docs/architecture/MIGRATION_MAP.md",
+      "recorded": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b",
+      "actual": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b"
+    },
+    {
+      "path": "docs/implementation/P00-01.md",
+      "recorded": "ce86f77f11cfab16e8c08b9ff00edcf9835351d0e1b3f87d3d91e63b984b1833",
+      "actual": "ce86f77f11cfab16e8c08b9ff00edcf9835351d0e1b3f87d3d91e63b984b1833"
+    },
+    {
+      "path": "docs/implementation/reports/P00-01.md",
+      "recorded": "888e208ee01519ffc30868ca7902fe9c42b78d41e5f6006e6e746b98f2405865",
+      "actual": "888e208ee01519ffc30868ca7902fe9c42b78d41e5f6006e6e746b98f2405865"
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.json",
+      "recorded": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "actual": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2"
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.md",
+      "recorded": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "actual": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+    },
+    {
+      "path": "docs/architecture/issues/README.md",
+      "recorded": "93bd4ed9a23fa988001c5d535f28a9b86a923fc37c75512b5eb3e73002671695",
+      "actual": "c0c8c3ff2c88c3fc6de818a8cf9ec866fe644479ba3b88b0c3911024d109256d"
+    },
+    {
+      "path": "docs/implementation/P00-02.md",
+      "recorded": "a0eae411e5e68b9dc358b8ac100ebe0919fbf01a0350453ef3a44342918f73f4",
+      "actual": "a0eae411e5e68b9dc358b8ac100ebe0919fbf01a0350453ef3a44342918f73f4"
+    },
+    {
+      "path": "docs/implementation/reports/P00-02.md",
+      "recorded": "dba5fe5f8a3bd5c05bbc5e331b4ee126ca95af4e2b1c00637dfd10497133dff2",
+      "actual": "dba5fe5f8a3bd5c05bbc5e331b4ee126ca95af4e2b1c00637dfd10497133dff2"
+    },
+    {
+      "path": "docs/plan/GATE_EXECUTION_CONTRACT.md",
+      "recorded": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+      "actual": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa"
+    },
+    {
+      "path": "docs/implementation/P00-03.md",
+      "recorded": "dddda2c1a9b9619cb86625e6c825b0e2280bf833b19256ae4e5dc5430469a688",
+      "actual": "dddda2c1a9b9619cb86625e6c825b0e2280bf833b19256ae4e5dc5430469a688"
+    },
+    {
+      "path": "docs/implementation/reports/P00-03.md",
+      "recorded": "61fa11c736daeb59e7515303c6bff1db4a2cda55e11965936b50fb0eac33279c",
+      "actual": "61fa11c736daeb59e7515303c6bff1db4a2cda55e11965936b50fb0eac33279c"
+    },
+    {
+      "path": "PROJECT_MASTER_PLAN.md",
+      "recorded": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+      "actual": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b"
+    },
+    {
+      "path": "TASK_GRAPH.md",
+      "recorded": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+      "actual": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207"
+    },
+    {
+      "path": "docs/algorithms/METRICS_CONTRACT.md",
+      "recorded": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+      "actual": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4"
+    },
+    {
+      "path": "docs/algorithms/OPTIMIZATION_CONTRACT.md",
+      "recorded": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+      "actual": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8"
+    },
+    {
+      "path": "docs/algorithms/SIMULATION_CONTRACT.md",
+      "recorded": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+      "actual": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c"
+    },
+    {
+      "path": "docs/api/API_CONTRACT.md",
+      "recorded": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+      "actual": "b9104cd2bc26f39c7c529924ea68903420560488b514e0845ae953a2794364d9"
+    },
+    {
+      "path": "docs/architecture/ARCHITECTURE_OVERVIEW.md",
+      "recorded": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+      "actual": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb"
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "recorded": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+      "actual": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a"
+    },
+    {
+      "path": "docs/architecture/DOMAIN_CATALOG.md",
+      "recorded": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+      "actual": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35"
+    },
+    {
+      "path": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "recorded": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+      "actual": "9f24acf68605981f85890d16e614976c4a9f4c6268c7c4e6138609f75d227d91"
+    },
+    {
+      "path": "docs/plan/PHASE_GATES.md",
+      "recorded": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+      "actual": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05"
+    },
+    {
+      "path": "docs/plan/TEST_FIXTURES.md",
+      "recorded": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+      "actual": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f"
+    }
+  ],
+  "g00_input_drift": [
+    "docs/architecture/issues/README.md",
+    "docs/api/API_CONTRACT.md",
+    "docs/architecture/DATA_CONTRACTS.md",
+    "docs/architecture/DOMAIN_CATALOG.md",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md"
+  ],
+  "g00_log_hashes": [
+    {
+      "path": "artifacts/gates/G00-checks.log",
+      "recorded": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "actual": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56"
+    }
+  ],
+  "dependency_evidence": {},
+  "runner_checks": [
+    {
+      "id": "previous-gate:G00",
+      "gate": "G01",
+      "description": "前序 Gate 证据有效",
+      "passed": false,
+      "detail": "frozen input docs/api/API_CONTRACT.md drifted after the gate was recorded; frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded; frozen input docs/architecture/DOMAIN_CATALOG.md drifted after the gate was recorded; frozen input docs/architecture/IMPLEMENTATION_CONVENTIONS.md drifted after the gate was recorded; frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+    }
+  ]
+}

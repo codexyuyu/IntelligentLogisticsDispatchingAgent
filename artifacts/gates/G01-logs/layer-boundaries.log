@@ -1,0 +1,13 @@
+# check: layer-boundaries
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/check_architecture.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T09:19:57.448191+00:00
+# expectation: exit code 0 and no violations
+
+## stdout
+architecture-layers: scanned 10 module(s) across 7 layer(s); violations=0
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 186

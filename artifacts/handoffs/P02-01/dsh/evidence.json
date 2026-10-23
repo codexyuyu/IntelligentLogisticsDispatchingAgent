@@ -1,0 +1,410 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P02-01",
+  "round": "p02-01-f01-2026-10-05",
+  "scene": "primitives-and-states-f01-reservation-rework",
+  "title": "实现领域 ID、单位与唯一状态枚举",
+  "phase_gate": "G02",
+  "status": "READY_FOR_ZCODE",
+  "role": "dsh",
+  "owner": "A",
+  "signs_gate": false,
+  "next_executor": "ZCode independent P02-01 re pre-acceptance on the F01 candidate (does not sign G02)",
+  "generated_at": "2026-10-05T04:21:20.027939+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "contract_versions": {
+    "plan": "1.0.3",
+    "business": "2.0.0",
+    "gate_evidence_schema": "1.0.0",
+    "handoff_contract": "docs/workflow/HANDOFF_CONTRACT.md v1.0.0"
+  },
+  "candidate": {
+    "vcs": "no .git in this checkout; identity is the content-sha256 candidate manifest",
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "formula": "content-sha256: + sha256(\"\\n\".join(path + \"\\0\" + sha256(file_bytes)))",
+    "dirty_tree_formula": "content-sha256: + sha256(\"\\n\".join(path + \"\\0\" + size + \"\\0\" + sha256(file_bytes)))",
+    "relevant_file_count": 82,
+    "code_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+    "dirty_tree_hash": "content-sha256:eaea942624f00e5da16e89a3e744d3a2c1c659fcf9eeda0a23787116681d636f",
+    "previous_candidate": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "recomputed_by": "tmp/P02-01/F01/build-delivery.py via GateRunner.relevant_manifest_rows()",
+    "changed_by": "P02-01-F01 limited rework of the Reservation lifecycle"
+  },
+  "dependency_evidence": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "status": "passed",
+      "finished_at": "2026-10-04T14:48:59.955285+00:00",
+      "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+      "recorded_inputs_stale": []
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+      "status": "passed",
+      "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+      "recorded_inputs_total": 40,
+      "recorded_inputs_stale": [],
+      "validity": "the record bytes are unchanged, but the source/test changes of this authorised rework make part of its recorded inputs stale; independent restoration by the dispatcher is required",
+      "ds actionable": "DSH did not edit, re-sign or re-run the gate; the old record is preserved byte-for-byte",
+      "was_valid_at_rework_start": true,
+      "code_revision_matches_current": false,
+      "is_stale": true,
+      "staleness_cause": "recorded code_revision is the previous candidate; the 40 recorded input hashes themselves are all fresh"
+    },
+    "G01_review": {
+      "path": "artifacts/gates/G01-codex-review.json",
+      "sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+      "status": "approved",
+      "reviewer": "Codex N05-R01 /root/n05_independent (original independent reviewer; no candidate implementation edits)",
+      "verified_inputs_total": 262,
+      "verified_inputs_stale": [
+        "docs/implementation/P02-01.md",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ],
+      "validity": "the review bytes are unchanged; the same source/test changes make part of its inputs stale",
+      "code_revision_matches_current": false,
+      "verified_inputs_stale_count": 8,
+      "is_stale": true
+    },
+    "P01-01_zcode_precheck": {
+      "path": "artifacts/handoffs/P01-01/zcode/precheck.json",
+      "sha256": "7ae3e9d6f22c86c4b6a62679dcebdbab291317bfc2901147437ec331afa8180b",
+      "status": "Z_PRECHECK_PASSED",
+      "verified_inputs_total": 57,
+      "verified_inputs_stale": [
+        "artifacts/handoffs/P02-01/dsh/evidence.json",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ],
+      "note": "this phase-1 pre-acceptance had also bound P02-01 files, so the rework staled those inputs; DSH did not modify it"
+    }
+  },
+  "deliverables_changed_by_this_round": [
+    "packages/domain/src/logistics_domain/states.py",
+    "tests/unit/test_p02_01_primitives_and_states.py",
+    "tests/integration/test_p02_01_primitives_and_states.py",
+    "docs/implementation/P02-01.md",
+    "docs/implementation/reports/P02-01.md"
+  ],
+  "artifacts": [
+    {
+      "path": "docs/implementation/P02-01.md",
+      "bytes": 8312,
+      "sha256": "f6941d7f5ed53dca0d84b6624035115c93febfac600042710648bed427e4f75b"
+    },
+    {
+      "path": "docs/implementation/reports/P02-01.md",
+      "bytes": 13001,
+      "sha256": "8ea212c9db3f5067706165c98530893817955c7538c037941c93e7c93506bb76"
+    },
+    {
+      "path": "packages/domain/src/logistics_domain/__init__.py",
+      "bytes": 2669,
+      "sha256": "21334c02c11a33f45445a12324be954187a5ed8ae775010158a0608946c50076"
+    },
+    {
+      "path": "packages/domain/src/logistics_domain/errors.py",
+      "bytes": 3180,
+      "sha256": "feb045410bcba16658d5def4143c746649386fe7fad9d9bc6ed31db4da11a56b"
+    },
+    {
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "bytes": 15734,
+      "sha256": "f86e18a4738f3841b45e14509bcc6bea80a5eebf30861f28ff919bf06c660304"
+    },
+    {
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "bytes": 37041,
+      "sha256": "297425132e3e5c8416332cd4e5f0f60c0dd3db9ae8e65b34e75d2af1f7013211"
+    },
+    {
+      "path": "tests/integration/test_p02_01_primitives_and_states.py",
+      "bytes": 10716,
+      "sha256": "59cae12cf21558dd23d7b53e0b1eba5f4da8f08f11f98b8f701e66e01de6c4fb"
+    },
+    {
+      "path": "tests/unit/test_p02_01_primitives_and_states.py",
+      "bytes": 28255,
+      "sha256": "c0104c13c7cadafbd07669cdcd4acf5de945ceeed7390c9f25a3700849460396"
+    }
+  ],
+  "commands_executed": [
+    {
+      "id": "required-cmd1-pytest",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p02_01_primitives_and_states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "observed": {
+        "passed": 52,
+        "failed": 0
+      },
+      "expectation": "exit 0 with real passing P02-01 tests after the F01 Reservation fix",
+      "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-f01-2026-10-05/required-cmd1-pytest.log",
+      "log_sha256": "6399b5daab7e05b57cb5e626bfc18b87f10b77061657afd49633d0d15da0b69d",
+      "exit_code_and_counts_read_from_log": true,
+      "ran_this_round": true
+    },
+    {
+      "id": "required-cmd2-check-architecture",
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/check_architecture.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "observed": {
+        "violations": 0
+      },
+      "expectation": "exit 0; layer violations = 0",
+      "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-f01-2026-10-05/required-cmd2-check-architecture.log",
+      "log_sha256": "0f1ae76e098139f8404166790a63bac1b9707d707b3ba7a3e2e59933106ac745",
+      "exit_code_and_counts_read_from_log": true,
+      "ran_this_round": true
+    }
+  ],
+  "supplementary_commands": [],
+  "counts": {
+    "task_suites": {
+      "passed": 52,
+      "failed": 0
+    },
+    "architecture": {
+      "violations": 0
+    },
+    "phase_regression_new_candidate": null
+  },
+  "historical_regression_reference": {
+    "note": "NOT evidence for this candidate; recorded only so the earlier run is traceable",
+    "candidate": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/full-regression.log",
+    "sha256": "e2522e091ae2463ebc80623f1fd8ecc22d39cfb126cf50fcf1fabd98a81ded7a",
+    "observed": {
+      "passed": 272,
+      "failed": 0
+    },
+    "claim": "the F01 candidate has NOT been through a full-repository regression; the card forbids running one here"
+  },
+  "interface_contracts_implemented": {
+    "TimeWindow": "TimeWindow(earliest_s: int, latest_s: int) - closed service start window",
+    "transition": "transition(state: EntityState, event: Transition) -> EntityState"
+  },
+  "reservation_lifecycle_fix": {
+    "defect": "ZC-P02-01-F01 (major)",
+    "frozen_basis": "docs/architecture/DOMAIN_CATALOG.md:54 Reservation(held→committed→released/expired)",
+    "before": {
+      "entity_state_members": 69,
+      "released_present": false,
+      "reservation_edges": [
+        [
+          "held",
+          "committed"
+        ],
+        [
+          "held",
+          "cancelled"
+        ],
+        [
+          "held",
+          "expired"
+        ],
+        [
+          "committed",
+          "cancelled"
+        ]
+      ]
+    },
+    "after": {
+      "entity_state_members": 70,
+      "released_value": "released",
+      "reservation_edges": [
+        [
+          "held",
+          "committed"
+        ],
+        [
+          "committed",
+          "released"
+        ],
+        [
+          "committed",
+          "expired"
+        ]
+      ],
+      "terminal_states": [
+        "released",
+        "expired"
+      ]
+    },
+    "removed_unauthorised_edges": [
+      [
+        "held",
+        "cancelled"
+      ],
+      [
+        "held",
+        "expired"
+      ],
+      [
+        "committed",
+        "cancelled"
+      ]
+    ],
+    "global_cancellation_untouched": true,
+    "public_signature_unchanged": true,
+    "new_tests": [
+      "tests/unit/test_p02_01_primitives_and_states.py::test_reservation_lifecycle_matches_the_frozen_catalog_exactly",
+      "tests/unit/test_p02_01_primitives_and_states.py::test_released_is_a_serialized_terminal_state",
+      "tests/unit/test_p02_01_primitives_and_states.py::test_committed_reservation_can_be_released_or_expired",
+      "tests/unit/test_p02_01_primitives_and_states.py::test_reservation_unauthorised_and_reverse_edges_are_rejected",
+      "tests/unit/test_p02_01_primitives_and_states.py::test_reservation_graph_drops_cancellation_without_changing_other_entities",
+      "tests/integration/test_p02_01_primitives_and_states.py::test_reservation_row_in_the_catalog_is_transcribed_faithfully"
+    ]
+  },
+  "evidence_invalidated_by_this_round": [
+    {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+      "record_bytes_changed": false,
+      "stale_reason": "recorded code_revision is the previous candidate; recorded input hashes stale = 0"
+    },
+    {
+      "path": "artifacts/gates/G01-codex-review.json",
+      "sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+      "record_bytes_changed": false,
+      "stale_reason": "8 verified inputs stale; recorded code_revision is the previous candidate",
+      "stale_inputs": [
+        "artifacts/handoffs/P02-01/dsh/evidence.json",
+        "artifacts/handoffs/P02-01/dsh/seal.json",
+        "docs/handoffs/P02-01/dsh.md",
+        "docs/implementation/P02-01.md",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/zcode/precheck.json",
+      "sha256": "7ae3e9d6f22c86c4b6a62679dcebdbab291317bfc2901147437ec331afa8180b",
+      "record_bytes_changed": false,
+      "stale_reason": "5 verified inputs stale",
+      "stale_inputs": [
+        "artifacts/handoffs/P02-01/dsh/evidence.json",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ]
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/zcode/precheck.json",
+      "sha256": "e517feec33e50cc56f4627bc1c74ccb698b8fb288090aeee40f1ed32d0e32394",
+      "record_bytes_changed": false,
+      "stale_reason": "FAILED record bound to the previous candidate and its evidence"
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/dsh/evidence.json",
+      "sha256": "36f08ff6a8b983c8ba749ef1bbf6fc4b0ae157059e4036f1e6f7917ec274c4c8",
+      "record_bytes_changed": true,
+      "stale_reason": "previous candidate; archived byte-for-byte in dsh/archive/f01-before/"
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/dsh/seal.json",
+      "sha256": "cd6731c117a11215dbceb1d1878415db890172fdf35e6af1fa9516eb40b9ba1b",
+      "record_bytes_changed": true,
+      "stale_reason": "previous candidate; archived byte-for-byte"
+    },
+    {
+      "path": "docs/handoffs/P02-01/dsh.md",
+      "sha256": "b3de54ebb24300388bcec4c6911964252a2358eb6bf82fae2e9c2c7a13364d49",
+      "record_bytes_changed": true,
+      "stale_reason": "previous candidate; delivery text preserved with an appended pointer, original bytes archived"
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/*",
+      "record_bytes_changed": false,
+      "stale_reason": "belong to the previous candidate; not overwritten"
+    }
+  ],
+  "prior_bytes_archive": {
+    "root": "artifacts/handoffs/P02-01/dsh/archive/f01-before",
+    "manifest": "artifacts/handoffs/P02-01/dsh/archive/f01-before/archive-manifest.json",
+    "manifest_sha256": "97e8f3ce85947e5b4a49f426f04fb14adae6862b477562dd773f2b2ac9affbe5",
+    "file_count": 5
+  },
+  "whitelist_exception": {
+    "path": "packages/domain/src/logistics_domain/__init__.py",
+    "reason": "unchanged from the delivery round; listed here because it remains the only file this task ever touched outside its card whitelist"
+  },
+  "issues_to_register": [
+    {
+      "id": "ARCH-P02-01-A",
+      "title": "ConstraintCode / ViolationCode 归 P02-01 但无冻结成员表",
+      "status": "open"
+    },
+    {
+      "id": "ARCH-P02-01-B",
+      "title": "SafeArtifactPath 被 ArtifactRef 引用但无形状定义",
+      "status": "open"
+    },
+    {
+      "id": "ZC-P02-01-N01",
+      "title": "DOMAIN_CATALOG.md:39 created→running↔paused→completed 有两读，目录措辞需澄清",
+      "status": "open",
+      "severity": "minor",
+      "note": "non-blocking observation from the independent pre-acceptance; governance todo, not part of this rework"
+    }
+  ],
+  "limitations": [
+    "Only the P02-01 types are delivered; no entity, JSON Schema, OpenAPI or TS export exists yet, so the G02 criterion is not met by this task alone.",
+    "The full-repository regression was NOT run for the F01 candidate (the card forbids it); the 272-passed log belongs to the previous candidate and is recorded only as history.",
+    "ConstraintCode / ViolationCode have no frozen member list; this task delivers the typed name only and P10-01 owns the registry.",
+    "SafeArtifactPath has no frozen shape; a minimal safe relative-path reading was implemented.",
+    "Money does not constrain the sign; transition() judges legality against the union of catalog lifecycles because the frozen signature has no entity parameter.",
+    "The official G01 record and its review now have stale recorded inputs because this authorised rework changed source and test files; DSH did not edit or re-sign them."
+  ],
+  "remaining_risks": [
+    "G01 and its review must be restored by an independent party before G02 can be signed; this task must not do so.",
+    "Lifecycle edges remain a transcription of catalog prose; the reservation row is now asserted verbatim, other rows still rely on review.",
+    "EntityState is a cross-entity union; later tasks must not use it as a per-entity status (the reservation exactness test shows why the union is the wrong object for entity checks)."
+  ],
+  "secrets_recorded": [],
+  "executor_probe_after_rework": {
+    "argv": [
+      "uv",
+      "run",
+      "python",
+      "scripts/gates.py",
+      "--phase",
+      "01",
+      "--revision",
+      "auto",
+      "--check-only"
+    ],
+    "exit_code": 1,
+    "observed": [
+      "recorded revision 'dadad196...' differs from current 'content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c'",
+      "codex-review covers revision 'dadad196...', current is 'content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c'",
+      "codex-review stale inputs: ['artifacts/handoffs/P02-01/dsh/evidence.json', 'artifacts/handoffs/P02-01/dsh/seal.json', 'docs/handoffs/P02-01/dsh.md', 'docs/implementation/P02-01.md', 'docs/implementation/reports/P02-01.md', 'packages/domain/src/logistics_domain/states.py', 'tests/integration/test_p02_01_primitives_and_states.py', 'tests/unit/test_p02_01_primitives_and_states.py']",
+      "P01-01 precheck stale inputs: ['artifacts/handoffs/P02-01/dsh/evidence.json', 'docs/implementation/reports/P02-01.md', 'packages/domain/src/logistics_domain/states.py', 'tests/integration/test_p02_01_primitives_and_states.py', 'tests/unit/test_p02_01_primitives_and_states.py']"
+    ],
+    "log": "tmp/P02-01/F01/check-only-after-f01.log",
+    "note": "read-only probe; it wrote no gate record. It documents the exact drift handed to the dispatcher for independent restoration."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "task_id": "P01-03",
+  "round": "2026-10-04-pre-n03",
+  "archived_at_utc_source": "copied with shutil.copy2 (byte-identical; mtime preserved)",
+  "source_dir": "artifacts/handoffs/P01-03/dsh",
+  "file_count": 5,
+  "entries": [
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/evidence.json",
+      "archived_as": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/evidence.json",
+      "bytes": 8888,
+      "sha256": "1e3aef2fe57fdb445cad4deeef988d6f70f06f9fec8e8244f55018d60bd8c10e",
+      "source_sha256_at_copy": "1e3aef2fe57fdb445cad4deeef988d6f70f06f9fec8e8244f55018d60bd8c10e"
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/logs/check_architecture.log",
+      "archived_as": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/check_architecture.log",
+      "bytes": 592,
+      "sha256": "cef34d0963c81da7ab04f4086c81963a1da800787a2fc6d721a78be6f325ef08",
+      "source_sha256_at_copy": "cef34d0963c81da7ab04f4086c81963a1da800787a2fc6d721a78be6f325ef08"
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/logs/check_ownership.log",
+      "archived_as": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/check_ownership.log",
+      "bytes": 210,
+      "sha256": "572c9bf8081f56ed12a39f9b7eb7fb00626510eac44d1f6f68aa55a25365ad97",
+      "source_sha256_at_copy": "572c9bf8081f56ed12a39f9b7eb7fb00626510eac44d1f6f68aa55a25365ad97"
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/logs/gate-g01.log",
+      "archived_as": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/gate-g01.log",
+      "bytes": 4100,
+      "sha256": "c86a6a3d83b17078a11fb9ff93eaede3489622bb3f07038d1af31bfadfbb93fa",
+      "source_sha256_at_copy": "c86a6a3d83b17078a11fb9ff93eaede3489622bb3f07038d1af31bfadfbb93fa"
+    },
+    {
+      "path": "artifacts/handoffs/P01-03/dsh/logs/pytest.log",
+      "archived_as": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/pytest.log",
+      "bytes": 368,
+      "sha256": "d12b60d0de3341800d7b9c3e85644b05797c219d3eb1e150d32f58281b8d1633",
+      "source_sha256_at_copy": "d12b60d0de3341800d7b9c3e85644b05797c219d3eb1e150d32f58281b8d1633"
+    }
+  ]
+}

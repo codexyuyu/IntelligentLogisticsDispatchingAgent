@@ -1,0 +1,552 @@
+[
+  {
+    "cargo_ids": [
+      "f7e11510-3bdb-58b2-94c3-28c7b96e5433"
+    ],
+    "code": "T1",
+    "delivery_node_id": "5456405b-8403-5c58-a93d-71044a8a0cad",
+    "id": "4ec13042-4298-59aa-9248-7bada61c2b1e",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "626473ec-c41e-50df-8141-7cfcaca346ba",
+    "pickup_node_id": "9c03f1fa-126b-5004-8ac2-b0913217a625",
+    "predecessor_ids": [],
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "b5bed97d-f653-5fa7-8ca2-43e7abe02a9f"
+    ],
+    "code": "T2",
+    "delivery_node_id": "c9274bad-6228-5e23-b0ab-49eab5e9b066",
+    "id": "ff578f6c-cfad-5411-968f-63aa9c560856",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "2074fc40-5086-5d0a-8ab0-1e04543216b3",
+    "pickup_node_id": "9c03f1fa-126b-5004-8ac2-b0913217a625",
+    "predecessor_ids": [],
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "f964dda4-0b4b-5364-b812-fecd921bb5f2"
+    ],
+    "code": "T1",
+    "delivery_node_id": "34408b15-4ec2-5cf5-95a5-5334640dc18b",
+    "id": "6153d034-182a-5836-8c52-5fdaf0cd8d54",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "f51bc30e-7324-5782-9127-099cf5bc09e4",
+    "pickup_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "predecessor_ids": [],
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "ace8455c-52b8-5749-8e7c-2d65f0aceda4"
+    ],
+    "code": "T2",
+    "delivery_node_id": "4a061220-7692-5f83-9f69-29580c17083b",
+    "id": "8a046141-16cb-55fe-b11a-bfcdd092f3ac",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "416f809f-3e03-5218-8809-6022132826eb",
+    "pickup_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "predecessor_ids": [],
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "1c8b7724-15bc-500d-b283-04db5966e5a5"
+    ],
+    "code": "T3",
+    "delivery_node_id": "e2089d9e-411f-512f-9105-fcc2da0934fb",
+    "id": "49456d46-d4c6-57ab-95a5-5c37d94384f0",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "20b9487a-11ad-5660-ba57-d2d90ca4fff3",
+    "pickup_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "predecessor_ids": [],
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "836d1c60-0af7-5867-ad4a-9245650ce100"
+    ],
+    "code": "T4",
+    "delivery_node_id": "6d74faea-f56d-520e-b74d-9c76a02f229e",
+    "id": "63610657-6fbe-5594-b84d-d9909acf68fe",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "0699ded3-308f-5427-a128-07d858684ea2",
+    "pickup_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "predecessor_ids": [],
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "3579feb8-f7fd-5785-9a8b-07c2b2f6f32a"
+    ],
+    "code": "T5",
+    "delivery_node_id": "0b81cbec-bed7-5d1f-81ba-08f1afc3e6bf",
+    "id": "3bf06e3e-7351-581b-ae33-a195398ec0de",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "7f0560a7-ff1a-5ba7-b216-6950e9f317bd",
+    "pickup_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "predecessor_ids": [],
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "1a697ba8-da77-55f8-869b-f6713817731a"
+    ],
+    "code": "T6",
+    "delivery_node_id": "ca42cb10-206f-5da4-a98f-e3a4c66b793d",
+    "id": "cb3a2e80-dfd8-50b6-a858-0a0a19979f7c",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "0cc5c340-7f98-5932-b290-3aa030c3df25",
+    "pickup_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "predecessor_ids": [],
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "0b1c85a5-8e27-5f9b-89e8-41d950d6c3f7"
+    ],
+    "code": "T7",
+    "delivery_node_id": "8fb8ef9e-18cf-5f39-b66d-8e6651cc607c",
+    "id": "dab06d0b-8b7b-5f66-a4d2-01e85aa135fe",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "27b7c7ad-8f5f-5509-b887-31387743b33c",
+    "pickup_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "predecessor_ids": [],
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "66d60996-fac9-5bb6-9421-15aad98ef562"
+    ],
+    "code": "T8",
+    "delivery_node_id": "081c5255-3b4f-5e62-b760-e8c037ac0ccf",
+    "id": "3bedb128-3368-584b-9fa4-4ac9ee0cb7dd",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "d2e1b399-ba58-5afc-b212-aee6261b4495",
+    "pickup_node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "predecessor_ids": [],
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "6abe82f4-e6e4-5713-87f7-a17df06ececa"
+    ],
+    "code": "T1",
+    "delivery_node_id": "da7955be-864e-5ae1-b8e1-f1308d785fbc",
+    "id": "412971d0-69bb-5606-bced-15a65cfe5b47",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "842598ed-1ae7-5b6c-9103-3733e9e47c73",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "d00b37d7-a007-560a-974f-256dcd6fd060"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "e18af80f-65fe-5484-8986-cfbc645b05b3"
+    ],
+    "code": "T2",
+    "delivery_node_id": "eadb250c-7839-58dd-beb2-4e1b63423d02",
+    "id": "7e06d051-c672-502a-bd14-9585ce0d86cf",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "54cbe99e-977a-5237-9c74-9604527581f7",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "1376a6eb-ffc8-5798-ab28-9a0702331517"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "c69095d7-4f39-5ddc-baad-0067d9af250f"
+    ],
+    "code": "T3",
+    "delivery_node_id": "449e2527-36c9-5bf5-8ed5-7483c85c653e",
+    "id": "cc23dda5-d476-5e37-b844-8a6a5e81f1db",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "c59d1074-e9fd-57b8-9607-e4c751bc71e5",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "a3533581-ef17-573b-8405-ba6a6dcd69bb"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "992541fe-a3af-5af6-9920-092aba8c2635"
+    ],
+    "code": "T4",
+    "delivery_node_id": "7ab85c29-0448-5510-93bd-f31b00776743",
+    "id": "40b235ac-848d-585e-9279-56bd9763acf5",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "f41a26a7-85f3-5507-aa44-6a040145b155",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "dffb266e-a837-578c-9e8e-9c7900f9b57a"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "8d31f0a0-4d29-5bfc-abb5-bd7bac4ca27f"
+    ],
+    "code": "T5",
+    "delivery_node_id": "1ab35b7b-342f-5c8b-bc25-376133a86d2d",
+    "id": "0aeb613c-1037-59e5-bfd8-c0b49e155bfe",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "1a2b3cd4-5ec2-5559-81b3-6a58cfeee008",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "73450b1a-6aaf-5ec9-b3e4-180cf2a20f87"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "91b3875e-efc5-58c2-820c-2616fd8ded91"
+    ],
+    "code": "T6",
+    "delivery_node_id": "08bc11ca-2806-508e-84aa-452abb997bfd",
+    "id": "0c13b0af-6faf-59bf-87c1-fe6009258b57",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "e5d42b14-9e7c-5611-8798-3242bbdf441d",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "e404436d-f0a4-5bcc-b69b-5bdf6e199f59"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "264f3fde-c3c8-5c96-9dc0-bcfd1f6fbca3"
+    ],
+    "code": "T7",
+    "delivery_node_id": "b403b125-26c4-569a-b6f8-0dac8b28d080",
+    "id": "a478b2a4-5cfd-55e1-b660-319ff5954917",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "833c1cd2-3f47-51bc-b0c9-dda6c809fc90",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "e4eabe87-0217-5930-b6e0-8d22824bbffd"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "f8efa4b7-7967-5970-b178-1c9c8271f0a0"
+    ],
+    "code": "T8",
+    "delivery_node_id": "1dfd080a-c47c-5250-bc06-82e54d186c6d",
+    "id": "eb4f80e7-f87d-5c2c-8a79-3ae1011c0feb",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "2acc3187-a792-58e6-8d86-8db13c45a758",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "97f78bb0-d5f8-537c-ab63-7fe7be5e52bc"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "11500682-bbd1-5044-ab34-89be7c348c93"
+    ],
+    "code": "T9",
+    "delivery_node_id": "ce5f95cc-1f2e-5e92-9dc0-3392e5c85e80",
+    "id": "e2239f31-dd7f-5736-9f28-eb6e5e32f63c",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "d6cfbcea-4f66-59cc-98ed-686b0d747b90",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "4920d076-40da-5636-918e-59d5d59ccfb0"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "cd12f0c1-ff84-57b6-a525-bb54859c036b"
+    ],
+    "code": "T10",
+    "delivery_node_id": "6914b2e2-a676-575a-a957-07d71dd87184",
+    "id": "9ca299b2-e5e5-5cc3-870f-6486984665bf",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "4afcda84-4a9f-53d4-be5b-fecbf07c99b3",
+    "pickup_node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "predecessor_ids": [
+      "2951fdbe-8700-59f7-97d9-eed3ae48e417"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "548139ad-5f1c-5012-bb3f-b89257e9d6c4"
+    ],
+    "code": "T11",
+    "delivery_node_id": "3992a744-5749-5c1c-962d-3799ff14ab4e",
+    "id": "0eebdf56-110b-5218-9d89-4040c06a53ff",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "82abd3fb-abab-5205-88be-b66dc11320e5",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "9ed4e409-595d-54dc-806d-3b799c5fff02"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "48f00077-638f-5942-b37b-c2d43ecc145f"
+    ],
+    "code": "T12",
+    "delivery_node_id": "399c685d-6433-5cd9-91c2-a1e01adaadb3",
+    "id": "3f332cad-e6b9-5ef4-878b-f0bc5b4fc226",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "8e672250-c585-5c81-9dac-c1a75a9e86fe",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "5d9212bc-2fd6-55f8-a453-ef307d2d48e8"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "36b2b8a9-7411-5a9f-bfcc-990b4ea52c34"
+    ],
+    "code": "T13",
+    "delivery_node_id": "45e0dad5-a60b-55e3-852b-569331d773ac",
+    "id": "981755eb-6b3a-5ce2-985a-b59bec34b74d",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "ce4601a8-5cad-5fea-a768-c2320ccbd7b4",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "e5803ccc-7c59-596e-bbc3-5c8dd1619815"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "2cdc7f72-65f1-5052-bb24-7831ac26bea2"
+    ],
+    "code": "T14",
+    "delivery_node_id": "6128e3a3-3237-5b81-b354-abd87ae349aa",
+    "id": "dd71c16e-37f3-5d91-a290-f0ad06086a54",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "7947bfd1-3c5f-5a99-b19f-71005549d26b",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "9a2cadd1-7d32-56be-8415-de704bfb00bb"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "9384306f-76a3-5120-a584-e388d41e4965"
+    ],
+    "code": "T15",
+    "delivery_node_id": "12523e38-70b8-550f-9a22-bd048d266bd0",
+    "id": "e426da05-3332-537b-b43d-171620fe3bfe",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "2b090747-fa9f-5349-8e3a-4406db556247",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "c59c2e68-6123-5208-aeee-792ef398627d"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "88ac3417-7794-5aa8-b25a-68e9f5ecb814"
+    ],
+    "code": "T16",
+    "delivery_node_id": "2c8931e6-3016-5eeb-829c-40d153897a20",
+    "id": "c860e8ea-8b14-5088-b27e-07df6d795fbd",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "731da5d0-b253-5ffb-8ef3-2e64984c810a",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "0f18e615-a3ec-5e75-99ee-c1abbcf86db6"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "3c26cd7f-1797-5fef-9636-16a2739c8b61"
+    ],
+    "code": "T17",
+    "delivery_node_id": "034b1919-7f5b-5aa2-856e-a5972397afd4",
+    "id": "55042f8a-58da-5b9c-97d9-d31b96ce5000",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "ed69a8fa-e222-551b-8ff2-0e0f899e938f",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "ac8174d5-9688-5d88-9eb8-2fc4d2865ae2"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "f3a14cc1-3581-53bb-9d77-cd3a2d443844"
+    ],
+    "code": "T18",
+    "delivery_node_id": "eea30429-46d1-516f-830a-1880dd7bda4a",
+    "id": "e8748179-de7e-51f6-8606-e4a72126688d",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "e9403d7a-a9b6-5ad9-a2b9-619f9cc6059c",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "7476bc20-26da-5d50-9745-47770503592d"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "c2d046dd-bf4d-5e4d-8cb4-ba75bed41865"
+    ],
+    "code": "T19",
+    "delivery_node_id": "43694ff8-318f-5c2d-b075-0eb44bde5923",
+    "id": "4fb99ee5-1678-574e-a9d6-79c758ca03ae",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "8b1653ea-16c5-5864-8e50-17986ea18f85",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "481d6d6e-0828-58a2-97e0-418d3a2c0779"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  },
+  {
+    "cargo_ids": [
+      "c19ec106-e89e-5aa4-af26-24af2a76ee18"
+    ],
+    "code": "T20",
+    "delivery_node_id": "b3b1ce82-e741-534e-9d72-ddd5d2c0827c",
+    "id": "191c09e9-ce4b-546d-98a5-bf5586f539c7",
+    "kind": "TransportTask",
+    "leg_no": 1,
+    "order_id": "128ef3b0-9c1c-5300-9b9a-cdfec47c0370",
+    "pickup_node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "predecessor_ids": [
+      "528a21b7-bbc9-5e02-844a-3bcafb0503ec"
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "service_s": 60,
+    "source": "synthetic"
+  }
+]

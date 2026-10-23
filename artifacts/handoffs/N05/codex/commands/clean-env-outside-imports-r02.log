@@ -1,0 +1,11 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe", "-I", "-c", "import importlib,json,pathlib,sys\nnames=['logistics_domain','logistics_contracts','logistics_optimization','logistics_simulation','logistics_agents','logistics_evaluation']\nout={n:str(pathlib.Path(importlib.import_module(n).__file__).resolve()) for n in names}\nprint(json.dumps({'executable':sys.executable,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'resolved':out}))\n"]
+# cwd: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main\outside-cwd
+# started_at: 2026-10-04T20:43:18.138608+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+{"executable": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe", "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\outside-cwd", "isolated": 1, "resolved": {"logistics_domain": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\__init__.py", "logistics_contracts": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\contracts\\src\\logistics_contracts\\__init__.py", "logistics_optimization": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\optimization\\src\\logistics_optimization\\__init__.py", "logistics_simulation": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\simulation\\src\\logistics_simulation\\__init__.py", "logistics_agents": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\agents\\src\\logistics_agents\\__init__.py", "logistics_evaluation": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\evaluation\\src\\logistics_evaluation\\__init__.py"}}
+
+## stderr
+
+## exit_code: 0

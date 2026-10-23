@@ -1,0 +1,1146 @@
+--- before/docs/architecture/DATA_CONTRACTS.md
++++ after/docs/architecture/DATA_CONTRACTS.md
+@@ -175,12 +175,12 @@
+ | CalendarInterval | start_s:NonNegativeInt; end_s:NonNegativeInt; available_units:NonNegativeInt | P02-01 / `packages/domain/src/logistics_domain/primitives.py` |
+ | ResourceCalendar | epoch_utc:UTC; intervals:CalendarInterval[]; version:NonNegativeInt | P02-01 / `packages/domain/src/logistics_domain/primitives.py` |
+ | Rational | numerator:PositiveInt; denominator:PositiveInt | P02-01 / `packages/domain/src/logistics_domain/primitives.py` |
+-| EntityRef | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 | P02-01 / `packages/domain/src/logistics_domain/primitives.py` |
++| EntityRef | kind:EntityKind; id:UUID; revision:NonNegativeInt? | P02-01 / `packages/domain/src/logistics_domain/primitives.py` |
+ | ArtifactRef | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 | P02-01 / `packages/domain/src/logistics_domain/primitives.py` |
+ | TimeWindow | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 | P02-01 / `packages/domain/src/logistics_domain/primitives.py` |
+ | Load | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 | P02-01 / `packages/domain/src/logistics_domain/primitives.py` |
+ | ErrorCode | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 | P02-01 / `packages/domain/src/logistics_domain/states.py` |
+-| EntityKind | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 | P02-01 / `packages/domain/src/logistics_domain/states.py` |
++| EntityKind | ORDER=order; CARGO=cargo; VEHICLE=vehicle; DRIVER=driver; WAREHOUSE=warehouse; WAREHOUSE_ZONE=zone; STORAGE_LOCATION=location; DOCK=dock; WORKER=worker; EQUIPMENT=equipment; TRANSPORT_TASK=transport_task; WAREHOUSE_TASK=warehouse_task; ROUTE=route; ROUTE_STOP=route_stop; SCHEDULE=schedule; SCHEDULE_TASK=schedule_task; SCHEDULE_VERSION=schedule_version; CONSTRAINT=constraint; OPTIMIZATION_REQUEST=optimization_request; OPTIMIZATION_RESULT=optimization_result; SIMULATION=simulation; SIMULATION_SNAPSHOT=simulation_snapshot; EVENT=event; EXCEPTION_EVENT=exception_event; RESCHEDULE_REQUEST=reschedule_request; RESCHEDULE_RESULT=reschedule_result; AGENT_RUN=agent_run; TOOL_CALL=tool_call; DECISION_RECORD=decision_record; EXPERIMENT=experiment; METRIC=metric; EXPERIMENT_RESULT=experiment_result; PLANNING_SNAPSHOT=planning_snapshot; JOB=job; JOB_ATTEMPT=job_attempt; IDEMPOTENCY=idempotency; RESERVATION=reservation; INVENTORY_LEDGER=inventory_ledger; OUTBOX=outbox; AUDIT_ENTRY=audit_entry; LIFECYCLE_EVENT=lifecycle_event; EXECUTION_SNAPSHOT=execution_snapshot; CONFIRMATION_TOKEN=confirmation_token; TRAVEL_MATRIX=travel_matrix; REGION=region | P02-01 / `packages/domain/src/logistics_domain/states.py` |
+ | ConstraintCode | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 | P02-01 / `packages/domain/src/logistics_domain/states.py` |
+ | Order | 继承具名原契约 docs/architecture/DOMAIN_CATALOG.md#32-个必需实体；HTTP具名投影见下文精确投影表 | P02-02 / `packages/domain/src/logistics_domain/orders.py` |
+ | OrderDTO | 逐字段/约束映射 Order；不重复领域定义 | P02-02 / `packages/contracts/src/logistics_contracts/entities.py` |
+@@ -373,3 +373,89 @@
+ | Job/内部协议 | completed带typed INFEASIBLE结果ref仍为completed | completed无结果、失败无failure、结束早于开始、耗尽后retry→拒绝 |
+ 
+ 上述是可执行契约检查的规范样例，不是正式业务运行证据。验证日志与本轮交接绑定，独立N02决定是否解除冻结阻断。
++
++
++## N01-R02 EntityKind 与事件引用闭包决定
++
++本节是 **N01-R02 新规范决定**，修复 N02-R01-F02-C01；旧示例脚本的11值集合不属于此前冻结规范。当前候选仍为计划1.0.3、业务契约2.0.0，补足的是尚未签收的2.0.0设计，不能声称已有2.0.0发布兼容。字段/成员附表唯一定稿见 `contracts/changes/N01-R01-contract-decisions.json` 的 `EntityKind`、`EntityRef`、`entity_ref_targets` 与 `event_entity_ref_mapping`。本节及规范附表待独立N02-R02复核，不更新官方冻结或Gate。
++
++### 完整成员与精确序列化值
++
++完整且封闭集合为45项：DOMAIN_CATALOG的32必需实体、其“必需辅助实体”节的11已有实体，以及TravelMatrix、RegionRef两个既有纯值目标。纳入11辅助实体是本轮明确的地址空间决定，允许现有审计/生命周期描述既有对象，不增加实体、字段、表、处理器或API。WarehouseZone/StorageLocation的值保留既有资源包装和HTTP投影的zone/location；成员名与值分开，不接受warehouse_zone/storage_location别名、大小写变体或旧脚本未登记值。
++
++| 成员名 | 精确 JSON 字符串 | 引用目标及 ID 字段 | revision 来源 |
++| --- | --- | --- | --- |
++| ORDER | `order` | Order.id | row_version |
++| CARGO | `cargo` | Cargo.id | row_version |
++| VEHICLE | `vehicle` | Vehicle.id | row_version |
++| DRIVER | `driver` | Driver.id | row_version |
++| WAREHOUSE | `warehouse` | Warehouse.id | row_version |
++| WAREHOUSE_ZONE | `zone` | WarehouseZone.id | row_version |
++| STORAGE_LOCATION | `location` | StorageLocation.id | row_version |
++| DOCK | `dock` | Dock.id | row_version |
++| WORKER | `worker` | Worker.id | row_version |
++| EQUIPMENT | `equipment` | Equipment.id | row_version |
++| TRANSPORT_TASK | `transport_task` | TransportTask.id | row_version |
++| WAREHOUSE_TASK | `warehouse_task` | WarehouseTask.id | row_version |
++| ROUTE | `route` | Route.id | row_version |
++| ROUTE_STOP | `route_stop` | RouteStop.id | row_version |
++| SCHEDULE | `schedule` | Schedule.id | row_version |
++| SCHEDULE_TASK | `schedule_task` | ScheduleTask.id | row_version |
++| SCHEDULE_VERSION | `schedule_version` | ScheduleVersion.id | row_version |
++| CONSTRAINT | `constraint` | Constraint.id | row_version |
++| OPTIMIZATION_REQUEST | `optimization_request` | OptimizationRequest.id | row_version |
++| OPTIMIZATION_RESULT | `optimization_result` | OptimizationResult.id | row_version |
++| SIMULATION | `simulation` | Simulation.id | row_version |
++| SIMULATION_SNAPSHOT | `simulation_snapshot` | SimulationSnapshot.id | row_version |
++| EVENT | `event` | Event.id | row_version |
++| EXCEPTION_EVENT | `exception_event` | ExceptionEvent.id | row_version |
++| RESCHEDULE_REQUEST | `reschedule_request` | RescheduleRequest.id | row_version |
++| RESCHEDULE_RESULT | `reschedule_result` | RescheduleResult.id | row_version |
++| AGENT_RUN | `agent_run` | AgentRun.id | row_version |
++| TOOL_CALL | `tool_call` | ToolCall.id | row_version |
++| DECISION_RECORD | `decision_record` | DecisionRecord.id | row_version |
++| EXPERIMENT | `experiment` | Experiment.id | row_version |
++| METRIC | `metric` | Metric.id | row_version |
++| EXPERIMENT_RESULT | `experiment_result` | ExperimentResult.id | row_version |
++| PLANNING_SNAPSHOT | `planning_snapshot` | PlanningSnapshot.id | row_version |
++| JOB | `job` | Job.id | row_version |
++| JOB_ATTEMPT | `job_attempt` | JobAttempt.id | row_version |
++| IDEMPOTENCY | `idempotency` | Idempotency.id | row_version |
++| RESERVATION | `reservation` | Reservation.id | row_version |
++| INVENTORY_LEDGER | `inventory_ledger` | InventoryLedger.id | row_version |
++| OUTBOX | `outbox` | Outbox.id | row_version |
++| AUDIT_ENTRY | `audit_entry` | AuditEntry.id | row_version |
++| LIFECYCLE_EVENT | `lifecycle_event` | LifecycleEvent.id | row_version |
++| EXECUTION_SNAPSHOT | `execution_snapshot` | ExecutionSnapshot.id | row_version |
++| CONFIRMATION_TOKEN | `confirmation_token` | ConfirmationToken.id | row_version |
++| TRAVEL_MATRIX | `travel_matrix` | TravelMatrix.id | version |
++| REGION | `region` | RegionRef.region_id | 必须 null |
++
++EntityKind唯一P02-01 `states.py`；EntityRef唯一P02-01 `primitives.py`，完整字段为 `kind:EntityKind; id:UUID; revision:NonNegativeInt?`，extra=forbid，bool不是int。登记目标是消费者解析元数据，不能让早期枚举/值对象导入P02-03/P02-04或其他未来模型。未提供revision只表达身份，不宣称当前版本匹配；提供时按具名事实快照的row_version或矩阵version核验。UUID合法但目标不存在、kind/目标类型不相符、引用的作用域不同、ID不一致或给定revision过期均拒绝。区域引用必须null；它标识内嵌节点分组，不是独立实体、数据库行或可假设存在的区域表。
++
++ResourceRevision仍是行修订向量：仅允许32实体或11辅助实体，内部EntityRef.revision非空时等于外部row_version；矩阵版本由既有TravelMatrix/MatrixRef表示，region不进入行向量。ConflictDetail、Violation、IntentDraft、ExceptionEvent、RealtimeEnvelope、AuditEntry和LifecycleEvent复用此地址空间。实时通知的对象revision按相应实体行来源；历史审计/冲突/校验报告保持当时事实引用，不把它们统一重新解析为现在的可变行而制造旧证据失效。公开输出仍遵守现有scope/脱敏规则，能引用某kind不授予读取秘密字段的权限。
++
++### 十类 EventPayload 的目标映射
++
++以下映射只收紧已冻结payload的引用语义，不添加事件字段或改变Job/Scenario/Calendar设计。解析上下文必须是同一场景/执行事实的具名对象集合、矩阵及显式区域分组，不用任意字符串或事件ID冒充目标ID；缺少上下文不能报告引用有效。
++
++| payload.kind | 合法 entity_ref.kind | 目标与 ID 一致性 | revision |
++| --- | --- | --- | --- |
++| vehicle_failure | vehicle | id=vehicle_id，解析 Vehicle.id | 给定时等于事实快照 row_version |
++| transport_delay | transport_task | id=transport_task_id，解析 TransportTask.id | 给定时等于事实快照 row_version |
++| traffic_disruption | travel_matrix | id=指定 snapshot.matrices 中的 TravelMatrix.id；同事件全部弧由该矩阵限定 | 必填且等于该矩阵 version |
++| weather_change | region | id=region_ref.region_id；目标是该 payload 的显式节点分组 | 必须 null |
++| cargo_anomaly | cargo | id=cargo_id，解析 Cargo.id | 给定时等于事实快照 row_version |
++| order_cancellation | order | id=order_id，解析 Order.id | 给定时等于事实快照 row_version |
++| demand_increase | order | id=order_id，解析 Order.id | 给定时等于事实快照 row_version |
++| demand_decrease | order | id=order_id，解析 Order.id | 给定时等于事实快照 row_version |
++| equipment_failure | equipment | id=equipment_id，解析 Equipment.id | 给定时等于事实快照 row_version |
++| warehouse_resource_unavailable | warehouse / zone / location / dock / worker / equipment | entity_ref=resource_ref（kind/id/revision 全部相等），解析相应既有资源 | 给定时等于事实快照 row_version |
++
++交通多弧：entity_ref选定一个现有TravelMatrix；arc_refs必须非空，有向(from_node_id,to_node_id)不得重复或自环，两端都属于该矩阵node_ids。多弧不拿第一条弧、某个节点或新矩阵ID冒充整个矩阵身份；跨矩阵影响拆成多个事件。new_matrix_version必须严格大于所引用旧version；旧矩阵/旧hash不覆盖。ArcRef继续只有from_node_id/to_node_id，不增加matrix_id/arc_id。
++
++天气区域：entity_ref.id精确等于region_ref.region_id；node_ids非空且唯一，每个节点都在场景矩阵节点并集。同一场景版本内，同region_id必须绑定同一节点集合（顺序不改变集合），不得在另一事件中换成员。影响范围恰为每个场景矩阵中两个端点都属于该集合的有向弧；new_matrix_version严格大于每个受影响矩阵当前version。没有受影响弧可作为明确无作用输入保留，不凭空增加弧；缺矩阵或未知节点拒绝。RegionRef结构不变，不通过区域名猜测节点或地理边界。
++
++仓储资源：外层entity_ref与resource_ref按完整(kind,id,revision)相等，目标存在于同scope的Warehouse/WarehouseZone/StorageLocation/Dock/Worker/Equipment。warehouse是Warehouse本体，仍不进入既有Resource五分支包装；zone没有calendar，不因此添加日历。vehicle/driver/order或节点不能作为此分支的资源目标。unavailable_window保持既有TimeWindow闭窗语义，资源占用的半开区间规则不变，本轮不重定义端点或容量算法。
++
++本轮设计检查必须从规范读取枚举与十映射，覆盖每个分支合法目标及未知kind、错目标、ID不一致、缺失目标、修订不一致；检查器拒绝EntityKind退回existing、成员遗漏/重复值、EntityRef字段未闭合或归属漂移及映射缺项/错目标。它们是设计证据，不是业务Schema、事件持久化、仿真或HTTP验收。
+--- before/docs/architecture/TYPE_DEFINITION_OWNERSHIP.md
++++ after/docs/architecture/TYPE_DEFINITION_OWNERSHIP.md
+@@ -16,12 +16,12 @@
+ | CalendarInterval | P02-01 / `packages/domain/src/logistics_domain/primitives.py` | start_s:NonNegativeInt; end_s:NonNegativeInt; available_units:NonNegativeInt |
+ | ResourceCalendar | P02-01 / `packages/domain/src/logistics_domain/primitives.py` | epoch_utc:UTC; intervals:CalendarInterval[]; version:NonNegativeInt |
+ | Rational | P02-01 / `packages/domain/src/logistics_domain/primitives.py` | numerator:PositiveInt; denominator:PositiveInt |
+-| EntityRef | P02-01 / `packages/domain/src/logistics_domain/primitives.py` | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 |
++| EntityRef | P02-01 / `packages/domain/src/logistics_domain/primitives.py` | kind:EntityKind; id:UUID; revision:NonNegativeInt? |
+ | ArtifactRef | P02-01 / `packages/domain/src/logistics_domain/primitives.py` | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 |
+ | TimeWindow | P02-01 / `packages/domain/src/logistics_domain/primitives.py` | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 |
+ | Load | P02-01 / `packages/domain/src/logistics_domain/primitives.py` | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 |
+ | ErrorCode | P02-01 / `packages/domain/src/logistics_domain/states.py` | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 |
+-| EntityKind | P02-01 / `packages/domain/src/logistics_domain/states.py` | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 |
++| EntityKind | P02-01 / `packages/domain/src/logistics_domain/states.py` | ORDER=order; CARGO=cargo; VEHICLE=vehicle; DRIVER=driver; WAREHOUSE=warehouse; WAREHOUSE_ZONE=zone; STORAGE_LOCATION=location; DOCK=dock; WORKER=worker; EQUIPMENT=equipment; TRANSPORT_TASK=transport_task; WAREHOUSE_TASK=warehouse_task; ROUTE=route; ROUTE_STOP=route_stop; SCHEDULE=schedule; SCHEDULE_TASK=schedule_task; SCHEDULE_VERSION=schedule_version; CONSTRAINT=constraint; OPTIMIZATION_REQUEST=optimization_request; OPTIMIZATION_RESULT=optimization_result; SIMULATION=simulation; SIMULATION_SNAPSHOT=simulation_snapshot; EVENT=event; EXCEPTION_EVENT=exception_event; RESCHEDULE_REQUEST=reschedule_request; RESCHEDULE_RESULT=reschedule_result; AGENT_RUN=agent_run; TOOL_CALL=tool_call; DECISION_RECORD=decision_record; EXPERIMENT=experiment; METRIC=metric; EXPERIMENT_RESULT=experiment_result; PLANNING_SNAPSHOT=planning_snapshot; JOB=job; JOB_ATTEMPT=job_attempt; IDEMPOTENCY=idempotency; RESERVATION=reservation; INVENTORY_LEDGER=inventory_ledger; OUTBOX=outbox; AUDIT_ENTRY=audit_entry; LIFECYCLE_EVENT=lifecycle_event; EXECUTION_SNAPSHOT=execution_snapshot; CONFIRMATION_TOKEN=confirmation_token; TRAVEL_MATRIX=travel_matrix; REGION=region |
+ | ConstraintCode | P02-01 / `packages/domain/src/logistics_domain/states.py` | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 |
+ | Order | P02-02 / `packages/domain/src/logistics_domain/orders.py` | 继承具名原契约 docs/architecture/DOMAIN_CATALOG.md#32-个必需实体；HTTP具名投影见下文精确投影表 |
+ | OrderDTO | P02-02 / `packages/contracts/src/logistics_contracts/entities.py` | 逐字段/约束映射 Order；不重复领域定义 |
+@@ -207,3 +207,12 @@
+ JobKind/JobStatus/JobOptimizationMode仅states定义；Calendar仅primitives定义；Resource/DTO仅resources/entities对应定义；Actor/Scenario/Job纯值唯一runtime，Event纯值先execution，再单向runtime消费；contracts层只能映射纯domain。附表existing行是具名原契约或显式HTTP投影的复用来源，不是许可实现空类。module DAG与task祖先校验覆盖本轮注册图，继承类型的实际导出完整性仍须G02真实Schema/正反例验收。
+ 
+ 状态：READY_FOR_INDEPENDENT_REVIEW。没有独立复核/G00签收，不得派发N03/P02；若N02发现残余契约缺口，按具体缺陷继续最小治理，而不是调整Gate判定。
++
++
++## N01-R02 唯一阻断项的显式闭包补充
++
++EntityKind已从existing改为完整45成员enum，EntityRef从existing改为kind/id/revision完整record；它们不是继承文档中的名称占位。枚举覆盖DOMAIN_CATALOG的32业务实体、11已有辅助实体及TravelMatrix/RegionRef两种既有纯值地址，完整成员/值和十类事件目标映射见DATA_CONTRACTS的“N01-R02 EntityKind 与事件引用闭包决定”及规范附表的entity_ref_targets/event_entity_ref_mapping。目标类型名称只用于消费者解析登记，不是states/primitives向未来模型的导入依赖。
++
++唯一承载与顺序不变：EntityKind=P02-01 states.py；EntityRef=P02-01 primitives.py；EventPayload=P02-04 execution.py；ScenarioEventSpec=P02-04 runtime.py；未来消费者只引用。显式EntityRef.kind补齐先前existing占位未展示的primitives→states单向模块边，两者同归P02-01；execution继续引用primitives。任务依赖顺序/祖先不变，无未来或反向导入。JobKind/Scenario字段与隔离/Calendar/JobRequest的已解决决定保持。
++
++状态：N01-R02 READY_FOR_INDEPENDENT_REVIEW。N02-R01历史阻断记录保留；只有独立N02-R02复核和真实G00恢复后才允许N03。该补充不签冻结/Gate，不宣称业务类型已实现。
+--- before/contracts/changes/N01-R01-contract-decisions.json
++++ after/contracts/changes/N01-R01-contract-decisions.json
+@@ -176,10 +176,19 @@
+       "name": "EntityRef",
+       "task": "P02-01",
+       "path": "packages/domain/src/logistics_domain/primitives.py",
+-      "kind": "existing",
+-      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+-      "rules": [
+-        "Inherited current named contract; scheduled implementation, not an implemented class."
++      "kind": "record",
++      "fields": {
++        "kind": "EntityKind",
++        "id": "UUID",
++        "revision": "NonNegativeInt?"
++      },
++      "decision_round": "N01-R02",
++      "rules": [
++        "entity_ref.target_identity",
++        "entity_ref.revision_in_fact_context",
++        "id is the exact UUID of the registered target, never an event/envelope id used as a substitute.",
++        "Entity and auxiliary entity revisions use row_version when supplied; matrix event references require version; inline region requires null.",
++        "Resolve against the supplied immutable fact context; old audit/violation/conflict records are not revalidated against moving live rows."
+       ]
+     },
+     {
+@@ -226,10 +235,59 @@
+       "name": "EntityKind",
+       "task": "P02-01",
+       "path": "packages/domain/src/logistics_domain/states.py",
+-      "kind": "existing",
+-      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+-      "rules": [
+-        "Inherited current named contract; scheduled implementation, not an implemented class."
++      "kind": "enum",
++      "members": {
++        "ORDER": "order",
++        "CARGO": "cargo",
++        "VEHICLE": "vehicle",
++        "DRIVER": "driver",
++        "WAREHOUSE": "warehouse",
++        "WAREHOUSE_ZONE": "zone",
++        "STORAGE_LOCATION": "location",
++        "DOCK": "dock",
++        "WORKER": "worker",
++        "EQUIPMENT": "equipment",
++        "TRANSPORT_TASK": "transport_task",
++        "WAREHOUSE_TASK": "warehouse_task",
++        "ROUTE": "route",
++        "ROUTE_STOP": "route_stop",
++        "SCHEDULE": "schedule",
++        "SCHEDULE_TASK": "schedule_task",
++        "SCHEDULE_VERSION": "schedule_version",
++        "CONSTRAINT": "constraint",
++        "OPTIMIZATION_REQUEST": "optimization_request",
++        "OPTIMIZATION_RESULT": "optimization_result",
++        "SIMULATION": "simulation",
++        "SIMULATION_SNAPSHOT": "simulation_snapshot",
++        "EVENT": "event",
++        "EXCEPTION_EVENT": "exception_event",
++        "RESCHEDULE_REQUEST": "reschedule_request",
++        "RESCHEDULE_RESULT": "reschedule_result",
++        "AGENT_RUN": "agent_run",
++        "TOOL_CALL": "tool_call",
++        "DECISION_RECORD": "decision_record",
++        "EXPERIMENT": "experiment",
++        "METRIC": "metric",
++        "EXPERIMENT_RESULT": "experiment_result",
++        "PLANNING_SNAPSHOT": "planning_snapshot",
++        "JOB": "job",
++        "JOB_ATTEMPT": "job_attempt",
++        "IDEMPOTENCY": "idempotency",
++        "RESERVATION": "reservation",
++        "INVENTORY_LEDGER": "inventory_ledger",
++        "OUTBOX": "outbox",
++        "AUDIT_ENTRY": "audit_entry",
++        "LIFECYCLE_EVENT": "lifecycle_event",
++        "EXECUTION_SNAPSHOT": "execution_snapshot",
++        "CONFIRMATION_TOKEN": "confirmation_token",
++        "TRAVEL_MATRIX": "travel_matrix",
++        "REGION": "region"
++      },
++      "decision_round": "N01-R02",
++      "rules": [
++        "N01-R02 new normative decision; the old 11-value example was not a frozen enum.",
++        "32 catalog entities and 11 already-required auxiliary entities, plus TravelMatrix and inline RegionRef address kinds.",
++        "Enum metadata names lookup targets; states imports no future target models. No aliases or additional serialized values."
+       ]
+     },
+     {
+@@ -826,7 +884,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -844,7 +903,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -864,7 +924,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -884,7 +945,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -904,7 +966,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -922,7 +985,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -942,7 +1006,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -962,7 +1027,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -981,7 +1047,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -1000,7 +1067,8 @@
+       },
+       "rules": [
+         "event.references",
+-        "event.branch"
++        "event.branch",
++        "event.entity_ref_mapping"
+       ]
+     },
+     {
+@@ -2546,7 +2614,9 @@
+     }
+   ],
+   "module_dependencies": {
+-    "packages/domain/src/logistics_domain/primitives.py": [],
++    "packages/domain/src/logistics_domain/primitives.py": [
++      "packages/domain/src/logistics_domain/states.py"
++    ],
+     "packages/domain/src/logistics_domain/states.py": [],
+     "packages/domain/src/logistics_domain/orders.py": [
+       "packages/domain/src/logistics_domain/primitives.py",
+@@ -3253,10 +3323,478 @@
+     "docs/architecture/DATA_CONTRACTS.md",
+     "docs/architecture/DOMAIN_CATALOG.md",
+     "docs/api/API_CONTRACT.md",
+-    "docs/plan/TEST_FIXTURES.md"
++    "docs/plan/TEST_FIXTURES.md",
++    "docs/handoffs/N02-R01/codex.md",
++    "artifacts/handoffs/N02-R01/codex/blocker.json",
++    "artifacts/handoffs/N02-R01/codex/closure-probe.json"
+   ],
+   "limitations": [
+     "Design only; no domain classes, DB or generated business Schema/OpenAPI/TS implemented.",
+     "Independent N02 must judge all freeze blockers; no Gate signature by implementer."
+-  ]
++  ],
++  "latest_decision_round": "N01-R02",
++  "amendments": [
++    {
++      "round": "N01-R02",
++      "finding": "N02-R01-F02-C01",
++      "status": "READY_FOR_INDEPENDENT_REVIEW",
++      "change": "Explicit EntityKind/EntityRef and ten EventPayload reference target mappings",
++      "retained_plan_version": "1.0.3",
++      "retained_contract_version": "2.0.0",
++      "version_reason": "Completes an unaccepted design candidate; no previously accepted 2.0.0 release is claimed compatible."
++    }
++  ],
++  "entity_ref_targets": {
++    "order": {
++      "type": "Order",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "cargo": {
++      "type": "Cargo",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "vehicle": {
++      "type": "Vehicle",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "driver": {
++      "type": "Driver",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "warehouse": {
++      "type": "Warehouse",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "zone": {
++      "type": "WarehouseZone",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "location": {
++      "type": "StorageLocation",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "dock": {
++      "type": "Dock",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "worker": {
++      "type": "Worker",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "equipment": {
++      "type": "Equipment",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "transport_task": {
++      "type": "TransportTask",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "warehouse_task": {
++      "type": "WarehouseTask",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "route": {
++      "type": "Route",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "route_stop": {
++      "type": "RouteStop",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "schedule": {
++      "type": "Schedule",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "schedule_task": {
++      "type": "ScheduleTask",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "schedule_version": {
++      "type": "ScheduleVersion",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "constraint": {
++      "type": "Constraint",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "optimization_request": {
++      "type": "OptimizationRequest",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "optimization_result": {
++      "type": "OptimizationResult",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "simulation": {
++      "type": "Simulation",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "simulation_snapshot": {
++      "type": "SimulationSnapshot",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "event": {
++      "type": "Event",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "exception_event": {
++      "type": "ExceptionEvent",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "reschedule_request": {
++      "type": "RescheduleRequest",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "reschedule_result": {
++      "type": "RescheduleResult",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "agent_run": {
++      "type": "AgentRun",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "tool_call": {
++      "type": "ToolCall",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "decision_record": {
++      "type": "DecisionRecord",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "experiment": {
++      "type": "Experiment",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "metric": {
++      "type": "Metric",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "experiment_result": {
++      "type": "ExperimentResult",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "planning_snapshot": {
++      "type": "PlanningSnapshot",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "job": {
++      "type": "Job",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "job_attempt": {
++      "type": "JobAttempt",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "idempotency": {
++      "type": "Idempotency",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "reservation": {
++      "type": "Reservation",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "inventory_ledger": {
++      "type": "InventoryLedger",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "outbox": {
++      "type": "Outbox",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "audit_entry": {
++      "type": "AuditEntry",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "lifecycle_event": {
++      "type": "LifecycleEvent",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "execution_snapshot": {
++      "type": "ExecutionSnapshot",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "confirmation_token": {
++      "type": "ConfirmationToken",
++      "identity_field": "id",
++      "revision_field": "row_version",
++      "category": "entity"
++    },
++    "travel_matrix": {
++      "type": "TravelMatrix",
++      "identity_field": "id",
++      "revision_field": "version",
++      "category": "pure_value"
++    },
++    "region": {
++      "type": "RegionRef",
++      "identity_field": "region_id",
++      "revision_field": null,
++      "category": "inline_value"
++    }
++  },
++  "event_entity_ref_mapping": {
++    "vehicle_failure": {
++      "payload_type": "VehicleFailurePayload",
++      "allowed_kinds": [
++        "vehicle"
++      ],
++      "target": {
++        "source": "entity",
++        "type": "Vehicle",
++        "id_path": "vehicle_id",
++        "revision": "row_version_if_present"
++      },
++      "constraints": [
++        "target_exists_in_scope",
++        "entity_ref_id_equals_target_id"
++      ]
++    },
++    "transport_delay": {
++      "payload_type": "TransportDelayPayload",
++      "allowed_kinds": [
++        "transport_task"
++      ],
++      "target": {
++        "source": "entity",
++        "type": "TransportTask",
++        "id_path": "transport_task_id",
++        "revision": "row_version_if_present"
++      },
++      "constraints": [
++        "target_exists_in_scope",
++        "entity_ref_id_equals_target_id"
++      ]
++    },
++    "traffic_disruption": {
++      "payload_type": "TrafficDisruptionPayload",
++      "allowed_kinds": [
++        "travel_matrix"
++      ],
++      "target": {
++        "source": "snapshot_matrix",
++        "type": "TravelMatrix",
++        "id_path": "entity_ref.id",
++        "revision": "matrix_version_required"
++      },
++      "constraints": [
++        "target_exists_in_scope",
++        "nonempty_unique_directed_arcs",
++        "arc_nodes_in_target_matrix",
++        "new_matrix_version_gt_reference",
++        "one_matrix_per_event"
++      ]
++    },
++    "weather_change": {
++      "payload_type": "WeatherChangePayload",
++      "allowed_kinds": [
++        "region"
++      ],
++      "target": {
++        "source": "inline_region",
++        "type": "RegionRef",
++        "id_path": "region_ref.region_id",
++        "revision": "null_required"
++      },
++      "constraints": [
++        "entity_ref_id_equals_target_id",
++        "nonempty_unique_region_nodes",
++        "region_nodes_in_scene_matrix_union",
++        "same_region_id_same_node_set",
++        "affected_matrix_versions_strictly_advance"
++      ]
++    },
++    "cargo_anomaly": {
++      "payload_type": "CargoAnomalyPayload",
++      "allowed_kinds": [
++        "cargo"
++      ],
++      "target": {
++        "source": "entity",
++        "type": "Cargo",
++        "id_path": "cargo_id",
++        "revision": "row_version_if_present"
++      },
++      "constraints": [
++        "target_exists_in_scope",
++        "entity_ref_id_equals_target_id"
++      ]
++    },
++    "order_cancellation": {
++      "payload_type": "OrderCancellationPayload",
++      "allowed_kinds": [
++        "order"
++      ],
++      "target": {
++        "source": "entity",
++        "type": "Order",
++        "id_path": "order_id",
++        "revision": "row_version_if_present"
++      },
++      "constraints": [
++        "target_exists_in_scope",
++        "entity_ref_id_equals_target_id"
++      ]
++    },
++    "demand_increase": {
++      "payload_type": "DemandIncreasePayload",
++      "allowed_kinds": [
++        "order"
++      ],
++      "target": {
++        "source": "entity",
++        "type": "Order",
++        "id_path": "order_id",
++        "revision": "row_version_if_present"
++      },
++      "constraints": [
++        "target_exists_in_scope",
++        "entity_ref_id_equals_target_id"
++      ]
++    },
++    "demand_decrease": {
++      "payload_type": "DemandDecreasePayload",
++      "allowed_kinds": [
++        "order"
++      ],
++      "target": {
++        "source": "entity",
++        "type": "Order",
++        "id_path": "order_id",
++        "revision": "row_version_if_present"
++      },
++      "constraints": [
++        "target_exists_in_scope",
++        "entity_ref_id_equals_target_id"
++      ]
++    },
++    "equipment_failure": {
++      "payload_type": "EquipmentFailurePayload",
++      "allowed_kinds": [
++        "equipment"
++      ],
++      "target": {
++        "source": "entity",
++        "type": "Equipment",
++        "id_path": "equipment_id",
++        "revision": "row_version_if_present"
++      },
++      "constraints": [
++        "target_exists_in_scope",
++        "entity_ref_id_equals_target_id"
++      ]
++    },
++    "warehouse_resource_unavailable": {
++      "payload_type": "WarehouseResourceUnavailablePayload",
++      "allowed_kinds": [
++        "warehouse",
++        "zone",
++        "location",
++        "dock",
++        "worker",
++        "equipment"
++      ],
++      "target": {
++        "source": "resource_ref",
++        "types_by_kind": {
++          "warehouse": "Warehouse",
++          "zone": "WarehouseZone",
++          "location": "StorageLocation",
++          "dock": "Dock",
++          "worker": "Worker",
++          "equipment": "Equipment"
++        },
++        "id_path": "resource_ref.id",
++        "kind_path": "resource_ref.kind",
++        "revision": "row_version_if_present"
++      },
++      "constraints": [
++        "target_exists_in_scope",
++        "entity_ref_equals_resource_ref"
++      ]
++    }
++  }
+ }
+--- before/contracts/changes/N01-R01-contract-freeze-2.0.0.md
++++ after/contracts/changes/N01-R01-contract-freeze-2.0.0.md
+@@ -1,17 +1,30 @@
+-# N01-R01 契约冻结缺口迁移 · 待独立复核
+-
+-这是 A 契约治理的本轮设计决定，不是原 1.0.0 契约已有事实，不是实现或 Gate 签收。治理返工标识 N01-R01 不加入业务 manifest。
+-
+-输入：计划 1.0.2；候选 `content-sha256:3525ed5b78851ea5d4fc7b5305b6b2e9f45bfedf7ee8742e3478ce6174e585a4`。精确修改白名单、改前 sha256、生成器实际 114 个输出及受保护文件见 [scope-before](../../artifacts/handoffs/N01-R01/codex/scope-before.json)。改前原字节保存在 `tmp/N01-R01/before/`；N01/N02 原交接和原日志不可改。
+-
+-版本决定：规划 1.0.2 → 1.0.3；数据/领域/HTTP/内部契约 1.0.0 → 2.0.0。新增必需字段、枚举序列化值、hash 和引用语义不能预设兼容；Gate 证据 schema 仍 1.0.0，执行器、冻结记录、OWNERSHIP 与依赖锁不变。旧业务 schema_version=1.0.0 不自动视作 2.0.0；未来迁移必须显式转换并保留原版本、原输入 hash 和转换记录；无转换规则拒绝，禁止补默认猜值。
+-
+-范围：N02-F01–F04、其直接嵌套引用及 ActorContext、Resource/ResourceDTO、早期 HTTP/CLI 具名边界闭包。规范决定表保存于本目录 `N01-R01-contract-decisions.json`；它是本轮文档契约的可校验附表，尚不是生成的业务 JSON Schema 或业务实现。公共类型实施后仍由 domain 源码唯一定义，DTO 映射，导出工具生成 Schema/OpenAPI/TS。
+-
+-具体破坏点：五类JobKind及优化二级mode精确序列化；ScenarioRef与完整场景hash/输入/独立期望旁文件；ResourceCalendar必需epoch以及可复算源日历/投影绑定；JobCommand与不可变版本化引用取代未闭合的未来payload导入；Actor scope、Resource五分支包装和主数据具名投影。原Zone没有calendar字段，通用calendar端点限location/dock/worker/equipment，zone请求明确422 UnsupportedDetail，不推断仓库日历。日历DTO只映射公共字段并加根HTTP schema_version；上述选择均为本轮设计决定。
+-
+-受影响 Gate：G00 冻结输入和规划 DAG；G01 计划/候选输入；G02 类型/Schema；G03 持久化；G04 场景/导入；G05 HTTP/Job；相关后续消费者 G06/G08/G11/G12/G14/G16/G17/G23/G32/G33，及其所有后继 G00–G39 的有效性均须重审。新候选不复用旧通过结论；已有 P01 交接/precheck 输入失效，不在本轮重写。
+-
+-迁移顺序：先契约决定与规划源 → 重生成全部实际规划输出 → 本轮规划/契约正反例与字节复现 → 停写交独立 N02。N02 判定成立后才按其授权恢复冻结/G00；G00 有效后 N03–N05 刷新与重验 Phase01；G01 有效后按原 P02 任务实施 domain → DTO → ports → 消费者 → 测试 → Schema/OpenAPI/TS。本轮禁止业务源码、依赖锁、执行器和业务导出物写入，没有补造尚未实现的 Schema，也没有执行数据库/模型 smoke。
+-
+-详细决定、例子、验证结果在最终交接中绑定原始日志；实施者状态只为待独立复核。
++# N01-R01 契约冻结缺口迁移 · 待独立复核
++
++这是 A 契约治理的本轮设计决定，不是原 1.0.0 契约已有事实，不是实现或 Gate 签收。治理返工标识 N01-R01 不加入业务 manifest。
++
++输入：计划 1.0.2；候选 `content-sha256:3525ed5b78851ea5d4fc7b5305b6b2e9f45bfedf7ee8742e3478ce6174e585a4`。精确修改白名单、改前 sha256、生成器实际 114 个输出及受保护文件见 [scope-before](../../artifacts/handoffs/N01-R01/codex/scope-before.json)。改前原字节保存在 `tmp/N01-R01/before/`；N01/N02 原交接和原日志不可改。
++
++版本决定：规划 1.0.2 → 1.0.3；数据/领域/HTTP/内部契约 1.0.0 → 2.0.0。新增必需字段、枚举序列化值、hash 和引用语义不能预设兼容；Gate 证据 schema 仍 1.0.0，执行器、冻结记录、OWNERSHIP 与依赖锁不变。旧业务 schema_version=1.0.0 不自动视作 2.0.0；未来迁移必须显式转换并保留原版本、原输入 hash 和转换记录；无转换规则拒绝，禁止补默认猜值。
++
++范围：N02-F01–F04、其直接嵌套引用及 ActorContext、Resource/ResourceDTO、早期 HTTP/CLI 具名边界闭包。规范决定表保存于本目录 `N01-R01-contract-decisions.json`；它是本轮文档契约的可校验附表，尚不是生成的业务 JSON Schema 或业务实现。公共类型实施后仍由 domain 源码唯一定义，DTO 映射，导出工具生成 Schema/OpenAPI/TS。
++
++具体破坏点：五类JobKind及优化二级mode精确序列化；ScenarioRef与完整场景hash/输入/独立期望旁文件；ResourceCalendar必需epoch以及可复算源日历/投影绑定；JobCommand与不可变版本化引用取代未闭合的未来payload导入；Actor scope、Resource五分支包装和主数据具名投影。原Zone没有calendar字段，通用calendar端点限location/dock/worker/equipment，zone请求明确422 UnsupportedDetail，不推断仓库日历。日历DTO只映射公共字段并加根HTTP schema_version；上述选择均为本轮设计决定。
++
++受影响 Gate：G00 冻结输入和规划 DAG；G01 计划/候选输入；G02 类型/Schema；G03 持久化；G04 场景/导入；G05 HTTP/Job；相关后续消费者 G06/G08/G11/G12/G14/G16/G17/G23/G32/G33，及其所有后继 G00–G39 的有效性均须重审。新候选不复用旧通过结论；已有 P01 交接/precheck 输入失效，不在本轮重写。
++
++迁移顺序：先契约决定与规划源 → 重生成全部实际规划输出 → 本轮规划/契约正反例与字节复现 → 停写交独立 N02。N02 判定成立后才按其授权恢复冻结/G00；G00 有效后 N03–N05 刷新与重验 Phase01；G01 有效后按原 P02 任务实施 domain → DTO → ports → 消费者 → 测试 → Schema/OpenAPI/TS。本轮禁止业务源码、依赖锁、执行器和业务导出物写入，没有补造尚未实现的 Schema，也没有执行数据库/模型 smoke。
++
++详细决定、例子、验证结果在最终交接中绑定原始日志；实施者状态只为待独立复核。
++
++
++## N01-R02 唯一阻断修复追加 · 待独立复核
++
++依据独立N02-R01的N02-R01-F02-C01，本轮只修改授权的DATA_CONTRACTS、TYPE_DEFINITION_OWNERSHIP、本规范JSON、本迁移说明、validate_plan.py；原字节及保护清单在tmp/N01-R02与artifacts/handoffs/N01-R02/codex。旧N01/N02交接与日志不覆盖，不修改冻结JSON/MD、官方G00/G01、业务源码、锁、OWNERSHIP、manifest或生成Prompt。
++
++新决定：EntityKind为45项封闭集合（目录32实体+11既有辅助实体+TravelMatrix/RegionRef纯值目标）；EntityRef完整kind/id/可空非负revision，保留P02-01唯一承载。zone/location沿用既有边界标签；其余成员/精确值及全部十类事件的合法目标/ID/revision绑定由DATA与本附表明确。交通多弧绑定一个旧矩阵ID/version；天气region绑定已有RegionRef节点分组；仓储ref完整一致、限仓库及五资源。没有新增实体、payload字段或未来DTO依赖。
++
++版本仍计划1.0.3、业务2.0.0、证据格式1.0.0：当前2.0.0候选未获冻结/G00签收，这是完成先前未决定义，不是假定已发布2.0.0的兼容修补。旧11字符串仅示例实现，不能作为已有枚举规范迁移来源；旧1.0.0仍遵循原破坏迁移规则。不确定目标/枚举/ID/修订的旧事件不得猜值转换，必须有可信事实映射并保留原bytes/hash/版本与转换记录，无映射拒绝。尤其旧脚本没有driver、matrix、region等成员，不能直接复用作完整事件验收。
++
++新候选使受影响旧审查/规划/契约证据失效：G00冻结输入以及G01相关候选，随后G02公共类型、G04场景引用、G11/G13/G14事件消费、G17/G19/G23/G31引用与审计，以及所有受依赖传播影响的后继。新增设计测试以新输入实跑；本轮不复用N02-R01/N01-R01通过日志为新验收。沿用既有“domain→DTO→ports→消费者→测试→生成物”实施顺序，未实现部分仍由原阶段验收。
++
++本实施者只提交N01-R02待独立复核交接；不record-g00、不更新旧冻结身份/hash、不签官方Gate、不启动N03/P02。下一执行者为独立Codex N02-R02，先复算新候选/五项差异/保护文件/日志并复核这个唯一修复，成立后再执行原授权的真实G00恢复流程。
+--- before/tools/ai_coding_plan/validate_plan.py
++++ after/tools/ai_coding_plan/validate_plan.py
+@@ -85,6 +85,69 @@
+ CONTRACT_PRIMITIVES={'UUID','UTC','str','int','bool','Sha256','PositiveInt','NonNegativeInt','Seed','Horizon','SchemaVersion','VersionText','SafeText'}
+ CONTRACT_SOURCE_PATHS={'docs/architecture/DOMAIN_CATALOG.md','docs/architecture/DATA_CONTRACTS.md','docs/architecture/IMPLEMENTATION_CONVENTIONS.md','docs/api/API_CONTRACT.md','docs/algorithms/OPTIMIZATION_CONTRACT.md','docs/algorithms/SIMULATION_CONTRACT.md','docs/algorithms/METRICS_CONTRACT.md','docs/plan/TEST_FIXTURES.md'}
+ JOB_KIND_VALUES=('optimization','simulation','reschedule','experiment','metric')
++ENTITY_AUXILIARY_NAMES=['PlanningSnapshot','Job','JobAttempt','Idempotency','Reservation','InventoryLedger','Outbox','AuditEntry','LifecycleEvent','ExecutionSnapshot','ConfirmationToken']
++
++def entity_reference_targets():
++    """N01-R02 target identity metadata; target names do not imply type imports."""
++    targets={}
++    for name in ENTITY_NAMES+ENTITY_AUXILIARY_NAMES:
++        value={'WarehouseZone':'zone','StorageLocation':'location'}.get(name,re.sub(r'(?<!^)(?=[A-Z])','_',name).lower())
++        targets[value]=dict(type=name,identity_field='id',revision_field='row_version',category='entity')
++    targets['travel_matrix']=dict(type='TravelMatrix',identity_field='id',revision_field='version',category='pure_value')
++    targets['region']=dict(type='RegionRef',identity_field='region_id',revision_field=None,category='inline_value')
++    return targets
++
++ENTITY_KIND_MEMBERS={re.sub(r'(?<!^)(?=[A-Z])','_',row['type']).upper() if row['type']!='RegionRef' else 'REGION':value for value,row in entity_reference_targets().items()}
++
++def event_entity_reference_mapping():
++    """Exact frozen ten-event decisions, independent of the loaded registry."""
++    mapping={}
++    for tag,payload,kind,target_type,id_path in (
++        ('vehicle_failure','VehicleFailurePayload','vehicle','Vehicle','vehicle_id'),
++        ('transport_delay','TransportDelayPayload','transport_task','TransportTask','transport_task_id'),
++        ('cargo_anomaly','CargoAnomalyPayload','cargo','Cargo','cargo_id'),
++        ('order_cancellation','OrderCancellationPayload','order','Order','order_id'),
++        ('demand_increase','DemandIncreasePayload','order','Order','order_id'),
++        ('demand_decrease','DemandDecreasePayload','order','Order','order_id'),
++        ('equipment_failure','EquipmentFailurePayload','equipment','Equipment','equipment_id'),
++    ):
++        mapping[tag]=dict(payload_type=payload,allowed_kinds=[kind],
++            target=dict(source='entity',type=target_type,id_path=id_path,revision='row_version_if_present'),
++            constraints=['target_exists_in_scope','entity_ref_id_equals_target_id'])
++    mapping['traffic_disruption']=dict(payload_type='TrafficDisruptionPayload',allowed_kinds=['travel_matrix'],
++        target=dict(source='snapshot_matrix',type='TravelMatrix',id_path='entity_ref.id',revision='matrix_version_required'),
++        constraints=['target_exists_in_scope','nonempty_unique_directed_arcs','arc_nodes_in_target_matrix','new_matrix_version_gt_reference','one_matrix_per_event'])
++    mapping['weather_change']=dict(payload_type='WeatherChangePayload',allowed_kinds=['region'],
++        target=dict(source='inline_region',type='RegionRef',id_path='region_ref.region_id',revision='null_required'),
++        constraints=['entity_ref_id_equals_target_id','nonempty_unique_region_nodes','region_nodes_in_scene_matrix_union','same_region_id_same_node_set','affected_matrix_versions_strictly_advance'])
++    kinds=['warehouse','zone','location','dock','worker','equipment']
++    mapping['warehouse_resource_unavailable']=dict(payload_type='WarehouseResourceUnavailablePayload',allowed_kinds=kinds,
++        target=dict(source='resource_ref',types_by_kind={kind:entity_reference_targets()[kind]['type'] for kind in kinds},
++            id_path='resource_ref.id',kind_path='resource_ref.kind',revision='row_version_if_present'),
++        constraints=['target_exists_in_scope','entity_ref_equals_resource_ref'])
++    return mapping
++
++def contract_field_path_type(types,root_type,expression):
++    """Resolve only required record fields; no indexing, optional hops or code."""
++    if not isinstance(expression,str) or not re.fullmatch(r'[a-z_][A-Za-z0-9_]*(?:\.[a-z_][A-Za-z0-9_]*)*',expression):
++        raise ValueError('invalid target field path '+str(expression))
++    current=root_type
++    for field in expression.split('.'):
++        if not isinstance(current,str):raise ValueError('invalid type in target field path '+expression)
++        row=types.get(current,{})
++        fields=row.get('fields',{})
++        if row.get('kind')!='record' or not isinstance(fields,dict) or field not in fields:
++            raise ValueError('unresolved target field path '+expression)
++        current=fields[field]
++    if not isinstance(current,str):raise ValueError('invalid type in target field path '+expression)
++    return current
++
++def reject_contract_duplicate_keys(pairs):
++    result={}
++    for key,value in pairs:
++        if key in result:raise ValueError('duplicate contract JSON key '+key)
++        result[key]=value
++    return result
+ 
+ def contract_type_reference(expression):
+     """The registry has a small closed type language; arbitrary Python is invalid."""
+@@ -240,6 +303,39 @@
+     states='packages/domain/src/logistics_domain/states.py'
+     primitives='packages/domain/src/logistics_domain/primitives.py'
+     runtime='packages/domain/src/logistics_domain/runtime.py'
++    execution='packages/domain/src/logistics_domain/execution.py'
++    entity_kind=require('EntityKind','enum','P02-01',states)
++    if entity_kind.get('members')!=ENTITY_KIND_MEMBERS:fail('EntityKind: exact 45 members/serialization values required')
++    entity_ref=require('EntityRef','record','P02-01',primitives)
++    if entity_ref.get('fields')!=dict(kind='EntityKind',id='UUID',revision='NonNegativeInt?'):fail('EntityRef: exact kind/id/optional nonnegative revision fields required')
++    if data.get('entity_ref_targets')!=entity_reference_targets():fail('EntityKind/target identity mapping mismatch')
++    expected_events=event_entity_reference_mapping()
++    event_mapping=data.get('event_entity_ref_mapping')
++    if not isinstance(event_mapping,dict):fail('event_entity_ref_mapping must be an object');event_mapping={}
++    if set(event_mapping)!=set(expected_events):fail('event EntityRef mapping must cover exactly ten events')
++    event_payload=require('EventPayload','union','P02-04',execution)
++    expected_variants={tag:rule['payload_type'] for tag,rule in expected_events.items()}
++    if event_payload.get('discriminator')!='kind' or event_payload.get('variants')!=expected_variants:fail('EventPayload: exact ten kind branches required')
++    region=require('RegionRef','record','P02-04',execution)
++    if region.get('fields')!=dict(region_id='UUID',node_ids='UUID[]'):fail('RegionRef: explicit region_id/node_ids fields required')
++    for tag,expected in expected_events.items():
++        payload=expected['payload_type'];row=require(payload,'record','P02-04',execution)
++        fields=row.get('fields',{})
++        if not isinstance(fields,dict):fields={}
++        if fields.get('kind')!='='+tag or fields.get('entity_ref')!='EntityRef':fail(payload+': explicit kind and shared EntityRef fields required')
++        if tag=='warehouse_resource_unavailable' and fields.get('resource_ref')!='EntityRef':fail(payload+': resource_ref must use shared EntityRef')
++        rule=event_mapping.get(tag)
++        if not isinstance(rule,dict):fail(tag+': event target rule must be an object');continue
++        if rule!=expected:fail(tag+': exact event EntityRef target rule required')
++        allowed=rule.get('allowed_kinds')
++        if not isinstance(allowed,list) or not allowed or any(not isinstance(kind,str) or kind not in ENTITY_KIND_MEMBERS.values() for kind in allowed):fail(tag+': unknown or empty allowed EntityKind list')
++        elif len(set(allowed))!=len(allowed):fail(tag+': duplicate allowed EntityKind')
++        target=rule.get('target')
++        if not isinstance(target,dict):fail(tag+': target must be an object');continue
++        for path_key,required_type in [('id_path','UUID')]+([('kind_path','EntityKind')] if tag=='warehouse_resource_unavailable' else []):
++            try:resolved=contract_field_path_type(types,payload,target.get(path_key))
++            except ValueError as exc:fail(tag+': '+str(exc));continue
++            if resolved!=required_type:fail(tag+': '+path_key+' must resolve to required '+required_type)
+     job_kind=require('JobKind','enum','P02-01',states)
+     if job_kind.get('members')!={value.upper():value for value in JOB_KIND_VALUES}:fail('JobKind: exact five members/values required')
+     mapping=data.get('job_kind_mapping')
+@@ -291,7 +387,7 @@
+     decisions=ROOT/CONTRACT_DECISIONS_PATH
+     if not decisions.is_file():errors.append('missing contract decision registry '+CONTRACT_DECISIONS_PATH)
+     else:
+-        try:errors+=validate_contract_decisions(json.loads(decisions.read_text(encoding='utf-8')),data)
++        try:errors+=validate_contract_decisions(json.loads(decisions.read_text(encoding='utf-8'),object_pairs_hook=reject_contract_duplicate_keys),data)
+         except (ValueError,TypeError,KeyError) as exc:errors.append('invalid contract decision registry: '+str(exc))
+     if len(gates)!=40 or {g['id'] for g in gates}!={f'G{p:02d}' for p in range(40)}:errors.append('40 numbered gates required')
+     if {t['phase'] for t in tasks}!=set(range(40)):errors.append('phase coverage gap')
+@@ -389,12 +485,13 @@
+         primitives='packages/domain/src/logistics_domain/primitives.py'
+         planning='packages/domain/src/logistics_domain/planning.py'
+         runtime='packages/domain/src/logistics_domain/runtime.py'
++        execution='packages/domain/src/logistics_domain/execution.py'
+         contracts_runtime='packages/contracts/src/logistics_contracts/runtime.py'
+         http='packages/contracts/src/logistics_contracts/http.py'
+         tasks=[
+             dict(id='P02-01',deps=[],allowed_files=[states,primitives]),
+             dict(id='P02-03',deps=['P02-01'],allowed_files=[planning]),
+-            dict(id='P02-04',deps=['P02-03'],allowed_files=[runtime,contracts_runtime]),
++            dict(id='P02-04',deps=['P02-03'],allowed_files=[runtime,execution,contracts_runtime]),
+             dict(id='P05-02',deps=['P02-04'],allowed_files=[http]),
+             dict(id='P05-03',deps=['P05-02'],allowed_files=[contracts_runtime]),
+         ]
+@@ -404,6 +501,8 @@
+         def enum(name,members):rows.append(dict(name=name,kind='enum',members=members,task='P02-01',path=states,rules=[]))
+         enum('JobKind',{value.upper():value for value in JOB_KIND_VALUES})
+         enum('JobOptimizationMode',{value.upper():value for value in ('transport','warehouse','joint')})
++        enum('EntityKind',deepcopy(ENTITY_KIND_MEMBERS))
++        record('EntityRef',dict(kind='EntityKind',id='UUID',revision='NonNegativeInt?'),'P02-01',primitives)
+         record('CalendarInterval',dict(start_s='NonNegativeInt',end_s='NonNegativeInt',available_units='NonNegativeInt'),'P02-01',primitives)
+         record('ResourceCalendar',dict(epoch_utc='UTC',intervals='CalendarInterval[]',version='NonNegativeInt'),'P02-01',primitives)
+         rows.append(dict(name='CalendarDTO',kind='mapped',base='ResourceCalendar',extra_fields=dict(schema_version='=2.0.0'),task='P05-02',path=http,rules=[]))
+@@ -417,14 +516,23 @@
+         rows.append(dict(name='JobPayload',kind='union',variants=mapping,discriminator='family',task='P02-04',path=runtime,rules=[]))
+         record('JobCommand',dict(schema_version='=2.0.0',kind='JobKind',payload='JobPayload',deadline_utc='UTC'))
+         rows.append(dict(name='JobRequest',kind='mapped',base='JobCommand',task='P02-04',path=contracts_runtime,rules=[]))
+-        record('ScenarioEventSpec',dict(event_id='UUID',effective_at_s='NonNegativeInt'))
++        record('RegionRef',dict(region_id='UUID',node_ids='UUID[]'),path=execution)
++        event_mapping=event_entity_reference_mapping()
++        for tag,rule in event_mapping.items():
++            fields=dict(kind='='+tag,entity_ref='EntityRef')
++            if rule['target']['source']=='entity':fields[rule['target']['id_path']]='UUID'
++            elif tag=='weather_change':fields['region_ref']='RegionRef'
++            elif tag=='warehouse_resource_unavailable':fields['resource_ref']='EntityRef'
++            record(rule['payload_type'],fields,path=execution)
++        rows.append(dict(name='EventPayload',kind='union',variants={tag:rule['payload_type'] for tag,rule in event_mapping.items()},discriminator='kind',task='P02-04',path=execution,rules=[]))
++        record('ScenarioEventSpec',dict(event_id='UUID',effective_at_s='NonNegativeInt',payload='EventPayload'))
+         record('ScenarioSpec',dict(schema_version='=2.0.0',event_specs='ScenarioEventSpec[]'))
+         record('ScenarioRef',dict(scenario_id='UUID',dataset_version='PositiveInt',schema_version='=2.0.0',content_hash='Sha256'))
+         record('ScenarioInput',dict(snapshot='PlanningSnapshot'))
+         record('ScenarioBundle',dict(schema_version='=2.0.0',ref='ScenarioRef',spec='ScenarioSpec',input='ScenarioInput',source='=synthetic'))
+         data=dict(contract_version='2.0.0',plan_version='1.0.3',decision_round='N01-R01',types=rows,
+-            module_dependencies={states:[],primitives:[],planning:[],runtime:[states,planning],http:[primitives],contracts_runtime:[runtime]},
+-            job_kind_mapping=mapping)
++            module_dependencies={states:[],primitives:[states],planning:[],execution:[primitives],runtime:[states,planning,execution],http:[primitives],contracts_runtime:[runtime]},
++            job_kind_mapping=mapping,entity_ref_targets=entity_reference_targets(),event_entity_ref_mapping=event_mapping)
+         return data,dict(plan_version='1.0.3',tasks=tasks,gates=[])
+     def row(self,data,name):return next(r for r in data['types'] if r['name']==name)
+     def assert_failure(self,data,manifest,detail):
+@@ -524,6 +632,104 @@
+         data,manifest=self.fixture();self.row(data,'ScenarioInput')['fields']={}
+         self.assert_failure(data,manifest,'empty record is not a complete type')
+ 
++    def test_entity_kind_cannot_be_existing(self):
++        data,manifest=self.fixture();row=self.row(data,'EntityKind')
++        row.update(kind='existing',source='docs/architecture/DATA_CONTRACTS.md#公共类型与状态');row.pop('members')
++        self.assert_failure(data,manifest,'EntityKind: required kind enum')
++    def test_entity_kind_has_every_catalog_entity_and_consumer(self):
++        data,manifest=self.fixture();self.row(data,'EntityKind')['members'].pop('DRIVER')
++        self.assert_failure(data,manifest,'exact 45 members/serialization values required')
++    def test_entity_kind_serialization_values_are_unique(self):
++        data,manifest=self.fixture();self.row(data,'EntityKind')['members']['DRIVER']='vehicle'
++        self.assert_failure(data,manifest,'duplicate enum serialization value')
++    def test_entity_kind_member_names_cannot_repeat_in_json(self):
++        with self.assertRaisesRegex(ValueError,'duplicate contract JSON key DRIVER'):
++            json.loads('{"members":{"DRIVER":"driver","DRIVER":"vehicle"}}',object_pairs_hook=reject_contract_duplicate_keys)
++    def test_entity_kind_existing_consumer_labels_are_preserved(self):
++        data,manifest=self.fixture();self.row(data,'EntityKind')['members']['WAREHOUSE_ZONE']='warehouse_zone'
++        self.assert_failure(data,manifest,'exact 45 members/serialization values required')
++    def test_entity_target_identity_cannot_change(self):
++        data,manifest=self.fixture();data['entity_ref_targets']['travel_matrix']['revision_field']='row_version'
++        self.assert_failure(data,manifest,'EntityKind/target identity mapping mismatch')
++    def test_entity_target_set_cannot_omit_region(self):
++        data,manifest=self.fixture();data['entity_ref_targets'].pop('region')
++        self.assert_failure(data,manifest,'EntityKind/target identity mapping mismatch')
++    def test_entity_ref_cannot_be_existing(self):
++        data,manifest=self.fixture();row=self.row(data,'EntityRef')
++        row.update(kind='existing',source='docs/architecture/DATA_CONTRACTS.md#公共类型与状态');row.pop('fields')
++        self.assert_failure(data,manifest,'EntityRef: required kind record')
++    def test_entity_ref_requires_unique_enum_kind(self):
++        data,manifest=self.fixture();self.row(data,'EntityRef')['fields']['kind']='str'
++        self.assert_failure(data,manifest,'exact kind/id/optional nonnegative revision fields required')
++    def test_entity_ref_cannot_omit_uuid_identity(self):
++        data,manifest=self.fixture();self.row(data,'EntityRef')['fields'].pop('id')
++        self.assert_failure(data,manifest,'exact kind/id/optional nonnegative revision fields required')
++    def test_entity_ref_revision_cannot_be_signed(self):
++        data,manifest=self.fixture();self.row(data,'EntityRef')['fields']['revision']='int?'
++        self.assert_failure(data,manifest,'optional nonnegative revision fields required')
++    def test_entity_ref_definition_cannot_move_later(self):
++        data,manifest=self.fixture();primitives=self.row(data,'EntityRef')['path']
++        manifest['tasks'][2]['allowed_files'].append(primitives);self.row(data,'EntityRef')['task']='P02-04'
++        self.assert_failure(data,manifest,'EntityRef: wrong definition task')
++    def test_entity_kind_definition_must_precede_entity_ref(self):
++        data,manifest=self.fixture();states=self.row(data,'EntityKind')['path']
++        manifest['tasks'][2]['allowed_files'].append(states);self.row(data,'EntityKind')['task']='P02-04'
++        self.assert_failure(data,manifest,'EntityKind: wrong definition task')
++        self.assert_failure(data,manifest,'future or unordered type dependency EntityKind')
++    def test_entity_ref_has_one_definition(self):
++        data,manifest=self.fixture();data['types'].append(deepcopy(self.row(data,'EntityRef')))
++        self.assert_failure(data,manifest,'duplicate type EntityRef')
++    def test_event_target_mapping_requires_all_ten_events(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping'].pop('weather_change')
++        self.assert_failure(data,manifest,'mapping must cover exactly ten events')
++    def test_event_target_mapping_rejects_unknown_event(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['unknown_event']={}
++        self.assert_failure(data,manifest,'mapping must cover exactly ten events')
++    def test_event_target_mapping_requires_exact_payload_branch(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['cargo_anomaly']['payload_type']='EquipmentFailurePayload'
++        self.assert_failure(data,manifest,'cargo_anomaly: exact event EntityRef target rule required')
++    def test_event_payload_union_requires_all_ten_branches(self):
++        data,manifest=self.fixture();self.row(data,'EventPayload')['variants'].pop('traffic_disruption')
++        self.assert_failure(data,manifest,'EventPayload: exact ten kind branches required')
++    def test_event_payload_cannot_hide_entity_ref_in_existing_leaf(self):
++        data,manifest=self.fixture();row=self.row(data,'VehicleFailurePayload')
++        row.update(kind='existing',source='docs/architecture/DATA_CONTRACTS.md#十类异常-payload');row.pop('fields')
++        self.assert_failure(data,manifest,'VehicleFailurePayload: required kind record')
++    def test_event_target_kind_must_be_registered(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['vehicle_failure']['allowed_kinds']=['spaceship']
++        self.assert_failure(data,manifest,'unknown or empty allowed EntityKind list')
++    def test_event_target_kind_cannot_repeat(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['vehicle_failure']['allowed_kinds'].append('vehicle')
++        self.assert_failure(data,manifest,'duplicate allowed EntityKind')
++    def test_event_target_id_path_must_exist(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['vehicle_failure']['target']['id_path']='missing_id'
++        self.assert_failure(data,manifest,'unresolved target field path')
++    def test_event_target_id_path_cannot_be_code(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['traffic_disruption']['target']['id_path']='arc_refs[0].id'
++        self.assert_failure(data,manifest,'invalid target field path')
++    def test_event_target_id_path_must_resolve_uuid(self):
++        data,manifest=self.fixture();self.row(data,'TransportDelayPayload')['fields']['transport_task_id']='PositiveInt'
++        self.assert_failure(data,manifest,'id_path must resolve to required UUID')
++    def test_event_target_id_cannot_be_optional(self):
++        data,manifest=self.fixture();self.row(data,'VehicleFailurePayload')['fields']['vehicle_id']='UUID?'
++        self.assert_failure(data,manifest,'id_path must resolve to required UUID')
++    def test_region_identity_is_an_explicit_nested_record(self):
++        data,manifest=self.fixture();row=self.row(data,'RegionRef')
++        row.update(kind='existing',source='docs/architecture/DATA_CONTRACTS.md#十类异常-payload');row.pop('fields')
++        self.assert_failure(data,manifest,'RegionRef: required kind record')
++    def test_warehouse_target_kind_path_must_resolve_enum(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['warehouse_resource_unavailable']['target']['kind_path']='resource_ref.id'
++        self.assert_failure(data,manifest,'kind_path must resolve to required EntityKind')
++    def test_warehouse_target_kind_type_pairing_is_exact(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['warehouse_resource_unavailable']['target']['types_by_kind']['dock']='Warehouse'
++        self.assert_failure(data,manifest,'warehouse_resource_unavailable: exact event EntityRef target rule required')
++    def test_event_target_revision_policy_is_exact(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['weather_change']['target']['revision']='row_version_if_present'
++        self.assert_failure(data,manifest,'weather_change: exact event EntityRef target rule required')
++    def test_event_target_constraints_cannot_be_omitted(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['traffic_disruption']['constraints'].remove('one_matrix_per_event')
++        self.assert_failure(data,manifest,'traffic_disruption: exact event EntityRef target rule required')
++
+ def run_self_tests():
+     suite=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromTestCase(t) for t in (CheckerTests,ContractDecisionTests))
+     output=io.StringIO()

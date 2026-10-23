@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-03",
+  "phase_gate": "G01",
+  "status": "Z_PRECHECK_PASSED",
+  "reviewer": "ZCode N04-R01 (independent ZCode pre-acceptance session; GLM-5.3-Flash via ZCode CLI)",
+  "reviewed_at": "2026-10-04T16:47:59.134833+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "round": "2026-10-04-r01",
+  "supersedes": "artifacts/handoffs/<task>/zcode/precheck.json round 2026-10-04 (archived at artifacts/handoffs/<task>/zcode/archive/r0-2026-10-04/)",
+  "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+  "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+  "verified_input_hashes": {
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+    "docs/workflow/02-ZCODE-PRECHECK.md": "f05e310fc1a20e610457719c2ca1ba3afad4b33206247f66f992f6c422a3372d",
+    "docs/workflow/HANDOFF_CONTRACT.md": "7c40a6429e73059543375dfabf81e0642809347f88493e0393a7b68456269280",
+    "docs/agent-toolchain/00-common.md": "dc19f47c7270f9b33e51658d8ccfeda113a6df028cc567020c9c0543fa6e5fbf",
+    "docs/agent-toolchain/05-zcode-precheck.md": "e97a3f160265d4a21e1410dadcfca522892a22430d4d82e441b9164bc2c8805c",
+    "docs/agent-toolchain/12-project-completion-dispatch.md": "44450a2794a1e2deadf9f8c7d8744927afa14ed4e37d614fd555e1d30b83339b",
+    "docs/agent-toolchain/13-partitioned-parallel-dispatch.md": "fee78af5909960f7aaae9bd581523927d951857c9b24d6bfb4c5ddffb76c4a40",
+    "docs/agent-toolchain/15-autonomous-orchestration.md": "055ffe685e22dc2beb1165abeb44f6260aaa1d9a6d71e512bec07c771ac69e34",
+    "artifacts/dispatch/2026-10-04/orchestration/zcode/N04-resume.md": "05919222976ef17ad5ae29ce79c50e88d81590d187ff5c6057a6910ad0766f66",
+    "artifacts/gates/G00.json": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+    "artifacts/gates/G00-checks.log": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+    "docs/architecture/BASELINE_INVENTORY.json": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+    "demo.zip": "e0350b75239807047b1dbdb25f69fed5c6c26e34929731d0658db83a58f0e904",
+    "demo.zip.sha256": "4f4ecfad3a6029c06d56019a727e40e00b966b9be3d6785051bf020ce7bb4c51",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "package-lock.json": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "docs/prompts/01-foundation/P01-03-migration-governance.md": "838f78b7c9252ce1ade2aee17a9ebc849839f97bdcaa4f5c4981f68bdbd1a702",
+    "artifacts/handoffs/P01-03/dsh/evidence.json": "365d0acbb4c7f4eb40ebdc5d2f0cb767dbae8aba11f180ebc75c5491a18f0887",
+    "docs/handoffs/P01-03/dsh.md": "0c2edd83e6af39b68b4ebb4519168084a170f3526cc7955639d30500220d2dcc",
+    "scripts/check_ownership.py": "63bf2bf43263b2f8251c4e5d09b771f8b4c948a94592bccdbc3f5b121c02fa5a",
+    "scripts/check_architecture.py": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5",
+    "contracts/changes/README.md": "2a695d21ffaf8681d4e7c8903c98a8beb6af8fff9340bfcff13cb5ee672e85c5",
+    "docs/architecture/LEGACY_ADAPTATION.md": "adfd5345fd6c7ecf63b39bb04fb437fdf6a4ca34a4162855dfc4b7f14cfbd214",
+    "tests/unit/test_p01_03_migration_governance.py": "10a12609375d0d22409fea4fb321e10e7a21287016f2dfbe2c0cd4bab2a968fb",
+    "tests/integration/test_p01_03_migration_governance.py": "d534312ba79d96fdcb547ee9c231df2c1d839a97fc983f6546457040aada2120",
+    "docs/implementation/P01-03.md": "7b2bdfd3fc884a4784a608b54c95491ff57796d215f2df415621288d28ddc943",
+    "docs/implementation/reports/P01-03.md": "e701639756cb8abbe662bf5c1d015f801f4e44eca0ba7ef3732909ca767b7282"
+  },
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "tmp/N04/audit_n04.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-03/zcode/logs/2026-10-04-r01/01-candidate-g00-demo-audit.log",
+      "log_sha256": "758db2247af25879078938e67d7520e7bf71744d92544051266045c55d91852e",
+      "note": "independent candidate revision/dirty-tree recomputation (77 files, cross-checked against the runner), G00 freshness (25 inputs + log hash + previous_gate_record_problems=[]), legacy demo baseline (173/173 + demo.zip), lock hashes vs the refreshed P01-01 evidence, no .workbuddy files at root"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "tmp/N04/audit_dsh_r01.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-03/zcode/logs/2026-10-04-r01/02-dsh-evidence-hash-audit.log",
+      "log_sha256": "888eb3d86e0b326025ebbf86906cacee9dbb567bc50c050dc9185452af487ad2",
+      "note": "every artifact and command-log hash recorded in the three refreshed (round n03-2026-10-04) DSH evidence files recomputed against disk: P01-01 32, P01-02 14, P01-03 12 items, 0 drift; dependency G00 gate+log hashes OK"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/gates.py",
+        "--phase",
+        "01",
+        "--revision",
+        "auto",
+        "--check-only"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/P01-03/zcode/logs/2026-10-04-r01/41-checkonly-run.log",
+      "log_sha256": "181c617e569dd3b7ae2fdcf2240c7bebf20bf5ee006c8d0f2cccc3e0b861d744",
+      "note": "freshness-only run; exit 1 correctly reports the round-0 prechecks' stale DSH-evidence bindings (this R01 refresh resolves that) and the missing Codex review; official G00.json/G01.json/G00-checks.log byte-identical before/after (40/42)"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/P01-03/zcode/logs/2026-10-04-r01/32-full-regression.log",
+      "log_sha256": "7c0ea4d5312ef0d69162ab94cf62de5b816303d1bcbd627858f4ff22eb2ca0f5",
+      "test_counts": {
+        "passed": 219,
+        "failed": 7
+      },
+      "note": "strict-quiet-window run (log captured in the system temp dir because the P01-03 integration suite snapshots the whole repository): pre/post concurrent-writer sweeps both empty (31/33), DEF-N03-02 did NOT recur; all 7 failures are the P01-01 evidence-schema defect ZC-N04-R01-P01-01-F01"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_03_migration_governance.py",
+        "tests/integration/test_p01_03_migration_governance.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-03/zcode/logs/2026-10-04-r01/10-p01-03-cmd1-pytest.log",
+      "log_sha256": "df91ada7e815bd8e04d58597448f9952629d9f756987e22ef87479aa1bbea0e5",
+      "test_counts": {
+        "passed": 74
+      },
+      "note": "required manifest command passes including the whole-repo snapshot test (test_test_case_2_unmapped_status_is_rejected_without_side_effects); log captured in the system temp dir so no repository write occurred during the snapshot window"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/check_architecture.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-03/zcode/logs/2026-10-04-r01/11-p01-03-cmd2-check-architecture.log",
+      "log_sha256": "cabb9484368a603f7310b1a115a7405ec6fba8d4d64e0090acd37fa1ddd27b6e",
+      "note": "scanned 7 modules across 7 layers; violations=0"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/check_ownership.py",
+        "--json"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-03/zcode/logs/2026-10-04-r01/12-p01-03-ownership-json.log",
+      "log_sha256": "7ae59e0853814a95a1581031d8dcd29339b5824a45042dc72745a51fe79ec8fa",
+      "note": "passed=true, default_owner_fallbacks=[], violations=0 (the DEF-N03-01 memory files, including the 16:08 UTC regeneration archived as recurrence evidence, are out of the repository root)"
+    }
+  ],
+  "findings": [
+    {
+      "id": "ZC-N04-R01-P01-03-N01",
+      "severity": "observation",
+      "summary": "DEF-N03-02 (whole-repo snapshot vs concurrent tmp writer) did not recur: the snapshot test passed inside the task suite and inside the full regression, with pre/post concurrent-writer sweeps both empty and the run's own log kept in the system temp directory.",
+      "note": "This confirms the false positive is purely concurrency-induced; the test itself was not modified. Residual risk remains that any future repository-root or tmp/ writer during a regression window reproduces it."
+    }
+  ],
+  "limitations": [
+    "This record binds candidate content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c; any relevant file change invalidates it.",
+    "The phase-wide regression currently reports 219 passed / 7 failed solely from the P01-01 evidence-schema defect (ZC-N04-R01-P01-01-F01); no failure involves a P01-03 file.",
+    "The now-empty .workbuddy/ and .workbuddy-ai/ directories remain at the repository root; the ownership checker counts files only.",
+    "No database, solver, simulation, LLM or browser acceptance is in scope for Phase 01."
+  ]
+}

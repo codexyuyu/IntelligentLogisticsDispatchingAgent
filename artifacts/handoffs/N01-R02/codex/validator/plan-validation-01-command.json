@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "tools/ai_coding_plan/validate_plan.py",
+    "--self-test"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T13:59:26.074535+00:00",
+  "finished_at": "2026-10-04T13:59:26.875367+00:00",
+  "exit_code": 1,
+  "log_path": "tmp/N01-R02/validator/plan-validation-01.log",
+  "log_sha256": "86d38482bc2d2e0f96974bbc0116f859f22c344eef61851ef0bcdb337f08a071",
+  "inputs_sha256": {
+    "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+    "contracts/changes/N01-R01-contract-decisions.json": "72e923cdd35fd2a6784002ac16a07e053c7e4605959da976d6e6c4b2b0b183c5",
+    "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "ccd58ffb8f61c00e1d6afdde9bc31a6c67e99db1166bb458d9adf881f666805a",
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8"
+  },
+  "inputs_stable": true
+}

@@ -1,0 +1,512 @@
+{
+  "round": "N01-R02",
+  "normative_new_decision": true,
+  "members": {
+    "ORDER": "order",
+    "CARGO": "cargo",
+    "VEHICLE": "vehicle",
+    "DRIVER": "driver",
+    "WAREHOUSE": "warehouse",
+    "WAREHOUSE_ZONE": "zone",
+    "STORAGE_LOCATION": "location",
+    "DOCK": "dock",
+    "WORKER": "worker",
+    "EQUIPMENT": "equipment",
+    "TRANSPORT_TASK": "transport_task",
+    "WAREHOUSE_TASK": "warehouse_task",
+    "ROUTE": "route",
+    "ROUTE_STOP": "route_stop",
+    "SCHEDULE": "schedule",
+    "SCHEDULE_TASK": "schedule_task",
+    "SCHEDULE_VERSION": "schedule_version",
+    "CONSTRAINT": "constraint",
+    "OPTIMIZATION_REQUEST": "optimization_request",
+    "OPTIMIZATION_RESULT": "optimization_result",
+    "SIMULATION": "simulation",
+    "SIMULATION_SNAPSHOT": "simulation_snapshot",
+    "EVENT": "event",
+    "EXCEPTION_EVENT": "exception_event",
+    "RESCHEDULE_REQUEST": "reschedule_request",
+    "RESCHEDULE_RESULT": "reschedule_result",
+    "AGENT_RUN": "agent_run",
+    "TOOL_CALL": "tool_call",
+    "DECISION_RECORD": "decision_record",
+    "EXPERIMENT": "experiment",
+    "METRIC": "metric",
+    "EXPERIMENT_RESULT": "experiment_result",
+    "PLANNING_SNAPSHOT": "planning_snapshot",
+    "JOB": "job",
+    "JOB_ATTEMPT": "job_attempt",
+    "IDEMPOTENCY": "idempotency",
+    "RESERVATION": "reservation",
+    "INVENTORY_LEDGER": "inventory_ledger",
+    "OUTBOX": "outbox",
+    "AUDIT_ENTRY": "audit_entry",
+    "LIFECYCLE_EVENT": "lifecycle_event",
+    "EXECUTION_SNAPSHOT": "execution_snapshot",
+    "CONFIRMATION_TOKEN": "confirmation_token",
+    "TRAVEL_MATRIX": "travel_matrix",
+    "REGION": "region"
+  },
+  "entity_ref_targets": {
+    "order": {
+      "type": "Order",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "cargo": {
+      "type": "Cargo",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "vehicle": {
+      "type": "Vehicle",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "driver": {
+      "type": "Driver",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "warehouse": {
+      "type": "Warehouse",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "zone": {
+      "type": "WarehouseZone",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "location": {
+      "type": "StorageLocation",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "dock": {
+      "type": "Dock",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "worker": {
+      "type": "Worker",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "equipment": {
+      "type": "Equipment",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "transport_task": {
+      "type": "TransportTask",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "warehouse_task": {
+      "type": "WarehouseTask",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "route": {
+      "type": "Route",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "route_stop": {
+      "type": "RouteStop",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "schedule": {
+      "type": "Schedule",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "schedule_task": {
+      "type": "ScheduleTask",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "schedule_version": {
+      "type": "ScheduleVersion",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "constraint": {
+      "type": "Constraint",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "optimization_request": {
+      "type": "OptimizationRequest",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "optimization_result": {
+      "type": "OptimizationResult",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "simulation": {
+      "type": "Simulation",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "simulation_snapshot": {
+      "type": "SimulationSnapshot",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "event": {
+      "type": "Event",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "exception_event": {
+      "type": "ExceptionEvent",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "reschedule_request": {
+      "type": "RescheduleRequest",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "reschedule_result": {
+      "type": "RescheduleResult",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "agent_run": {
+      "type": "AgentRun",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "tool_call": {
+      "type": "ToolCall",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "decision_record": {
+      "type": "DecisionRecord",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "experiment": {
+      "type": "Experiment",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "metric": {
+      "type": "Metric",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "experiment_result": {
+      "type": "ExperimentResult",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "planning_snapshot": {
+      "type": "PlanningSnapshot",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "job": {
+      "type": "Job",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "job_attempt": {
+      "type": "JobAttempt",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "idempotency": {
+      "type": "Idempotency",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "reservation": {
+      "type": "Reservation",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "inventory_ledger": {
+      "type": "InventoryLedger",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "outbox": {
+      "type": "Outbox",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "audit_entry": {
+      "type": "AuditEntry",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "lifecycle_event": {
+      "type": "LifecycleEvent",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "execution_snapshot": {
+      "type": "ExecutionSnapshot",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "confirmation_token": {
+      "type": "ConfirmationToken",
+      "identity_field": "id",
+      "revision_field": "row_version",
+      "category": "entity"
+    },
+    "travel_matrix": {
+      "type": "TravelMatrix",
+      "identity_field": "id",
+      "revision_field": "version",
+      "category": "pure_value"
+    },
+    "region": {
+      "type": "RegionRef",
+      "identity_field": "region_id",
+      "revision_field": null,
+      "category": "inline_value"
+    }
+  },
+  "entity_ref_fields": {
+    "kind": "EntityKind",
+    "id": "UUID",
+    "revision": "NonNegativeInt?"
+  },
+  "event_entity_ref_mapping": {
+    "vehicle_failure": {
+      "payload_type": "VehicleFailurePayload",
+      "allowed_kinds": [
+        "vehicle"
+      ],
+      "target": {
+        "source": "entity",
+        "type": "Vehicle",
+        "id_path": "vehicle_id",
+        "revision": "row_version_if_present"
+      },
+      "constraints": [
+        "target_exists_in_scope",
+        "entity_ref_id_equals_target_id"
+      ]
+    },
+    "transport_delay": {
+      "payload_type": "TransportDelayPayload",
+      "allowed_kinds": [
+        "transport_task"
+      ],
+      "target": {
+        "source": "entity",
+        "type": "TransportTask",
+        "id_path": "transport_task_id",
+        "revision": "row_version_if_present"
+      },
+      "constraints": [
+        "target_exists_in_scope",
+        "entity_ref_id_equals_target_id"
+      ]
+    },
+    "traffic_disruption": {
+      "payload_type": "TrafficDisruptionPayload",
+      "allowed_kinds": [
+        "travel_matrix"
+      ],
+      "target": {
+        "source": "snapshot_matrix",
+        "type": "TravelMatrix",
+        "id_path": "entity_ref.id",
+        "revision": "matrix_version_required"
+      },
+      "constraints": [
+        "target_exists_in_scope",
+        "nonempty_unique_directed_arcs",
+        "arc_nodes_in_target_matrix",
+        "new_matrix_version_gt_reference",
+        "one_matrix_per_event"
+      ]
+    },
+    "weather_change": {
+      "payload_type": "WeatherChangePayload",
+      "allowed_kinds": [
+        "region"
+      ],
+      "target": {
+        "source": "inline_region",
+        "type": "RegionRef",
+        "id_path": "region_ref.region_id",
+        "revision": "null_required"
+      },
+      "constraints": [
+        "entity_ref_id_equals_target_id",
+        "nonempty_unique_region_nodes",
+        "region_nodes_in_scene_matrix_union",
+        "same_region_id_same_node_set",
+        "affected_matrix_versions_strictly_advance"
+      ]
+    },
+    "cargo_anomaly": {
+      "payload_type": "CargoAnomalyPayload",
+      "allowed_kinds": [
+        "cargo"
+      ],
+      "target": {
+        "source": "entity",
+        "type": "Cargo",
+        "id_path": "cargo_id",
+        "revision": "row_version_if_present"
+      },
+      "constraints": [
+        "target_exists_in_scope",
+        "entity_ref_id_equals_target_id"
+      ]
+    },
+    "order_cancellation": {
+      "payload_type": "OrderCancellationPayload",
+      "allowed_kinds": [
+        "order"
+      ],
+      "target": {
+        "source": "entity",
+        "type": "Order",
+        "id_path": "order_id",
+        "revision": "row_version_if_present"
+      },
+      "constraints": [
+        "target_exists_in_scope",
+        "entity_ref_id_equals_target_id"
+      ]
+    },
+    "demand_increase": {
+      "payload_type": "DemandIncreasePayload",
+      "allowed_kinds": [
+        "order"
+      ],
+      "target": {
+        "source": "entity",
+        "type": "Order",
+        "id_path": "order_id",
+        "revision": "row_version_if_present"
+      },
+      "constraints": [
+        "target_exists_in_scope",
+        "entity_ref_id_equals_target_id"
+      ]
+    },
+    "demand_decrease": {
+      "payload_type": "DemandDecreasePayload",
+      "allowed_kinds": [
+        "order"
+      ],
+      "target": {
+        "source": "entity",
+        "type": "Order",
+        "id_path": "order_id",
+        "revision": "row_version_if_present"
+      },
+      "constraints": [
+        "target_exists_in_scope",
+        "entity_ref_id_equals_target_id"
+      ]
+    },
+    "equipment_failure": {
+      "payload_type": "EquipmentFailurePayload",
+      "allowed_kinds": [
+        "equipment"
+      ],
+      "target": {
+        "source": "entity",
+        "type": "Equipment",
+        "id_path": "equipment_id",
+        "revision": "row_version_if_present"
+      },
+      "constraints": [
+        "target_exists_in_scope",
+        "entity_ref_id_equals_target_id"
+      ]
+    },
+    "warehouse_resource_unavailable": {
+      "payload_type": "WarehouseResourceUnavailablePayload",
+      "allowed_kinds": [
+        "warehouse",
+        "zone",
+        "location",
+        "dock",
+        "worker",
+        "equipment"
+      ],
+      "target": {
+        "source": "resource_ref",
+        "types_by_kind": {
+          "warehouse": "Warehouse",
+          "zone": "WarehouseZone",
+          "location": "StorageLocation",
+          "dock": "Dock",
+          "worker": "Worker",
+          "equipment": "Equipment"
+        },
+        "id_path": "resource_ref.id",
+        "kind_path": "resource_ref.kind",
+        "revision": "row_version_if_present"
+      },
+      "constraints": [
+        "target_exists_in_scope",
+        "entity_ref_equals_resource_ref"
+      ]
+    }
+  },
+  "contract_version": "2.0.0",
+  "plan_version": "1.0.3",
+  "version_scope": "completion of still-unaccepted 2.0.0 design candidate; not a release compatibility claim"
+}

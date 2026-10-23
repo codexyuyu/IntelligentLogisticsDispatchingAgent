@@ -1,0 +1,87 @@
+{
+  "mode": "before",
+  "checked_at": "2026-10-04T14:41:41.755195+00:00",
+  "runner_path": "scripts/gates.py",
+  "runner_sha256": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+  "phase": 1,
+  "purpose": "preceding G00 only; no phase acceptance or G01 signing",
+  "schema": "planner",
+  "g00_path": "artifacts/gates/G00.json",
+  "g00_sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+  "problems": [
+    "frozen input docs/api/API_CONTRACT.md drifted after the gate was recorded",
+    "frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/DOMAIN_CATALOG.md drifted after the gate was recorded",
+    "frozen input docs/architecture/IMPLEMENTATION_CONVENTIONS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+  ],
+  "previous_gate_checks": [
+    {
+      "id": "previous-gate:G00",
+      "gate": "G01",
+      "description": "前序 Gate 证据有效",
+      "passed": false,
+      "detail": "frozen input docs/api/API_CONTRACT.md drifted after the gate was recorded; frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded; frozen input docs/architecture/DOMAIN_CATALOG.md drifted after the gate was recorded; frozen input docs/architecture/IMPLEMENTATION_CONVENTIONS.md drifted after the gate was recorded; frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+    }
+  ],
+  "current_G00_valid": false,
+  "input_count": 25,
+  "input_hashes_recomputed": {
+    "docs/architecture/BASELINE_INVENTORY.json": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+    "docs/architecture/BASELINE_INVENTORY.md": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694",
+    "docs/architecture/MIGRATION_MAP.md": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b",
+    "docs/implementation/P00-01.md": "ce86f77f11cfab16e8c08b9ff00edcf9835351d0e1b3f87d3d91e63b984b1833",
+    "docs/implementation/reports/P00-01.md": "888e208ee01519ffc30868ca7902fe9c42b78d41e5f6006e6e746b98f2405865",
+    "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+    "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+    "docs/architecture/issues/README.md": "93bd4ed9a23fa988001c5d535f28a9b86a923fc37c75512b5eb3e73002671695",
+    "docs/implementation/P00-02.md": "a0eae411e5e68b9dc358b8ac100ebe0919fbf01a0350453ef3a44342918f73f4",
+    "docs/implementation/reports/P00-02.md": "dba5fe5f8a3bd5c05bbc5e331b4ee126ca95af4e2b1c00637dfd10497133dff2",
+    "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+    "docs/implementation/P00-03.md": "dddda2c1a9b9619cb86625e6c825b0e2280bf833b19256ae4e5dc5430469a688",
+    "docs/implementation/reports/P00-03.md": "61fa11c736daeb59e7515303c6bff1db4a2cda55e11965936b50fb0eac33279c",
+    "PROJECT_MASTER_PLAN.md": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "docs/algorithms/METRICS_CONTRACT.md": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+    "docs/algorithms/OPTIMIZATION_CONTRACT.md": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+    "docs/algorithms/SIMULATION_CONTRACT.md": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+    "docs/api/API_CONTRACT.md": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+    "docs/architecture/ARCHITECTURE_OVERVIEW.md": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+    "docs/architecture/DATA_CONTRACTS.md": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f"
+  },
+  "planner_input_map_revision": "content-sha256:b82eec9d08aab71ed6cc38d83939960d0b157c97866dc45ecd53cfe2c9a05392",
+  "dependency_hash_problems": [],
+  "raw_logs": [
+    {
+      "path": "artifacts/gates/G00-checks.log",
+      "sha256": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "recorded": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56"
+    }
+  ],
+  "freeze_source_count": 12,
+  "freeze_source_hashes": {
+    "PROJECT_MASTER_PLAN.md": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "docs/architecture/ARCHITECTURE_OVERVIEW.md": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+    "docs/architecture/DOMAIN_CATALOG.md": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35",
+    "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9f24acf68605981f85890d16e614976c4a9f4c6268c7c4e6138609f75d227d91",
+    "docs/api/API_CONTRACT.md": "b9104cd2bc26f39c7c529924ea68903420560488b514e0845ae953a2794364d9",
+    "docs/algorithms/OPTIMIZATION_CONTRACT.md": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+    "docs/algorithms/SIMULATION_CONTRACT.md": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+    "docs/algorithms/METRICS_CONTRACT.md": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05"
+  },
+  "freeze_drift": [
+    "docs/architecture/DOMAIN_CATALOG.md",
+    "docs/architecture/DATA_CONTRACTS.md",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+    "docs/api/API_CONTRACT.md"
+  ],
+  "negative_controls": []
+}

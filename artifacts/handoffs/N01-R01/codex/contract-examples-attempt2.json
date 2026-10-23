@@ -1,0 +1,292 @@
+{
+  "calendar": {
+    "epoch_utc": "2026-09-12T00:00:00Z",
+    "intervals": [
+      {
+        "start_s": 0,
+        "end_s": 10,
+        "available_units": 1
+      },
+      {
+        "start_s": 10,
+        "end_s": 20,
+        "available_units": 0
+      }
+    ],
+    "version": 0
+  },
+  "job_commands": [
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "optimization",
+        "payload": {
+          "family": "optimization",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "optimization"
+          },
+          "mode": "transport"
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "optimization"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": "transport",
+        "media_type": "application/json"
+      }
+    ],
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "simulation",
+        "payload": {
+          "family": "simulation",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "simulation"
+          }
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "simulation"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": null,
+        "media_type": "application/json"
+      }
+    ],
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "reschedule",
+        "payload": {
+          "family": "reschedule",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "reschedule"
+          }
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "reschedule"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": null,
+        "media_type": "application/json"
+      }
+    ],
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "experiment",
+        "payload": {
+          "family": "experiment",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "experiment"
+          }
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "experiment"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": null,
+        "media_type": "application/json"
+      }
+    ],
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "metric",
+        "payload": {
+          "family": "metric",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "metric"
+          }
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "metric"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": null,
+        "media_type": "application/json"
+      }
+    ]
+  ],
+  "actor": {
+    "actor_id": "00000000-0000-0000-0000-000000000009",
+    "role": "operator",
+    "scope_id": "00000000-0000-0000-0000-000000000008"
+  },
+  "scenario": {
+    "schema_version": "2.0.0",
+    "ref": {
+      "scenario_id": "00000000-0000-0000-0000-000000000001",
+      "dataset_version": 1,
+      "schema_version": "2.0.0",
+      "content_hash": "b27559938ea41cec947bd2dd5672a24a8f9ae9f32e701094675b67d0499bc042"
+    },
+    "spec": {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "version": 1,
+      "schema_version": "2.0.0",
+      "generator_version": "1.0.0",
+      "seed": 42,
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "horizon_s": 100,
+      "size": {
+        "orders": 0,
+        "cargo": 0,
+        "vehicles": 0,
+        "drivers": 0,
+        "warehouses": 0,
+        "zones": 0,
+        "storage_locations": 0,
+        "docks": 0,
+        "workers": 0,
+        "equipment": 0,
+        "transport_tasks": 0,
+        "warehouse_tasks": 0,
+        "inventory_entries": 0,
+        "matrices": 0
+      },
+      "generation_policy": "grid",
+      "event_specs": []
+    },
+    "input": {
+      "snapshot": {
+        "id": "00000000-0000-0000-0000-000000000032",
+        "scope": {
+          "order_ids": [],
+          "warehouse_ids": [],
+          "vehicle_ids": [],
+          "epoch_utc": "2026-09-12T00:00:00Z",
+          "horizon_s": 100
+        },
+        "orders": [],
+        "cargo": [],
+        "vehicles": [],
+        "drivers": [],
+        "resources": {
+          "warehouses": [],
+          "zones": [],
+          "locations": [],
+          "docks": [],
+          "workers": [],
+          "equipment": [],
+          "calendars": []
+        },
+        "inventory": [],
+        "revisions": [],
+        "matrices": [],
+        "hash": "744bf537d51120a3ce60f64d99468de0f318858c793724d05d2c6b50c2ffe2dc"
+      },
+      "transport_tasks": [],
+      "warehouse_tasks": []
+    },
+    "source": "synthetic"
+  },
+  "expectations": {
+    "schema_version": "2.0.0",
+    "scenario_ref": {
+      "scenario_id": "00000000-0000-0000-0000-000000000001",
+      "dataset_version": 1,
+      "schema_version": "2.0.0",
+      "content_hash": "b27559938ea41cec947bd2dd5672a24a8f9ae9f32e701094675b67d0499bc042"
+    },
+    "expectations": [
+      {
+        "kind": "integer",
+        "measure": "distance_m",
+        "value": 9000
+      }
+    ]
+  },
+  "resource": {
+    "kind": "equipment",
+    "value": {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "status": "available",
+      "created_at": "2026-09-12T00:00:00Z",
+      "updated_at": "2026-09-12T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000009",
+      "warehouse_id": "00000000-0000-0000-0000-000000000003",
+      "kind": "handling",
+      "quantity_capacity": 1,
+      "allowed_zone_ids": [],
+      "calendar": {
+        "epoch_utc": "2026-09-12T00:00:00Z",
+        "intervals": [
+          {
+            "start_s": 0,
+            "end_s": 10,
+            "available_units": 1
+          },
+          {
+            "start_s": 10,
+            "end_s": 20,
+            "available_units": 0
+          }
+        ],
+        "version": 0
+      }
+    }
+  }
+}

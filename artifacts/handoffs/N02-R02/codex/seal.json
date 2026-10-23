@@ -1,0 +1,20 @@
+{
+  "schema_version": "N02-R02-seal-1",
+  "sealed_at": "2026-10-04T14:53:53.152786+00:00",
+  "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+  "evidence_path": "artifacts/handoffs/N02-R02/codex/evidence.json",
+  "evidence_sha256": "69bb7c9beb93bf9ab7d39f7e17d42ee73e206e0a6915f1737006eaa2a546a268",
+  "report_path": "docs/handoffs/N02-R02/codex.md",
+  "report_sha256": "00706a668ef35e42629f18f936eaedf7d4f5199373dfe015328f126fb88b2720",
+  "current_candidate": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+  "current_dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+  "official_record_hashes": {
+    "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+    "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82",
+    "artifacts/gates/G00.json": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+    "artifacts/gates/G00-checks.log": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488"
+  },
+  "output_manifest_count": 75,
+  "output_manifest_sha256": "04119f5726464cd2f42e7c6d7818658e3cfa3c6c90c9e874027bdb38c0c78580",
+  "stop_write_policy": "After this seal is written, all task-owned files are read-only; seal verification makes no filesystem writes."
+}

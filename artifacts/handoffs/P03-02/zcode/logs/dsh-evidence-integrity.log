@@ -1,0 +1,32 @@
+=== P03-02 DSH evidence integrity re-check ===
+status: BLOCKED | signs_gate: False | gate_signed: None
+
+-- command log hashes recorded vs recomputed:
+   P03-02-cmd1: exit=4 rec=db5605028920… act=db5605028920 -> match
+   P03-02-cmd2: exit=0 rec=753c397bdc2f… act=753c397bdc2f -> match
+   dependency-probe-phase02: exit=1 rec=dd6bb0614d28… act=dd6bb0614d28 -> match
+   dependency-probe-phase03: exit=1 rec=dd6bb0614d28… act=dd6bb0614d28 -> match
+   all match: True
+
+-- recorded input hashes: 15 | mismatched/missing: NONE
+
+-- deliverable_presence recorded vs now:
+   apps/backend/migrations/versions/0002_planning_runtime.py: recorded=False now=False
+   apps/backend/src/logistics_backend/persistence/planning_models.py: recorded=False now=False
+   apps/backend/src/logistics_backend/persistence/runtime_models.py: recorded=False now=False
+   tests/unit/test_p03_02_planning_schema.py: recorded=False now=False
+   tests/integration/test_p03_02_planning_schema.py: recorded=False now=False
+   docs/implementation/P03-02.md: recorded=False now=True  <-- changed after the record
+   docs/implementation/reports/P03-02.md: recorded=False now=True  <-- changed after the record
+   recorded count: 0 / 7
+
+-- cross-check: does DSH quote the ZCode P03-01 verdict correctly?
+   P03-01 zcode status: BLOCKED | signs_gate: False
+   P03-01 code+test present: 0 / 6
+   consistent with DSH claim (BLOCKED, no code): True
+
+-- Alembic chain integrity: can 0002 exist without 0001?
+   alembic.ini: MISSING
+   apps/backend/migrations/env.py: MISSING
+   apps/backend/migrations/versions/0001_resources.py: MISSING
+   migrations directory exists: False

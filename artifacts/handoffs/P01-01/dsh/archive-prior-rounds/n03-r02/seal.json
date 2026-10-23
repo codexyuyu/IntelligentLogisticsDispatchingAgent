@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-01",
+  "round": "n03-r01-2026-10-04",
+  "role": "dsh",
+  "status": "READY_FOR_ZCODE",
+  "signs_gate": false,
+  "generated_at": "2026-10-04T16:57:50.886566+00:00",
+  "generation_order": "required command -> evidence.json -> confirmation run -> handoff -> this seal",
+  "defect_repaired": "ZC-N04-R01-P01-01-F01",
+  "candidate": {
+    "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+    "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+    "relevant_file_count": 77,
+    "declared": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+    "recomputed_by": "seal writer via GateRunner.relevant_manifest_rows()"
+  },
+  "dependency_evidence": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "status": "passed",
+      "finished_at": "2026-10-04T14:48:59.955285+00:00",
+      "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)"
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "status": "failed",
+      "finished_at": "2026-09-14T13:15:11.596614+00:00",
+      "reviewer": "dsh-scripts/gates.py"
+    }
+  },
+  "evidence": {
+    "path": "artifacts/handoffs/P01-01/dsh/evidence.json",
+    "sha256": "0eb8782c1d602a1b5c2f9b2df023ce8dffe34f999d84c2e6246695cdac901b9e",
+    "bytes": 25029
+  },
+  "handoff": {
+    "path": "docs/handoffs/P01-01/dsh.md",
+    "sha256": "1e6cb3ac70e148c0281d65163a0157d31b8f0067adeca842eae23388a1704937",
+    "bytes": 18545
+  },
+  "commands": {
+    "required": [
+      {
+        "id": "cmd1-p01-01-suites",
+        "argv": [
+          "uv",
+          "run",
+          "pytest",
+          "tests/unit/test_p01_01_workspace_bootstrap.py",
+          "tests/integration/test_p01_01_workspace_bootstrap.py",
+          "-q"
+        ],
+        "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+        "exit_code": 0,
+        "observed": {
+          "passed": 56,
+          "failed": 0
+        },
+        "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-r01-2026-10-04/required-56.log",
+        "log_sha256": "708c47da570eae904d1ceba2747a37ca1ff16331938d7aace63d7d5988acac31",
+        "exit_code_and_counts_read_from_log": true
+      }
+    ],
+    "supplementary": [
+      {
+        "id": "cmd2-phase01-full-regression",
+        "argv": [
+          "uv",
+          "run",
+          "pytest",
+          "tests/unit",
+          "tests/integration",
+          "-q"
+        ],
+        "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+        "exit_code": 0,
+        "observed": {
+          "passed": 226,
+          "failed": 0
+        },
+        "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-r01-2026-10-04/full-regression.log",
+        "log_sha256": "934eba35ce732b94d805ad744621bce43d93a8bdf9fdbbe270ac1e1276be6e9c",
+        "exit_code_and_counts_read_from_log": true,
+        "note": "run in a verified quiet window: no other writer under the repository root for >=120s before the run; DEF-N03-02 did not reproduce and the phase baseline is green again"
+      }
+    ]
+  },
+  "confirmation_run": {
+    "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-r01-2026-10-04/required-56-confirm.log",
+    "log_sha256": "2b931cad90a7119c03d1f68f9da0051e5ba0461f1efa8cb25a538632178e10f0",
+    "note": "required command re-run on the final delivered evidence bytes; 56 passed, exit 0"
+  },
+  "archives": [
+    {
+      "round": "2026-10-04-pre-n03-r01",
+      "manifest": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03-r01/archive-manifest.json",
+      "manifest_sha256": "0d7b71e9840dc31ae9f887e2b9649ead2eda79ed2b647f1508bd2c90e2c05893"
+    },
+    {
+      "round": "2026-10-04-pre-n03",
+      "manifest": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/archive-manifest.json",
+      "manifest_sha256": "7a642cfc12862d5d0340d7ee3713868108061e48c0880fde341bcc99c4233683"
+    }
+  ],
+  "log_hashes": {
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd1-pytest.log": {
+      "sha256": "daa2f15e45cc65c8f04a4b6eac4d1eaba11ddfbbe56e90a7c6a77edd53d84869",
+      "bytes": 765
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd2-uv-sync-frozen.log": {
+      "sha256": "404bfcaa0849c3e35eaebddba2b5b142acfc52c7482fd1b2471cd13a427e1d30",
+      "bytes": 609
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3-npm-ci-run1.log": {
+      "sha256": "6a720051f56ffc2401d8dd116b856aaf35cb7412fa8c30495d323c557969e0a7",
+      "bytes": 551
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3b-npm-ci-run2.log": {
+      "sha256": "8b9bdf00e72ca2b5cee1dcfee57ae9e36442598fc3bda98c00ae68def37267a2",
+      "bytes": 666
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt1.log": {
+      "sha256": "2a2151a9bade2f9f55f8baad9f9ccc19c664d588f9b1dc67119169e8170608d2",
+      "bytes": 4076
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt2.log": {
+      "sha256": "4ba550f6c0eecb74b3128f775fda7d1f8f0419c8d6b55f4e8d52c78aad7898ba",
+      "bytes": 4183
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-r01-2026-10-04/required-56.log": {
+      "sha256": "708c47da570eae904d1ceba2747a37ca1ff16331938d7aace63d7d5988acac31",
+      "bytes": 668
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-r01-2026-10-04/full-regression.log": {
+      "sha256": "934eba35ce732b94d805ad744621bce43d93a8bdf9fdbbe270ac1e1276be6e9c",
+      "bytes": 815
+    }
+  }
+}

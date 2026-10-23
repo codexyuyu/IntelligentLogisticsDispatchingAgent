@@ -1,0 +1,15 @@
+=== P01-01 | status: READY_FOR_ZCODE | round: n03-r02-2026-10-04 | role: dsh | signs_gate: False | next_executor: ZCode N04-R03 affected re-verification of P01-01 (does not sign G01/G02)
+   candidate: content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8 | files: 82
+   artifacts+logs checked: 2, drift: 0
+   dependency G00: gate OK (c5e57a6d250f), log OK, status=passed, finished_at=2026-10-04T14:48:59.955285+00:00
+   dependency G01: gate OK (b7ac0c60de74), log OK, status=passed, finished_at=None
+=== P01-02 | status: READY_FOR_ZCODE | round: n03-2026-10-04 | role: dsh | signs_gate: False | next_executor: ZCode N04 independent pre-acceptance (does not sign G01)
+   candidate: content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c | files: 77
+   artifacts+logs checked: 14, drift: 0
+   dependency G00: gate OK (c5e57a6d250f), log OK, status=passed, finished_at=2026-10-04T14:48:59.955285+00:00
+   dependency G01: gate DRIFT (4383ccac45dd), log OK, status=failed, finished_at=None
+=== P01-03 | status: READY_FOR_ZCODE | round: n03-2026-10-04 | role: dsh | signs_gate: False | next_executor: ZCode N04 independent pre-acceptance (does not sign G01)
+   candidate: content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c | files: 77
+   artifacts+logs checked: 12, drift: 0
+   dependency G00: gate OK (c5e57a6d250f), log OK, status=passed, finished_at=2026-10-04T14:48:59.955285+00:00
+   dependency G01: gate DRIFT (4383ccac45dd), log OK, status=failed, finished_at=None

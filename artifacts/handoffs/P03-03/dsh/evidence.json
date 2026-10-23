@@ -1,0 +1,357 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P03-03",
+  "slug": "repositories-and-snapshot",
+  "phase": 3,
+  "phase_gate": "G03",
+  "owner": "A",
+  "role": "DSH-initial-development",
+  "status": "BLOCKED",
+  "final_status": "BLOCKED",
+  "verdict_reason": "P03-03 cannot be started: both declared dependencies fail. (1) Same-phase prerequisite P03-02 was delivered as BLOCKED and independently pre-accepted as BLOCKED by ZCode (artifacts/handoffs/P03-02/zcode/precheck.json), and the task book requires a same-phase prerequisite to carry a valid Z_PRECHECK_PASSED before a dependent task starts; the phase-03 probe states it verbatim: '[FAIL] dsh-evidence:P03-02: unexpected status=BLOCKED' and '[FAIL] zcode-precheck:P03-02: status=BLOCKED (expected Z_PRECHECK_PASSED)'. (2) The cross-phase prerequisite G02 has no record at all (artifacts/gates/G02.json missing; 'G02: 5/27 checks passed'), and the transitive barrier G01 is status=failed. P03-02 is itself blocked because P03-01 is BLOCKED, and P03-01 is blocked because the Phase 02 domain model it must map is 0/15 delivered. Zero of the three P03-03 implementation files and zero of the two test files were created: snapshots.py and uow.py need the ORM models and the migration chain from P03-02, and packages/domain/src/logistics_domain/ports/ (including storage.py) does not exist at all. This is the third consecutive Phase 03 task blocked by the identical, unrepaired barrier. No ZCode pre-acceptance is requested.",
+  "started_at_local": "2026-09-15T05:22:00-07:00",
+  "recorded_at_local": "2026-09-15T05:24:00-07:00",
+  "candidate": {
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "vcs": "no .git in this checkout; revision located by content hash via scripts/gates.py GateRunner.compute_revision()",
+    "revision_label_before_writing_this_handoff": "content-sha256:0295429feba1f68bdc37c3e338c96d9e10ff1c10eb77c2a5b8f63e0fa542b33f",
+    "revision_label_is_self_perturbing": "compute_revision() enumerates the whole tree including artifacts/handoffs, so writing this record and its logs moves the label again; an exact match is impossible until the P01-02 defect D6/D9 (volatile revision inputs) is fixed. The value above was measured immediately before this directory was written.",
+    "previous_revision_measured": "content-sha256:eecbc85921cdfa302b605f3e01172383b6ba3c9c13ce24a71e437099ac316b4a (recorded by artifacts/handoffs/P03-02/dsh/evidence.json)",
+    "earlier_revision_measured": "content-sha256:79261f8ad31ec9d2378bc05abe3ceae369a7f44776af61ca155cd2835863e08c (recorded by artifacts/handoffs/P03-01/dsh/evidence.json)",
+    "previous_gate_recorded_revision": "content-sha256:ab054daf9c6c1373c6503f603805756ef3ef9c5a60400d07d8e938d6987e532b (artifacts/gates/G01.json)"
+  },
+  "dependency_check": {
+    "declared_deps": [
+      "G02",
+      "P03-02"
+    ],
+    "source": "docs/plan/TASK_MANIFEST.json:707-710 (\"deps\": [\"G02\", \"P03-02\"]); TASK_GRAPH.md:60",
+    "G02": {
+      "status": "not_signed",
+      "record": "artifacts/gates/G02.json",
+      "record_exists": false,
+      "probe_result": "G02: 5/27 checks passed (exit_code=1)",
+      "sandbox_record": "tmp/dsh-p0303-g02-probe/G02.json (non-official out-dir; no Gate signed or overwritten)",
+      "satisfied": false
+    },
+    "G01": {
+      "status": "failed",
+      "record": "artifacts/gates/G01.json",
+      "failed_checks": [
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ],
+      "acceptance_assertions_all_passed": true,
+      "satisfied": false,
+      "relevance": "transitive: docs/plan/PHASE_GATES.md:22 declares G01 failure as blocking Phase 02 and every later phase, so it also blocks G03"
+    },
+    "P03-02": {
+      "dsh_evidence": true,
+      "dsh_status": "BLOCKED",
+      "dsh_evidence_sha256": "58078810c39af9d4f06797e3e13871cf6f6d3c6de52c206ee3eae6faf99fb1b8",
+      "zcode_precheck": true,
+      "zcode_status": "BLOCKED",
+      "zcode_precheck_sha256": "68e85cac8d9dd58e85379ba627afcca6cf33b7b3a7c73412e0203499fa3b1ac4",
+      "required_status": "READY_FOR_ZCODE (DSH) and Z_PRECHECK_PASSED (ZCode)",
+      "satisfied": false,
+      "cascade": "P03-02 is blocked on [G02, P03-01]; P03-01 is blocked on [G02]; G02 is missing and its tasks' dependency G01 is failed"
+    },
+    "conclusion": "P03-03 is blocked by the same three conditions as P03-02: the same-phase prerequisite is BLOCKED in both DSH and ZCode terms, the cross-phase barrier G02 is missing, and the transitive barrier G01 is failed. Phase 03 tasks P03-01, P03-02 and P03-03 have now all reached BLOCKED with the identical root cause."
+  },
+  "prerequisite_task_state": {
+    "phase_03_blocked_chain": {
+      "P03-01": {
+        "dsh_status": "BLOCKED",
+        "zcode_status": "BLOCKED"
+      },
+      "P03-02": {
+        "dsh_status": "BLOCKED",
+        "zcode_status": "BLOCKED"
+      },
+      "P03-03": {
+        "dsh_status": "BLOCKED (this record)",
+        "zcode_status": "not_requested"
+      },
+      "P03-04": {
+        "dsh_status": "not_started",
+        "zcode_status": "not_started"
+      }
+    },
+    "P03-02_deliverables_present": {
+      "apps/backend/migrations/versions/0002_planning_runtime.py": false,
+      "apps/backend/src/logistics_backend/persistence/planning_models.py": false,
+      "apps/backend/src/logistics_backend/persistence/runtime_models.py": false
+    },
+    "P03-02_deliverables_present_count": 0,
+    "why_this_matters_for_P03_03": "P03-03 must read a consistent snapshot from the tables and ORM models created by P03-01/P03-02 through a REPEATABLE READ transaction. Without resource_models.py, planning_models.py, runtime_models.py and the migration chain (0001/0002 plus apps/backend/migrations/env.py) there is no session, no schema and no mapped entity to snapshot.",
+    "domain_ports_state": "packages/domain/src/logistics_domain/ports/ does not exist; P03-03's declared deliverable packages/domain/src/logistics_domain/ports/storage.py has no parent package. The domain __init__.py _PENDING_APIS registry lists 'ports' as owned by P03-03/P06-01/P08-01/P11-01 and currently raises NotImplementedError.",
+    "phase_02_deliverable_files_present_count": 0,
+    "phase_02_expected": 15
+  },
+  "deliverable_presence": {
+    "apps/backend/src/logistics_backend/persistence/snapshots.py": false,
+    "apps/backend/src/logistics_backend/persistence/uow.py": false,
+    "packages/domain/src/logistics_domain/ports/storage.py": false,
+    "tests/unit/test_p03_03_repositories_and_snapshot.py": false,
+    "tests/integration/test_p03_03_repositories_and_snapshot.py": false,
+    "docs/implementation/P03-03.md": false,
+    "docs/implementation/reports/P03-03.md": false
+  },
+  "deliverable_present_count": 0,
+  "deliverable_expected_count": 7,
+  "deliverables_deliberately_not_created": {
+    "reason": "Every P03-03 deliverable depends on the P03-02 ORM models and migration chain plus the Phase 02 domain types. snapshots.py (PlanningSnapshotStore.capture) and uow.py (UnitOfWork.commit) cannot read a consistent snapshot of tables and mapped entities that do not exist, cannot import PlanningScope/PlanningSnapshot/ResourceRevision/InventoryLedger (none exist), and Building them on an unmapped schema would be a second definition of the domain model (forbidden by Architecture Constraint 6). Both required Test Cases (concurrent vehicle-capacity update must not mix old and new reads; an exception inside the UoW must roll everything back) are real-PostgreSQL isolation assertions against tables that do not exist, on a database that is not reachable.",
+    "not_a_partial_delivery": "no file under the P03-03 allow-list was created, so nothing here can be mistaken for a partial implementation",
+    "why_storage_port_was_not_written_either": "packages/domain/src/logistics_domain/ports/storage.py would have to declare the Protocol over PlanningScope/PlanningSnapshot/ResourceRevision, i.e. over types that P02-03/P02-04 were supposed to freeze; inventing them in a storage port would be exactly the 'repeat definition of the Domain Model' the architecture constraints forbid, and the port must be driven by the real domain contract, not the other way round (Domain Contract -> Schema -> Service Interface -> Implementation)"
+  },
+  "environment_fingerprint": {
+    "os": "Windows 11",
+    "python": "3.12.10",
+    "python_pin": "3.12",
+    "uv": "uv 0.12.13 (0ebbd9274 2026-09-10 x86_64-pc-windows-msvc)",
+    "uv_on_path": false,
+    "uv_resolved_to": "tools/bin/uv.exe (workspace bootstrap copy, same version as the G01 fingerprint)",
+    "postgresql_client": "psql NOT FOUND on PATH",
+    "postgresql_server": "pg_ctl NOT FOUND on PATH",
+    "docker_daemon": "unreachable (npipe:////./pipe/dockerDesktopLinuxEngine missing); Docker CLI present but no server",
+    "isolated_postgres_reachable": false,
+    "test_database_url_env": "not set",
+    "database_dependencies_in_lock": "none: apps/backend/pyproject.toml and uv.lock carry no sqlalchemy/alembic/psycopg",
+    "isolation_level_checkable": "a REPEATABLE READ isolation assertion needs two concurrent connections to a real PostgreSQL; without a database the whole Business Rule of this task is unverifiable here",
+    "note": "no secret, credential or personal datum is recorded in this fingerprint"
+  },
+  "commands": [
+    {
+      "check_id": "P03-03-cmd1",
+      "argv": "uv run pytest tests/unit/test_p03_03_repositories_and_snapshot.py tests/integration/test_p03_03_repositories_and_snapshot.py -q",
+      "argv_resolved": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe run pytest tests/unit/test_p03_03_repositories_and_snapshot.py tests/integration/test_p03_03_repositories_and_snapshot.py -q",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4,
+      "result": "ERROR: file or directory not found: tests/unit/test_p03_03_repositories_and_snapshot.py; no tests ran in 0.00s",
+      "test_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "collected": 0
+      },
+      "log_path": "artifacts/handoffs/P03-03/dsh/logs/cmd1-pytest.log",
+      "log_sha256": "cc1bf8ca150813f8d055df509e6849def248d8c122103097fd1d0bf8958533e3",
+      "log_bytes": 2858,
+      "mandatory": true,
+      "passed": false,
+      "note": "a zero-case run is not acceptance evidence; this command cannot pass before both test files and their implementation exist"
+    },
+    {
+      "check_id": "P03-03-cmd2",
+      "argv": "uv run python scripts/check_architecture.py",
+      "argv_resolved": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe run python scripts/check_architecture.py",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0",
+      "log_path": "artifacts/handoffs/P03-03/dsh/logs/cmd2-architecture.log",
+      "log_sha256": "5c45f26d87d722546e81ff07a249c98fce200f26a9e4831c5424078801e011fe",
+      "log_bytes": 2375,
+      "mandatory": true,
+      "passed": true,
+      "caveat": "VACUOUS PASS and it must not be cited as P03-03 evidence: the 7 scanned modules are the untouched P01-01 stubs and this task added no code. Note also that the check would NOT be able to inspect the ORM-to-domain boundary this task must enforce ('ORM must not escape the adapter') while no persistence module exists, so its exit 0 covers none of this task's Architecture Constraint 4 obligations."
+    },
+    {
+      "check_id": "dependency-probe-phase02",
+      "argv": "uv run python scripts/gates.py --phase 02 --revision auto --out-dir tmp/dsh-p0303-g02-probe",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "G02: 5/27 checks passed; previous-gate:G01 status=failed; all dsh-evidence:P02-0x and docs missing; zcode-precheck:P02-01 missing and P02-02/03/04 status='BLOCKED'; codex-review missing - unchanged from the previous round",
+      "log_path": "artifacts/handoffs/P03-03/dsh/logs/gates-probe-phase02-phase03.log",
+      "log_sha256": "74c191f0d489145885e7bc50b96a13a89c8658c5e5c646a11c64dcc575eb393a",
+      "mandatory": false,
+      "passed": false,
+      "note": "non-official out-dir; artifacts/gates/G02.json was NOT written"
+    },
+    {
+      "check_id": "dependency-probe-phase03",
+      "argv": "uv run python scripts/gates.py --phase 03 --revision auto --out-dir tmp/dsh-p0303-g03-probe",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "G03: 9/28 checks passed (up from 7/28 one round earlier, because the P03-02 BLOCKED documents now exist and both of its docs:* rows turned [PASS]); explicit prerequisite failures: '[FAIL] dsh-evidence:P03-01: unexpected status=BLOCKED', '[FAIL] dsh-evidence:P03-02: unexpected status=BLOCKED', '[FAIL] zcode-precheck:P03-01: status=BLOCKED (expected Z_PRECHECK_PASSED)', '[FAIL] zcode-precheck:P03-02: status=BLOCKED (expected Z_PRECHECK_PASSED)'; previous-gate:G01 failed; previous-gate:G02 missing; codex-review missing",
+      "log_path": "artifacts/handoffs/P03-03/dsh/logs/gates-probe-phase02-phase03.log",
+      "log_sha256": "74c191f0d489145885e7bc50b96a13a89c8658c5e5c646a11c64dcc575eb393a",
+      "mandatory": false,
+      "passed": false,
+      "note": "same transcript file as the phase-02 probe entry above (one log covers both probes); non-official out-dir, artifacts/gates/G03.json was NOT written",
+      "interpretation": "the G03 pass count rises purely because blocked-report documents are counted as present artifacts; the number of passing *task commands* is unchanged at 4/8 (the four cmd2 architecture rows), and no prerequisite is closer to satisfied"
+    }
+  ],
+  "blocking_defects": [
+    {
+      "id": "B1",
+      "severity": "blocking",
+      "title": "Same-phase prerequisite P03-02 is BLOCKED in both DSH and ZCode terms, so no dependent Phase 03 task may start",
+      "evidence": [
+        "artifacts/handoffs/P03-02/dsh/evidence.json status=BLOCKED (sha256 58078810c39af9d4f06797e3e13871cf6f6d3c6de52c206ee3eae6faf99fb1b8)",
+        "artifacts/handoffs/P03-02/zcode/precheck.json status=BLOCKED (sha256 68e85cac8d9dd58e85379ba627afcca6cf33b7b3a7c73412e0203499fa3b1ac4)",
+        "phase-03 probe: '[FAIL] dsh-evidence:P03-02: unexpected status=BLOCKED'; '[FAIL] zcode-precheck:P03-02: status=BLOCKED (expected Z_PRECHECK_PASSED)'",
+        "TASK_MANIFEST.json:707-710 declares P03-03 deps as [G02, P03-02]"
+      ],
+      "impact": "P03-03 cannot be implemented or accepted; P03-04 will inherit the same block."
+    },
+    {
+      "id": "B2",
+      "severity": "blocking",
+      "title": "Prerequisite G02 has no record and Phase 02 is entirely undelivered (0/15 declared files)",
+      "evidence": [
+        "artifacts/gates/G02.json does not exist; probe 'G02: 5/27 checks passed'",
+        "no PlanningScope / PlanningSnapshot / ResourceRevision / InventoryLedger / ScheduleVersion Python type exists anywhere; packages/domain/src/logistics_domain/ still holds only the P01-01 stub",
+        "docs/plan/PHASE_GATES.md:24 declares G02 failure as blocking Phase 03 and later",
+        "artifacts/handoffs/P02-02|P02-03|P02-04/zcode/precheck.json are all status=BLOCKED"
+      ],
+      "impact": "the snapshot contract has no frozen type source, and the ORM models P03-03 must read do not exist."
+    },
+    {
+      "id": "B3",
+      "severity": "blocking",
+      "title": "Transitive barrier G01 is status=failed and blocks every later phase",
+      "evidence": [
+        "artifacts/gates/G01.json status=failed, failed_checks=[zcode-precheck:P01-01, zcode-precheck:P01-02, zcode-precheck:P01-03, codex-review], while all five acceptance assertions passed",
+        "no artifacts/gates/G01-codex-review.json exists",
+        "docs/plan/PHASE_GATES.md:22 declares G01 failure as blocking Phase 02 and later"
+      ],
+      "impact": "even a fully delivered Phase 03 could not be accepted; repair is owned by ZCode (three P01 prechecks) and Codex (G01 review), not by this role."
+    },
+    {
+      "id": "B4",
+      "severity": "blocking-for-acceptance",
+      "title": "No isolated PostgreSQL is reachable and the driver/ORM/migration dependencies are not in the workspace lock",
+      "evidence": [
+        "psql and pg_ctl are not on PATH; the Docker daemon is unreachable; TEST_DATABASE_URL is not set",
+        "tests/conftest.py:148-163 makes the database_url fixture pytest.fail (never skip) without TEST_DATABASE_URL",
+        "tests/conftest.py:173-179 makes db_connection pytest.fail with 'psycopg is not installed in this environment; database tasks must add it to the workspace lock first'",
+        "apps/backend/pyproject.toml lists no sqlalchemy/alembic/psycopg"
+      ],
+      "impact": "this task's central Business Rule (REPEATABLE READ consistent snapshot, including matrix and calendar versions) and both Test Cases are concurrency-isolation assertions that can only be made against a real PostgreSQL; Business Rules forbid substituting SQLite."
+    }
+  ],
+  "systemic_finding": {
+    "id": "SYS-1",
+    "title": "Three consecutive Phase 03 tasks have now terminated BLOCKED from one unrepaired root cause, and the Gate's pass counter rises while nothing is fixed",
+    "evidence": [
+      "P03-01 DSH BLOCKED + ZCode BLOCKED; P03-02 DSH BLOCKED + ZCode BLOCKED; P03-03 DSH BLOCKED (this record)",
+      "phase-03 pass count across the three rounds: 5/28 -> 7/28 -> 9/28, entirely from added documentation rows (docs:* and the DSH-evidence row flipping from 'missing' to 'unexpected status=BLOCKED'), never from a task command passing",
+      "passing task commands remain 4/8 and are all the vacuous 'cmd2' architecture rows",
+      "the root cause is unchanged: G01 lacks three P01 precheck records and one Codex review; G02 has no record because Phase 02 has 0/15 files; the workspace lock has no database dependency and no environment manual defines the isolated PostgreSQL"
+    ],
+    "impact": "re-issuing P03-03 or P03-04 under the present conditions will reproduce this record with different task ids and produce no engineering progress; each re-issue costs a full round of Gate probes and evidence writing",
+    "recommended_single_next_action": "Treat the barrier, not the task, as the unit of repair: (1) ZCode writes the three P01-01..P01-03 precheck records, (2) Codex records the G01 review, (3) the lock/environment decisions are made so a real PostgreSQL is reachable, (4) role A delivers P02-01..P02-04 and G02 is signed, (5) P03-01..P03-04 are then re-issued in order. Nothing in Phase 03 can be accepted before step 4 completes."
+  },
+  "prohibited_actions_not_taken": [
+    "no Gate was signed, overwritten or skipped: artifacts/gates/ still contains only G00.json and G01.json; both probes wrote to gitignored tmp/ out-dirs",
+    "no Codex review or ZCode precheck record was fabricated; artifacts/handoffs/P03-03/zcode/ was not created",
+    "no Phase 02, P03-01 or P03-02 implementation was written to 'unblock' P03-03 by expanding this task beyond its allow-list",
+    "no SQLite stand-in, fake repository, in-memory snapshot substitute, TODO placeholder, hard-coded demo answer or swallowed exception was committed to make tests green; the storage port Protocol was not invented ahead of the domain contract",
+    "no file outside the P03-03 allow-list was modified; demo/ and demos/ were not touched; P03-01/P03-02 delivered evidence was not edited",
+    "the DSH report does not claim any unexecuted test passed"
+  ],
+  "not_verified": [
+    "Every P03-03 business requirement (REPEATABLE READ consistent snapshot capture, inclusion of the distance-matrix and calendar versions in the snapshot, the ORM never escaping the adapter, one-transaction read of the in-scope entities plus the version vector, canonical serialization to a stable hash, DTO mapping to a pure domain snapshot) is UNVERIFIED because nothing was implemented and no database is reachable. No item may be read as passing or failing.",
+    "Test Case 1: a concurrent vehicle-capacity update must not produce a snapshot that mixes the old and the new value - not exercised (needs two real connections and the resource tables).",
+    "Test Case 2: an exception raised inside the UnitOfWork must roll the whole transaction back with no partial state - not exercised.",
+    "The interfaces PlanningSnapshotStore.capture(scope: PlanningScope) -> PlanningSnapshot and UnitOfWork.commit() -> None were not exercised: neither type exists and no session exists.",
+    "G03 exit criteria from PHASE_GATES.md:64 (real PostgreSQL migration/rollback/FK, consistent snapshot, exactly-one concurrent resource commit, no half version on transaction failure) were not exercised; this task owns the 'consistent snapshot' item and it remains entirely unevidenced.",
+    "Error-code mapping (INVALID_INPUT/422, INVALID_TRANSITION, 409 STALE_SNAPSHOT/RESOURCE_CONFLICT, 503) - not applicable here: this task has no HTTP boundary.",
+    "Whether scripts/check_architecture.py would actually detect an ORM leaking out of the persistence adapter could not be tested, because no persistence module exists to violate it."
+  ],
+  "known_limitations": [
+    "This record is BLOCKED on purpose: scripts/gates.py compares a DSH handoff against 'READY_FOR_ZCODE' and refuses anything else, and the task book orders a BLOCKED report with a concrete blocking reason instead of a Gate skip. Nothing in this record may be reused as acceptance evidence.",
+    "P03-03-cmd2 exit 0 is vacuous (no P03-03 code exists) and is not acceptance evidence.",
+    "The recorded revision label is self-perturbing (see candidate.revision_label_is_self_perturbing): the act of writing this handoff changes it.",
+    "docs/workflow/README.md, docs/workflow/02-ZCODE-PRECHECK.md and docs/workflow/HANDOFF_CONTRACT.md are missing (ARCH-0004), so this record follows the format implied by artifacts/handoffs/P02-0x and the P03-01/P03-02 zcode records plus the path hardcoded in scripts/gates.py; the format still needs a project-side decision.",
+    "This is a dependency-state report only: it asserts nothing about the correctness of the Phase 01 work that does exist (its executables all passed inside G01)."
+  ],
+  "remaining_risks": [
+    {
+      "risk": "Re-issuing Phase 03 tasks in sequence will keep producing identical BLOCKED records while the real defect decays: the barrier is never repaired because each round only ever reports it.",
+      "evidence": "three consecutive rounds, phase-03 pass count 5/28 -> 7/28 -> 9/28 with zero new passing task commands; SYS-1 above",
+      "impact": "no database, API, solver, simulation, agent or UI work can be accepted; effort is spent on evidence for absence rather than on the project",
+      "next_owner_task": "ZCode + Codex + project management jointly, then role A on P02-01..P02-04"
+    },
+    {
+      "risk": "A re-issued P03-03 could fabricate the snapshot contract ahead of the domain types, or assert 'consistency' against a single connection or SQLite, turning both Test Cases into false positives.",
+      "evidence": "PlanningScope/PlanningSnapshot/ResourceRevision/InventoryLedger do not exist; the Business Rule requires REPEATABLE READ semantics that only a real concurrent PostgreSQL can demonstrate",
+      "impact": "a snapshot layer that passes its own tests while providing no isolation guarantee, which is the single property G03 asserts for this task",
+      "next_owner_task": "P03-03 after G02, P03-01 and P03-02 are signed; ZCode precheck must open two real connections and reproduce the mixed-read scenario independently"
+    },
+    {
+      "risk": "The domain-side storage port could be grown into a second definition of the domain model if it is written before P02-03/P02-04 freeze PlanningSnapshot/ResourceRevision/InventoryLedger.",
+      "evidence": "packages/domain/src/logistics_domain/ports/ does not exist and the domain __init__.py registry assigns 'ports' to P03-03/P06-01/P08-01/P11-01",
+      "impact": "domain/contract drift that later phases would inherit, exactly the failure Architecture Constraint 6 forbids",
+      "next_owner_task": "P03-03, and the P02 tasks that must freeze the types first"
+    },
+    {
+      "risk": "No environment manual defines the isolated PostgreSQL startup, so every Phase 03 assertion currently fails by fixture rather than by product defect.",
+      "evidence": "tests/conftest.py:157-161 points at a Phase 01 environment manual that does not exist; ARCH-0004 covers the missing docs/workflow tree",
+      "impact": "blocks G03 evidence and would block any re-run until a database URL exists",
+      "next_owner_task": "project management / P01 environment documentation owner, then P03-01..P03-04"
+    }
+  ],
+  "files_created_by_dsh": [
+    "artifacts/handoffs/P03-03/dsh/evidence.json",
+    "artifacts/handoffs/P03-03/dsh/logs/cmd1-pytest.log",
+    "artifacts/handoffs/P03-03/dsh/logs/cmd2-architecture.log",
+    "artifacts/handoffs/P03-03/dsh/logs/gates-probe-phase02-phase03.log",
+    "docs/handoffs/P03-03/dsh.md",
+    "docs/implementation/P03-03.md",
+    "docs/implementation/reports/P03-03.md"
+  ],
+  "files_modified_by_dsh": [],
+  "files_created_outside_handoff_paths": [
+    "tmp/dsh-p0303-g02-probe/ (non-official phase-02 gate probe record and logs, under the gitignored tmp/)",
+    "tmp/dsh-p0303-g03-probe/ (non-official phase-03 gate probe record and logs, under the gitignored tmp/)"
+  ],
+  "input_hashes": {
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "docs/plan/TASK_MANIFEST.json": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/prompts/03-database/P03-03-repositories-and-snapshot.md": "24e665229955cc9f0c0fb77d0c3318b1b7cc2e3551d65b30cbf07e8ad62be677",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/architecture/DATA_CONTRACTS.md": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "artifacts/gates/G01.json": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+    "artifacts/handoffs/P03-01/dsh/evidence.json": "1d99c996ca9b1c0d06338e1bec1c2d4983d93363612bc72ed6398fe45956d736",
+    "artifacts/handoffs/P03-01/zcode/precheck.json": "befba304a189174fa938ca7795728585e593b43430869e70a2a384a9288cf798",
+    "artifacts/handoffs/P03-02/dsh/evidence.json": "58078810c39af9d4f06797e3e13871cf6f6d3c6de52c206ee3eae6faf99fb1b8",
+    "artifacts/handoffs/P03-02/zcode/precheck.json": "68e85cac8d9dd58e85379ba627afcca6cf33b7b3a7c73412e0203499fa3b1ac4",
+    "packages/domain/src/logistics_domain/__init__.py": "8093a7e57882419f66c72b64f2a84f9f1f0055b60d1ad088392a048b658efa91",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "scripts/gates.py": "67351df627a747f9cb1d5ea5c8ddcdc01093a10e161f198cc9c35a92ecf49873",
+    "scripts/check_architecture.py": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5"
+  },
+  "output_hashes": {
+    "implementation_files": "none: 0/7 P03-03 deliverables were written, so the output of this task is dependency and documentation evidence only",
+    "contract_version_before": "1.0.0 (packages/domain/src/logistics_domain/__init__.py SCHEMA_VERSION, unchanged)",
+    "contract_version_after": "1.0.0 (no contract file was touched by this task; no contracts/changes/ entry was required)"
+  },
+  "logging": {
+    "events_emitted": [],
+    "reason": "no p03_03.started/p03_03.completed/p03_03.rejected event was emitted because no P03-03 code path was executed. The structured substitute is this record's commands[] array plus the three raw logs, which carry argv, cwd, exit code, stdout/stderr and sha256.",
+    "metrics": {
+      "schema_validation_total{schema=planning_snapshot,outcome=not_run}": "no P03-03 schema exists to validate",
+      "note": "the observability contract assigns schema_validation_total to the API/adapter layer and forbids order_id/vehicle_id/trace_id as metric labels; neither exists yet"
+    }
+  },
+  "secrets_or_personal_data_logged": false,
+  "requested_status": "BLOCKED",
+  "signs_gate": false,
+  "gate_signed": null,
+  "next_actions": [
+    "Stop re-issuing Phase 03 tasks until the barrier is repaired (see systemic_finding SYS-1): under the present conditions P03-04 and any P03-03 re-issue will reproduce this same record.",
+    "ZCode: write the three missing P01-01..P01-03 precheck records - its own P03-01 record states these are the entire remaining cause of G01 failing, since all five of G01's acceptance assertions already pass.",
+    "Codex: record the G01 codex review and the revision-staleness policy, then decide ARCH-0004 (the missing docs/workflow handoff contract).",
+    "Project management: resolve the two decisions ZCode identified - allow psycopg/SQLAlchemy/Alembic into the workspace lock, and write the Phase 01 environment manual defining the isolated PostgreSQL startup and TEST_DATABASE_URL.",
+    "Role A / DSH: deliver P02-01, P02-02, P02-03 and P02-04 in order with task doc, report, DSH evidence and unit + integration tests, then assemble G02.",
+    "Then re-issue P03-01, P03-02 and P03-03 in order. For P03-03 specifically: implement PlanningSnapshotStore.capture over a REPEATABLE READ transaction that reads the in-scope entities plus the version vector (including the distance-matrix and calendar versions) once, serialize canonically to a stable hash, map through a DTO to a pure domain snapshot, expose UnitOfWork.commit() with all-or-nothing rollback, declare the storage port only against the domain types P02 froze, and prove both Test Cases against real PostgreSQL with two concurrent connections.",
+    "Do not start P03-04 or any later phase: PHASE_GATES.md forbids crossing an unsigned Gate, and G02/G03 are both unsigned."
+  ],
+  "reviewer": "DSH (self-report; no independent review performed, none claimed)"
+}

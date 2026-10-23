@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "plan_version": "1.0.0",
+  "reviewed_at": "2026-09-12T00:00:00+00:00",
+  "reviewer": "planner-checker:tools/ai_coding_plan/validate_plan.py --self-test --record-g00",
+  "frozen_contract_version": "1.0.0",
+  "legacy_contract_version": "0.1.0",
+  "code_revision": "no-git",
+  "unresolved_blocking_issues": [],
+  "non_blocking_observations": [
+    "本轮只冻结文档契约；尚无应用代码、尚无任何应用测试执行证据。",
+    "scripts/gates.py 与 scripts/check_architecture.py 由 P01-02 交付；交付前 G01 及之后无法判定 passed。",
+    "仓库当前没有 Git；code_revision 使用 no-git，Gate 证据按 PHASE_GATES 用相关源文件清单 hash 替代。",
+    "旧 demo 契约版本 0.1.0 只作为迁移输入；v1 契约版本 1.0.0，禁止覆盖旧版本文件。",
+    "ARCH-0001（非阻断）：需求追踪表 R08 行的验证 Gate 与其任务所属阶段不一致；详见 docs/architecture/issues/README.md。",
+    "ARCH-0002（非阻断）：旧基线清单为登记集合而非穷举集合；详见 docs/architecture/issues/README.md。",
+    "ARCH-0003（非阻断）：任务 Prompt 要求的错误码 UNSUPPORTED 未登记在 DATA_CONTRACTS 错误表中，需在 P05-01 错误协议实现前裁定；详见 docs/architecture/issues/README.md。"
+  ],
+  "change_policy": {
+    "major": "破坏字段/单位/enum/路径/必需语义",
+    "minor": "新增可选字段",
+    "patch": "兼容修复",
+    "order": "domain -> DTO -> ports -> callers -> tests -> 生成产物；生成产物禁止手改"
+  },
+  "artifacts": [
+    {
+      "path": "PROJECT_MASTER_PLAN.md",
+      "sha256": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+      "role": "总体设计：阶段、目标结构、验收定义",
+      "consumers": "全部Task的上下文约束"
+    },
+    {
+      "path": "TASK_GRAPH.md",
+      "sha256": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+      "role": "109个Task/40个Gate的依赖与并行写集合",
+      "consumers": "G00–G39依赖判定"
+    },
+    {
+      "path": "docs/architecture/ARCHITECTURE_OVERVIEW.md",
+      "sha256": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+      "role": "模块图、依赖方向、层禁止项",
+      "consumers": "P01-02层边界检查、P02起全阶段"
+    },
+    {
+      "path": "docs/architecture/DOMAIN_CATALOG.md",
+      "sha256": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+      "role": "32实体、状态、生命周期",
+      "consumers": "P02-01..P02-04、P03、P04"
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "sha256": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+      "role": "边界DTO/Protocol、单位、错误、SolveStatus/JobStatus",
+      "consumers": "P02-04、P05-01、P06-01"
+    },
+    {
+      "path": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "sha256": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+      "role": "包路径、组合根、内部接口接线、文件变更证据",
+      "consumers": "P01-01、P01-02、P01-03"
+    },
+    {
+      "path": "docs/api/API_CONTRACT.md",
+      "sha256": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+      "role": "HTTP前缀、错误码、幂等/If-Match/actor/trace_id",
+      "consumers": "P05-01..P05-03、P16、P24-02"
+    },
+    {
+      "path": "docs/algorithms/OPTIMIZATION_CONTRACT.md",
+      "sha256": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+      "role": "候选/硬约束/独立校验/预算与状态",
+      "consumers": "P06–P10、P15–P16"
+    },
+    {
+      "path": "docs/algorithms/SIMULATION_CONTRACT.md",
+      "sha256": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+      "role": "仿真状态、事件、RNG、快照与分支隔离",
+      "consumers": "P11–P13、P28"
+    },
+    {
+      "path": "docs/algorithms/METRICS_CONTRACT.md",
+      "sha256": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+      "role": "14项指标公式、分母缺失语义",
+      "consumers": "P32-01..P32-03、P33"
+    },
+    {
+      "path": "docs/plan/TEST_FIXTURES.md",
+      "sha256": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+      "role": "T1/W1/J1/I1/S1/M1可手算验收数据",
+      "consumers": "P04-01起全部算法与集成Task"
+    },
+    {
+      "path": "docs/plan/PHASE_GATES.md",
+      "sha256": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+      "role": "40个Gate的必需Task与附加业务断言",
+      "consumers": "全部Gate"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+
+> @logistics/frontend@0.1.0 test
+> vitest run
+
+'vitest' is not recognized as an internal or external command,
+operable program or batch file.
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\apps\frontend
+npm error workspace @logistics/frontend@0.1.0
+npm error location D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\apps\frontend
+npm error command failed
+npm error command C:\Windows\system32\cmd.exe /d /s /c vitest run
+EXIT=1

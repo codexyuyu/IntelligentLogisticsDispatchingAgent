@@ -1,0 +1,49 @@
+........................................................................ [ 31%]
+........................................................................ [ 63%]
+..F..................................................................... [ 95%]
+...F......                                                               [100%]
+================================== FAILURES ===================================
+____________ test_resolve_owner_is_total_over_the_real_repository _____________
+
+ownership_module = <module 'dsh_check_ownership_under_test' from 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\scripts\\check_ownership.py'>
+
+    def test_resolve_owner_is_total_over_the_real_repository(ownership_module) -> None:
+        """Every tracked file resolves to a declared owner (no crash, no surprise fallback)."""
+        manifest = ownership_module.load_manifest(REPO_ROOT)
+        report = ownership_module.run_checks(REPO_ROOT)
+        assert report["passed"] is True, report["violations"]
+        assert report["coverage"]["files_scanned"] > 100
+        assert set(report["coverage"]["files_per_owner"]) <= set(manifest["owners"])
+>       assert report["coverage"]["default_owner_fallbacks"] == [], (
+            "every real path must be covered by an explicit rule; allow-listing by accident hides ownership"
+        )
+E       AssertionError: every real path must be covered by an explicit rule; allow-listing by accident hides ownership
+E       assert ['.workbuddy-...026-10-04.md'] == []
+E         
+E         Left contains 2 more items, first extra item: '.workbuddy-ai/memory/2026-10-04.md'
+E         Use -v to get more diff
+
+tests\unit\test_p01_03_migration_governance.py:147: AssertionError
+_________________ test_real_repository_ownership_check_passes _________________
+
+run_command = <function run_command.<locals>.run at 0x0000015150367100>
+repo_root = WindowsPath('D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent')
+
+    def test_real_repository_ownership_check_passes(run_command, repo_root: Path) -> None:
+        result = run_command(["python", CHECKER, "--root", str(repo_root), "--json"])
+        assert result.returncode == 0, result.stdout + result.stderr
+        report = json.loads(result.stdout)
+        assert report["passed"] is True
+        assert report["violation_count"] == 0
+        assert report["coverage"]["files_scanned"] > 100
+>       assert report["coverage"]["default_owner_fallbacks"] == []
+E       AssertionError: assert ['.workbuddy-...026-10-04.md'] == []
+E         
+E         Left contains 2 more items, first extra item: '.workbuddy-ai/memory/2026-10-04.md'
+E         Use -v to get more diff
+
+tests\integration\test_p01_03_migration_governance.py:196: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/unit/test_p01_03_migration_governance.py::test_resolve_owner_is_total_over_the_real_repository
+FAILED tests/integration/test_p01_03_migration_governance.py::test_real_repository_ownership_check_passes
+2 failed, 224 passed in 36.42s

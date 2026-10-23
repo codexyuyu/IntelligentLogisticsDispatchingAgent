@@ -1,0 +1,11 @@
+........................................................................ [ 38%]
+........................................................................ [ 77%]
+........................F..................                              [100%]
+================================== FAILURES ===================================
+________________ test_repository_phase_one_gate_is_fail_closed ________________
+tests\integration\test_p01_02_checks_and_gate_runner.py:555: in test_repository_phase_one_gate_is_fail_closed
+    assert "zcode-precheck:P01-01" in evidence["failed_checks"]
+E   AssertionError: assert 'zcode-precheck:P01-01' in ['P01-01-cmd1', 'P01-01-cmd2', 'P01-01-cmd3', 'P01-02-cmd1', 'P01-02-cmd2', 'P01-03-cmd1', ...]
+=========================== short test summary info ===========================
+FAILED tests/integration/test_p01_02_checks_and_gate_runner.py::test_repository_phase_one_gate_is_fail_closed
+1 failed, 186 passed in 44.90s

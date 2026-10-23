@@ -1,0 +1,91 @@
+test_cross_phase_parallel (__main__.CheckerTests.test_cross_phase_parallel) ... ok
+test_cycle (__main__.CheckerTests.test_cycle) ... ok
+test_duplicate_id (__main__.CheckerTests.test_duplicate_id) ... ok
+test_entity_set (__main__.CheckerTests.test_entity_set) ... ok
+test_extra_case (__main__.CheckerTests.test_extra_case) ... ok
+test_matching_cases (__main__.CheckerTests.test_matching_cases) ... ok
+test_missing_case (__main__.CheckerTests.test_missing_case) ... ok
+test_missing_dependency (__main__.CheckerTests.test_missing_dependency) ... ok
+test_missing_prompt_sections (__main__.CheckerTests.test_missing_prompt_sections) ... ok
+test_missing_solver_sections (__main__.CheckerTests.test_missing_solver_sections) ... ok
+test_parallel_dependency (__main__.CheckerTests.test_parallel_dependency) ... ok
+test_parallel_write_collision (__main__.CheckerTests.test_parallel_write_collision) ... ok
+test_reordered_prompt_sections (__main__.CheckerTests.test_reordered_prompt_sections) ... ok
+test_reverse_blocks (__main__.CheckerTests.test_reverse_blocks) ... ok
+test_valid_graph (__main__.CheckerTests.test_valid_graph) ... ok
+test_boundary_extra_field_cannot_hide_a_missing_type (__main__.ContractDecisionTests.test_boundary_extra_field_cannot_hide_a_missing_type) ... ok
+test_calendar_dto_cannot_define_second_domain_type (__main__.ContractDecisionTests.test_calendar_dto_cannot_define_second_domain_type) ... ok
+test_calendar_ownership_cannot_move_later (__main__.ContractDecisionTests.test_calendar_ownership_cannot_move_later) ... ok
+test_calendar_version_cannot_be_omitted (__main__.ContractDecisionTests.test_calendar_version_cannot_be_omitted) ... ok
+test_closed_contract_graph (__main__.ContractDecisionTests.test_closed_contract_graph) ... ok
+test_direct_expected_scalar_cannot_leak (__main__.ContractDecisionTests.test_direct_expected_scalar_cannot_leak) ... ok
+test_domain_cannot_import_contracts (__main__.ContractDecisionTests.test_domain_cannot_import_contracts) ... ok
+test_duplicate_definition (__main__.ContractDecisionTests.test_duplicate_definition) ... ok
+test_empty_record_is_rejected (__main__.ContractDecisionTests.test_empty_record_is_rejected) ... ok
+test_entity_kind_cannot_be_existing (__main__.ContractDecisionTests.test_entity_kind_cannot_be_existing) ... ok
+test_entity_kind_definition_must_precede_entity_ref (__main__.ContractDecisionTests.test_entity_kind_definition_must_precede_entity_ref) ... ok
+test_entity_kind_existing_consumer_labels_are_preserved (__main__.ContractDecisionTests.test_entity_kind_existing_consumer_labels_are_preserved) ... ok
+test_entity_kind_has_every_catalog_entity_and_consumer (__main__.ContractDecisionTests.test_entity_kind_has_every_catalog_entity_and_consumer) ... ok
+test_entity_kind_member_names_cannot_repeat_in_json (__main__.ContractDecisionTests.test_entity_kind_member_names_cannot_repeat_in_json) ... ok
+test_entity_kind_serialization_values_are_unique (__main__.ContractDecisionTests.test_entity_kind_serialization_values_are_unique) ... ok
+test_entity_ref_cannot_be_existing (__main__.ContractDecisionTests.test_entity_ref_cannot_be_existing) ... ok
+test_entity_ref_cannot_omit_uuid_identity (__main__.ContractDecisionTests.test_entity_ref_cannot_omit_uuid_identity) ... ok
+test_entity_ref_definition_cannot_move_later (__main__.ContractDecisionTests.test_entity_ref_definition_cannot_move_later) ... ok
+test_entity_ref_has_one_definition (__main__.ContractDecisionTests.test_entity_ref_has_one_definition) ... ok
+test_entity_ref_requires_unique_enum_kind (__main__.ContractDecisionTests.test_entity_ref_requires_unique_enum_kind) ... ok
+test_entity_ref_revision_cannot_be_signed (__main__.ContractDecisionTests.test_entity_ref_revision_cannot_be_signed) ... ok
+test_entity_target_identity_cannot_change (__main__.ContractDecisionTests.test_entity_target_identity_cannot_change) ... ok
+test_entity_target_set_cannot_omit_region (__main__.ContractDecisionTests.test_entity_target_set_cannot_omit_region) ... ok
+test_event_payload_cannot_hide_entity_ref_in_existing_leaf (__main__.ContractDecisionTests.test_event_payload_cannot_hide_entity_ref_in_existing_leaf) ... ok
+test_event_payload_union_requires_all_ten_branches (__main__.ContractDecisionTests.test_event_payload_union_requires_all_ten_branches) ... ok
+test_event_spec_has_one_authority (__main__.ContractDecisionTests.test_event_spec_has_one_authority) ... ok
+test_event_target_constraints_cannot_be_omitted (__main__.ContractDecisionTests.test_event_target_constraints_cannot_be_omitted) ... ok
+test_event_target_id_cannot_be_optional (__main__.ContractDecisionTests.test_event_target_id_cannot_be_optional) ... ok
+test_event_target_id_path_cannot_be_code (__main__.ContractDecisionTests.test_event_target_id_path_cannot_be_code) ... ok
+test_event_target_id_path_must_exist (__main__.ContractDecisionTests.test_event_target_id_path_must_exist) ... ok
+test_event_target_id_path_must_resolve_uuid (__main__.ContractDecisionTests.test_event_target_id_path_must_resolve_uuid) ... ok
+test_event_target_kind_cannot_repeat (__main__.ContractDecisionTests.test_event_target_kind_cannot_repeat) ... ok
+test_event_target_kind_must_be_registered (__main__.ContractDecisionTests.test_event_target_kind_must_be_registered) ... ok
+test_event_target_mapping_rejects_unknown_event (__main__.ContractDecisionTests.test_event_target_mapping_rejects_unknown_event) ... ok
+test_event_target_mapping_requires_all_ten_events (__main__.ContractDecisionTests.test_event_target_mapping_requires_all_ten_events) ... ok
+test_event_target_mapping_requires_exact_payload_branch (__main__.ContractDecisionTests.test_event_target_mapping_requires_exact_payload_branch) ... ok
+test_event_target_revision_policy_is_exact (__main__.ContractDecisionTests.test_event_target_revision_policy_is_exact) ... ok
+test_existing_leaf_requires_evidenced_source (__main__.ContractDecisionTests.test_existing_leaf_requires_evidenced_source) ... ok
+test_expectation_cannot_leak_transitively (__main__.ContractDecisionTests.test_expectation_cannot_leak_transitively) ... ok
+test_formal_input_cannot_contain_solver_answer (__main__.ContractDecisionTests.test_formal_input_cannot_contain_solver_answer) ... ok
+test_free_dictionary_is_not_a_type (__main__.ContractDecisionTests.test_free_dictionary_is_not_a_type) ... ok
+test_future_definition_task (__main__.ContractDecisionTests.test_future_definition_task) ... ok
+test_job_request_cannot_reference_future_dto (__main__.ContractDecisionTests.test_job_request_cannot_reference_future_dto) ... ok
+test_mismatched_kind_mapping (__main__.ContractDecisionTests.test_mismatched_kind_mapping) ... ok
+test_missing_cross_module_dependency (__main__.ContractDecisionTests.test_missing_cross_module_dependency) ... ok
+test_missing_optimization_mode (__main__.ContractDecisionTests.test_missing_optimization_mode) ... ok
+test_module_cycle (__main__.ContractDecisionTests.test_module_cycle) ... ok
+test_payload_family_literal_required (__main__.ContractDecisionTests.test_payload_family_literal_required) ... ok
+test_reference_cycle (__main__.ContractDecisionTests.test_reference_cycle) ... ok
+test_region_identity_is_an_explicit_nested_record (__main__.ContractDecisionTests.test_region_identity_is_an_explicit_nested_record) ... ok
+test_request_hash_cannot_be_optional (__main__.ContractDecisionTests.test_request_hash_cannot_be_optional) ... ok
+test_request_reference_family_is_unique_enum (__main__.ContractDecisionTests.test_request_reference_family_is_unique_enum) ... ok
+test_scenario_identity_must_bind_dataset_and_schema (__main__.ContractDecisionTests.test_scenario_identity_must_bind_dataset_and_schema) ... ok
+test_union_discriminator_must_match_branch (__main__.ContractDecisionTests.test_union_discriminator_must_match_branch) ... ok
+test_unknown_referenced_type (__main__.ContractDecisionTests.test_unknown_referenced_type) ... ok
+test_warehouse_target_kind_path_must_resolve_enum (__main__.ContractDecisionTests.test_warehouse_target_kind_path_must_resolve_enum) ... ok
+test_warehouse_target_kind_type_pairing_is_exact (__main__.ContractDecisionTests.test_warehouse_target_kind_type_pairing_is_exact) ... ok
+test_wrong_carrier (__main__.ContractDecisionTests.test_wrong_carrier) ... ok
+
+----------------------------------------------------------------------
+Ran 73 tests in 0.096s
+
+OK
+
+{
+  "status": "PASS",
+  "checker_tests": 73,
+  "tasks": 109,
+  "gates": 40,
+  "prompt_groups": 14,
+  "required_prompt_sections": 24,
+  "required_entities": 32,
+  "markdown_files": 140,
+  "selected_prompts": 109,
+  "errors": []
+}

@@ -1,0 +1,18 @@
+{
+  "task_id": "N02-R01",
+  "audited_at": "2026-10-04T03:20:52.921213+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "git_present": false,
+  "code_revision": "content-sha256:adbd8a1ccfa59e8b803acfbb8beb6e23d8fbdad28a51ededbb5862ee0c79ee98",
+  "dirty_tree_hash": "content-sha256:9a48d7b5308b7dce70dee3cf978ad463b0c5ca57774dae2de1acd5eaf4539d68",
+  "candidate_files": 77,
+  "governance_changes": 123,
+  "whitelist_files": 127,
+  "protected_files": 3418,
+  "evidence_hash_checks": 204,
+  "legacy_registered_files": 173,
+  "record_g00_AST_unchanged": true,
+  "freeze_drift_count": 4,
+  "g00_input_drift_count": 5,
+  "errors": []
+}

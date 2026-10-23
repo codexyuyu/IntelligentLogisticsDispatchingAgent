@@ -1,0 +1,39 @@
+# 本地调研中间文件
+/tmp/
+
+# 本地凭据与运行环境
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+
+# 构建与测试输出
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+artifacts/e2e/
+
+# 本任务临时引导工具（uv 应改为官方安装，不随仓库交付）
+tools/bin/
+
+# 本地 agent 状态、缓存与独立 clone（不随实现仓库交付）
+/.mimosa/
+/.workbuddy/
+/.workbuddy-ai/
+/.uv-cache/
+/merged/
+
+# 历史只读资产与大体积第三方数据（另行归档，不进代码仓库）
+/demo/
+/demos/
+/demo.zip
+/赛题.zip
+/*.pdf
+/data/external/

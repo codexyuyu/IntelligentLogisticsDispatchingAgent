@@ -1,0 +1,18 @@
+current precheck sha256: 7ae3e9d6f22c86c4 (5fd3d521=r03, 7ae3e9d6=r03f01)
+precheck round: 2026-10-04-r03f01 | status: Z_PRECHECK_PASSED
+drifted inputs: 5
+  DRIFT artifacts/handoffs/P02-01/dsh/evidence.json 36f08ff6a8 -> eac21615a8
+  DRIFT docs/implementation/reports/P02-01.md c3e518b5d2 -> 8ea212c9db
+  DRIFT packages/domain/src/logistics_domain/states.py 0a3da52dc1 -> 297425132e
+  DRIFT tests/integration/test_p02_01_primitives_and_states.py ebaed4a42d -> 59cae12cf2
+  DRIFT tests/unit/test_p02_01_primitives_and_states.py c66f2d51aa -> c0104c13c7
+review drifted inputs: 8
+  DRIFT artifacts/handoffs/P02-01/dsh/evidence.json
+  DRIFT artifacts/handoffs/P02-01/dsh/seal.json
+  DRIFT docs/handoffs/P02-01/dsh.md
+  DRIFT docs/implementation/P02-01.md
+  DRIFT docs/implementation/reports/P02-01.md
+  DRIFT packages/domain/src/logistics_domain/states.py
+  DRIFT tests/integration/test_p02_01_primitives_and_states.py
+  DRIFT tests/unit/test_p02_01_primitives_and_states.py
+G01 direct input drift: NONE (all 40 fresh)

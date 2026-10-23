@@ -1,0 +1,100 @@
+[
+  {
+    "ProcessId": 38148,
+    "ParentProcessId": 38492,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T08:45:59.0644340Z",
+    "CommandLine": "\"D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.venv\\Scripts\\python.exe\" -B C:/Users/30382/AppData/Local/Temp/IntelligentLogisticsDispatchingAgent-n05-r02-impact/common.py official-g01 uv run python scripts/gates.py --phase 01 --revision auto"
+  },
+  {
+    "ProcessId": 20036,
+    "ParentProcessId": 38148,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T08:45:59.0812250Z",
+    "CommandLine": "\"C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" -B C:/Users/30382/AppData/Local/Temp/IntelligentLogisticsDispatchingAgent-n05-r02-impact/common.py official-g01 uv run python scripts/gates.py --phase 01 --revision auto"
+  },
+  {
+    "ProcessId": 39908,
+    "ParentProcessId": 20036,
+    "Name": "uv.exe",
+    "CreationUtc": "2026-10-05T08:45:59.1819130Z",
+    "CommandLine": "C:\\Users\\30382\\.local\\bin\\uv.EXE run python scripts/gates.py --phase 01 --revision auto"
+  },
+  {
+    "ProcessId": 40876,
+    "ParentProcessId": 39908,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T08:45:59.2342130Z",
+    "CommandLine": "\"D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.venv\\Scripts\\python.exe\" scripts/gates.py --phase 01 --revision auto"
+  },
+  {
+    "ProcessId": 39384,
+    "ParentProcessId": 40876,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T08:45:59.2498830Z",
+    "CommandLine": "\"C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" scripts/gates.py --phase 01 --revision auto"
+  },
+  {
+    "ProcessId": 37436,
+    "ParentProcessId": 39384,
+    "Name": "uv.exe",
+    "CreationUtc": "2026-10-05T09:03:13.1241080Z",
+    "CommandLine": "C:\\Users\\30382\\.local\\bin\\uv.EXE run pytest tests/unit/test_p01_02_checks_and_gate_runner.py tests/integration/test_p01_02_checks_and_gate_runner.py -q"
+  },
+  {
+    "ProcessId": 38604,
+    "ParentProcessId": 37436,
+    "Name": "pytest.exe",
+    "CreationUtc": "2026-10-05T09:03:13.1750980Z",
+    "CommandLine": "\"D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.venv\\Scripts\\pytest.exe\" tests/unit/test_p01_02_checks_and_gate_runner.py tests/integration/test_p01_02_checks_and_gate_runner.py -q"
+  },
+  {
+    "ProcessId": 40100,
+    "ParentProcessId": 38604,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T09:03:13.1876540Z",
+    "CommandLine": "\"D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.venv\\Scripts\\python.exe\" \"D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.venv\\Scripts\\pytest.exe\" tests/unit/test_p01_02_checks_and_gate_runner.py tests/integration/test_p01_02_checks_and_gate_runner.py -q"
+  },
+  {
+    "ProcessId": 42820,
+    "ParentProcessId": 40100,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T09:03:13.1982830Z",
+    "CommandLine": "\"C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" \"D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.venv\\Scripts\\pytest.exe\" tests/unit/test_p01_02_checks_and_gate_runner.py tests/integration/test_p01_02_checks_and_gate_runner.py -q"
+  },
+  {
+    "ProcessId": 42580,
+    "ParentProcessId": 42820,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T09:03:19.7646590Z",
+    "CommandLine": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.venv\\Scripts\\python.EXE scripts/gates.py --phase 01 --revision auto --root C:\\Users\\30382\\AppData\\Local\\Temp\\IntelligentLogisticsDispatchingAgent-n05-r02-impact\\pytest-official-g01\\pytest-of-30382\\pytest-0\\test_missing_codex_review_prev0"
+  },
+  {
+    "ProcessId": 38588,
+    "ParentProcessId": 42580,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T09:03:19.7810320Z",
+    "CommandLine": "\"C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" scripts/gates.py --phase 01 --revision auto --root C:\\Users\\30382\\AppData\\Local\\Temp\\IntelligentLogisticsDispatchingAgent-n05-r02-impact\\pytest-official-g01\\pytest-of-30382\\pytest-0\\test_missing_codex_review_prev0"
+  },
+  {
+    "ProcessId": 40244,
+    "ParentProcessId": 38588,
+    "Name": "uv.exe",
+    "CreationUtc": "2026-10-05T09:03:20.3540060Z",
+    "CommandLine": null
+  },
+  {
+    "ProcessId": 38300,
+    "ParentProcessId": 40244,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T09:03:20.3919370Z",
+    "CommandLine": null
+  },
+  {
+    "ProcessId": 40192,
+    "ParentProcessId": 38300,
+    "Name": "python.exe",
+    "CreationUtc": "2026-10-05T09:03:20.4071640Z",
+    "CommandLine": null
+  }
+]

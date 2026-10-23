@@ -1,0 +1,660 @@
+{
+  "kind": "AI-CODING-PLAN-documents-only",
+  "plan_version": "1.0.0",
+  "task_count": 109,
+  "phase_gate_count": 40,
+  "prompt_group_count": 14,
+  "application_implemented": false,
+  "files": [
+    {
+      "path": "AI-CODING-PLAN.md",
+      "sha256": "f3c1e986730f249c5064f30fcc5eb1a9a3ee0d949a2b8957eb03be58f457dbe8",
+      "size_bytes": 3172
+    },
+    {
+      "path": "docs/algorithms/METRICS_CONTRACT.md",
+      "sha256": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+      "size_bytes": 5314
+    },
+    {
+      "path": "docs/algorithms/OPTIMIZATION_CONTRACT.md",
+      "sha256": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+      "size_bytes": 9300
+    },
+    {
+      "path": "docs/algorithms/SIMULATION_CONTRACT.md",
+      "sha256": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+      "size_bytes": 3588
+    },
+    {
+      "path": "docs/api/API_CONTRACT.md",
+      "sha256": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+      "size_bytes": 10294
+    },
+    {
+      "path": "docs/architecture/ARCHITECTURE_OVERVIEW.md",
+      "sha256": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+      "size_bytes": 6878
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "sha256": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+      "size_bytes": 18049
+    },
+    {
+      "path": "docs/architecture/DOMAIN_CATALOG.md",
+      "sha256": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+      "size_bytes": 14792
+    },
+    {
+      "path": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "sha256": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+      "size_bytes": 9267
+    },
+    {
+      "path": "docs/plan/PHASE_GATES.md",
+      "sha256": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+      "size_bytes": 10470
+    },
+    {
+      "path": "docs/plan/REQUIREMENTS_TRACEABILITY.md",
+      "sha256": "7edad920eca7eea6f7ae09e689da9e105fe0402bc908a1354e2fb0b7867845a1",
+      "size_bytes": 4076
+    },
+    {
+      "path": "docs/plan/TASK_MANIFEST.json",
+      "sha256": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+      "size_bytes": 261127
+    },
+    {
+      "path": "docs/plan/TEST_FIXTURES.md",
+      "sha256": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+      "size_bytes": 6824
+    },
+    {
+      "path": "docs/plan/USER_REQUIREMENTS.md",
+      "sha256": "d5ae3443100248329bf45f8694480e2e5a27ec53237f4d768cfbb1975c245907",
+      "size_bytes": 13743
+    },
+    {
+      "path": "docs/plan/VERIFICATION_REPORT.md",
+      "sha256": "c49e683e6f00252986569ece6cd407f4e1c603dabb98bab9a2080dd3558804d9",
+      "size_bytes": 1415
+    },
+    {
+      "path": "docs/prompts/00-master/P00-01-baseline-inventory.md",
+      "sha256": "144c485b59837ca9bcafb971bda3d0856df38f92f4e48720ad5e6de014c4bbdd",
+      "size_bytes": 12707
+    },
+    {
+      "path": "docs/prompts/00-master/P00-02-freeze-contracts.md",
+      "sha256": "b876502ad4b14ce0fced8b96928b9324f27a1ae13a2bb978ee283903ebd9fdec",
+      "size_bytes": 12633
+    },
+    {
+      "path": "docs/prompts/00-master/P00-03-gate-contract.md",
+      "sha256": "d09b31e837c4f2e4ed1b8dd483df9217a733835e10c282906247d4f7fad8d307",
+      "size_bytes": 12496
+    },
+    {
+      "path": "docs/prompts/01-foundation/P01-01-workspace-bootstrap.md",
+      "sha256": "afd1c884cfab57852e5056c43b6d5a0e48f703ac6feedfca715600e9543de89a",
+      "size_bytes": 13390
+    },
+    {
+      "path": "docs/prompts/01-foundation/P01-02-checks-and-gate-runner.md",
+      "sha256": "bfcb73effffca1c957b54d991b88dc65cb5ad62c52195d7502373356c6a86821",
+      "size_bytes": 12745
+    },
+    {
+      "path": "docs/prompts/01-foundation/P01-03-migration-governance.md",
+      "sha256": "39313ee001c0770bc5d7eb129b7e430ad1561e917e0a33d9b900d1a51d2d9e6d",
+      "size_bytes": 12683
+    },
+    {
+      "path": "docs/prompts/01-foundation/P04-01-canonical-fixtures.md",
+      "sha256": "64633b4f1e266cef69131aa279b514265d08734b7f7894b83ddd0c1b0721edbc",
+      "size_bytes": 12684
+    },
+    {
+      "path": "docs/prompts/01-foundation/P04-02-database-seed.md",
+      "sha256": "c584c3d6fe800e6b9d76ee7a423a425ff2c9f3cf1880f3dbde78b20afcffd9db",
+      "size_bytes": 12506
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-01-primitives-and-states.md",
+      "sha256": "fdbb1a8829e997f3ad85267aba85f21c3c515d88279c47d98cc6cfd470d027cf",
+      "size_bytes": 12728
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-02-master-entities.md",
+      "sha256": "a0eb2d5e091183613dca012dda736fe07dedfb07df52c5b88cc0e375f8ed11cf",
+      "size_bytes": 12803
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-03-planning-entities.md",
+      "sha256": "58a5ef7094e593bcef6c6c65df5513dbd143e347e5f77efa19049b1332af4093",
+      "size_bytes": 12873
+    },
+    {
+      "path": "docs/prompts/02-domain/P02-04-runtime-contract-export.md",
+      "sha256": "e2e73ebdef66e8255bf2ab3252e64f23ced5bf0bc1afca6e55f89a7dbdfcbb5b",
+      "size_bytes": 13245
+    },
+    {
+      "path": "docs/prompts/03-database/P03-01-resource-schema.md",
+      "sha256": "a84d8f7ff8387c43c2d4f68d3f473f5e07e22f4ffd8a4d310717570b22999064",
+      "size_bytes": 12732
+    },
+    {
+      "path": "docs/prompts/03-database/P03-02-planning-schema.md",
+      "sha256": "47bfdae1e363352bc4de347b4c72dcc920ca6f4212438de32385f84b7dab3fc8",
+      "size_bytes": 12855
+    },
+    {
+      "path": "docs/prompts/03-database/P03-03-repositories-and-snapshot.md",
+      "sha256": "24e665229955cc9f0c0fb77d0c3318b1b7cc2e3551d65b30cbf07e8ad62be677",
+      "size_bytes": 12795
+    },
+    {
+      "path": "docs/prompts/03-database/P03-04-atomic-version-store.md",
+      "sha256": "3d2a8865dd263757a2a70387f0f80e38dae07187f7082bcfd7f25671c31991df",
+      "size_bytes": 12898
+    },
+    {
+      "path": "docs/prompts/04-api/P05-01-api-composition.md",
+      "sha256": "b282fd14bddd9b18ee8fee31723abf72a4cfd92457e45b7492ad6be6e346382f",
+      "size_bytes": 13024
+    },
+    {
+      "path": "docs/prompts/04-api/P05-02-master-data-services.md",
+      "sha256": "53c55552bd4946c618f6e68afdaaebfaedfc16dc2a216385ba2feb129560df9a",
+      "size_bytes": 13061
+    },
+    {
+      "path": "docs/prompts/04-api/P05-03-durable-jobs.md",
+      "sha256": "62f8bf9386358212a3c07dd8fff7424ed9bb11d1837d59526be5ac393b5f38ae",
+      "size_bytes": 13100
+    },
+    {
+      "path": "docs/prompts/04-api/P16-01-optimization-job-api.md",
+      "sha256": "2099936dbcd9c40c7dfccff30a1692cc48738d72af29e421b1d17ae3904788dd",
+      "size_bytes": 13162
+    },
+    {
+      "path": "docs/prompts/04-api/P16-02-joint-planning-service.md",
+      "sha256": "3155bd853155ec3b52c0fe3067c22f5af7b271b235f487dab43d9ee4b3b67d0d",
+      "size_bytes": 13270
+    },
+    {
+      "path": "docs/prompts/04-api/P16-03-validated-commit-api.md",
+      "sha256": "9c11bb944c4e110f59efb0e7d92f0930183b498b43d94f044f7a7e199f4a0511",
+      "size_bytes": 13430
+    },
+    {
+      "path": "docs/prompts/04-api/P16-04-simulation-query-api.md",
+      "sha256": "37491596a4b7d699575c3da8718a502b2640aa910d4d1b06e6b83979029f685a",
+      "size_bytes": 13140
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P06-01-transport-contract.md",
+      "sha256": "e4634f715a07a1f79816004e339aa064e54e18d02e00af22b22b6b7eb5682ed5",
+      "size_bytes": 13081
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P06-02-distance-matrix.md",
+      "sha256": "35f6baffc79bc881e4e0ec88a2603c69ff66b3dfcfcd62b5a34709e5884ae428",
+      "size_bytes": 13028
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-01-vrp-base.md",
+      "sha256": "0c6f25d779436ff1b8639f6541857a2b367cd9b183fa923877b145d01ceea4d3",
+      "size_bytes": 14036
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-02-capacity-and-pickup.md",
+      "sha256": "b0764818de6c9a7c29e98f2a3462039ef8a919de68386ff4b3296ce58d6a5dc7",
+      "size_bytes": 14204
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-03-time-windows.md",
+      "sha256": "9d52e2198aed05f7eb80b85766286a5aff745edaa7e613348db39f345b9a400e",
+      "size_bytes": 14175
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-04-temperature-and-cargo.md",
+      "sha256": "36cb0c6c3ee12a814890861020fb7c0cbc7c4bb52e8c8a3d42eb580e585652e4",
+      "size_bytes": 14238
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-05-objective-function.md",
+      "sha256": "1c0da24eeccdbcd0d33f8dd13b4717576db769f6ff8ddb04506ade0e9c0c8d69",
+      "size_bytes": 14258
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-06-result-status-validation.md",
+      "sha256": "4e46187b039814be47c534e2cbc55cdb20eb578b8ebc6c9f1aaca5f28578d587",
+      "size_bytes": 14436
+    },
+    {
+      "path": "docs/prompts/05-transport-solver/P07-07-transport-adapter.md",
+      "sha256": "bda5fed1e9eb2b80ba17ec59180bd253b19bc0b79ddafbdc8835c75418ed668b",
+      "size_bytes": 14220
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P08-01-warehouse-contract.md",
+      "sha256": "249358470596be1ee21b893277557f282786df46e7aed71f17d5c444f18e9eca",
+      "size_bytes": 12899
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P08-02-inventory-and-handoffs.md",
+      "sha256": "949116854f9a49b46b5e55f29d64a3bc890caace4d76d8eb1bc0811ae14b6960",
+      "size_bytes": 13057
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-01-intervals-precedence.md",
+      "sha256": "3baed1aef32cb6c485450274e40cbcad2fa1ee3f26cdad1a35b65e448ceaab97",
+      "size_bytes": 13713
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-02-cumulative-resources.md",
+      "sha256": "e75bedee0b83214ce6bdee488b1deeb3383c93b84f088a68c8706a18ebda23fc",
+      "size_bytes": 13777
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-03-storage-capacity.md",
+      "sha256": "115ed204cde10884b4b21e333169a049c3dad3389f429c7a8fa838ed6a1de5c3",
+      "size_bytes": 13704
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-04-sequence-setup.md",
+      "sha256": "4fbe505c12a8fbf4d0c1f581f77987f0b153fb3f257a9c938a3c791ce1a67b66",
+      "size_bytes": 13707
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P09-05-warehouse-result.md",
+      "sha256": "21bc516adc3484052e9a1f7a7ef8429ec74588b22969d64c64828c383261f005",
+      "size_bytes": 13824
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P10-01-validator-protocol.md",
+      "sha256": "61be461161d6333886a31eb7b6d76ef2c9e804a6cb06429ac5392c0e75b47ad9",
+      "size_bytes": 12964
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P10-02-joint-validator.md",
+      "sha256": "aaec504e84a53e656bd84b4c3de79e523e2de34775de2a889fd17c8544bf1d8d",
+      "size_bytes": 12840
+    },
+    {
+      "path": "docs/prompts/06-warehouse-solver/P10-03-validator-adversarial-suite.md",
+      "sha256": "c133a179eac65831dc476113d53f8337ab08e4bb7aeed5a10799dbcb081b1d6e",
+      "size_bytes": 13816
+    },
+    {
+      "path": "docs/prompts/07-simulation/P11-01-simulation-contract.md",
+      "sha256": "3fdf41bb4e03b0a9a04dc4ba577492d24aa89f441cb531957621f60de518a2a5",
+      "size_bytes": 12971
+    },
+    {
+      "path": "docs/prompts/07-simulation/P11-02-execution-state-machine.md",
+      "sha256": "252f2db00c0e48f5fd4d8dd2bb0bfdc4fe594f8f7e218ba5c83d45432545ae06",
+      "size_bytes": 12879
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-01-simpy-kernel.md",
+      "sha256": "ed2f59c54dc77f6125bcdfb22f53e7ee1db6a1ecaf05247a9fbb5b359ce03cda",
+      "size_bytes": 13016
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-02-transport-execution.md",
+      "sha256": "3341d00c37b1cc3eef60f5e46cbe3baea8a7d8ed93605f59c79442b663ddd1c7",
+      "size_bytes": 13010
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-03-warehouse-execution.md",
+      "sha256": "ff617fafed3541341e19dda23ced384019f29a715934952d523e1d6dbe5c48b1",
+      "size_bytes": 13074
+    },
+    {
+      "path": "docs/prompts/07-simulation/P12-04-snapshot-replay.md",
+      "sha256": "7b13d489eae6940623d8878e28691dcdf1f75bf395a4797014259df918187aa5",
+      "size_bytes": 13205
+    },
+    {
+      "path": "docs/prompts/07-simulation/P13-01-event-ingestion.md",
+      "sha256": "6ab53f50690b3673eaeb975aecfafd2c3dd6916430ce7f71c7218926e6f2a15c",
+      "size_bytes": 12898
+    },
+    {
+      "path": "docs/prompts/07-simulation/P13-02-event-api-and-outbox.md",
+      "sha256": "9fc1e6607281e57fe71b590c865190f12a82b02bbf6d1fff1e28a9dace5fc941",
+      "size_bytes": 12969
+    },
+    {
+      "path": "docs/prompts/08-exception/P14-01-impact-graph.md",
+      "sha256": "6b650503b67aaa0c6343b78f0d5a9c3b99918d625c9160049c2344f303dc78af",
+      "size_bytes": 12976
+    },
+    {
+      "path": "docs/prompts/08-exception/P14-02-execution-freeze.md",
+      "sha256": "89f6a339b04083afa4f95ef912488700bbcc2b8a96c74449c0d1700b2411b635",
+      "size_bytes": 12966
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-01-candidate-policies.md",
+      "sha256": "7be0fd288ab18a1fd7e39e754924bd7c7cb836ebd002c7fbb791629052099e10",
+      "size_bytes": 13030
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-02-local-solve.md",
+      "sha256": "d4b208b1ae0ddd15155e75d375910285bf7e1bda6a18d7634ddc614ce944fadf",
+      "size_bytes": 14145
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-03-bounded-escalation.md",
+      "sha256": "30ef162d02bdfe14c110d7111d90fba3c26a02bfc75f1a4690855e15fd23a0de",
+      "size_bytes": 14032
+    },
+    {
+      "path": "docs/prompts/08-exception/P15-04-version-diff.md",
+      "sha256": "af69282cdd6b61548daf3f954778e9b2681cf2c7855db64371ce9f9977155451",
+      "size_bytes": 13144
+    },
+    {
+      "path": "docs/prompts/09-agents/P17-01-tool-schemas.md",
+      "sha256": "0e13e564a4e871fb30a7f9905e3493758a6aee8b39df4600951259bfa666fc78",
+      "size_bytes": 12967
+    },
+    {
+      "path": "docs/prompts/09-agents/P17-02-business-tools.md",
+      "sha256": "e5b77bbbee3677396e813a789669235f9d9ce7cc85f9b39c611152995a65dfe3",
+      "size_bytes": 12936
+    },
+    {
+      "path": "docs/prompts/09-agents/P18-01-llm-provider.md",
+      "sha256": "fac5f4f3a8fc22bd976f65c2596afd7cc48b72eff497a3a4a6f5abbbb51e80b2",
+      "size_bytes": 12978
+    },
+    {
+      "path": "docs/prompts/09-agents/P18-02-llm-resilience.md",
+      "sha256": "d838050e8fb17aee340ab43fd5d77eea981915ef71aab3e1cc50f17218fcd821",
+      "size_bytes": 12926
+    },
+    {
+      "path": "docs/prompts/09-agents/P19-01-intent-extraction.md",
+      "sha256": "313db67c5ed4168b5a58fc2c5c24372cdb28cc34af841aebf9e8a6ebab402f56",
+      "size_bytes": 12945
+    },
+    {
+      "path": "docs/prompts/09-agents/P19-02-coordinator-state-machine.md",
+      "sha256": "a870e4b25726decd5153363097b65b4c18d6cb40639d2389b7d65ce3141f14be",
+      "size_bytes": 12902
+    },
+    {
+      "path": "docs/prompts/09-agents/P20-01-transport-agent-tools.md",
+      "sha256": "8867c764bcd3f1712d84f326782691631c05670e88c3877f41b06f43e2978bfc",
+      "size_bytes": 12860
+    },
+    {
+      "path": "docs/prompts/09-agents/P20-02-transport-explanation.md",
+      "sha256": "cfc8e0a4c60f18c601a7581722440944839a2d66ad35f3af9259549dead72ed5",
+      "size_bytes": 12763
+    },
+    {
+      "path": "docs/prompts/09-agents/P21-01-warehouse-agent-tools.md",
+      "sha256": "90022c322e33074540cdfb161c6c7169754a91e1e80d98abe3d04d8169faab13",
+      "size_bytes": 12826
+    },
+    {
+      "path": "docs/prompts/09-agents/P21-02-warehouse-explanation.md",
+      "sha256": "c9833fa8eb0eb7a4c591301115d3fb4779cb136c6cef914f1acd87a5a4a82299",
+      "size_bytes": 12795
+    },
+    {
+      "path": "docs/prompts/09-agents/P22-01-exception-agent-tools.md",
+      "sha256": "e4df76811cbce2a8df8f030901f22268093dbf66fbc841e4be5de5fc3c3d08ce",
+      "size_bytes": 12881
+    },
+    {
+      "path": "docs/prompts/09-agents/P22-02-exception-explanation.md",
+      "sha256": "028f89760999436eb8964eb8d9e799370fd1efdc2d57366aada09a5e211c72d4",
+      "size_bytes": 12789
+    },
+    {
+      "path": "docs/prompts/09-agents/P23-01-agent-orchestration.md",
+      "sha256": "b37406a20d7cf6346f7eeb9efad8ba9b0b31cb8e4e7a115f6f71303e38e1caa6",
+      "size_bytes": 12861
+    },
+    {
+      "path": "docs/prompts/09-agents/P23-02-agent-api-safety.md",
+      "sha256": "0826f1b0efdad23dc5050304b8793bd61979c2a6c694779f3e7b6428dab7d2b8",
+      "size_bytes": 13046
+    },
+    {
+      "path": "docs/prompts/10-frontend/P24-01-react-shell.md",
+      "sha256": "2a15e96be0b43418c3ca2d347ebb8a288e5fa6e84ca145052bf4033188c3f62c",
+      "size_bytes": 13075
+    },
+    {
+      "path": "docs/prompts/10-frontend/P24-02-generated-api-client.md",
+      "sha256": "5018de3ca09e8208daa2bf805c30df15681691d1cf6e5f30bff43dd96b6462e9",
+      "size_bytes": 13035
+    },
+    {
+      "path": "docs/prompts/10-frontend/P25-01-orders-ui.md",
+      "sha256": "f3b644fe9018e9d7e3542064a5d1b689f209202e2f8d73bf6db456faedf44261",
+      "size_bytes": 12930
+    },
+    {
+      "path": "docs/prompts/10-frontend/P25-02-vehicles-ui.md",
+      "sha256": "991b3c91df0ba465216942a8ff7d6690c12dc73900f48635c165fe913d150b18",
+      "size_bytes": 12811
+    },
+    {
+      "path": "docs/prompts/10-frontend/P25-03-warehouses-ui.md",
+      "sha256": "c0c15a2fc1e1bb1e68ada2acef8b0a5d789417f2f620b40c872c44335a5bfae6",
+      "size_bytes": 12966
+    },
+    {
+      "path": "docs/prompts/10-frontend/P26-01-transport-request-ui.md",
+      "sha256": "bd82b57e3500ace875d82eda7dd57a7d3c6e7805f61e4dcd0d485226b9aa4a84",
+      "size_bytes": 13005
+    },
+    {
+      "path": "docs/prompts/10-frontend/P26-02-transport-plan-ui.md",
+      "sha256": "4d2e81340adc013fa1a9d27d94eb4144dc5fe58b4a026616aea7ecef5fe9e754",
+      "size_bytes": 12907
+    },
+    {
+      "path": "docs/prompts/10-frontend/P27-01-warehouse-gantt-ui.md",
+      "sha256": "68e521e9e8163aead8dae3c9da0b95c2c6e7c8cf13901362a78a4a6e69939fd3",
+      "size_bytes": 12917
+    },
+    {
+      "path": "docs/prompts/10-frontend/P27-02-joint-handoff-ui.md",
+      "sha256": "5f5e9a6a77573b81fc24add51a254dcdea7160b1de2a7f27f4871a50e7f2ebd5",
+      "size_bytes": 12845
+    },
+    {
+      "path": "docs/prompts/10-frontend/P28-01-simulation-controls-ui.md",
+      "sha256": "9230d8912deefa756597d0efa05f5aa73fc309bad0dbe35260883ac032d75ffb",
+      "size_bytes": 12901
+    },
+    {
+      "path": "docs/prompts/10-frontend/P28-02-replay-comparison-ui.md",
+      "sha256": "4327aae9da5f28909e0615a41c1308a845aa8c94947c8cb3fe5db502d86eb796",
+      "size_bytes": 12898
+    },
+    {
+      "path": "docs/prompts/10-frontend/P29-01-exception-center-ui.md",
+      "sha256": "f3e19ab40a73348e4541e760dc8a6a8e5228985af9dd3769351f96c051c46ab9",
+      "size_bytes": 12860
+    },
+    {
+      "path": "docs/prompts/10-frontend/P29-02-reschedule-diff-ui.md",
+      "sha256": "7c55c4b1d11107a2d959627aa6628fa69874ba37cc8804961c265848ae17fe0a",
+      "size_bytes": 12872
+    },
+    {
+      "path": "docs/prompts/10-frontend/P30-01-agent-chat-ui.md",
+      "sha256": "6500b257d4aa2dea069d62c6066d71b9197946123f66e6b9fa6dd89a23eaf927",
+      "size_bytes": 12909
+    },
+    {
+      "path": "docs/prompts/10-frontend/P30-02-agent-confirmation-ui.md",
+      "sha256": "cd1a77e62c0cd559aaaefdd9fc602a661589e7864bc6fe68d6d71dab48452a7f",
+      "size_bytes": 12953
+    },
+    {
+      "path": "docs/prompts/10-frontend/P31-01-websocket-events.md",
+      "sha256": "a14cbeb3e74080459dd28753162925521acce4cc44aff293196e277363e7266e",
+      "size_bytes": 13113
+    },
+    {
+      "path": "docs/prompts/10-frontend/P31-02-frontend-realtime.md",
+      "sha256": "7af6522f7e6625d848b3db7c5eb90a9191e9434b031ed682fa488b7cf8ad4443",
+      "size_bytes": 13015
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P32-01-metric-calculators.md",
+      "sha256": "d781d5406595d19b053f180f4a0223cc297ea123b6e7d4c05d7f0034cd8b3aaf",
+      "size_bytes": 12734
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P32-02-metrics-api.md",
+      "sha256": "2426ed0006c94170e1cab93d996c3e7005245eb034c35951945a0a13d00a4384",
+      "size_bytes": 12973
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P32-03-metrics-dashboard-ui.md",
+      "sha256": "20ccffc4733a5cc1edd5755f6ff67699d4c784e32a3b57abc38f97603f77e7f6",
+      "size_bytes": 13033
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P33-01-experiment-runner.md",
+      "sha256": "e581f8b69afd4627320cf09a336f8a0b6841f1a872a237bb9ffbb1ab1049b690",
+      "size_bytes": 12997
+    },
+    {
+      "path": "docs/prompts/11-evaluation/P33-02-experiments-api-ui.md",
+      "sha256": "222ca0e4d4ef04f599ad0d5e7c544ba1ae2a4d26480613df809fef3d73882c4c",
+      "size_bytes": 13316
+    },
+    {
+      "path": "docs/prompts/12-integration/P34-01-transport-e2e.md",
+      "sha256": "d8eddab0e7d366c78698eebdaa69f118ceb3d1dfac7a4b1d4013b7a18917d9f1",
+      "size_bytes": 12749
+    },
+    {
+      "path": "docs/prompts/12-integration/P34-02-joint-exception-e2e.md",
+      "sha256": "870c6d3f7b4c97fcfa0afc22bbd082c722d1a374d509c38a4d9619f426b3e799",
+      "size_bytes": 12921
+    },
+    {
+      "path": "docs/prompts/12-integration/P34-03-failure-recovery-e2e.md",
+      "sha256": "0cb8e7ff84c663ae68b38da465b020733b4bc9478defe1cbde4bba26c22112f1",
+      "size_bytes": 12846
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-01-demo-normal.md",
+      "sha256": "08689a08e912472abe2924ecbd50c381f271b13fe4b3b4a13e8b238a845d2d29",
+      "size_bytes": 12596
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-02-demo-joint.md",
+      "sha256": "89cfb3520987852e53a11305c097681e5870af4b814f498f6e3e937248147550",
+      "size_bytes": 12604
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-03-demo-vehicle-failure.md",
+      "sha256": "dc00c090497c3933e059e417daa16e718d68069ee4e387b1ad06197d90e82e1b",
+      "size_bytes": 12704
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-04-demo-order-cancel.md",
+      "sha256": "542dbcc6fe25a32b3f693631ef3b992c9ab3784bcfaeff8732187780c0077d95",
+      "size_bytes": 12628
+    },
+    {
+      "path": "docs/prompts/12-integration/P35-05-demo-weather.md",
+      "sha256": "e8df46a3b0843bdbfd5ff83e671b9e019ab87ac7402fb5f27decb21c5e17216d",
+      "size_bytes": 12709
+    },
+    {
+      "path": "docs/prompts/12-integration/P36-01-benchmark-harness.md",
+      "sha256": "234f3e3301dc58b0b26ed5f0edb4f014d87591bd5d126dbdaca5adefc3897322",
+      "size_bytes": 12658
+    },
+    {
+      "path": "docs/prompts/12-integration/P36-02-bounded-performance-fix.md",
+      "sha256": "968db9c67507b25546fb1a89f24823640452658db09090f5aa97aa62c2a3501d",
+      "size_bytes": 12897
+    },
+    {
+      "path": "docs/prompts/12-integration/P37-01-security-boundary.md",
+      "sha256": "dda7b70f9c822ef3980ae2d36a668a76a9a6bd9c4a37da6b09293e889236ca93",
+      "size_bytes": 12664
+    },
+    {
+      "path": "docs/prompts/12-integration/P37-02-observability-audit.md",
+      "sha256": "74084800c7d958e3679ae0c9a7897023cc3597be9b56047a015bb4c345daafcc",
+      "size_bytes": 13012
+    },
+    {
+      "path": "docs/prompts/12-integration/P37-03-backup-and-recovery.md",
+      "sha256": "579a9207cd841361f1eb344827bf46f2ef3ce01cd421ff508079e90fb8ab577d",
+      "size_bytes": 12739
+    },
+    {
+      "path": "docs/prompts/13-release/P38-01-developer-docs.md",
+      "sha256": "352816b2aed62c19ad2458747d1bb068eae78fc88305686b8d1420ce1245987b",
+      "size_bytes": 12665
+    },
+    {
+      "path": "docs/prompts/13-release/P38-02-operator-docs.md",
+      "sha256": "eb33b427b5990816f89db23598d4f082705086dbee22035cf6d39da2ea706b57",
+      "size_bytes": 12649
+    },
+    {
+      "path": "docs/prompts/13-release/P39-01-release-candidate.md",
+      "sha256": "ceea4f6745561642dad1d39a9acf128289c19ae2c58cf9a9315627f7acf7bced",
+      "size_bytes": 12772
+    },
+    {
+      "path": "docs/prompts/13-release/P39-02-release-gate.md",
+      "sha256": "8e96310f060ebff3dfda0a49863bc9b978d8f2c419925a34334795f2ba4db462",
+      "size_bytes": 12670
+    },
+    {
+      "path": "docs/prompts/README.md",
+      "sha256": "423d12bce688ccc958da56c71eb22264d087e846d97c4c0cb27a03640b12e518",
+      "size_bytes": 13281
+    },
+    {
+      "path": "PROJECT_MASTER_PLAN.md",
+      "sha256": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+      "size_bytes": 17178
+    },
+    {
+      "path": "TASK_GRAPH.md",
+      "sha256": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+      "size_bytes": 31805
+    },
+    {
+      "path": "tools/ai_coding_plan/build_catalog.py",
+      "sha256": "b0796990c3e3eb62f133fef5b61a8b4bd41e89cd9f59263f7aadc245074069eb",
+      "size_bytes": 91738
+    },
+    {
+      "path": "tools/ai_coding_plan/render_plan.py",
+      "sha256": "de39b6f69392755ad60678fc05f32233cfa0c6cfef2bf2d76dbb07810105209f",
+      "size_bytes": 38693
+    },
+    {
+      "path": "tools/ai_coding_plan/validate_plan.py",
+      "sha256": "46c52ac1342c36c7ac9eece5d2cf45d0c8c5ed07e74180f4b55f9c2849b8b675",
+      "size_bytes": 18714
+    }
+  ]
+}

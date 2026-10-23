@@ -1,0 +1,25 @@
+########## P02-04 frozen-surface probe
+logistics_domain.execution: ModuleNotFoundError -> No module named 'logistics_domain.execution'
+  getattr logistics_domain.execution: AttributeError -> module 'logistics_domain' has no attribute 'execution'
+logistics_domain.runtime: ModuleNotFoundError -> No module named 'logistics_domain.runtime'
+  getattr logistics_domain.runtime: AttributeError -> module 'logistics_domain' has no attribute 'runtime'
+logistics_contracts.common: ModuleNotFoundError -> No module named 'logistics_contracts.common'
+  getattr logistics_contracts.common: AttributeError -> module 'logistics_contracts' has no attribute 'common'
+logistics_contracts.runtime: ModuleNotFoundError -> No module named 'logistics_contracts.runtime'
+  getattr logistics_contracts.runtime: AttributeError -> module 'logistics_contracts' has no attribute 'runtime'
+
+export_contracts / ErrorEnvelope / SchemaBundle anywhere in the target tree:
+packages\contracts\src\logistics_contracts\__init__.py:22:    "export_schema": "P02-04: deterministic JSON Schema export via scripts/export_contracts.py",
+packages\contracts\src\logistics_contracts\__init__.py:23:    "errors": "P05-01: typed ErrorEnvelope per DATA_CONTRACTS error table",
+(no hits above = absent)
+
+########## declared pending-API registry
+domain   _PENDING_APIS: ['entities', 'ids', 'ports', 'states', 'units']
+contracts _PENDING_APIS: ['dto', 'errors', 'export_schema', 'mapping']
+  'execution' listed in domain registry: False | in contracts registry: False
+  'runtime' listed in domain registry: False | in contracts registry: False
+  'common' listed in domain registry: False | in contracts registry: False
+
+########## export_contracts.py --check (would-be generator)
+C:\Users\30382\AppData\Local\Programs\Python\Python312\python.exe: can't open file 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\scripts\\export_contracts.py': [Errno 2] No such file or directory
+EXIT_CODE=2

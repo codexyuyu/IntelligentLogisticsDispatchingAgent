@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "tools/ai_coding_plan/render_plan.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-03T15:38:07.540532+00:00",
+  "finished_at": "2026-10-03T15:38:07.695037+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N01-R01/codex/render.log",
+  "log_hash": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

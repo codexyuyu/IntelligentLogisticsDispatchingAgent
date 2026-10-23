@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-01",
+  "phase_gate": "G01",
+  "status": "Z_PRECHECK_PASSED",
+  "reviewer": "ZCode N04-R03-F01 (independent ZCode pre-acceptance session; GLM-5.3-Flash via ZCode CLI)",
+  "reviewed_at": "2026-10-04T21:33:55.711114+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "round": "2026-10-04-r03f01",
+  "supersedes": "round 2026-10-04-r03 record, archived byte-identically at artifacts/handoffs/P01-01/zcode/archive/r3-2026-10-04/ (precheck.json 5fd3d521073d81919726d601761356997401c1b7bb00123f83cde61da3746e37); superseded because the DSH evidence it bound (18b2ccc1...) was metadata-corrected by N03-R02-F01 to e22bf651...",
+  "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+  "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297",
+  "verified_input_hashes": {
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+    "docs/workflow/02-ZCODE-PRECHECK.md": "f05e310fc1a20e610457719c2ca1ba3afad4b33206247f66f992f6c422a3372d",
+    "docs/workflow/HANDOFF_CONTRACT.md": "7c40a6429e73059543375dfabf81e0642809347f88493e0393a7b68456269280",
+    "docs/agent-toolchain/00-common.md": "dc19f47c7270f9b33e51658d8ccfeda113a6df028cc567020c9c0543fa6e5fbf",
+    "docs/agent-toolchain/05-zcode-precheck.md": "e97a3f160265d4a21e1410dadcfca522892a22430d4d82e441b9164bc2c8805c",
+    "docs/agent-toolchain/12-project-completion-dispatch.md": "44450a2794a1e2deadf9f8c7d8744927afa14ed4e37d614fd555e1d30b83339b",
+    "docs/agent-toolchain/13-partitioned-parallel-dispatch.md": "fee78af5909960f7aaae9bd581523927d951857c9b24d6bfb4c5ddffb76c4a40",
+    "docs/agent-toolchain/15-autonomous-orchestration.md": "055ffe685e22dc2beb1165abeb44f6260aaa1d9a6d71e512bec07c771ac69e34",
+    "artifacts/dispatch/2026-10-04/orchestration/zcode/N04-resume.md": "05919222976ef17ad5ae29ce79c50e88d81590d187ff5c6057a6910ad0766f66",
+    "artifacts/dispatch/2026-10-04/orchestration/zcode/N04-R02.md": "86b29c3625a3d26174ce0009a4583bde9380137f7a16a1223a9febf9c6ccf7b9",
+    "artifacts/dispatch/2026-10-04/orchestration/zcode/N04-R03.md": "7d283ccfe3f3b512191f60de70a2c0f2f3c0b0a9359e179209c4a777055e7de6",
+    "artifacts/dispatch/2026-10-04/orchestration/dsh/N03-R02.md": "8175f580b5ede93f984d1854a29ea19c08645ab22a245d0a8359c6a9eb276377",
+    "artifacts/gates/G00.json": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+    "artifacts/gates/G00-checks.log": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+    "docs/architecture/BASELINE_INVENTORY.json": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+    "demo.zip": "e0350b75239807047b1dbdb25f69fed5c6c26e34929731d0658db83a58f0e904",
+    "demo.zip.sha256": "4f4ecfad3a6029c06d56019a727e40e00b966b9be3d6785051bf020ce7bb4c51",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "package-lock.json": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "docs/prompts/01-foundation/P01-01-workspace-bootstrap.md": "f5105b85082a1b1368d7dba501bf2a73ea245ead4d06530c95534b8aa84522f2",
+    "artifacts/handoffs/P01-01/dsh/evidence.json": "e22bf651be243fc7474c143ec44ee1d88716a0ddc11f98780c0fd48e68aa21c1",
+    "docs/handoffs/P01-01/dsh.md": "e04749b576a2e76f23c6058a9fcd00aa654586795450a42b86ebfc8ed0d4d693",
+    ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+    ".node-version": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
+    "package.json": "ce0558100177c7d49889bedf4527e1995a52c066d5f7d6e737b03c6be63f7755",
+    "playwright.config.ts": "1bba66b20430fac67663744d35f847228ca65ab42f821dae9d0d4a9ac6378d15",
+    "apps/backend/pyproject.toml": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344",
+    "apps/frontend/package.json": "7a38cc372c366b088043d919f76430ac2716beebba16a2dd1f78d27e1c740b31",
+    "packages/domain/pyproject.toml": "f4d4e90bd87b0161f980b51129312a815cd7a99ca657a81ee26b0424259ebf64",
+    "packages/domain/src/logistics_domain/__init__.py": "21334c02c11a33f45445a12324be954187a5ed8ae775010158a0608946c50076",
+    "packages/domain/src/logistics_domain/errors.py": "feb045410bcba16658d5def4143c746649386fe7fad9d9bc6ed31db4da11a56b",
+    "packages/domain/src/logistics_domain/primitives.py": "f86e18a4738f3841b45e14509bcc6bea80a5eebf30861f28ff919bf06c660304",
+    "packages/domain/src/logistics_domain/states.py": "0a3da52dc111ba5becd0e3e84572c85abd26b80492480445e2910a9b83caecaa",
+    "packages/contracts/pyproject.toml": "25bdb3a6d7f85ba1b114ac10668b955b5e98c981fe5ef6cdfb7f283950c10a0c",
+    "packages/contracts/src/logistics_contracts/__init__.py": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67",
+    "packages/optimization/pyproject.toml": "cdc1172cb720fb2446adf66f6347acfbdf34342df28c170159f0194f14710643",
+    "packages/optimization/src/logistics_optimization/__init__.py": "52e301b5ceaa4fc656702979b82fcf1832e86e6f876280c82a0505f7d937acc1",
+    "packages/simulation/pyproject.toml": "000af2c9be683a8fd176cde8d054308f28419dc8ebbe1a3b0471241f9964d165",
+    "packages/simulation/src/logistics_simulation/__init__.py": "cf73c5463a41d33a8815cd4512b3fcc236fc2a7983d03e101b7b07db3f876789",
+    "packages/agents/pyproject.toml": "39e80e877bc134cdf99f60c31aba1a9194d4eac699008d892ed08a0d3e557140",
+    "packages/agents/src/logistics_agents/__init__.py": "13233646cf62444aa2452351f69a4c7fdb60ae0b5b7c9b17c1e0302871dc3d1b",
+    "packages/evaluation/pyproject.toml": "3e25b4617df419c8a72d4056bd9bf1e53a7b1ad56ee41037f7ce12c8d5989c15",
+    "packages/evaluation/src/logistics_evaluation/__init__.py": "2dd2b07402f79594cee052f14f0f31f6fbfa505f0757e7753d9e953ae61caed9",
+    "tests/unit/test_p01_01_workspace_bootstrap.py": "4210258a3f3ebb92a7c0b2a48139375f165e585232ce0b6eb4e3ecc23eb36c26",
+    "tests/integration/test_p01_01_workspace_bootstrap.py": "160c74f89cb6ae51d828d240d0a59c7e878861beceb7731508d6a5571ff8092e",
+    "tests/unit/test_p02_01_primitives_and_states.py": "c66f2d51aae63187730ca6617c07510fbbb1503c4a9a05f3fe0d2cda4a429f56",
+    "tests/integration/test_p02_01_primitives_and_states.py": "ebaed4a42dc895be8bc1638311df808e9986266e600fa24d138baa1bf9d6f151",
+    "artifacts/handoffs/P02-01/dsh/evidence.json": "36f08ff6a8b983c8ba749ef1bbf6fc4b0ae157059e4036f1e6f7917ec274c4c8",
+    "docs/implementation/P01-01.md": "5ac137a1f458db41369d0c80f82a1fe21960ab825393cc465139bc7907f825f8",
+    "docs/implementation/reports/P01-01.md": "27243fdab310f25484b4ed2b1417d666234d94da528ea158e5c542d8f700a0a7",
+    "docs/implementation/reports/P02-01.md": "c3e518b5d24d6132ff679609916567f03b530f8810f913cb81b581374115d8f1"
+  },
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "tmp/N04/audit_n04.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-01/zcode/logs/2026-10-04-r03f01/41-seal-audit.log",
+      "log_sha256": "67c3a054649092e458d895b218bde4fd3258733b4b1c3eaa16c028074126fd63",
+      "note": "seal-time audit on the post-fix tree: candidate dadad196 (82 files) unchanged by the metadata-only evidence fix, G00 fresh (25 inputs, previous_gate_record_problems=[]), demo 173/173, no .workbuddy files at root"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "tmp/N04/audit_dsh_r01.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-01/zcode/logs/2026-10-04-r03f01/42-dsh-evidence-hash-audit-postfix.log",
+      "log_sha256": "0b16e8bba6a5a69657ca23d27c188d0958152eb9a0c01f3e4ddbe62a4c8453d6",
+      "note": "recorded artifact/log hashes of the three current DSH evidence files recomputed against disk: P01-01 (round n03-r02, post-F01-fix bytes e22bf651...) and P01-02/P01-03 unchanged rounds, 0 drift"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "-c",
+        "<post-fix evidence fields verification>"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-01/zcode/logs/2026-10-04-r03f01/43-postfix-evidence-fields-verify.log",
+      "log_sha256": "dbd6cf831ba2c8f4b55a01e294f285f57a41ad36593d50fb6d82ee79419623a2",
+      "note": "corrected metadata verified against live facts: deliverable_files now 26 entries with 0 hash drift and [14] = the current marker (sha256 21334c02..., 2669 bytes, was 8093a7.../2129); remaining_risks now ask the reviewer to confirm dadad196 (82 files) with the old wording kept as historical; limitations state phase 2 has begun (P02-01 delivered states/primitives/errors) and label the phase-1 sentence historical; the test-consumed fields are intact (python_workspace_members matches importlib.metadata, tool_versions 3.12.10/24.18.0, dependencies_lock hashes match uv.lock/package-lock.json, legacy_demo 173 + demo.zip, validation_commands log paths exist); artifacts remains a dict now holding 12 entries - the original 11 plus domain_package_marker - with uv_lock/package_lock values matching disk"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_01_workspace_bootstrap.py",
+        "tests/integration/test_p01_01_workspace_bootstrap.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-01/zcode/logs/2026-10-04-r03f01/44-p01-01-cmd1-pytest-postfix.log",
+      "log_sha256": "3aef6342d283e47c569b9a9512a287a4e4c9be065afc8f5752be46087ed9f393",
+      "test_counts": {
+        "passed": 56
+      },
+      "note": "REQUIRED manifest command re-run on the delivered post-fix evidence bytes (the frozen tests read this file): 56 passed, exit 0"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "-c",
+        "<six-package import probe - reused>"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-01/zcode/logs/2026-10-04-r03f01/30-reused-from-r03-six-package-imports.log",
+      "log_sha256": "5557dad9ab3bef365da74ff1d2c07ff5332af9f816a3a8130d5141581bad1b61",
+      "note": "REUSED from round 2026-10-04-r03 (log copied byte-identically): the six-package import probe does not read the evidence file and no whitelisted source byte changed in this metadata-only fix, so the r03 run remains the valid evidence for this check"
+    },
+    {
+      "argv": [
+        ".venv/Scripts/python.exe",
+        "-I",
+        "-c",
+        "<isolated domain purity probe - reused>"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-01/zcode/logs/2026-10-04-r03f01/31-reused-from-r03-isolated-purity-probe.log",
+      "log_sha256": "5597d0cb539cba494e944b7072595545ae4c5874e43aa7ebc50f2d448bd91ff8",
+      "note": "REUSED from round 2026-10-04-r03 (log copied byte-identically): the isolated purity probe does not read the evidence file and no whitelisted source byte changed, so the r03 run remains the valid evidence for this check"
+    }
+  ],
+  "findings": [
+    {
+      "id": "N03-R02-F01 (DSH card, verified by this round)",
+      "status": "RESOLVED (verified this round)",
+      "resolution": "DSH's metadata-only correction landed inside its own whitelist: deliverable_files[14] now records the current marker (21334c02c11a33f45445a12324be954187a5ed8ae775010158a0608946c50076, 2669 bytes) instead of the stale 8093a7.../2129; remaining_risks and limitations now state the current facts (candidate dadad196, 82-file whitelist, phase 2 begun) while keeping the superseded sentences explicitly labelled historical. All 26 deliverable_files hashes match disk; the candidate is byte-unchanged (dadad196, 82 files) and the frozen tests pass 56/56 on the delivered post-fix bytes."
+    }
+  ],
+  "limitations": [
+    "This record binds candidate content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8 (82 files); any relevant file change invalidates it.",
+    "Reused r03 evidence (explicitly attributed, source candidate unchanged by this metadata-only fix): the six-package import probe and the isolated domain purity probe. The affected P01-01 suite was re-run fresh this round because the frozen tests read the corrected evidence file.",
+    "The full unit/integration regression was not re-run per dispatch; DSH's current-candidate run (272 passed / exit 0, round p02-01-2026-10-04) remains the sourced dependency evidence, and Codex N05-R01 signs G01 with its own verification.",
+    "No database, solver, simulation, LLM or browser acceptance is in scope for Phase 01."
+  ]
+}

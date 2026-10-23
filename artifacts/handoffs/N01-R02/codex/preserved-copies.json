@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "copies": [
+    {
+      "source": "tmp/N01-R02/before/docs/architecture/DATA_CONTRACTS.md",
+      "target": "artifacts/handoffs/N01-R02/codex/before/docs/architecture/DATA_CONTRACTS.md",
+      "sha256": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+      "bytes": 69687
+    },
+    {
+      "source": "tmp/N01-R02/before/docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "target": "artifacts/handoffs/N01-R02/codex/before/docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "sha256": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+      "bytes": 38568
+    },
+    {
+      "source": "tmp/N01-R02/before/contracts/changes/N01-R01-contract-decisions.json",
+      "target": "artifacts/handoffs/N01-R02/codex/before/contracts/changes/N01-R01-contract-decisions.json",
+      "sha256": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+      "bytes": 94064
+    },
+    {
+      "source": "tmp/N01-R02/before/contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+      "target": "artifacts/handoffs/N01-R02/codex/before/contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+      "sha256": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+      "bytes": 3047
+    },
+    {
+      "source": "tmp/N01-R02/before/tools/ai_coding_plan/validate_plan.py",
+      "target": "artifacts/handoffs/N01-R02/codex/before/tools/ai_coding_plan/validate_plan.py",
+      "sha256": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+      "bytes": 48040
+    },
+    {
+      "source": "tmp/N01-R02/validator/ast-protection-final.json",
+      "target": "artifacts/handoffs/N01-R02/codex/validator/ast-protection-final.json",
+      "sha256": "266e5224e360e3989e4ff76e769068790c0979ed7b5ebecd3784b651fa1ce948",
+      "bytes": 6520
+    },
+    {
+      "source": "tmp/N01-R02/validator/ast-protection.json",
+      "target": "artifacts/handoffs/N01-R02/codex/validator/ast-protection.json",
+      "sha256": "1f103a24919922a0790934f8998a6e01714adcf5b108e85f31b85472be1a7c53",
+      "bytes": 6520
+    },
+    {
+      "source": "tmp/N01-R02/validator/plan-validation-01-command.json",
+      "target": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-01-command.json",
+      "sha256": "73beb510675b9f43204a31ce629617c1939d66cec64d67d536373a61fab60789",
+      "bytes": 1167
+    },
+    {
+      "source": "tmp/N01-R02/validator/plan-validation-01.log",
+      "target": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-01.log",
+      "sha256": "86d38482bc2d2e0f96974bbc0116f859f22c344eef61851ef0bcdb337f08a071",
+      "bytes": 8761
+    },
+    {
+      "source": "tmp/N01-R02/validator/plan-validation-02-command.json",
+      "target": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-02-command.json",
+      "sha256": "f0d8a9493e513c7989e2af075a3dfbac361bd5e6cdfa056de8cc90fc51adbe10",
+      "bytes": 1167
+    },
+    {
+      "source": "tmp/N01-R02/validator/plan-validation-02.log",
+      "target": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-02.log",
+      "sha256": "2e8da1ef32acbe18bb8aac40f8f907fa54debea4108faac70b57b2d409151fff",
+      "bytes": 8643
+    },
+    {
+      "source": "tmp/N01-R02/validator/self-tests-01-command.json",
+      "target": "artifacts/handoffs/N01-R02/codex/validator/self-tests-01-command.json",
+      "sha256": "d054e93209f01148dd1e75487adab7ba6b2258fdd1ca29d8b01b9c7c6f9ed8f1",
+      "bytes": 669
+    },
+    {
+      "source": "tmp/N01-R02/validator/self-tests-01.log",
+      "target": "artifacts/handoffs/N01-R02/codex/validator/self-tests-01.log",
+      "sha256": "90fa652e4edc280b8aaae1a38c7e602821bbd37abcc6c55a53c171b01304eff8",
+      "bytes": 10040
+    },
+    {
+      "source": "tmp/N01-R02/validator/validator-diff.patch",
+      "target": "artifacts/handoffs/N01-R02/codex/validator/validator-diff.patch",
+      "sha256": "f68e630a2f4858978aac01dd4375eb1b21483a8a0376214ba949425f664d3d4e",
+      "bytes": 23585
+    },
+    {
+      "source": "tmp/N01-R02/examples/verify_design_examples.py",
+      "target": "artifacts/handoffs/N01-R02/codex/reproduction/examples/verify_design_examples.py",
+      "sha256": "596f6977f952acb218e430786cc0f866034672ff97bb3f6d891e1a3b5fb4e118",
+      "bytes": 30442
+    },
+    {
+      "source": "tmp/N01-R02/examples/event_reference_examples.py",
+      "target": "artifacts/handoffs/N01-R02/codex/reproduction/examples/event_reference_examples.py",
+      "sha256": "fab928af04142838439bdce20256955cdefa84c1b100811cb84a128a39640a58",
+      "bytes": 25540
+    },
+    {
+      "source": "tmp/N01-R02/examples/capture_examples.py",
+      "target": "artifacts/handoffs/N01-R02/codex/reproduction/examples/capture_examples.py",
+      "sha256": "19b9a7513478cbed08da2b4dddc030c8731232b1738ecb6011b6c389e60044ac",
+      "bytes": 2767
+    },
+    {
+      "source": "tmp/N01-R02/examples/prepare_copy.py",
+      "target": "artifacts/handoffs/N01-R02/codex/reproduction/examples/prepare_copy.py",
+      "sha256": "ab5fdcac123f76d099a758b30c21c5d0263bb3942bbec5e4f036b91bcc0b6005",
+      "bytes": 5341
+    },
+    {
+      "source": "tmp/N01-R02/audit_final.py",
+      "target": "artifacts/handoffs/N01-R02/codex/reproduction/audit_final.py",
+      "sha256": "7536949a4a148d46a6531ddc507e609fab64ff95612bf28d5a84bd966598fa0a",
+      "bytes": 13226
+    },
+    {
+      "source": "tmp/N01-R02/capture.py",
+      "target": "artifacts/handoffs/N01-R02/codex/reproduction/capture.py",
+      "sha256": "cb77a68b0091f9bcfc9a4cf3cff8d6c761cfd70a51c338e91f87d2083419149b",
+      "bytes": 1382
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# check: p01-03-cmd2-check-architecture
+# argv: ["uv", "run", "python", "scripts/check_architecture.py"]
+# resolved_executable: C:\Users\30382\.local\bin\uv.EXE
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T15:57:05.382133+00:00
+# expectation: exit 0; layer violations = 0
+# package-lock.json sha256 before: fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+# package-lock.json sha256 after:  fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+
+## stdout
+architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 203

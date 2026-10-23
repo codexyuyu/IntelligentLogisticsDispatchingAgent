@@ -1,0 +1,11 @@
+# argv: [".venv\\Scripts\\python.exe", "-B", "tmp/N05-R01/audit.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T03:34:28.910412+00:00
+# temp: C:\Users\30382\AppData\Local\Temp\N05-R01-independent\2026-10-04-main
+
+## stdout
+{"task_id": "N05-R01", "passed": true, "actual_utc": "2026-10-05T03:34:29.881660+00:00", "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8", "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297", "candidate_file_count": 82, "delta": {"added": ["packages/domain/src/logistics_domain/errors.py", "packages/domain/src/logistics_domain/primitives.py", "packages/domain/src/logistics_domain/states.py", "tests/integration/test_p02_01_primitives_and_states.py", "tests/unit/test_p02_01_primitives_and_states.py"], "changed": ["packages/domain/src/logistics_domain/__init__.py"], "removed": [], "unchanged_old_file_count": 76}, "old_G01_sha256": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8", "old_G01_stale_inputs": ["packages/domain/src/logistics_domain/__init__.py"], "G00_sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4", "problems": [], "P02_business_precheck_done_by_N05": false}
+
+## stderr
+
+## exit_code: 0

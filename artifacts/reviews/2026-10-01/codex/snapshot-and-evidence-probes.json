@@ -1,0 +1,11 @@
+{
+  "tmp/probe.log_changes_revision": true,
+  ".mimosa/probe.json_changes_revision": true,
+  "artifacts/handoffs/P01-02/dsh/logs/probe.log_changes_revision": true,
+  "evidence_generator_changes_dirty_tree_hash": true,
+  "empty_precheck_input_hashes_accepted": true,
+  "previous_gate_status_without_evidence_accepted": true,
+  "g01_input_hash_drift": [],
+  "g01_record_sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+  "g00_record_sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c"
+}

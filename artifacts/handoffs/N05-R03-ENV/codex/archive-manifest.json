@@ -1,0 +1,91 @@
+{
+  "created_at": "2026-10-05T09:18:05.031983+00:00",
+  "file_count": 14,
+  "byte_identical": true,
+  "files": [
+    {
+      "original_path": "artifacts/gates/G01.json",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01.json",
+      "bytes": 28646,
+      "sha256": "9f30bb45307721ecdb6d85259bac18230002d91d6dc5eabc61f55fd41337e35c"
+    },
+    {
+      "original_path": "artifacts/gates/G01-codex-review.json",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-codex-review.json",
+      "bytes": 134248,
+      "sha256": "e64827a62caa4c497304c66d85df154ac6047e571b3c5947b97a2d7c93925efc"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/clean-install-imports.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/clean-install-imports.log",
+      "bytes": 1265,
+      "sha256": "55e5998c7c87e46f23452f3aa0328b406d7d94648bf7ff628dc26823be57cee2"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "bytes": 996,
+      "sha256": "79369f53ad2dd3a8aba93bc3226a7b8bbe34f67966dfdd6d2e019a3ac7969935"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/layer-boundaries.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/layer-boundaries.log",
+      "bytes": 433,
+      "sha256": "b9578d7842ac2c9ccdb2fb8eccff301495e362d192b76cf778301f759f134923"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/lock-reproducible.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/lock-reproducible.log",
+      "bytes": 338,
+      "sha256": "77c10edd674780b0e58697e8d358df90de9bf500282aae85064c06c08ba19ba3"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "bytes": 5241,
+      "sha256": "eba2841dfaa32da6205f7dd4b5925359c7b72c34d5c49da4993b3ec7d14deb12"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "bytes": 350,
+      "sha256": "0966eb11be63176168985e1fb0ca4a5b4508c6cec591825448483372d2a4d0a6"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "bytes": 384,
+      "sha256": "a51edf2badd9bfd34f612dd1fc615642fcfeef22ef860ffc7cc6730852b14fcc"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "bytes": 1293,
+      "sha256": "52d4e35251db05dcf90d9b06dcc2fa9f44df4b91e9cd4f15e875742975d80c4a"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "bytes": 428,
+      "sha256": "10ab753df555bfe44b84633bb6f27024c096944f5fec06db5f4a42e03faca3d9"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "bytes": 1299,
+      "sha256": "4f5c01e172d1fd5d5295001b67095915d56dbb98ec6ac751fe317fafa045e9ee"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "bytes": 428,
+      "sha256": "e825b9188bbc20e0bfebc0aa30d65f5a1f322ba1d083b99966f78e8a9ca65906"
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "archive_path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "bytes": 347,
+      "sha256": "752e5e3ca7ba4709adb2a499cc31bb17902274c81538ed63bc90eb9d22b06899"
+    }
+  ]
+}

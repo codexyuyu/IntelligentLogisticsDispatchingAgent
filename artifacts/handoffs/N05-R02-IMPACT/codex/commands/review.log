@@ -1,0 +1,11 @@
+# argv: [".venv\\Scripts\\python.exe", "-B", "C:/Users/30382/AppData/Local/Temp/IntelligentLogisticsDispatchingAgent-n05-r02-impact/review.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T08:45:28.329552+00:00
+# system_temp: C:\Users\30382\AppData\Local\Temp\IntelligentLogisticsDispatchingAgent-n05-r02-impact
+
+## stdout
+{'approved': True, 'review_sha256': 'e64827a62caa4c497304c66d85df154ac6047e571b3c5947b97a2d7c93925efc', 'review_inputs': 184, 'retained_sources': 10, 'old_review_drift_count': 10, 'P02_business_acceptance': False}
+
+## stderr
+
+## exit_code: 0

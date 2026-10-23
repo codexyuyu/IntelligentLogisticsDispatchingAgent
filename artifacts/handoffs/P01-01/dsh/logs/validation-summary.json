@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-01",
+  "commands": [
+    {
+      "id": "pytest",
+      "argv": [
+        "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_01_workspace_bootstrap.py",
+        "tests/integration/test_p01_01_workspace_bootstrap.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/pytest.log",
+      "log_sha256": "75fa0e13c0a2b243cbe1c5386ed7b3f721372501255b9ccf7e1d42a7ac748bb2",
+      "stdout_tail": [
+        "........................................................                 [100%]",
+        "56 passed in 2.11s"
+      ],
+      "test_counts": "56 passed in 2.11s"
+    },
+    {
+      "id": "uv_sync_frozen",
+      "argv": [
+        "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe",
+        "sync",
+        "--frozen"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/uv_sync_frozen.log",
+      "log_sha256": "3226cdb567e9e722372b86e8fb391aa32f7f037e8a41781ec6223701741ffe90",
+      "stdout_tail": []
+    },
+    {
+      "id": "npm_ci",
+      "argv": [
+        "C:\\Program Files\\nodejs\\npm.cmd",
+        "ci"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/npm_ci.log",
+      "log_sha256": "1f2fc355303c54f283d3bbe356360857394a3230238c51775b1a9f76edfa955d",
+      "stdout_tail": [
+        "added 4 packages, and audited 6 packages in 2s",
+        "",
+        "found 0 vulnerabilities"
+      ]
+    }
+  ],
+  "status": "passed"
+}

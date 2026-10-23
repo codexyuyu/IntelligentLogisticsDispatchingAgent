@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-20T05:30:00-07:00",
+  "host": {
+    "product": "DeepSeek Harness Desktop",
+    "version": "0.2.1-rc.2",
+    "buildCommit": "332895e0f7c9d4dbfb29729f5eb367fa263ff986",
+    "executable": "C:\\Users\\30382\\AppData\\Local\\Programs\\DeepSeek Harness\\DeepSeek Harness.exe",
+    "runtimeRoot": "C:\\Users\\30382\\AppData\\Local\\Programs\\DeepSeek Harness\\resources\\app.asar\\dsh",
+    "dshHome": "C:\\Users\\30382\\.dsh",
+    "profile": "desktop",
+    "profileDir": "C:\\Users\\30382\\.dsh\\profiles\\desktop",
+    "webUrlAtReport": "http://127.0.0.1:55283"
+  },
+  "components": [
+    {
+      "name": "@deepseek-ai/dsh-mcp-client",
+      "version": "0.2.1-rc.2",
+      "source": "bundled with the running DSH installation",
+      "path": "C:\\Users\\30382\\AppData\\Local\\Programs\\DeepSeek Harness\\resources\\app.asar\\dsh\\node_modules\\@deepseek-ai\\dsh-mcp-client",
+      "pinned": true,
+      "note": "No npm install performed. Host runtime and all peer packages are 0.2.1-rc.2; npm dist-tag latest is stale (0.0.1-rc.1)."
+    },
+    {
+      "name": "@wxg-prc-cpg/browser-skill-dsh-plugin",
+      "version": "0.3.2",
+      "source": "profile package.json + pnpm-lock.yaml (already installed)",
+      "pinned": true,
+      "note": "Not upgraded. Supports DSH ^0.1.5-rc.3 || ^0.2.0-rc.1; 0.2.1-rc.2 is in range."
+    },
+    {
+      "name": "bsk",
+      "version": "0.3.3",
+      "source": "GitHub release cli-v0.3.3 (bsk-v0.3.3-x86_64-pc-windows-msvc.zip)",
+      "archiveSha256": "5ED6AA00E60C0538A637FEBAC6BFBC6A0BD55A11083CD90A987968CFF4BC0E02",
+      "binarySha256": "5F0AE749AD1A3F9E2E3627B237346DA3996CB2AFFDB48D9725976DF4AB083EC3",
+      "path": "C:\\Users\\30382\\.local\\bin\\bsk.exe",
+      "pinned": true,
+      "note": "Upgraded from 0.2.1 because 0.2.1 lacks 'bsk session request', required by plugin 0.3.2 recoverable starts."
+    },
+    {
+      "name": "browser-skill-extension",
+      "version": "0.3.3",
+      "source": "GitHub release ext-v0.3.3 (browser-skill-extension-v0.3.3-chrome.zip)",
+      "archiveSha256": "10EF76E68F352893FA22DD4CCE2F1B96CB90ED957B815D656E13180D07D3C6EA",
+      "pinned": true,
+      "note": "Loaded only in the temporary Chrome 155 test profile via CDP Extensions.loadUnpacked. Not installed in the user's normal Chrome/Edge profile."
+    },
+    {
+      "name": "Context7 MCP",
+      "version": "server-reported 4.4.3",
+      "source": "remote service",
+      "endpoint": "https://mcp.context7.com/mcp",
+      "protocolVersion": "2025-06-18",
+      "pinned": false,
+      "note": "Remote service version not pinned. Validated 2026-10-20 (America/Los_Angeles). No API key/credential used."
+    }
+  ],
+  "projectRuntimePins": {
+    "lockFile": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\uv.lock",
+    "lockFileSha256": "89F78A20A840955FCFE5A13435B6AAD9C5EBB09420123812C4728B9413FE86C5",
+    "fastapi": "0.141.1",
+    "pydantic": "2.13.5",
+    "pydanticCore": "2.46.5"
+  },
+  "modifications": [
+    {
+      "path": "C:\\Users\\30382\\.dsh\\profiles\\desktop\\cordis.patch.yml",
+      "change": "Appended one insert block: mcp-context7",
+      "beforeSha256": "FA12D151B269DD27A0953C22D8DFB11D841F5B3BF03AB932DFC0BFAB01AAB03B",
+      "afterSha256": "3FB1B02E40691B1EFA2E4AD0625C823706D7A952F35C8D2527EA573843D7E7DF"
+    },
+    {
+      "path": "C:\\Users\\30382\\.local\\bin\\bsk.exe",
+      "change": "Replaced 0.2.1 with 0.3.3",
+      "beforeSha256": "A9D33E8030D3F91C43D8E4FFD97D9C48FC31F6E1C17C76F9DB50BF15A7834B7F",
+      "afterSha256": "5F0AE749AD1A3F9E2E3627B237346DA3996CB2AFFDB48D9725976DF4AB083EC3"
+    }
+  ],
+  "backups": null,
+  "backupNote": "Backups were created during the task and deleted on 2026-10-20 at the user's request. No byte-level restore copy remains; before/after hashes are retained for audit."
+}

@@ -1,0 +1,821 @@
+{
+  "commands": [
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/archive-and-freeze-command.json",
+      "descriptor_sha256": "33255c5f774861a8e2c24de39a3ef49b5253a95f80af46f19633ef19ed47e79b",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/archive_and_freeze.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:48:47.784698+00:00",
+      "finished_at": "2026-10-04T14:48:50.556931+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/archive-and-freeze.log",
+      "log_sha256": "2e638be951da8a3102adc0ed12343ce345d70b570e6c1460133e5f21d4300a1d",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-02-command.json",
+      "descriptor_sha256": "215ad04b3e353e7b50921aae8a52e1142ca78b54a166e3688eeb1189abc90ca2",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:44:59.198453+00:00",
+      "finished_at": "2026-10-04T14:45:01.544132+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-02.log",
+      "log_sha256": "5ac12b02f2fcad09703bef51cc4e560ddb3d0aa32965972497ad65a8ecd8ec0a",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-command.json",
+      "descriptor_sha256": "17ceba346edc12947ea5d074d4ba3d7751a73d54ef2fb6e0b5786e1001b672ee",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:44:29.128257+00:00",
+      "finished_at": "2026-10-04T14:44:31.882334+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final.log",
+      "log_sha256": "e8d915146a5c7d316dd7feff63e083e0553f50882ce827bf41acbf8817aa7c30",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/case-witness-command.json",
+      "descriptor_sha256": "c8bc3d88c6e329a7d143a4ad4510469216ff7cb573425340b47956fdd8c55750",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/case_witness.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:48:10.311286+00:00",
+      "finished_at": "2026-10-04T14:48:10.946845+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/case-witness.log",
+      "log_sha256": "3e4879661b8cc95d4b00cfb7b29732bdc5dc376f7d173e8d8ddb5d688089cf10",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/contract-replay-command.json",
+      "descriptor_sha256": "f1289f918119b6a19c022cc7528436f8060a9a0ac9a34b241507ecce4a6cfd5e",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/examples/verify_design_examples.py",
+        "independent"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:39:42.874138+00:00",
+      "finished_at": "2026-10-04T14:39:45.603780+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/contract-replay.log",
+      "log_sha256": "fa5b6236f083db5a4d8f0a9f272a63bf0ee3ea96ad92cbe28bce8ee5b4609699",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-02-command.json",
+      "descriptor_sha256": "91d36f95331a5962cb21edb24bb1c047b1ac8f6771969a3609370b59a1bb2562",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/final_scope.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:50:29.096553+00:00",
+      "finished_at": "2026-10-04T14:50:31.942333+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-02.log",
+      "log_sha256": "ce46ddadac0afc7f48b9f1321bc7c7e39f6517d1397202178f372719b11b8f90",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-03-command.json",
+      "descriptor_sha256": "c83059276f5609bdeea3579cfce82772ad3672aea83ce1d1b9c04aaf898fee9a",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/final_scope.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:51:17.688263+00:00",
+      "finished_at": "2026-10-04T14:51:20.542763+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-03.log",
+      "log_sha256": "bb4fbb1ea8d13c81b488be109a4fc8fac3304391d80e6ad3595969f2d8608618",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope-command.json",
+      "descriptor_sha256": "29dafd51ddabbde85519dc6d49f2334711856371ec749baf2e670fe844cc5f95",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/final_scope.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:50:00.972043+00:00",
+      "finished_at": "2026-10-04T14:50:03.524005+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope.log",
+      "log_sha256": "2f805822f7857c9dad0a540e179f1d297f111fca68513a62d3446608e7064087",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/g00-after-command.json",
+      "descriptor_sha256": "795cf0d17798712f6f0b1e8cac1792365115b204a11c458662bada6380c99ba8",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/probe_g00.py",
+        "after"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:49:01.414750+00:00",
+      "finished_at": "2026-10-04T14:49:01.628472+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/g00-after.log",
+      "log_sha256": "e0f49dbe825da885566b1049269a383c2b08a76e13cc3402165a14efa5078972",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/g00-before-command.json",
+      "descriptor_sha256": "b9ae0b525cc86b0f92b9d3cedeec20bee6896f9373ac11a5df7262c2f4dbe601",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/probe_g00.py",
+        "before"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:41:41.589287+00:00",
+      "finished_at": "2026-10-04T14:41:41.764725+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/g00-before.log",
+      "log_sha256": "354575e87ea10de2e554bf2038cbfe827a6a66e605e484adf2c83b42973d0e19",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-02-command.json",
+      "descriptor_sha256": "25b99f4c6fbdce3c96256b7fbd2cb658805c96b7206910dc879a5676dc385c7d",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:38:18.737793+00:00",
+      "finished_at": "2026-10-04T14:38:21.085640+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-02.log",
+      "log_sha256": "a6583f4f8e561931342fabd5e3848613cddb16d49c4cb71109d3b5be48dd1207",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-03-command.json",
+      "descriptor_sha256": "5e8ff35571f29070ad75fbbd8c77af3e420a869d2666f650e757bbbfef68314b",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:39:03.259557+00:00",
+      "finished_at": "2026-10-04T14:39:05.591318+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-03.log",
+      "log_sha256": "6a58acf7dd511326da4f62b98dfe09864aaaae464988ea180ba6f4c624908abb",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit-command.json",
+      "descriptor_sha256": "913ad2be6523206bd79632723603914ab4e08396a5eb5100ea5cb85d002f5779",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/review_core.py",
+        "audit"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:37:40.961602+00:00",
+      "finished_at": "2026-10-04T14:37:42.072126+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/initial-audit.log",
+      "log_sha256": "16580e204bf5361c3bcdd0e85651b479637dde6d70e3c22d7cfb2dad2a785115",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/normative-probe-command.json",
+      "descriptor_sha256": "e4913a8c0e1260a3e7ab561cc17eb5fe9923f6230404030f96ff1b2144c9a85d",
+      "argv": [
+        "python",
+        "-B",
+        "tmp/N02-R02/normative_probe.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:44:12.681637+00:00",
+      "finished_at": "2026-10-04T14:44:15.993609+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/normative-probe.log",
+      "log_sha256": "d868bf9cd84b67ebec53ec34a84d9e4ecba069da748eb47f4d314df262a5b60e",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/plan-preflight-command.json",
+      "descriptor_sha256": "86b239a42f60b1de71ce130d033ddf853873d5f393cae6aa57cbe71480892f06",
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:37:41.333053+00:00",
+      "finished_at": "2026-10-04T14:37:42.240433+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/plan-preflight.log",
+      "log_sha256": "254ff192606dd6cb2c19bee4ace454b49255a58a861309e34a8abaca3de1823e",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": false,
+        "docs/architecture/CONTRACT_FREEZE.md": false
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    },
+    {
+      "descriptor_path": "artifacts/handoffs/N02-R02/codex/commands/record-g00-command.json",
+      "descriptor_sha256": "2eb75c912ec9ebffc3f3862da65ab7b85cd7e9b7008653ca8a41710cfd2673e6",
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test",
+        "--record-g00"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:48:58.756782+00:00",
+      "finished_at": "2026-10-04T14:49:00.049094+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R02/codex/commands/record-g00.log",
+      "log_sha256": "5a342c0e62794731779380c81de3dfd471ba4b20b8126fc42365eacee4dcde86",
+      "input_artifact_hashes": {
+        "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+        "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+        "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+        "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+        "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+      },
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "current_input_matches": {
+        "AGENTS.md": true,
+        "AI-CODING-PLAN.md": true,
+        "OWNERSHIP.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "docs/plan/PHASE_GATES.md": true,
+        "docs/plan/GATE_EXECUTION_CONTRACT.md": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "scripts/gates.py": true,
+        "docs/architecture/CONTRACT_FREEZE.json": true,
+        "docs/architecture/CONTRACT_FREEZE.md": true
+      },
+      "historical_input_note": "Before-recovery commands bind archived old freeze bytes; later commands bind restored freeze. Original execution evidence is retained without converting old success into new success."
+    }
+  ],
+  "command_count": 16,
+  "failed_attempts_preserved": [
+    "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-command.json",
+    "artifacts/handoffs/N02-R02/codex/commands/final-scope-command.json",
+    "artifacts/handoffs/N02-R02/codex/commands/g00-before-command.json",
+    "artifacts/handoffs/N02-R02/codex/commands/initial-audit-02-command.json",
+    "artifacts/handoffs/N02-R02/codex/commands/initial-audit-command.json"
+  ]
+}

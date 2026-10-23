@@ -1,0 +1,355 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "N02",
+  "role": "codex-independent-review",
+  "status": "BLOCKED",
+  "reviewer": "Codex N02 /root/n02_independent",
+  "review_context": "/root/n02_independent",
+  "isolation": {
+    "startup": "fork_turns=none",
+    "n01_implementation_history_inherited": false,
+    "parent_role": "N01 implementer; coordination only",
+    "final_decision_by": "N02",
+    "read_only_subaudit": "/root/n02_independent/freeze_semantics"
+  },
+  "model": "inherited current session model; no override",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "vcs": "no-git",
+  "reviewed_at": "2026-10-03T12:55:44.457519+00:00",
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  },
+  "plan_version": "1.0.2",
+  "business_schema_version": "1.0.0",
+  "code_revision": "content-sha256:3525ed5b78851ea5d4fc7b5305b6b2e9f45bfedf7ee8742e3478ce6174e585a4",
+  "dirty_tree_hash": "content-sha256:a3f7e8b9addb3ff67f7a2e25068ce729ccb986866060e02e56250057c3cb9d8e",
+  "verified_input_hashes": {
+    ".github/workflows/ci.yml": "139d37c92f1bdf8d82c0771b081bb82d674dfbf6da22fa50135d27bd19a10e35",
+    ".node-version": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
+    ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+    "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+    "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "PROJECT_MASTER_PLAN.md": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "apps/backend/pyproject.toml": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344",
+    "apps/backend/src/logistics_backend/__init__.py": "01a2b2aeae06be11ca9888649fb22376da8984099707512ea70b7f0e40ff4ff1",
+    "apps/frontend/package.json": "7a38cc372c366b088043d919f76430ac2716beebba16a2dd1f78d27e1c740b31",
+    "apps/frontend/src/test/setup.ts": "322a23afd1a0070b4ca7d27d52bc15d84f36d190dd444a35163c08f2b6d8003a",
+    "apps/frontend/vitest.config.ts": "3f5c86e2273cd9becf71d0edeb32d3cecdab7dbf0432c95caa9ebed8a1f10e9c",
+    "artifacts/dispatch/2026-10-01/completion/messages/now/N02.md": "d700deba2fba4767b205f66c7191aefe917a3c16652e112c8167a4aaf2948265",
+    "artifacts/gates/G00-checks.log": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "artifacts/handoffs/N01/codex/candidate-files.json": "6eb29af5353e759bad5cd134efef7c9abee00e0f4c5c721c202f1e880b1ef7fb",
+    "artifacts/handoffs/N01/codex/evidence.json": "4f545890ef6562478e570153656ba35f9ef124eaaca99dcc73197cbde6f267d9",
+    "artifacts/handoffs/N01/codex/governance-files.json": "8e13f3d9245b9202bf9af28d83cef454beff2e889ac4a2b907ded8c7203cf849",
+    "artifacts/handoffs/N01/codex/plan-check.log": "817f4ed13a69622fc4f296f9402ad1e8a43838c1e685760804d3f419c69efcc3",
+    "artifacts/handoffs/N01/codex/render.log": "a81d1db68a81e8f65bc331597874096097384d0dd768eff145b487439ff32cea",
+    "artifacts/handoffs/N01/codex/validation.log": "f9b499709884d73a88f7740cf5cd3f1d859a52f9aa317f4fa5cbba75402d84ca",
+    "artifacts/handoffs/P01-02/dsh/evidence.json": "f5b16179dd2754bcd591cd14beac33621bb72d7b7d518a97da2efd5711392f24",
+    "contracts/README.md": "d0a4ea110736e6cf73d64387346ebc954b5e25de9f511b2b62c22e313e31335a",
+    "contracts/changes/N01-governance-1.0.1.md": "35ddc2f9c3ed2f14ed95cdad44bf737686befdd84d8992793c610f72d807594c",
+    "contracts/changes/README.md": "2a695d21ffaf8681d4e7c8903c98a8beb6af8fff9340bfcff13cb5ee672e85c5",
+    "data/scenarios/README.md": "aeb9c3013e9da650ec2d86f10eb415e612625df78d2cd10ba4b5f9223a525439",
+    "deploy/README.md": "caa9177a9b8ce20f819c48cf287e5cef37561dd52294150e8223bf2b301c3fda",
+    "docs/agent-toolchain/00-common.md": "dc19f47c7270f9b33e51658d8ccfeda113a6df028cc567020c9c0543fa6e5fbf",
+    "docs/agent-toolchain/12-project-completion-dispatch.md": "44450a2794a1e2deadf9f8c7d8744927afa14ed4e37d614fd555e1d30b83339b",
+    "docs/algorithms/METRICS_CONTRACT.md": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+    "docs/algorithms/OPTIMIZATION_CONTRACT.md": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+    "docs/algorithms/SIMULATION_CONTRACT.md": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+    "docs/api/API_CONTRACT.md": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+    "docs/architecture/ARCHITECTURE_OVERVIEW.md": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+    "docs/architecture/BASELINE_INVENTORY.json": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+    "docs/architecture/BASELINE_INVENTORY.md": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694",
+    "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+    "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+    "docs/architecture/DATA_CONTRACTS.md": "8091763a21416f57b70a5b71b6c408ba02b19c051ad0ab52f754814981e0ec2e",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+    "docs/architecture/LEGACY_ADAPTATION.md": "adfd5345fd6c7ecf63b39bb04fb437fdf6a4ca34a4162855dfc4b7f14cfbd214",
+    "docs/architecture/MIGRATION_MAP.md": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "bf77dcfcd119306b7852843b18f761a4fe2ac2702309b71b5c9c2681aff0ffcf",
+    "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md": "861a8332b50799d3c76cb50992a437dee74c2a10bb151563337695924966d5c1",
+    "docs/architecture/issues/ARCH-0007-early-named-types.md": "84c09d14b4b9f0183c17ce7d2b8ffad1410e67a2c0b3b2bf885249ab5bba4f42",
+    "docs/architecture/issues/ARCH-0008-p36-02-ownership.md": "5cbfc6fbddef9edecce0855773409f20c5af945a4b9f715ca3b36b103d001c6f",
+    "docs/architecture/issues/README.md": "a3588b546b09f86fbb7e8298a220c3b64741f1620e51593bc6eb89e2432f83ff",
+    "docs/handoffs/N01/codex.md": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43",
+    "docs/handoffs/P01-02/dsh.md": "5cb4862e8bbd37c7711c0edb1a2bac418eb7e171a142c8c0c8ef02e1f379684d",
+    "docs/implementation/P00-01.md": "ce86f77f11cfab16e8c08b9ff00edcf9835351d0e1b3f87d3d91e63b984b1833",
+    "docs/implementation/P00-02.md": "a0eae411e5e68b9dc358b8ac100ebe0919fbf01a0350453ef3a44342918f73f4",
+    "docs/implementation/P00-03.md": "dddda2c1a9b9619cb86625e6c825b0e2280bf833b19256ae4e5dc5430469a688",
+    "docs/implementation/reports/P00-01.md": "888e208ee01519ffc30868ca7902fe9c42b78d41e5f6006e6e746b98f2405865",
+    "docs/implementation/reports/P00-02.md": "dba5fe5f8a3bd5c05bbc5e331b4ee126ca95af4e2b1c00637dfd10497133dff2",
+    "docs/implementation/reports/P00-03.md": "61fa11c736daeb59e7515303c6bff1db4a2cda55e11965936b50fb0eac33279c",
+    "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/TASK_MANIFEST.json": "6196c9ccf1e2490639186fe05b7b8a4d20013fe869f354d7b6d38280f5869a0e",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+    "docs/prompts/00-master/P00-01-baseline-inventory.md": "9489f156ed6c49f82a86f3a428a9f9226bef195868e8ef7091a2275bf68b75fb",
+    "docs/prompts/00-master/P00-02-freeze-contracts.md": "77deee031781d2cade644a511af6eea43dc065381d87e1911c22e60e783cef95",
+    "docs/prompts/00-master/P00-03-gate-contract.md": "8dd8d52b9cb54b48756fa72dd94461e073476902331f2e5304ea2c211721a423",
+    "docs/prompts/02-domain/P02-01-primitives-and-states.md": "7087f8738aa222e12578e37ac5d6ff5078a3111d35ed972f87564bcaa6352d73",
+    "docs/prompts/02-domain/P02-02-master-entities.md": "bd207eba29e5d2fb81f06ef0bb7243a579f34fbc7a9097764aba8d856743c3e0",
+    "docs/prompts/02-domain/P02-04-runtime-contract-export.md": "b1c37480dade64fc95dc0757fcbe7bec6d409c95361d6a6baf67fff31ae38c2a",
+    "docs/prompts/04-api/P05-03-durable-jobs.md": "791b1489671645bfb4dc5174ea75736161de87b0e54c2c0560b79757c24eef21",
+    "docs/prompts/12-integration/P36-02-bounded-performance-fix.md": "8228edca5820714a7b5bf4e951c7d7a712935ac7b2b43b21cce745805da5af57",
+    "docs/workflow/02-ZCODE-PRECHECK.md": "f05e310fc1a20e610457719c2ca1ba3afad4b33206247f66f992f6c422a3372d",
+    "docs/workflow/HANDOFF_CONTRACT.md": "7c40a6429e73059543375dfabf81e0642809347f88493e0393a7b68456269280",
+    "docs/workflow/README.md": "bcfada4ddf8b82d8ab0e2912bac895a92cf0f3136dfc84b8a104ba3c31de1e14",
+    "package-lock.json": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+    "package.json": "ce0558100177c7d49889bedf4527e1995a52c066d5f7d6e737b03c6be63f7755",
+    "packages/agents/pyproject.toml": "39e80e877bc134cdf99f60c31aba1a9194d4eac699008d892ed08a0d3e557140",
+    "packages/agents/src/logistics_agents/__init__.py": "13233646cf62444aa2452351f69a4c7fdb60ae0b5b7c9b17c1e0302871dc3d1b",
+    "packages/contracts/pyproject.toml": "25bdb3a6d7f85ba1b114ac10668b955b5e98c981fe5ef6cdfb7f283950c10a0c",
+    "packages/contracts/src/logistics_contracts/__init__.py": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67",
+    "packages/domain/pyproject.toml": "f4d4e90bd87b0161f980b51129312a815cd7a99ca657a81ee26b0424259ebf64",
+    "packages/domain/src/logistics_domain/__init__.py": "8093a7e57882419f66c72b64f2a84f9f1f0055b60d1ad088392a048b658efa91",
+    "packages/evaluation/pyproject.toml": "3e25b4617df419c8a72d4056bd9bf1e53a7b1ad56ee41037f7ce12c8d5989c15",
+    "packages/evaluation/src/logistics_evaluation/__init__.py": "2dd2b07402f79594cee052f14f0f31f6fbfa505f0757e7753d9e953ae61caed9",
+    "packages/optimization/pyproject.toml": "cdc1172cb720fb2446adf66f6347acfbdf34342df28c170159f0194f14710643",
+    "packages/optimization/src/logistics_optimization/__init__.py": "52e301b5ceaa4fc656702979b82fcf1832e86e6f876280c82a0505f7d937acc1",
+    "packages/simulation/pyproject.toml": "000af2c9be683a8fd176cde8d054308f28419dc8ebbe1a3b0471241f9964d165",
+    "packages/simulation/src/logistics_simulation/__init__.py": "cf73c5463a41d33a8815cd4512b3fcc236fc2a7983d03e101b7b07db3f876789",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "scripts/check_architecture.py": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5",
+    "scripts/check_ownership.py": "63bf2bf43263b2f8251c4e5d09b771f8b4c948a94592bccdbc3f5b121c02fa5a",
+    "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "tests/integration/test_p01_01_workspace_bootstrap.py": "160c74f89cb6ae51d828d240d0a59c7e878861beceb7731508d6a5571ff8092e",
+    "tests/integration/test_p01_02_checks_and_gate_runner.py": "c2563290c021b5ed8a42084ff6fd4cb15c4ccee2a978a3e91527a9bdc6234414",
+    "tests/integration/test_p01_03_migration_governance.py": "d534312ba79d96fdcb547ee9c231df2c1d839a97fc983f6546457040aada2120",
+    "tests/unit/test_p01_01_workspace_bootstrap.py": "4210258a3f3ebb92a7c0b2a48139375f165e585232ce0b6eb4e3ecc23eb36c26",
+    "tests/unit/test_p01_02_checks_and_gate_runner.py": "8537ac2d7da78ddfe523a1fc82b31e71569bae2c009b6c4995a81bc6c0a10d63",
+    "tests/unit/test_p01_03_migration_governance.py": "10a12609375d0d22409fea4fb321e10e7a21287016f2dfbe2c0cd4bab2a968fb",
+    "tmp/N01/recheck-20261003/scope-correction-before.json": "efd83ce9cffcd6401930ad9abb5718e4610b0f5d34ea0bd4b00386a96c22df3b",
+    "tmp/N01/scope-before.json": "6c263b00afc53124b7978bfd49d1ed9ec715ddddcd600b7e821973dda590812b",
+    "tmp/N02/audit.py": "74c0514404ae92909cde6fcd95ee73c23100f2f00f8140987e3b419090d46d34",
+    "tmp/N02/capture_audit.py": "10d609abe57a3bfc9ff6511e002ca6f7e883175d70e4baa69e7ac313670ba0c4",
+    "tmp/N02/capture_probe.py": "41a53dde28f66dd10b5127e06f32a17e0cf6bcd89a209fd3ceb607b3ad54ba68",
+    "tmp/N02/finalize.py": "209c56841a469d58dcd9f3a1208c0a5b8297d631e3032e807fbcb999094232ac",
+    "tmp/N02/probe_g00.py": "93b278d672c9ba4d9be2eecc25a9ad25013ea262177a4f4d94c3765dade4c9e7",
+    "tools/ai_coding_plan/baseline_inventory_generate.py": "d23a3a8c327274e0bf7cf646bf8df0f4e10a2f78ccc376b3bb6a11728ee97c74",
+    "tools/ai_coding_plan/build_catalog.py": "2d72eb86d5ad5da13d65587ee3bbf5ab56a578522d42d777a9490f73b2c04fe4",
+    "tools/ai_coding_plan/check_gate_contract.py": "8328b7c3b59f20cc1414207ce64dc28f949194b579c0d745c823efbb8bfbd619",
+    "tools/ai_coding_plan/contract_freeze_generate.py": "e8c31bc0d0c2f29bef92d5ab003112c7b5b6a1a4c53ca9d8414755b3ef09d8db",
+    "tools/ai_coding_plan/p01_01_evidence_generate.py": "2ba963b2967730b8f86c2343842b3603758d035d29bdb45eab848f97ffd1a066",
+    "tools/ai_coding_plan/p01_01_run_validation.py": "9c1ce4cf134a20f57db18f62d9e6f748632f6d233ed50cfdef3d2ff9ba8d320e",
+    "tools/ai_coding_plan/p01_02_evidence_generate.py": "8d5b6f5340db54c15e743289391c660e702907fc0f0201c5ae9efb74ca5dd255",
+    "tools/ai_coding_plan/p01_03_evidence_generate.py": "dd48c0a79887fd534e2ceb469d380649132ebc9b89098c89953553d7c30f0177",
+    "tools/ai_coding_plan/render_plan.py": "d6e20b697f1c7dab8e376dc1a656705fceb25e76edecd95f4af56a6c686f202c",
+    "tools/ai_coding_plan/validate_plan.py": "9b78001aee05849b8d90aada72333ae532116628d95f9876370a4cda8eb2d41b",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5"
+  },
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tmp/N02/audit.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T12:48:57.327554+00:00",
+      "finished_at": "2026-10-03T12:48:57.760733+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02/codex/audit.log",
+      "log_sha256": "cced5e5962d79d3e1955623207ced70be9162f33f1aec46db9922fd59c90c0cf",
+      "preceding_probe": {
+        "command": "python tmp/N02/audit.py",
+        "exit_code": 1,
+        "termination": "interrupted by owner",
+        "reason": "Optional derived-directory traversal exceeded the audit scope; registered asset hashes and candidate/diff/protected results were already written."
+      }
+    },
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tmp/N02/probe_g00.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-03T12:47:00.524821+00:00",
+      "finished_at": "2026-10-03T12:47:00.642395+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02/codex/g00-prerequisite.log",
+      "log_sha256": "6761305cb84fac92b8e22d20657a2a1962b6bdaf6d597fd6e00c9ac7d5c4c4a4"
+    }
+  ],
+  "findings": [
+    {
+      "id": "N02-F01",
+      "owner": "A contract governance",
+      "subject": "JobKind members and request-kind mapping",
+      "observed": "Unique definition assigned to P02-01 states.py; members and mapping remain unresolved.",
+      "impact": "G00 freeze BLOCKED; P02-01 dispatch BLOCKED",
+      "source": {
+        "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+        "line": 47
+      },
+      "restoration": "Freeze complete enum membership, naming, kind mapping and positive/negative cases while retaining one states.py definition."
+    },
+    {
+      "id": "N02-F02",
+      "owner": "A contract governance",
+      "subject": "ScenarioRef and ScenarioBundle shapes",
+      "observed": "Ownership assigned to P02-04 runtime; fields, reference/version/hash semantics and expectation/input isolation unresolved.",
+      "impact": "G00 freeze BLOCKED; P02-04 and consumers BLOCKED",
+      "source": {
+        "path": "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md",
+        "line": 31
+      },
+      "restoration": "Freeze complete field and nested-type shapes, reference semantics and isolation invariants with verifiable cases."
+    },
+    {
+      "id": "N02-F03",
+      "owner": "A contract governance",
+      "subject": "ResourceCalendar unique defining task and module",
+      "observed": "intervals/version already specified in DATA_CONTRACTS:7; definition task and carrier remain unspecified before P02-02 direct consumers.",
+      "impact": "G00 definition mapping BLOCKED; P02-02 consumers BLOCKED",
+      "source": {
+        "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+        "line": 104
+      },
+      "restoration": "Decide earliest unique defining task/module and CalendarInterval dependencies; align catalog, file whitelist and consumer edges; HTTP CalendarDTO only maps the shared type."
+    },
+    {
+      "id": "N02-F04",
+      "owner": "A contract governance",
+      "subject": "JobRequest forward type dependencies",
+      "observed": "P05-03 must define five payload branches, but required request types originate in P06/P11/P14/P32 and no complete early type/reference strategy is frozen.",
+      "impact": "G00 type/dependency freeze BLOCKED; P05-03 dispatch BLOCKED",
+      "source": {
+        "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+        "line": 49
+      },
+      "restoration": "Freeze complete early pure types or named reference strategy, discriminators/version/parsing rules and satisfiable definition/consumer dependencies; prohibit future imports, Any and empty placeholders."
+    }
+  ],
+  "g00": {
+    "official_status_field": "passed",
+    "valid": false,
+    "signed_by_n02": false,
+    "input_drift": [
+      "docs/architecture/DATA_CONTRACTS.md",
+      "docs/architecture/issues/README.md"
+    ],
+    "current_runner_prerequisite_exit_code": 1,
+    "freeze_semantic_review": "BLOCKED",
+    "record_g00": "NOT_RUN",
+    "freeze_reviewer_updated": false
+  },
+  "preserved_evidence": {
+    "protected_file_count": 287,
+    "all_unchanged": true,
+    "no_official_gate_or_freeze_or_other_handoff_writes": true
+  },
+  "handoff": {
+    "path": "docs/handoffs/N02/codex.md",
+    "sha256": "4cdf3f4f42983c4d93b50303326562489066afedd61df7b2b716e248932dabcf"
+  },
+  "output_file_count_excluding_evidence": 19,
+  "outputs": [
+    {
+      "path": "artifacts/handoffs/N02/codex/audit-command.json",
+      "sha256": "5f6fc99f9a79e3533dd9493cf1ea713bf47014a188fb11e0d2013bea9268f3b3",
+      "bytes": 777
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/audit-summary.json",
+      "sha256": "cced5e5962d79d3e1955623207ced70be9162f33f1aec46db9922fd59c90c0cf",
+      "bytes": 3710
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/audit.log",
+      "sha256": "cced5e5962d79d3e1955623207ced70be9162f33f1aec46db9922fd59c90c0cf",
+      "bytes": 3710
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/baseline-audit.json",
+      "sha256": "f488da7000b725050c60f311a9049b935cb2ccd232ffe76eaed0c9ff23e3fa5d",
+      "bytes": 49055
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/candidate-audit.json",
+      "sha256": "3b04ecc2bb91bb83039c2978f169a93782c5de4af81bd8a68494cd0089896fa1",
+      "bytes": 20422
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/findings.json",
+      "sha256": "ac7fb36a9024165d6b5bf3d7a7c8bc0a63a00a2620ecb5c5f556435c204eb883",
+      "bytes": 3299
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/freeze-audit.json",
+      "sha256": "2bc8f0cc2e3947c1347cbb72c6904e3492c00b6e95db92ea38591e96d9208779",
+      "bytes": 3665
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/g00-audit.json",
+      "sha256": "57460d764a623a3351e0accdeed8bfdf88fecffada59ab3334b3e163d80f4875",
+      "bytes": 7773
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/g00-prerequisite.log",
+      "sha256": "6761305cb84fac92b8e22d20657a2a1962b6bdaf6d597fd6e00c9ac7d5c4c4a4",
+      "bytes": 474
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/g00-revision-audit.json",
+      "sha256": "97cb0f068a43dce1de12dacb8d670a86c2da4d4c33b84bb366777e5962b8f13d",
+      "bytes": 351
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/governance-audit.json",
+      "sha256": "c1a4816e3a7c00342c901dc22657aa9695f97dccf987708cecf79381a1df29d3",
+      "bytes": 149649
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/governance-diff.txt",
+      "sha256": "9dab8e869c73c951fe92d4918da5f7281aad35090d7d26402739f6325948c157",
+      "bytes": 279629
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/input-log-audit.json",
+      "sha256": "41562ee8bfee43093a8469dbf844fb81e09cbc4a6fbe61524e3da720a4ee481c",
+      "bytes": 1917
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/p00-document-audit.json",
+      "sha256": "9667aa1b996d2eb5d22ab1b53ca06883113fa9fffeb0f36432f853e724244120",
+      "bytes": 4171
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/probe-command.json",
+      "sha256": "764d2979e9489242c9a220ec8d7f955b39c3692598fdffb84359bef0a265cc96",
+      "bytes": 491
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/protected-after.json",
+      "sha256": "7fe68e04ab90b9a07e21755a92f01cd7126999c0698c52d8f307690decd404c5",
+      "bytes": 36536
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/protected-before.json",
+      "sha256": "7fe68e04ab90b9a07e21755a92f01cd7126999c0698c52d8f307690decd404c5",
+      "bytes": 36536
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/protected-comparison.json",
+      "sha256": "812f72864777f341c9f74ba702e9b55e074389e003400d6c2000967eb0ebf527",
+      "bytes": 1770
+    },
+    {
+      "path": "artifacts/handoffs/N02/codex/task-governance-audit.json",
+      "sha256": "2c66e7b9cb028379ea4b513c4ae15fb2853a1a15f0f1071d7467298e59cb1805",
+      "bytes": 30885
+    }
+  ],
+  "limitations": [
+    "N01 15 self-tests/36 governance checks are historical implementation evidence, not independent acceptance.",
+    "Optional derived-directory traversal interrupted, exit 1. Registered 173 legacy asset hashes verified; node_modules/.venv full tree counts/fingerprints NOT_RUN.",
+    "Planner --self-test --record-g00 NOT_RUN because independent freeze review is BLOCKED.",
+    "No G01/business/database/solver/simulation/model/browser acceptance run.",
+    "P36 split checked as governance; no implementation or performance acceptance."
+  ],
+  "next_executor": "A contract governance under a specific repair card; new candidate then independent N02",
+  "n03_dispatch_allowed": false
+}

@@ -1,0 +1,67 @@
+........................................................................ [ 38%]
+........................................................................ [ 77%]
+....F.........F........FFF.................                              [100%]
+================================== FAILURES ===================================
+___________________ test_frozen_lock_matches_the_manifests ____________________
+tests\integration\test_p01_01_workspace_bootstrap.py:203: in test_frozen_lock_matches_the_manifests
+    assert result.returncode == 0, f"uv.lock is out of date with the workspace manifests:\n{result.stderr}"
+E   AssertionError: uv.lock is out of date with the workspace manifests:
+E     error: Failed to initialize cache at `C:\Users\30382\AppData\Local\uv\cache`
+E       cause: failed to open file `C:\Users\30382\AppData\Local\uv\cache\sdists-v9\.git`: 拒绝访问。 (os error 5)
+E     
+E   assert 2 == 0
+E    +  where 2 = CompletedProcess(args=['C:\\Users\\30382\\.local\\bin\\uv.EXE', 'lock', '--check'], returncode=2, stdout='', stderr='e...e`\n  cause: failed to open file `C:\\Users\\30382\\AppData\\Local\\uv\\cache\\sdists-v9\\.git`: 拒绝访问。 (os error 5)\n').returncode
+_____________ test_passing_phase_writes_a_complete_passed_record ______________
+tests\integration\test_p01_02_checks_and_gate_runner.py:353: in test_passing_phase_writes_a_complete_passed_record
+    assert first.returncode == 0, first.stdout
+E   AssertionError: wrote artifacts/gates/G01.json (status: failed)
+E     G01: 8/10 checks passed
+E       [PASS] P01-01-cmd1: manifest command must succeed
+E       [FAIL] layer-boundaries: checker exit_code=2; json checker exit_code=2
+E       [FAIL] runner-fails-closed: fail-closed not proven: real probe exit=2, verdict=exit_code=2 (expected 0); injected verdict=exit_code=1 (expected 0); failing tests: {'passed': 55, 'failed': 1}
+E       [PASS] legacy-demo-untouched: 旧 demo 未被覆盖：登记文件指纹与 demo.zip 哈希仍与 P01-01 基线证据一致
+E       [PASS] previous-gate:G00: status=passed
+E       [PASS] dsh-evidence:P01-01: status=READY_FOR_ZCODE
+E       [PASS] docs:docs/implementation/P01-01.md: present
+E       [PASS] docs:docs/implementation/reports/P01-01.md: present
+E       [PASS] zcode-precheck:P01-01: artifacts/handoffs/P01-01/zcode/precheck.json: Z_PRECHECK_PASSED with 1 fresh input hash(es)
+E       [PASS] codex-review: codex review is valid for the current revision
+E       commands: 1, median 30 ms, total 30 ms
+E     
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE', 'scripts/gates.py'...] codex-review: codex review is valid for the current revision\n  commands: 1, median 30 ms, total 30 ms\n", stderr='').returncode
+____________ test_check_only_reports_stale_inputs_without_signing _____________
+tests\integration\test_p01_02_checks_and_gate_runner.py:518: in test_check_only_reports_stale_inputs_without_signing
+    assert signed.returncode == 0, signed.stdout
+E   AssertionError: wrote artifacts/gates/G01.json (status: failed)
+E     G01: 8/10 checks passed
+E       [PASS] P01-01-cmd1: manifest command must succeed
+E       [FAIL] layer-boundaries: checker exit_code=2; json checker exit_code=2
+E       [FAIL] runner-fails-closed: fail-closed not proven: real probe exit=2, verdict=exit_code=2 (expected 0); injected verdict=exit_code=1 (expected 0); failing tests: {'passed': 55, 'failed': 1}
+E       [PASS] legacy-demo-untouched: 旧 demo 未被覆盖：登记文件指纹与 demo.zip 哈希仍与 P01-01 基线证据一致
+E       [PASS] previous-gate:G00: status=passed
+E       [PASS] dsh-evidence:P01-01: status=READY_FOR_ZCODE
+E       [PASS] docs:docs/implementation/P01-01.md: present
+E       [PASS] docs:docs/implementation/reports/P01-01.md: present
+E       [PASS] zcode-precheck:P01-01: artifacts/handoffs/P01-01/zcode/precheck.json: Z_PRECHECK_PASSED with 1 fresh input hash(es)
+E       [PASS] codex-review: codex review is valid for the current revision
+E       commands: 1, median 30 ms, total 30 ms
+E     
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE', 'scripts/gates.py'...] codex-review: codex review is valid for the current revision\n  commands: 1, median 30 ms, total 30 ms\n", stderr='').returncode
+________________ test_repository_phase_one_gate_is_fail_closed ________________
+tests\integration\test_p01_02_checks_and_gate_runner.py:555: in test_repository_phase_one_gate_is_fail_closed
+    assert "zcode-precheck:P01-01" in evidence["failed_checks"]
+E   AssertionError: assert 'zcode-precheck:P01-01' in ['P01-01-cmd1', 'P01-01-cmd2', 'P01-01-cmd3', 'P01-02-cmd1', 'P01-02-cmd2', 'P01-03-cmd1', ...]
+_____________ test_real_gate_runner_executes_a_real_probe_command _____________
+tests\integration\test_p01_02_checks_and_gate_runner.py:586: in test_real_gate_runner_executes_a_real_probe_command
+    assert probe_check["passed"] is True, probe_check["detail"]
+E   AssertionError: fail-closed not proven: real probe exit=2, verdict=exit_code=2 (expected 0); injected verdict=exit_code=1 (expected 0); failing tests: {'passed': 55, 'failed': 1}
+E   assert False is True
+=========================== short test summary info ===========================
+FAILED tests/integration/test_p01_01_workspace_bootstrap.py::test_frozen_lock_matches_the_manifests
+FAILED tests/integration/test_p01_02_checks_and_gate_runner.py::test_passing_phase_writes_a_complete_passed_record
+FAILED tests/integration/test_p01_02_checks_and_gate_runner.py::test_check_only_reports_stale_inputs_without_signing
+FAILED tests/integration/test_p01_02_checks_and_gate_runner.py::test_repository_phase_one_gate_is_fail_closed
+FAILED tests/integration/test_p01_02_checks_and_gate_runner.py::test_real_gate_runner_executes_a_real_probe_command
+5 failed, 182 passed in 62.73s (0:01:02)

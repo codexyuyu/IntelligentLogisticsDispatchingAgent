@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P02-01",
+  "round": "p02-01-2026-10-04",
+  "role": "dsh",
+  "status": "READY_FOR_ZCODE",
+  "signs_gate": false,
+  "generated_at": "2026-10-04T21:09:28.632102+00:00",
+  "generation_order": "source -> tests -> task doc -> report -> logs -> evidence -> handoff -> this seal",
+  "candidate": {
+    "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297",
+    "relevant_file_count": 82,
+    "declared": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "recomputed_by": "seal writer via GateRunner.relevant_manifest_rows()"
+  },
+  "dependency_evidence": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "status": "passed",
+      "finished_at": "2026-10-04T14:48:59.955285+00:00",
+      "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)"
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8",
+      "status": "passed",
+      "finished_at": "2026-10-04T20:44:50.643501+00:00",
+      "reviewer": "dsh-scripts/gates.py"
+    }
+  },
+  "evidence": {
+    "path": "artifacts/handoffs/P02-01/dsh/evidence.json",
+    "sha256": "36f08ff6a8b983c8ba749ef1bbf6fc4b0ae157059e4036f1e6f7917ec274c4c8",
+    "bytes": 13389
+  },
+  "handoff": {
+    "path": "docs/handoffs/P02-01/dsh.md",
+    "sha256": "b3de54ebb24300388bcec4c6911964252a2358eb6bf82fae2e9c2c7a13364d49",
+    "bytes": 5799
+  },
+  "commands": {
+    "required": [
+      {
+        "id": "cmd1-p02-01-suites",
+        "argv": [
+          "uv",
+          "run",
+          "pytest",
+          "tests/unit/test_p02_01_primitives_and_states.py",
+          "tests/integration/test_p02_01_primitives_and_states.py",
+          "-q"
+        ],
+        "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+        "exit_code": 0,
+        "expectation": "exit 0 with real passing P02-01 tests",
+        "observed": {
+          "passed": 46,
+          "failed": 0
+        },
+        "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/required-cmd1-pytest.log",
+        "log_sha256": "1c568359352411db1a4dda13684f23306af4f780882597f9b255d8e6d58febce",
+        "exit_code_and_counts_read_from_log": true
+      },
+      {
+        "id": "cmd2-check-architecture",
+        "argv": [
+          "uv",
+          "run",
+          "python",
+          "scripts/check_architecture.py"
+        ],
+        "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+        "exit_code": 0,
+        "expectation": "exit 0; layer violations = 0",
+        "observed": {
+          "violations": 0,
+          "modules": 10,
+          "layers": 7
+        },
+        "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/required-cmd2-check-architecture.log",
+        "log_sha256": "2765f682de19440dc4391bcd0cd4a2d37fd34720a98d58a02bb036532fb8c2d7",
+        "exit_code_and_counts_read_from_log": true
+      }
+    ],
+    "supplementary": [
+      {
+        "id": "cmd3-phase-regression",
+        "argv": [
+          "uv",
+          "run",
+          "pytest",
+          "tests/unit",
+          "tests/integration",
+          "-q"
+        ],
+        "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+        "exit_code": 0,
+        "expectation": "exit 0; the P01 suites still pass after the package-marker change",
+        "observed": {
+          "passed": 272,
+          "failed": 0
+        },
+        "log_path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/full-regression.log",
+        "log_sha256": "e2522e091ae2463ebc80623f1fd8ecc22d39cfb126cf50fcf1fabd98a81ded7a",
+        "exit_code_and_counts_read_from_log": true
+      }
+    ]
+  },
+  "whitelist_exception": {
+    "path": "packages/domain/src/logistics_domain/__init__.py",
+    "reason": "the original P02-01 task allows editing the package marker when required to export this task's types, provided the exact path is listed in the completion report; _PENDING_APIS still listed 'states' so `from logistics_domain import states` raised NotImplementedError",
+    "change": "removed 'states' from _PENDING_APIS and added `from . import errors, primitives, states`",
+    "preserved": "entities/ids/units/ports still raise NotImplementedError; __getattr__ and the loud-failure test stay valid"
+  },
+  "issues_to_register": [
+    "ARCH-P02-01-A",
+    "ARCH-P02-01-B",
+    "ARCH-P02-01-C"
+  ],
+  "log_hashes": {
+    "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/required-cmd1-pytest.log": "1c568359352411db1a4dda13684f23306af4f780882597f9b255d8e6d58febce",
+    "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/required-cmd2-check-architecture.log": "2765f682de19440dc4391bcd0cd4a2d37fd34720a98d58a02bb036532fb8c2d7",
+    "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/full-regression.log": "e2522e091ae2463ebc80623f1fd8ecc22d39cfb126cf50fcf1fabd98a81ded7a"
+  }
+}

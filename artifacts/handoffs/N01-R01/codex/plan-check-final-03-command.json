@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python",
+    "tools/ai_coding_plan/validate_plan.py",
+    "--self-test"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-03T16:07:18.651075+00:00",
+  "finished_at": "2026-10-03T16:07:19.382537+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N01-R01/codex/plan-check-final-03.log",
+  "log_hash": "48e52f29e89c999d57a0e2bb9bf6bb97f199b89657fe0e224281d0134f454c19",
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

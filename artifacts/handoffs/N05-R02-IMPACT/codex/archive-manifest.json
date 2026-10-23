@@ -1,0 +1,122 @@
+{
+  "created_at": "2026-10-05T08:42:30.704693+00:00",
+  "file_count": 19,
+  "old_official_file_count": 14,
+  "byte_identical": true,
+  "files": [
+    {
+      "original_path": "artifacts/gates/G01.json",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01.json",
+      "sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+      "bytes": 29007
+    },
+    {
+      "original_path": "artifacts/gates/G01-codex-review.json",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-codex-review.json",
+      "sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+      "bytes": 40273
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/clean-install-imports.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/clean-install-imports.log",
+      "sha256": "a4e1f14d61e596e6d1575c3225f3825300e97a52e521d9c9e133f3e7e95a2ee8",
+      "bytes": 1265
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "sha256": "3b36342254828fc4f42bcb656aebff811cb63296876d0a9bea1a2cd25713a276",
+      "bytes": 996
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/layer-boundaries.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/layer-boundaries.log",
+      "sha256": "9b34025934d32087b1b96602ba06fa176e285f92de69acc9bf34d0de09c2aa74",
+      "bytes": 433
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/lock-reproducible.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/lock-reproducible.log",
+      "sha256": "9c24d57ee0b4efdf73d2e20fa25a8ec420f6f77010e39f8f9b84b20320874e18",
+      "bytes": 338
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "sha256": "95b6f8d96d90d504f6d757a642238740c041324b2f587bdc18960f6a26f26bd2",
+      "bytes": 1204
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "sha256": "5f502835131921c3f5d046ef462e513e64cada1a337b75fbb3e42d1d3024f665",
+      "bytes": 350
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "sha256": "7b4082d9dd9fa1107c31242e54af49c75d4d8c2ed98099a897898cf72d9294e3",
+      "bytes": 384
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "sha256": "26d850500c6937c757092169326e5c13673ede42ba5e8bdf1994183055356c68",
+      "bytes": 1293
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "sha256": "946dea8d22ecd6f67c863a9aaa940d1ba1ce6f7f64bf05502e24b5c6153303b0",
+      "bytes": 428
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "sha256": "e7373358fd1ef24801a8d7544ce084aa7d2f05aab8815d1ca8a4a19242231f67",
+      "bytes": 1299
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "sha256": "0705f854aff1f7935b3b0b699f13da0448e493c3fa107c1f67ee4467280eec78",
+      "bytes": 428
+    },
+    {
+      "original_path": "artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "sha256": "6a2d65cd1eac94b24b7f89588f69be776158b2584f3f20d3b17f7b91fa5577a5",
+      "bytes": 347
+    },
+    {
+      "original_path": "artifacts/handoffs/P02-01/dsh/archive/f01-before/docs__implementation__reports__P02-01.md",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/handoffs/P02-01/dsh/archive/f01-before/docs__implementation__reports__P02-01.md",
+      "sha256": "c3e518b5d24d6132ff679609916567f03b530f8810f913cb81b581374115d8f1",
+      "bytes": 7720
+    },
+    {
+      "original_path": "docs/prompts/02-domain/P02-01-primitives-and-states.md",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/docs/prompts/02-domain/P02-01-primitives-and-states.md",
+      "sha256": "d4bbc3c460df9d8e7f2104d92fafceee66cdc0f66882faf735ba825975cdaaa8",
+      "bytes": 14624
+    },
+    {
+      "original_path": "artifacts/dispatch/2026-10-04/orchestration/codex/N05-R02-IMPACT.md",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/dispatch/2026-10-04/orchestration/codex/N05-R02-IMPACT.md",
+      "sha256": "faf2291b757e0149c55dd2eaf809ab2a0634c94f193723146bad706eb34df310",
+      "bytes": 4228
+    },
+    {
+      "original_path": "artifacts/dispatch/2026-10-04/orchestration/codex/P02-F01-recovery-routing.md",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/dispatch/2026-10-04/orchestration/codex/P02-F01-recovery-routing.md",
+      "sha256": "007e4ca96c76fdc96a6e4743d9aeb9eac527ce1cf5f286620c96bd88ab3fac6e",
+      "bytes": 11879
+    },
+    {
+      "original_path": "artifacts/dispatch/2026-10-04/orchestration/zcode/P01-01-IMPACT-F01-M01-scope-resolution.md",
+      "archive_path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/dispatch/2026-10-04/orchestration/zcode/P01-01-IMPACT-F01-M01-scope-resolution.md",
+      "sha256": "bdcd27e31ea60db274dc8dc3ee3e8d7e0396ee7ea4254541980a7f053b521ff4",
+      "bytes": 1298
+    }
+  ]
+}

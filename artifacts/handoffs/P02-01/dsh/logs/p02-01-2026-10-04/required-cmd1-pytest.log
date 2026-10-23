@@ -1,0 +1,15 @@
+# check: required-cmd1-pytest
+# argv: ["uv", "run", "pytest", "tests/unit/test_p02_01_primitives_and_states.py", "tests/integration/test_p02_01_primitives_and_states.py", "-q"]
+# resolved_executable: C:\Users\30382\.local\bin\uv.EXE
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T21:07:46.809385+00:00
+# expectation: exit 0 with real passing P02-01 tests
+
+## stdout
+..............................................                           [100%]
+46 passed in 0.15s
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 531

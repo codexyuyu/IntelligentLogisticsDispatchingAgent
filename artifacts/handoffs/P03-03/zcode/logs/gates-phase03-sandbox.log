@@ -1,0 +1,33 @@
+########## G03 sandbox: uv run python scripts/gates.py --phase 03 --revision auto --out-dir tmp/zcode-g03-dryrun-p3
+wrote tmp/zcode-g03-dryrun-p3/G03.json (status: failed)
+G03: 11/28 checks passed
+  [FAIL] P03-01-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P03-01-cmd2: manifest command must succeed
+  [FAIL] P03-02-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P03-02-cmd2: manifest command must succeed
+  [FAIL] P03-03-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P03-03-cmd2: manifest command must succeed
+  [FAIL] P03-04-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P03-04-cmd2: manifest command must succeed
+  [PASS] previous-gate:G00: status=passed
+  [FAIL] previous-gate:G01: status=failed
+  [FAIL] previous-gate:G02: missing artifacts/gates/G02.json
+  [FAIL] dsh-evidence:P03-01: unexpected status='BLOCKED'
+  [FAIL] dsh-evidence:P03-02: unexpected status='BLOCKED'
+  [FAIL] dsh-evidence:P03-03: unexpected status='BLOCKED'
+  [FAIL] dsh-evidence:P03-04: missing artifacts/handoffs/P03-04/dsh/evidence.json
+  [PASS] docs:docs/implementation/P03-01.md: present
+  [PASS] docs:docs/implementation/reports/P03-01.md: present
+  [PASS] docs:docs/implementation/P03-02.md: present
+  [PASS] docs:docs/implementation/reports/P03-02.md: present
+  [PASS] docs:docs/implementation/P03-03.md: present
+  [PASS] docs:docs/implementation/reports/P03-03.md: present
+  [FAIL] docs:docs/implementation/P03-04.md: missing docs/implementation/P03-04.md
+  [FAIL] docs:docs/implementation/reports/P03-04.md: missing docs/implementation/reports/P03-04.md
+  [FAIL] zcode-precheck:P03-01: artifacts/handoffs/P03-01/zcode/precheck.json: status='BLOCKED' (expected 'Z_PRECHECK_PASSED')
+  [FAIL] zcode-precheck:P03-02: artifacts/handoffs/P03-02/zcode/precheck.json: status='BLOCKED' (expected 'Z_PRECHECK_PASSED')
+  [FAIL] zcode-precheck:P03-03: missing artifacts/handoffs/P03-03/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] zcode-precheck:P03-04: missing artifacts/handoffs/P03-04/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] codex-review: missing artifacts/gates/G03-codex-review.json; a phase gate cannot be signed without the Codex review record
+  commands: 8, median 265 ms, total 2105 ms
+EXIT_CODE=1

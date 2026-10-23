@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python",
+    "tmp/N02-R01/job_shape_probe.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T03:27:45.585233+00:00",
+  "finished_at": "2026-10-04T03:27:45.665583+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N02-R01/codex/job-shape-probe.log",
+  "log_hash": "fc0e6c8ea7519f38d961dbc01178283590ef0f5c40145d312926393aed2a99c0",
+  "log_bytes": 2437,
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

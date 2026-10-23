@@ -1,0 +1,479 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P05-02",
+  "scene": "master-data-services",
+  "phase": 5,
+  "phase_gate": "G05",
+  "reviewer": "ZCode",
+  "review_role": "independent-pre-acceptance",
+  "status": "BLOCKED",
+  "verdict_reason": "P05-02 has no implementation candidate. All 8 code/contracts/test deliverables are absent: no master-data router, no application service, no logistics_contracts/http.py, no generated contracts/openapi.json and no tests. Neither declared dependency is met: G04 has no gate record, and P05-01 is BLOCKED with 0/11, so the api/router.py and bootstrap.py this task must extend incrementally do not exist at all. Four further blockers hold independently: the third mandatory command 'export_contracts.py --check' cannot pass because that generator does not exist; there is no HTTP test client (httpx absent, starlette.testclient raises a RuntimeError asking for httpx2) and no database; and the boundary types this task must expose - MasterDataUpdate, ResourceDTO, OrderPage - have no row in the named Schema table and no whitelisted carrier module, while logistics_contracts.http does not even appear in _PENDING_APIS (it raises AttributeError rather than NotImplementedError). DSH's BLOCKED verdict is independently confirmed; no Gate is signed.",
+  "reviewed_at_local": "2026-09-18T10:34:15.339939-07:00",
+  "candidate": {
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "vcs": "no .git in this checkout; located by content hash (scripts/gates.py GateRunner.compute_revision)",
+    "revision_label_during_this_review": "content-sha256:6dd1e12e39d0240d9053e55c4ef360561758cad4c59a34c4dfea0d1bec721ffa",
+    "revision_label_is_self_perturbing": "compute_revision() covers artifacts/handoffs/**, .mimosa/** and tmp/**, including this record's own directory",
+    "previous_gate_recorded_revision": "content-sha256:ab054daf9c6c1373c6503f603805756ef3ef9c5a60400d07d8e938d6987e532b",
+    "measured_g05_probe_revision": "content-sha256:c627d42667bf8ee79be6870a067f03d11f9d2420b269561d838d1b0db4f40526",
+    "same_root_as_dsh": true,
+    "same_candidate_checked": "yes: same working root, same commands, same absent deliverables"
+  },
+  "deliverable_presence": {
+    "apps/backend/src/logistics_backend/api/master_data.py": false,
+    "apps/backend/src/logistics_backend/api/router.py": false,
+    "apps/backend/src/logistics_backend/application/master_data.py": false,
+    "apps/backend/src/logistics_backend/bootstrap.py": false,
+    "packages/contracts/src/logistics_contracts/http.py": false,
+    "contracts/openapi.json": false,
+    "tests/unit/test_p05_02_master_data_services.py": false,
+    "tests/integration/test_p05_02_master_data_services.py": false,
+    "docs/implementation/P05-02.md": true,
+    "docs/implementation/reports/P05-02.md": true
+  },
+  "deliverable_present_count": 2,
+  "deliverable_expected_count": 10,
+  "deliverable_present_count_explanation": "2 of 10 allow-listed paths exist and both are documents (docs/implementation/P05-02.md, docs/implementation/reports/P05-02.md) recording the BLOCKED state. All 8 code/contracts/test deliverables are absent. This CORRECTS the DSH record, which reports 0/9 with both documents marked absent: the record was written at 22:03:45 and the two documents at 22:04:11 and 22:04:31, so its rows were true then and are stale now.",
+  "code_and_test_presence": {
+    "apps/backend/src/logistics_backend/api/master_data.py": false,
+    "apps/backend/src/logistics_backend/api/router.py": false,
+    "apps/backend/src/logistics_backend/application/master_data.py": false,
+    "apps/backend/src/logistics_backend/bootstrap.py": false,
+    "packages/contracts/src/logistics_contracts/http.py": false,
+    "contracts/openapi.json": false,
+    "tests/unit/test_p05_02_master_data_services.py": false,
+    "tests/integration/test_p05_02_master_data_services.py": false
+  },
+  "code_and_test_present_count": 0,
+  "code_and_test_expected_count": 8,
+  "dsh_record_counting_defect": {
+    "deliverable_expected_count_in_dsh_record": 9,
+    "rows_in_deliverable_presence": 7,
+    "issue": "the DSH record declares a denominator of 9 but tracks only 7 rows; its note defines the 9 as 'the 7 files P05-02 creates plus the 2 existing prerequisites it is meant to modify' (api/router.py, bootstrap.py), and those 2 prerequisite paths are not rows, so no reader can diff the record against the filesystem",
+    "corrected_set": "this review uses the 10-path allow-list, of which 2 (both documentation) are present"
+  },
+  "dsh_submission": {
+    "record": "artifacts/handoffs/P05-02/dsh/evidence.json",
+    "record_sha256": "06686907c7721c21ae79cbef0a6c2276a4a74ab1c907f94dc7784672291313fa",
+    "handoff": "docs/handoffs/P05-02/dsh.md",
+    "handoff_sha256": "4dcd789f21b1e32e47284087a6dce5469edc243d6c41c6f9ebdfb51408fbf09b",
+    "dsh_status": "BLOCKED",
+    "reviewer_agrees_with_status": true,
+    "dsh_summary_not_relied_on": "the verdict was re-derived from the filesystem, gate records and re-run commands before the DSH narrative was read",
+    "input_hashes_reverified": "29/29 of DSH's input_hashes recomputed byte-identical",
+    "output_hashes_reverified": "4/4 of DSH's recorded log hashes recomputed byte-identical",
+    "claims_independently_reproduced": [
+      "logistics_backend.application / .api and logistics_domain.orders / .resources all ModuleNotFoundError",
+      "logistics_contracts.http raises AttributeError (absent from _PENDING_APIS), while dto/errors/export_schema raise NotImplementedError",
+      "httpx absent and fastapi.testclient raising a RuntimeError that requires httpx2",
+      "G05 probe reports G04 missing; artifacts/gates/ holds only G00/G01 records",
+      "MasterDataUpdate appears 0 times in the three frozen contracts; ResourceDTO and OrderPage appear only in API_CONTRACT.md:32 and :20 as endpoint return types, never in DATA_CONTRACTS.md's named Schema table",
+      "only the 7 P01-01 placeholder __init__.py files exist under apps/ and packages/"
+    ]
+  },
+  "dependency_presence": {
+    "artifacts/gates/G04.json": false,
+    "artifacts/handoffs/P05-01/zcode/precheck.json": true,
+    "apps/backend/src/logistics_backend/api/router.py": false,
+    "apps/backend/src/logistics_backend/bootstrap.py": false
+  },
+  "dependency_present_count": 1,
+  "dependency_expected_count": 4,
+  "dependency_expected_count_note": "0 of 4 are usable: artifacts/handoffs/P05-01/zcode/precheck.json exists only because this review wrote it, with status=BLOCKED, so it is not a Z_PRECHECK_PASSED; G04.json, api/router.py and bootstrap.py do not exist.",
+  "prerequisites": {
+    "G00": {
+      "recorded_status": "passed",
+      "sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "verdict": "valid"
+    },
+    "G01": {
+      "recorded_status": "failed",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "failed_checks": [
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ],
+      "verdict": "invalid (blocking)"
+    },
+    "G02": {
+      "record": null,
+      "verdict": "invalid (blocking)"
+    },
+    "G03": {
+      "record": null,
+      "verdict": "invalid (blocking)"
+    },
+    "G04": {
+      "record": null,
+      "verdict": "invalid (blocking, declared dependency 1)"
+    },
+    "P05-01": {
+      "dsh_status": "BLOCKED",
+      "deliverables": "0/9 code,openapi,test",
+      "missing_files": [
+        "api/router.py",
+        "bootstrap.py",
+        "contracts/openapi.json"
+      ],
+      "verdict": "invalid (blocking, declared dependency 2): the two files this task must extend incrementally do not exist"
+    },
+    "P02-02/P02-03/P02-04": {
+      "precheck": "BLOCKED",
+      "verdict": "invalid (blocking): main entities and the DTO layer"
+    },
+    "P03-03/P03-04": {
+      "precheck": "BLOCKED",
+      "verdict": "invalid (blocking): the UoW and revision CAS that If-Match needs"
+    }
+  },
+  "frozen_interface": {
+    "signature": "MasterDataService.update(cmd: MasterDataUpdate, expected_revision: int) -> ResourceDTO; GET /api/v1/orders -> OrderPage",
+    "source": "docs/prompts/04-api/P05-02-master-data-services.md (Interfaces)",
+    "unowned_types": [
+      "MasterDataUpdate",
+      "ResourceDTO",
+      "OrderPage"
+    ],
+    "ownership_evidence": "none of the three has a row in DATA_CONTRACTS.md's named Schema table; MasterDataUpdate appears 0 times anywhere in the three frozen contracts; ResourceDTO and OrderPage appear only in API_CONTRACT.md as the declared return types of the endpoints assigned to P05-02. The task also requires creating packages/contracts/src/logistics_contracts/http.py, but 'http' is not in _PENDING_APIS, so the package gives no ownership hint for it.",
+    "whitelist_gap": "the allow-list contains no packages/domain module and only the new http.py, which the contracts package does not describe"
+  },
+  "commands": [
+    {
+      "id": "cmd1",
+      "mandatory": true,
+      "argv": "uv run pytest tests/unit/test_p05_02_master_data_services.py tests/integration/test_p05_02_master_data_services.py -q",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4,
+      "result": "ERROR: file or directory not found; no tests ran in 0.00s (0/0/0/0)",
+      "zero_case_run": true,
+      "counts_as_evidence": false,
+      "log": {
+        "path": "artifacts/handoffs/P05-02/zcode/logs/cmd1-pytest.log",
+        "sha256": "2e6c2b692855319fecc946905d987d8b809ef8cb271c3f8b9cbc815538143496",
+        "bytes": 118
+      }
+    },
+    {
+      "id": "cmd2",
+      "mandatory": true,
+      "argv": "uv run python scripts/check_architecture.py",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0",
+      "counts_as_evidence": false,
+      "hollow_pass": true,
+      "hollow_pass_reason": "the 7 scanned modules are the unmodified P01-01 placeholder packages; logistics_backend.application and .api do not exist, so the checker cannot evaluate 'application does not import adapters' or the DTO->application->UoW->domain->adapter chain. The output is byte-identical to the P05-01 and P05-03 runs of the same command.",
+      "log": {
+        "path": "artifacts/handoffs/P05-02/zcode/logs/cmd2-architecture.log",
+        "sha256": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+        "bytes": 81
+      }
+    },
+    {
+      "id": "cmd3",
+      "mandatory": true,
+      "argv": "uv run python scripts/export_contracts.py --check",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 2,
+      "result": "can't open file 'scripts/export_contracts.py': [Errno 2] No such file or directory",
+      "counts_as_evidence": false,
+      "structural": "even with P05-01 delivered, this command stays red until P02-04 delivers the generator; hand-writing the JSON is forbidden",
+      "log": {
+        "path": "artifacts/handoffs/P05-02/zcode/logs/cmd3-export-contracts.log",
+        "sha256": "8406918001f41ad1d0867c6d92ada65942c40a41c724037aa69dc3c59b76daca",
+        "bytes": 225
+      }
+    },
+    {
+      "id": "cmd4",
+      "mandatory": false,
+      "argv": "uv run python scripts/gates.py --phase 05 --revision auto --out-dir tmp/zcode-p05/probe-g05",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "G05: 10/27 checks passed; G04 missing; all three cmd1 checks exit 4; all three cmd3 checks exit 2; all three dsh-evidence statuses unexpected; all three zcode-prechecks missing",
+      "wrote_official_gate_record": false,
+      "log": {
+        "path": "artifacts/handoffs/P05-02/zcode/logs/gates-probe-phase05.log",
+        "sha256": "8b3674150bd4cebe97becd90299764ddb8de49fc153ea7165f6b6c50c26f4f29",
+        "bytes": 2103
+      }
+    },
+    {
+      "id": "cmd5",
+      "mandatory": false,
+      "argv": "uv run pytest tests/unit tests/integration -q",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "187 passed -- adjacent-module regression baseline, containing no P05-02 test",
+      "log": {
+        "path": "artifacts/handoffs/P05-02/zcode/logs/regression-full-pytest.log",
+        "sha256": "7e9fb2874338b79cf35e5f60ab8851f0fbe6c5166a56644d8810d990e433e960",
+        "bytes": 272
+      }
+    },
+    {
+      "id": "cmd6",
+      "mandatory": false,
+      "argv": "environment probe: httpx / DB drivers / logistics_contracts.http",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": null,
+      "result": "httpx, psycopg, psycopg2, sqlalchemy, alembic, asyncpg all absent; logistics_contracts.http raises AttributeError",
+      "log": {
+        "path": "artifacts/handoffs/P05-02/zcode/logs/env-probe.log",
+        "sha256": "8360d8d92b7b3d303223fd068b472aa30ff6210507170568f2b775180c3e4679",
+        "bytes": 1951
+      }
+    }
+  ],
+  "phase_appropriate_checks": {
+    "uv lock --check": {
+      "exit_code": 0,
+      "result": "Resolved 40 packages"
+    },
+    "scripts/check_ownership.py": {
+      "exit_code": 0,
+      "result": "files=1360 rules=60 violations=0"
+    },
+    "scripts/gates.py --phase 01 --check-only": {
+      "exit_code": 0,
+      "result": "recorded status=failed; 4 records missing; gate not signed"
+    },
+    "uv run ruff check apps/backend/src packages/*/src tests scripts": {
+      "exit_code": 1,
+      "result": "39 errors, all pre-existing in P01 files; none in a P05-02 path (none exists)",
+      "attribution": "pre-existing lint debt; ruff is not a mandatory command here"
+    },
+    "schema/openapi/generated-client consistency": {
+      "status": "NOT RUN - structurally impossible",
+      "reason": "contracts/openapi.json and its generator do not exist, so no drift comparison can be made and none was invented"
+    }
+  },
+  "test_cases": {
+    "1: If-Match=2 while the actual revision is 3 => 409 with no side effect": {
+      "status": "NOT RUN / UNVERIFIED",
+      "reason": "no endpoint, no application service, no persisted row, no UoW, no HTTP client, no database",
+      "recheck_plan": "on a real isolated PostgreSQL, read a row, change its revision out of band, then issue the write with the stale If-Match; assert 409 AND that the row content is unchanged afterwards - the absence of a side effect is part of the assertion"
+    },
+    "2: limit=201 => 422 naming the offending field": {
+      "status": "NOT RUN / UNVERIFIED",
+      "reason": "no endpoint and no Schema",
+      "recheck_plan": "assert the 422 originates from the Schema bound (limit 1..200) rather than a hand-written if-branch, and that the error body identifies the field; also assert the boundary values 1 and 200 succeed"
+    }
+  },
+  "defects": [
+    {
+      "id": "Z-D1",
+      "severity": "blocking (inherited)",
+      "title": "Declared dependency G04 has no record and cannot be assembled",
+      "evidence": [
+        "artifacts/gates/ holds only G00-checks.log, G00.json, G01.json",
+        "Phase 05 probe: [FAIL] previous-gate:G04: missing",
+        "G01 failed with the 4 Phase 01/Codex records still absent; G02/G03 missing; all P03 and P04 tasks BLOCKED"
+      ],
+      "owner": "project management side + P01-03",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "outside this task's whitelist and this reviewer's role"
+    },
+    {
+      "id": "Z-D2",
+      "severity": "blocking (dependency)",
+      "title": "P05-01 delivered nothing, so the router and composition root this task must extend do not exist",
+      "evidence": [
+        "P05-01 evidence status=BLOCKED with 0/9 code/openapi/test deliverables",
+        "apps/backend/src/logistics_backend/api/router.py and bootstrap.py are absent",
+        "contracts/openapi.json is absent",
+        "creating them here would implement another owner's deliverables and would be overwritten"
+      ],
+      "owner": "P05-01 (after the barrier repair)",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "Out of Scope forbids changing another owner's implementation surface"
+    },
+    {
+      "id": "Z-D3",
+      "severity": "blocking (contract gap)",
+      "title": "MasterDataUpdate / ResourceDTO / OrderPage have no frozen shape owner and no carrier module",
+      "evidence": [
+        "no row in DATA_CONTRACTS.md's named Schema table for any of the three",
+        "MasterDataUpdate appears 0 times across the three frozen contracts",
+        "ResourceDTO and OrderPage appear only in API_CONTRACT.md:32 and :20 as endpoint return types",
+        "logistics_contracts.http raises AttributeError, i.e. it is not even registered in _PENDING_APIS"
+      ],
+      "owner": "contract owner (same decision as ARCH-0006 and the P05-01/P05-03 gaps)",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "defining them here would duplicate the domain/DTO layer (Constraint 6)"
+    },
+    {
+      "id": "Z-D4",
+      "severity": "blocking (dependency)",
+      "title": "The third mandatory command cannot pass: no scripts/export_contracts.py",
+      "evidence": [
+        "exit 2, file not found",
+        "the manifest lists that script under P02-04's files (its owner) and also under P05-01's, so its ownership is ambiguous in the manifest itself",
+        "contracts/openapi.json does not exist and hand-writing it is forbidden"
+      ],
+      "owner": "P02-04 + plan owner (manifest ambiguity)",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "creating it here would implement another owner's deliverable"
+    },
+    {
+      "id": "Z-D5",
+      "severity": "blocking (test infrastructure)",
+      "title": "No HTTP test client and no database, so neither Test Case can be asserted honestly",
+      "evidence": [
+        "import httpx -> ModuleNotFoundError; fastapi.testclient -> RuntimeError requiring httpx2",
+        "psql/pg_ctl absent, docker daemon unreachable, TEST_DATABASE_URL unset, no DB driver in uv.lock",
+        "tests/conftest.py fails (never skips) without TEST_DATABASE_URL, so a skip cannot be used to fake coverage"
+      ],
+      "owner": "project management side (before G01 is finally signed)",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "uv.lock is a G01 input; adding dependencies would invalidate an existing gate record"
+    },
+    {
+      "id": "Z-D6",
+      "severity": "medium (evidence accuracy; does not change the verdict)",
+      "title": "The DSH record's denominator does not match its own rows, and its two existing documents are reported absent",
+      "evidence": [
+        "deliverable_expected_count=9 while deliverable_presence holds only 7 rows; the 2 'prerequisites to modify' appear in the note but not as rows",
+        "docs/implementation/P05-02.md and reports/P05-02.md are marked false although both exist (9432 B, 15427 B) and my G05 probe passes both docs checks",
+        "their mtimes (22:04:11, 22:04:31) are LATER than the record's (22:03:45), so the rows were true when written and stale now"
+      ],
+      "correction": "current truth: 2 of the 10 allow-listed paths present (both documentation), 0 of 8 code/contracts/test deliverables",
+      "owner": "DSH",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "another agent's evidence record is part of the audit trail and is preserved unmodified; the correction is recorded here"
+    }
+  ],
+  "fixed_by_zcode": [],
+  "unfixed": [
+    "Z-D1 (gate barrier)",
+    "Z-D2 (P05-01 deliverables)",
+    "Z-D3 (boundary-type ownership)",
+    "Z-D4 (export_contracts.py + manifest ambiguity)",
+    "Z-D5 (httpx + PostgreSQL)",
+    "Z-D6 (DSH record counting and staleness)"
+  ],
+  "not_verified": [
+    "Test Case 1 (stale If-Match => 409, no side effect) and Test Case 2 (limit=201 => 422) - not run",
+    "the interface MasterDataService.update(...) and GET /api/v1/orders - no implementation",
+    "Business Rules: only draft orders may change demand; dispatched changes must go through events; OpenAPI must be generated; limit is 1..200; ordering must be stable",
+    "Algorithm: API DTO -> application -> UoW -> domain validation -> adapter; If-Match prevents lost updates; deactivation is not a hard delete",
+    "the G05 exit assertions of PHASE_GATES.md:27 - no Phase 05 evidence exists at all",
+    "the whole Edge Case table; the empty-collection case would be meaningfully assertable (a valid empty page is allowed by the contract) but needs the endpoint to exist",
+    "Observability: no metrics are emitted (honestly 0). DSH flags that the prompt's metric list is cross-task; this review confirms the overlap with P05-03/P16-03 and defers the wording decision.",
+    "Not applicable: candidate/validated/confirmed states, version_id/parent_version_id/snapshot_hash and solver TIMEOUT/UNKNOWN/INFEASIBLE - this task produces no schedule plan"
+  ],
+  "security_review": {
+    "credentials_scan": "no credential-looking literal in the P05 documents, DSH records or repository sources; no TEST_DATABASE_URL value appears anywhere",
+    "authz_surface": "the task is an authorization-relevant surface (viewer may read, only operator may write PATCH/PUT), but nothing is implemented, so there is no authorization code to audit - recorded as not applicable rather than passed; the re-issue checklist requires the role split to be enforced at the boundary, not in the UI",
+    "injection_surface": "not applicable yet: no SQL, no shell interpolation and no route exist. When the master-data adapter is written, every query must bind parameters - no string concatenation, format or f-string SQL - and the filter/kind whitelists must be validated before reaching the adapter",
+    "log_redaction": "this review's logs contain command output only; no secret, personal data or model reasoning was printed or stored",
+    "dependency_changes": "uv.lock and apps/backend/pyproject.toml are byte-identical to the state DSH reviewed; uv lock --check exits 0; no dependency was added by this review",
+    "known_dependency_vulnerabilities": "no scanner is established in this repository, so no scan is claimed and none was run",
+    "unverified_advisories_vs_reproducible": "no reproducible vulnerability found or reproduced; no scanner output exists to classify"
+  },
+  "tool_versions": {
+    "python": "3.12.10",
+    "uv": "0.12.13 (tools/bin/uv.exe; not on PATH)",
+    "os": "Windows 11",
+    "host_notes": "no httpx, no DB driver, no psql/pg_ctl, docker daemon unreachable, TEST_DATABASE_URL unset"
+  },
+  "verified_input_hashes": {
+    "docs/prompts/04-api/P05-02-master-data-services.md": "53c55552bd4946c618f6e68afdaaebfaedfc16dc2a216385ba2feb129560df9a",
+    "docs/api/API_CONTRACT.md": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+    "docs/architecture/DATA_CONTRACTS.md": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/TASK_MANIFEST.json": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "apps/backend/pyproject.toml": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "artifacts/gates/G01.json": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+    "artifacts/handoffs/P05-01/dsh/evidence.json": "bb53bde6b108f0da488a7a5583a40433de204bfc6bf142b767bf1a234c5e01d9",
+    "artifacts/handoffs/P05-01/zcode/precheck.json": "acb7f27260a5ca51d7c323345ea9f1e56e2655fbfbcc6c5e3581a8052cf6da00",
+    "artifacts/handoffs/P05-02/dsh/evidence.json": "06686907c7721c21ae79cbef0a6c2276a4a74ab1c907f94dc7784672291313fa",
+    "docs/handoffs/P05-02/dsh.md": "4dcd789f21b1e32e47284087a6dce5469edc243d6c41c6f9ebdfb51408fbf09b"
+  },
+  "verified_input_hashes_note": "recomputed during this review; every shared key matches DSH's recorded value",
+  "evidence_logs": {
+    "cmd1-pytest.log": {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/cmd1-pytest.log",
+      "sha256": "2e6c2b692855319fecc946905d987d8b809ef8cb271c3f8b9cbc815538143496",
+      "bytes": 118
+    },
+    "cmd2-architecture.log": {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/cmd2-architecture.log",
+      "sha256": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "bytes": 81
+    },
+    "cmd3-export-contracts.log": {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/cmd3-export-contracts.log",
+      "sha256": "8406918001f41ad1d0867c6d92ada65942c40a41c724037aa69dc3c59b76daca",
+      "bytes": 225
+    },
+    "gates-probe-phase05.log": {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/gates-probe-phase05.log",
+      "sha256": "8b3674150bd4cebe97becd90299764ddb8de49fc153ea7165f6b6c50c26f4f29",
+      "bytes": 2103
+    },
+    "regression-full-pytest.log": {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/regression-full-pytest.log",
+      "sha256": "7e9fb2874338b79cf35e5f60ab8851f0fbe6c5166a56644d8810d990e433e960",
+      "bytes": 272
+    },
+    "env-probe.log": {
+      "path": "artifacts/handoffs/P05-02/zcode/logs/env-probe.log",
+      "sha256": "8360d8d92b7b3d303223fd068b472aa30ff6210507170568f2b775180c3e4679",
+      "bytes": 1951
+    }
+  },
+  "evidence_builder": {
+    "path": "artifacts/handoffs/P05-02/zcode/build-evidence.py",
+    "argv": "python artifacts/handoffs/P05-02/zcode/build-evidence.py",
+    "rebuildable": "yes: every hash is recomputed from the working tree"
+  },
+  "sandbox_gate_evidence": {
+    "official_gate_records_written": [],
+    "statement": "no Gate was signed and no artifacts/gates file was created or modified; probe output went to tmp/zcode-p05",
+    "artifacts_gates_listing_after_review": [
+      "G00-checks.log",
+      "G00.json",
+      "G01.json"
+    ]
+  },
+  "files_added_by_zcode": [
+    "artifacts/handoffs/P05-02/zcode/build-evidence.py",
+    "artifacts/handoffs/P05-02/zcode/evidence.json",
+    "artifacts/handoffs/P05-02/zcode/precheck.json",
+    "artifacts/handoffs/P05-02/zcode/logs/cmd1-pytest.log",
+    "artifacts/handoffs/P05-02/zcode/logs/cmd2-architecture.log",
+    "artifacts/handoffs/P05-02/zcode/logs/cmd3-export-contracts.log",
+    "artifacts/handoffs/P05-02/zcode/logs/gates-probe-phase05.log",
+    "artifacts/handoffs/P05-02/zcode/logs/regression-full-pytest.log",
+    "artifacts/handoffs/P05-02/zcode/logs/env-probe.log"
+  ],
+  "files_modified_by_zcode": [],
+  "files_modified_by_zcode_note": "no file outside this record's own directory was created or modified; the DSH report and evidence were preserved unmodified",
+  "preserved_dsh_report": [
+    "docs/handoffs/P05-02/dsh.md (unmodified)",
+    "artifacts/handoffs/P05-02/dsh/evidence.json (unmodified, including the counting defect of Z-D6)",
+    "artifacts/handoffs/P05-02/dsh/logs/* (4 files, hashes verified)"
+  ],
+  "signs_gate": false,
+  "gate_signed": null,
+  "limitations": [
+    "the revision label is a self-perturbing content hash because there is no .git",
+    "no HTTP test client and no PostgreSQL are available, so both Test Cases are blocked on this host",
+    "the architecture checker scans 7 placeholder modules; its exit 0 is not acceptance evidence"
+  ],
+  "next_actions": [
+    "repair the barrier first (4 Phase 01 records, then the lock/environment decisions before G01 is finally signed), then deliver P02-01..P02-04 and sign G02, then G03, then the P04 tasks and G04",
+    "deliver and pre-accept P05-01 before re-issuing P05-02, because this task extends its router and composition root",
+    "resolve the manifest ambiguity around scripts/export_contracts.py, and decide the shape ownership of MasterDataUpdate/ResourceDTO/OrderPage together with ARCH-0006",
+    "at pre-acceptance, change a row's revision out of band and prove 409 plus an unchanged row; prove 422 comes from the Schema bound; check stable ordering, the total count, deactivation-not-delete, and that dispatched-order changes go through events"
+  ],
+  "reviewer_verdict_line": "ZCode: BLOCKED -- 0/8 code/contracts/test deliverables, G04 and P05-01 unmet, boundary types unowned, cmd3 structurally impossible; DSH verdict confirmed and its record counting corrected; no Gate signed"
+}

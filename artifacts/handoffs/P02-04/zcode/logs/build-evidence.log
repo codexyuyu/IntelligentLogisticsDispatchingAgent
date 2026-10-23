@@ -1,0 +1,7 @@
+status: BLOCKED
+deliverables present: 0 / 10
+dependency artifacts present: 0 / 13
+logs recorded: 6
+inputs hashed: 31 missing: []
+written: artifacts/handoffs/P02-04/zcode/evidence.json artifacts/handoffs/P02-04/zcode/precheck.json
+bytes: 31578

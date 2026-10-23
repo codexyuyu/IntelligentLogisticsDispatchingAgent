@@ -1,0 +1,3769 @@
+{
+  "schema_version": "1.0.0",
+  "plan_version": "1.0.0",
+  "project_root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "purpose": "Conditional prompt dispatch plan; not progress or acceptance evidence",
+  "model_policy": "Preserve user-selected models; no model overrides",
+  "messages_submitted": 0,
+  "current_state": "P01-02 READY_FOR_ZCODE; G00 stale; G01 not accepted; ownership omission repaired by Codex",
+  "current_task_cards": [
+    {
+      "id": "N01",
+      "title": "N01 → Codex 治理：补交接契约并裁定已知规划缺口",
+      "message_path": "artifacts/dispatch/2026-10-01/completion/messages/now/N01.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "id": "N02",
+      "title": "N02 → Codex 独立审查：复核并恢复 G00",
+      "message_path": "artifacts/dispatch/2026-10-01/completion/messages/now/N02.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "id": "N03",
+      "title": "N03 → DSH-A：刷新 Phase 01 自身交接，交审后停止",
+      "message_path": "artifacts/dispatch/2026-10-01/completion/messages/now/N03.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "id": "N04",
+      "title": "N04 → ZCode：独立重验 Phase 01 三项候选",
+      "message_path": "artifacts/dispatch/2026-10-01/completion/messages/now/N04.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "id": "N05",
+      "title": "N05 → Codex 独立审查：最终审查并签收 G01",
+      "message_path": "artifacts/dispatch/2026-10-01/completion/messages/now/N05.md",
+      "status": "PLANNED_NOT_SENT"
+    }
+  ],
+  "workbuddy_draft_message": "artifacts/dispatch/2026-10-01/completion/messages/workbuddy/phase01-index.md",
+  "workbuddy_optional_followups": [
+    {
+      "name": "frontend-copy",
+      "prerequisite": "G24 有效且客户端/页面状态接口已固定",
+      "objective": "整理 loading/empty/error/conflict/cancelled/TIMEOUT 的中文页面文案与标签草稿",
+      "message_path": "artifacts/dispatch/2026-10-01/completion/messages/workbuddy/frontend-copy.md"
+    },
+    {
+      "name": "demo-evidence-index",
+      "prerequisite": "G35 有效且五场景原始证据已归档",
+      "objective": "整理 A/B/C1/C2/C3 的输入、求解、校验、事件、版本差异、指标、回放文件索引草稿",
+      "message_path": "artifacts/dispatch/2026-10-01/completion/messages/workbuddy/demo-evidence-index.md"
+    },
+    {
+      "name": "operator-doc-copy",
+      "prerequisite": "G37 有效且实际运行/恢复/模型配置步骤可读取",
+      "objective": "整理文档格式、术语与操作步骤索引草稿，供 P38 主实现者核对采用",
+      "message_path": "artifacts/dispatch/2026-10-01/completion/messages/workbuddy/operator-doc-copy.md"
+    },
+    {
+      "name": "release-note-copy",
+      "prerequisite": "P39-01 候选已经固定",
+      "objective": "整理发布说明和已知限制排版草稿，保持来源与实际能力边界",
+      "message_path": "artifacts/dispatch/2026-10-01/completion/messages/workbuddy/release-note-copy.md"
+    }
+  ],
+  "business_task_count": 103,
+  "stage_review_count": 38,
+  "tasks": [
+    {
+      "task_id": "P02-01",
+      "title": "实现领域 ID、单位与唯一状态枚举",
+      "phase": 2,
+      "phase_gate": "G02",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P02-01.md",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/errors.py",
+        "packages/domain/src/logistics_domain/primitives.py",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p02_01_primitives_and_states.py tests/integration/test_p02_01_primitives_and_states.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/02-domain/P02-01-primitives-and-states.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P02-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P02-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G02.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P02-02",
+      "title": "实现订单、货物与运仓资源领域模型",
+      "phase": 2,
+      "phase_gate": "G02",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G01",
+        "P02-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P02-02.md",
+        "docs/implementation/reports/P02-02.md",
+        "packages/contracts/src/logistics_contracts/entities.py",
+        "packages/domain/src/logistics_domain/orders.py",
+        "packages/domain/src/logistics_domain/resources.py",
+        "tests/integration/test_p02_02_master_entities.py",
+        "tests/unit/test_p02_02_master_entities.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p02_02_master_entities.py tests/integration/test_p02_02_master_entities.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/02-domain/P02-02-master-entities.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P02-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P02-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G02.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P02-03",
+      "title": "实现任务、版本与优化结果领域模型",
+      "phase": 2,
+      "phase_gate": "G02",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G01",
+        "P02-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P02-03.md",
+        "docs/implementation/reports/P02-03.md",
+        "packages/contracts/src/logistics_contracts/planning.py",
+        "packages/domain/src/logistics_domain/planning.py",
+        "tests/integration/test_p02_03_planning_entities.py",
+        "tests/unit/test_p02_03_planning_entities.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p02_03_planning_entities.py tests/integration/test_p02_03_planning_entities.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/02-domain/P02-03-planning-entities.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P02-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P02-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G02.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P02-04",
+      "title": "实现运行记录模型与 Schema 导出",
+      "phase": 2,
+      "phase_gate": "G02",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G01",
+        "P02-03"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "contracts/schemas.json",
+        "docs/implementation/P02-04.md",
+        "docs/implementation/reports/P02-04.md",
+        "packages/contracts/src/logistics_contracts/common.py",
+        "packages/contracts/src/logistics_contracts/runtime.py",
+        "packages/domain/src/logistics_domain/execution.py",
+        "packages/domain/src/logistics_domain/runtime.py",
+        "scripts/export_contracts.py",
+        "tests/integration/test_p02_04_runtime_contract_export.py",
+        "tests/unit/test_p02_04_runtime_contract_export.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p02_04_runtime_contract_export.py tests/integration/test_p02_04_runtime_contract_export.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/02-domain/P02-04-runtime-contract-export.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P02-04.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P02-04.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G02.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P03-01",
+      "title": "创建主数据与资源迁移",
+      "phase": 3,
+      "phase_gate": "G03",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "alembic.ini",
+        "apps/backend/migrations/env.py",
+        "apps/backend/migrations/versions/0001_resources.py",
+        "apps/backend/src/logistics_backend/persistence/resource_models.py",
+        "docs/implementation/P03-01.md",
+        "docs/implementation/reports/P03-01.md",
+        "tests/integration/test_p03_01_resource_schema.py",
+        "tests/unit/test_p03_01_resource_schema.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p03_01_resource_schema.py tests/integration/test_p03_01_resource_schema.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/03-database/P03-01-resource-schema.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P03-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P03-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G03.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P03-02",
+      "title": "创建不可变计划、运行与审计迁移",
+      "phase": 3,
+      "phase_gate": "G03",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G02",
+        "P03-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/migrations/versions/0002_planning_runtime.py",
+        "apps/backend/src/logistics_backend/persistence/planning_models.py",
+        "apps/backend/src/logistics_backend/persistence/runtime_models.py",
+        "docs/implementation/P03-02.md",
+        "docs/implementation/reports/P03-02.md",
+        "tests/integration/test_p03_02_planning_schema.py",
+        "tests/unit/test_p03_02_planning_schema.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p03_02_planning_schema.py tests/integration/test_p03_02_planning_schema.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/03-database/P03-02-planning-schema.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P03-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P03-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G03.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P03-03",
+      "title": "实现快照读取与事务工作单元",
+      "phase": 3,
+      "phase_gate": "G03",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G02",
+        "P03-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/persistence/snapshots.py",
+        "apps/backend/src/logistics_backend/persistence/uow.py",
+        "docs/implementation/P03-03.md",
+        "docs/implementation/reports/P03-03.md",
+        "packages/domain/src/logistics_domain/ports/storage.py",
+        "tests/integration/test_p03_03_repositories_and_snapshot.py",
+        "tests/unit/test_p03_03_repositories_and_snapshot.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p03_03_repositories_and_snapshot.py tests/integration/test_p03_03_repositories_and_snapshot.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/03-database/P03-03-repositories-and-snapshot.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P03-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P03-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G03.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P03-04",
+      "title": "实现版本 CAS、资源预留与幂等存储",
+      "phase": 3,
+      "phase_gate": "G03",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G02",
+        "P03-03"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/persistence/idempotency.py",
+        "apps/backend/src/logistics_backend/persistence/reservations.py",
+        "apps/backend/src/logistics_backend/persistence/version_store.py",
+        "docs/implementation/P03-04.md",
+        "docs/implementation/reports/P03-04.md",
+        "tests/integration/test_p03_04_atomic_version_store.py",
+        "tests/unit/test_p03_04_atomic_version_store.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p03_04_atomic_version_store.py tests/integration/test_p03_04_atomic_version_store.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/03-database/P03-04-atomic-version-store.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P03-04.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P03-04.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G03.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P04-01",
+      "title": "生成可手算的合成场景与反例数据",
+      "phase": 4,
+      "phase_gate": "G04",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G03"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "data/scenarios/invalid_cases.json",
+        "data/scenarios/manifest.json",
+        "data/scenarios/tiny_transport.json",
+        "data/scenarios/tiny_warehouse.json",
+        "docs/implementation/P04-01.md",
+        "docs/implementation/reports/P04-01.md",
+        "scripts/generate_scenarios.py",
+        "tests/integration/test_p04_01_canonical_fixtures.py",
+        "tests/unit/test_p04_01_canonical_fixtures.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p04_01_canonical_fixtures.py tests/integration/test_p04_01_canonical_fixtures.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/01-foundation/P04-01-canonical-fixtures.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P04-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P04-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G04.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P04-02",
+      "title": "实现可重复执行的数据库种子导入",
+      "phase": 4,
+      "phase_gate": "G04",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G03",
+        "P04-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/cli/seed.py",
+        "data/seed/README.md",
+        "docs/implementation/P04-02.md",
+        "docs/implementation/reports/P04-02.md",
+        "tests/integration/test_p04_02_database_seed.py",
+        "tests/unit/test_p04_02_database_seed.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p04_02_database_seed.py tests/integration/test_p04_02_database_seed.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/01-foundation/P04-02-database-seed.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P04-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P04-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G04.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P05-01",
+      "title": "建立 FastAPI 组合根、错误协议与基础鉴权",
+      "phase": 5,
+      "phase_gate": "G05",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G04"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/dependencies.py",
+        "apps/backend/src/logistics_backend/api/errors.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/backend/src/logistics_backend/main.py",
+        "contracts/openapi.json",
+        "docs/implementation/P05-01.md",
+        "docs/implementation/reports/P05-01.md",
+        "scripts/export_contracts.py",
+        "tests/integration/test_p05_01_api_composition.py",
+        "tests/unit/test_p05_01_api_composition.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p05_01_api_composition.py tests/integration/test_p05_01_api_composition.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "task_prompt": "docs/prompts/04-api/P05-01-api-composition.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P05-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P05-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G05.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P05-02",
+      "title": "实现主数据分页读写服务与资源日历 API",
+      "phase": 5,
+      "phase_gate": "G05",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G04",
+        "P05-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/master_data.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/master_data.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json",
+        "docs/implementation/P05-02.md",
+        "docs/implementation/reports/P05-02.md",
+        "packages/contracts/src/logistics_contracts/http.py",
+        "tests/integration/test_p05_02_master_data_services.py",
+        "tests/unit/test_p05_02_master_data_services.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p05_02_master_data_services.py tests/integration/test_p05_02_master_data_services.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "task_prompt": "docs/prompts/04-api/P05-02-master-data-services.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P05-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P05-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G05.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P05-03",
+      "title": "实现作业租约、超时取消与受限 worker",
+      "phase": 5,
+      "phase_gate": "G05",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G04",
+        "P05-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/jobs.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/jobs.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/backend/src/logistics_backend/persistence/jobs.py",
+        "apps/backend/src/logistics_backend/worker.py",
+        "contracts/openapi.json",
+        "docs/implementation/P05-03.md",
+        "docs/implementation/reports/P05-03.md",
+        "tests/integration/test_p05_03_durable_jobs.py",
+        "tests/unit/test_p05_03_durable_jobs.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p05_03_durable_jobs.py tests/integration/test_p05_03_durable_jobs.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "task_prompt": "docs/prompts/04-api/P05-03-durable-jobs.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P05-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P05-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G05.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P06-01",
+      "title": "实现运输请求、结果和 Solver Protocol",
+      "phase": 6,
+      "phase_gate": "G06",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G05"
+      ],
+      "parallel_candidates": [
+        "P06-02"
+      ],
+      "allowed_files": [
+        "docs/implementation/P06-01.md",
+        "docs/implementation/reports/P06-01.md",
+        "packages/contracts/src/logistics_contracts/transport.py",
+        "packages/domain/src/logistics_domain/ports/transport.py",
+        "packages/domain/src/logistics_domain/transport.py",
+        "tests/integration/test_p06_01_transport_contract.py",
+        "tests/unit/test_p06_01_transport_contract.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p06_01_transport_contract.py tests/integration/test_p06_01_transport_contract.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/05-transport-solver/P06-01-transport-contract.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P06-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P06-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G06.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P06-02",
+      "title": "实现版本化道路距离和时间矩阵提供器",
+      "phase": 6,
+      "phase_gate": "G06",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G05"
+      ],
+      "parallel_candidates": [
+        "P06-01"
+      ],
+      "allowed_files": [
+        "docs/implementation/P06-02.md",
+        "docs/implementation/reports/P06-02.md",
+        "packages/contracts/src/logistics_contracts/matrix.py",
+        "packages/domain/src/logistics_domain/ports/matrix.py",
+        "packages/optimization/src/logistics_optimization/transport/matrix.py",
+        "tests/integration/test_p06_02_distance_matrix.py",
+        "tests/unit/test_p06_02_distance_matrix.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p06_02_distance_matrix.py tests/integration/test_p06_02_distance_matrix.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/05-transport-solver/P06-02-distance-matrix.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P06-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P06-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G06.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P07-01",
+      "title": "实现多起终点车辆路径基本求解",
+      "phase": 7,
+      "phase_gate": "G07",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G06"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P07-01.md",
+        "docs/implementation/reports/P07-01.md",
+        "packages/optimization/src/logistics_optimization/transport/base_model.py",
+        "tests/integration/test_p07_01_vrp_base.py",
+        "tests/solver/test_p07_01_vrp_base.py",
+        "tests/unit/test_p07_01_vrp_base.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p07_01_vrp_base.py tests/integration/test_p07_01_vrp_base.py tests/solver/test_p07_01_vrp_base.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/05-transport-solver/P07-01-vrp-base.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P07-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P07-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G07.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P07-02",
+      "title": "实现重量、容积和提送货载荷约束",
+      "phase": 7,
+      "phase_gate": "G07",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G06",
+        "P07-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P07-02.md",
+        "docs/implementation/reports/P07-02.md",
+        "packages/optimization/src/logistics_optimization/transport/capacity.py",
+        "tests/integration/test_p07_02_capacity_and_pickup.py",
+        "tests/solver/test_p07_02_capacity_and_pickup.py",
+        "tests/unit/test_p07_02_capacity_and_pickup.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p07_02_capacity_and_pickup.py tests/integration/test_p07_02_capacity_and_pickup.py tests/solver/test_p07_02_capacity_and_pickup.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/05-transport-solver/P07-02-capacity-and-pickup.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P07-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P07-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G07.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P07-03",
+      "title": "实现服务时间、等待、班次与硬时间窗",
+      "phase": 7,
+      "phase_gate": "G07",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G06",
+        "P07-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P07-03.md",
+        "docs/implementation/reports/P07-03.md",
+        "packages/optimization/src/logistics_optimization/transport/time_windows.py",
+        "tests/integration/test_p07_03_time_windows.py",
+        "tests/solver/test_p07_03_time_windows.py",
+        "tests/unit/test_p07_03_time_windows.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p07_03_time_windows.py tests/integration/test_p07_03_time_windows.py tests/solver/test_p07_03_time_windows.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/05-transport-solver/P07-03-time-windows.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P07-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P07-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G07.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P07-04",
+      "title": "实现温区、货物类型与车辆允许集合",
+      "phase": 7,
+      "phase_gate": "G07",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G06",
+        "P07-03"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P07-04.md",
+        "docs/implementation/reports/P07-04.md",
+        "packages/optimization/src/logistics_optimization/transport/compatibility.py",
+        "tests/integration/test_p07_04_temperature_and_cargo.py",
+        "tests/solver/test_p07_04_temperature_and_cargo.py",
+        "tests/unit/test_p07_04_temperature_and_cargo.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p07_04_temperature_and_cargo.py tests/integration/test_p07_04_temperature_and_cargo.py tests/solver/test_p07_04_temperature_and_cargo.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/05-transport-solver/P07-04-temperature-and-cargo.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P07-04.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P07-04.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G07.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P07-05",
+      "title": "实现可解释费用与可选订单目标函数",
+      "phase": 7,
+      "phase_gate": "G07",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G06",
+        "P07-04"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P07-05.md",
+        "docs/implementation/reports/P07-05.md",
+        "packages/optimization/src/logistics_optimization/transport/objective.py",
+        "tests/integration/test_p07_05_objective_function.py",
+        "tests/solver/test_p07_05_objective_function.py",
+        "tests/unit/test_p07_05_objective_function.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p07_05_objective_function.py tests/integration/test_p07_05_objective_function.py tests/solver/test_p07_05_objective_function.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/05-transport-solver/P07-05-objective-function.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P07-05.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P07-05.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G07.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P07-06",
+      "title": "实现运输结果提取、状态映射和独立重算",
+      "phase": 7,
+      "phase_gate": "G07",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G06",
+        "P07-05"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P07-06.md",
+        "docs/implementation/reports/P07-06.md",
+        "packages/optimization/src/logistics_optimization/transport/result.py",
+        "packages/optimization/src/logistics_optimization/validation/transport.py",
+        "tests/integration/test_p07_06_result_status_validation.py",
+        "tests/solver/test_p07_06_result_status_validation.py",
+        "tests/unit/test_p07_06_result_status_validation.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p07_06_result_status_validation.py tests/integration/test_p07_06_result_status_validation.py tests/solver/test_p07_06_result_status_validation.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/05-transport-solver/P07-06-result-status-validation.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P07-06.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P07-06.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G07.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P07-07",
+      "title": "装配运输 Solver 并验证数值与预算边界",
+      "phase": 7,
+      "phase_gate": "G07",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G06",
+        "P07-06"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P07-07.md",
+        "docs/implementation/reports/P07-07.md",
+        "packages/optimization/src/logistics_optimization/transport/solver.py",
+        "tests/integration/test_p07_07_transport_adapter.py",
+        "tests/solver/test_p07_07_transport_adapter.py",
+        "tests/unit/test_p07_07_transport_adapter.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p07_07_transport_adapter.py tests/integration/test_p07_07_transport_adapter.py tests/solver/test_p07_07_transport_adapter.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/05-transport-solver/P07-07-transport-adapter.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P07-07.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P07-07.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G07.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P08-01",
+      "title": "实现仓储任务与资源日历协议",
+      "phase": 8,
+      "phase_gate": "G08",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G07"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P08-01.md",
+        "docs/implementation/reports/P08-01.md",
+        "packages/contracts/src/logistics_contracts/warehouse.py",
+        "packages/domain/src/logistics_domain/ports/warehouse.py",
+        "packages/domain/src/logistics_domain/warehouse.py",
+        "tests/integration/test_p08_01_warehouse_contract.py",
+        "tests/unit/test_p08_01_warehouse_contract.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p08_01_warehouse_contract.py tests/integration/test_p08_01_warehouse_contract.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P08-01-warehouse-contract.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P08-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P08-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G08.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P08-02",
+      "title": "实现库存占用和仓运交接约束模型",
+      "phase": 8,
+      "phase_gate": "G08",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G07",
+        "P08-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P08-02.md",
+        "docs/implementation/reports/P08-02.md",
+        "packages/contracts/src/logistics_contracts/handoff.py",
+        "packages/domain/src/logistics_domain/inventory.py",
+        "packages/domain/src/logistics_domain/joint.py",
+        "packages/domain/src/logistics_domain/ports/joint.py",
+        "tests/integration/test_p08_02_inventory_and_handoffs.py",
+        "tests/unit/test_p08_02_inventory_and_handoffs.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p08_02_inventory_and_handoffs.py tests/integration/test_p08_02_inventory_and_handoffs.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P08-02-inventory-and-handoffs.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P08-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P08-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G08.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P09-01",
+      "title": "实现仓储区间、互斥资源与任务依赖",
+      "phase": 9,
+      "phase_gate": "G09",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G08"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P09-01.md",
+        "docs/implementation/reports/P09-01.md",
+        "packages/optimization/src/logistics_optimization/warehouse/intervals.py",
+        "tests/integration/test_p09_01_intervals_precedence.py",
+        "tests/solver/test_p09_01_intervals_precedence.py",
+        "tests/unit/test_p09_01_intervals_precedence.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p09_01_intervals_precedence.py tests/integration/test_p09_01_intervals_precedence.py tests/solver/test_p09_01_intervals_precedence.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P09-01-intervals-precedence.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P09-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P09-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G09.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P09-02",
+      "title": "实现人员、设备和温区容量限制",
+      "phase": 9,
+      "phase_gate": "G09",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G08",
+        "P09-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P09-02.md",
+        "docs/implementation/reports/P09-02.md",
+        "packages/optimization/src/logistics_optimization/warehouse/resources.py",
+        "tests/integration/test_p09_02_cumulative_resources.py",
+        "tests/solver/test_p09_02_cumulative_resources.py",
+        "tests/unit/test_p09_02_cumulative_resources.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p09_02_cumulative_resources.py tests/integration/test_p09_02_cumulative_resources.py tests/solver/test_p09_02_cumulative_resources.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P09-02-cumulative-resources.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P09-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P09-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G09.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P09-03",
+      "title": "实现库位库存区间和冷链容量约束",
+      "phase": 9,
+      "phase_gate": "G09",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G08",
+        "P09-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P09-03.md",
+        "docs/implementation/reports/P09-03.md",
+        "packages/optimization/src/logistics_optimization/warehouse/storage.py",
+        "tests/integration/test_p09_03_storage_capacity.py",
+        "tests/solver/test_p09_03_storage_capacity.py",
+        "tests/unit/test_p09_03_storage_capacity.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p09_03_storage_capacity.py tests/integration/test_p09_03_storage_capacity.py tests/solver/test_p09_03_storage_capacity.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P09-03-storage-capacity.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P09-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P09-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G09.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P09-04",
+      "title": "实现清洁及月台、温区、分拣切换时间",
+      "phase": 9,
+      "phase_gate": "G09",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G08",
+        "P09-03"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P09-04.md",
+        "docs/implementation/reports/P09-04.md",
+        "packages/optimization/src/logistics_optimization/warehouse/setup.py",
+        "tests/integration/test_p09_04_sequence_setup.py",
+        "tests/solver/test_p09_04_sequence_setup.py",
+        "tests/unit/test_p09_04_sequence_setup.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p09_04_sequence_setup.py tests/integration/test_p09_04_sequence_setup.py tests/solver/test_p09_04_sequence_setup.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P09-04-sequence-setup.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P09-04.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P09-04.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G09.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P09-05",
+      "title": "装配仓储目标、结果提取与独立校验",
+      "phase": 9,
+      "phase_gate": "G09",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G08",
+        "P09-04"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P09-05.md",
+        "docs/implementation/reports/P09-05.md",
+        "packages/optimization/src/logistics_optimization/validation/warehouse.py",
+        "packages/optimization/src/logistics_optimization/warehouse/solver.py",
+        "tests/integration/test_p09_05_warehouse_result.py",
+        "tests/solver/test_p09_05_warehouse_result.py",
+        "tests/unit/test_p09_05_warehouse_result.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p09_05_warehouse_result.py tests/integration/test_p09_05_warehouse_result.py tests/solver/test_p09_05_warehouse_result.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P09-05-warehouse-result.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P09-05.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P09-05.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G09.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P10-01",
+      "title": "实现统一校验报告与约束覆盖注册表",
+      "phase": 10,
+      "phase_gate": "G10",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G09"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P10-01.md",
+        "docs/implementation/reports/P10-01.md",
+        "packages/contracts/src/logistics_contracts/validation.py",
+        "packages/domain/src/logistics_domain/ports/validation.py",
+        "packages/optimization/src/logistics_optimization/validation/registry.py",
+        "tests/integration/test_p10_01_validator_protocol.py",
+        "tests/unit/test_p10_01_validator_protocol.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p10_01_validator_protocol.py tests/integration/test_p10_01_validator_protocol.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P10-01-validator-protocol.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P10-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P10-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G10.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P10-02",
+      "title": "实现跨仓运链、库存和资源完整校验",
+      "phase": 10,
+      "phase_gate": "G10",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G09",
+        "P10-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P10-02.md",
+        "docs/implementation/reports/P10-02.md",
+        "packages/optimization/src/logistics_optimization/validation/joint.py",
+        "tests/integration/test_p10_02_joint_validator.py",
+        "tests/unit/test_p10_02_joint_validator.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p10_02_joint_validator.py tests/integration/test_p10_02_joint_validator.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P10-02-joint-validator.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P10-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P10-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G10.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P10-03",
+      "title": "建立独立硬约束反例与小规模 oracle 套件",
+      "phase": 10,
+      "phase_gate": "G10",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G09",
+        "P10-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/algorithms/VALIDATOR_COVERAGE.md",
+        "docs/implementation/P10-03.md",
+        "docs/implementation/reports/P10-03.md",
+        "tests/integration/test_p10_03_validator_adversarial_suite.py",
+        "tests/solver/oracles.py",
+        "tests/solver/test_constraint_mutations.py",
+        "tests/solver/test_p10_03_validator_adversarial_suite.py",
+        "tests/unit/test_p10_03_validator_adversarial_suite.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p10_03_validator_adversarial_suite.py tests/integration/test_p10_03_validator_adversarial_suite.py tests/solver/test_p10_03_validator_adversarial_suite.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/06-warehouse-solver/P10-03-validator-adversarial-suite.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P10-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P10-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G10.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P11-01",
+      "title": "实现仿真场景、状态、快照与随机源契约",
+      "phase": 11,
+      "phase_gate": "G11",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G10"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P11-01.md",
+        "docs/implementation/reports/P11-01.md",
+        "packages/contracts/src/logistics_contracts/simulation.py",
+        "packages/domain/src/logistics_domain/ports/simulation.py",
+        "packages/domain/src/logistics_domain/simulation.py",
+        "tests/integration/test_p11_01_simulation_contract.py",
+        "tests/unit/test_p11_01_simulation_contract.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p11_01_simulation_contract.py tests/integration/test_p11_01_simulation_contract.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/07-simulation/P11-01-simulation-contract.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P11-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P11-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G11.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P11-02",
+      "title": "实现订单、车辆和仓库执行状态转换",
+      "phase": 11,
+      "phase_gate": "G11",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G10",
+        "P11-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P11-02.md",
+        "docs/implementation/reports/P11-02.md",
+        "packages/simulation/src/logistics_simulation/projection.py",
+        "packages/simulation/src/logistics_simulation/state.py",
+        "tests/integration/test_p11_02_execution_state_machine.py",
+        "tests/unit/test_p11_02_execution_state_machine.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p11_02_execution_state_machine.py tests/integration/test_p11_02_execution_state_machine.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/07-simulation/P11-02-execution-state-machine.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P11-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P11-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G11.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P12-01",
+      "title": "实现 SimPy 时间推进与稳定事件调度内核",
+      "phase": 12,
+      "phase_gate": "G12",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G11"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P12-01.md",
+        "docs/implementation/reports/P12-01.md",
+        "packages/simulation/src/logistics_simulation/engine.py",
+        "tests/integration/test_p12_01_simpy_kernel.py",
+        "tests/simulation/test_p12_01_simpy_kernel.py",
+        "tests/unit/test_p12_01_simpy_kernel.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p12_01_simpy_kernel.py tests/integration/test_p12_01_simpy_kernel.py tests/simulation/test_p12_01_simpy_kernel.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/07-simulation/P12-01-simpy-kernel.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P12-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P12-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G12.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P12-02",
+      "title": "实现车辆移动、服务与订单交付过程",
+      "phase": 12,
+      "phase_gate": "G12",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G11",
+        "P12-01"
+      ],
+      "parallel_candidates": [
+        "P12-03"
+      ],
+      "allowed_files": [
+        "docs/implementation/P12-02.md",
+        "docs/implementation/reports/P12-02.md",
+        "packages/simulation/src/logistics_simulation/transport.py",
+        "tests/integration/test_p12_02_transport_execution.py",
+        "tests/simulation/test_p12_02_transport_execution.py",
+        "tests/unit/test_p12_02_transport_execution.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p12_02_transport_execution.py tests/integration/test_p12_02_transport_execution.py tests/simulation/test_p12_02_transport_execution.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/07-simulation/P12-02-transport-execution.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P12-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P12-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G12.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P12-03",
+      "title": "实现仓储资源争用、作业与库存演化",
+      "phase": 12,
+      "phase_gate": "G12",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G11",
+        "P12-01"
+      ],
+      "parallel_candidates": [
+        "P12-02"
+      ],
+      "allowed_files": [
+        "docs/implementation/P12-03.md",
+        "docs/implementation/reports/P12-03.md",
+        "packages/simulation/src/logistics_simulation/warehouse.py",
+        "tests/integration/test_p12_03_warehouse_execution.py",
+        "tests/simulation/test_p12_03_warehouse_execution.py",
+        "tests/unit/test_p12_03_warehouse_execution.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p12_03_warehouse_execution.py tests/integration/test_p12_03_warehouse_execution.py tests/simulation/test_p12_03_warehouse_execution.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/07-simulation/P12-03-warehouse-execution.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P12-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P12-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G12.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P12-04",
+      "title": "实现快照恢复和反事实分支隔离",
+      "phase": 12,
+      "phase_gate": "G12",
+      "owner": "B",
+      "primary_implementer": "DSH-B",
+      "dependencies": [
+        "G11",
+        "P12-02",
+        "P12-03"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P12-04.md",
+        "docs/implementation/reports/P12-04.md",
+        "packages/simulation/src/logistics_simulation/scenarios.py",
+        "packages/simulation/src/logistics_simulation/snapshots.py",
+        "tests/integration/test_p12_04_snapshot_replay.py",
+        "tests/simulation/test_p12_04_snapshot_replay.py",
+        "tests/unit/test_p12_04_snapshot_replay.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p12_04_snapshot_replay.py tests/integration/test_p12_04_snapshot_replay.py tests/simulation/test_p12_04_snapshot_replay.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/07-simulation/P12-04-snapshot-replay.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P12-04.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P12-04.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G12.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P13-01",
+      "title": "实现十类异常事件的校验、去重与排序",
+      "phase": 13,
+      "phase_gate": "G13",
+      "owner": "A (公共事件服务), B (simulation/events.py；按文件分工)",
+      "primary_implementer": "DSH-A 主写 / DSH-B 按文件贡献",
+      "dependencies": [
+        "G12"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/application/event_ingestion.py",
+        "docs/implementation/P13-01.md",
+        "docs/implementation/reports/P13-01.md",
+        "packages/contracts/src/logistics_contracts/events.py",
+        "packages/simulation/src/logistics_simulation/events.py",
+        "tests/integration/test_p13_01_event_ingestion.py",
+        "tests/unit/test_p13_01_event_ingestion.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p13_01_event_ingestion.py tests/integration/test_p13_01_event_ingestion.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/07-simulation/P13-01-event-ingestion.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P13-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P13-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G13.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P13-02",
+      "title": "实现事件注入服务及持久化分发",
+      "phase": 13,
+      "phase_gate": "G13",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G12",
+        "P13-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/events.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/outbox.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/backend/src/logistics_backend/persistence/outbox.py",
+        "contracts/openapi.json",
+        "docs/implementation/P13-02.md",
+        "docs/implementation/reports/P13-02.md",
+        "tests/integration/test_p13_02_event_api_and_outbox.py",
+        "tests/unit/test_p13_02_event_api_and_outbox.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p13_02_event_api_and_outbox.py tests/integration/test_p13_02_event_api_and_outbox.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "task_prompt": "docs/prompts/07-simulation/P13-02-event-api-and-outbox.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P13-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P13-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G13.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P14-01",
+      "title": "实现异常影响依赖图与最小闭包",
+      "phase": 14,
+      "phase_gate": "G14",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G13"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P14-01.md",
+        "docs/implementation/reports/P14-01.md",
+        "packages/contracts/src/logistics_contracts/rescheduling.py",
+        "packages/optimization/src/logistics_optimization/rescheduling/impact.py",
+        "tests/integration/test_p14_01_impact_graph.py",
+        "tests/unit/test_p14_01_impact_graph.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p14_01_impact_graph.py tests/integration/test_p14_01_impact_graph.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/08-exception/P14-01-impact-graph.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P14-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P14-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G14.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P14-02",
+      "title": "实现不可逆事实、在途起点与重排边界提取",
+      "phase": 14,
+      "phase_gate": "G14",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G13",
+        "P14-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P14-02.md",
+        "docs/implementation/reports/P14-02.md",
+        "packages/optimization/src/logistics_optimization/rescheduling/boundary.py",
+        "tests/integration/test_p14_02_execution_freeze.py",
+        "tests/unit/test_p14_02_execution_freeze.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p14_02_execution_freeze.py tests/integration/test_p14_02_execution_freeze.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/08-exception/P14-02-execution-freeze.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P14-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P14-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G14.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P15-01",
+      "title": "实现局部候选策略与救援交接任务生成",
+      "phase": 15,
+      "phase_gate": "G15",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G14"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P15-01.md",
+        "docs/implementation/reports/P15-01.md",
+        "packages/optimization/src/logistics_optimization/rescheduling/candidates.py",
+        "tests/integration/test_p15_01_candidate_policies.py",
+        "tests/unit/test_p15_01_candidate_policies.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p15_01_candidate_policies.py tests/integration/test_p15_01_candidate_policies.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/08-exception/P15-01-candidate-policies.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P15-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P15-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G15.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P15-02",
+      "title": "实现冻结边界下的局部重新求解",
+      "phase": 15,
+      "phase_gate": "G15",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G14",
+        "P15-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P15-02.md",
+        "docs/implementation/reports/P15-02.md",
+        "packages/domain/src/logistics_domain/ports/rescheduling.py",
+        "packages/optimization/src/logistics_optimization/coordination/joint.py",
+        "packages/optimization/src/logistics_optimization/rescheduling/solver.py",
+        "tests/integration/test_p15_02_local_solve.py",
+        "tests/solver/test_p15_02_local_solve.py",
+        "tests/unit/test_p15_02_local_solve.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p15_02_local_solve.py tests/integration/test_p15_02_local_solve.py tests/solver/test_p15_02_local_solve.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/08-exception/P15-02-local-solve.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P15-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P15-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G15.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P15-03",
+      "title": "实现局部扩展与全局剩余任务降级策略",
+      "phase": 15,
+      "phase_gate": "G15",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G14",
+        "P15-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P15-03.md",
+        "docs/implementation/reports/P15-03.md",
+        "packages/optimization/src/logistics_optimization/rescheduling/escalation.py",
+        "tests/integration/test_p15_03_bounded_escalation.py",
+        "tests/solver/test_p15_03_bounded_escalation.py",
+        "tests/unit/test_p15_03_bounded_escalation.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p15_03_bounded_escalation.py tests/integration/test_p15_03_bounded_escalation.py tests/solver/test_p15_03_bounded_escalation.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/08-exception/P15-03-bounded-escalation.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P15-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P15-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G15.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P15-04",
+      "title": "实现版本差异与候选排序",
+      "phase": 15,
+      "phase_gate": "G15",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G14",
+        "P15-03"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P15-04.md",
+        "docs/implementation/reports/P15-04.md",
+        "packages/optimization/src/logistics_optimization/rescheduling/diff.py",
+        "packages/optimization/src/logistics_optimization/rescheduling/ranking.py",
+        "tests/integration/test_p15_04_version_diff.py",
+        "tests/unit/test_p15_04_version_diff.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p15_04_version_diff.py tests/integration/test_p15_04_version_diff.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/08-exception/P15-04-version-diff.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P15-04.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P15-04.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G15.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P16-01",
+      "title": "实现运输、仓储和重排作业 API",
+      "phase": 16,
+      "phase_gate": "G16",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G15"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/optimization.py",
+        "apps/backend/src/logistics_backend/api/rescheduling.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/optimization.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json",
+        "docs/implementation/P16-01.md",
+        "docs/implementation/reports/P16-01.md",
+        "tests/integration/test_p16_01_optimization_job_api.py",
+        "tests/unit/test_p16_01_optimization_job_api.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p16_01_optimization_job_api.py tests/integration/test_p16_01_optimization_job_api.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "task_prompt": "docs/prompts/04-api/P16-01-optimization-job-api.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P16-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P16-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G16.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P16-02",
+      "title": "实现有界仓运窗口反馈协调服务",
+      "phase": 16,
+      "phase_gate": "G16",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G15",
+        "P16-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/joint_planning.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/joint_planning.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json",
+        "docs/implementation/P16-02.md",
+        "docs/implementation/reports/P16-02.md",
+        "tests/integration/test_p16_02_joint_planning_service.py",
+        "tests/unit/test_p16_02_joint_planning_service.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p16_02_joint_planning_service.py tests/integration/test_p16_02_joint_planning_service.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "task_prompt": "docs/prompts/04-api/P16-02-joint-planning-service.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P16-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P16-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G16.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P16-03",
+      "title": "实现重新校验后的版本确认服务",
+      "phase": 16,
+      "phase_gate": "G16",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G15",
+        "P16-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/api/schedules.py",
+        "apps/backend/src/logistics_backend/application/commit_schedule.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json",
+        "docs/implementation/P16-03.md",
+        "docs/implementation/reports/P16-03.md",
+        "tests/integration/test_p16_03_validated_commit_api.py",
+        "tests/unit/test_p16_03_validated_commit_api.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p16_03_validated_commit_api.py tests/integration/test_p16_03_validated_commit_api.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "task_prompt": "docs/prompts/04-api/P16-03-validated-commit-api.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P16-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P16-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G16.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P16-04",
+      "title": "实现仿真控制、版本对比与结果查询 API",
+      "phase": 16,
+      "phase_gate": "G16",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G15",
+        "P16-03"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/results.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/api/simulations.py",
+        "apps/backend/src/logistics_backend/application/simulation.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json",
+        "docs/implementation/P16-04.md",
+        "docs/implementation/reports/P16-04.md",
+        "tests/integration/test_p16_04_simulation_query_api.py",
+        "tests/unit/test_p16_04_simulation_query_api.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p16_04_simulation_query_api.py tests/integration/test_p16_04_simulation_query_api.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "task_prompt": "docs/prompts/04-api/P16-04-simulation-query-api.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P16-04.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P16-04.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G16.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P17-01",
+      "title": "实现 Agent 标准工具注册、权限与参数协议",
+      "phase": 17,
+      "phase_gate": "G17",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G16"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P17-01.md",
+        "docs/implementation/reports/P17-01.md",
+        "packages/agents/src/logistics_agents/tools/protocol.py",
+        "packages/agents/src/logistics_agents/tools/registry.py",
+        "packages/contracts/src/logistics_contracts/tools.py",
+        "tests/integration/test_p17_01_tool_schemas.py",
+        "tests/unit/test_p17_01_tool_schemas.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p17_01_tool_schemas.py tests/integration/test_p17_01_tool_schemas.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P17-01-tool-schemas.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P17-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P17-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G17.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P17-02",
+      "title": "实现工具到业务服务的唯一适配层",
+      "phase": 17,
+      "phase_gate": "G17",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G16",
+        "P17-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/agent_tools.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "docs/implementation/P17-02.md",
+        "docs/implementation/reports/P17-02.md",
+        "packages/agents/src/logistics_agents/tools/results.py",
+        "tests/integration/test_p17_02_business_tools.py",
+        "tests/unit/test_p17_02_business_tools.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p17_02_business_tools.py tests/integration/test_p17_02_business_tools.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P17-02-business-tools.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P17-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P17-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G17.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P18-01",
+      "title": "实现模型供应商抽象与结构化响应边界",
+      "phase": 18,
+      "phase_gate": "G18",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G17"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P18-01.md",
+        "docs/implementation/reports/P18-01.md",
+        "packages/agents/src/logistics_agents/llm/protocol.py",
+        "packages/agents/src/logistics_agents/llm/provider.py",
+        "packages/contracts/src/logistics_contracts/llm.py",
+        "tests/integration/test_p18_01_llm_provider.py",
+        "tests/unit/test_p18_01_llm_provider.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p18_01_llm_provider.py tests/integration/test_p18_01_llm_provider.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P18-01-llm-provider.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P18-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P18-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G18.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P18-02",
+      "title": "实现模型预算、重试、脱敏与故障降级",
+      "phase": 18,
+      "phase_gate": "G18",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G17",
+        "P18-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P18-02.md",
+        "docs/implementation/reports/P18-02.md",
+        "packages/agents/src/logistics_agents/llm/redaction.py",
+        "packages/agents/src/logistics_agents/llm/resilience.py",
+        "tests/integration/test_p18_02_llm_resilience.py",
+        "tests/unit/test_p18_02_llm_resilience.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p18_02_llm_resilience.py tests/integration/test_p18_02_llm_resilience.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P18-02-llm-resilience.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P18-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P18-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G18.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P19-01",
+      "title": "实现 Coordinator 意图及约束抽取",
+      "phase": 19,
+      "phase_gate": "G19",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G18"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P19-01.md",
+        "docs/implementation/reports/P19-01.md",
+        "packages/agents/src/logistics_agents/coordinator/intent.py",
+        "packages/contracts/src/logistics_contracts/intents.py",
+        "tests/integration/test_p19_01_intent_extraction.py",
+        "tests/unit/test_p19_01_intent_extraction.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p19_01_intent_extraction.py tests/integration/test_p19_01_intent_extraction.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P19-01-intent-extraction.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P19-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P19-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G19.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P19-02",
+      "title": "实现 Coordinator 任务分解与有界运行状态机",
+      "phase": 19,
+      "phase_gate": "G19",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G18",
+        "P19-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P19-02.md",
+        "docs/implementation/reports/P19-02.md",
+        "packages/agents/src/logistics_agents/coordinator/agent.py",
+        "tests/integration/test_p19_02_coordinator_state_machine.py",
+        "tests/unit/test_p19_02_coordinator_state_machine.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p19_02_coordinator_state_machine.py tests/integration/test_p19_02_coordinator_state_machine.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P19-02-coordinator-state-machine.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P19-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P19-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G19.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P20-01",
+      "title": "实现 TransportAgent 求解工具工作流",
+      "phase": 20,
+      "phase_gate": "G20",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G19"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P20-01.md",
+        "docs/implementation/reports/P20-01.md",
+        "packages/agents/src/logistics_agents/transport/agent.py",
+        "tests/integration/test_p20_01_transport_agent_tools.py",
+        "tests/unit/test_p20_01_transport_agent_tools.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p20_01_transport_agent_tools.py tests/integration/test_p20_01_transport_agent_tools.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P20-01-transport-agent-tools.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P20-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P20-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G20.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P20-02",
+      "title": "实现有证据的运输结果解释",
+      "phase": 20,
+      "phase_gate": "G20",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G19",
+        "P20-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P20-02.md",
+        "docs/implementation/reports/P20-02.md",
+        "packages/agents/src/logistics_agents/transport/explain.py",
+        "tests/integration/test_p20_02_transport_explanation.py",
+        "tests/unit/test_p20_02_transport_explanation.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p20_02_transport_explanation.py tests/integration/test_p20_02_transport_explanation.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P20-02-transport-explanation.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P20-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P20-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G20.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P21-01",
+      "title": "实现 WarehouseAgent 排程与窗口报价工作流",
+      "phase": 21,
+      "phase_gate": "G21",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G20"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P21-01.md",
+        "docs/implementation/reports/P21-01.md",
+        "packages/agents/src/logistics_agents/warehouse/agent.py",
+        "tests/integration/test_p21_01_warehouse_agent_tools.py",
+        "tests/unit/test_p21_01_warehouse_agent_tools.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p21_01_warehouse_agent_tools.py tests/integration/test_p21_01_warehouse_agent_tools.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P21-01-warehouse-agent-tools.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P21-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P21-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G21.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P21-02",
+      "title": "实现仓储甘特与资源瓶颈解释数据",
+      "phase": 21,
+      "phase_gate": "G21",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G20",
+        "P21-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P21-02.md",
+        "docs/implementation/reports/P21-02.md",
+        "packages/agents/src/logistics_agents/warehouse/explain.py",
+        "tests/integration/test_p21_02_warehouse_explanation.py",
+        "tests/unit/test_p21_02_warehouse_explanation.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p21_02_warehouse_explanation.py tests/integration/test_p21_02_warehouse_explanation.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P21-02-warehouse-explanation.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P21-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P21-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G21.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P22-01",
+      "title": "实现 ExceptionAgent 九步处置工作流",
+      "phase": 22,
+      "phase_gate": "G22",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G21"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P22-01.md",
+        "docs/implementation/reports/P22-01.md",
+        "packages/agents/src/logistics_agents/exception/agent.py",
+        "tests/integration/test_p22_01_exception_agent_tools.py",
+        "tests/unit/test_p22_01_exception_agent_tools.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p22_01_exception_agent_tools.py tests/integration/test_p22_01_exception_agent_tools.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P22-01-exception-agent-tools.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P22-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P22-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G22.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P22-02",
+      "title": "实现异常处置链和版本差异解释",
+      "phase": 22,
+      "phase_gate": "G22",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G21",
+        "P22-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P22-02.md",
+        "docs/implementation/reports/P22-02.md",
+        "packages/agents/src/logistics_agents/exception/explain.py",
+        "tests/integration/test_p22_02_exception_explanation.py",
+        "tests/unit/test_p22_02_exception_explanation.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p22_02_exception_explanation.py tests/integration/test_p22_02_exception_explanation.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P22-02-exception-explanation.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P22-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P22-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G22.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P23-01",
+      "title": "实现四角色路由、取消与有界协调",
+      "phase": 23,
+      "phase_gate": "G23",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G22"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/application/agent_runs.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "docs/implementation/P23-01.md",
+        "docs/implementation/reports/P23-01.md",
+        "packages/agents/src/logistics_agents/orchestration.py",
+        "tests/integration/test_p23_01_agent_orchestration.py",
+        "tests/unit/test_p23_01_agent_orchestration.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p23_01_agent_orchestration.py tests/integration/test_p23_01_agent_orchestration.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P23-01-agent-orchestration.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P23-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P23-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G23.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P23-02",
+      "title": "实现 Agent 会话 API 与攻击性输入验收",
+      "phase": 23,
+      "phase_gate": "G23",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G22",
+        "P23-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/agents.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json",
+        "docs/implementation/P23-02.md",
+        "docs/implementation/reports/P23-02.md",
+        "tests/integration/test_agent_injection.py",
+        "tests/integration/test_p23_02_agent_api_safety.py",
+        "tests/unit/test_p23_02_agent_api_safety.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p23_02_agent_api_safety.py tests/integration/test_p23_02_agent_api_safety.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "task_prompt": "docs/prompts/09-agents/P23-02-agent-api-safety.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P23-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P23-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G23.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P24-01",
+      "title": "建立 React 应用壳、路由与统一状态展示",
+      "phase": 24,
+      "phase_gate": "G24",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G23"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/App.tsx",
+        "apps/frontend/src/components/AppShell.tsx",
+        "apps/frontend/src/components/AsyncState.tsx",
+        "apps/frontend/src/router.tsx",
+        "apps/frontend/src/styles.css",
+        "apps/frontend/src/test/p24_01_react_shell.integration.test.tsx",
+        "apps/frontend/src/test/p24_01_react_shell.unit.test.tsx",
+        "docs/implementation/P24-01.md",
+        "docs/implementation/reports/P24-01.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p24_01_react_shell.unit.test.tsx p24_01_react_shell.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P24-01-react-shell.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P24-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P24-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G24.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P24-02",
+      "title": "建立 OpenAPI 生成客户端和数据请求层",
+      "phase": 24,
+      "phase_gate": "G24",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G23",
+        "P24-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/scripts/contracts.mjs",
+        "apps/frontend/src/App.tsx",
+        "apps/frontend/src/client/api.ts",
+        "apps/frontend/src/client/generated.ts",
+        "apps/frontend/src/client/query.ts",
+        "apps/frontend/src/test/p24_02_generated_api_client.integration.test.tsx",
+        "apps/frontend/src/test/p24_02_generated_api_client.unit.test.tsx",
+        "docs/implementation/P24-02.md",
+        "docs/implementation/reports/P24-02.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p24_02_generated_api_client.unit.test.tsx p24_02_generated_api_client.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P24-02-generated-api-client.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P24-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P24-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G24.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P25-01",
+      "title": "实现订单查询、编辑和取消事件入口",
+      "phase": 25,
+      "phase_gate": "G25",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G24"
+      ],
+      "parallel_candidates": [
+        "P25-02",
+        "P25-03"
+      ],
+      "allowed_files": [
+        "apps/frontend/src/features/orders/OrderForm.tsx",
+        "apps/frontend/src/features/orders/Page.tsx",
+        "apps/frontend/src/test/p25_01_orders_ui.integration.test.tsx",
+        "apps/frontend/src/test/p25_01_orders_ui.unit.test.tsx",
+        "docs/implementation/P25-01.md",
+        "docs/implementation/reports/P25-01.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p25_01_orders_ui.unit.test.tsx p25_01_orders_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P25-01-orders-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P25-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P25-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G25.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P25-02",
+      "title": "实现车辆、司机和可用日历页面",
+      "phase": 25,
+      "phase_gate": "G25",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G24"
+      ],
+      "parallel_candidates": [
+        "P25-01",
+        "P25-03"
+      ],
+      "allowed_files": [
+        "apps/frontend/src/features/vehicles/Page.tsx",
+        "apps/frontend/src/features/vehicles/VehicleForm.tsx",
+        "apps/frontend/src/test/p25_02_vehicles_ui.integration.test.tsx",
+        "apps/frontend/src/test/p25_02_vehicles_ui.unit.test.tsx",
+        "docs/implementation/P25-02.md",
+        "docs/implementation/reports/P25-02.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p25_02_vehicles_ui.unit.test.tsx p25_02_vehicles_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P25-02-vehicles-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P25-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P25-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G25.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P25-03",
+      "title": "实现仓库、温区、库位及作业资源页面",
+      "phase": 25,
+      "phase_gate": "G25",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G24"
+      ],
+      "parallel_candidates": [
+        "P25-01",
+        "P25-02"
+      ],
+      "allowed_files": [
+        "apps/frontend/src/features/warehouses/Page.tsx",
+        "apps/frontend/src/features/warehouses/ResourceEditor.tsx",
+        "apps/frontend/src/test/p25_03_warehouses_ui.integration.test.tsx",
+        "apps/frontend/src/test/p25_03_warehouses_ui.unit.test.tsx",
+        "docs/implementation/P25-03.md",
+        "docs/implementation/reports/P25-03.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p25_03_warehouses_ui.unit.test.tsx p25_03_warehouses_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P25-03-warehouses-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P25-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P25-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G25.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P26-01",
+      "title": "实现运输请求、作业进度与不可行诊断页面",
+      "phase": 26,
+      "phase_gate": "G26",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G25"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/transport/JobStatus.tsx",
+        "apps/frontend/src/features/transport/Page.tsx",
+        "apps/frontend/src/features/transport/RequestPanel.tsx",
+        "apps/frontend/src/test/p26_01_transport_request_ui.integration.test.tsx",
+        "apps/frontend/src/test/p26_01_transport_request_ui.unit.test.tsx",
+        "docs/implementation/P26-01.md",
+        "docs/implementation/reports/P26-01.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p26_01_transport_request_ui.unit.test.tsx p26_01_transport_request_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P26-01-transport-request-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P26-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P26-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G26.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P26-02",
+      "title": "实现路线、逐站执行表和候选确认视图",
+      "phase": 26,
+      "phase_gate": "G26",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G25",
+        "P26-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/transport/Page.tsx",
+        "apps/frontend/src/features/transport/PlanView.tsx",
+        "apps/frontend/src/features/transport/RouteDiagram.tsx",
+        "apps/frontend/src/test/p26_02_transport_plan_ui.integration.test.tsx",
+        "apps/frontend/src/test/p26_02_transport_plan_ui.unit.test.tsx",
+        "docs/implementation/P26-02.md",
+        "docs/implementation/reports/P26-02.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p26_02_transport_plan_ui.unit.test.tsx p26_02_transport_plan_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P26-02-transport-plan-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P26-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P26-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G26.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P27-01",
+      "title": "实现仓储请求和资源甘特图",
+      "phase": 27,
+      "phase_gate": "G27",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G26"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/warehouse-scheduling/Gantt.tsx",
+        "apps/frontend/src/features/warehouse-scheduling/Page.tsx",
+        "apps/frontend/src/test/p27_01_warehouse_gantt_ui.integration.test.tsx",
+        "apps/frontend/src/test/p27_01_warehouse_gantt_ui.unit.test.tsx",
+        "docs/implementation/P27-01.md",
+        "docs/implementation/reports/P27-01.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p27_01_warehouse_gantt_ui.unit.test.tsx p27_01_warehouse_gantt_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P27-01-warehouse-gantt-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P27-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P27-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G27.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P27-02",
+      "title": "实现仓运交接与联合方案对照视图",
+      "phase": 27,
+      "phase_gate": "G27",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G26",
+        "P27-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/warehouse-scheduling/HandoffView.tsx",
+        "apps/frontend/src/features/warehouse-scheduling/Page.tsx",
+        "apps/frontend/src/test/p27_02_joint_handoff_ui.integration.test.tsx",
+        "apps/frontend/src/test/p27_02_joint_handoff_ui.unit.test.tsx",
+        "docs/implementation/P27-02.md",
+        "docs/implementation/reports/P27-02.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p27_02_joint_handoff_ui.unit.test.tsx p27_02_joint_handoff_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P27-02-joint-handoff-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P27-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P27-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G27.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P28-01",
+      "title": "实现数字孪生场景、暂停、步进和事件注入",
+      "phase": 28,
+      "phase_gate": "G28",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G27"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/simulation/Controls.tsx",
+        "apps/frontend/src/features/simulation/Page.tsx",
+        "apps/frontend/src/test/p28_01_simulation_controls_ui.integration.test.tsx",
+        "apps/frontend/src/test/p28_01_simulation_controls_ui.unit.test.tsx",
+        "docs/implementation/P28-01.md",
+        "docs/implementation/reports/P28-01.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p28_01_simulation_controls_ui.unit.test.tsx p28_01_simulation_controls_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P28-01-simulation-controls-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P28-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P28-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G28.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P28-02",
+      "title": "实现快照回放和反事实分支对比",
+      "phase": 28,
+      "phase_gate": "G28",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G27",
+        "P28-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/simulation/BranchCompare.tsx",
+        "apps/frontend/src/features/simulation/Page.tsx",
+        "apps/frontend/src/features/simulation/Replay.tsx",
+        "apps/frontend/src/test/p28_02_replay_comparison_ui.integration.test.tsx",
+        "apps/frontend/src/test/p28_02_replay_comparison_ui.unit.test.tsx",
+        "docs/implementation/P28-02.md",
+        "docs/implementation/reports/P28-02.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p28_02_replay_comparison_ui.unit.test.tsx p28_02_replay_comparison_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P28-02-replay-comparison-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P28-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P28-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G28.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P29-01",
+      "title": "实现异常列表、影响图和处置流水",
+      "phase": 29,
+      "phase_gate": "G29",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G28"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/exceptions/ImpactView.tsx",
+        "apps/frontend/src/features/exceptions/Page.tsx",
+        "apps/frontend/src/test/p29_01_exception_center_ui.integration.test.tsx",
+        "apps/frontend/src/test/p29_01_exception_center_ui.unit.test.tsx",
+        "docs/implementation/P29-01.md",
+        "docs/implementation/reports/P29-01.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p29_01_exception_center_ui.unit.test.tsx p29_01_exception_center_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P29-01-exception-center-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P29-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P29-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G29.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P29-02",
+      "title": "实现候选比较、版本差异和重排确认",
+      "phase": 29,
+      "phase_gate": "G29",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G28",
+        "P29-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/exceptions/CandidateCompare.tsx",
+        "apps/frontend/src/features/exceptions/Page.tsx",
+        "apps/frontend/src/features/exceptions/VersionDiff.tsx",
+        "apps/frontend/src/test/p29_02_reschedule_diff_ui.integration.test.tsx",
+        "apps/frontend/src/test/p29_02_reschedule_diff_ui.unit.test.tsx",
+        "docs/implementation/P29-02.md",
+        "docs/implementation/reports/P29-02.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p29_02_reschedule_diff_ui.unit.test.tsx p29_02_reschedule_diff_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P29-02-reschedule-diff-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P29-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P29-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G29.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P30-01",
+      "title": "实现聊天、澄清和工具执行状态页面",
+      "phase": 30,
+      "phase_gate": "G30",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G29"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/agent-chat/Page.tsx",
+        "apps/frontend/src/features/agent-chat/RunSteps.tsx",
+        "apps/frontend/src/test/p30_01_agent_chat_ui.integration.test.tsx",
+        "apps/frontend/src/test/p30_01_agent_chat_ui.unit.test.tsx",
+        "docs/implementation/P30-01.md",
+        "docs/implementation/reports/P30-01.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p30_01_agent_chat_ui.unit.test.tsx p30_01_agent_chat_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P30-01-agent-chat-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P30-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P30-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G30.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P30-02",
+      "title": "实现有证据的建议确认与风险提示",
+      "phase": 30,
+      "phase_gate": "G30",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G29",
+        "P30-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/agent-chat/ConfirmDialog.tsx",
+        "apps/frontend/src/features/agent-chat/DecisionCard.tsx",
+        "apps/frontend/src/features/agent-chat/Page.tsx",
+        "apps/frontend/src/test/p30_02_agent_confirmation_ui.integration.test.tsx",
+        "apps/frontend/src/test/p30_02_agent_confirmation_ui.unit.test.tsx",
+        "docs/implementation/P30-02.md",
+        "docs/implementation/reports/P30-02.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p30_02_agent_confirmation_ui.unit.test.tsx p30_02_agent_confirmation_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P30-02-agent-confirmation-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P30-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P30-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G30.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P31-01",
+      "title": "实现带游标的实时事件与断线补偿服务",
+      "phase": 31,
+      "phase_gate": "G31",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G30"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/api/websocket.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/frontend/src/client/generated.ts",
+        "contracts/openapi.json",
+        "docs/implementation/P31-01.md",
+        "docs/implementation/reports/P31-01.md",
+        "packages/contracts/src/logistics_contracts/realtime.py",
+        "tests/integration/test_p31_01_websocket_events.py",
+        "tests/unit/test_p31_01_websocket_events.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p31_01_websocket_events.py tests/integration/test_p31_01_websocket_events.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check",
+        "npm run contracts:check --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P31-01-websocket-events.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P31-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P31-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G31.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P31-02",
+      "title": "实现前端实时订阅与轮询回退",
+      "phase": 31,
+      "phase_gate": "G31",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G30",
+        "P31-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/App.tsx",
+        "apps/frontend/src/client/realtime-query.ts",
+        "apps/frontend/src/client/realtime.ts",
+        "apps/frontend/src/test/p31_02_frontend_realtime.integration.test.tsx",
+        "apps/frontend/src/test/p31_02_frontend_realtime.unit.test.tsx",
+        "docs/implementation/P31-02.md",
+        "docs/implementation/reports/P31-02.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p31_02_frontend_realtime.unit.test.tsx p31_02_frontend_realtime.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/10-frontend/P31-02-frontend-realtime.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P31-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P31-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G31.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P32-01",
+      "title": "实现14项调度指标与统一统计口径",
+      "phase": 32,
+      "phase_gate": "G32",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G31"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P32-01.md",
+        "docs/implementation/reports/P32-01.md",
+        "packages/contracts/src/logistics_contracts/metrics.py",
+        "packages/evaluation/src/logistics_evaluation/metrics.py",
+        "tests/integration/test_p32_01_metric_calculators.py",
+        "tests/unit/test_p32_01_metric_calculators.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p32_01_metric_calculators.py tests/integration/test_p32_01_metric_calculators.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/11-evaluation/P32-01-metric-calculators.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P32-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P32-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G32.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P32-02",
+      "title": "实现指标持久化、版本比较与 Dashboard 聚合",
+      "phase": 32,
+      "phase_gate": "G32",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G31",
+        "P32-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/metrics.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/metrics.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/frontend/src/client/generated.ts",
+        "contracts/openapi.json",
+        "docs/implementation/P32-02.md",
+        "docs/implementation/reports/P32-02.md",
+        "tests/integration/test_p32_02_metrics_api.py",
+        "tests/unit/test_p32_02_metrics_api.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p32_02_metrics_api.py tests/integration/test_p32_02_metrics_api.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check",
+        "npm run contracts:check --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/11-evaluation/P32-02-metrics-api.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P32-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P32-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G32.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P32-03",
+      "title": "实现 Dashboard 与 Metrics 图表页面",
+      "phase": 32,
+      "phase_gate": "G32",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G31",
+        "P32-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/frontend/src/features/dashboard/Page.tsx",
+        "apps/frontend/src/features/metrics/MetricChart.tsx",
+        "apps/frontend/src/features/metrics/Page.tsx",
+        "apps/frontend/src/test/p32_03_metrics_dashboard_ui.integration.test.tsx",
+        "apps/frontend/src/test/p32_03_metrics_dashboard_ui.unit.test.tsx",
+        "docs/implementation/P32-03.md",
+        "docs/implementation/reports/P32-03.md"
+      ],
+      "commands": [
+        "npm run test --workspace apps/frontend -- --run p32_03_metrics_dashboard_ui.unit.test.tsx p32_03_metrics_dashboard_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/11-evaluation/P32-03-metrics-dashboard-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P32-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P32-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G32.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P33-01",
+      "title": "实现对照实验、配对随机种子与结果留档",
+      "phase": 33,
+      "phase_gate": "G33",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G32"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "data/experiments/default.json",
+        "docs/implementation/P33-01.md",
+        "docs/implementation/reports/P33-01.md",
+        "packages/evaluation/src/logistics_evaluation/baselines.py",
+        "packages/evaluation/src/logistics_evaluation/experiments.py",
+        "tests/integration/test_p33_01_experiment_runner.py",
+        "tests/unit/test_p33_01_experiment_runner.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p33_01_experiment_runner.py tests/integration/test_p33_01_experiment_runner.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/11-evaluation/P33-01-experiment-runner.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P33-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P33-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G33.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P33-02",
+      "title": "实现实验创建、进度、结果与导出工作台",
+      "phase": 33,
+      "phase_gate": "G33",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G32",
+        "P33-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/experiments.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/frontend/src/client/generated.ts",
+        "apps/frontend/src/features/experiments/Page.tsx",
+        "apps/frontend/src/features/experiments/Results.tsx",
+        "apps/frontend/src/test/p33_02_experiments_api_ui.integration.test.tsx",
+        "apps/frontend/src/test/p33_02_experiments_api_ui.unit.test.tsx",
+        "contracts/openapi.json",
+        "docs/implementation/P33-02.md",
+        "docs/implementation/reports/P33-02.md",
+        "tests/integration/test_p33_02_experiments_api_ui.py"
+      ],
+      "commands": [
+        "uv run pytest tests/integration/test_p33_02_experiments_api_ui.py -q",
+        "npm run test --workspace apps/frontend -- --run p33_02_experiments_api_ui.unit.test.tsx p33_02_experiments_api_ui.integration.test.tsx",
+        "npm run contracts:check --workspace apps/frontend",
+        "npm run build --workspace apps/frontend",
+        "uv run python scripts/export_contracts.py --check",
+        "npm run contracts:check --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/11-evaluation/P33-02-experiments-api-ui.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P33-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P33-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G33.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P34-01",
+      "title": "建立真实数据库运输请求到确认的端到端验收",
+      "phase": 34,
+      "phase_gate": "G34",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G33"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P34-01.md",
+        "docs/implementation/reports/P34-01.md",
+        "tests/e2e/transport.spec.ts",
+        "tests/integration/test_p34_01_transport_e2e.py",
+        "tests/integration/test_transport_full_stack.py",
+        "tests/unit/test_p34_01_transport_e2e.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p34_01_transport_e2e.py tests/integration/test_p34_01_transport_e2e.py -q",
+        "uv run python scripts/check_architecture.py",
+        "npm run test:e2e -- tests/e2e/transport.spec.ts"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P34-01-transport-e2e.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P34-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P34-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G34.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P34-02",
+      "title": "建立仓运联合与异常重排的完整端到端验收",
+      "phase": 34,
+      "phase_gate": "G34",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G33",
+        "P34-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P34-02.md",
+        "docs/implementation/reports/P34-02.md",
+        "tests/e2e/joint-exception.spec.ts",
+        "tests/integration/test_joint_exception_full_stack.py",
+        "tests/integration/test_p34_02_joint_exception_e2e.py",
+        "tests/unit/test_p34_02_joint_exception_e2e.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p34_02_joint_exception_e2e.py tests/integration/test_p34_02_joint_exception_e2e.py -q",
+        "uv run python scripts/check_architecture.py",
+        "npm run test:e2e -- tests/e2e/joint-exception.spec.ts"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P34-02-joint-exception-e2e.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P34-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P34-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G34.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P34-03",
+      "title": "建立崩溃、并发、模型断线与陈旧提交验收",
+      "phase": 34,
+      "phase_gate": "G34",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G33",
+        "P34-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P34-03.md",
+        "docs/implementation/reports/P34-03.md",
+        "tests/e2e/degraded-mode.spec.ts",
+        "tests/integration/test_failure_recovery.py",
+        "tests/integration/test_p34_03_failure_recovery_e2e.py",
+        "tests/unit/test_p34_03_failure_recovery_e2e.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p34_03_failure_recovery_e2e.py tests/integration/test_p34_03_failure_recovery_e2e.py -q",
+        "uv run python scripts/check_architecture.py",
+        "npm run test:e2e -- tests/e2e/degraded-mode.spec.ts"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P34-03-failure-recovery-e2e.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P34-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P34-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G34.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P35-01",
+      "title": "交付 Scenario A 正常冷链运输演示",
+      "phase": 35,
+      "phase_gate": "G35",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G34"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "data/scenarios/demo_a.json",
+        "docs/demo/SCENARIO_A.md",
+        "docs/implementation/P35-01.md",
+        "docs/implementation/reports/P35-01.md",
+        "scripts/demo_support.py",
+        "tests/integration/test_p35_01_demo_normal.py",
+        "tests/unit/test_p35_01_demo_normal.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p35_01_demo_normal.py tests/integration/test_p35_01_demo_normal.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P35-01-demo-normal.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P35-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P35-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G35.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P35-02",
+      "title": "交付 Scenario B 仓储和运输联合演示",
+      "phase": 35,
+      "phase_gate": "G35",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G34",
+        "P35-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "data/scenarios/demo_b.json",
+        "docs/demo/SCENARIO_B.md",
+        "docs/implementation/P35-02.md",
+        "docs/implementation/reports/P35-02.md",
+        "tests/integration/test_p35_02_demo_joint.py",
+        "tests/unit/test_p35_02_demo_joint.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p35_02_demo_joint.py tests/integration/test_p35_02_demo_joint.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P35-02-demo-joint.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P35-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P35-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G35.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P35-03",
+      "title": "交付 Scenario C1 车辆故障局部重排演示",
+      "phase": 35,
+      "phase_gate": "G35",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G34",
+        "P35-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "data/scenarios/demo_c_vehicle.json",
+        "docs/demo/SCENARIO_C_VEHICLE.md",
+        "docs/implementation/P35-03.md",
+        "docs/implementation/reports/P35-03.md",
+        "tests/integration/test_p35_03_demo_vehicle_failure.py",
+        "tests/unit/test_p35_03_demo_vehicle_failure.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p35_03_demo_vehicle_failure.py tests/integration/test_p35_03_demo_vehicle_failure.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P35-03-demo-vehicle-failure.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P35-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P35-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G35.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P35-04",
+      "title": "交付 Scenario C2 订单取消局部重排演示",
+      "phase": 35,
+      "phase_gate": "G35",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G34",
+        "P35-03"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "data/scenarios/demo_c_cancel.json",
+        "docs/demo/SCENARIO_C_CANCEL.md",
+        "docs/implementation/P35-04.md",
+        "docs/implementation/reports/P35-04.md",
+        "tests/integration/test_p35_04_demo_order_cancel.py",
+        "tests/unit/test_p35_04_demo_order_cancel.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p35_04_demo_order_cancel.py tests/integration/test_p35_04_demo_order_cancel.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P35-04-demo-order-cancel.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P35-04.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P35-04.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G35.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P35-05",
+      "title": "交付 Scenario C3 天气变化与一键复现演示包",
+      "phase": 35,
+      "phase_gate": "G35",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G34",
+        "P35-04"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "data/scenarios/demo_c_weather.json",
+        "docs/demo/RUNBOOK.md",
+        "docs/demo/SCENARIO_C_WEATHER.md",
+        "docs/implementation/P35-05.md",
+        "docs/implementation/reports/P35-05.md",
+        "scripts/run_demo.py",
+        "tests/integration/test_p35_05_demo_weather.py",
+        "tests/unit/test_p35_05_demo_weather.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p35_05_demo_weather.py tests/integration/test_p35_05_demo_weather.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P35-05-demo-weather.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P35-05.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P35-05.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G35.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P36-01",
+      "title": "建立可重复的容量、耗时和内存基准",
+      "phase": 36,
+      "phase_gate": "G36",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G35"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "benchmarks/profiles.json",
+        "benchmarks/run.py",
+        "docs/implementation/P36-01.md",
+        "docs/implementation/reports/P36-01.md",
+        "docs/performance/BASELINE.md",
+        "tests/integration/test_p36_01_benchmark_harness.py",
+        "tests/unit/test_p36_01_benchmark_harness.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p36_01_benchmark_harness.py tests/integration/test_p36_01_benchmark_harness.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P36-01-benchmark-harness.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P36-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P36-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G36.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P36-02",
+      "title": "实现有内存上限的版本化矩阵缓存并复验",
+      "phase": 36,
+      "phase_gate": "G36",
+      "owner": "A",
+      "primary_implementer": "A/B 治理裁定后分区；DSH 主写者整合",
+      "dependencies": [
+        "G35",
+        "P36-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "benchmarks/regression.json",
+        "docs/implementation/P36-02.md",
+        "docs/implementation/reports/P36-02.md",
+        "docs/performance/CHANGE_EVIDENCE.md",
+        "packages/optimization/src/logistics_optimization/transport/matrix.py",
+        "packages/optimization/src/logistics_optimization/transport/matrix_cache.py",
+        "tests/integration/test_p36_02_bounded_performance_fix.py",
+        "tests/unit/test_p36_02_bounded_performance_fix.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p36_02_bounded_performance_fix.py tests/integration/test_p36_02_bounded_performance_fix.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P36-02-bounded-performance-fix.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P36-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P36-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G36.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P37-01",
+      "title": "验证并修复访问控制、输入边界和依赖安全",
+      "phase": 37,
+      "phase_gate": "G37",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G36"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P37-01.md",
+        "docs/implementation/reports/P37-01.md",
+        "docs/security/BOUNDARY_REVIEW.md",
+        "tests/integration/test_p37_01_security_boundary.py",
+        "tests/integration/test_security_boundaries.py",
+        "tests/unit/test_p37_01_security_boundary.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p37_01_security_boundary.py tests/integration/test_p37_01_security_boundary.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P37-01-security-boundary.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P37-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P37-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G37.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P37-02",
+      "title": "实现全链追踪、指标端点和审计可检索性",
+      "phase": 37,
+      "phase_gate": "G37",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G36",
+        "P37-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/audit.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/backend/src/logistics_backend/main.py",
+        "apps/backend/src/logistics_backend/observability.py",
+        "apps/frontend/src/client/generated.ts",
+        "contracts/openapi.json",
+        "docs/implementation/P37-02.md",
+        "docs/implementation/reports/P37-02.md",
+        "docs/operations/OBSERVABILITY.md",
+        "tests/integration/test_p37_02_observability_audit.py",
+        "tests/unit/test_p37_02_observability_audit.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p37_02_observability_audit.py tests/integration/test_p37_02_observability_audit.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check",
+        "npm run contracts:check --workspace apps/frontend"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P37-02-observability-audit.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P37-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P37-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G37.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P37-03",
+      "title": "验证数据库备份恢复、迁移回滚与作业恢复",
+      "phase": 37,
+      "phase_gate": "G37",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G36",
+        "P37-02"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P37-03.md",
+        "docs/implementation/reports/P37-03.md",
+        "docs/operations/RECOVERY.md",
+        "scripts/backup.ps1",
+        "scripts/restore.ps1",
+        "tests/integration/test_p37_03_backup_and_recovery.py",
+        "tests/integration/test_recovery.py",
+        "tests/unit/test_p37_03_backup_and_recovery.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p37_03_backup_and_recovery.py tests/integration/test_p37_03_backup_and_recovery.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/12-integration/P37-03-backup-and-recovery.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P37-03.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P37-03.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G37.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P38-01",
+      "title": "交付与实际实现一致的架构、API和算法文档",
+      "phase": 38,
+      "phase_gate": "G38",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G37"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/DEVELOPER_GUIDE.md",
+        "docs/algorithms/IMPLEMENTED_CAPABILITIES.md",
+        "docs/api/IMPLEMENTED_API.md",
+        "docs/implementation/P38-01.md",
+        "docs/implementation/reports/P38-01.md",
+        "tests/integration/test_p38_01_developer_docs.py",
+        "tests/unit/test_p38_01_developer_docs.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p38_01_developer_docs.py tests/integration/test_p38_01_developer_docs.py -q",
+        "python tools/ai_coding_plan/validate_plan.py"
+      ],
+      "task_prompt": "docs/prompts/13-release/P38-01-developer-docs.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P38-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P38-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G38.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P38-02",
+      "title": "交付演示、异常处置、运维和模型配置手册",
+      "phase": 38,
+      "phase_gate": "G38",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G37",
+        "P38-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/USER_GUIDE.md",
+        "docs/implementation/P38-02.md",
+        "docs/implementation/reports/P38-02.md",
+        "docs/operations/LLM_CONFIGURATION.md",
+        "docs/operations/RUNBOOK.md",
+        "tests/integration/test_p38_02_operator_docs.py",
+        "tests/unit/test_p38_02_operator_docs.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p38_02_operator_docs.py tests/integration/test_p38_02_operator_docs.py -q",
+        "python tools/ai_coding_plan/validate_plan.py"
+      ],
+      "task_prompt": "docs/prompts/13-release/P38-02-operator-docs.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P38-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P38-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G38.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P39-01",
+      "title": "生成可安装发布候选及完整性清单",
+      "phase": 39,
+      "phase_gate": "G39",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G38"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "deploy/backend.Dockerfile",
+        "deploy/compose.yml",
+        "deploy/frontend.Dockerfile",
+        "docs/implementation/P39-01.md",
+        "docs/implementation/reports/P39-01.md",
+        "docs/release/RELEASE_NOTES.md",
+        "scripts/package_release.py",
+        "tests/integration/test_p39_01_release_candidate.py",
+        "tests/unit/test_p39_01_release_candidate.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p39_01_release_candidate.py tests/integration/test_p39_01_release_candidate.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "task_prompt": "docs/prompts/13-release/P39-01-release-candidate.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P39-01.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P39-01.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G39.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    },
+    {
+      "task_id": "P39-02",
+      "title": "签收发布 Gate 与复现证据索引",
+      "phase": 39,
+      "phase_gate": "G39",
+      "owner": "A",
+      "primary_implementer": "DSH-A",
+      "dependencies": [
+        "G38",
+        "P39-01"
+      ],
+      "parallel_candidates": [],
+      "allowed_files": [
+        "docs/implementation/P39-02.md",
+        "docs/implementation/reports/P39-02.md",
+        "docs/release/EVIDENCE_INDEX.md",
+        "docs/release/KNOWN_LIMITATIONS.md",
+        "docs/release/RELEASE_ACCEPTANCE.md",
+        "tests/integration/test_p39_02_release_gate.py",
+        "tests/unit/test_p39_02_release_gate.py"
+      ],
+      "commands": [
+        "uv run pytest tests/unit/test_p39_02_release_gate.py tests/integration/test_p39_02_release_gate.py -q",
+        "python tools/ai_coding_plan/validate_plan.py"
+      ],
+      "task_prompt": "docs/prompts/13-release/P39-02-release-gate.md",
+      "implementation_message": "artifacts/dispatch/2026-10-01/completion/messages/dsh/P39-02.md",
+      "zcode_message": "artifacts/dispatch/2026-10-01/completion/messages/zcode/P39-02.md",
+      "stage_review_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G39.md",
+      "dispatch_status": "PLANNED_NOT_SENT"
+    }
+  ],
+  "phases": [
+    {
+      "phase": 2,
+      "gate_id": "G02",
+      "name": "Domain Model",
+      "task_ids": [
+        "P02-01",
+        "P02-02",
+        "P02-03",
+        "P02-04"
+      ],
+      "business_requirements": "32实体及辅助记录可表达，非法状态/单位/额外字段拒绝；Schema确定导出；domain无框架依赖。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G02.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 3,
+      "gate_id": "G03",
+      "name": "PostgreSQL Schema + Migration",
+      "task_ids": [
+        "P03-01",
+        "P03-02",
+        "P03-03",
+        "P03-04"
+      ],
+      "business_requirements": "真实PostgreSQL迁移、回滚与FK通过；一致快照；最后一份资源并发提交恰一成功；事务失败无半版本。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G03.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 4,
+      "gate_id": "G04",
+      "name": "Seed / Synthetic Dataset",
+      "task_ids": [
+        "P04-01",
+        "P04-02"
+      ],
+      "business_requirements": "T1/W1/I1/M1数据hash可复现；反例各有原因；同种子二次导入不重复，不清空既有库。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G04.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 5,
+      "gate_id": "G05",
+      "name": "FastAPI 基础服务",
+      "task_ids": [
+        "P05-01",
+        "P05-02",
+        "P05-03"
+      ],
+      "business_requirements": "API认证、错误、分页、revision与持久Job可验收；杀worker后租约可重领；无长求解阻塞请求。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G05.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 6,
+      "gate_id": "G06",
+      "name": "Transport Optimization Domain",
+      "task_ids": [
+        "P06-01",
+        "P06-02"
+      ],
+      "business_requirements": "运输typed输入/矩阵节点顺序/版本明确；不可达与0区分；天气倍率100→150秒可手算。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G06.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 7,
+      "gate_id": "G07",
+      "name": "Transport Solver",
+      "task_ids": [
+        "P07-01",
+        "P07-02",
+        "P07-03",
+        "P07-04",
+        "P07-05",
+        "P07-06",
+        "P07-07"
+      ],
+      "business_requirements": "真实OR-Tools T1=9000m/1400分；容量/提送/硬窗/温区/状态各有反例；独立校验通过，无假成功。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G07.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 8,
+      "gate_id": "G08",
+      "name": "Warehouse Optimization Domain",
+      "task_ids": [
+        "P08-01",
+        "P08-02"
+      ],
+      "business_requirements": "五类仓储作业、所有资源与库存/交接具名；DAG环拒绝；初始库存与存储区间契约可验证。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G08.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 9,
+      "gate_id": "G09",
+      "name": "Warehouse Scheduler",
+      "task_ids": [
+        "P09-01",
+        "P09-02",
+        "P09-03",
+        "P09-04",
+        "P09-05"
+      ],
+      "business_requirements": "真实CP-SAT W1=25秒；工序/资源/库存/setup反例通过；UNKNOWN不当INFEASIBLE；返回资源时间轴。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G09.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 10,
+      "gate_id": "G10",
+      "name": "Constraint Validator",
+      "task_ids": [
+        "P10-01",
+        "P10-02",
+        "P10-03"
+      ],
+      "business_requirements": "所有required硬约束有checked或unsupported记录；J1联合冲突检出；每条硬约束单点破坏反例检出。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G10.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 11,
+      "gate_id": "G11",
+      "name": "Simulation Domain",
+      "task_ids": [
+        "P11-01",
+        "P11-02"
+      ],
+      "business_requirements": "仿真状态/事件/RNG/快照类型冻结；非法执行状态拒绝；计划和真实执行事实分离。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G11.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 12,
+      "gate_id": "G12",
+      "name": "SimPy Digital Twin",
+      "task_ids": [
+        "P12-01",
+        "P12-02",
+        "P12-03",
+        "P12-04"
+      ],
+      "business_requirements": "真实SimPy T1终态1020秒；t400恢复一致；同秒事件稳定排序；分支隔离、资源无死锁、取消无伪完成。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G12.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 13,
+      "gate_id": "G13",
+      "name": "Event Engine",
+      "task_ids": [
+        "P13-01",
+        "P13-02"
+      ],
+      "business_requirements": "十类异常payload全覆盖；重复去重、乱序/迟到有明确处理；事件与outbox原子保存。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G13.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 14,
+      "gate_id": "G14",
+      "name": "Exception Impact Analyzer",
+      "task_ids": [
+        "P14-01",
+        "P14-02"
+      ],
+      "business_requirements": "I1闭包只有T1/T2；T3冻结；在途起点和剩余载荷真实；已执行事实不可改写。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G14.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 15,
+      "gate_id": "G15",
+      "name": "Local Rescheduling Engine",
+      "task_ids": [
+        "P15-01",
+        "P15-02",
+        "P15-03",
+        "P15-04"
+      ],
+      "business_requirements": "局部→扩大→全局剩余共享预算；救援无瞬移；完整合并方案重验；六项diff正确；失败给诊断/暂停建议。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G15.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 16,
+      "gate_id": "G16",
+      "name": "Optimization API",
+      "task_ids": [
+        "P16-01",
+        "P16-02",
+        "P16-03",
+        "P16-04"
+      ],
+      "business_requirements": "运输/仓储/联合/重排/仿真API真实连通；J1反馈消除交接冲突；并发/过期确认409；V1不覆盖。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G16.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 17,
+      "gate_id": "G17",
+      "name": "Agent Tool Protocol",
+      "task_ids": [
+        "P17-01",
+        "P17-02"
+      ],
+      "business_requirements": "白名单Tool typed args/role/scope/deadline/幂等生效；不直写数据库；未确认commit被拒绝。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G17.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 18,
+      "gate_id": "G18",
+      "name": "LLM Provider Abstraction",
+      "task_ids": [
+        "P18-01",
+        "P18-02"
+      ],
+      "business_requirements": "真实供应商适配契约smoke有脱敏证据；schema/429/超时/预算/无密钥降级通过；fake不能冒充真实smoke。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G18.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 19,
+      "gate_id": "G19",
+      "name": "Coordinator Agent",
+      "task_ids": [
+        "P19-01",
+        "P19-02"
+      ],
+      "business_requirements": "意图抽取保留原文/实体证据；缺字段先澄清；有界状态机在预算耗尽停止，不自造ID。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G19.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 20,
+      "gate_id": "G20",
+      "name": "Transport Agent",
+      "task_ids": [
+        "P20-01",
+        "P20-02"
+      ],
+      "business_requirements": "TransportAgent仅通过工具取得候选；无解不造路线；T1数值解释与证据一致。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G20.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 21,
+      "gate_id": "G21",
+      "name": "Warehouse Agent",
+      "task_ids": [
+        "P21-01",
+        "P21-02"
+      ],
+      "business_requirements": "WarehouseAgent报价非预留且会过期；资源瓶颈解释引用真实任务/诊断，不能杜撰利用率。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G21.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 22,
+      "gate_id": "G22",
+      "name": "Exception Agent",
+      "task_ids": [
+        "P22-01",
+        "P22-02"
+      ],
+      "business_requirements": "ExceptionAgent九步有完整记录；缺救援数据manual_required；解释区分建议与已确认版本。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G22.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 23,
+      "gate_id": "G23",
+      "name": "Agent Orchestration",
+      "task_ids": [
+        "P23-01",
+        "P23-02"
+      ],
+      "business_requirements": "四角色有界协调、父取消传播、工具注入/越权拒绝；确认令牌绑定对象/actor/revision并防重放。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G23.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 24,
+      "gate_id": "G24",
+      "name": "React Application Shell",
+      "task_ids": [
+        "P24-01",
+        "P24-02"
+      ],
+      "business_requirements": "11导航可达；375px可用；loading/empty/error分开；OpenAPI生成类型无漂移。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G24.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 25,
+      "gate_id": "G25",
+      "name": "Orders / Vehicles / Warehouses UI",
+      "task_ids": [
+        "P25-01",
+        "P25-02",
+        "P25-03"
+      ],
+      "business_requirements": "订单/车辆/仓库资源页使用真实API；If-Match冲突可见；执行中变更走事件；无业务规则复制。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G25.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 26,
+      "gate_id": "G26",
+      "name": "Transport Scheduling UI",
+      "task_ids": [
+        "P26-01",
+        "P26-02"
+      ],
+      "business_requirements": "运输请求/Job/取消/诊断/路线表/费用/确认可操作；T1数值一致，TIMEOUT不显示成功。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G26.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 27,
+      "gate_id": "G27",
+      "name": "Warehouse Scheduling UI",
+      "task_ids": [
+        "P27-01",
+        "P27-02"
+      ],
+      "business_requirements": "仓储甘特显示任务/setup/日历，J1交接冲突可见；只能统一确认有效联合候选。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G27.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 28,
+      "gate_id": "G28",
+      "name": "Digital Twin UI",
+      "task_ids": [
+        "P28-01",
+        "P28-02"
+      ],
+      "business_requirements": "仿真暂停/步进/注入/快照/分支比较可操作；正式状态不污染，3D不是必要依赖。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G28.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 29,
+      "gate_id": "G29",
+      "name": "Exception Center UI",
+      "task_ids": [
+        "P29-01",
+        "P29-02"
+      ],
+      "business_requirements": "异常九步、原因路径、六项diff可检查；原方案/候选/新版本区分，失效候选不可确认。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G29.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 30,
+      "gate_id": "G30",
+      "name": "Agent Chat UI",
+      "task_ids": [
+        "P30-01",
+        "P30-02"
+      ],
+      "business_requirements": "聊天澄清/工具状态/取消/刷新恢复可用；建议卡数值有证据，脚本注入不执行，明确点击才确认。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G30.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 31,
+      "gate_id": "G31",
+      "name": "WebSocket Real-time System",
+      "task_ids": [
+        "P31-01",
+        "P31-02"
+      ],
+      "business_requirements": "WS授权/补发/重复去重/过期cursor重取/慢客户端限额通过；断线轮询继续获得正确终态。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G31.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 32,
+      "gate_id": "G32",
+      "name": "Metrics / Evaluation",
+      "task_ids": [
+        "P32-01",
+        "P32-02",
+        "P32-03"
+      ],
+      "business_requirements": "14指标逐项M1及边界通过；source/窗口/定义明确；Dashboard与Metrics不伪造null为0。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G32.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 33,
+      "gate_id": "G33",
+      "name": "Experiment Framework",
+      "task_ids": [
+        "P33-01",
+        "P33-02"
+      ],
+      "business_requirements": "至少10次配对seed、同预算实验；规则/solver/Agent与local/global对照；失败样本保留；实验UI/导出真实。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G33.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 34,
+      "gate_id": "G34",
+      "name": "End-to-End Integration",
+      "task_ids": [
+        "P34-01",
+        "P34-02",
+        "P34-03"
+      ],
+      "business_requirements": "真实PostgreSQL+OR-Tools+SimPy+浏览器完整闭环；worker崩溃/陈旧提交/并发冲突/模型断线可恢复。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G34.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 35,
+      "gate_id": "G35",
+      "name": "Demo Scenario",
+      "task_ids": [
+        "P35-01",
+        "P35-02",
+        "P35-03",
+        "P35-04",
+        "P35-05"
+      ],
+      "business_requirements": "A/B/C1/C2/C3五演示均有输入hash、实际解、硬校验、事件、版本diff、指标和回放证据；重复可复现。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G35.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 36,
+      "gate_id": "G36",
+      "name": "Performance Optimization",
+      "task_ids": [
+        "P36-01",
+        "P36-02"
+      ],
+      "business_requirements": "参考机10次基准齐备；20单4车2仓HTTP目标与求解预算按Master验收；缓存64MiB有界且换版本失效，所有正确性回归通过。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G36.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 37,
+      "gate_id": "G37",
+      "name": "Security / Audit / Observability",
+      "task_ids": [
+        "P37-01",
+        "P37-02",
+        "P37-03"
+      ],
+      "business_requirements": "访问控制/注入/依赖/密钥负例无未处置阻断项；trace可追V2；备份恢复到隔离库保持历史与账本。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G37.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 38,
+      "gate_id": "G38",
+      "name": "Documentation",
+      "task_ids": [
+        "P38-01",
+        "P38-02"
+      ],
+      "business_requirements": "开发/使用/运维文档对真实实现，无夸大能力；干净环境命令可执行，缺模型密钥降级有明确指南。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G38.md",
+      "status": "PLANNED_NOT_SENT"
+    },
+    {
+      "phase": 39,
+      "gate_id": "G39",
+      "name": "Release",
+      "task_ids": [
+        "P39-01",
+        "P39-02"
+      ],
+      "business_requirements": "G00–G38证据未失效；发布候选hash/SBOM/锁/迁移完整；干净安装五演示通过；没有凭据，限制与恢复点明确。",
+      "codex_message": "artifacts/dispatch/2026-10-01/completion/messages/codex/G39.md",
+      "status": "PLANNED_NOT_SENT"
+    }
+  ]
+}

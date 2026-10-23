@@ -1,0 +1,11 @@
+### does pytest itself shift the revision? (single bash call, no agent activity in between)
+BEFORE: {
+ ".pytest_cache/v/cache/nodeids": "d3bf9f7c8db02620744ea42609805fa539202755befce9bdffd79ee727c9370b",
+ ".pytest_cache/v/cache/lastfailed": "0fca684af503138049e8ddc3b2b53e30adc962f3a51dccd36dc79488d66ac034"
+}
+62 passed in 5.36s
+AFTER : {
+ ".pytest_cache/v/cache/nodeids": "d3bf9f7c8db02620744ea42609805fa539202755befce9bdffd79ee727c9370b",
+ ".pytest_cache/v/cache/lastfailed": "0fca684af503138049e8ddc3b2b53e30adc962f3a51dccd36dc79488d66ac034"
+}
+CHANGED: []

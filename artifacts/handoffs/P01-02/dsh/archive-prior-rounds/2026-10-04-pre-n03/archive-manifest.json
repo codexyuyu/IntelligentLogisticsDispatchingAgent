@@ -1,0 +1,184 @@
+{
+  "task_id": "P01-02",
+  "round": "2026-10-04-pre-n03",
+  "archived_at_utc_source": "copied with shutil.copy2 (byte-identical; mtime preserved)",
+  "source_dir": "artifacts/handoffs/P01-02/dsh",
+  "file_count": 25,
+  "entries": [
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/evidence.json",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/evidence.json",
+      "bytes": 14674,
+      "sha256": "f5b16179dd2754bcd591cd14beac33621bb72d7b7d518a97da2efd5711392f24",
+      "source_sha256_at_copy": "f5b16179dd2754bcd591cd14beac33621bb72d7b7d518a97da2efd5711392f24"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/logs/check_architecture.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/check_architecture.log",
+      "bytes": 592,
+      "sha256": "cef34d0963c81da7ab04f4086c81963a1da800787a2fc6d721a78be6f325ef08",
+      "source_sha256_at_copy": "cef34d0963c81da7ab04f4086c81963a1da800787a2fc6d721a78be6f325ef08"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/logs/gate-g01.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/gate-g01.log",
+      "bytes": 4418,
+      "sha256": "5aa90c8119b6af4fbf54bc9a311ea82abbfa3cad6134cc115453e78264163a73",
+      "source_sha256_at_copy": "5aa90c8119b6af4fbf54bc9a311ea82abbfa3cad6134cc115453e78264163a73"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/logs/pytest.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/pytest.log",
+      "bytes": 228,
+      "sha256": "81c2da86b07d369dacb22e81caa72ba91b48af8fd441cc07c9824f18798280ce",
+      "source_sha256_at_copy": "81c2da86b07d369dacb22e81caa72ba91b48af8fd441cc07c9824f18798280ce"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/baseline-p01-02-suites.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/baseline-p01-02-suites.log",
+      "bytes": 5072,
+      "sha256": "94cad97806ba4078cc0b44dc3580874702ee3c9c8e642fcdc98fee04a5137b4d",
+      "source_sha256_at_copy": "94cad97806ba4078cc0b44dc3580874702ee3c9c8e642fcdc98fee04a5137b4d"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/build-evidence.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/build-evidence.log",
+      "bytes": 330,
+      "sha256": "482779a9244ea53d638eb684ffefcd30b54d9291ce2643adfcade6b625c8fd36",
+      "source_sha256_at_copy": "482779a9244ea53d638eb684ffefcd30b54d9291ce2643adfcade6b625c8fd36"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/build-evidence.py",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/build-evidence.py",
+      "bytes": 13797,
+      "sha256": "a4ddcfdccd3dd737f9fb0c9e9351acce36892cbdd33a325f63399ae8b6892ccb",
+      "source_sha256_at_copy": "a4ddcfdccd3dd737f9fb0c9e9351acce36892cbdd33a325f63399ae8b6892ccb"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd1-p01-02-suites.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/cmd1-p01-02-suites.log",
+      "bytes": 368,
+      "sha256": "7226c1c34c5f6f954a6fa706798788a2757bc6060a2d6f47f29a385891dfa992",
+      "source_sha256_at_copy": "7226c1c34c5f6f954a6fa706798788a2757bc6060a2d6f47f29a385891dfa992"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd2-check-architecture.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/cmd2-check-architecture.log",
+      "bytes": 150,
+      "sha256": "3374b32c9c5e8ee09bf5b7154fa5d5372a73d54ecca683838476ac925dd0cbd8",
+      "source_sha256_at_copy": "3374b32c9c5e8ee09bf5b7154fa5d5372a73d54ecca683838476ac925dd0cbd8"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd3-full-suites.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/cmd3-full-suites.log",
+      "bytes": 5990,
+      "sha256": "2d19c3e5f3be08bcc1039089f2292d681abcd34ea7253b566eb178d1c9092d44",
+      "source_sha256_at_copy": "2d19c3e5f3be08bcc1039089f2292d681abcd34ea7253b566eb178d1c9092d44"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd4-gate-check-only.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/cmd4-gate-check-only.log",
+      "bytes": 2548,
+      "sha256": "3e339129854c879cbe58337c8ddda057ceca6a303fa43f6cc4877a615a119adf",
+      "source_sha256_at_copy": "3e339129854c879cbe58337c8ddda057ceca6a303fa43f6cc4877a615a119adf"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/env-lock-check.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/env-lock-check.log",
+      "bytes": 752,
+      "sha256": "e9ce1e339592ab5521241f8b4f9e004d443a33c8bcef1a8b1f4dd14e2b155bba",
+      "source_sha256_at_copy": "e9ce1e339592ab5521241f8b4f9e004d443a33c8bcef1a8b1f4dd14e2b155bba"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/env-uv-run.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/env-uv-run.log",
+      "bytes": 170,
+      "sha256": "caabe6c6b94556b3f4f3ebcf1248390a9e5df429e46e60b7b93370c650774fed",
+      "source_sha256_at_copy": "caabe6c6b94556b3f4f3ebcf1248390a9e5df429e46e60b7b93370c650774fed"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/evidence-self-consistency.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/evidence-self-consistency.log",
+      "bytes": 502,
+      "sha256": "7f3c5d608dd20002ba00403cf1e04c770729c84bf6924a9ca3a839e0cab245c8",
+      "source_sha256_at_copy": "7f3c5d608dd20002ba00403cf1e04c770729c84bf6924a9ca3a839e0cab245c8"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/gate-record-freshness-before-round.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/gate-record-freshness-before-round.log",
+      "bytes": 4240,
+      "sha256": "8a07cfdfb1558c920d96626812b45a1a4f0542397d6b23b3b377048cdf2fda2d",
+      "source_sha256_at_copy": "8a07cfdfb1558c920d96626812b45a1a4f0542397d6b23b3b377048cdf2fda2d"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/integration-run-intermediate.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/integration-run-intermediate.log",
+      "bytes": 206,
+      "sha256": "dbce546108b5f2697af7f7c9f28ea3fd06b955a641510b2a0b657524c5c28931",
+      "source_sha256_at_copy": "dbce546108b5f2697af7f7c9f28ea3fd06b955a641510b2a0b657524c5c28931"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/manifest-and-precheck-survey.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/manifest-and-precheck-survey.log",
+      "bytes": 8640,
+      "sha256": "aa9a572f5969c5cd054b3545bfe32584a9578be991acf6d1bf0be6168baa27ed",
+      "source_sha256_at_copy": "aa9a572f5969c5cd054b3545bfe32584a9578be991acf6d1bf0be6168baa27ed"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/negative-probes.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/negative-probes.log",
+      "bytes": 3138,
+      "sha256": "2b70b6996897909899b36a506d6876469a78a747710d6675b68b3a23e9627844",
+      "source_sha256_at_copy": "2b70b6996897909899b36a506d6876469a78a747710d6675b68b3a23e9627844"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/negative-probes.py",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/negative-probes.py",
+      "bytes": 6801,
+      "sha256": "bb324032cbf457950e9940a55f1afd80b393bbb0225c54bead14ddaff9123ef0",
+      "source_sha256_at_copy": "bb324032cbf457950e9940a55f1afd80b393bbb0225c54bead14ddaff9123ef0"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/ownership-fallback-proof.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/ownership-fallback-proof.log",
+      "bytes": 302,
+      "sha256": "8d7a5e48a12d9d2e7f58b440fb92ef8306a2bbff56d928758561d45af01839d1",
+      "source_sha256_at_copy": "8d7a5e48a12d9d2e7f58b440fb92ef8306a2bbff56d928758561d45af01839d1"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/p01-03-pre-existing-failures.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/p01-03-pre-existing-failures.log",
+      "bytes": 5478,
+      "sha256": "b086d9422a07235905f15321f7c8a267f9948914e9689e3f2a35f2ede472d00a",
+      "source_sha256_at_copy": "b086d9422a07235905f15321f7c8a267f9948914e9689e3f2a35f2ede472d00a"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/pre-change-hashes.txt",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/pre-change-hashes.txt",
+      "bytes": 648,
+      "sha256": "f483ba4485ce8aa5112b8608d99962dc1d68482a611e2a2a331fefc6b5d452c8",
+      "source_sha256_at_copy": "f483ba4485ce8aa5112b8608d99962dc1d68482a611e2a2a331fefc6b5d452c8"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/previous-round-evidence.json",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/previous-round-evidence.json",
+      "bytes": 7866,
+      "sha256": "f216a3e9693002cb6aebdfbe3e09083217e5ef5378aa75354b97ec8236d56f30",
+      "source_sha256_at_copy": "f216a3e9693002cb6aebdfbe3e09083217e5ef5378aa75354b97ec8236d56f30"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/revision-stability-probe.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/revision-stability-probe.log",
+      "bytes": 1068,
+      "sha256": "d3f67e2af32bcbc7096cdeac1b36c92b5ec61ab8e565cac9d1f3b3985c99a98b",
+      "source_sha256_at_copy": "d3f67e2af32bcbc7096cdeac1b36c92b5ec61ab8e565cac9d1f3b3985c99a98b"
+    },
+    {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/unit-run-intermediate.log",
+      "archived_as": "artifacts/handoffs/P01-02/dsh/archive-prior-rounds/2026-10-04-pre-n03/rework-2026-10-01/unit-run-intermediate.log",
+      "bytes": 366,
+      "sha256": "1c8929e7c0b15c66afd950ac1d2c2c22657620e51c869c92936d4f5f1d7b2316",
+      "source_sha256_at_copy": "1c8929e7c0b15c66afd950ac1d2c2c22657620e51c869c92936d4f5f1d7b2316"
+    }
+  ]
+}

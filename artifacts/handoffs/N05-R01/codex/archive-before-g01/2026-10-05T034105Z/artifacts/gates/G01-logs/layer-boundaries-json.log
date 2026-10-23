@@ -1,0 +1,40 @@
+# check: layer-boundaries-json
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/check_architecture.py", "--json"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:44:50.149466+00:00
+# expectation: structured layer report
+
+## stdout
+{
+  "schema_version": "1.0.0",
+  "check": "architecture-layers",
+  "description": "layer boundary and import direction check",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "layers_checked": [
+    "agents",
+    "backend",
+    "contracts",
+    "domain",
+    "evaluation",
+    "optimization",
+    "simulation"
+  ],
+  "modules_scanned": 7,
+  "modules_per_layer": {
+    "domain": 1,
+    "contracts": 1,
+    "optimization": 1,
+    "simulation": 1,
+    "agents": 1,
+    "evaluation": 1,
+    "backend": 1
+  },
+  "passed": true,
+  "violation_count": 0,
+  "violations": []
+}
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 203

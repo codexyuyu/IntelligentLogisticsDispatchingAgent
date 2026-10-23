@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tmp/N02/probe_g00.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-03T12:47:00.524821+00:00",
+  "finished_at": "2026-10-03T12:47:00.642395+00:00",
+  "exit_code": 1,
+  "log_path": "artifacts/handoffs/N02/codex/g00-prerequisite.log",
+  "log_sha256": "6761305cb84fac92b8e22d20657a2a1962b6bdaf6d597fd6e00c9ac7d5c4c4a4"
+}

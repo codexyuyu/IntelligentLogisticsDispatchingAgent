@@ -1,0 +1,8 @@
+{
+  "windows_timezone": "Pacific Standard Time",
+  "offset_seconds": -25200.0,
+  "checked_at_utc": "2026-10-04T03:33:47.0656993+00:00",
+  "source": "Windows .NET TimeZoneInfo",
+  "checked_at_client": "2026-10-03T20:33:47.0656993-07:00",
+  "iana_timezone": "America/Los_Angeles"
+}

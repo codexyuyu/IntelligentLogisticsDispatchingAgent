@@ -1,0 +1,46 @@
+{
+  "source": "subreviewer messages received by this root; key probes independently rerun and captured here",
+  "principal_reviewer": "Codex N02-R01 /root",
+  "reviews": [
+    {
+      "reviewer": "Codex /root/n02_r01_jobs",
+      "isolation": "fork_turns=none; inherited model without override",
+      "findings": {
+        "N02_F01": "RESOLVED",
+        "N02_F04": "RESOLVED"
+      },
+      "facts": [
+        "JobRequest declared closure has 11 named types in 3 early modules; P05-03 has P02-04 ancestor",
+        "45/45 independent job shape checks; five single-fault design mutations rejected"
+      ],
+      "limitation": "ActorContext must be trusted; signature and authentication rules have no confirmed contradiction. Request context wiring requires G05 implementation verification."
+    },
+    {
+      "reviewer": "Codex /root/n02_r01_scenario_calendar",
+      "isolation": "fork_turns=none; inherited model without override",
+      "findings": {
+        "N02_F02": "FIELDS_AND_ISOLATION_RESOLVED; EntityKind direct closure BLOCKED",
+        "N02_F03": "RESOLVED"
+      },
+      "facts": [
+        "ScenarioSpec.event_specs -> ScenarioEventSpec.payload -> EventPayload variants -> EntityRef.kind -> EntityKind lacks complete normative enum members",
+        "Calendar earliest unique owner P02-01 primitives; CalendarDTO P02-02 entities; dependencies and mapping documented"
+      ],
+      "limitation": "Four additional semantic negatives are accepted by design example harness; these are evidence coverage limits, not demonstrated runtime defects."
+    },
+    {
+      "reviewer": "Codex /root/n02_r01_g00_scope",
+      "isolation": "fork_turns=none; inherited model without override",
+      "findings": {
+        "G00": "INVALID",
+        "N03": "BLOCKED"
+      },
+      "facts": [
+        "149 graph nodes, reverse edges, phase barriers and requirement references consistent",
+        "P00 deliveries/reports exist; historical reports are not current acceptance",
+        "Freeze generator hardcodes historical reviewer/version; do not overwrite real review metadata by replaying it"
+      ],
+      "limitation": "No files written or official Gate signed by subreviewer"
+    }
+  ]
+}

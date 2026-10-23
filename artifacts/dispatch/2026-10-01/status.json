@@ -1,0 +1,20 @@
+{
+  "schema_version": "agent-dispatch/1",
+  "status": "WAITING_FOR_TARGET_ROOT",
+  "reviewed_root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "dsh_current_root_from_visible_conversation": "D:\\Agent\\Codex\\IntelligentLogisticsDispatchingAgent",
+  "root_question_submitted": true,
+  "messages_submitted": 0,
+  "observed_models": {
+    "DSH": "DeepSeek-V41-Flash / High",
+    "ZCode": "GLM-5.3-Flash / 最高"
+  },
+  "models_changed": false,
+  "prepared_prompts": [
+    "artifacts/dispatch/2026-10-01/dsh-message.md",
+    "artifacts/dispatch/2026-10-01/zcode-message.md",
+    "artifacts/dispatch/2026-10-01/workbuddy-message.md"
+  ],
+  "dependency_rule": "Implementation and independent review preparation may run in separate scopes; formal pre-acceptance waits for a frozen implementation candidate.",
+  "limitation": "The prepared P01-02 prompts apply only to reviewed_root; they must not be sent to the different execution tree without a confirmed target and a matching review."
+}

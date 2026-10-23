@@ -1,0 +1,97 @@
+{"name": "F03 abutting intervals and zero capacity accepted", "passed": true, "detail": "True"}
+{"name": "F03 rejects overlap", "passed": true, "detail": "overlap/order/range"}
+{"name": "F03 rejects float", "passed": true, "detail": "int64 required"}
+{"name": "F03 rejects bool", "passed": true, "detail": "int64 required"}
+{"name": "F03 rejects negative version", "passed": true, "detail": "nonnegative integer required"}
+{"name": "F03 rejects fractional epoch", "passed": true, "detail": "UTC seconds Z required"}
+{"name": "F03 rejects unsorted intervals", "passed": true, "detail": "overlap/order/range"}
+{"name": "F03 empty calendar means explicit unavailability", "passed": true, "detail": "True"}
+{"name": "F03 explicit capture rebase/intersection without source mutation", "passed": true, "detail": "True"}
+{"name": "F03 source/hash/projected calendar is recomputable", "passed": true, "detail": "True"}
+{"name": "F03 stale source hash rejected", "passed": true, "detail": "calendar source hash mismatch"}
+{"name": "F03 unrebased integer intervals rejected", "passed": true, "detail": "calendar projection mismatch"}
+{"name": "F01/F04 legal optimization branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01/F04 legal simulation branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01/F04 legal reschedule branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01/F04 legal experiment branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01/F04 legal metric branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01 legal optimization mode transport", "passed": true, "detail": "True"}
+{"name": "F01 legal optimization mode warehouse", "passed": true, "detail": "True"}
+{"name": "F01 legal optimization mode joint", "passed": true, "detail": "True"}
+{"name": "F01/F04 rejects unknown kind", "passed": true, "detail": "unknown enum JobKind"}
+{"name": "F01/F04 rejects family mismatch", "passed": true, "detail": "missing or extra fields: {'mode'}"}
+{"name": "F01/F04 rejects ref family mismatch", "passed": true, "detail": "family mismatch"}
+{"name": "F01/F04 rejects zero version", "passed": true, "detail": "positive integer required"}
+{"name": "F01/F04 rejects empty hash", "passed": true, "detail": "64 lowercase hex required"}
+{"name": "F01/F04 rejects uppercase hash", "passed": true, "detail": "64 lowercase hex required"}
+{"name": "F01/F04 rejects old schema", "passed": true, "detail": "literal mismatch"}
+{"name": "F01 nonoptimization extra mode rejected", "passed": true, "detail": "missing or extra fields: {'mode'}"}
+{"name": "F04 changed saved bytes rejected", "passed": true, "detail": "422 INVALID_INPUT hash/ref"}
+{"name": "F04 missing identity rejected", "passed": true, "detail": "404 NOT_FOUND"}
+{"name": "F04 old revision rejected", "passed": true, "detail": "409 STALE_SNAPSHOT"}
+{"name": "F04 metadata cannot replace a missing real capability", "passed": true, "detail": "501 capability unavailable; no Job created"}
+{"name": "Actor viewer cannot submit", "passed": true, "detail": "403 FORBIDDEN"}
+{"name": "Actor cross scope rejected", "passed": true, "detail": "403 FORBIDDEN"}
+{"name": "Actor unknown body permission field rejected", "passed": true, "detail": "missing or extra fields: {'permission'}"}
+{"name": "F04 JSON duplicate keys rejected", "passed": true, "detail": "duplicate JSON key x"}
+{"name": "F04 JSON nonfinite numbers rejected", "passed": true, "detail": "NaN"}
+{"name": "F02 complete typed empty scenario boundary accepted", "passed": true, "detail": "True"}
+{"name": "F02 canonical key reordering preserves identity", "passed": true, "detail": "True"}
+{"name": "F02 changed seed changes identity", "passed": true, "detail": "True"}
+{"name": "F02 independent typed sidecar accepted", "passed": true, "detail": "True"}
+{"name": "F02 oracle mutation cannot affect input hash", "passed": true, "detail": "True"}
+{"name": "F02 rejects version mismatch", "passed": true, "detail": "scenario identity mismatch"}
+{"name": "F02 rejects bad hash", "passed": true, "detail": "64 lowercase hex required"}
+{"name": "F02 rejects size mismatch", "passed": true, "detail": "size mismatch"}
+{"name": "F02 rejects seed tamper without rehash", "passed": true, "detail": "scenario content hash mismatch"}
+{"name": "F02 rejects oracle injection", "passed": true, "detail": "missing or extra fields: {'expected_plan'}"}
+{"name": "F02 rejects duplicate event authority", "passed": true, "detail": "missing or extra fields: {'event_specs'}"}
+{"name": "F02 rejects executable generation policy", "passed": true, "detail": "unknown enum GenerationPolicy"}
+{"name": "Resource equipment wrapper keeps inner equipment kind", "passed": true, "detail": "True"}
+{"name": "Resource mismatched branch/entity rejected", "passed": true, "detail": "missing or extra fields: {'kind', 'allowed_cargo_types', 'calendar', 'capacity_weight_g', 'allowed_zone_ids', 'setpoint_decic', 'code', 'capacity_volume_cm3', 'quantity_capacity'}"}
+{"name": "Resource vehicle is outside generic five-kind endpoint", "passed": true, "detail": "unknown discriminant"}
+{"name": "Resource capacity negative rejected", "passed": true, "detail": "nonpositive resource capacity"}
+{"name": "F03 Resource calendar units exceed known capacity rejected", "passed": true, "detail": "calendar units exceed resource capacity"}
+{"name": "F02 rehash outer bundle cannot hide stale inner snapshot", "passed": true, "detail": "snapshot content hash mismatch"}
+{"name": "F04 completed Job binds immutable command and typed result ref", "passed": true, "detail": "True"}
+{"name": "F04 lifecycle rejects completed without result", "passed": true, "detail": "typed completed result required"}
+{"name": "F04 lifecycle rejects wrong result family", "passed": true, "detail": "typed completed result required"}
+{"name": "F04 lifecycle rejects terminal lease retained", "passed": true, "detail": "nonrunning lease not released"}
+{"name": "F04 lifecycle rejects end before start", "passed": true, "detail": "invalid terminal time"}
+{"name": "F04 lifecycle rejects attempt limit", "passed": true, "detail": "attempt limit"}
+{"name": "F04 lifecycle rejects false worker failed", "passed": true, "detail": "failed needs error not result"}
+{"name": "F04 current unexpired lease accepted by contract predicate", "passed": true, "detail": "True"}
+{"name": "F04 old lease epoch rejected", "passed": true, "detail": "lease_lost: no current Job write"}
+{"name": "F04 expired lease rejected", "passed": true, "detail": "lease_lost: no current Job write"}
+{"name": "Registered type/task/module graph closed", "passed": true, "detail": "True"}
+{"name": "Persistent checker catches missing named type", "passed": true, "detail": "True"}
+{"name": "Persistent checker catches future type owner", "passed": true, "detail": "True"}
+{"name": "Persistent checker catches hidden oracle path", "passed": true, "detail": "True"}
+{"name": "Persistent checker catches source enum duplicate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields CargoCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields OrderCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields VehicleCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields DriverCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields WarehouseCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields ZoneCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields LocationCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields DockCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields WorkerCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields EquipmentCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields OrderUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields VehicleUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields DriverUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields WarehouseUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields ZoneUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields LocationUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields DockUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields WorkerUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields EquipmentUpdate", "passed": true, "detail": "True"}
+{"name": "19 master create/patch projections and 9 query types have unique explicit shapes", "passed": true, "detail": "True"}
+{"name": "Manifest business node identities and initial states preserved", "passed": true, "detail": "True"}
+Rendered 109 prompts, 40 gates, task graph and indexes.
+{"name": "114 generator outputs exactly enumerated before mutation", "passed": true, "detail": "True"}
+{"name": "Generated outputs reproduce byte for byte", "passed": true, "detail": "True"}
+{"name": "All modified-document local file links valid", "passed": true, "detail": "True"}
+{"name": "3418 protected files preserve original bytes", "passed": true, "detail": "True"}
+{"status": "PASS", "checks": 95, "passed": 95, "failed": 0, "protected_file_count": 3418, "protected_changes": [], "changed_files": ["contracts/changes/N01-R01-contract-decisions.json", "contracts/changes/N01-R01-contract-freeze-2.0.0.md", "docs/api/API_CONTRACT.md", "docs/architecture/DATA_CONTRACTS.md", "docs/architecture/DOMAIN_CATALOG.md", "docs/architecture/IMPLEMENTATION_CONVENTIONS.md", "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md", "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md", "docs/architecture/issues/ARCH-0007-early-named-types.md", "docs/architecture/issues/README.md", "docs/plan/TASK_MANIFEST.json", "docs/prompts/00-master/P00-01-baseline-inventory.md", "docs/prompts/00-master/P00-02-freeze-contracts.md", "docs/prompts/00-master/P00-03-gate-contract.md", "docs/prompts/01-foundation/P01-01-workspace-bootstrap.md", "docs/prompts/01-foundation/P01-02-checks-and-gate-runner.md", "docs/prompts/01-foundation/P01-03-migration-governance.md", "docs/prompts/01-foundation/P04-01-canonical-fixtures.md", "docs/prompts/01-foundation/P04-02-database-seed.md", "docs/prompts/02-domain/P02-01-primitives-and-states.md", "docs/prompts/02-domain/P02-02-master-entities.md", "docs/prompts/02-domain/P02-03-planning-entities.md", "docs/prompts/02-domain/P02-04-runtime-contract-export.md", "docs/prompts/03-database/P03-01-resource-schema.md", "docs/prompts/03-database/P03-02-planning-schema.md", "docs/prompts/03-database/P03-03-repositories-and-snapshot.md", "docs/prompts/03-database/P03-04-atomic-version-store.md", "docs/prompts/04-api/P05-01-api-composition.md", "docs/prompts/04-api/P05-02-master-data-services.md", "docs/prompts/04-api/P05-03-durable-jobs.md", "docs/prompts/04-api/P16-01-optimization-job-api.md", "docs/prompts/04-api/P16-02-joint-planning-service.md", "docs/prompts/04-api/P16-03-validated-commit-api.md", "docs/prompts/04-api/P16-04-simulation-query-api.md", "docs/prompts/05-transport-solver/P06-01-transport-contract.md", "docs/prompts/05-transport-solver/P06-02-distance-matrix.md", "docs/prompts/05-transport-solver/P07-01-vrp-base.md", "docs/prompts/05-transport-solver/P07-02-capacity-and-pickup.md", "docs/prompts/05-transport-solver/P07-03-time-windows.md", "docs/prompts/05-transport-solver/P07-04-temperature-and-cargo.md", "docs/prompts/05-transport-solver/P07-05-objective-function.md", "docs/prompts/05-transport-solver/P07-06-result-status-validation.md", "docs/prompts/05-transport-solver/P07-07-transport-adapter.md", "docs/prompts/06-warehouse-solver/P08-01-warehouse-contract.md", "docs/prompts/06-warehouse-solver/P08-02-inventory-and-handoffs.md", "docs/prompts/06-warehouse-solver/P09-01-intervals-precedence.md", "docs/prompts/06-warehouse-solver/P09-02-cumulative-resources.md", "docs/prompts/06-warehouse-solver/P09-03-storage-capacity.md", "docs/prompts/06-warehouse-solver/P09-04-sequence-setup.md", "docs/prompts/06-warehouse-solver/P09-05-warehouse-result.md", "docs/prompts/06-warehouse-solver/P10-01-validator-protocol.md", "docs/prompts/06-warehouse-solver/P10-02-joint-validator.md", "docs/prompts/06-warehouse-solver/P10-03-validator-adversarial-suite.md", "docs/prompts/07-simulation/P11-01-simulation-contract.md", "docs/prompts/07-simulation/P11-02-execution-state-machine.md", "docs/prompts/07-simulation/P12-01-simpy-kernel.md", "docs/prompts/07-simulation/P12-02-transport-execution.md", "docs/prompts/07-simulation/P12-03-warehouse-execution.md", "docs/prompts/07-simulation/P12-04-snapshot-replay.md", "docs/prompts/07-simulation/P13-01-event-ingestion.md", "docs/prompts/07-simulation/P13-02-event-api-and-outbox.md", "docs/prompts/08-exception/P14-01-impact-graph.md", "docs/prompts/08-exception/P14-02-execution-freeze.md", "docs/prompts/08-exception/P15-01-candidate-policies.md", "docs/prompts/08-exception/P15-02-local-solve.md", "docs/prompts/08-exception/P15-03-bounded-escalation.md", "docs/prompts/08-exception/P15-04-version-diff.md", "docs/prompts/09-agents/P17-01-tool-schemas.md", "docs/prompts/09-agents/P17-02-business-tools.md", "docs/prompts/09-agents/P18-01-llm-provider.md", "docs/prompts/09-agents/P18-02-llm-resilience.md", "docs/prompts/09-agents/P19-01-intent-extraction.md", "docs/prompts/09-agents/P19-02-coordinator-state-machine.md", "docs/prompts/09-agents/P20-01-transport-agent-tools.md", "docs/prompts/09-agents/P20-02-transport-explanation.md", "docs/prompts/09-agents/P21-01-warehouse-agent-tools.md", "docs/prompts/09-agents/P21-02-warehouse-explanation.md", "docs/prompts/09-agents/P22-01-exception-agent-tools.md", "docs/prompts/09-agents/P22-02-exception-explanation.md", "docs/prompts/09-agents/P23-01-agent-orchestration.md", "docs/prompts/09-agents/P23-02-agent-api-safety.md", "docs/prompts/10-frontend/P24-01-react-shell.md", "docs/prompts/10-frontend/P24-02-generated-api-client.md", "docs/prompts/10-frontend/P25-01-orders-ui.md", "docs/prompts/10-frontend/P25-02-vehicles-ui.md", "docs/prompts/10-frontend/P25-03-warehouses-ui.md", "docs/prompts/10-frontend/P26-01-transport-request-ui.md", "docs/prompts/10-frontend/P26-02-transport-plan-ui.md", "docs/prompts/10-frontend/P27-01-warehouse-gantt-ui.md", "docs/prompts/10-frontend/P27-02-joint-handoff-ui.md", "docs/prompts/10-frontend/P28-01-simulation-controls-ui.md", "docs/prompts/10-frontend/P28-02-replay-comparison-ui.md", "docs/prompts/10-frontend/P29-01-exception-center-ui.md", "docs/prompts/10-frontend/P29-02-reschedule-diff-ui.md", "docs/prompts/10-frontend/P30-01-agent-chat-ui.md", "docs/prompts/10-frontend/P30-02-agent-confirmation-ui.md", "docs/prompts/10-frontend/P31-01-websocket-events.md", "docs/prompts/10-frontend/P31-02-frontend-realtime.md", "docs/prompts/11-evaluation/P32-01-metric-calculators.md", "docs/prompts/11-evaluation/P32-02-metrics-api.md", "docs/prompts/11-evaluation/P32-03-metrics-dashboard-ui.md", "docs/prompts/11-evaluation/P33-01-experiment-runner.md", "docs/prompts/11-evaluation/P33-02-experiments-api-ui.md", "docs/prompts/12-integration/P34-01-transport-e2e.md", "docs/prompts/12-integration/P34-02-joint-exception-e2e.md", "docs/prompts/12-integration/P34-03-failure-recovery-e2e.md", "docs/prompts/12-integration/P35-01-demo-normal.md", "docs/prompts/12-integration/P35-02-demo-joint.md", "docs/prompts/12-integration/P35-03-demo-vehicle-failure.md", "docs/prompts/12-integration/P35-04-demo-order-cancel.md", "docs/prompts/12-integration/P35-05-demo-weather.md", "docs/prompts/12-integration/P36-01-benchmark-harness.md", "docs/prompts/12-integration/P36-02-bounded-performance-fix.md", "docs/prompts/12-integration/P37-01-security-boundary.md", "docs/prompts/12-integration/P37-02-observability-audit.md", "docs/prompts/12-integration/P37-03-backup-and-recovery.md", "docs/prompts/13-release/P38-01-developer-docs.md", "docs/prompts/13-release/P38-02-operator-docs.md", "docs/prompts/13-release/P39-01-release-candidate.md", "docs/prompts/13-release/P39-02-release-gate.md", "tools/ai_coding_plan/build_catalog.py", "tools/ai_coding_plan/render_plan.py", "tools/ai_coding_plan/validate_plan.py"], "freeze_drift": ["docs/architecture/DOMAIN_CATALOG.md", "docs/architecture/DATA_CONTRACTS.md", "docs/architecture/IMPLEMENTATION_CONVENTIONS.md", "docs/api/API_CONTRACT.md"], "limitations": ["Executable design examples only, no business classes or HTTP/DB acceptance.", "Existing source leaf fields reused; full inherited schema behavior requires real G02 exports/tests.", "resolve examples check reference metadata and failure ordering only; no real capability parser/worker was run."]}

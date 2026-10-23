@@ -1,0 +1,19 @@
+{
+  "check_id": "official-g01",
+  "argv": [
+    "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+    "run",
+    "python",
+    "scripts/gates.py",
+    "--phase",
+    "01",
+    "--revision",
+    "auto"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-04T20:43:58.837912+00:00",
+  "finished_at": "2026-10-04T20:44:51.159917+00:00",
+  "log_path": "artifacts/handoffs/N05/codex/commands/official-g01.log",
+  "log_sha256": "0dbd52ac9518be07b186f40c90b32b179640db13a6a11895f8737aae9f857d09"
+}

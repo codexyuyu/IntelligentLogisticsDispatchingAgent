@@ -1,0 +1,5 @@
+########## uv run python scripts/gates.py --phase 02 --revision auto --check-only
+check-only: gate G02 revision content-sha256:1332161037086ddec70e4766df94d137743db391d55c6cd68b6329a8f0bef73a
+check-only: no existing evidence at D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\artifacts\gates\G02.json (nothing signed yet)
+check-only: gate not signed (no evidence file written)
+EXIT_CODE=0

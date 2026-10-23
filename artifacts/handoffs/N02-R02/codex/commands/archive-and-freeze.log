@@ -1,0 +1,42 @@
+{
+  "updated_at": "2026-10-04T14:48:49.292386+00:00",
+  "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+  "archived": [
+    {
+      "original_path": "docs/architecture/CONTRACT_FREEZE.json",
+      "archive_path": "artifacts/handoffs/N02-R02/codex/archive/docs/architecture/CONTRACT_FREEZE.json",
+      "sha256": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "bytes": 4804
+    },
+    {
+      "original_path": "docs/architecture/CONTRACT_FREEZE.md",
+      "archive_path": "artifacts/handoffs/N02-R02/codex/archive/docs/architecture/CONTRACT_FREEZE.md",
+      "sha256": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "bytes": 25740
+    },
+    {
+      "original_path": "artifacts/gates/G00.json",
+      "archive_path": "artifacts/handoffs/N02-R02/codex/archive/artifacts/gates/G00.json",
+      "sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "bytes": 4068
+    },
+    {
+      "original_path": "artifacts/gates/G00-checks.log",
+      "archive_path": "artifacts/handoffs/N02-R02/codex/archive/artifacts/gates/G00-checks.log",
+      "sha256": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "bytes": 1254
+    }
+  ],
+  "frozen_source_count": 15,
+  "official_updated_paths": [
+    "docs/architecture/CONTRACT_FREEZE.json",
+    "docs/architecture/CONTRACT_FREEZE.md"
+  ],
+  "freeze_hashes": {
+    "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+    "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+  },
+  "reviewed_candidate": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "post_freeze_candidate": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+  "recovery_pending": "actual --self-test --record-g00 and current runner preceding-G00 validation"
+}

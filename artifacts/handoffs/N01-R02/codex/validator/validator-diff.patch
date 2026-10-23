@@ -1,0 +1,277 @@
+--- before/tools/ai_coding_plan/validate_plan.py
++++ after/tools/ai_coding_plan/validate_plan.py
+@@ -85,6 +85,69 @@
+ CONTRACT_PRIMITIVES={'UUID','UTC','str','int','bool','Sha256','PositiveInt','NonNegativeInt','Seed','Horizon','SchemaVersion','VersionText','SafeText'}
+ CONTRACT_SOURCE_PATHS={'docs/architecture/DOMAIN_CATALOG.md','docs/architecture/DATA_CONTRACTS.md','docs/architecture/IMPLEMENTATION_CONVENTIONS.md','docs/api/API_CONTRACT.md','docs/algorithms/OPTIMIZATION_CONTRACT.md','docs/algorithms/SIMULATION_CONTRACT.md','docs/algorithms/METRICS_CONTRACT.md','docs/plan/TEST_FIXTURES.md'}
+ JOB_KIND_VALUES=('optimization','simulation','reschedule','experiment','metric')
++ENTITY_AUXILIARY_NAMES=['PlanningSnapshot','Job','JobAttempt','Idempotency','Reservation','InventoryLedger','Outbox','AuditEntry','LifecycleEvent','ExecutionSnapshot','ConfirmationToken']
++
++def entity_reference_targets():
++    """N01-R02 target identity metadata; target names do not imply type imports."""
++    targets={}
++    for name in ENTITY_NAMES+ENTITY_AUXILIARY_NAMES:
++        value={'WarehouseZone':'zone','StorageLocation':'location'}.get(name,re.sub(r'(?<!^)(?=[A-Z])','_',name).lower())
++        targets[value]=dict(type=name,identity_field='id',revision_field='row_version',category='entity')
++    targets['travel_matrix']=dict(type='TravelMatrix',identity_field='id',revision_field='version',category='pure_value')
++    targets['region']=dict(type='RegionRef',identity_field='region_id',revision_field=None,category='inline_value')
++    return targets
++
++ENTITY_KIND_MEMBERS={re.sub(r'(?<!^)(?=[A-Z])','_',row['type']).upper() if row['type']!='RegionRef' else 'REGION':value for value,row in entity_reference_targets().items()}
++
++def event_entity_reference_mapping():
++    """Exact frozen ten-event decisions, independent of the loaded registry."""
++    mapping={}
++    for tag,payload,kind,target_type,id_path in (
++        ('vehicle_failure','VehicleFailurePayload','vehicle','Vehicle','vehicle_id'),
++        ('transport_delay','TransportDelayPayload','transport_task','TransportTask','transport_task_id'),
++        ('cargo_anomaly','CargoAnomalyPayload','cargo','Cargo','cargo_id'),
++        ('order_cancellation','OrderCancellationPayload','order','Order','order_id'),
++        ('demand_increase','DemandIncreasePayload','order','Order','order_id'),
++        ('demand_decrease','DemandDecreasePayload','order','Order','order_id'),
++        ('equipment_failure','EquipmentFailurePayload','equipment','Equipment','equipment_id'),
++    ):
++        mapping[tag]=dict(payload_type=payload,allowed_kinds=[kind],
++            target=dict(source='entity',type=target_type,id_path=id_path,revision='row_version_if_present'),
++            constraints=['target_exists_in_scope','entity_ref_id_equals_target_id'])
++    mapping['traffic_disruption']=dict(payload_type='TrafficDisruptionPayload',allowed_kinds=['travel_matrix'],
++        target=dict(source='snapshot_matrix',type='TravelMatrix',id_path='entity_ref.id',revision='matrix_version_required'),
++        constraints=['target_exists_in_scope','nonempty_unique_directed_arcs','arc_nodes_in_target_matrix','new_matrix_version_gt_reference','one_matrix_per_event'])
++    mapping['weather_change']=dict(payload_type='WeatherChangePayload',allowed_kinds=['region'],
++        target=dict(source='inline_region',type='RegionRef',id_path='region_ref.region_id',revision='null_required'),
++        constraints=['entity_ref_id_equals_target_id','nonempty_unique_region_nodes','region_nodes_in_scene_matrix_union','same_region_id_same_node_set','affected_matrix_versions_strictly_advance'])
++    kinds=['warehouse','zone','location','dock','worker','equipment']
++    mapping['warehouse_resource_unavailable']=dict(payload_type='WarehouseResourceUnavailablePayload',allowed_kinds=kinds,
++        target=dict(source='resource_ref',types_by_kind={kind:entity_reference_targets()[kind]['type'] for kind in kinds},
++            id_path='resource_ref.id',kind_path='resource_ref.kind',revision='row_version_if_present'),
++        constraints=['target_exists_in_scope','entity_ref_equals_resource_ref'])
++    return mapping
++
++def contract_field_path_type(types,root_type,expression):
++    """Resolve only required record fields; no indexing, optional hops or code."""
++    if not isinstance(expression,str) or not re.fullmatch(r'[a-z_][A-Za-z0-9_]*(?:\.[a-z_][A-Za-z0-9_]*)*',expression):
++        raise ValueError('invalid target field path '+str(expression))
++    current=root_type
++    for field in expression.split('.'):
++        if not isinstance(current,str):raise ValueError('invalid type in target field path '+expression)
++        row=types.get(current,{})
++        fields=row.get('fields',{})
++        if row.get('kind')!='record' or not isinstance(fields,dict) or field not in fields:
++            raise ValueError('unresolved target field path '+expression)
++        current=fields[field]
++    if not isinstance(current,str):raise ValueError('invalid type in target field path '+expression)
++    return current
++
++def reject_contract_duplicate_keys(pairs):
++    result={}
++    for key,value in pairs:
++        if key in result:raise ValueError('duplicate contract JSON key '+key)
++        result[key]=value
++    return result
+ 
+ def contract_type_reference(expression):
+     """The registry has a small closed type language; arbitrary Python is invalid."""
+@@ -240,6 +303,39 @@
+     states='packages/domain/src/logistics_domain/states.py'
+     primitives='packages/domain/src/logistics_domain/primitives.py'
+     runtime='packages/domain/src/logistics_domain/runtime.py'
++    execution='packages/domain/src/logistics_domain/execution.py'
++    entity_kind=require('EntityKind','enum','P02-01',states)
++    if entity_kind.get('members')!=ENTITY_KIND_MEMBERS:fail('EntityKind: exact 45 members/serialization values required')
++    entity_ref=require('EntityRef','record','P02-01',primitives)
++    if entity_ref.get('fields')!=dict(kind='EntityKind',id='UUID',revision='NonNegativeInt?'):fail('EntityRef: exact kind/id/optional nonnegative revision fields required')
++    if data.get('entity_ref_targets')!=entity_reference_targets():fail('EntityKind/target identity mapping mismatch')
++    expected_events=event_entity_reference_mapping()
++    event_mapping=data.get('event_entity_ref_mapping')
++    if not isinstance(event_mapping,dict):fail('event_entity_ref_mapping must be an object');event_mapping={}
++    if set(event_mapping)!=set(expected_events):fail('event EntityRef mapping must cover exactly ten events')
++    event_payload=require('EventPayload','union','P02-04',execution)
++    expected_variants={tag:rule['payload_type'] for tag,rule in expected_events.items()}
++    if event_payload.get('discriminator')!='kind' or event_payload.get('variants')!=expected_variants:fail('EventPayload: exact ten kind branches required')
++    region=require('RegionRef','record','P02-04',execution)
++    if region.get('fields')!=dict(region_id='UUID',node_ids='UUID[]'):fail('RegionRef: explicit region_id/node_ids fields required')
++    for tag,expected in expected_events.items():
++        payload=expected['payload_type'];row=require(payload,'record','P02-04',execution)
++        fields=row.get('fields',{})
++        if not isinstance(fields,dict):fields={}
++        if fields.get('kind')!='='+tag or fields.get('entity_ref')!='EntityRef':fail(payload+': explicit kind and shared EntityRef fields required')
++        if tag=='warehouse_resource_unavailable' and fields.get('resource_ref')!='EntityRef':fail(payload+': resource_ref must use shared EntityRef')
++        rule=event_mapping.get(tag)
++        if not isinstance(rule,dict):fail(tag+': event target rule must be an object');continue
++        if rule!=expected:fail(tag+': exact event EntityRef target rule required')
++        allowed=rule.get('allowed_kinds')
++        if not isinstance(allowed,list) or not allowed or any(not isinstance(kind,str) or kind not in ENTITY_KIND_MEMBERS.values() for kind in allowed):fail(tag+': unknown or empty allowed EntityKind list')
++        elif len(set(allowed))!=len(allowed):fail(tag+': duplicate allowed EntityKind')
++        target=rule.get('target')
++        if not isinstance(target,dict):fail(tag+': target must be an object');continue
++        for path_key,required_type in [('id_path','UUID')]+([('kind_path','EntityKind')] if tag=='warehouse_resource_unavailable' else []):
++            try:resolved=contract_field_path_type(types,payload,target.get(path_key))
++            except ValueError as exc:fail(tag+': '+str(exc));continue
++            if resolved!=required_type:fail(tag+': '+path_key+' must resolve to required '+required_type)
+     job_kind=require('JobKind','enum','P02-01',states)
+     if job_kind.get('members')!={value.upper():value for value in JOB_KIND_VALUES}:fail('JobKind: exact five members/values required')
+     mapping=data.get('job_kind_mapping')
+@@ -291,7 +387,7 @@
+     decisions=ROOT/CONTRACT_DECISIONS_PATH
+     if not decisions.is_file():errors.append('missing contract decision registry '+CONTRACT_DECISIONS_PATH)
+     else:
+-        try:errors+=validate_contract_decisions(json.loads(decisions.read_text(encoding='utf-8')),data)
++        try:errors+=validate_contract_decisions(json.loads(decisions.read_text(encoding='utf-8'),object_pairs_hook=reject_contract_duplicate_keys),data)
+         except (ValueError,TypeError,KeyError) as exc:errors.append('invalid contract decision registry: '+str(exc))
+     if len(gates)!=40 or {g['id'] for g in gates}!={f'G{p:02d}' for p in range(40)}:errors.append('40 numbered gates required')
+     if {t['phase'] for t in tasks}!=set(range(40)):errors.append('phase coverage gap')
+@@ -389,12 +485,13 @@
+         primitives='packages/domain/src/logistics_domain/primitives.py'
+         planning='packages/domain/src/logistics_domain/planning.py'
+         runtime='packages/domain/src/logistics_domain/runtime.py'
++        execution='packages/domain/src/logistics_domain/execution.py'
+         contracts_runtime='packages/contracts/src/logistics_contracts/runtime.py'
+         http='packages/contracts/src/logistics_contracts/http.py'
+         tasks=[
+             dict(id='P02-01',deps=[],allowed_files=[states,primitives]),
+             dict(id='P02-03',deps=['P02-01'],allowed_files=[planning]),
+-            dict(id='P02-04',deps=['P02-03'],allowed_files=[runtime,contracts_runtime]),
++            dict(id='P02-04',deps=['P02-03'],allowed_files=[runtime,execution,contracts_runtime]),
+             dict(id='P05-02',deps=['P02-04'],allowed_files=[http]),
+             dict(id='P05-03',deps=['P05-02'],allowed_files=[contracts_runtime]),
+         ]
+@@ -404,6 +501,8 @@
+         def enum(name,members):rows.append(dict(name=name,kind='enum',members=members,task='P02-01',path=states,rules=[]))
+         enum('JobKind',{value.upper():value for value in JOB_KIND_VALUES})
+         enum('JobOptimizationMode',{value.upper():value for value in ('transport','warehouse','joint')})
++        enum('EntityKind',deepcopy(ENTITY_KIND_MEMBERS))
++        record('EntityRef',dict(kind='EntityKind',id='UUID',revision='NonNegativeInt?'),'P02-01',primitives)
+         record('CalendarInterval',dict(start_s='NonNegativeInt',end_s='NonNegativeInt',available_units='NonNegativeInt'),'P02-01',primitives)
+         record('ResourceCalendar',dict(epoch_utc='UTC',intervals='CalendarInterval[]',version='NonNegativeInt'),'P02-01',primitives)
+         rows.append(dict(name='CalendarDTO',kind='mapped',base='ResourceCalendar',extra_fields=dict(schema_version='=2.0.0'),task='P05-02',path=http,rules=[]))
+@@ -417,14 +516,23 @@
+         rows.append(dict(name='JobPayload',kind='union',variants=mapping,discriminator='family',task='P02-04',path=runtime,rules=[]))
+         record('JobCommand',dict(schema_version='=2.0.0',kind='JobKind',payload='JobPayload',deadline_utc='UTC'))
+         rows.append(dict(name='JobRequest',kind='mapped',base='JobCommand',task='P02-04',path=contracts_runtime,rules=[]))
+-        record('ScenarioEventSpec',dict(event_id='UUID',effective_at_s='NonNegativeInt'))
++        record('RegionRef',dict(region_id='UUID',node_ids='UUID[]'),path=execution)
++        event_mapping=event_entity_reference_mapping()
++        for tag,rule in event_mapping.items():
++            fields=dict(kind='='+tag,entity_ref='EntityRef')
++            if rule['target']['source']=='entity':fields[rule['target']['id_path']]='UUID'
++            elif tag=='weather_change':fields['region_ref']='RegionRef'
++            elif tag=='warehouse_resource_unavailable':fields['resource_ref']='EntityRef'
++            record(rule['payload_type'],fields,path=execution)
++        rows.append(dict(name='EventPayload',kind='union',variants={tag:rule['payload_type'] for tag,rule in event_mapping.items()},discriminator='kind',task='P02-04',path=execution,rules=[]))
++        record('ScenarioEventSpec',dict(event_id='UUID',effective_at_s='NonNegativeInt',payload='EventPayload'))
+         record('ScenarioSpec',dict(schema_version='=2.0.0',event_specs='ScenarioEventSpec[]'))
+         record('ScenarioRef',dict(scenario_id='UUID',dataset_version='PositiveInt',schema_version='=2.0.0',content_hash='Sha256'))
+         record('ScenarioInput',dict(snapshot='PlanningSnapshot'))
+         record('ScenarioBundle',dict(schema_version='=2.0.0',ref='ScenarioRef',spec='ScenarioSpec',input='ScenarioInput',source='=synthetic'))
+         data=dict(contract_version='2.0.0',plan_version='1.0.3',decision_round='N01-R01',types=rows,
+-            module_dependencies={states:[],primitives:[],planning:[],runtime:[states,planning],http:[primitives],contracts_runtime:[runtime]},
+-            job_kind_mapping=mapping)
++            module_dependencies={states:[],primitives:[states],planning:[],execution:[primitives],runtime:[states,planning,execution],http:[primitives],contracts_runtime:[runtime]},
++            job_kind_mapping=mapping,entity_ref_targets=entity_reference_targets(),event_entity_ref_mapping=event_mapping)
+         return data,dict(plan_version='1.0.3',tasks=tasks,gates=[])
+     def row(self,data,name):return next(r for r in data['types'] if r['name']==name)
+     def assert_failure(self,data,manifest,detail):
+@@ -524,6 +632,104 @@
+         data,manifest=self.fixture();self.row(data,'ScenarioInput')['fields']={}
+         self.assert_failure(data,manifest,'empty record is not a complete type')
+ 
++    def test_entity_kind_cannot_be_existing(self):
++        data,manifest=self.fixture();row=self.row(data,'EntityKind')
++        row.update(kind='existing',source='docs/architecture/DATA_CONTRACTS.md#公共类型与状态');row.pop('members')
++        self.assert_failure(data,manifest,'EntityKind: required kind enum')
++    def test_entity_kind_has_every_catalog_entity_and_consumer(self):
++        data,manifest=self.fixture();self.row(data,'EntityKind')['members'].pop('DRIVER')
++        self.assert_failure(data,manifest,'exact 45 members/serialization values required')
++    def test_entity_kind_serialization_values_are_unique(self):
++        data,manifest=self.fixture();self.row(data,'EntityKind')['members']['DRIVER']='vehicle'
++        self.assert_failure(data,manifest,'duplicate enum serialization value')
++    def test_entity_kind_member_names_cannot_repeat_in_json(self):
++        with self.assertRaisesRegex(ValueError,'duplicate contract JSON key DRIVER'):
++            json.loads('{"members":{"DRIVER":"driver","DRIVER":"vehicle"}}',object_pairs_hook=reject_contract_duplicate_keys)
++    def test_entity_kind_existing_consumer_labels_are_preserved(self):
++        data,manifest=self.fixture();self.row(data,'EntityKind')['members']['WAREHOUSE_ZONE']='warehouse_zone'
++        self.assert_failure(data,manifest,'exact 45 members/serialization values required')
++    def test_entity_target_identity_cannot_change(self):
++        data,manifest=self.fixture();data['entity_ref_targets']['travel_matrix']['revision_field']='row_version'
++        self.assert_failure(data,manifest,'EntityKind/target identity mapping mismatch')
++    def test_entity_target_set_cannot_omit_region(self):
++        data,manifest=self.fixture();data['entity_ref_targets'].pop('region')
++        self.assert_failure(data,manifest,'EntityKind/target identity mapping mismatch')
++    def test_entity_ref_cannot_be_existing(self):
++        data,manifest=self.fixture();row=self.row(data,'EntityRef')
++        row.update(kind='existing',source='docs/architecture/DATA_CONTRACTS.md#公共类型与状态');row.pop('fields')
++        self.assert_failure(data,manifest,'EntityRef: required kind record')
++    def test_entity_ref_requires_unique_enum_kind(self):
++        data,manifest=self.fixture();self.row(data,'EntityRef')['fields']['kind']='str'
++        self.assert_failure(data,manifest,'exact kind/id/optional nonnegative revision fields required')
++    def test_entity_ref_cannot_omit_uuid_identity(self):
++        data,manifest=self.fixture();self.row(data,'EntityRef')['fields'].pop('id')
++        self.assert_failure(data,manifest,'exact kind/id/optional nonnegative revision fields required')
++    def test_entity_ref_revision_cannot_be_signed(self):
++        data,manifest=self.fixture();self.row(data,'EntityRef')['fields']['revision']='int?'
++        self.assert_failure(data,manifest,'optional nonnegative revision fields required')
++    def test_entity_ref_definition_cannot_move_later(self):
++        data,manifest=self.fixture();primitives=self.row(data,'EntityRef')['path']
++        manifest['tasks'][2]['allowed_files'].append(primitives);self.row(data,'EntityRef')['task']='P02-04'
++        self.assert_failure(data,manifest,'EntityRef: wrong definition task')
++    def test_entity_kind_definition_must_precede_entity_ref(self):
++        data,manifest=self.fixture();states=self.row(data,'EntityKind')['path']
++        manifest['tasks'][2]['allowed_files'].append(states);self.row(data,'EntityKind')['task']='P02-04'
++        self.assert_failure(data,manifest,'EntityKind: wrong definition task')
++        self.assert_failure(data,manifest,'future or unordered type dependency EntityKind')
++    def test_entity_ref_has_one_definition(self):
++        data,manifest=self.fixture();data['types'].append(deepcopy(self.row(data,'EntityRef')))
++        self.assert_failure(data,manifest,'duplicate type EntityRef')
++    def test_event_target_mapping_requires_all_ten_events(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping'].pop('weather_change')
++        self.assert_failure(data,manifest,'mapping must cover exactly ten events')
++    def test_event_target_mapping_rejects_unknown_event(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['unknown_event']={}
++        self.assert_failure(data,manifest,'mapping must cover exactly ten events')
++    def test_event_target_mapping_requires_exact_payload_branch(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['cargo_anomaly']['payload_type']='EquipmentFailurePayload'
++        self.assert_failure(data,manifest,'cargo_anomaly: exact event EntityRef target rule required')
++    def test_event_payload_union_requires_all_ten_branches(self):
++        data,manifest=self.fixture();self.row(data,'EventPayload')['variants'].pop('traffic_disruption')
++        self.assert_failure(data,manifest,'EventPayload: exact ten kind branches required')
++    def test_event_payload_cannot_hide_entity_ref_in_existing_leaf(self):
++        data,manifest=self.fixture();row=self.row(data,'VehicleFailurePayload')
++        row.update(kind='existing',source='docs/architecture/DATA_CONTRACTS.md#十类异常-payload');row.pop('fields')
++        self.assert_failure(data,manifest,'VehicleFailurePayload: required kind record')
++    def test_event_target_kind_must_be_registered(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['vehicle_failure']['allowed_kinds']=['spaceship']
++        self.assert_failure(data,manifest,'unknown or empty allowed EntityKind list')
++    def test_event_target_kind_cannot_repeat(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['vehicle_failure']['allowed_kinds'].append('vehicle')
++        self.assert_failure(data,manifest,'duplicate allowed EntityKind')
++    def test_event_target_id_path_must_exist(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['vehicle_failure']['target']['id_path']='missing_id'
++        self.assert_failure(data,manifest,'unresolved target field path')
++    def test_event_target_id_path_cannot_be_code(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['traffic_disruption']['target']['id_path']='arc_refs[0].id'
++        self.assert_failure(data,manifest,'invalid target field path')
++    def test_event_target_id_path_must_resolve_uuid(self):
++        data,manifest=self.fixture();self.row(data,'TransportDelayPayload')['fields']['transport_task_id']='PositiveInt'
++        self.assert_failure(data,manifest,'id_path must resolve to required UUID')
++    def test_event_target_id_cannot_be_optional(self):
++        data,manifest=self.fixture();self.row(data,'VehicleFailurePayload')['fields']['vehicle_id']='UUID?'
++        self.assert_failure(data,manifest,'id_path must resolve to required UUID')
++    def test_region_identity_is_an_explicit_nested_record(self):
++        data,manifest=self.fixture();row=self.row(data,'RegionRef')
++        row.update(kind='existing',source='docs/architecture/DATA_CONTRACTS.md#十类异常-payload');row.pop('fields')
++        self.assert_failure(data,manifest,'RegionRef: required kind record')
++    def test_warehouse_target_kind_path_must_resolve_enum(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['warehouse_resource_unavailable']['target']['kind_path']='resource_ref.id'
++        self.assert_failure(data,manifest,'kind_path must resolve to required EntityKind')
++    def test_warehouse_target_kind_type_pairing_is_exact(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['warehouse_resource_unavailable']['target']['types_by_kind']['dock']='Warehouse'
++        self.assert_failure(data,manifest,'warehouse_resource_unavailable: exact event EntityRef target rule required')
++    def test_event_target_revision_policy_is_exact(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['weather_change']['target']['revision']='row_version_if_present'
++        self.assert_failure(data,manifest,'weather_change: exact event EntityRef target rule required')
++    def test_event_target_constraints_cannot_be_omitted(self):
++        data,manifest=self.fixture();data['event_entity_ref_mapping']['traffic_disruption']['constraints'].remove('one_matrix_per_event')
++        self.assert_failure(data,manifest,'traffic_disruption: exact event EntityRef target rule required')
++
+ def run_self_tests():
+     suite=unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromTestCase(t) for t in (CheckerTests,ContractDecisionTests))
+     output=io.StringIO()

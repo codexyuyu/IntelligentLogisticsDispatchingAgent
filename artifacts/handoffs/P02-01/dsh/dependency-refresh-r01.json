@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P02-01",
+  "round": "P02-01-R01",
+  "attachment": "dependency-refresh-r01",
+  "role": "dsh",
+  "author": "DSH-A (this session; sole writer of this attachment)",
+  "status": "READY_FOR_ZCODE",
+  "signs_gate": false,
+  "generated_at_utc": "2026-10-05T03:53:22.806840+00:00",
+  "purpose": "record the refreshed dependency binding for P02-01 as a NEW attachment so that the freshly signed G01 review, which binds the original P02-01 records, stays valid",
+  "original_records_untouched": {
+    "note": "these keep their delivery-round bytes and their start-of-task historical identity; this attachment does not overwrite or re-sign them",
+    "docs/handoffs/P02-01/dsh.md": "b3de54ebb24300388bcec4c6911964252a2358eb6bf82fae2e9c2c7a13364d49",
+    "artifacts/handoffs/P02-01/dsh/evidence.json": "36f08ff6a8b983c8ba749ef1bbf6fc4b0ae157059e4036f1e6f7917ec274c4c8",
+    "artifacts/handoffs/P02-01/dsh/seal.json": "cd6731c117a11215dbceb1d1878415db890172fdf35e6af1fa9516eb40b9ba1b",
+    "evidence_identity_confirmed": true
+  },
+  "candidate": {
+    "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297",
+    "relevant_file_count": 82,
+    "matches_original_evidence": true,
+    "matches_g01": true,
+    "matches_review": true
+  },
+  "current_prerequisite_binding": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "status": "passed"
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+      "status": "passed",
+      "failed_checks": [],
+      "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+      "finished_at": "2026-10-05T03:43:22.176003+00:00",
+      "recorded_inputs_total": 40,
+      "recorded_inputs_stale": [],
+      "commands_total": 7,
+      "commands_exit_zero": 7
+    },
+    "G01_review": {
+      "path": "artifacts/gates/G01-codex-review.json",
+      "sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+      "status": "approved",
+      "reviewer": "Codex N05-R01 /root/n05_independent (original independent reviewer; no candidate implementation edits)",
+      "verified_inputs_total": 262,
+      "verified_inputs_stale": [],
+      "p02_01_bound_inputs_total": 9,
+      "p02_01_bound_inputs_stale": 0
+    },
+    "independent_recheck": {
+      "script": "tmp/P02-01/R01/verify-prereqs.py",
+      "log": "tmp/P02-01/R01/verify-prereqs.log",
+      "result": "candidate matches evidence/G01/review; 40/40 G01 inputs fresh; 262/262 review inputs fresh; 7/7 G01 command logs match with exit 0; dependency G00 fresh; problems=0",
+      "check_only": {
+        "argv": [
+          "uv",
+          "run",
+          "python",
+          "scripts/gates.py",
+          "--phase",
+          "01",
+          "--revision",
+          "auto",
+          "--check-only"
+        ],
+        "exit_code": 0,
+        "observed": "recorded status=passed, failed_checks=[], all recorded inputs are fresh",
+        "log": "tmp/P02-01/R01/check-only-g01.log"
+      },
+      "restore_verification": {
+        "script": "tmp/P02-01/R01/restore-originals.py",
+        "log": "tmp/P02-01/R01/restore-originals.log",
+        "result": "original evidence/seal/handoff restored byte-identically; 9/9 P02-01 review bindings satisfied; 253/253 other review inputs fresh; problems=0"
+      }
+    }
+  },
+  "superseded_at_task_start": {
+    "note": "HISTORICAL ONLY - these were the valid prerequisites when P02-01 started; N05-R01 re-signed the gate after the legal package-marker change, so they are NOT the current binding and must not be treated as currently effective",
+    "G01": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8",
+    "G01_code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+    "review": "1cfd47668b64b49062c14eb0af648d8fd23eaf86748bc0b68ecb3421331e185d",
+    "archived_by": "artifacts/handoffs/N05-R01/codex/archive-manifest.json"
+  },
+  "implementation_and_logs_unchanged": {
+    "deliverables": [
+      {
+        "path": "docs/implementation/P02-01.md",
+        "sha256": "ac9b8f0e0dabcadba0218bd772cd6f25e1b7eb1e42228457cb2a8d06a823ce57"
+      },
+      {
+        "path": "docs/implementation/reports/P02-01.md",
+        "sha256": "c3e518b5d24d6132ff679609916567f03b530f8810f913cb81b581374115d8f1"
+      },
+      {
+        "path": "packages/domain/src/logistics_domain/__init__.py",
+        "sha256": "21334c02c11a33f45445a12324be954187a5ed8ae775010158a0608946c50076"
+      },
+      {
+        "path": "packages/domain/src/logistics_domain/errors.py",
+        "sha256": "feb045410bcba16658d5def4143c746649386fe7fad9d9bc6ed31db4da11a56b"
+      },
+      {
+        "path": "packages/domain/src/logistics_domain/primitives.py",
+        "sha256": "f86e18a4738f3841b45e14509bcc6bea80a5eebf30861f28ff919bf06c660304"
+      },
+      {
+        "path": "packages/domain/src/logistics_domain/states.py",
+        "sha256": "0a3da52dc111ba5becd0e3e84572c85abd26b80492480445e2910a9b83caecaa"
+      },
+      {
+        "path": "tests/integration/test_p02_01_primitives_and_states.py",
+        "sha256": "ebaed4a42dc895be8bc1638311df808e9986266e600fa24d138baa1bf9d6f151"
+      },
+      {
+        "path": "tests/unit/test_p02_01_primitives_and_states.py",
+        "sha256": "c66f2d51aae63187730ca6617c07510fbbb1503c4a9a05f3fe0d2cda4a429f56"
+      }
+    ],
+    "all_deliverables_byte_identical_to_delivery": true,
+    "reused_logs": [
+      {
+        "label": "required suites (46)",
+        "path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/required-cmd1-pytest.log",
+        "sha256": "1c568359352411db1a4dda13684f23306af4f780882597f9b255d8e6d58febce",
+        "bytes": 575,
+        "observed": {
+          "passed": 46,
+          "exit_code": 0
+        }
+      },
+      {
+        "label": "architecture check",
+        "path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/required-cmd2-check-architecture.log",
+        "sha256": "2765f682de19440dc4391bcd0cd4a2d37fd34720a98d58a02bb036532fb8c2d7",
+        "bytes": 506,
+        "observed": {
+          "violations": 0,
+          "exit_code": 0
+        }
+      },
+      {
+        "label": "phase regression (272)",
+        "path": "artifacts/handoffs/P02-01/dsh/logs/p02-01-2026-10-04/full-regression.log",
+        "sha256": "e2522e091ae2463ebc80623f1fd8ecc22d39cfb126cf50fcf1fabd98a81ded7a",
+        "bytes": 772,
+        "observed": {
+          "passed": 272,
+          "exit_code": 0
+        }
+      }
+    ]
+  },
+  "reuse_basis": {
+    "reason": "the implementation, tests, locks and candidate are byte-unchanged since the P02-01 delivery round, so the existing real logs remain the valid evidence for this candidate; this attachment adds no new test result and does not re-run anything",
+    "tests_rerun": false,
+    "phase_regression_rerun": false,
+    "scanned_ceiling": "the 272-passed log was produced on this same candidate and is cited, not re-executed"
+  },
+  "authorship_and_scope": {
+    "writer": "DSH-A",
+    "write_scope": [
+      "docs/handoffs/P02-01/dsh-r01.md",
+      "artifacts/handoffs/P02-01/dsh/dependency-refresh-r01.json",
+      "artifacts/handoffs/P02-01/dsh/dependency-refresh-r01-seal.json",
+      "tmp/P02-01/R01/**"
+    ],
+    "not_written": [
+      "docs/handoffs/P02-01/dsh.md, artifacts/handoffs/P02-01/dsh/evidence.json and seal.json (restored to their original bytes)",
+      "any business source, test, contract, lock, ownership or planning file",
+      "any ZCode or Codex record, any official Gate record"
+    ],
+    "self_reference_guard": "this attachment is NOT added to the G01 review inputs; the review keeps exactly its 262 recorded inputs",
+    "stopped": true
+  }
+}

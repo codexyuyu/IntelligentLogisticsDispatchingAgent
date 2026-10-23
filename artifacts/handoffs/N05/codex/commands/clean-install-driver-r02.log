@@ -1,0 +1,46 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE", "-B", "tmp/N05/clean_install.py", "r02"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:43:16.718028+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+{"check_id": "clean-env-sync-r02", "argv": ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "sync", "--frozen", "--offline"], "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent", "exit_code": 0, "started_at": "2026-10-04T20:43:16.810076+00:00", "finished_at": "2026-10-04T20:43:18.120072+00:00", "log_path": "artifacts/handoffs/N05/codex/commands/clean-env-sync-r02.log", "log_sha256": "3858f6741c9d93c9f080ea08131b9131677a0cd891b5f6140297b41624bfe774"}
+
+ges/agents)
+ + logistics-backend==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/apps/backend)
+ + logistics-contracts==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/contracts)
+ + logistics-domain==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/domain)
+ + logistics-evaluation==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/evaluation)
+ + logistics-optimization==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/optimization)
+ + logistics-simulation==0.1.0 (from file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/simulation)
+ + numpy==2.5.3
+ + ortools==9.15.6755
+ + packaging==26.3
+ + pandas==3.0.5
+ + pluggy==1.6.0
+ + protobuf==6.33.6
+ + pydantic==2.13.5
+ + pydantic-core==2.46.5
+ + pygments==2.21.0
+ + pytest==9.1.1
+ + pytest-asyncio==1.4.0
+ + pytest-timeout==2.4.0
+ + python-dateutil==2.9.0.post0
+ + ruff==0.16.7
+ + simpy==4.1.2
+ + six==1.17.0
+ + starlette==1.6.0
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + tzdata==2026.4
+ + uvicorn==0.52.4
+
+{"check_id": "clean-env-outside-imports-r02", "argv": ["C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe", "-I", "-c", "import importlib,json,pathlib,sys\nnames=['logistics_domain','logistics_contracts','logistics_optimization','logistics_simulation','logistics_agents','logistics_evaluation']\nout={n:str(pathlib.Path(importlib.import_module(n).__file__).resolve()) for n in names}\nprint(json.dumps({'executable':sys.executable,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'resolved':out}))\n"], "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\outside-cwd", "exit_code": 0, "started_at": "2026-10-04T20:43:18.138608+00:00", "finished_at": "2026-10-04T20:43:18.282269+00:00", "log_path": "artifacts/handoffs/N05/codex/commands/clean-env-outside-imports-r02.log", "log_sha256": "085d1ba8e3da8b628df329441f07917ca485fc023c217cc3e4fb00f0e3817ed2"}
+{"executable": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe", "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\outside-cwd", "isolated": 1, "resolved": {"logistics_domain": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\__init__.py", "logistics_contracts": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\contracts\\src\\logistics_contracts\\__init__.py", "logistics_optimization": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\optimization\\src\\logistics_optimization\\__init__.py", "logistics_simulation": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\simulation\\src\\logistics_simulation\\__init__.py", "logistics_agents": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\agents\\src\\logistics_agents\\__init__.py", "logistics_evaluation": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\evaluation\\src\\logistics_evaluation\\__init__.py"}}
+
+
+CLEAN_INSTALL_AND_OUTSIDE_IMPORTS=PASS
+
+## stderr
+
+## exit_code: 0

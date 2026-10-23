@@ -1,0 +1,341 @@
+{
+  "normative": {
+    "finding": "N02-R01-F02-C01",
+    "parent_finding": "N02-F02",
+    "description": "EntityKind source names it but does not define its complete members or exact serialized values",
+    "entity_kind": {
+      "name": "EntityKind",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    "entity_ref": {
+      "name": "EntityRef",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    "scenario_spec": {
+      "name": "ScenarioSpec",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "id": "UUID",
+        "version": "PositiveInt",
+        "schema_version": "=2.0.0",
+        "generator_version": "VersionText",
+        "seed": "Seed",
+        "epoch_utc": "UTC",
+        "horizon_s": "Horizon",
+        "size": "ScenarioSize",
+        "generation_policy": "GenerationPolicy",
+        "event_specs": "ScenarioEventSpec[]"
+      },
+      "rules": [
+        "scenario.spec"
+      ]
+    },
+    "event_payload": {
+      "name": "EventPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "union",
+      "discriminator": "kind",
+      "variants": {
+        "vehicle_failure": "VehicleFailurePayload",
+        "transport_delay": "TransportDelayPayload",
+        "traffic_disruption": "TrafficDisruptionPayload",
+        "weather_change": "WeatherChangePayload",
+        "cargo_anomaly": "CargoAnomalyPayload",
+        "order_cancellation": "OrderCancellationPayload",
+        "demand_increase": "DemandIncreasePayload",
+        "demand_decrease": "DemandDecreasePayload",
+        "equipment_failure": "EquipmentFailurePayload",
+        "warehouse_resource_unavailable": "WarehouseResourceUnavailablePayload"
+      },
+      "rules": []
+    },
+    "payload_fields": {
+      "VehicleFailurePayload": {
+        "kind": "=vehicle_failure",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "vehicle_id": "UUID",
+        "location": "ExecutionLocation",
+        "unavailable_until_s": "NonNegativeInt?",
+        "cargo_condition": "CargoCondition"
+      },
+      "TransportDelayPayload": {
+        "kind": "=transport_delay",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "transport_task_id": "UUID",
+        "additional_seconds": "PositiveInt"
+      },
+      "TrafficDisruptionPayload": {
+        "kind": "=traffic_disruption",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "arc_refs": "ArcRef[]",
+        "closure": "bool",
+        "travel_multiplier": "Rational?",
+        "new_matrix_version": "PositiveInt"
+      },
+      "WeatherChangePayload": {
+        "kind": "=weather_change",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "region_ref": "RegionRef",
+        "profile": "WeatherProfile",
+        "travel_multiplier": "Rational",
+        "new_matrix_version": "PositiveInt"
+      },
+      "CargoAnomalyPayload": {
+        "kind": "=cargo_anomaly",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "cargo_id": "UUID",
+        "condition": "CargoCondition",
+        "quantity_units": "PositiveInt",
+        "measured_temp_decic": "int?"
+      },
+      "OrderCancellationPayload": {
+        "kind": "=order_cancellation",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "order_id": "UUID",
+        "disposition_policy": "ReturnPolicy"
+      },
+      "DemandIncreasePayload": {
+        "kind": "=demand_increase",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "order_id": "UUID",
+        "delta_quantity": "PositiveInt",
+        "delta_weight_g": "PositiveInt",
+        "delta_volume_cm3": "PositiveInt"
+      },
+      "DemandDecreasePayload": {
+        "kind": "=demand_decrease",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "order_id": "UUID",
+        "delta_quantity": "PositiveInt",
+        "delta_weight_g": "PositiveInt",
+        "delta_volume_cm3": "PositiveInt"
+      },
+      "EquipmentFailurePayload": {
+        "kind": "=equipment_failure",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "equipment_id": "UUID",
+        "unavailable_until_s": "NonNegativeInt?",
+        "remaining_capacity_units": "NonNegativeInt"
+      },
+      "WarehouseResourceUnavailablePayload": {
+        "kind": "=warehouse_resource_unavailable",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "resource_ref": "EntityRef",
+        "unavailable_window": "TimeWindow",
+        "remaining_capacity_units": "NonNegativeInt"
+      }
+    },
+    "source_lines": [
+      {
+        "line": 7,
+        "text": "`EntityRef(kind: EntityKind, id: UUID, revision: int?)`；`ArtifactRef(id: UUID, media_type: str, sha256: str, relative_path: SafeArtifactPath)`；`ResourceRevision(entity_ref, row_version)`；`TimeWindow(earliest_s:int, latest_s:int)`；`Load(weight_g:int, volume_cm3:int)`；`ResourceRequirement(resource_kind, eligible_ids:tuple[UUID], units:int)`；`CalendarInterval(start_s:int,end_s:int,available_units:int)`；`ResourceCalendar(epoch_utc:UTC datetime, intervals:tuple[CalendarInterval], version:int)`（本轮2.0.0新增必需epoch）；`ConstraintParameters` 按ConstraintCode判别，不接受自由key-value。"
+      },
+      {
+        "line": 183,
+        "text": "| EntityKind | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 | P02-01 / `packages/domain/src/logistics_domain/states.py` |"
+      },
+      {
+        "line": 286,
+        "text": "| ImportCount | entity_kind:EntityKind; inserted:NonNegativeInt; unchanged:NonNegativeInt | P04-02 / `apps/backend/src/logistics_backend/cli/seed.py` |"
+      },
+      {
+        "line": 361,
+        "text": "| PagePosition | version:=1; scope_id:UUID; entity_kind:EntityKind; filter_hash:Sha256; after_created_at:UTC; after_id:UUID | P05-02 / `packages/contracts/src/logistics_contracts/http.py` |"
+      }
+    ],
+    "current_checker_errors": [],
+    "entity_kind_members_present": false,
+    "entity_ref_existing_leaf": true,
+    "occurrences": [
+      {
+        "path": "docs/architecture/DATA_CONTRACTS.md",
+        "line": 7,
+        "text": "`EntityRef(kind: EntityKind, id: UUID, revision: int?)`；`ArtifactRef(id: UUID, media_type: str, sha256: str, relative_path: SafeArtifactPath)`；`ResourceRevision(entity_ref, row_version)`；`TimeWindow(earliest_s:int, latest_s:int)`；`Load(weight_g:int, volume_cm3:int)`；`ResourceRequirement(resource_kind, eligible_ids:tuple[UUID], units:int)`；`CalendarInterval(start_s:int,end_s:int,available_units:int)`；`ResourceCalendar(epoch_utc:UTC datetime, intervals:tuple[CalendarInterval], version:int)`（本轮2.0.0新增必需epoch）；`ConstraintParameters` 按ConstraintCode判别，不接受自由key-value。"
+      },
+      {
+        "path": "docs/architecture/DATA_CONTRACTS.md",
+        "line": 183,
+        "text": "| EntityKind | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 | P02-01 / `packages/domain/src/logistics_domain/states.py` |"
+      },
+      {
+        "path": "docs/architecture/DATA_CONTRACTS.md",
+        "line": 286,
+        "text": "| ImportCount | entity_kind:EntityKind; inserted:NonNegativeInt; unchanged:NonNegativeInt | P04-02 / `apps/backend/src/logistics_backend/cli/seed.py` |"
+      },
+      {
+        "path": "docs/architecture/DATA_CONTRACTS.md",
+        "line": 361,
+        "text": "| PagePosition | version:=1; scope_id:UUID; entity_kind:EntityKind; filter_hash:Sha256; after_created_at:UTC; after_id:UUID | P05-02 / `packages/contracts/src/logistics_contracts/http.py` |"
+      },
+      {
+        "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+        "line": 24,
+        "text": "| EntityKind | P02-01 / `packages/domain/src/logistics_domain/states.py` | 继承具名原契约 docs/architecture/DATA_CONTRACTS.md#公共类型与状态；HTTP具名投影见下文精确投影表 |"
+      },
+      {
+        "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+        "line": 127,
+        "text": "| ImportCount | P04-02 / `apps/backend/src/logistics_backend/cli/seed.py` | entity_kind:EntityKind; inserted:NonNegativeInt; unchanged:NonNegativeInt |"
+      },
+      {
+        "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+        "line": 202,
+        "text": "| PagePosition | P05-02 / `packages/contracts/src/logistics_contracts/http.py` | version:=1; scope_id:UUID; entity_kind:EntityKind; filter_hash:Sha256; after_created_at:UTC; after_id:UUID |"
+      },
+      {
+        "path": "contracts/changes/N01-R01-contract-decisions.json",
+        "line": 226,
+        "text": "      \"name\": \"EntityKind\","
+      },
+      {
+        "path": "contracts/changes/N01-R01-contract-decisions.json",
+        "line": 1650,
+        "text": "        \"entity_kind\": \"EntityKind\","
+      },
+      {
+        "path": "contracts/changes/N01-R01-contract-decisions.json",
+        "line": 2538,
+        "text": "        \"entity_kind\": \"EntityKind\","
+      }
+    ],
+    "harness_sha256": "bf93287d4d68e2a05d7cdb3f482da6d196787e6fe3ce980097a907c4eedbfa42",
+    "scope": "normative design closure only; no business runtime or vulnerability finding",
+    "harness_limitations": [
+      {
+        "probe": "CalendarDTO mapped overlap; harness limitation",
+        "accepted": true,
+        "result": null,
+        "expected_accepted": false,
+        "matches_expected": false
+      },
+      {
+        "probe": "RegionRef empty nodes; harness limitation",
+        "accepted": true,
+        "result": null,
+        "expected_accepted": false,
+        "matches_expected": false
+      },
+      {
+        "probe": "OnArcLocation reversed timestamps; harness limitation",
+        "accepted": true,
+        "result": null,
+        "expected_accepted": false,
+        "matches_expected": false
+      },
+      {
+        "probe": "Scenario dangling warehouse/missing calendar binding; harness limitation",
+        "accepted": true,
+        "result": true,
+        "expected_accepted": false,
+        "matches_expected": false
+      }
+    ]
+  },
+  "probes": [
+    {
+      "probe": "saved empty ScenarioBundle",
+      "accepted": true,
+      "result": true,
+      "expected_accepted": true,
+      "matches_expected": true
+    },
+    {
+      "probe": "ScenarioRef dataset version mismatch",
+      "accepted": false,
+      "exception": "scenario identity mismatch",
+      "expected_accepted": false,
+      "matches_expected": true
+    },
+    {
+      "probe": "ScenarioInput expected_plan injection",
+      "accepted": false,
+      "exception": "missing or extra fields: {'expected_plan'}",
+      "expected_accepted": false,
+      "matches_expected": true
+    },
+    {
+      "probe": "calendar overlap negative",
+      "accepted": false,
+      "exception": "overlap/order/range",
+      "expected_accepted": false,
+      "matches_expected": true
+    },
+    {
+      "probe": "CalendarDTO mapped overlap; harness limitation",
+      "accepted": true,
+      "result": null,
+      "expected_accepted": false,
+      "matches_expected": false
+    },
+    {
+      "probe": "RegionRef empty nodes; harness limitation",
+      "accepted": true,
+      "result": null,
+      "expected_accepted": false,
+      "matches_expected": false
+    },
+    {
+      "probe": "OnArcLocation reversed timestamps; harness limitation",
+      "accepted": true,
+      "result": null,
+      "expected_accepted": false,
+      "matches_expected": false
+    },
+    {
+      "probe": "Scenario dangling warehouse/missing calendar binding; harness limitation",
+      "accepted": true,
+      "result": true,
+      "expected_accepted": false,
+      "matches_expected": false
+    },
+    {
+      "probe": "harness hardcoded vehicle EntityRef",
+      "accepted": true,
+      "result": null,
+      "expected_accepted": true,
+      "matches_expected": true
+    },
+    {
+      "probe": "harness rejects driver EntityRef despite Driver master entity",
+      "accepted": false,
+      "exception": "unknown entity kind in example",
+      "expected_accepted": false,
+      "matches_expected": true
+    }
+  ]
+}

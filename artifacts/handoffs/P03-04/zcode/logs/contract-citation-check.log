@@ -1,0 +1,17 @@
+=== verifying the citations DSH used to justify its BLOCKED verdict ===
+  line 24: | ValidationReport | id; candidate_hash; snapshot_hash; rules_version; valid:bool; required_codes:tuple[ConstraintCode]; checked_codes:tuple[ConstraintCode]; unsupported_codes; violations:tuple[Violation]; validated_at | 纯类型P02-03；边界/注册P10-01 |
+  line 55: | CommitCommand | schedule_id; candidate_id; candidate_hash; expected_active_version_id?; snapshot_hash; idempotency_key; confirmation_token? | P02-03/P16-03 |
+  line 56: | CommitReceipt | schedule_id; version_id; version_no; parent_version_id?; content_hash; audit_id; trace_id; committed_at | P02-03 |
+  line 79: 阶段间类型依赖规则：P02-03的`domain/planning.py`完整定义Route/RouteStop、TransportPlan、WarehousePlan、CandidatePlan、SolveBudget和ValidationReport等纯值类型，不能等P06/P08/P10才出现被P03引用的类型。P02-04的`domain/execution.py`定义TwinState、ExecutionEvent、PendingEvent、RngState；`domain/runtime.py`定义AgentBudget、ExperimentSpec等运行实体所需纯值类型。P11/
+  line 96: | PlanCommitStore | commit(cmd:CommitCommand,report:ValidationReport)->CommitReceipt | 由ScheduleService调用，单事务 |
+  line 97: | ScheduleService | commit(cmd:CommitCommand,actor:ActorContext)->CommitReceipt | 唯一正式计划提交用例 |
+
+=== error table: is IDEMPOTENCY_CONFLICT frozen? ===
+  错误表：INVALID_INPUT/INVALID_TRANSITION/DEPENDENCY_CYCLE→422；UNAUTHENTICATED→401；FORBIDDEN/TOOL_FORBIDDEN→403；NOT_FOUND→404；STALE_SNAPSHOT/RESOURCE_CONFLICT/IDEMPOTENCY_CONFLICT/CONFIRMATION_EXPIRED→409；REQUEST_TOO_LARGE→413；RATE_LIMITED→429；PROVIDER_UNAVAILABLE/DEPENDENCY_UNAVAILABLE→503；INTERNAL_ERROR→500。求解无解/超时是已完成作业的result状态，不伪装HTTP500。MANUAL_REQUIRED、NO_FEASIBLE_CANDIDATE是业务结果原因；未实现能力在开发期间HTTP5
+
+  IDEMPOTENCY_CONFLICT present: True
+  UNSUPPORTED present        : False (ARCH-0003 records that it is absent, so it is not a new finding here)
+
+=== PlanCommitStore frozen signature and its single-transaction requirement ===
+  line 96: | PlanCommitStore | commit(cmd:CommitCommand,report:ValidationReport)->CommitReceipt | 由ScheduleService调用，单事务 |
+  line 97: | ScheduleService | commit(cmd:CommitCommand,actor:ActorContext)->CommitReceipt | 唯一正式计划提交用例 |

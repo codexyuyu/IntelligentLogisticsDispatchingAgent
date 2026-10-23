@@ -1,0 +1,7 @@
+{
+  "source": "tmp/N01-R01/verify_contracts.py",
+  "source_sha256": "bf93287d4d68e2a05d7cdb3f482da6d196787e6fe3ce980097a907c4eedbfa42",
+  "new_source": "tmp/N01-R02/examples/verify_design_examples.py",
+  "new_source_sha256": "596f6977f952acb218e430786cc0f866034672ff97bb3f6d891e1a3b5fb4e118",
+  "scope": "Bounded copy of prior design examples; unchanged old source/evidence; all fresh outputs in N01-R02 examples."
+}

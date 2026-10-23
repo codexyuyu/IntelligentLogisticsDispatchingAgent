@@ -1,0 +1,22 @@
+{
+ "evidence_sha256": "e22bf651be243fc7474c143ec44ee1d88716a0ddc11f98780c0fd48e68aa21c1",
+ "deliverable_files_count": 26,
+ "deliverable_files_drift": [],
+ "deliverable_files[14]": {
+  "path": "packages/domain/src/logistics_domain/__init__.py",
+  "bytes": 2669,
+  "sha256": "21334c02c11a33f45445a12324be954187a5ed8ae775010158a0608946c50076"
+ },
+ "artifacts_is_dict_11keys": false,
+ "artifacts_all_match_disk": true,
+ "python_workspace_members_match": true,
+ "tool_versions": {
+  "python": "3.12.10",
+  "node": "24.18.0"
+ },
+ "deps_lock_match": true,
+ "legacy_demo_173_zip_ok": true,
+ "validation_commands_logs_exist": true,
+ "risks_reference_dadad196_82": true,
+ "limitations_mark_phase2_current": true
+}

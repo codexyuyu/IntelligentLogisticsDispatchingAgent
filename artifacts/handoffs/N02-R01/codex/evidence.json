@@ -1,0 +1,502 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "N02-R01",
+  "role": "independent Codex reviewer",
+  "status": "BLOCKED",
+  "reviewer": "Codex N02-R01 /root",
+  "reviewed_at": "2026-10-04T03:33:49.882641+00:00",
+  "client_timezone": "America/Los_Angeles",
+  "reviewed_at_client": "2026-10-03T20:33:49.882641-07:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "git_present": false,
+  "model": "inherited current session model; no override",
+  "plan_version": "1.0.3",
+  "business_contract_version": "2.0.0",
+  "code_revision": "content-sha256:adbd8a1ccfa59e8b803acfbb8beb6e23d8fbdad28a51ededbb5862ee0c79ee98",
+  "dirty_tree_hash": "content-sha256:9a48d7b5308b7dce70dee3cf978ad463b0c5ca57774dae2de1acd5eaf4539d68",
+  "candidate_after_unchanged": true,
+  "verified_input_hashes": {
+    "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+    "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "docs/handoffs/N01-R01/codex.md": "e967798512107c7f4b39f8ed90f3c2a53ed23181443db131a5a0e04afd295405",
+    "artifacts/handoffs/N01-R01/codex/evidence.json": "f2072bea318d11b37568cf97e48e172071b6918cab8391b40d6946e71d5c990a",
+    "docs/handoffs/N02/codex.md": "4cdf3f4f42983c4d93b50303326562489066afedd61df7b2b716e248932dabcf",
+    "contracts/changes/N01-R01-contract-decisions.json": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+    "contracts/changes/N01-R01-contract-freeze-2.0.0.md": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+    "artifacts/dispatch/2026-10-01/completion/messages/now/N02.md": "d700deba2fba4767b205f66c7191aefe917a3c16652e112c8167a4aaf2948265",
+    "artifacts/dispatch/2026-10-01/completion/messages/now/N03.md": "1ad06de77c01a862d821f5d4b62e0f6101568eb107c3b647e9aa20290bebd358",
+    "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+    "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "artifacts/gates/G00-checks.log": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+    "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+    "tools/ai_coding_plan/validate_plan.py": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+    "docs/architecture/DATA_CONTRACTS.md": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9f24acf68605981f85890d16e614976c4a9f4c6268c7c4e6138609f75d227d91",
+    "docs/architecture/issues/README.md": "c0c8c3ff2c88c3fc6de818a8cf9ec866fe644479ba3b88b0c3911024d109256d",
+    "docs/architecture/BASELINE_INVENTORY.json": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+    "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+    "docs/agent-toolchain/12-project-completion-dispatch.md": "44450a2794a1e2deadf9f8c7d8744927afa14ed4e37d614fd555e1d30b83339b"
+  },
+  "byte_audit": {
+    "task_id": "N02-R01",
+    "audited_at": "2026-10-04T03:20:52.921213+00:00",
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "git_present": false,
+    "code_revision": "content-sha256:adbd8a1ccfa59e8b803acfbb8beb6e23d8fbdad28a51ededbb5862ee0c79ee98",
+    "dirty_tree_hash": "content-sha256:9a48d7b5308b7dce70dee3cf978ad463b0c5ca57774dae2de1acd5eaf4539d68",
+    "candidate_files": 77,
+    "governance_changes": 123,
+    "whitelist_files": 127,
+    "protected_files": 3418,
+    "evidence_hash_checks": 204,
+    "legacy_registered_files": 173,
+    "record_g00_AST_unchanged": true,
+    "freeze_drift_count": 4,
+    "g00_input_drift_count": 5,
+    "errors": []
+  },
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "tmp/N02-R01/audit.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T03:20:51.636157+00:00",
+      "finished_at": "2026-10-04T03:20:52.931202+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R01/codex/audit.log",
+      "log_hash": "c78f1c67f9d7a2b0b1f778c64fd22480d4fd5e00eb9b68939de97974722d57d1",
+      "log_bytes": 686,
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N02-R01/closure_probe.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T03:25:03.831117+00:00",
+      "finished_at": "2026-10-04T03:25:04.018561+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R01/codex/closure-probe.log",
+      "log_hash": "3de4f009d5d1d4cff6dd3994590e03d8d273f4d0b535c911215cbae60b70d481",
+      "log_bytes": 1740,
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N02-R01/replay_contract_examples.py",
+        "independent"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T03:22:17.694340+00:00",
+      "finished_at": "2026-10-04T03:22:20.469661+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R01/codex/contract-replay-02.log",
+      "log_hash": "38de9949282aa01e8ebb57c67207178a023cb3a071dc9e8300a2c402977d2a20",
+      "log_bytes": 17244,
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N02-R01/replay_contract_examples.py",
+        "independent"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T03:21:19.574982+00:00",
+      "finished_at": "2026-10-04T03:21:19.620137+00:00",
+      "exit_code": 2,
+      "log_path": "artifacts/handoffs/N02-R01/codex/contract-replay.log",
+      "log_hash": "1f587d0754d6adbc3e1dd9c91c92373ee66bad55dcc9790bb4b76815ed919418",
+      "log_bytes": 172,
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N02-R01/design_graph_probe.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T03:29:16.172330+00:00",
+      "finished_at": "2026-10-04T03:29:16.397759+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R01/codex/design-graph-probe.log",
+      "log_hash": "c17f2d7ee33fb73cdb6d5ecf87e59cf5353e350b91a3ebec8f2f50144a6fa197",
+      "log_bytes": 5635,
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N02-R01/probe_g00.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T03:25:04.302044+00:00",
+      "finished_at": "2026-10-04T03:25:04.415456+00:00",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/N02-R01/codex/g00-prerequisite.log",
+      "log_hash": "34f54b3ff5bfe56332b83b5ff20e10359ebad67e85cc03a9a284aad85498d860",
+      "log_bytes": 763,
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tmp/N02-R01/job_shape_probe.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T03:27:45.585233+00:00",
+      "finished_at": "2026-10-04T03:27:45.665583+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R01/codex/job-shape-probe.log",
+      "log_hash": "fc0e6c8ea7519f38d961dbc01178283590ef0f5c40145d312926393aed2a99c0",
+      "log_bytes": 2437,
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T03:21:20.089817+00:00",
+      "finished_at": "2026-10-04T03:21:21.095586+00:00",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N02-R01/codex/plan-preflight.log",
+      "log_hash": "e4961ea06f8791ec1e82b44817971d931d8ecf4f8a88af3f1a8c2b83186b22d7",
+      "log_bytes": 4673,
+      "environment": {
+        "python": "3.12.10",
+        "os": "Windows"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "N02-F01",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "N02-F02",
+      "status": "PARTIALLY_RESOLVED_BLOCKED",
+      "remaining": "N02-R01-F02-C01"
+    },
+    {
+      "id": "N02-F03",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "N02-F04",
+      "status": "RESOLVED"
+    }
+  ],
+  "blocker": "artifacts/handoffs/N02-R01/codex/blocker.json",
+  "g00": {
+    "valid": false,
+    "new_record_written": false,
+    "official_record_status": "historical passed; rejected by current prerequisite validation",
+    "record_g00": "NOT_RUN: unresolved direct type closure blocks document freeze",
+    "archive_and_freeze_update": "NOT_RUN: conditional restoration requirements unmet",
+    "freeze_drift": [
+      "docs/architecture/DOMAIN_CATALOG.md",
+      "docs/architecture/DATA_CONTRACTS.md",
+      "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "docs/api/API_CONTRACT.md"
+    ],
+    "input_drift": [
+      "docs/architecture/issues/README.md",
+      "docs/api/API_CONTRACT.md",
+      "docs/architecture/DATA_CONTRACTS.md",
+      "docs/architecture/DOMAIN_CATALOG.md",
+      "docs/architecture/IMPLEMENTATION_CONVENTIONS.md"
+    ],
+    "log_hash_valid": true,
+    "dependency_evidence_hashes": {},
+    "runner_checks": [
+      {
+        "id": "previous-gate:G00",
+        "gate": "G01",
+        "description": "前序 Gate 证据有效",
+        "passed": false,
+        "detail": "frozen input docs/api/API_CONTRACT.md drifted after the gate was recorded; frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded; frozen input docs/architecture/DOMAIN_CATALOG.md drifted after the gate was recorded; frozen input docs/architecture/IMPLEMENTATION_CONVENTIONS.md drifted after the gate was recorded; frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+      }
+    ]
+  },
+  "g01": {
+    "signed": false
+  },
+  "n03_dispatch_allowed": false,
+  "business_implementation_changed": false,
+  "scope_audit": "artifacts/handoffs/N02-R01/codex/review-scope-final.json",
+  "handoff": {
+    "path": "docs/handoffs/N02-R01/codex.md",
+    "sha256": "1c7088ce69c7a5be78bbec6c0ce5e33e115b0d398979a529daa494ac8ae3e489"
+  },
+  "outputs": [
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/audit-command.json",
+      "sha256": "722590b57693f82bbbd50b49c31983e6eb05a82298ec3d0b4bcec2fb1fd1795d",
+      "bytes": 509
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/audit-summary.json",
+      "sha256": "c78f1c67f9d7a2b0b1f778c64fd22480d4fd5e00eb9b68939de97974722d57d1",
+      "bytes": 686
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/audit.log",
+      "sha256": "c78f1c67f9d7a2b0b1f778c64fd22480d4fd5e00eb9b68939de97974722d57d1",
+      "bytes": 686
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/baseline-audit.json",
+      "sha256": "b9b145a03f2c5f9afa0e8d9717153eb2a38a004c43990bf568b808bf0d603bc2",
+      "bytes": 41841
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/blocker.json",
+      "sha256": "ad5d946c306bcc894ce859a22f39324aa34b1232597d7326deeb06bc07d81e33",
+      "bytes": 2956
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/candidate-audit.json",
+      "sha256": "5eb54c3a30d901c94d09dba914669fbe7d099d653182ab8b2d95dc8fca73f796",
+      "bytes": 13949
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/closure-probe-command.json",
+      "sha256": "867f9293f8238bf43741003bb516350f197419b358731375c8098109dd9a0b68",
+      "bytes": 526
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/closure-probe.json",
+      "sha256": "2c5f0c2d7e17375e9e9c84f3bdd958d2c7ef150290090cc2c1608989ebf06741",
+      "bytes": 13596
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/closure-probe.log",
+      "sha256": "3de4f009d5d1d4cff6dd3994590e03d8d273f4d0b535c911215cbae60b70d481",
+      "bytes": 1740
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/contract-examples-independent.json",
+      "sha256": "f4094f3e3d5aac547b930865e70a56b7789272210a06a6f61be02a90534dbaa3",
+      "bytes": 8805
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/contract-replay-02-command.json",
+      "sha256": "b6471ecc488e46e6aeaf328485925a81a4be7dc76e11c10f8a9fbe1a759818b4",
+      "bytes": 563
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/contract-replay-02.log",
+      "sha256": "38de9949282aa01e8ebb57c67207178a023cb3a071dc9e8300a2c402977d2a20",
+      "bytes": 17244
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/contract-replay-command.json",
+      "sha256": "ae755cbed55deeab98c9433927f71b3df8d8b6b4a945b57dd5457ad4c924f4c4",
+      "bytes": 558
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/contract-replay.log",
+      "sha256": "1f587d0754d6adbc3e1dd9c91c92373ee66bad55dcc9790bb4b76815ed919418",
+      "bytes": 172
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/contract-validation-independent.json",
+      "sha256": "cb03e87aa49492c169bc253cc195bfa0f56dd01f4ef8ad9a2ecd50ac283112ed",
+      "bytes": 21038
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/design-graph-probe-command.json",
+      "sha256": "41fe79c30732f164ed84281e54b24ba9fbc546faae78356e4d36e481003b0ccf",
+      "bytes": 536
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/design-graph-probe.json",
+      "sha256": "487c5007466302cc28064bdc578a79924db15879964edc5ce5d672fa340445e8",
+      "bytes": 6860
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/design-graph-probe.log",
+      "sha256": "c17f2d7ee33fb73cdb6d5ecf87e59cf5353e350b91a3ebec8f2f50144a6fa197",
+      "bytes": 5635
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/g00-prerequisite-command.json",
+      "sha256": "e2880a10a801c0390911165691be2cc19f549e21a76ab03ebb737fd57caf3665",
+      "bytes": 524
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/g00-prerequisite.json",
+      "sha256": "34f54b3ff5bfe56332b83b5ff20e10359ebad67e85cc03a9a284aad85498d860",
+      "bytes": 763
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/g00-prerequisite.log",
+      "sha256": "34f54b3ff5bfe56332b83b5ff20e10359ebad67e85cc03a9a284aad85498d860",
+      "bytes": 763
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/governance-audit.json",
+      "sha256": "6acb13a8d5ee4644d07983b84fc11b11fab857c2796b642f0b8d6ff0b661eeec",
+      "bytes": 40249
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/governance-diff.patch",
+      "sha256": "cb0274e3270655bfbb84cf1f69765be8cf56e57e66c424a1ae59649214d04b87",
+      "bytes": 548034
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/independent-reviews.json",
+      "sha256": "6a6386d81ad98b9b5442aa4a6f53a2efcc91134c75c703bd90116faff8198875",
+      "bytes": 2241
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/job-shape-probe-command.json",
+      "sha256": "c76a3bad17aaf93c6aa4e762b0f4bc6a097a12d26fca324d67d88169c2d2a26d",
+      "bytes": 530
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/job-shape-probe.json",
+      "sha256": "8d392c4c28f07b51da4bb542ae0f27ed66b25956bffedce0ae45c90d9fd28f57",
+      "bytes": 3627
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/job-shape-probe.log",
+      "sha256": "fc0e6c8ea7519f38d961dbc01178283590ef0f5c40145d312926393aed2a99c0",
+      "bytes": 2437
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/n01-evidence-audit.json",
+      "sha256": "3435eba81261b6529adc298476c58491eabfe9442a6a2a6339ba25bd1f015d46",
+      "bytes": 62321
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/old-freeze-g00-audit.json",
+      "sha256": "9a55e42444ecae3c747972b2d8eb2ffa7b065b13f2e2d94ba8840f597d9743a1",
+      "bytes": 10217
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/plan-preflight-command.json",
+      "sha256": "1d73b95de44501deeeeced3122c4a231ea2f210d412ace4a23a3234ace05f918",
+      "bytes": 556
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/plan-preflight.log",
+      "sha256": "e4961ea06f8791ec1e82b44817971d931d8ecf4f8a88af3f1a8c2b83186b22d7",
+      "bytes": 4673
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/protected-audit.json",
+      "sha256": "b8065480edfa40b887140e83e52aae9005abe2167fb7e48a6a39c1cf97f4a569",
+      "bytes": 1006752
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/replay-source-binding.json",
+      "sha256": "e1874fc7178b03bae9c88da6b7b6fc834b06d7bf2fc8ac39e53b6edbf603b7f8",
+      "bytes": 620
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/review-scope-before.json",
+      "sha256": "ac8125f4963a67fad46e1570aaa9161c6e58156a2bbd116b462b3320c8dace86",
+      "bytes": 139476
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/review-scope-final.json",
+      "sha256": "798886519de28853c38f2c572dfdff9f2c7f1ff3027494f5ceb0aec28a678ead",
+      "bytes": 473
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/sources/audit.py",
+      "sha256": "f8d0d7a650baa1b04d58cc4297f11a75a5cb527b2e397c57333d6ec1075b0a49",
+      "bytes": 10148
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/sources/capture.py",
+      "sha256": "266ffd908811dc584f4101fbe30f91ed3619aaa48bf3dab6bc24eb6ae44a6e6a",
+      "bytes": 1384
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/sources/closure_probe.py",
+      "sha256": "ddd199cf0300199942220353fd8dd1ff1080284688cdfee43dd0c48a05728bca",
+      "bytes": 5863
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/sources/design_graph_probe.py",
+      "sha256": "35f601279803da3ea878d21734b7ae85afecb34abb7b284ec2eb4d651437bfec",
+      "bytes": 4965
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/sources/finalize.py",
+      "sha256": "3804c04b676e71e22ae0218a449878d2b6604704521ca03625b6e59714a7567b",
+      "bytes": 21938
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/sources/job_shape_probe.py",
+      "sha256": "39491cd9f1662885e395b3dafe10c8e8d527fc816ffa203c4cd03bd6767ed9fe",
+      "bytes": 4264
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/sources/prepare_replay.py",
+      "sha256": "125532804e8a9f20d2961a558d2a4e625146375d9c801e401d60145e4f2aff65",
+      "bytes": 1315
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/sources/probe_g00.py",
+      "sha256": "b70ec157d6fdfabe163b3875a3e24d69b7a74ff52973bf2820cc341ece4ea0db",
+      "bytes": 1129
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/sources/replay_contract_examples.py",
+      "sha256": "21b1674fd129605891afdf8ecba113e64a40747f7bf1e1924a8b0f6c987d31ca",
+      "bytes": 29000
+    },
+    {
+      "path": "artifacts/handoffs/N02-R01/codex/time-context.json",
+      "sha256": "4bbb07197a27ed37092eef5f0ac52512c0ed47bf306383f61639f4e15f05e2a5",
+      "bytes": 288
+    }
+  ],
+  "output_file_count_excluding_evidence": 45,
+  "limitations": [
+    "Design probes and static graph checks only; not domain/HTTP/worker/DB acceptance",
+    "Existing type leaves are not fully expanded by the registered checker; EntityKind gap independently reproduced",
+    "Four semantic negatives accepted by design harness are documented coverage limits, not runtime findings",
+    "Dependency/cache/.mimosa derived trees not comprehensively byte audited",
+    "No PostgreSQL/OR-Tools/SimPy/model/browser acceptance or new G00/G01 execution"
+  ],
+  "next_responsible_party": "A contract governance bounded repair, then independent N02 re-review",
+  "stopped_after_delivery": true
+}

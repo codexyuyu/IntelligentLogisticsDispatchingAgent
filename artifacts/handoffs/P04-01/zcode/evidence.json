@@ -1,0 +1,414 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P04-01",
+  "scene": "canonical-fixtures",
+  "phase": 4,
+  "phase_gate": "G04",
+  "reviewer": "ZCode",
+  "review_role": "independent-pre-acceptance",
+  "status": "BLOCKED",
+  "verdict_reason": "P04-01 has no implementation candidate. All 7 code/data/test deliverables are absent (1 generator, 4 fixture JSON files, 2 test files); the 2 documents present record the blocking state only. The single declared dependency G03 has no gate record (artifacts/gates/G03.json is missing) and cannot be assembled because P03-01..P03-04 are BLOCKED with zero delivered files, so the mandatory pytest command exits 4 with 0 cases collected. Independently of the gate chain, the frozen interface generate_scenario(spec: ScenarioSpec, seed: int) -> ScenarioBundle is unimplementable: the input type ScenarioSpec is owned by P02-04 (DATA_CONTRACTS.md:81) which has no DSH evidence and a BLOCKED precheck, and the return type ScenarioBundle has no frozen owner at all (ARCH-0006, still open). DSH's BLOCKED verdict is independently confirmed on all of these points; no Gate is signed.",
+  "reviewed_at_local": "2026-09-16T21:49:16.388466-07:00",
+  "candidate": {
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "vcs": "no .git in this checkout; located by content hash (scripts/gates.py GateRunner.compute_revision)",
+    "revision_label_during_this_review": "content-sha256:386090207ffe65403bbdf2c0cb809b2a2cacf8f076bbff8a85eaee30e33619d1",
+    "revision_label_is_self_perturbing": "by construction this label is one step stale: compute_revision() covers artifacts/handoffs/**, .mimosa/** and tmp/**, including this record's own directory, so the label moves when the record is written. It is a content fingerprint for the file set, not a VCS commit.",
+    "previous_gate_recorded_revision": "content-sha256:ab054daf9c6c1373c6503f603805756ef3ef9c5a60400d07d8e938d6987e532b",
+    "measured_g04_probe_revision": "content-sha256:c627d42667bf8ee79be6870a067f03d11f9d2420b269561d838d1b0db4f40526",
+    "same_root_as_dsh": true,
+    "same_candidate_checked": "yes: this review re-ran every mandatory command against the same working root and found the same file state DSH recorded; no implementation candidate exists for either agent to review"
+  },
+  "deliverable_presence": {
+    "scripts/generate_scenarios.py": false,
+    "data/scenarios/tiny_transport.json": false,
+    "data/scenarios/tiny_warehouse.json": false,
+    "data/scenarios/invalid_cases.json": false,
+    "data/scenarios/manifest.json": false,
+    "tests/unit/test_p04_01_canonical_fixtures.py": false,
+    "tests/integration/test_p04_01_canonical_fixtures.py": false,
+    "docs/implementation/P04-01.md": true,
+    "docs/implementation/reports/P04-01.md": true
+  },
+  "deliverable_present_count": 2,
+  "deliverable_expected_count": 9,
+  "deliverable_present_count_explanation": "2 of 9 exist, and both are documentation-only: docs/implementation/P04-01.md and docs/implementation/reports/P04-01.md record the BLOCKED state. The 7 implementation/data/test deliverables (1 generator, 4 fixture JSON files, 2 test files) are all absent. This matches DSH's record; unlike the sibling P04-02 record, this one is internally consistent and factually correct.",
+  "code_and_test_presence": {
+    "scripts/generate_scenarios.py": false,
+    "data/scenarios/tiny_transport.json": false,
+    "data/scenarios/tiny_warehouse.json": false,
+    "data/scenarios/invalid_cases.json": false,
+    "data/scenarios/manifest.json": false,
+    "tests/unit/test_p04_01_canonical_fixtures.py": false,
+    "tests/integration/test_p04_01_canonical_fixtures.py": false,
+    "docs/implementation/P04-01.md": true,
+    "docs/implementation/reports/P04-01.md": true
+  },
+  "code_and_test_present_count": 0,
+  "code_and_test_expected_count": 7,
+  "dsh_submission": {
+    "record": "artifacts/handoffs/P04-01/dsh/evidence.json",
+    "record_sha256": "1bd668e74d7b2835e90f4791b21cc7c892687dff059a93ea12e653336f38c4de",
+    "handoff": "docs/handoffs/P04-01/dsh.md",
+    "handoff_sha256": "b08ae8506659d3cb2748e311aacd708509972b6a94f617b02a0e94d6fc1299ab",
+    "dsh_status": "BLOCKED",
+    "dsh_record_round": 2,
+    "reviewer_agrees_with_status": true,
+    "dsh_summary_not_relied_on": "the verdict was re-derived from the file system, the gate records and re-run commands before the DSH narrative was read for reconciliation; every load-bearing DSH claim was re-checked",
+    "input_hashes_reverified": "20/20 of DSH's input_hashes recomputed byte-identical during this review, so the frozen inputs DSH reviewed are the ones this review reviewed",
+    "output_hashes_reverified": "7/7 of DSH's recorded log hashes recomputed byte-identical"
+  },
+  "dependency_presence": {
+    "artifacts/gates/G00.json": true,
+    "artifacts/gates/G01.json": true,
+    "artifacts/gates/G02.json": false,
+    "artifacts/gates/G03.json": false,
+    "artifacts/gates/G04.json": false,
+    "artifacts/handoffs/P02-04/zcode/precheck.json": true,
+    "data/scenarios/README.md": true
+  },
+  "dependency_present_count": 4,
+  "dependency_expected_count": 7,
+  "prerequisites": {
+    "G00": {
+      "recorded_status": "passed",
+      "sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "verdict": "valid"
+    },
+    "G01": {
+      "recorded_status": "failed",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "failed_checks": [
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ],
+      "verdict": "invalid (blocking): the failed set is exactly the 3 Phase 01 precheck records plus the Codex review record; this review confirmed all 4 are still absent"
+    },
+    "G02": {
+      "record": null,
+      "verdict": "invalid (blocking): no artifacts/gates/G02.json exists"
+    },
+    "G03": {
+      "record": null,
+      "verdict": "invalid (blocking, the only declared dependency): no artifacts/gates/G03.json exists",
+      "probe_evidence": "my re-run of the Phase 04 probe reports [FAIL] previous-gate:G03: missing artifacts/gates/G03.json"
+    },
+    "P03-01..P03-04": {
+      "dsh_status": "BLOCKED",
+      "zcode_precheck": "BLOCKED",
+      "verdict": "invalid (blocking): all four tasks blocked, zero declared deliverables exist, so G03 cannot be assembled"
+    },
+    "P02-04": {
+      "dsh_evidence": "absent (no artifacts/handoffs/P02-04/dsh/ directory)",
+      "zcode_precheck_status": "BLOCKED",
+      "verdict": "invalid (blocking): owns the interface input type ScenarioSpec per DATA_CONTRACTS.md:81, so the signature cannot even be typed"
+    }
+  },
+  "frozen_interface": {
+    "signature": "generate_scenario(spec: ScenarioSpec, seed: int) -> ScenarioBundle",
+    "source": "docs/prompts/01-foundation/P04-01-canonical-fixtures.md:90",
+    "input_type_owner": "P02-04 (DATA_CONTRACTS.md:81: 'ScenarioSpec 的纯数据形状也在P02-04定义，P04负责生成')",
+    "input_type_importable": "no: logistics_domain.planning and logistics_domain.runtime both raise ModuleNotFoundError; packages/domain/src/logistics_domain/__init__.py exports layer constants only and documents 'Nothing is implemented yet'",
+    "return_type_owner": "none: ARCH-0006 remains open; the named Schema table has no ScenarioBundle row",
+    "whitelist_gap": "the task whitelist contains no domain-type module, so an implementer can only duplicate the domain model (Constraint 6) or return an undefined dict (Constraint 1)"
+  },
+  "commands": [
+    {
+      "id": "cmd1",
+      "mandatory": true,
+      "argv": "uv run pytest tests/unit/test_p04_01_canonical_fixtures.py tests/integration/test_p04_01_canonical_fixtures.py -q",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4,
+      "result": "ERROR: file or directory not found: tests/unit/test_p04_01_canonical_fixtures.py | no tests ran in 0.00s (0 passed / 0 failed / 0 skipped)",
+      "zero_case_run": true,
+      "counts_as_evidence": false,
+      "log": {
+        "path": "artifacts/handoffs/P04-01/zcode/logs/cmd1-pytest.log",
+        "sha256": "1bfeade4ad3afce10c7d7f9732636c7cb3c6029818b33fd647b7b61c2068d5fc",
+        "bytes": 116
+      }
+    },
+    {
+      "id": "cmd2",
+      "mandatory": true,
+      "argv": "uv run python scripts/check_architecture.py",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0",
+      "counts_as_evidence": false,
+      "hollow_pass": true,
+      "hollow_pass_reason": "the 7 scanned modules are the unmodified P01-01 placeholder packages (one __init__.py per layer, confirmed with --verbose --json: modules_per_layer = 1 for each of the 7 layers); this task added no code, and the checker cannot see the failure mode the task exists to prevent (an undefined dict crossing a boundary) because neither a generator nor a Schema exists",
+      "log": {
+        "path": "artifacts/handoffs/P04-01/zcode/logs/cmd2-architecture.log",
+        "sha256": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+        "bytes": 81
+      }
+    },
+    {
+      "id": "cmd3",
+      "mandatory": false,
+      "argv": "uv run python scripts/gates.py --phase 04 --revision auto --out-dir tmp/zcode-p04/probe-g04",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "G04: 7/17 checks passed; previous-gate:G03 missing; both cmd1 checks fail; both dsh-evidence statuses unexpected; both zcode-prechecks missing; codex-review missing",
+      "wrote_official_gate_record": false,
+      "official_record_untouched": "artifacts/gates/ still holds only G00-checks.log, G00.json, G01.json",
+      "log": {
+        "path": "artifacts/handoffs/P04-01/zcode/logs/gates-probe-phase04.log",
+        "sha256": "a9b871365e29cfc4c081b5e4511f40b5310e423f243a190d961a786b9d36a336",
+        "bytes": 1459
+      }
+    },
+    {
+      "id": "cmd4",
+      "mandatory": false,
+      "argv": "uv run pytest tests/unit tests/integration -q",
+      "workdir": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "result": "187 passed in 40.34s -- adjacent-module regression baseline",
+      "purpose": "because this task delivered no code, the regression that can be run is the whole existing suite; it passes and contains no P04-01 test, which independently confirms the absence of the deliverable tests",
+      "log": {
+        "path": "artifacts/handoffs/P04-01/zcode/logs/regression-full-pytest.log",
+        "sha256": "24393cb0cda8ad49ea148c2f676cc3e1314d810edc452bab5d0dfade9c0a48be",
+        "bytes": 272
+      }
+    }
+  ],
+  "phase_appropriate_checks": {
+    "uv lock --check": {
+      "exit_code": 0,
+      "result": "Resolved 40 packages in 2ms"
+    },
+    "scripts/check_ownership.py": {
+      "exit_code": 0,
+      "result": "ownership-and-migration: files=1250 rules=60 violations=0"
+    },
+    "scripts/gates.py --phase 01 --check-only": {
+      "exit_code": 0,
+      "result": "check-only: recorded status=failed, failed_checks=['zcode-precheck:P01-01', 'zcode-precheck:P01-02', 'zcode-precheck:P01-03', 'codex-review']; gate not signed"
+    },
+    "uv run ruff check apps/backend/src packages/*/src tests scripts": {
+      "exit_code": 1,
+      "result": "39 errors, all in pre-existing P01-01/P01-02/P01-03 files (scripts/gates.py 11, scripts/check_ownership.py 7, tests 14, one per package __init__.py 7)",
+      "attribution": "pre-existing lint debt, not introduced by P04-01 (which wrote no code); ruff is not in this task's mandatory command set nor in .github/workflows/ci.yml"
+    },
+    "schema/openapi/generated-client consistency": {
+      "status": "not applicable this round",
+      "reason": "the task produces fixture files only; it exposes no HTTP route and no Schema export. The generator export step belongs to P02/P05. No drift check was invented."
+    }
+  },
+  "test_cases": {
+    "1: tiny_transport => shortest distance 9000 m": {
+      "status": "NOT RUN / UNVERIFIED",
+      "reason": "the fixture and its test file do not exist"
+    },
+    "2: same seed=42 + same generator version => identical file hash": {
+      "status": "NOT RUN / UNVERIFIED",
+      "reason": "no generator and no version stamp exist"
+    },
+    "oracle_self_consistency": {
+      "status": "independently verified by ZCode",
+      "method": "recomputed TEST_FIXTURES.md T1/W1/S1 arithmetic from the frozen matrices; no fixture was created and no expected plan was written into any implementation",
+      "log": "tmp/zcode-p04/oracle-arithmetic-check.txt",
+      "findings": [
+        "D-A-B-D = 3000+2000+4000 = 9000 m and the reverse D-B-A-D = 7000+6000+5000 = 18000 m, both as stated",
+        "travel 300+200+400 = 900 s; A arrival/depart 300/360; B arrival/depart 560/620; back at depot 1020 s; drive+service = 1020 s",
+        "per-leg load 800000 -> 400000 -> 0 g; cost 9 km x 100 + 500 = 1400 fen",
+        "A-window [350,350] variant gives A 350/410, B 610/670, return 1070 s; B latest_start=600 is then infeasible (arrival 610)",
+        "W1 makespan 20 s without setup and 25 s with setup (A[0,10), setup[10,15), B[15,25))",
+        "S1: +3 units at t10 peaks at 11 > capacity 10 (over-capacity); +3 units at t20 stays at 8 <= 10 (feasible)"
+      ],
+      "conclusion": "the frozen oracle is self-consistent and independently reproducible, so the two Test Cases are genuinely testable once P04-01 is re-issued on a satisfied dependency chain"
+    }
+  },
+  "defects": [
+    {
+      "id": "Z-D1",
+      "severity": "blocking (inherited, not caused by DSH)",
+      "title": "The declared dependency G03 has no record and cannot be assembled",
+      "evidence": [
+        "artifacts/gates/ contains only G00-checks.log, G00.json, G01.json",
+        "Phase 04 probe: [FAIL] previous-gate:G03: missing artifacts/gates/G03.json",
+        "Phase 03 probe: G03: 13/28 checks passed with every P03-01..P03-04 acceptance row failing",
+        "G01 status=failed with failed_checks = 3 Phase 01 prechecks + codex-review, all still missing"
+      ],
+      "owner": "project management side + P01-03 (see docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md)",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "the remedy is writing three Phase 01 precheck records and a Codex review, which is outside this task's whitelist and this reviewer's role; the remediation plan already specifies the exact paths and write order"
+    },
+    {
+      "id": "Z-D2",
+      "severity": "blocking (contract gap)",
+      "title": "The frozen interface cannot be implemented as written: input type undelivered, return type unowned",
+      "evidence": [
+        "DATA_CONTRACTS.md:81 assigns ScenarioSpec to P02-04; no artifacts/handoffs/P02-04/dsh/ exists and its zcode precheck is BLOCKED",
+        "logistics_domain.planning / logistics_domain.runtime -> ModuleNotFoundError",
+        "ARCH-0006 is open: the named Schema table has no ScenarioBundle row; it appears in DATA_CONTRACTS.md:94, API_CONTRACT.md:47 and this task's prompt line 90 only as a signature",
+        "the P04-01 whitelist contains no domain-type module"
+      ],
+      "owner": "contract owner (ARCH-0006 decision) + Phase 02 delivery",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "defining ScenarioBundle or ScenarioSpec here would be a unilateral contract change and would duplicate the domain model (Constraint 6); the issue file already lists the three candidate resolutions and explicitly refuses to pick one"
+    },
+    {
+      "id": "Z-D3",
+      "severity": "low (evidence hygiene, does not change the verdict)",
+      "title": "3 of the 7 DSH raw logs are UTF-16 with BOM and unreadable with standard UTF-8 tooling",
+      "evidence": [
+        "artifacts/handoffs/P04-01/dsh/logs/r2-gates-probe-phase03.log (UTF-16-BOM, 4582 B)",
+        "artifacts/handoffs/P04-01/dsh/logs/r2-gates-probe-phase04.log (UTF-16-BOM, 3082 B)",
+        "artifacts/handoffs/P04-02/dsh/logs/gates-probe-phase04.log (UTF-16-BOM, 3078 B)",
+        "DSH's report disclosed the encoding problem only for round 1's cmd1-pytest.log and cmd2-architecture.log, which were then re-saved as UTF-8; the three files above were not disclosed",
+        "content is intact: decoding as UTF-16 yields 'G03: 13/28 checks passed' and 'G04: 5/17 checks passed', and the byte sizes and sha256 values match DSH's recorded output_hashes exactly"
+      ],
+      "impact": "authenticity is unaffected; only machine readability of the evidence is degraded",
+      "owner": "DSH",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "rewriting another agent's evidence logs would tamper with the audit trail; this review instead re-ran the same commands and stored its own UTF-8 logs under artifacts/handoffs/P04-01/zcode/logs/"
+    },
+    {
+      "id": "Z-D4",
+      "severity": "low (report accuracy, does not change the verdict)",
+      "title": "DSH's recorded G04 count (5/17) does not match a re-run (7/17); the difference is a file-write ordering effect",
+      "evidence": [
+        "DSH P04-01 probe log (21:27:57) and P04-02 probe log (21:34:15) both read 'G04: 5/17'",
+        "docs/implementation/P04-02.md (21:36:27) and reports/P04-02.md (21:36:46) were written after both probes",
+        "my re-run reads 'G04: 7/17': the two additional passes are exactly the two P04-02 document checks",
+        "both DSH probes are internally consistent with the file state at their timestamps, so this is not a misstatement; the reports simply do not mark the count as time-sensitive"
+      ],
+      "impact": "a later reader diffing the numbers could wrongly suspect the probe was misreported",
+      "owner": "DSH",
+      "fixed_by_zcode": false,
+      "reason_not_fixed": "both numbers are honest snapshots; this record reconciles them instead"
+    }
+  ],
+  "fixed_by_zcode": [],
+  "unfixed": [
+    "Z-D1 (G01/G02/G03 barrier): needs the 4 Phase 01 records and the Phase 02/03 deliveries listed in docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md",
+    "Z-D2 (contract gap): needs the ARCH-0006 decision plus P02-04 delivery",
+    "Z-D3 (UTF-16 logs): DSH-side re-save",
+    "Z-D4 (probe count drift): DSH-side annotation"
+  ],
+  "not_verified": [
+    "Test Case 1 (tiny_transport shortest distance 9000 m) - fixture absent, case not run",
+    "Test Case 2 (same seed=42 + same generator version => identical file hash) - generator absent, case not run",
+    "the interface generate_scenario(...) itself - no implementation exists",
+    "Business Rules: exact TEST_FIXTURES data usage, explicit 'synthetic' marking, stable uuid5 identifiers, and the prohibition on embedding the expected plan in the implementation - all UNVERIFIED",
+    "the G04 exit assertion 'T1/W1/I1/M1 data hash reproducible' - no data and no hash",
+    "the G04 exit assertion 'every counter-example has a reason' - invalid_cases.json absent",
+    "normalised serialisation independent of dict iteration order - no generator to inspect",
+    "the generator version stamp - does not exist",
+    "the whole Edge Case table (empty collections, duplicate ids, illegal enums/units, negatives/integer overflow, missing references, equal boundary times, stale revision, cancellation/timeout, dependency unavailable) - UNVERIFIED",
+    "the Observability requirement (pass/fail counts, durations, files processed) - no generator run exists, so it is honestly 0; the G04 probe measured 4 commands, total 1078 ms in my re-run",
+    "error-code mapping (422/409/503) and If-Match/Idempotency-Key - not applicable: this task exposes no HTTP boundary and produces no candidate plan states; recorded as not applicable rather than passed"
+  ],
+  "security_review": {
+    "scope": "the paths touched or referenced by P04-01 plus the repository sources",
+    "credentials_scan": "no credential-looking literal found in the task documents, DSH records or repository sources; no .env, .pem, .p12 or id_rsa exists outside third-party vendored directories under demo/demos and tmp/package-verification",
+    "env_var_handling": "the task touches no credential; Phase 04 references only the variable name TEST_DATABASE_URL (in P04-02), and no value appears anywhere in the P04 documents or records",
+    "injection_surface": "not applicable for P04-01: no SQL, no shell interpolation, no subprocess and no HTTP boundary exist in the deliverable, because the deliverable does not exist. The parameter-binding rule is nonetheless carried into the re-issue checklist for any future fixture loader.",
+    "log_redaction": "my logs contain command output only; no secret, no personal data and no model-internal reasoning was printed or stored",
+    "dependency_changes": "uv.lock is byte-identical to the state DSH reviewed (sha256 89f78a20...86c5) and uv lock --check reports exit 0; no dependency was added by this review",
+    "known_dependency_vulnerabilities": "no vulnerability scanner is established in this repository yet (no pip-audit/npm audit gate in .github/workflows/ci.yml), so no scan result is claimed; this is recorded as not-run rather than clean. The nearest existing check, the CI secret-hygiene job, has no local equivalent to run without git.",
+    "unverified_advisories_vs_reproducible": "no reproducible vulnerability was found or reproduced; nothing is listed as an unverified advisory either, because no scanner output exists to classify"
+  },
+  "tool_versions": {
+    "python": "3.12.10",
+    "uv": "0.12.13 (tools/bin/uv.exe; uv is not on PATH on this host)",
+    "os": "Windows 11",
+    "host_notes": "no psql/pg_ctl on PATH; docker client present but the daemon pipe is unavailable; TEST_DATABASE_URL unset (recorded for P04-02; P04-01 needs no database)"
+  },
+  "verified_input_hashes": {
+    "docs/prompts/01-foundation/P04-01-canonical-fixtures.md": "64633b4f1e266cef69131aa279b514265d08734b7f7894b83ddd0c1b0721edbc",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+    "docs/plan/TASK_MANIFEST.json": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md": "8434a8409b4e8568cf21d1a349caaefb405e4e44dc95789a3165e5b221d6e564",
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "docs/architecture/DATA_CONTRACTS.md": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/architecture/issues/README.md": "924e579f4b16e5ca698441cadafb11b930f2b5a854e34c35b81fe7ec7a7a3f20",
+    "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md": "28bd3e765d43a59d5aeed967252b4d6e7968e3e36ec9254644a08952edca2a13",
+    "data/scenarios/README.md": "aeb9c3013e9da650ec2d86f10eb415e612625df78d2cd10ba4b5f9223a525439",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "artifacts/gates/G01.json": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+    "artifacts/handoffs/P04-01/dsh/evidence.json": "1bd668e74d7b2835e90f4791b21cc7c892687dff059a93ea12e653336f38c4de",
+    "docs/handoffs/P04-01/dsh.md": "b08ae8506659d3cb2748e311aacd708509972b6a94f617b02a0e94d6fc1299ab"
+  },
+  "verified_input_hashes_note": "recomputed during this review; every shared key matches DSH's recorded value byte-for-byte, so the frozen inputs did not drift between DSH's pass and this one",
+  "evidence_logs": {
+    "cmd1-pytest.log": {
+      "path": "artifacts/handoffs/P04-01/zcode/logs/cmd1-pytest.log",
+      "sha256": "1bfeade4ad3afce10c7d7f9732636c7cb3c6029818b33fd647b7b61c2068d5fc",
+      "bytes": 116
+    },
+    "cmd2-architecture.log": {
+      "path": "artifacts/handoffs/P04-01/zcode/logs/cmd2-architecture.log",
+      "sha256": "32ef69a7393feef287a6845ae465515a0a4b4ef1a655cff407183f7ff92d0f6c",
+      "bytes": 81
+    },
+    "gates-probe-phase04.log": {
+      "path": "artifacts/handoffs/P04-01/zcode/logs/gates-probe-phase04.log",
+      "sha256": "a9b871365e29cfc4c081b5e4511f40b5310e423f243a190d961a786b9d36a336",
+      "bytes": 1459
+    },
+    "regression-full-pytest.log": {
+      "path": "artifacts/handoffs/P04-01/zcode/logs/regression-full-pytest.log",
+      "sha256": "24393cb0cda8ad49ea148c2f676cc3e1314d810edc452bab5d0dfade9c0a48be",
+      "bytes": 272
+    }
+  },
+  "logs_note": "all ZCode logs are UTF-8 by construction; the DSH UTF-16 files (Z-D3) were decoded for content verification only and were left unmodified",
+  "evidence_builder": {
+    "path": "artifacts/handoffs/P04-01/zcode/build-evidence.py",
+    "argv": "python artifacts/handoffs/P04-01/zcode/build-evidence.py",
+    "rebuildable": "yes: every hash is recomputed from the working tree; Codex can rebuild and diff"
+  },
+  "sandbox_gate_evidence": {
+    "official_gate_records_written": [],
+    "statement": "no Gate was signed, no artifacts/gates file was created or modified, and the probe output went to tmp/zcode-p04/probe-g04 (gitignored scratch)",
+    "artifacts_gates_listing_after_review": [
+      "G00-checks.log",
+      "G00.json",
+      "G01.json"
+    ]
+  },
+  "files_added_by_zcode": [
+    "artifacts/handoffs/P04-01/zcode/build-evidence.py",
+    "artifacts/handoffs/P04-01/zcode/evidence.json",
+    "artifacts/handoffs/P04-01/zcode/precheck.json",
+    "artifacts/handoffs/P04-01/zcode/logs/cmd1-pytest.log",
+    "artifacts/handoffs/P04-01/zcode/logs/cmd2-architecture.log",
+    "artifacts/handoffs/P04-01/zcode/logs/gates-probe-phase04.log",
+    "artifacts/handoffs/P04-01/zcode/logs/regression-full-pytest.log",
+    "tmp/zcode-p04/oracle-arithmetic-check.txt",
+    "tmp/zcode-p04/architecture-verbose.json",
+    "tmp/zcode-p04/probe-g04/"
+  ],
+  "files_modified_by_zcode": [],
+  "files_modified_by_zcode_note": "no file outside this record's own directory was created or modified; in particular no file under scripts/, data/, tests/, artifacts/gates/ or another task's handoff directory was touched, and the DSH report and evidence were preserved unmodified",
+  "preserved_dsh_report": [
+    "docs/handoffs/P04-01/dsh.md (sha256 above, unmodified)",
+    "artifacts/handoffs/P04-01/dsh/evidence.json (sha256 above, unmodified)",
+    "artifacts/handoffs/P04-01/dsh/logs/* (7 files, all unmodified, hashes verified)"
+  ],
+  "signs_gate": false,
+  "gate_signed": null,
+  "limitations": [
+    "the revision label is a self-perturbing content hash because there is no .git; it cannot be used as a stable commit identifier",
+    "no PostgreSQL, no Docker daemon and no psql/pg_ctl are available on this host, so any future Phase 04 database assertion remains blocked until the environment manual is delivered",
+    "the architecture checker scans 7 placeholder modules and therefore cannot express the failure mode this task is meant to prevent; its exit 0 is not acceptance evidence"
+  ],
+  "next_actions": [
+    "repair the barrier before re-issuing any Phase 03/04 task: write the 4 Phase 01 records in the order docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md specifies, then deliver P02-01..P02-04 and sign G02, then re-issue and sign G03",
+    "obtain the ARCH-0006 decision (ScenarioBundle ownership) -- pair it with the ImportReceipt gap recorded by P04-02, since both are the same outstanding decision",
+    "only then re-issue P04-01; at pre-acceptance, re-verify the 9000 m value, stable uuid5 ids, normalised serialisation, the generator version stamp, per-counter-example rule attribution, and absence of hand-written fixtures",
+    "reproduce Test Case 2 independently by running the generator twice with seed=42 and comparing bytes, rather than trusting a single recorded hash"
+  ],
+  "reviewer_verdict_line": "ZCode: BLOCKED -- 0/7 code-data-test deliverables, G03 missing, interface untyped; DSH verdict independently confirmed; no Gate signed"
+}

@@ -1,0 +1,20 @@
+=== P03-04 DSH evidence integrity re-check ===
+status: BLOCKED | signs_gate: False | gate_signed: None
+
+-- command log hashes recorded vs recomputed:
+   P03-04-cmd1: exit=4 rec=294b84dd7001… act=294b84dd7001 -> match
+   P03-04-cmd2: exit=0 rec=736db1eeca95… act=736db1eeca95 -> match
+   dependency-probe-phase02: exit=1 rec=6b9c9897bdeb… act=6b9c9897bdeb -> match
+   dependency-probe-phase03: exit=1 rec=6b9c9897bdeb… act=6b9c9897bdeb -> match
+   all match: True
+
+-- recorded input hashes: 15 | mismatched: NONE
+
+-- deliverable_presence drift: {'docs/implementation/P03-04.md': {'recorded': False, 'now': True}, 'docs/implementation/reports/P03-04.md': {'recorded': False, 'now': True}} | recorded count: 0 / 7
+
+-- does DSH register a new ARCH issue? (it says it deliberately did not)
+   arch_issues_registered: field absent
+
+-- cross-check quoted predecessor state:
+   P03-03 zcode: BLOCKED | code+test 0/5
+   consistent: True

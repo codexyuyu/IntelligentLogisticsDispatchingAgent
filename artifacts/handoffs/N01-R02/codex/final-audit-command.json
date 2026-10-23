@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "python",
+    "-B",
+    "tmp/N01-R02/audit_final.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T14:13:00.042597+00:00",
+  "finished_at": "2026-10-04T14:13:01.534963+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N01-R02/codex/final-audit.log",
+  "log_hash": "d16e589704dfee20c9c7bfc766a23ffe5271c58c8c3856a3bdb1ad552c6ed16b",
+  "log_bytes": 1563,
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

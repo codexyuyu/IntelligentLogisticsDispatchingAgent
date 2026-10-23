@@ -1,0 +1,8 @@
+status: BLOCKED
+deliverables present: 2 / 7
+code+test present   : 0 / 5
+dependency present  : 2 / 21
+dsh logs match      : True | inputs stale: none
+logs recorded: 7
+inputs hashed: 27 missing: []
+bytes: 41975

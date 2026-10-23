@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-03",
+  "round": "n03-2026-10-04",
+  "role": "dsh",
+  "status": "READY_FOR_ZCODE",
+  "signs_gate": false,
+  "generated_at": "2026-10-04T16:01:57.491224+00:00",
+  "generation_order": "logs -> evidence.json -> docs/handoffs/<task>/dsh.md -> this seal",
+  "candidate": {
+    "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+    "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+    "relevant_file_count": 77,
+    "recomputed_by": "tmp/N03/candidate/candidate-identity.py via GateRunner.relevant_manifest_rows() of scripts/gates.py"
+  },
+  "dependency_evidence": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "status": "passed",
+      "finished_at": "2026-10-04T14:48:59.955285+00:00",
+      "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)"
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "status": "failed",
+      "finished_at": "2026-09-14T13:15:11.596614+00:00",
+      "reviewer": "dsh-scripts/gates.py"
+    }
+  },
+  "evidence": {
+    "path": "artifacts/handoffs/P01-03/dsh/evidence.json",
+    "sha256": "365d0acbb4c7f4eb40ebdc5d2f0cb767dbae8aba11f180ebc75c5491a18f0887",
+    "bytes": 15424
+  },
+  "handoff": {
+    "path": "docs/handoffs/P01-03/dsh.md",
+    "sha256": "0c2edd83e6af39b68b4ebb4519168084a170f3526cc7955639d30500220d2dcc",
+    "bytes": 10818
+  },
+  "prior_rounds_archive": {
+    "manifest": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/archive-manifest.json",
+    "manifest_sha256": "b5472f22155b27097d3af0d7b69d9bc77798915795a7b4e7b7b82cbcf69dc7f7",
+    "file_count": 5,
+    "prior_handoff_copy": {
+      "path": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/docs-handoff-dsh.md",
+      "exists": true,
+      "bytes": 4306,
+      "sha256": "d577e2118a2d98b0123b91d0099409e858b5961021b2e484918870b5f6e373e1"
+    }
+  },
+  "required_command_exit_codes": {
+    "cmd1-pytest": {
+      "exit_code": 0,
+      "observed": {
+        "passed": 74,
+        "failed": 0
+      }
+    },
+    "cmd2-check-architecture": {
+      "exit_code": 0,
+      "observed": {
+        "violations": 0
+      }
+    }
+  },
+  "supplementary_command_exit_codes": {
+    "phase01-full-regression-attempt1": {
+      "exit_code": 1,
+      "observed": {
+        "passed": 225,
+        "failed": 1
+      }
+    },
+    "phase01-full-regression-attempt2": {
+      "exit_code": 1,
+      "observed": {
+        "passed": 225,
+        "failed": 1
+      }
+    }
+  },
+  "command_log_hashes": {
+    "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/p01-03-cmd1-pytest.log": {
+      "sha256": "567d82396f10257c43be4803e4948fb51ec6496680e2a4eadde226840f1a9418",
+      "bytes": 850
+    },
+    "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/p01-03-cmd2-check-architecture.log": {
+      "sha256": "e660c7e6e67806186fdf98441a6e137a387ae5548a415e336509254863d5006a",
+      "bytes": 669
+    },
+    "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt1.log": {
+      "sha256": "2a2151a9bade2f9f55f8baad9f9ccc19c664d588f9b1dc67119169e8170608d2",
+      "bytes": 4076
+    },
+    "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt2.log": {
+      "sha256": "4ba550f6c0eecb74b3128f775fda7d1f8f0419c8d6b55f4e8d52c78aad7898ba",
+      "bytes": 4183
+    }
+  },
+  "defects_reported_this_round": [
+    "DEF-N03-01 (resolved before delivery)",
+    "DEF-N03-02 (open)"
+  ]
+}

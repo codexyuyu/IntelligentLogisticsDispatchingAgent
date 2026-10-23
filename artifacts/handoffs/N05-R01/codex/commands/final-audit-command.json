@@ -1,0 +1,14 @@
+{
+  "check_id": "final-audit",
+  "argv": [
+    ".venv\\Scripts\\python.exe",
+    "-B",
+    "tmp/N05-R01/final_audit.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-05T03:46:48.552584+00:00",
+  "finished_at": "2026-10-05T03:46:48.992573+00:00",
+  "log_path": "artifacts/handoffs/N05-R01/codex/commands/final-audit.log",
+  "log_sha256": "805340422744eacf0c376fe1a2c1c5e5073206e1511c710e7ed991a3f506fa17"
+}

@@ -1,0 +1,20 @@
+name: logistics-data-prep-2026
+services:
+  postgres:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: logistics_prep
+      POSTGRES_PASSWORD: ${LOGISTICS_PREP_PASSWORD:?Set LOGISTICS_PREP_PASSWORD for this isolated development database}
+      POSTGRES_DB: logistics_prep_test
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - preparation_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U logistics_prep -d logistics_prep_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: "no"
+volumes:
+  preparation_pgdata:

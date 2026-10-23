@@ -1,0 +1,148 @@
+{
+  "status": "PASS",
+  "reviewer": "Codex N02-R02 /root/n02_r02_independent",
+  "checked_at": "2026-10-04T14:48:10.914422+00:00",
+  "child_count": 189,
+  "child_hashes_bound": 6,
+  "child_input_count": 19,
+  "main_key_reproductions": 19,
+  "all_matched": true,
+  "results": [
+    {
+      "case_index": 115,
+      "name": "three directed arcs including the reverse accepted",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 116,
+      "name": "duplicate at final position still rejected",
+      "expected_accepted": false,
+      "actual_accepted": false,
+      "reason": "nonempty unique directed nonself arcs required"
+    },
+    {
+      "case_index": 122,
+      "name": "cross-matrix arc list rejected",
+      "expected_accepted": false,
+      "actual_accepted": false,
+      "reason": "every arc must belong to the one selected matrix"
+    },
+    {
+      "case_index": 123,
+      "name": "two events split the two matrices correctly",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 125,
+      "name": "same region set accepts a non-reverse permutation",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 126,
+      "name": "same region identity cannot substitute a single different member",
+      "expected_accepted": false,
+      "actual_accepted": false,
+      "reason": "same region_id must preserve the same node set"
+    },
+    {
+      "case_index": 131,
+      "name": "singleton known region has no affected arc and accepts version one",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 132,
+      "name": "one node per matrix has no affected arc and accepts version one",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 133,
+      "name": "unaffected higher-version matrix does not force advance",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 139,
+      "name": "any conflicting prior occurrence rejects the identity",
+      "expected_accepted": false,
+      "actual_accepted": false,
+      "reason": "same region_id must preserve the same node set"
+    },
+    {
+      "case_index": 140,
+      "name": "six resources: complete pinned warehouse accepted",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 148,
+      "name": "six resources: complete pinned zone accepted",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 156,
+      "name": "six resources: complete pinned location accepted",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 164,
+      "name": "six resources: complete pinned dock accepted",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 172,
+      "name": "six resources: complete pinned worker accepted",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 180,
+      "name": "six resources: complete pinned equipment accepted",
+      "expected_accepted": true,
+      "actual_accepted": true,
+      "reason": "accepted"
+    },
+    {
+      "case_index": 142,
+      "name": "six resources: outer null and inner pinned warehouse rejected",
+      "expected_accepted": false,
+      "actual_accepted": false,
+      "reason": "entity_ref differs from complete resource_ref"
+    },
+    {
+      "case_index": 145,
+      "name": "six resources: matching IDs with absent warehouse target rejected",
+      "expected_accepted": false,
+      "actual_accepted": false,
+      "reason": "target does not exist in selected fact snapshot"
+    },
+    {
+      "case_index": 146,
+      "name": "six resources: equal but stale warehouse references rejected",
+      "expected_accepted": false,
+      "actual_accepted": false,
+      "reason": "reference revision differs from fact row_version"
+    }
+  ],
+  "child_result_path": "artifacts/handoffs/N02-R02/codex/independent-cases/result.json",
+  "child_result_sha256": "000ae33473da878cd9d96f4627a5f3b5c40fb166563f9570d9ab66e71838d9d8",
+  "limitations": "Only fixed-snapshot design predicates; no production parser/handler, full FK/scope/calendar or business engine acceptance."
+}

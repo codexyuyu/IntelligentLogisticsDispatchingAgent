@@ -1,0 +1,668 @@
+{
+  "plan_version": "1.0.2",
+  "task_count": 109,
+  "gate_count": 40,
+  "task_statuses": [
+    "planned"
+  ],
+  "gate_statuses": [
+    "not_run"
+  ],
+  "p00_tasks": [
+    {
+      "id": "P00-01",
+      "phase": 0,
+      "slug": "baseline-inventory",
+      "title": "登记旧 demo 资产与目标目录迁移映射",
+      "files": [
+        "docs/architecture/BASELINE_INVENTORY.json",
+        "docs/architecture/BASELINE_INVENTORY.md",
+        "docs/architecture/MIGRATION_MAP.md"
+      ],
+      "interface": "BaselineInventory(source_path, sha256, owner, capability, disposition) -> MigrationMap",
+      "model": "旧 v0.1 contracts、ports、展示页面、A/B 所有权",
+      "rule": "只读检查 demo；501 和教学探针不计为正式求解实现；不得改 Linear 状态。",
+      "algorithm": "列出路径、当前能力证据、保留/迁移/重写分类；B 映射到运输与仿真路径；转换差异登记。",
+      "cases": [
+        "demo 的业务骨架返回 501 => 记录未实现",
+        "同一源文件两条目标主契约 => 检查失败"
+      ],
+      "deps": [],
+      "kind": "docs",
+      "prompt": "docs/prompts/00-master/P00-01-baseline-inventory.md",
+      "phase_gate": "G00",
+      "unit_test": "tools/ai_coding_plan/validate_plan.py::run_self_tests",
+      "integration_test": "tools/ai_coding_plan/validate_plan.py --task P00-01",
+      "special_test": null,
+      "task_doc": "docs/implementation/P00-01.md",
+      "report": "docs/implementation/reports/P00-01.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "python tools/ai_coding_plan/validate_plan.py --self-test --task P00-01"
+      ],
+      "allowed_files": [
+        "docs/architecture/BASELINE_INVENTORY.json",
+        "docs/architecture/BASELINE_INVENTORY.md",
+        "docs/architecture/MIGRATION_MAP.md",
+        "docs/implementation/P00-01.md",
+        "docs/implementation/reports/P00-01.md"
+      ],
+      "blocks": [
+        "P00-02",
+        "G00"
+      ],
+      "parallel": []
+    },
+    {
+      "id": "P00-02",
+      "phase": 0,
+      "slug": "freeze-contracts",
+      "title": "冻结单位、职责、错误和接口契约",
+      "files": [
+        "docs/architecture/CONTRACT_FREEZE.json",
+        "docs/architecture/CONTRACT_FREEZE.md",
+        "docs/architecture/issues/README.md"
+      ],
+      "interface": "ContractFreeze(version=\"1.0.0\", decisions, source_hashes) -> FreezeRecord",
+      "model": "全部领域实体、Schema、Protocol",
+      "rule": "冻结本包 DOMAIN_CATALOG、DATA_CONTRACTS、API_CONTRACT、OPTIMIZATION_CONTRACT；不另写冲突接口。",
+      "algorithm": "核对需求到定义映射；明确批准设计与真实代码完成不同；存在阻断矛盾先记录 issue 并阻止 Gate。",
+      "cases": [
+        "duration=1.5 秒 => 整数时间契约拒绝",
+        "旧分钟输入 2 => 显式转换成 120 秒且记录旧版本"
+      ],
+      "deps": [
+        "P00-01"
+      ],
+      "kind": "docs",
+      "prompt": "docs/prompts/00-master/P00-02-freeze-contracts.md",
+      "phase_gate": "G00",
+      "unit_test": "tools/ai_coding_plan/validate_plan.py::run_self_tests",
+      "integration_test": "tools/ai_coding_plan/validate_plan.py --task P00-02",
+      "special_test": null,
+      "task_doc": "docs/implementation/P00-02.md",
+      "report": "docs/implementation/reports/P00-02.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "python tools/ai_coding_plan/validate_plan.py --self-test --task P00-02"
+      ],
+      "allowed_files": [
+        "docs/architecture/CONTRACT_FREEZE.json",
+        "docs/architecture/CONTRACT_FREEZE.md",
+        "docs/architecture/issues/README.md",
+        "docs/implementation/P00-02.md",
+        "docs/implementation/reports/P00-02.md"
+      ],
+      "blocks": [
+        "P00-03",
+        "G00"
+      ],
+      "parallel": []
+    },
+    {
+      "id": "P00-03",
+      "phase": 0,
+      "slug": "gate-contract",
+      "title": "核验任务 DAG 与失败关闭的 Gate 规则",
+      "files": [
+        "docs/plan/GATE_EXECUTION_CONTRACT.md"
+      ],
+      "interface": "GateEvidence(phase, revision, commands, exit_codes, artifact_hashes) -> GateDecision",
+      "model": "TaskManifest、GateEvidence、需求追踪矩阵",
+      "rule": "规划静态校验通过不等于 G00 业务签收；后续 Gate 缺证据/跳过测试均失败。",
+      "algorithm": "校验 DAG、反向阻塞边、文件范围、40 个 Gate 和每项需求；写阶段证据签收字段与失效传播。",
+      "cases": [
+        "依赖 P99-01 => 检查失败",
+        "G00 缺少命令退出码 => 不允许 P01 启动"
+      ],
+      "deps": [
+        "P00-02"
+      ],
+      "kind": "docs",
+      "prompt": "docs/prompts/00-master/P00-03-gate-contract.md",
+      "phase_gate": "G00",
+      "unit_test": "tools/ai_coding_plan/validate_plan.py::run_self_tests",
+      "integration_test": "tools/ai_coding_plan/validate_plan.py --task P00-03",
+      "special_test": null,
+      "task_doc": "docs/implementation/P00-03.md",
+      "report": "docs/implementation/reports/P00-03.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "python tools/ai_coding_plan/validate_plan.py --self-test --task P00-03"
+      ],
+      "allowed_files": [
+        "docs/implementation/P00-03.md",
+        "docs/implementation/reports/P00-03.md",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md"
+      ],
+      "blocks": [
+        "G00"
+      ],
+      "parallel": []
+    }
+  ],
+  "relevant_tasks": {
+    "P02-01": {
+      "id": "P02-01",
+      "phase": 2,
+      "slug": "primitives-and-states",
+      "title": "实现领域 ID、单位与唯一状态枚举",
+      "files": [
+        "packages/domain/src/logistics_domain/errors.py",
+        "packages/domain/src/logistics_domain/primitives.py",
+        "packages/domain/src/logistics_domain/states.py"
+      ],
+      "interface": "TimeWindow(start_s: int, end_s: int); transition(state: EntityState, event: Transition) -> EntityState",
+      "model": "所有 ID / Enum、TimeWindow、Money、ViolationCode",
+      "rule": "UUID、UTC 时间、整数秒/米/克/立方厘米/分/十分之一摄氏度；资源占用 [start,end)；服务开始窗闭区间。 JobStatus/JobKind等公共枚举唯一在states.py定义；JobStatus遵循DATA_CONTRACTS既有成员和语义；JobKind成员仍未决，ARCH-0007须由A治理在本任务派发前裁定，后续P02-04/P05仅复用。",
+      "algorithm": "不可变值对象；按实体状态转换表显式校验；错误只用领域类型，不依赖 Pydantic。",
+      "cases": [
+        "[0,10) 和 [10,20) => 不冲突",
+        "delivered -> draft => INVALID_TRANSITION"
+      ],
+      "deps": [
+        "G01"
+      ],
+      "kind": "python",
+      "prompt": "docs/prompts/02-domain/P02-01-primitives-and-states.md",
+      "phase_gate": "G02",
+      "unit_test": "tests/unit/test_p02_01_primitives_and_states.py",
+      "integration_test": "tests/integration/test_p02_01_primitives_and_states.py",
+      "special_test": null,
+      "task_doc": "docs/implementation/P02-01.md",
+      "report": "docs/implementation/reports/P02-01.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "uv run pytest tests/unit/test_p02_01_primitives_and_states.py tests/integration/test_p02_01_primitives_and_states.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "allowed_files": [
+        "docs/implementation/P02-01.md",
+        "docs/implementation/reports/P02-01.md",
+        "packages/domain/src/logistics_domain/errors.py",
+        "packages/domain/src/logistics_domain/primitives.py",
+        "packages/domain/src/logistics_domain/states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "tests/unit/test_p02_01_primitives_and_states.py"
+      ],
+      "blocks": [
+        "P02-02",
+        "G02"
+      ],
+      "parallel": []
+    },
+    "P02-02": {
+      "id": "P02-02",
+      "phase": 2,
+      "slug": "master-entities",
+      "title": "实现订单、货物与运仓资源领域模型",
+      "files": [
+        "packages/contracts/src/logistics_contracts/entities.py",
+        "packages/domain/src/logistics_domain/orders.py",
+        "packages/domain/src/logistics_domain/resources.py"
+      ],
+      "interface": "OrderDTO.to_domain() -> Order; ResourceDTO.to_domain() -> Resource",
+      "model": "Order、Cargo、Vehicle、Driver、Warehouse、WarehouseZone、StorageLocation、Dock、Worker、Equipment",
+      "rule": "cargo 属于唯一订单；车辆固定温控点须落在全部货物允许区间；资源版本必须非负。",
+      "algorithm": "依 DOMAIN_CATALOG 建纯实体与边界 DTO 映射，拒绝负容量及悬空关联；实体不查询数据库。",
+      "cases": [
+        "需求 1001g 与车辆 1000g => 数据可表示、分配规则判容量违规",
+        "cargo.temperature=[80,20] => 输入无效"
+      ],
+      "deps": [
+        "G01",
+        "P02-01"
+      ],
+      "kind": "python",
+      "prompt": "docs/prompts/02-domain/P02-02-master-entities.md",
+      "phase_gate": "G02",
+      "unit_test": "tests/unit/test_p02_02_master_entities.py",
+      "integration_test": "tests/integration/test_p02_02_master_entities.py",
+      "special_test": null,
+      "task_doc": "docs/implementation/P02-02.md",
+      "report": "docs/implementation/reports/P02-02.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "uv run pytest tests/unit/test_p02_02_master_entities.py tests/integration/test_p02_02_master_entities.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "allowed_files": [
+        "docs/implementation/P02-02.md",
+        "docs/implementation/reports/P02-02.md",
+        "packages/contracts/src/logistics_contracts/entities.py",
+        "packages/domain/src/logistics_domain/orders.py",
+        "packages/domain/src/logistics_domain/resources.py",
+        "tests/integration/test_p02_02_master_entities.py",
+        "tests/unit/test_p02_02_master_entities.py"
+      ],
+      "blocks": [
+        "P02-03",
+        "G02"
+      ],
+      "parallel": []
+    },
+    "P02-04": {
+      "id": "P02-04",
+      "phase": 2,
+      "slug": "runtime-contract-export",
+      "title": "实现运行记录模型与 Schema 导出",
+      "files": [
+        "contracts/schemas.json",
+        "packages/contracts/src/logistics_contracts/common.py",
+        "packages/contracts/src/logistics_contracts/runtime.py",
+        "packages/domain/src/logistics_domain/execution.py",
+        "packages/domain/src/logistics_domain/runtime.py",
+        "scripts/export_contracts.py"
+      ],
+      "interface": "export_contracts() -> SchemaBundle; ErrorEnvelope(code, message, trace_id, details: tuple[ErrorDetail,...])",
+      "model": "Simulation、SimulationSnapshot、Event、ExceptionEvent、AgentRun、ToolCall、DecisionRecord、Experiment、Metric、ExperimentResult；辅助实体见目录；ScenarioSpec、ScenarioRef、ScenarioBundle、Job、JobAttempt、ActorContext及其纯值引用；JobKind/JobStatus只引用P02-01 states.py唯一枚举",
+      "rule": "边界 extra=forbid；discriminated union；业务 enum 只从 domain 引入；JSONB 也绑定 versioned schema。 P02必须把所有实体引用的纯值类型完整定义，含TwinState/ExecutionEvent/PendingEvent/RngState/AgentBudget/ExperimentSpec；后续领域阶段复用它们，只实现Problem/Request映射和算法，不重复实体。 ScenarioBundle及ScenarioRef唯一纯值定义归domain/runtime.py，边界映射归contracts/runtime.py；字段未决不得自行补全，须先完成ARCH-0006/ARCH-0007的派发前契约裁定。Job实体在本任务定义，JobKind/JobStatus仅引用P02-01 states.py，不在runtime.py重复定义；P03只持久化，P05只实现作业行为。",
+      "algorithm": "逐一映射运行实体；导出确定排序 JSON Schema；生成文件只由脚本更新并提供 --check。",
+      "cases": [
+        "Event(kind=vehicle_failure,payload 缺 vehicle_id) => 校验失败",
+        "两次 export => 字节一致"
+      ],
+      "deps": [
+        "G01",
+        "P02-03"
+      ],
+      "kind": "python",
+      "prompt": "docs/prompts/02-domain/P02-04-runtime-contract-export.md",
+      "phase_gate": "G02",
+      "unit_test": "tests/unit/test_p02_04_runtime_contract_export.py",
+      "integration_test": "tests/integration/test_p02_04_runtime_contract_export.py",
+      "special_test": null,
+      "task_doc": "docs/implementation/P02-04.md",
+      "report": "docs/implementation/reports/P02-04.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "uv run pytest tests/unit/test_p02_04_runtime_contract_export.py tests/integration/test_p02_04_runtime_contract_export.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "allowed_files": [
+        "contracts/schemas.json",
+        "docs/implementation/P02-04.md",
+        "docs/implementation/reports/P02-04.md",
+        "packages/contracts/src/logistics_contracts/common.py",
+        "packages/contracts/src/logistics_contracts/runtime.py",
+        "packages/domain/src/logistics_domain/execution.py",
+        "packages/domain/src/logistics_domain/runtime.py",
+        "scripts/export_contracts.py",
+        "tests/integration/test_p02_04_runtime_contract_export.py",
+        "tests/unit/test_p02_04_runtime_contract_export.py"
+      ],
+      "blocks": [
+        "G02"
+      ],
+      "parallel": []
+    },
+    "P05-01": {
+      "id": "P05-01",
+      "phase": 5,
+      "slug": "api-composition",
+      "title": "建立 FastAPI 组合根、错误协议与基础鉴权",
+      "files": [
+        "apps/backend/src/logistics_backend/api/dependencies.py",
+        "apps/backend/src/logistics_backend/api/errors.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/backend/src/logistics_backend/main.py",
+        "contracts/openapi.json",
+        "packages/contracts/src/logistics_contracts/http.py",
+        "scripts/export_contracts.py"
+      ],
+      "interface": "create_app(settings: Settings) -> FastAPI; GET /api/v1/health -> HealthResponse",
+      "model": "Settings、ActorContext、ErrorEnvelope、HealthResponse",
+      "rule": "仅 bootstrap 装配 adapters；API 不 import OR-Tools；MVP viewer/operator 简单角色；开发模式只绑定本机。 Settings唯一配置定义放bootstrap.py；HealthResponse/ReadinessResponse边界定义放contracts/http.py；ActorContext纯值复用P02-04。字段未决见ARCH-0007，未裁定不派发。",
+      "algorithm": "lifespan 管理连接；trace_id 贯穿；认证和 body 限额中间件；ready 与 live 分离。",
+      "cases": [
+        "无凭据请求受保护写接口 => 401",
+        "数据库不可用 => ready=503 且 live=200"
+      ],
+      "deps": [
+        "G04"
+      ],
+      "kind": "python",
+      "prompt": "docs/prompts/04-api/P05-01-api-composition.md",
+      "phase_gate": "G05",
+      "unit_test": "tests/unit/test_p05_01_api_composition.py",
+      "integration_test": "tests/integration/test_p05_01_api_composition.py",
+      "special_test": null,
+      "task_doc": "docs/implementation/P05-01.md",
+      "report": "docs/implementation/reports/P05-01.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "uv run pytest tests/unit/test_p05_01_api_composition.py tests/integration/test_p05_01_api_composition.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/dependencies.py",
+        "apps/backend/src/logistics_backend/api/errors.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/backend/src/logistics_backend/main.py",
+        "contracts/openapi.json",
+        "docs/implementation/P05-01.md",
+        "docs/implementation/reports/P05-01.md",
+        "packages/contracts/src/logistics_contracts/http.py",
+        "scripts/export_contracts.py",
+        "tests/integration/test_p05_01_api_composition.py",
+        "tests/unit/test_p05_01_api_composition.py"
+      ],
+      "blocks": [
+        "P05-02",
+        "G05"
+      ],
+      "parallel": []
+    },
+    "P05-02": {
+      "id": "P05-02",
+      "phase": 5,
+      "slug": "master-data-services",
+      "title": "实现主数据分页读写服务与资源日历 API",
+      "files": [
+        "apps/backend/src/logistics_backend/api/master_data.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/master_data.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json",
+        "packages/contracts/src/logistics_contracts/http.py"
+      ],
+      "interface": "MasterDataService.update(cmd: MasterDataUpdate, expected_revision: int) -> ResourceDTO; GET /api/v1/orders -> OrderPage",
+      "model": "Order、Vehicle、Warehouse、资源子项与日历；API_CONTRACT 主数据表",
+      "rule": "只允许 draft 订单修改需求；已下发变更走事件；生成 OpenAPI；分页 limit 1..200；排序稳定。 MasterData不是已登记类型名；MasterDataService定义在application/master_data.py。MasterDataUpdate/分页请求归contracts/http.py，ResourceDTO复用P02-02 contracts/entities.py，不能在http.py复制同名实体DTO；字段与ResourceDTO覆盖范围见ARCH-0007，未裁定不派发。",
+      "algorithm": "API DTO → application → UoW → domain 校验 → adapter；按 If-Match 防丢更新；停用不硬删除。",
+      "cases": [
+        "If-Match=2、实际 revision=3 => 409",
+        "limit=201 => 422"
+      ],
+      "deps": [
+        "G04",
+        "P05-01"
+      ],
+      "kind": "python",
+      "prompt": "docs/prompts/04-api/P05-02-master-data-services.md",
+      "phase_gate": "G05",
+      "unit_test": "tests/unit/test_p05_02_master_data_services.py",
+      "integration_test": "tests/integration/test_p05_02_master_data_services.py",
+      "special_test": null,
+      "task_doc": "docs/implementation/P05-02.md",
+      "report": "docs/implementation/reports/P05-02.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "uv run pytest tests/unit/test_p05_02_master_data_services.py tests/integration/test_p05_02_master_data_services.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/master_data.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/master_data.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json",
+        "docs/implementation/P05-02.md",
+        "docs/implementation/reports/P05-02.md",
+        "packages/contracts/src/logistics_contracts/http.py",
+        "tests/integration/test_p05_02_master_data_services.py",
+        "tests/unit/test_p05_02_master_data_services.py"
+      ],
+      "blocks": [
+        "P05-03",
+        "G05"
+      ],
+      "parallel": []
+    },
+    "P05-03": {
+      "id": "P05-03",
+      "phase": 5,
+      "slug": "durable-jobs",
+      "title": "实现作业租约、超时取消与受限 worker",
+      "files": [
+        "apps/backend/src/logistics_backend/api/jobs.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/jobs.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/backend/src/logistics_backend/persistence/jobs.py",
+        "apps/backend/src/logistics_backend/worker.py",
+        "contracts/openapi.json",
+        "packages/contracts/src/logistics_contracts/runtime.py"
+      ],
+      "interface": "JobService.submit(request: JobRequest, key: str) -> JobRef; Worker.run_once() -> WorkOutcome",
+      "model": "Job、JobKind、JobStatus、LeaseToken、Deadline",
+      "rule": "PostgreSQL 持久化 job；进程并发默认 1；不以 FastAPI BackgroundTasks 运行重求解；lease epoch 防旧 worker 写回。 JobRequest/JobRef/JobView/CancelCommand唯一边界定义放contracts/runtime.py；Job复用P02-04，JobKind/JobStatus复用P02-01 states.py。LeaseToken/Deadline/WorkOutcome为application/jobs.py内具名工作协议；字段和JobRequest前向类型依赖未决见ARCH-0007，未裁定不派发。",
+      "algorithm": "SKIP LOCKED 领取、心跳续约、独立进程 deadline；取消标志与终态 CAS；过期租约回收、重试有上限。",
+      "cases": [
+        "worker 领取后崩溃 => 租约到期可重领",
+        "旧 lease 写结果 => 拒绝且不覆盖新结果"
+      ],
+      "deps": [
+        "G04",
+        "P05-02"
+      ],
+      "kind": "python",
+      "prompt": "docs/prompts/04-api/P05-03-durable-jobs.md",
+      "phase_gate": "G05",
+      "unit_test": "tests/unit/test_p05_03_durable_jobs.py",
+      "integration_test": "tests/integration/test_p05_03_durable_jobs.py",
+      "special_test": null,
+      "task_doc": "docs/implementation/P05-03.md",
+      "report": "docs/implementation/reports/P05-03.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "uv run pytest tests/unit/test_p05_03_durable_jobs.py tests/integration/test_p05_03_durable_jobs.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/jobs.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/jobs.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "apps/backend/src/logistics_backend/persistence/jobs.py",
+        "apps/backend/src/logistics_backend/worker.py",
+        "contracts/openapi.json",
+        "docs/implementation/P05-03.md",
+        "docs/implementation/reports/P05-03.md",
+        "packages/contracts/src/logistics_contracts/runtime.py",
+        "tests/integration/test_p05_03_durable_jobs.py",
+        "tests/unit/test_p05_03_durable_jobs.py"
+      ],
+      "blocks": [
+        "G05"
+      ],
+      "parallel": []
+    },
+    "P16-01": {
+      "id": "P16-01",
+      "phase": 16,
+      "slug": "optimization-job-api",
+      "title": "实现运输、仓储和重排作业 API",
+      "files": [
+        "apps/backend/src/logistics_backend/api/optimization.py",
+        "apps/backend/src/logistics_backend/api/rescheduling.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/optimization.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json"
+      ],
+      "interface": "POST /api/v1/optimizations/transport -> JobRef; POST /api/v1/optimizations/warehouse -> JobRef; POST /api/v1/reschedules -> JobRef",
+      "model": "OptimizationRequestDTO、RescheduleRequestDTO、JobRef",
+      "rule": "202返回持久化job；调用前捕获版本化快照；幂等key必填；budget 上限服务端控制；结果查询与候选确认分离。",
+      "algorithm": "DTO→用例→快照→持久化job；worker 通过ports运行并存 typed result；异常状态透传不伪装200成功。",
+      "cases": [
+        "重复同key请求 => 同job_id",
+        "求解超时 => job终态 completed、result.solve_status=TIMEOUT且无候选"
+      ],
+      "deps": [
+        "G15"
+      ],
+      "kind": "python",
+      "prompt": "docs/prompts/04-api/P16-01-optimization-job-api.md",
+      "phase_gate": "G16",
+      "unit_test": "tests/unit/test_p16_01_optimization_job_api.py",
+      "integration_test": "tests/integration/test_p16_01_optimization_job_api.py",
+      "special_test": null,
+      "task_doc": "docs/implementation/P16-01.md",
+      "report": "docs/implementation/reports/P16-01.md",
+      "status": "planned",
+      "owner": "A",
+      "commands": [
+        "uv run pytest tests/unit/test_p16_01_optimization_job_api.py tests/integration/test_p16_01_optimization_job_api.py -q",
+        "uv run python scripts/check_architecture.py",
+        "uv run python scripts/export_contracts.py --check"
+      ],
+      "allowed_files": [
+        "apps/backend/src/logistics_backend/api/optimization.py",
+        "apps/backend/src/logistics_backend/api/rescheduling.py",
+        "apps/backend/src/logistics_backend/api/router.py",
+        "apps/backend/src/logistics_backend/application/optimization.py",
+        "apps/backend/src/logistics_backend/bootstrap.py",
+        "contracts/openapi.json",
+        "docs/implementation/P16-01.md",
+        "docs/implementation/reports/P16-01.md",
+        "tests/integration/test_p16_01_optimization_job_api.py",
+        "tests/unit/test_p16_01_optimization_job_api.py"
+      ],
+      "blocks": [
+        "P16-02",
+        "G16"
+      ],
+      "parallel": []
+    },
+    "P36-02": {
+      "id": "P36-02",
+      "phase": 36,
+      "slug": "bounded-performance-fix",
+      "title": "实现有内存上限的版本化矩阵缓存并复验",
+      "files": [
+        "benchmarks/regression.json",
+        "docs/performance/CHANGE_EVIDENCE.md",
+        "packages/optimization/src/logistics_optimization/transport/matrix.py",
+        "packages/optimization/src/logistics_optimization/transport/matrix_cache.py"
+      ],
+      "interface": "BoundedMatrixCache.get_or_load(query: MatrixQuery, loader: MatrixLoader) -> TravelMatrix",
+      "model": "BudgetLedger、MatrixCacheKey、BenchmarkReport",
+      "rule": "仅实施矩阵缓存的内存上限、LRU淘汰和版本失效；不修改算法语义或公共矩阵接口；基准必须给出前后结果，即使无提速。 按文件分工：B实现matrix.py/matrix_cache.py及tests/solver的缓存正反例；A负责tests/unit、tests/integration、CHANGE_EVIDENCE、regression.json和跨域整合。A是整合主写者，仅整合B交付，不取得B路径编辑权；先B贡献、后A整合、再ZCode独立预验收/G36审查。",
+      "algorithm": "以节点顺序/profile/time_bucket/matrix_version为键；默认64MiB上限，计算entry字节成本，超大entry不缓存；独立计算命中率/内存峰值/耗时并复验全部硬约束。",
+      "cases": [
+        "缓存命中但matrix_version改变 => 必须失效",
+        "p95改善却新增硬违规 => Gate失败"
+      ],
+      "deps": [
+        "G35",
+        "P36-01"
+      ],
+      "kind": "benchmark",
+      "prompt": "docs/prompts/12-integration/P36-02-bounded-performance-fix.md",
+      "phase_gate": "G36",
+      "unit_test": "tests/unit/test_p36_02_bounded_performance_fix.py",
+      "integration_test": "tests/integration/test_p36_02_bounded_performance_fix.py",
+      "special_test": "tests/solver/test_p36_02_bounded_performance_fix.py",
+      "task_doc": "docs/implementation/P36-02.md",
+      "report": "docs/implementation/reports/P36-02.md",
+      "status": "planned",
+      "owner": "A (基准、回归与整合), B (矩阵源码及缓存验证；按文件分工)",
+      "commands": [
+        "uv run pytest tests/unit/test_p36_02_bounded_performance_fix.py tests/integration/test_p36_02_bounded_performance_fix.py tests/solver/test_p36_02_bounded_performance_fix.py -q",
+        "uv run python scripts/check_architecture.py"
+      ],
+      "allowed_files": [
+        "benchmarks/regression.json",
+        "docs/implementation/P36-02.md",
+        "docs/implementation/reports/P36-02.md",
+        "docs/performance/CHANGE_EVIDENCE.md",
+        "packages/optimization/src/logistics_optimization/transport/matrix.py",
+        "packages/optimization/src/logistics_optimization/transport/matrix_cache.py",
+        "tests/integration/test_p36_02_bounded_performance_fix.py",
+        "tests/solver/test_p36_02_bounded_performance_fix.py",
+        "tests/unit/test_p36_02_bounded_performance_fix.py"
+      ],
+      "contributions": {
+        "B": [
+          "packages/optimization/src/logistics_optimization/transport/matrix.py",
+          "packages/optimization/src/logistics_optimization/transport/matrix_cache.py",
+          "tests/solver/test_p36_02_bounded_performance_fix.py"
+        ],
+        "A": [
+          "benchmarks/regression.json",
+          "docs/implementation/P36-02.md",
+          "docs/implementation/reports/P36-02.md",
+          "docs/performance/CHANGE_EVIDENCE.md",
+          "tests/integration/test_p36_02_bounded_performance_fix.py",
+          "tests/unit/test_p36_02_bounded_performance_fix.py"
+        ]
+      },
+      "integration_owner": "A",
+      "blocks": [
+        "G36"
+      ],
+      "parallel": []
+    }
+  },
+  "p36_contribution_rows": [
+    {
+      "contributor": "B",
+      "path": "packages/optimization/src/logistics_optimization/transport/matrix.py",
+      "path_owner": "B",
+      "matched": true
+    },
+    {
+      "contributor": "B",
+      "path": "packages/optimization/src/logistics_optimization/transport/matrix_cache.py",
+      "path_owner": "B",
+      "matched": true
+    },
+    {
+      "contributor": "B",
+      "path": "tests/solver/test_p36_02_bounded_performance_fix.py",
+      "path_owner": "B",
+      "matched": true
+    },
+    {
+      "contributor": "A",
+      "path": "benchmarks/regression.json",
+      "path_owner": "A",
+      "matched": true
+    },
+    {
+      "contributor": "A",
+      "path": "docs/implementation/P36-02.md",
+      "path_owner": "A",
+      "matched": true
+    },
+    {
+      "contributor": "A",
+      "path": "docs/implementation/reports/P36-02.md",
+      "path_owner": "A",
+      "matched": true
+    },
+    {
+      "contributor": "A",
+      "path": "docs/performance/CHANGE_EVIDENCE.md",
+      "path_owner": "A",
+      "matched": true
+    },
+    {
+      "contributor": "A",
+      "path": "tests/integration/test_p36_02_bounded_performance_fix.py",
+      "path_owner": "A",
+      "matched": true
+    },
+    {
+      "contributor": "A",
+      "path": "tests/unit/test_p36_02_bounded_performance_fix.py",
+      "path_owner": "A",
+      "matched": true
+    }
+  ]
+}

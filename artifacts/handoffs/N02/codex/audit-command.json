@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tmp/N02/audit.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-03T12:48:57.327554+00:00",
+  "finished_at": "2026-10-03T12:48:57.760733+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N02/codex/audit.log",
+  "log_sha256": "cced5e5962d79d3e1955623207ced70be9162f33f1aec46db9922fd59c90c0cf",
+  "preceding_probe": {
+    "command": "python tmp/N02/audit.py",
+    "exit_code": 1,
+    "termination": "interrupted by owner",
+    "reason": "Optional derived-directory traversal exceeded the audit scope; registered asset hashes and candidate/diff/protected results were already written."
+  }
+}

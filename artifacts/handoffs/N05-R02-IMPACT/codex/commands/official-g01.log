@@ -1,0 +1,39 @@
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/gates.py", "--phase", "01", "--revision", "auto"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T08:45:59.180331+00:00
+# system_temp: C:\Users\30382\AppData\Local\Temp\IntelligentLogisticsDispatchingAgent-n05-r02-impact
+
+## stdout
+wrote artifacts/gates/G01.json (status: failed)
+G01: 25/26 checks passed
+  [FAIL] P01-01-cmd1: exit_code=1 (expected 0); failing tests: {'passed': 55, 'failed': 1}
+  [PASS] P01-01-cmd2: manifest command must succeed
+  [PASS] P01-01-cmd3: manifest command must succeed
+  [PASS] P01-02-cmd1: manifest command must succeed
+  [PASS] P01-02-cmd2: manifest command must succeed
+  [PASS] P01-03-cmd1: manifest command must succeed
+  [PASS] P01-03-cmd2: manifest command must succeed
+  [PASS] clean-install-imports: 六个包在仓库外 cwd 下仍可导入，且解析到各自 workspace src 目录
+  [PASS] layer-boundaries: 分层检查通过：层依赖方向正确、domain 无第三方导入
+  [PASS] lock-reproducible: 依赖锁可复现：uv.lock 与各成员清单一致，且 npm 锁未漂移
+  [PASS] runner-fails-closed: probe exited 1 and was evaluated as failed; injected exit=1 with counts {'passed': 55, 'failed': 1} was also rejected
+  [PASS] legacy-demo-untouched: 旧 demo 未被覆盖：登记文件指纹与 demo.zip 哈希仍与 P01-01 基线证据一致
+  [PASS] previous-gate:G00: schema=planner status=passed commands=1 inputs=25
+  [PASS] dsh-evidence:P01-01: status=READY_FOR_ZCODE
+  [PASS] dsh-evidence:P01-02: status=READY_FOR_ZCODE
+  [PASS] dsh-evidence:P01-03: status=READY_FOR_ZCODE
+  [PASS] docs:docs/implementation/P01-01.md: present
+  [PASS] docs:docs/implementation/reports/P01-01.md: present
+  [PASS] docs:docs/implementation/P01-02.md: present
+  [PASS] docs:docs/implementation/reports/P01-02.md: present
+  [PASS] docs:docs/implementation/P01-03.md: present
+  [PASS] docs:docs/implementation/reports/P01-03.md: present
+  [PASS] zcode-precheck:P01-01: artifacts/handoffs/P01-01/zcode/precheck.json: Z_PRECHECK_PASSED with 54 fresh input hash(es)
+  [PASS] zcode-precheck:P01-02: artifacts/handoffs/P01-02/zcode/precheck.json: Z_PRECHECK_PASSED with 36 fresh input hash(es)
+  [PASS] zcode-precheck:P01-03: artifacts/handoffs/P01-03/zcode/precheck.json: Z_PRECHECK_PASSED with 33 fresh input hash(es)
+  [PASS] codex-review: codex review is valid for the current revision
+  commands: 7, median 6593 ms, total 1141421 ms
+
+## stderr
+
+## exit_code: 1

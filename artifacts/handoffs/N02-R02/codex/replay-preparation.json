@@ -1,0 +1,17 @@
+{
+  "copies": [
+    {
+      "source": "tmp/N01-R02/examples/verify_design_examples.py",
+      "source_sha256": "596f6977f952acb218e430786cc0f866034672ff97bb3f6d891e1a3b5fb4e118",
+      "copy": "tmp/N02-R02/examples/verify_design_examples.py",
+      "copy_sha256": "e14029df2f34a12d189a42e1c2aa9b7da0f3854f75922cc958ef08ff1cf80008"
+    },
+    {
+      "source": "tmp/N01-R02/examples/event_reference_examples.py",
+      "source_sha256": "fab928af04142838439bdce20256955cdefa84c1b100811cb84a128a39640a58",
+      "copy": "tmp/N02-R02/examples/event_reference_examples.py",
+      "copy_sha256": "fab928af04142838439bdce20256955cdefa84c1b100811cb84a128a39640a58"
+    }
+  ],
+  "changes": "only owned output/scratch/source-input path strings redirected; algorithm and assertions unchanged"
+}

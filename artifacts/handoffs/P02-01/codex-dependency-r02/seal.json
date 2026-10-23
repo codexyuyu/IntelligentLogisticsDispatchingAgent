@@ -1,0 +1,32 @@
+{
+  "task_id": "P02-01-DEP-R02",
+  "author": "Codex root",
+  "status": "STOPPED_DEPENDENCY_VERIFIED",
+  "files": [
+    {
+      "path": "docs/handoffs/P02-01/codex-dependency-r02.md",
+      "bytes": 2133,
+      "sha256": "ffd9d7f34fa4b0beddd003f22f1c01bb11c286dec2646dd4a34786939afa12d5"
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/codex-dependency-r02/verify.py",
+      "bytes": 4923,
+      "sha256": "39ab4543399c46622bc71f4973ac10f5b9c7735f2e88ddc199f5498ccad9b4f5"
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/codex-dependency-r02/verification.log",
+      "bytes": 4401,
+      "sha256": "e42761f1d5204ac71f047e77823d0bbdd611fa59d488522a97a0fbe513a1ad02"
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/codex-dependency-r02/evidence.json",
+      "bytes": 41110,
+      "sha256": "0e01aadde44df594cbdcb831fc8515132667b236dad7859b33f601a8a76e165a"
+    }
+  ],
+  "file_count": 4,
+  "implementation_author": "DSH-A",
+  "P02_business_acceptance": false,
+  "current_G01": "50bae8ac3b7970864ccc7aa95a83fee89c9ef52c567e768824a49873ab5fda39",
+  "current_G01_review": "e64827a62caa4c497304c66d85df154ac6047e571b3c5947b97a2d7c93925efc"
+}

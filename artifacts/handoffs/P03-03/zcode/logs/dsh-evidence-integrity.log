@@ -1,0 +1,21 @@
+=== P03-03 DSH evidence integrity re-check ===
+status: BLOCKED | signs_gate: False | gate_signed: None
+
+-- command log hashes recorded vs recomputed:
+   P03-03-cmd1: exit=4 rec=cc1bf8ca1508… act=cc1bf8ca1508 -> match
+   P03-03-cmd2: exit=0 rec=5c45f26d87d7… act=5c45f26d87d7 -> match
+   dependency-probe-phase02: exit=1 rec=74c191f0d489… act=74c191f0d489 -> match
+   dependency-probe-phase03: exit=1 rec=74c191f0d489… act=74c191f0d489 -> match
+   all match: True
+
+-- recorded input hashes: 17 | mismatched: NONE
+
+-- deliverable_presence recorded vs now: drift = {'docs/implementation/P03-03.md': {'recorded': False, 'now': True}, 'docs/implementation/reports/P03-03.md': {'recorded': False, 'now': True}}
+   recorded count: 0 / 7
+
+-- cross-check the quoted predecessor verdicts:
+   P03-02 zcode status: BLOCKED | code+test: 0 / 5
+   consistent with DSH claim (both predecessors BLOCKED): True
+
+-- DSH systemic_finding present?
+    {"id": "SYS-1", "title": "Three consecutive Phase 03 tasks have now terminated BLOCKED from one unrepaired root cause, and the Gate's pass counter rises while nothing is fixed", "evidence": ["P03-01 DSH BLOCKED + ZCode BLOCKED; P03-02 DSH BLOCKED + ZCode BLOCKED; P03-03 DSH BLOCKED (this record)", "phase-03 pass count across the three rounds: 5/28 -> 7/28 -> 9/28, entirely from added documentation

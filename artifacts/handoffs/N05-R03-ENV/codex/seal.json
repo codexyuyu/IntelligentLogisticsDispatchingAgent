@@ -1,0 +1,192 @@
+{
+  "task_id": "N05-R03-ENV",
+  "status": "PASSED",
+  "created_at": "2026-10-05T09:22:59.712778+00:00",
+  "official_G01_valid": true,
+  "official_G01_sha256": "50bae8ac3b7970864ccc7aa95a83fee89c9ef52c567e768824a49873ab5fda39",
+  "review_sha256": "e64827a62caa4c497304c66d85df154ac6047e571b3c5947b97a2d7c93925efc",
+  "candidate_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+  "file_count": 36,
+  "files": [
+    {
+      "path": "docs/handoffs/N05-R03-ENV/codex.md",
+      "sha256": "c0bc3929e41883b17f20a174fced7018f7433f3765682e81d4fe75c8a327b37d",
+      "bytes": 5401
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/analysis-sources/audit.py",
+      "sha256": "79b8dce00c49c534c560d9352d33748ae78735f6f53a737d43083a4c50268efc",
+      "bytes": 7157
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/analysis-sources/cache-verify.cjs",
+      "sha256": "3bfd860902e61afabdb92971eb00901507ecddc4537fda04d243d653846ab5be",
+      "bytes": 1436
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/analysis-sources/common.py",
+      "sha256": "2be6ebfea0b0f06bc530491be8a5e0154f84d7ff75416bdc222c19f6bb800db9",
+      "bytes": 2743
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/analysis-sources/deliver.py",
+      "sha256": "6c04dc552d14f26313f5d5d87369d53027380f33cce54d14d3edc2071fd1a246",
+      "bytes": 9011
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/analysis-sources/final.py",
+      "sha256": "3f60f9a7e4e17638b535b591c5d380fa91c02ca98eaeaa15affec3471cb76a37",
+      "bytes": 9300
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/analysis-sources/prepare-final.py",
+      "sha256": "040c1aaf6a6882d81103975cb22c3a8c146c8f7d2109310e426d4140b625cca6",
+      "bytes": 1294
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-codex-review.json",
+      "sha256": "e64827a62caa4c497304c66d85df154ac6047e571b3c5947b97a2d7c93925efc",
+      "bytes": 134248
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/clean-install-imports.log",
+      "sha256": "55e5998c7c87e46f23452f3aa0328b406d7d94648bf7ff628dc26823be57cee2",
+      "bytes": 1265
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "sha256": "79369f53ad2dd3a8aba93bc3226a7b8bbe34f67966dfdd6d2e019a3ac7969935",
+      "bytes": 996
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/layer-boundaries.log",
+      "sha256": "b9578d7842ac2c9ccdb2fb8eccff301495e362d192b76cf778301f759f134923",
+      "bytes": 433
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/lock-reproducible.log",
+      "sha256": "77c10edd674780b0e58697e8d358df90de9bf500282aae85064c06c08ba19ba3",
+      "bytes": 338
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "sha256": "eba2841dfaa32da6205f7dd4b5925359c7b72c34d5c49da4993b3ec7d14deb12",
+      "bytes": 5241
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "sha256": "0966eb11be63176168985e1fb0ca4a5b4508c6cec591825448483372d2a4d0a6",
+      "bytes": 350
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "sha256": "a51edf2badd9bfd34f612dd1fc615642fcfeef22ef860ffc7cc6730852b14fcc",
+      "bytes": 384
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "sha256": "52d4e35251db05dcf90d9b06dcc2fa9f44df4b91e9cd4f15e875742975d80c4a",
+      "bytes": 1293
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "sha256": "10ab753df555bfe44b84633bb6f27024c096944f5fec06db5f4a42e03faca3d9",
+      "bytes": 428
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "sha256": "4f5c01e172d1fd5d5295001b67095915d56dbb98ec6ac751fe317fafa045e9ee",
+      "bytes": 1299
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "sha256": "e825b9188bbc20e0bfebc0aa30d65f5a1f322ba1d083b99966f78e8a9ca65906",
+      "bytes": 428
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "sha256": "752e5e3ca7ba4709adb2a499cc31bb17902274c81538ed63bc90eb9d22b06899",
+      "bytes": 347
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive/2026-10-05T091804.948120_0000/artifacts/gates/G01.json",
+      "sha256": "9f30bb45307721ecdb6d85259bac18230002d91d6dc5eabc61f55fd41337e35c",
+      "bytes": 28646
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/archive-manifest.json",
+      "sha256": "2c510ab7ba5676d0804f2a055b3ac9794b643fa88b1a701df0e0989dbc1eb8a5",
+      "bytes": 4806
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/check-only-byte-audit.json",
+      "sha256": "9ec54dfa1f5cd072f2d2bc5f5e4ccc2a39be94ab4518dd4652168bc12a8c4681",
+      "bytes": 3860
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/commands/final-audit-command.json",
+      "sha256": "11028ffbfedc3e560e7cc76560f6b410a4ec32a9d746791440d1ab11479de9c6",
+      "bytes": 568
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/commands/final-audit.log",
+      "sha256": "d0410febbd35cd7f02c7732ee36a15e895aee906ec31833b2c539ceeeae07b45",
+      "bytes": 2908
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/commands/initial-audit-command.json",
+      "sha256": "ae2794455d6726acca21183442507d3663e5e2b099c4e5747735161121698b4e",
+      "bytes": 572
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/commands/initial-audit.log",
+      "sha256": "b5c65a0db668bccacd45a994b3d290d0d7aaeaf0e51b9b8265efc5920a2e68c4",
+      "bytes": 777
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/commands/official-g01-command.json",
+      "sha256": "12a62075cb3fc55b9d28a65d183a67b90ed3214c4a0afe06d5ea23fe575c7310",
+      "bytes": 581
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/commands/official-g01.log",
+      "sha256": "0241a7143f5381ea3b5638df002de576b92af77d92b3c781e7352398a9dc7b4f",
+      "bytes": 2482
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/commands/post-sign-check-only-command.json",
+      "sha256": "5365f6b9ea0a9385ab18648c29692d62bca17d740c178a3c2ec8333414a4bf82",
+      "bytes": 618
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/commands/post-sign-check-only.log",
+      "sha256": "174d4ba5d5323f1b18e54592ef37f4583fadbaa9282869ad25ee453d456b35c7",
+      "bytes": 695
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/environment/cache-verify.json",
+      "sha256": "8f34c7c248174390b48363694dfa9e23f537a97644325b822764cc1c6974709b",
+      "bytes": 2461
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/environment/cache-verify.log",
+      "sha256": "1c051dff148a1659f4ea6b603333451f6b2aea8f1400776fd164939820db4ba7",
+      "bytes": 1588
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/evidence.json",
+      "sha256": "d97e86f5e7344626c4527f5e70f05684bf6128efd815715c4831576b3ed8c973",
+      "bytes": 12733
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/final-audit.json",
+      "sha256": "f8b405b16c5492f49d20543d7c1a9e50c5d548824114a56053b5f3c955e5e4a0",
+      "bytes": 5382
+    },
+    {
+      "path": "artifacts/handoffs/N05-R03-ENV/codex/initial-audit.json",
+      "sha256": "6fc795f674985f899ef7e72a8a6a0967a48a0fa5a844ab5813b3113ffc47aa74",
+      "bytes": 20133
+    }
+  ]
+}

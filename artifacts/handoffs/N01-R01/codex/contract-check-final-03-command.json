@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python",
+    "tmp/N01-R01/verify_contracts.py",
+    "final03"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-03T16:07:20.391917+00:00",
+  "finished_at": "2026-10-03T16:07:23.304508+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N01-R01/codex/contract-check-final-03.log",
+  "log_hash": "a87a2fa5969317940ef2a4e821fd531d1f9aa10e8f173aa0303a9d78cebd3700",
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

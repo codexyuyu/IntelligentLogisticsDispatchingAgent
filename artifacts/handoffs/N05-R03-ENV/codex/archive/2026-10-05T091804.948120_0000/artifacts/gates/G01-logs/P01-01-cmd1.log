@@ -1,0 +1,87 @@
+# check: P01-01-cmd1
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "pytest", "tests/unit/test_p01_01_workspace_bootstrap.py", "tests/integration/test_p01_01_workspace_bootstrap.py", "-q"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T08:45:59.399079+00:00
+# expectation: manifest command must succeed
+
+## stdout
+..................................................F.....                 [100%]
+================================== FAILURES ===================================
+____________ test_npm_ci_is_repeatable_and_lock_file_is_unchanged _____________
+
+    def test_npm_ci_is_repeatable_and_lock_file_is_unchanged() -> None:
+        """npm ci 重复执行 => 锁文件无变化."""
+        npm = find_npm()
+        if npm is None:
+            pytest.fail("npm is required for the workspace bootstrap check and was not found on PATH")
+        lock_path = REPO_ROOT / "package-lock.json"
+        before = sha256_file(lock_path)
+        observed: list[str] = []
+        for attempt in range(2):
+>           result = run([npm, "ci", "--no-audit", "--no-fund"], timeout=900)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_p01_01_workspace_bootstrap.py:255: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\integration\test_p01_01_workspace_bootstrap.py:70: in run
+    return subprocess.run(
+C:\Users\30382\AppData\Local\Programs\Python\Python312\Lib\subprocess.py:550: in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\30382\AppData\Local\Programs\Python\Python312\Lib\subprocess.py:1209: in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Popen: returncode: 1 args: ['C:\\Program Files\\nodejs\\npm.cmd', 'ci', '--...>
+input = None, endtime = 14330.734, orig_timeout = 900
+
+    def _communicate(self, input, endtime, orig_timeout):
+        # Start reader threads feeding into a list hanging off of this
+        # object, unless they've already been started.
+        if self.stdout and not hasattr(self, "_stdout_buff"):
+            self._stdout_buff = []
+            self.stdout_thread = \
+                    threading.Thread(target=self._readerthread,
+                                     args=(self.stdout, self._stdout_buff))
+            self.stdout_thread.daemon = True
+            self.stdout_thread.start()
+        if self.stderr and not hasattr(self, "_stderr_buff"):
+            self._stderr_buff = []
+            self.stderr_thread = \
+                    threading.Thread(target=self._readerthread,
+                                     args=(self.stderr, self._stderr_buff))
+            self.stderr_thread.daemon = True
+            self.stderr_thread.start()
+    
+        if self.stdin:
+            self._stdin_write(input)
+    
+        # Wait for the reader threads, or time out.  If we time out, the
+        # threads remain reading and the fds left open in case the user
+        # calls communicate again.
+        if self.stdout is not None:
+            self.stdout_thread.join(self._remaining_time(endtime))
+            if self.stdout_thread.is_alive():
+>               raise TimeoutExpired(self.args, orig_timeout)
+E               subprocess.TimeoutExpired: Command '['C:\\Program Files\\nodejs\\npm.cmd', 'ci', '--no-audit', '--no-fund']' timed out after 900 seconds
+
+C:\Users\30382\AppData\Local\Programs\Python\Python312\Lib\subprocess.py:1630: TimeoutExpired
+============================== warnings summary ===============================
+.venv\Lib\site-packages\_pytest\cacheprovider.py:469
+  D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.venv\Lib\site-packages\_pytest\cacheprovider.py:469: PytestCacheWarning: could not create cache path D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.pytest_cache\v\cache\nodeids: [WinError 5] 拒绝访问。: 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+.venv\Lib\site-packages\_pytest\cacheprovider.py:423
+  D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.venv\Lib\site-packages\_pytest\cacheprovider.py:423: PytestCacheWarning: could not create cache path D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.pytest_cache\v\cache\lastfailed: [WinError 5] 拒绝访问。: 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/lastfailed", self.lastfailed)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/integration/test_p01_01_workspace_bootstrap.py::test_npm_ci_is_repeatable_and_lock_file_is_unchanged
+1 failed, 55 passed, 2 warnings in 1026.37s (0:17:06)
+
+## stderr
+
+## exit_code: 1
+## duration_ms: 1027000

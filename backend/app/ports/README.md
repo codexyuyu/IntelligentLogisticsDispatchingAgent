@@ -1,0 +1,5 @@
+# 可替换接口
+
+首期只定义具有真实替换价值的能力：PlanningSnapshotStore、PlanCommitStore、RoutingSolver、WarehouseScheduler、Simulator、TravelMatrixProvider、LanguageModelGateway。
+
+接口使用项目自有请求与结果；显式返回状态、来源、版本、耗时和未支持限制。不要为每个字段或数据库表再包一层通用抽象。校验器属于领域规则，不是模型提供的服务。

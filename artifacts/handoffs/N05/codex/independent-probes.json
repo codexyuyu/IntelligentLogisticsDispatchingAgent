@@ -1,0 +1,268 @@
+{
+  "passed": true,
+  "count": 52,
+  "results": [
+    {
+      "id": "complete-precheck-accepted",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-precheck-empty-inputs",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: verified_input_hashes is empty; a record without verifiable inputs is not evidence"
+    },
+    {
+      "id": "reject-precheck-missing-input-map",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: verified_input_hashes is missing or not an object"
+    },
+    {
+      "id": "reject-precheck-wrong-task",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: task_id='P01-02' (expected 'P01-01')"
+    },
+    {
+      "id": "reject-precheck-wrong-gate",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: phase_gate='G02' (expected 'G01')"
+    },
+    {
+      "id": "reject-precheck-wrong-status",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: status='READY_FOR_ZCODE' (expected 'Z_PRECHECK_PASSED')"
+    },
+    {
+      "id": "reject-precheck-missing-reviewer",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: no reviewer recorded"
+    },
+    {
+      "id": "reject-precheck-invalid-digest",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: docs/plan/TASK_MANIFEST.json has no sha256 digest"
+    },
+    {
+      "id": "reject-precheck-stale-digest",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: docs/plan/TASK_MANIFEST.json has a stale input hash"
+    },
+    {
+      "id": "reject-missing-docs/plan/TASK_MANIFEST.json",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: required input(s) not covered: docs/plan/TASK_MANIFEST.json"
+    },
+    {
+      "id": "reject-missing-docs/plan/PHASE_GATES.md",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: required input(s) not covered: docs/plan/PHASE_GATES.md"
+    },
+    {
+      "id": "reject-missing-docs/prompts/task.md",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: required input(s) not covered: docs/prompts/task.md"
+    },
+    {
+      "id": "reject-missing-artifacts/handoffs/P01-01/dsh/evidence.json",
+      "passed": true,
+      "observed": "artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: required input(s) not covered: artifacts/handoffs/P01-01/dsh/evidence.json"
+    },
+    {
+      "id": "complete-review-accepted",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "empty-review-rejected",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "complete-planner-evidence-accepted",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "status-only-evidence-rejected",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-schema_version",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-gate_id",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-status",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-finished_at",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-code_revision",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-input_artifact_hashes",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-commands",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-reviewer",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-dependency_evidence_hashes",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-environment_fingerprint",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-limitations",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-exit-1",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-exit-False",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-exit-None",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-exit-'0'",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-command-log_hash",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-command-log_path",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-command-argv",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-command-cwd",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-missing-log-hash",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-input-drift",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "reject-prior-self-dependency",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "self-cycle-detected",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "excluded-writes-do-not-perturb",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "relevant-change-scripts/probe.py",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "relevant-change-tests/unit/probe.py",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "relevant-change-contracts/probe.json",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "relevant-change-pyproject.toml",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "controlled-complete-gate-actually-passes",
+      "passed": true,
+      "observed": "wrote artifacts/gates/G01.json (status: passed)\nG01: 9/9 checks passed\n  [PASS] P01-01-cmd1: manifest command must succeed\n  [PASS] layer-boundaries: 分层检查通过：层依赖方向正确、domain 无第三方导入\n  [PASS] runner-fails-closed: probe exited 1 and was evaluated as failed; injected exit=1 with counts {'passed': 55, 'failed': 1} was also rejected\n  [PASS] previous-gate:G00: schema=planner status=passed commands=1 inputs=1\n  [PASS] dsh-evidence:P01-01: status=READY_FOR_ZCODE\n  [PASS] docs:docs/implementation/task.md: present\n  [PASS] docs:docs/implementation/report.md: present\n  [PASS] zcode-precheck:P01-01: artifacts/handoffs/P01-01/zcode/precheck.json: Z_PRECHECK_PASSED with 4 fresh input hash(es)\n  [PASS] codex-review: codex review is valid for the current revision\n  commands: 1, median 30 ms, total 30 ms\n"
+    },
+    {
+      "id": "exit1-command-fails-gate-and-process",
+      "passed": true,
+      "observed": "wrote artifacts/gates/G01.json (status: failed)\nG01: 8/9 checks passed\n  [FAIL] P01-01-cmd1: exit_code=1 (expected 0)\n  [PASS] layer-boundaries: 分层检查通过：层依赖方向正确、domain 无第三方导入\n  [PASS] runner-fails-closed: probe exited 1 and was evaluated as failed; injected exit=1 with counts {'passed': 55, 'failed': 1} was also rejected\n  [PASS] previous-gate:G00: schema=planner status=passed commands=1 inputs=1\n  [PASS] dsh-evidence:P01-01: status=READY_FOR_ZCODE\n  [PASS] docs:docs/implementation/task.md: present\n  [PASS] docs:docs/implementation/report.md: present\n  [PASS] zcode-precheck:P01-01: artifacts/handoffs/P01-01/zcode/precheck.json: Z_PRECHECK_PASSED with 4 fresh input hash(es)\n  [PASS] codex-review: codex review is valid for the current revision\n  commands: 1, median 32 ms, total 32 ms\n"
+    },
+    {
+      "id": "missing-review-fails-gate",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "stale-precheck-fails-gate",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "domain-fastapi-fails-gate",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "restored-positive-passes",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "id": "check-only-passed-with-no-byte-changes",
+      "passed": true,
+      "observed": "check-only: gate G01 revision content-sha256:f70d51d2595303df4f1d07909a190b87e1f7429b65a8bcb6d8917cb20dbbcd96\ncheck-only: recorded status=passed, failed_checks=[]\ncheck-only: all recorded inputs are fresh; gate state unchanged (no file written)\ncheck-only: gate not signed (no evidence file written)\n"
+    }
+  ],
+  "controlled_root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tmp\\N05\\probe-root",
+  "actual_candidate_never_modified": true
+}

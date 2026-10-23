@@ -1,0 +1,23 @@
+{
+  "task": "P02-01-F01-RECHECK",
+  "reviewer_stopped_gui": true,
+  "at_utc": "2026-10-05T09:59:33.868729+00:00",
+  "files": [
+    {
+      "source": "tmp/P02-01-Z/build_precheck_recheck.py",
+      "destination": "C:\\Users\\30382\\AppData\\Local\\Temp\\IntelligentLogisticsDispatchingAgent-zcode-p02-f01-recheck\\retired-root-scripts\\build_precheck_recheck.py",
+      "sha256": "32c0eedaff6860734b7a89c939faff766ade467d4019e050e8ea6fe74e5c3dd8",
+      "original_bytes_preserved": true
+    },
+    {
+      "source": "tmp/P02-01-Z/probe_business.py",
+      "destination": "C:\\Users\\30382\\AppData\\Local\\Temp\\IntelligentLogisticsDispatchingAgent-zcode-p02-f01-recheck\\retired-root-scripts\\probe_business.py",
+      "sha256": "e8e359e2bf3da8594395ae2055b136dded246be9cde5f711a50766c1a72b657d",
+      "original_bytes_preserved": true
+    }
+  ],
+  "precheck_sha256": "9245cb8a76b0f71b020fe9fad540aced72dc6d103d5cf772944ff873256032b5",
+  "inputs_verified": 42,
+  "command_logs_verified": 7,
+  "actual_violation_retained": true
+}

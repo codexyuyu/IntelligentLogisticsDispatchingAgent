@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "observed_date": "2026-09-18",
+  "purpose": "Read-only research snapshot; not a tested installation lockfile",
+  "installation_performed": false,
+  "dsh_upgraded": false,
+  "runtime_validation_performed": false,
+  "local": {
+    "node": "24.18.0",
+    "global_npm_packages": {
+      "opencode-ai": "1.18.25",
+      "@openai/codex": "0.154.0",
+      "@earendil-works/pi-coding-agent": "0.85.1",
+      "ocx": "2.0.15",
+      "bun": "1.4.2",
+      "pnpm": "10.34.5"
+    },
+    "dsh_cached_package": {
+      "name": "@deepseek-ai/dsh",
+      "version": "0.1.0-rc.7",
+      "locations_found": 2,
+      "active_process_version": "UNKNOWN",
+      "home": "C:/Users/30382/.dsh",
+      "global_dsh_command_found": false
+    },
+    "opencode_config_directory_packages": {
+      "@lesquel/opencode-pilot": "1.23.1",
+      "@opencode-ai/plugin": "1.18.30"
+    },
+    "opencode_jsonc_declared_plugins": [
+      "C:/Users/30382/opencode-chrome-bridge",
+      "@slkiser/opencode-quota",
+      "@lesquel/opencode-pilot@latest"
+    ],
+    "opencode_jsonc_declared_mcp": ["open-computer-use"],
+    "dsh_web_profile_declared_dependencies": {
+      "@deepseek-ai/dsh-mcp-client": "0.1.0-rc.7",
+      "@anionex/dsh-vision-toolkit": "0.1.40",
+      "@liustack/modlens": "3.26.1",
+      "@liustack/modsearch": "5.10.2",
+      "@nanmicoder/dsh-agent-teams": "0.1.13",
+      "@openviking/dsh-memory-plugin": "0.3.0",
+      "@valkia/dsh-plugin-computer-use": "https://github.com/valkia/dsh-plugin-computer-use/tarball/536d35a743b5e6e4ed40a0228c9e18eafd209de3",
+      "@wxg-prc-cpg/browser-skill-dsh-plugin": "0.2.1",
+      "dsh-better-sidebar": "0.13.1",
+      "dsh-mobile": "^0.3.16",
+      "dsh-quota": "~0.7.8",
+      "dshmarket": "1.45.1"
+    },
+    "pi_user_settings_declared_packages_extensions_skills": null,
+    "pi_auto_discovery_inventory_complete": false,
+    "zcode_version": "UNKNOWN",
+    "codex_desktop_version": "UNKNOWN",
+    "project_git_repository_detected": false,
+    "recorded_g01_status": "failed",
+    "project_gates_rerun": false
+  },
+  "registry_observations": [
+    {
+      "name": "@deepseek-ai/dsh",
+      "source": "https://registry.npmjs.org/@deepseek-ai%2Fdsh",
+      "dist_tags": {"latest": "0.1.5-rc.2", "next": "0.1.5-rc.2", "alpha": "0.1.6-alpha.2"},
+      "latest_published_utc": "2026-09-10T14:57:10.790Z",
+      "non_prerelease_versions_found": 0,
+      "repository": "https://github.com/deepseek-ai/deepseek-harness",
+      "status": "CANDIDATE_NOT_LOCALLY_TESTED"
+    },
+    {
+      "name": "@deepseek-ai/dsh-mcp-client",
+      "source": "https://registry.npmjs.org/@deepseek-ai%2Fdsh-mcp-client",
+      "dist_tags": {"latest": "0.0.1-rc.1", "next": "0.1.5-rc.2", "alpha": "0.1.6-alpha.2"},
+      "candidate": "0.1.5-rc.2",
+      "candidate_metadata_source": "https://registry.npmjs.org/@deepseek-ai%2Fdsh-mcp-client/0.1.5-rc.2",
+      "candidate_peer_dependencies": {
+        "@deepseek-ai/cordis": "^4.0.2",
+        "@deepseek-ai/dsh-llm": "^0.1.5-rc.2",
+        "@deepseek-ai/dsh-scope": "^0.1.5-rc.2",
+        "@deepseek-ai/dsh-tools": "^0.1.5-rc.2",
+        "@deepseek-ai/dsh-timeout": "^0.1.5-rc.2",
+        "@deepseek-ai/dsh-attachment": "^0.1.5-rc.2",
+        "@deepseek-ai/dsh-subprocess": "^0.1.5-rc.2"
+      },
+      "status": "CANDIDATE_NOT_LOCALLY_TESTED"
+    },
+    {
+      "name": "@upstash/context7-mcp",
+      "source": "https://registry.npmjs.org/@upstash%2Fcontext7-mcp",
+      "latest": "4.1.1",
+      "published_utc": "2026-09-14T14:52:39.435Z",
+      "engines": {"node": ">=20.18.1"},
+      "recent_release_dates_utc": ["2026-09-14", "2026-09-11", "2026-09-09", "2026-09-08"],
+      "repository": "https://github.com/upstash/context7",
+      "status": "CANDIDATE_NOT_LOCALLY_TESTED"
+    },
+    {
+      "name": "@playwright/mcp",
+      "source": "https://registry.npmjs.org/@playwright%2Fmcp",
+      "latest": "0.0.81",
+      "published_utc": "2026-09-14T21:25:54.484Z",
+      "engines": {"node": ">=18"},
+      "previous_non_prerelease": {"version": "0.0.80", "published_utc": "2026-09-01T03:48:24.350Z"},
+      "repository": "https://github.com/microsoft/playwright-mcp",
+      "status": "CANDIDATE_NOT_LOCALLY_TESTED"
+    },
+    {
+      "name": "@plannotator/opencode",
+      "source": "https://registry.npmjs.org/@plannotator%2Fopencode",
+      "latest": "0.27.16",
+      "published_utc": "2026-09-18T02:27:25.081Z",
+      "engines": {"bun": ">=1.0.0"},
+      "recent_release_dates_utc": ["2026-09-18", "2026-09-15", "2026-09-11", "2026-09-10"],
+      "repository": "https://github.com/backnotprop/plannotator",
+      "status": "OPTIONAL_CANDIDATE_NOT_LOCALLY_TESTED"
+    },
+    {
+      "name": "oh-my-opencode",
+      "source": "https://registry.npmjs.org/oh-my-opencode",
+      "dist_tags": {"latest": "4.19.4", "beta": "5.0.0-beta.75"},
+      "latest_published_utc": "2026-08-01T09:47:27.528Z",
+      "beta_published_utc": "2026-09-18T19:42:29.868Z",
+      "repository": "https://github.com/code-yeongyu/oh-my-openagent",
+      "status": "OPTIONAL_ISOLATED_EVALUATION_ONLY"
+    },
+    {
+      "name": "@lesquel/opencode-pilot",
+      "source": "https://registry.npmjs.org/@lesquel%2Fopencode-pilot",
+      "latest": "1.23.1",
+      "published_utc": "2026-08-24T03:06:39.065Z",
+      "engines": {"opencode": ">=0.1.0"},
+      "repository": "https://github.com/lesquel/open-remote-control",
+      "status": "INSTALLED_MANIFEST_OBSERVED_RUNTIME_NOT_TESTED"
+    }
+  ],
+  "limitations": [
+    "No runtime plugin compatibility tests or model benchmarks performed during prompt authoring",
+    "GitHub latest-release API calls for Superpowers and OCX returned HTTP 403 rate limit; no latest version claimed",
+    "Configuration excerpts establish declarations, not successful runtime loading",
+    "Local npx cached DSH versions do not establish active process or launcher versions",
+    "All mutable registry tags must be checked again when executing installation prompts"
+  ]
+}

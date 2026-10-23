@@ -1,0 +1,11 @@
+# argv: ["D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe", "run", "pytest", "tests/unit/test_p01_01_workspace_bootstrap.py", "tests/integration/test_p01_01_workspace_bootstrap.py", "-q"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-09-13T13:50:53.159930+00:00
+
+## stdout
+........................................................                 [100%]
+56 passed in 2.11s
+
+## stderr
+
+## exit_code: 0

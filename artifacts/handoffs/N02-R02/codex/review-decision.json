@@ -1,0 +1,126 @@
+{
+  "task_id": "N02-R02",
+  "status": "APPROVED_FOR_RECOVERY",
+  "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+  "reviewed_at": "2026-10-04T14:48:46.335417+00:00",
+  "inherited_model_no_override": true,
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "git_present": false,
+  "reviewed_candidate": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "unresolved_blocking_issues": [],
+  "finding": {
+    "id": "N02-R01-F02-C01",
+    "status": "RESOLVED",
+    "basis": [
+      "45 exact named members/serialized values/targets correspond to 32+11+2 existing definitions and normative sources/checker",
+      "EntityRef explicit fields and P02-01 states/primitives unique closure; legal single primitives-to-states edge",
+      "Ten exact event kind/target/UUID/revision rules include single old matrix and multiple directed arcs, explicit stable regional node set and null revision, six resources and complete ref equality",
+      "73 actual planner self-tests, 268 isolated replay cases, 134 actual-registry rejection probes, 189 fresh cases, and 19 main key reproductions"
+    ]
+  },
+  "retained_resolved": [
+    "N02-F01 JobKind",
+    "N02-F02 existing Scenario shape/hash/oracle isolation",
+    "N02-F03 Calendar",
+    "N02-F04 JobRequest"
+  ],
+  "independent_case_evidence": {
+    "path": "artifacts/handoffs/N02-R02/codex/independent-cases/result.json",
+    "sha256": "000ae33473da878cd9d96f4627a5f3b5c40fb166563f9570d9ab66e71838d9d8",
+    "passed": true,
+    "total": 189,
+    "positive": 92,
+    "negative": 97,
+    "main_reproductions": 19
+  },
+  "bound_evidence": [
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/initial-audit.json",
+      "sha256": "5ac12b02f2fcad09703bef51cc4e560ddb3d0aa32965972497ad65a8ecd8ec0a"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/reviewed-candidate.json",
+      "sha256": "a56debc6fc6b53a9fda1123bb6f1ed6a6ec85f2f723b3ea51d95451e2333f8d3"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/input-evidence-audit.json",
+      "sha256": "f67d00c9f24e8217f50b5ee7fc0b5678e5a3779187c684e536662def6c3b81d0"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/normative-probe.json",
+      "sha256": "83a4b0cbdb353a307c7c558c360344e9a95c2cbe398cdd5375ea4e3ab3ea743e"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/case-witness.json",
+      "sha256": "3e4879661b8cc95d4b00cfb7b29732bdc5dc376f7d173e8d8ddb5d688089cf10"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/examples/contract-validation-independent.json",
+      "sha256": "9b2de60ae99824de0dfb4d436495d0f284df218985165bb9917e5eb9a58a8c0b"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/plan-preflight-command.json",
+      "sha256": "86b239a42f60b1de71ce130d033ddf853873d5f393cae6aa57cbe71480892f06"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/plan-preflight.log",
+      "sha256": "254ff192606dd6cb2c19bee4ace454b49255a58a861309e34a8abaca3de1823e"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/contract-replay-command.json",
+      "sha256": "f1289f918119b6a19c022cc7528436f8060a9a0ac9a34b241507ecce4a6cfd5e"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/contract-replay.log",
+      "sha256": "fa5b6236f083db5a4d8f0a9f272a63bf0ee3ea96ad92cbe28bce8ee5b4609699"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/normative-probe-command.json",
+      "sha256": "e4913a8c0e1260a3e7ab561cc17eb5fe9923f6230404030f96ff1b2144c9a85d"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/normative-probe.log",
+      "sha256": "d868bf9cd84b67ebec53ec34a84d9e4ecba069da748eb47f4d314df262a5b60e"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/case-witness-command.json",
+      "sha256": "c8bc3d88c6e329a7d143a4ad4510469216ff7cb573425340b47956fdd8c55750"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/case-witness.log",
+      "sha256": "3e4879661b8cc95d4b00cfb7b29732bdc5dc376f7d173e8d8ddb5d688089cf10"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-02-command.json",
+      "sha256": "215ad04b3e353e7b50921aae8a52e1142ca78b54a166e3688eeb1189abc90ca2"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/commands/byte-audit-final-02.log",
+      "sha256": "5ac12b02f2fcad09703bef51cc4e560ddb3d0aa32965972497ad65a8ecd8ec0a"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/result.json",
+      "sha256": "000ae33473da878cd9d96f4627a5f3b5c40fb166563f9570d9ab66e71838d9d8"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/command.json",
+      "sha256": "4a9344c71070275cf3c5b70f83c7eb96b96c00aab1e822779783de73b96187a9"
+    },
+    {
+      "path": "artifacts/handoffs/N02-R02/codex/independent-cases/run.log",
+      "sha256": "caa96d1f7ca7dd215343d6615d418d041c9cadd3ae2351a191d86c726a28bc75"
+    }
+  ],
+  "permissions": [
+    "archive prior freeze/G00/replaced raw logs byte-identically",
+    "update official freeze facts only",
+    "execute actual python tools/ai_coding_plan/validate_plan.py --self-test --record-g00",
+    "verify preceding G00 with unchanged current scripts/gates.py"
+  ],
+  "limitations": [
+    "bounded design evidence only, real domain/handler/worker, DB/OR-Tools/SimPy/model/browser acceptance not run",
+    "partial inherited parse adapter does not validate full Scenario FK/scope/calendar, OnArc timing, CargoType, CalendarDTO overlaps",
+    "persistent static checker is limited to C01 target graph, not every payload field; current payload fields independently preserve old bytes and combined shape replay",
+    "unknown attribution of concurrent candidate-excluded process dispatch additions recorded; they do not substitute for this task scope"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "source": "tmp/N01-R01/verify_contracts.py",
+  "source_sha256": "bf93287d4d68e2a05d7cdb3f482da6d196787e6fe3ce980097a907c4eedbfa42",
+  "adapted_source": "tmp/N02-R01/replay_contract_examples.py",
+  "adapted_sha256": "21b1674fd129605891afdf8ecba113e64a40747f7bf1e1924a8b0f6c987d31ca",
+  "only_changes": [
+    [
+      "OUT=ROOT/'artifacts/handoffs/N01-R01/codex'",
+      "OUT=ROOT/'artifacts/handoffs/N02-R01/codex'"
+    ],
+    [
+      "dir=ROOT/'tmp/N01-R01'",
+      "dir=ROOT/'tmp/N02-R01'"
+    ]
+  ],
+  "classification": "replayed implementer design examples; independent semantic audit separate"
+}

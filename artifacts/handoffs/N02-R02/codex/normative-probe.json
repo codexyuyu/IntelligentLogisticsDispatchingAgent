@@ -1,0 +1,993 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-10-04T14:44:15.970219+00:00",
+  "author": "Codex N02-R02 /root/n02_r02_independent",
+  "source": "Probe shared by fresh read-only reference_audit, independently executed and adjudicated by N02-R02 main reviewer",
+  "normative_tables_consistent": true,
+  "mandatory_entities": 32,
+  "auxiliary_entities": 11,
+  "pure_targets": 2,
+  "exact_members": 45,
+  "event_mappings": 10,
+  "warehouse_kinds": 6,
+  "actual_registry_mutations": 134,
+  "all_mutations_rejected": true,
+  "mutations": [
+    {
+      "name": "omit member ORDER",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value ORDER",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member CARGO",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value CARGO",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member VEHICLE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value VEHICLE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member DRIVER",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value DRIVER",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member WAREHOUSE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value WAREHOUSE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member WAREHOUSE_ZONE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value WAREHOUSE_ZONE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member STORAGE_LOCATION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value STORAGE_LOCATION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member DOCK",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value DOCK",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member WORKER",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value WORKER",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member EQUIPMENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value EQUIPMENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member TRANSPORT_TASK",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value TRANSPORT_TASK",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member WAREHOUSE_TASK",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value WAREHOUSE_TASK",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member ROUTE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value ROUTE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member ROUTE_STOP",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value ROUTE_STOP",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member SCHEDULE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value SCHEDULE",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member SCHEDULE_TASK",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value SCHEDULE_TASK",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member SCHEDULE_VERSION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value SCHEDULE_VERSION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member CONSTRAINT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value CONSTRAINT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member OPTIMIZATION_REQUEST",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value OPTIMIZATION_REQUEST",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member OPTIMIZATION_RESULT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value OPTIMIZATION_RESULT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member SIMULATION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value SIMULATION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member SIMULATION_SNAPSHOT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value SIMULATION_SNAPSHOT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member EVENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value EVENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member EXCEPTION_EVENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value EXCEPTION_EVENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member RESCHEDULE_REQUEST",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value RESCHEDULE_REQUEST",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member RESCHEDULE_RESULT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value RESCHEDULE_RESULT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member AGENT_RUN",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value AGENT_RUN",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member TOOL_CALL",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value TOOL_CALL",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member DECISION_RECORD",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value DECISION_RECORD",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member EXPERIMENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value EXPERIMENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member METRIC",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value METRIC",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member EXPERIMENT_RESULT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value EXPERIMENT_RESULT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member PLANNING_SNAPSHOT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value PLANNING_SNAPSHOT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member JOB",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value JOB",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member JOB_ATTEMPT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value JOB_ATTEMPT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member IDEMPOTENCY",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value IDEMPOTENCY",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member RESERVATION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value RESERVATION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member INVENTORY_LEDGER",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value INVENTORY_LEDGER",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member OUTBOX",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value OUTBOX",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member AUDIT_ENTRY",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value AUDIT_ENTRY",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member LIFECYCLE_EVENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value LIFECYCLE_EVENT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member EXECUTION_SNAPSHOT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value EXECUTION_SNAPSHOT",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member CONFIRMATION_TOKEN",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value CONFIRMATION_TOKEN",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member TRAVEL_MATRIX",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value TRAVEL_MATRIX",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit member REGION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "wrong value REGION",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: exact 45 members/serialization values required"
+      ]
+    },
+    {
+      "name": "omit event vehicle_failure",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: vehicle_failure: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision vehicle_failure",
+      "rejected": true,
+      "errors": [
+        "contract decisions: vehicle_failure: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref vehicle_failure",
+      "rejected": true,
+      "errors": [
+        "contract decisions: VehicleFailurePayload: explicit kind and shared EntityRef fields required"
+      ]
+    },
+    {
+      "name": "omit event transport_delay",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: transport_delay: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision transport_delay",
+      "rejected": true,
+      "errors": [
+        "contract decisions: transport_delay: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref transport_delay",
+      "rejected": true,
+      "errors": [
+        "contract decisions: TransportDelayPayload: explicit kind and shared EntityRef fields required"
+      ]
+    },
+    {
+      "name": "omit event traffic_disruption",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: traffic_disruption: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision traffic_disruption",
+      "rejected": true,
+      "errors": [
+        "contract decisions: traffic_disruption: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref traffic_disruption",
+      "rejected": true,
+      "errors": [
+        "contract decisions: TrafficDisruptionPayload: explicit kind and shared EntityRef fields required",
+        "contract decisions: traffic_disruption: unresolved target field path entity_ref.id"
+      ]
+    },
+    {
+      "name": "omit event weather_change",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: weather_change: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision weather_change",
+      "rejected": true,
+      "errors": [
+        "contract decisions: weather_change: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref weather_change",
+      "rejected": true,
+      "errors": [
+        "contract decisions: WeatherChangePayload: explicit kind and shared EntityRef fields required"
+      ]
+    },
+    {
+      "name": "omit event cargo_anomaly",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: cargo_anomaly: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision cargo_anomaly",
+      "rejected": true,
+      "errors": [
+        "contract decisions: cargo_anomaly: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref cargo_anomaly",
+      "rejected": true,
+      "errors": [
+        "contract decisions: CargoAnomalyPayload: explicit kind and shared EntityRef fields required"
+      ]
+    },
+    {
+      "name": "omit event order_cancellation",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: order_cancellation: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision order_cancellation",
+      "rejected": true,
+      "errors": [
+        "contract decisions: order_cancellation: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref order_cancellation",
+      "rejected": true,
+      "errors": [
+        "contract decisions: OrderCancellationPayload: explicit kind and shared EntityRef fields required"
+      ]
+    },
+    {
+      "name": "omit event demand_increase",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: demand_increase: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision demand_increase",
+      "rejected": true,
+      "errors": [
+        "contract decisions: demand_increase: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref demand_increase",
+      "rejected": true,
+      "errors": [
+        "contract decisions: DemandIncreasePayload: explicit kind and shared EntityRef fields required"
+      ]
+    },
+    {
+      "name": "omit event demand_decrease",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: demand_decrease: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision demand_decrease",
+      "rejected": true,
+      "errors": [
+        "contract decisions: demand_decrease: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref demand_decrease",
+      "rejected": true,
+      "errors": [
+        "contract decisions: DemandDecreasePayload: explicit kind and shared EntityRef fields required"
+      ]
+    },
+    {
+      "name": "omit event equipment_failure",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: equipment_failure: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision equipment_failure",
+      "rejected": true,
+      "errors": [
+        "contract decisions: equipment_failure: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref equipment_failure",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EquipmentFailurePayload: explicit kind and shared EntityRef fields required"
+      ]
+    },
+    {
+      "name": "omit event warehouse_resource_unavailable",
+      "rejected": true,
+      "errors": [
+        "contract decisions: event EntityRef mapping must cover exactly ten events",
+        "contract decisions: warehouse_resource_unavailable: event target rule must be an object"
+      ]
+    },
+    {
+      "name": "wrong revision warehouse_resource_unavailable",
+      "rejected": true,
+      "errors": [
+        "contract decisions: warehouse_resource_unavailable: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit event entity_ref warehouse_resource_unavailable",
+      "rejected": true,
+      "errors": [
+        "contract decisions: WarehouseResourceUnavailablePayload: explicit kind and shared EntityRef fields required"
+      ]
+    },
+    {
+      "name": "omit warehouse type warehouse",
+      "rejected": true,
+      "errors": [
+        "contract decisions: warehouse_resource_unavailable: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit warehouse type zone",
+      "rejected": true,
+      "errors": [
+        "contract decisions: warehouse_resource_unavailable: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit warehouse type location",
+      "rejected": true,
+      "errors": [
+        "contract decisions: warehouse_resource_unavailable: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit warehouse type dock",
+      "rejected": true,
+      "errors": [
+        "contract decisions: warehouse_resource_unavailable: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit warehouse type worker",
+      "rejected": true,
+      "errors": [
+        "contract decisions: warehouse_resource_unavailable: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit warehouse type equipment",
+      "rejected": true,
+      "errors": [
+        "contract decisions: warehouse_resource_unavailable: exact event EntityRef target rule required"
+      ]
+    },
+    {
+      "name": "omit EntityRef field kind",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityRef: exact kind/id/optional nonnegative revision fields required",
+        "contract decisions: warehouse_resource_unavailable: unresolved target field path resource_ref.kind"
+      ]
+    },
+    {
+      "name": "omit EntityRef field id",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityRef: exact kind/id/optional nonnegative revision fields required",
+        "contract decisions: traffic_disruption: unresolved target field path entity_ref.id",
+        "contract decisions: warehouse_resource_unavailable: unresolved target field path resource_ref.id"
+      ]
+    },
+    {
+      "name": "omit EntityRef field revision",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityRef: exact kind/id/optional nonnegative revision fields required"
+      ]
+    },
+    {
+      "name": "EntityKind existing",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityKind: required kind enum"
+      ]
+    },
+    {
+      "name": "EntityRef existing",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityRef: required kind record",
+        "contract decisions: traffic_disruption: unresolved target field path entity_ref.id",
+        "contract decisions: warehouse_resource_unavailable: unresolved target field path resource_ref.id",
+        "contract decisions: warehouse_resource_unavailable: unresolved target field path resource_ref.kind"
+      ]
+    },
+    {
+      "name": "omit primitive-state dependency",
+      "rejected": true,
+      "errors": [
+        "contract decisions: EntityRef: undeclared module dependency packages/domain/src/logistics_domain/states.py"
+      ]
+    },
+    {
+      "name": "duplicate EntityRef",
+      "rejected": true,
+      "errors": [
+        "contract decisions: duplicate type EntityRef"
+      ]
+    },
+    {
+      "name": "duplicate EntityKind",
+      "rejected": true,
+      "errors": [
+        "contract decisions: duplicate type EntityKind"
+      ]
+    }
+  ],
+  "preserved_types": [
+    "JobKind",
+    "JobStatus",
+    "JobOptimizationMode",
+    "CalendarInterval",
+    "ResourceCalendar",
+    "ScenarioRef",
+    "ScenarioSpec",
+    "ScenarioInput",
+    "ScenarioBundle",
+    "JobCommand",
+    "JobRequest"
+  ],
+  "source_inputs": {
+    "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+    "docs/architecture/DOMAIN_CATALOG.md": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35",
+    "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44"
+  }
+}

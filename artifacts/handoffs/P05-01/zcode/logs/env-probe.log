@@ -1,0 +1,45 @@
+# P05-01 environment probe (ZCode independent re-run)
+# workdir: /d/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent
+
+$ python -c 'import httpx, fastapi, starlette, pydantic, pytest'
+FAIL httpx -> ModuleNotFoundError
+FAIL psycopg -> ModuleNotFoundError
+FAIL psycopg2 -> ModuleNotFoundError
+FAIL sqlalchemy -> ModuleNotFoundError
+FAIL alembic -> ModuleNotFoundError
+FAIL asyncpg -> ModuleNotFoundError
+OK   fastapi 0.141.1
+OK   starlette 1.6.0
+OK   pydantic 2.13.5
+OK   pytest 9.1.1
+TestClient FAIL -> RuntimeError The starlette.testclient module requires the httpx2 package to be installed.
+
+$ python -c 'import logistics_backend.api / .main / .bootstrap'
+FAIL logistics_backend.api -> ModuleNotFoundError
+FAIL logistics_backend.main -> ModuleNotFoundError
+FAIL logistics_backend.bootstrap -> ModuleNotFoundError
+
+$ python -c 'logistics_contracts attributes'
+_PENDING_APIS = {'dto': 'P02-04/P05-01/P06-01: boundary DTOs with extra=forbid', 'mapping': 'P02-04: domain<->DTO mapping, no business rules duplicated', 'export_schema': 'P02-04: deterministic JSON Schema export via scripts/export_contracts.py', 'errors': 'P05-01: typed ErrorEnvelope per DATA_CONTRACTS error table'}
+  dto: NotImplementedError
+  errors: NotImplementedError
+  export_schema: NotImplementedError
+  http: AttributeError
+
+$ ls scripts/ ; ls contracts/
+__pycache__/
+check_architecture.py*
+check_ownership.py*
+gates.py*
+README.md
+changes/
+
+$ echo $TEST_DATABASE_URL
+TEST_DATABASE_URL=<unset>
+
+$ which psql pg_ctl
+psql NOT FOUND
+pg_ctl NOT FOUND
+
+$ docker ps
+failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.

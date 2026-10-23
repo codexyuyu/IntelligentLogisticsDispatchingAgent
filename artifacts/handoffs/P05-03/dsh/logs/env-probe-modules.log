@@ -1,0 +1,25 @@
+[OK]   logistics_backend
+[FAIL] logistics_backend.api: ModuleNotFoundError: No module named 'logistics_backend.api'
+[FAIL] logistics_backend.api.jobs: ModuleNotFoundError: No module named 'logistics_backend.api'
+[FAIL] logistics_backend.api.router: ModuleNotFoundError: No module named 'logistics_backend.api'
+[FAIL] logistics_backend.application: ModuleNotFoundError: No module named 'logistics_backend.application'
+[FAIL] logistics_backend.application.jobs: ModuleNotFoundError: No module named 'logistics_backend.application'
+[FAIL] logistics_backend.persistence: ModuleNotFoundError: No module named 'logistics_backend.persistence'
+[FAIL] logistics_backend.persistence.jobs: ModuleNotFoundError: No module named 'logistics_backend.persistence'
+[FAIL] logistics_backend.worker: ModuleNotFoundError: No module named 'logistics_backend.worker'
+[FAIL] logistics_backend.bootstrap: ModuleNotFoundError: No module named 'logistics_backend.bootstrap'
+[OK]   logistics_domain
+[FAIL] logistics_domain.jobs: ModuleNotFoundError: No module named 'logistics_domain.jobs'
+[FAIL] logistics_domain.orders: ModuleNotFoundError: No module named 'logistics_domain.orders'
+[OK]   logistics_contracts
+[FAIL] logistics_contracts.jobs: ModuleNotFoundError: No module named 'logistics_contracts.jobs'
+[FAIL] logistics_contracts.dto: ModuleNotFoundError: No module named 'logistics_contracts.dto'
+--- third-party ---
+[FAIL] httpx: ModuleNotFoundError
+[FAIL] psycopg: ModuleNotFoundError
+[FAIL] psycopg2: ModuleNotFoundError
+[FAIL] sqlalchemy: ModuleNotFoundError
+[FAIL] alembic: ModuleNotFoundError
+[FAIL] asyncpg: ModuleNotFoundError
+[OK]   fastapi 0.141.1
+[OK]   pytest 9.1.1

@@ -1,0 +1,6 @@
+{
+  "recorded": "content-sha256:b82eec9d08aab71ed6cc38d83939960d0b157c97866dc45ecd53cfe2c9a05392",
+  "recomputed_from_recorded_hashes": "content-sha256:b82eec9d08aab71ed6cc38d83939960d0b157c97866dc45ecd53cfe2c9a05392",
+  "historical_formula_matches": true,
+  "interpretation": "Historical hash-map identity does not cure on-disk input drift."
+}

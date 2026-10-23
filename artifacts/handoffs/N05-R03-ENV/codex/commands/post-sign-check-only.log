@@ -1,0 +1,14 @@
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/gates.py", "--phase", "01", "--revision", "auto", "--check-only"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T09:22:32.154322+00:00
+# system_temp: C:\Users\30382\AppData\Local\Temp\IntelligentLogisticsDispatchingAgent-n05-r03-env
+
+## stdout
+check-only: gate G01 revision content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c
+check-only: recorded status=passed, failed_checks=[]
+check-only: all recorded inputs are fresh; gate state unchanged (no file written)
+check-only: gate not signed (no evidence file written)
+
+## stderr
+
+## exit_code: 0

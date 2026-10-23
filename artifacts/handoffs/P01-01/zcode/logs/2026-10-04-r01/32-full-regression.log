@@ -1,0 +1,124 @@
+........................................................................ [ 31%]
+........................................................................ [ 63%]
+........................................FF.FFFFF........................ [ 95%]
+..........                                                               [100%]
+================================== FAILURES ===================================
+_______________ test_installed_distributions_cover_every_member _______________
+
+evidence = {'schema_version': '1.0.0', 'task_id': 'P01-01', 'round': 'n03-2026-10-04', 'scene': 'workspace-bootstrap-refresh', ...}
+
+    def test_installed_distributions_cover_every_member(evidence: dict) -> None:
+        expected = {
+            "logistics-domain": "0.1.0",
+            "logistics-contracts": "0.1.0",
+            "logistics-optimization": "0.1.0",
+            "logistics-simulation": "0.1.0",
+            "logistics-agents": "0.1.0",
+            "logistics-evaluation": "0.1.0",
+            "logistics-backend": "0.1.0",
+        }
+        probe = (
+            "import json\n"
+            "from importlib.metadata import version, PackageNotFoundError\n"
+            f"names = {sorted(expected)!r}\n"
+            "out = {}\n"
+            "for name in names:\n"
+            "    try:\n"
+            "        out[name] = version(name)\n"
+            "    except PackageNotFoundError:\n"
+            "        out[name] = None\n"
+            "print('DIST_JSON=' + json.dumps(out))\n"
+        )
+        result = run([sys.executable, "-c", probe])
+        assert result.returncode == 0, result.stderr
+        installed = json.loads(
+            next(line for line in result.stdout.splitlines() if line.startswith("DIST_JSON="))[len("DIST_JSON="):]
+        )
+        assert installed == expected, f"every workspace member must be installed with its pinned version: {installed}"
+>       assert evidence["python_workspace_members"] == sorted(expected)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'python_workspace_members'
+
+tests\integration\test_p01_01_workspace_bootstrap.py:234: KeyError
+_________________ test_uv_lock_hash_matches_recorded_evidence _________________
+
+evidence = {'schema_version': '1.0.0', 'task_id': 'P01-01', 'round': 'n03-2026-10-04', 'scene': 'workspace-bootstrap-refresh', ...}
+
+    def test_uv_lock_hash_matches_recorded_evidence(evidence: dict) -> None:
+>       recorded = evidence["artifacts"]["uv_lock"]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: list indices must be integers or slices, not str
+
+tests\integration\test_p01_01_workspace_bootstrap.py:238: TypeError
+________________ test_npm_lock_hash_matches_recorded_evidence _________________
+
+evidence = {'schema_version': '1.0.0', 'task_id': 'P01-01', 'round': 'n03-2026-10-04', 'scene': 'workspace-bootstrap-refresh', ...}
+
+    def test_npm_lock_hash_matches_recorded_evidence(evidence: dict) -> None:
+>       recorded = evidence["artifacts"]["package_lock"]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: list indices must be integers or slices, not str
+
+tests\integration\test_p01_01_workspace_bootstrap.py:265: TypeError
+_______________ test_node_runtime_satisfies_the_pinned_baseline _______________
+
+evidence = {'schema_version': '1.0.0', 'task_id': 'P01-01', 'round': 'n03-2026-10-04', 'scene': 'workspace-bootstrap-refresh', ...}
+
+    def test_node_runtime_satisfies_the_pinned_baseline(evidence: dict) -> None:
+        node = shutil.which("node")
+        if node is None:
+            pytest.fail("node is required to verify the Node baseline and was not found on PATH")
+        result = run([node, "--version"])
+        assert result.returncode == 0, result.stderr
+        reported = result.stdout.strip().lstrip("v")
+        major = int(reported.split(".")[0])
+        pinned = (REPO_ROOT / ".node-version").read_text(encoding="utf-8").strip()
+        assert pinned == "22"
+        assert 22 <= major < 25, f"node {reported} is outside the supported baseline 22..24"
+>       assert evidence["tool_versions"]["node"] == reported
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'tool_versions'
+
+tests\integration\test_p01_01_workspace_bootstrap.py:283: KeyError
+______________ test_python_runtime_satisfies_the_pinned_baseline ______________
+
+evidence = {'schema_version': '1.0.0', 'task_id': 'P01-01', 'round': 'n03-2026-10-04', 'scene': 'workspace-bootstrap-refresh', ...}
+
+    def test_python_runtime_satisfies_the_pinned_baseline(evidence: dict) -> None:
+        reported = "%d.%d.%d" % sys.version_info[:3]
+        assert (REPO_ROOT / ".python-version").read_text(encoding="utf-8").strip() == "3.12"
+        assert sys.version_info[:2] == (3, 12), f"the workspace environment must run CPython 3.12, got {reported}"
+>       assert evidence["tool_versions"]["python"] == reported
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'tool_versions'
+
+tests\integration\test_p01_01_workspace_bootstrap.py:290: KeyError
+_____________________ test_legacy_demo_tree_is_untouched ______________________
+
+evidence = {'schema_version': '1.0.0', 'task_id': 'P01-01', 'round': 'n03-2026-10-04', 'scene': 'workspace-bootstrap-refresh', ...}
+
+    def test_legacy_demo_tree_is_untouched(evidence: dict) -> None:
+>       recorded = evidence["legacy_demo"]
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'legacy_demo'
+
+tests\integration\test_p01_01_workspace_bootstrap.py:297: KeyError
+_______________ test_workspace_bootstrap_did_not_touch_demo_zip _______________
+
+evidence = {'schema_version': '1.0.0', 'task_id': 'P01-01', 'round': 'n03-2026-10-04', 'scene': 'workspace-bootstrap-refresh', ...}
+
+    def test_workspace_bootstrap_did_not_touch_demo_zip(evidence: dict) -> None:
+>       recorded = evidence["legacy_demo"]["demo_zip"]
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'legacy_demo'
+
+tests\integration\test_p01_01_workspace_bootstrap.py:307: KeyError
+=========================== short test summary info ===========================
+FAILED tests/integration/test_p01_01_workspace_bootstrap.py::test_installed_distributions_cover_every_member
+FAILED tests/integration/test_p01_01_workspace_bootstrap.py::test_uv_lock_hash_matches_recorded_evidence
+FAILED tests/integration/test_p01_01_workspace_bootstrap.py::test_npm_lock_hash_matches_recorded_evidence
+FAILED tests/integration/test_p01_01_workspace_bootstrap.py::test_node_runtime_satisfies_the_pinned_baseline
+FAILED tests/integration/test_p01_01_workspace_bootstrap.py::test_python_runtime_satisfies_the_pinned_baseline
+FAILED tests/integration/test_p01_01_workspace_bootstrap.py::test_legacy_demo_tree_is_untouched
+FAILED tests/integration/test_p01_01_workspace_bootstrap.py::test_workspace_bootstrap_did_not_touch_demo_zip
+7 failed, 219 passed in 35.20s

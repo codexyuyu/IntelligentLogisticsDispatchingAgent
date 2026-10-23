@@ -1,0 +1,15 @@
+########## baseline: ownership / lock / sync / secrets / injection
+-- check_ownership.py --json
+passed= True violations= 0 fallbacks= [] files= 995
+-- uv lock --check
+Resolved 40 packages in 2ms
+-- uv sync --frozen
+Checked 39 packages in 2ms
+-- credential-looking files (target tree)
+(none above = clean)
+-- secret literals (sk-/AKIA)
+(none above = clean)
+-- injection entry points
+(none above = clean)
+-- SQL string assembly entry points (Phase 03 relevance)
+(none above = clean)

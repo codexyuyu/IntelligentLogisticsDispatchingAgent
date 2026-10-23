@@ -1,0 +1,3 @@
+isolated import OK; third-party modules loaded: NONE
+states.JobKind: ['optimization', 'simulation', 'reschedule', 'experiment', 'metric']
+transition delivered->draft rejected: AttributeError

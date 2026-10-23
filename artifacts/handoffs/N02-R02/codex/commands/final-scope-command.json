@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "python",
+    "-B",
+    "tmp/N02-R02/final_scope.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T14:50:00.972043+00:00",
+  "finished_at": "2026-10-04T14:50:03.524005+00:00",
+  "exit_code": 1,
+  "log_path": "artifacts/handoffs/N02-R02/codex/commands/final-scope.log",
+  "log_sha256": "2f805822f7857c9dad0a540e179f1d297f111fca68513a62d3446608e7064087",
+  "input_artifact_hashes": {
+    "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+    "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+    "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+    "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+    "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+    "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+    "docs/architecture/CONTRACT_FREEZE.json": "6f5f82eeae35b17d8df649f270c8b0e1612a44be3f726dfb09e9df87ac873812",
+    "docs/architecture/CONTRACT_FREEZE.md": "077538122d07f192afc2e2293855058c41e68bd082495805c6d8cff969645d82"
+  },
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  }
+}

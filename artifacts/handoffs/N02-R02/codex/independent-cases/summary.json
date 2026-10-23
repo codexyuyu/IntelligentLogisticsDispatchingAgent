@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "candidate": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "counts": {
+    "total": 189,
+    "positive": 92,
+    "negative": 97,
+    "matched": 189,
+    "mismatched": 0
+  },
+  "source_inputs_unchanged": true,
+  "use_of_inherited_helpers": {
+    "prefix_stop": "before u=lambda",
+    "prefix_sha256": "b58c410b76f8bac0965335df03e88772b254c5f4f1af88300ba926293d3a4baa",
+    "original_source_sha256": "e14029df2f34a12d189a42e1c2aa9b7da0f3854f75922cc958ef08ff1cf80008",
+    "removed_in_memory_statements": [
+      "OUT.mkdir(parents=True,exist_ok=True)"
+    ],
+    "whole_script_executed": false,
+    "old_run_examples_executed": false
+  },
+  "findings": [],
+  "limitations": [
+    "Bounded current-snapshot design predicates only; no business handler, HTTP, database, solver, simulation or Gate acceptance.",
+    "The inherited parse adapter is partial for existing domain types, state enums, CargoType, FK/scope consistency and calendar semantics; these are not reopened by this C01 probe.",
+    "General 45-kind cases prove shape and serialization closure; ten event branches separately check the target semantics supported by the fixture.",
+    "Fixture facts are synthetic and no mutable live store is queried; historical audit reference semantics are not runtime-tested.",
+    "Normative source unchanged; schema sabotage is applied to deep copies in memory only."
+  ]
+}

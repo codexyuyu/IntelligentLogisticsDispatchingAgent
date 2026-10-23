@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python",
+    "tmp/N02-R01/design_graph_probe.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T03:29:16.172330+00:00",
+  "finished_at": "2026-10-04T03:29:16.397759+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N02-R01/codex/design-graph-probe.log",
+  "log_hash": "c17f2d7ee33fb73cdb6d5ecf87e59cf5353e350b91a3ebec8f2f50144a6fa197",
+  "log_bytes": 5635,
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

@@ -1,0 +1,13 @@
+# check: lock-reproducible
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "lock", "--check"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T09:19:57.867911+00:00
+# expectation: exit code 0
+
+## stdout
+
+## stderr
+Resolved 40 packages in 2ms
+
+## exit_code: 0
+## duration_ms: 31

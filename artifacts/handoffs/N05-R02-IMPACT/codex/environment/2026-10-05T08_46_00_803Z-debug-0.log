@@ -1,0 +1,53 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.16.0
+2 info using node@v24.18.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.npmrc
+5 silly config load:file:C:\Users\30382\.npmrc
+6 silly config load:file:C:\Users\30382\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm ci
+8 verbose argv "ci" "--no-audit" "--no-fund"
+9 verbose logfile logs-max:10 dir:C:\Users\30382\AppData\Local\Temp\IntelligentLogisticsDispatchingAgent-n05-r02-impact\npm-cache\_logs\2026-10-05T08_46_00_803Z-
+10 verbose logfile C:\Users\30382\AppData\Local\Temp\IntelligentLogisticsDispatchingAgent-n05-r02-impact\npm-cache\_logs\2026-10-05T08_46_00_803Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+14 silly idealTree buildDeps
+15 silly reify moves {}
+16 http cache @playwright/test@https://registry.npmjs.org/@playwright/test/-/test-1.63.0.tgz 0ms (cache hit)
+17 http cache playwright-core@https://registry.npmjs.org/playwright-core/-/playwright-core-1.63.0.tgz 0ms (cache hit)
+18 http cache playwright@https://registry.npmjs.org/playwright/-/playwright-1.63.0.tgz 0ms (cache hit)
+19 silly tarball no local data for @playwright/test@https://registry.npmjs.org/@playwright/test/-/test-1.63.0.tgz. Extracting by manifest.
+20 silly tarball no local data for playwright-core@https://registry.npmjs.org/playwright-core/-/playwright-core-1.63.0.tgz. Extracting by manifest.
+21 silly tarball no local data for playwright@https://registry.npmjs.org/playwright/-/playwright-1.63.0.tgz. Extracting by manifest.
+22 http fetch GET https://registry.npmjs.org/npm attempt 1 failed with ECONNRESET
+23 http fetch GET 200 https://registry.npmjs.org/@playwright/test/-/test-1.63.0.tgz 18729ms (cache miss)
+24 http fetch GET https://registry.npmjs.org/playwright/-/playwright-1.63.0.tgz attempt 1 failed with ECONNRESET
+25 http fetch GET https://registry.npmjs.org/playwright/-/playwright-1.63.0.tgz attempt 2 failed with ECONNRESET
+26 http fetch GET 200 https://registry.npmjs.org/npm 151847ms attempt #2
+27 http fetch GET 200 https://registry.npmjs.org/playwright/-/playwright-1.63.0.tgz 1024435ms attempt #3 (cache miss)
+28 verbose stack Error: read ECONNRESET
+28 verbose stack     at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20)
+29 error code ECONNRESET
+30 error syscall read
+31 error errno -4077
+32 error network read ECONNRESET
+33 error network This is a problem related to network connectivity.
+33 error network In most cases you are behind a proxy or have bad network settings.
+33 error network
+33 error network If you are behind a proxy, please make sure that the 'proxy' config is set properly.  See: 'npm help config'
+34 silly unfinished npm timer reify 1791189961438
+35 silly unfinished npm timer reify:unpack 1791189961443
+36 silly unfinished npm timer reifyNode:node_modules/playwright-core 1791189961443
+37 verbose cwd D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+38 verbose os Windows_NT 10.0.26300
+39 verbose node v24.18.0
+40 verbose npm  v11.16.0
+41 notice
+41 notice New major version of npm available! 11.16.0 -> 12.2.0
+41 notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+41 notice To update run: npm install -g npm@12.2.0
+41 notice  { force: true, Symbol(proc-log.meta): true }
+42 verbose exit -4077
+43 verbose code -4077
+44 error A complete log of this run can be found in: C:\Users\30382\AppData\Local\Temp\IntelligentLogisticsDispatchingAgent-n05-r02-impact\npm-cache\_logs\2026-10-05T08_46_00_803Z-debug-0.log

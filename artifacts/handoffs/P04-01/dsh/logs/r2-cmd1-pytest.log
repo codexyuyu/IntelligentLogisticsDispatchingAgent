@@ -1,0 +1,17 @@
+$ uv run pytest tests/unit/test_p04_01_canonical_fixtures.py tests/integration/test_p04_01_canonical_fixtures.py -q
+cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+uv resolved to: tools\bin\uv.exe (uv 0.12.13)
+
+--- stdout ---
+no tests ran in 0.00s
+
+--- stderr ---
+ERROR: file or directory not found: tests/unit/test_p04_01_canonical_fixtures.py
+
+--- exit code ---
+4
+
+--- interpretation ---
+Zero collected cases. Both P04-01 test files are absent by design (no implementation
+exists), so this is "not executed", NOT "passed" and NOT "failed". A zero-case run is
+never acceptance evidence.

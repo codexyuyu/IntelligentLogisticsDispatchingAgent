@@ -1,0 +1,276 @@
+{
+  "task_id": "N05",
+  "status": "PASSED",
+  "created_at": "2026-10-04T20:48:30.378112+00:00",
+  "official_G01_sha256": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8",
+  "review_sha256": "1cfd47668b64b49062c14eb0af648d8fd23eaf86748bc0b68ecb3421331e185d",
+  "candidate_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+  "file_count": 53,
+  "files": [
+    {
+      "path": "docs/handoffs/N05/codex.md",
+      "sha256": "94b1bc53ac5d0a0f49507946d5bd4ff392f10570e1621017b77fdbbf04a9c238",
+      "bytes": 5517
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/clean-install-imports.log",
+      "sha256": "c844004887cf60881505507a12f6caf43d1ac7d449b275524bed625f8a73fba2",
+      "bytes": 1312
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "sha256": "991449a0cbcae350577e9e76d23a72b78ad4bea1f926b34c51091d15ef75bb7c",
+      "bytes": 1042
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/layer-boundaries.log",
+      "sha256": "6fef6bd196c19eca8ae632dcb1205de70516d1631f6643dbdcd8a43f9442a3bc",
+      "bytes": 479
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/lock-reproducible.log",
+      "sha256": "54b25e770e09fb3b373ca8856e5f8d32259133172d552fde6f67b386f853d3d8",
+      "bytes": 385
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "sha256": "011042b19a36c8f0f122ee8761321a960c9ab5c085d848b39e2394f99cbc89cb",
+      "bytes": 580
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "sha256": "35dca72995d08ef89be87d1f4f593e8e8df27ec2a548ac043e1a6a0e99d8d1fa",
+      "bytes": 398
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "sha256": "0957b19f924802a13bb0e1637a4bd97fc65e19792e7c3bd2fcb0d1d00589d52b",
+      "bytes": 384
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "sha256": "3f4658c01541e83b22a9763fcb9f6fbc31aafcf737a44b29d6eccf6a882b2047",
+      "bytes": 588
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "sha256": "660dfb04b5af188f79831398a16d5e17da3e669f28b9cabe34d0d6bfe662b158",
+      "bytes": 474
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "sha256": "f6a03aaf6a84896dc7ad188479773cab8e73d5edb251b7cdbb31786571b5600b",
+      "bytes": 665
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "sha256": "42466048dd925d3ece2a5a8e21ad5620ddd9054e19e8f6b7ba30b0dc5e6cff52",
+      "bytes": 474
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "sha256": "e0cde6b9b1a90e0aef79bd1b5c540370df172283cf7df2d3ab1ec306a98df0c9",
+      "bytes": 393
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-before-g01/2026-10-04/artifacts/gates/G01.json",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "bytes": 30348
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/archive-manifest.json",
+      "sha256": "575cd1ae40ebce364817f0713b032c9ba2adea73c13e7a42b9b56d4afdff6c8d",
+      "bytes": 4303
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/cache-seed.json",
+      "sha256": "045718db2f8934df192b1a0951a190e2e6419b170ceea151b941916f9f8d9e61",
+      "bytes": 8476
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/check-only-byte-audit.json",
+      "sha256": "3680138af8c9f42b6ae0a57faf54b1a1ba7f5e62397f5e7030225409bc357491",
+      "bytes": 3860
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/cache-seed-command.json",
+      "sha256": "9890c2e197f008d720995008101ca264f4bfb75cd3248c87c593a31c643b5f70",
+      "bytes": 535
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/cache-seed.log",
+      "sha256": "5c1cab567f127fdc8a7c55e5714a4f65416efb9c06b1114a0e46aca216a7dd77",
+      "bytes": 420
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/check-only-driver-command.json",
+      "sha256": "6ff8378c26c76cb77089b1dc88e34f9c273ccaf07134e2884c16f7f1f7e3b0a7",
+      "bytes": 556
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/check-only-driver.log",
+      "sha256": "d1b94a60a82f11379a983a847863f2c66a921694b109ce5cda6d174251268fc6",
+      "bytes": 1264
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-env-outside-imports-r02-command.json",
+      "sha256": "6b32578c5760a7ff11e438ae072183039782d372c7d909b1bddcce64bd5e2f5f",
+      "bytes": 1015
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-env-outside-imports-r02.log",
+      "sha256": "085d1ba8e3da8b628df329441f07917ca485fc023c217cc3e4fb00f0e3817ed2",
+      "bytes": 1955
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-env-sync-command.json",
+      "sha256": "fea9b75292fcd730a8f5b7ba1c7eb7c0c29b92599a87622958318810508080ea",
+      "bytes": 505
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-env-sync-r02-command.json",
+      "sha256": "4ff0da48b38c6ba791d451be3a04eddbfca57623a26e433cdcb252395823420e",
+      "bytes": 522
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-env-sync-r02.log",
+      "sha256": "3858f6741c9d93c9f080ea08131b9131677a0cd891b5f6140297b41624bfe774",
+      "bytes": 2103
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-env-sync.log",
+      "sha256": "09280492fe2de6216fbdff1d5caaca573e41380cc49c27238171154c1e417a0b",
+      "bytes": 2557
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-install-driver-command.json",
+      "sha256": "9bf599458fab4f9c48b98d4ea6785e853c5eb21b4a531a769313f63e95631a09",
+      "bytes": 567
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-install-driver-r02-command.json",
+      "sha256": "783b6184b25c9bc21c1a0b5a1bcde0bc105e45ffeda4208d6f5a541bb845cabc",
+      "bytes": 578
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-install-driver-r02.log",
+      "sha256": "a22ccf0b7250ec883f3d8c66ea21ce29a34970283060d4c6da33707a04a470a6",
+      "bytes": 4207
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/clean-install-driver.log",
+      "sha256": "3185a3f3a5d08fd3f33941fd63fac25087dba78d4cdd2c4c47150a3329ad0a12",
+      "bytes": 2032
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/final-audit-command.json",
+      "sha256": "9db7f3976a3f120a4bb610ad1a3cb401e097bdaf69e518fe7819f95ceb213e1f",
+      "bytes": 538
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/final-audit.log",
+      "sha256": "f2da035d33b981b56e2763dcc25c712c2d57f5a74c8ba5439757e5a59637820d",
+      "bytes": 1724
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/full-regression-command.json",
+      "sha256": "ba02abc4cbd66120b613ad39159bc71f5bc9e9eb2399861de39d11ea6ca02dc4",
+      "bytes": 551
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/full-regression-r02-command.json",
+      "sha256": "fc0c9e753ff75209585eae68ad752e12853505451ea7ce723a5df74f0602167c",
+      "bytes": 559
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/full-regression-r02.log",
+      "sha256": "608d2e657e53d84cce6391401c6896026c5d22f12bf56e7b1ca8d6449a9eaa4d",
+      "bytes": 1358
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/full-regression.log",
+      "sha256": "bc69959d7f9239c944312c2711cd212a7ce59f0ab0b7a742fe6ddc756b5b2431",
+      "bytes": 117256
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/independent-probes-command.json",
+      "sha256": "d37c3721008be57e46ca50c900978a9a85455fc131da7531f7909222d703e715",
+      "bytes": 547
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/independent-probes.log",
+      "sha256": "b392a8e61ec1379404377d65a860d90c979b0263980f458e18c6e9ba33bb20bc",
+      "bytes": 523
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/initial-audit-command.json",
+      "sha256": "82cc68738b71347f525269bae4ed85734d70d6c8ab12f2ef3d4b32ca10d3f67a",
+      "bytes": 536
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/initial-audit.log",
+      "sha256": "318d57c9fa0544f18957eb76704228881cb24c4e1fab0dc07b8aff867d9bb136",
+      "bytes": 5792
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/official-check-only-command.json",
+      "sha256": "29794d903304455f4f231c9028f90a85da7d5910ce6135014599c668b8c5c309",
+      "bytes": 608
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/official-check-only.log",
+      "sha256": "011e55aafa2f44346c7e3b21def9d345a04027015446b3fbc6940715bcfa97be",
+      "bytes": 686
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/official-g01-command.json",
+      "sha256": "7141ec05d138c966e5dae5ff81fc4ac21ef03db3e3e2a358811703f7e5511024",
+      "bytes": 573
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/official-g01.log",
+      "sha256": "0dbd52ac9518be07b186f40c90b32b179640db13a6a11895f8737aae9f857d09",
+      "bytes": 2473
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/ownership-current-command.json",
+      "sha256": "c3eac395356963aa1060f1bac1a0dca5afc3c7644cd0820b77dd9b67bbb1fe03",
+      "bytes": 549
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/ownership-current.log",
+      "sha256": "2df3612b07461692a02d407d59d5cc94807ffa9f60ddd459d12f4e05c64cfa6a",
+      "bytes": 1981
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/review-and-archive-command.json",
+      "sha256": "b7f4a7b69a8d6a43c2424a21373f8a584893236e1562836eb059fb9277bf1f93",
+      "bytes": 559
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/commands/review-and-archive.log",
+      "sha256": "1e4abd7f25cde58abd773b82c002fa1c15190973fa07330f877cc8d3b9f1e3ec",
+      "bytes": 618
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/evidence.json",
+      "sha256": "1a18aabb1ac345412deab68322ff354fe24fc79402c6cb71dc09a8bf0b5959ba",
+      "bytes": 16255
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/final-audit.json",
+      "sha256": "9e46b5ae73b13499018bcc6558c64d9b58b9743e03e47c04c7fd0a133e72c0e1",
+      "bytes": 3040
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/independent-probes.json",
+      "sha256": "c5ca72f018074440cb6130019dcaa5118ea3940eb6e3be9600af766f11623780",
+      "bytes": 9437
+    },
+    {
+      "path": "artifacts/handoffs/N05/codex/initial-audit.json",
+      "sha256": "95881213ba8c7cdcea511639b5cc9e1a98d8d0d67908002b3e37fcb038c0cfad",
+      "bytes": 61898
+    }
+  ]
+}

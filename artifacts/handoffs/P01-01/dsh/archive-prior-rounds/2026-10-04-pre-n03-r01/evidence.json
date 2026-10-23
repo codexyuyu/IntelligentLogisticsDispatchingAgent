@@ -1,0 +1,495 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-01",
+  "round": "n03-2026-10-04",
+  "scene": "workspace-bootstrap-refresh",
+  "title": "建立目标 Monorepo 与可复现依赖环境",
+  "phase_gate": "G01",
+  "status": "READY_FOR_ZCODE",
+  "role": "dsh",
+  "owner": "A",
+  "signs_gate": false,
+  "next_executor": "ZCode N04 independent pre-acceptance (does not sign G01)",
+  "generated_at": "2026-10-04T16:01:57.403301+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "contract_versions": {
+    "plan": "1.0.3",
+    "business": "2.0.0",
+    "gate_evidence_schema": "1.0.0",
+    "handoff_contract": "docs/workflow/HANDOFF_CONTRACT.md v1.0.0"
+  },
+  "candidate": {
+    "vcs": "no .git in this checkout; identity is the content-sha256 candidate manifest",
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "formula": "content-sha256: + sha256(\"\\n\".join(path + \"\\0\" + sha256(file_bytes)))",
+    "dirty_tree_formula": "content-sha256: + sha256(\"\\n\".join(path + \"\\0\" + size + \"\\0\" + sha256(file_bytes)))",
+    "relevant_file_count": 77,
+    "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+    "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+    "recomputed_by": "tmp/N03/candidate/candidate-identity.py via GateRunner.relevant_manifest_rows() of scripts/gates.py",
+    "recomputation_log": "tmp/N03/candidate/candidate-identity.log",
+    "stable_across_this_round": true
+  },
+  "dependency_evidence": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "log_path": "artifacts/gates/G00-checks.log",
+      "log_sha256": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+      "status": "passed",
+      "finished_at": "2026-10-04T14:48:59.955285+00:00",
+      "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+      "code_revision": "content-sha256:5cee2f258fc7d49e3a1fb18209236782cc99fcc91544ec5d05cebd70bed54114",
+      "recorded_input_count": 25,
+      "inputs_fresh": true,
+      "independent_check": "tmp/N03/precondition/g00-drift-audit.py -> 25/25 inputs fresh, log hash fresh, exit 0",
+      "log": "tmp/N03/precondition/g00-drift-audit-after-n02r02.log"
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "status": "failed",
+      "note": "historical phase record, NOT signed; this round neither wrote nor signed it"
+    }
+  },
+  "partition_contributions": [
+    {
+      "partition_id": "P01-01/impl",
+      "author": "DSH (A scope) implementation session",
+      "role": "main implementer (main writer) of this task",
+      "files": [
+        ".node-version",
+        ".python-version",
+        "apps/backend/pyproject.toml",
+        "apps/backend/src/logistics_backend/__init__.py",
+        "apps/frontend/package.json",
+        "docs/implementation/P01-01.md",
+        "docs/implementation/reports/P01-01.md",
+        "package-lock.json",
+        "package.json",
+        "packages/agents/pyproject.toml",
+        "packages/agents/src/logistics_agents/__init__.py",
+        "packages/contracts/pyproject.toml",
+        "packages/contracts/src/logistics_contracts/__init__.py",
+        "packages/domain/pyproject.toml",
+        "packages/domain/src/logistics_domain/__init__.py",
+        "packages/evaluation/pyproject.toml",
+        "packages/evaluation/src/logistics_evaluation/__init__.py",
+        "packages/optimization/pyproject.toml",
+        "packages/optimization/src/logistics_optimization/__init__.py",
+        "packages/simulation/pyproject.toml",
+        "packages/simulation/src/logistics_simulation/__init__.py",
+        "playwright.config.ts",
+        "pyproject.toml",
+        "tests/integration/test_p01_01_workspace_bootstrap.py",
+        "tests/unit/test_p01_01_workspace_bootstrap.py",
+        "uv.lock"
+      ],
+      "note": "implementation bytes are unchanged in this round; the original round artifacts are preserved under archive-prior-rounds/2026-10-04-pre-n03/"
+    },
+    {
+      "partition_id": "P01-01/round-n03-2026-10-04",
+      "author": "DSH-A (N03 integrator, this session)",
+      "role": "handoff + evidence refresh only",
+      "files": [
+        "docs/handoffs/P01-01/dsh.md",
+        "artifacts/handoffs/P01-01/dsh/evidence.json",
+        "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/",
+        "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/"
+      ],
+      "note": "no source, test, lock, ownership, contract or planning change was made in this round"
+    },
+    {
+      "partition_id": "OWNERSHIP/AGENTS.md",
+      "author": "Codex governance session (2026-10-01/03)",
+      "role": "governance fix outside Phase 01 task scopes",
+      "files": [
+        "OWNERSHIP.json"
+      ],
+      "note": "the explicit AGENTS.md -> A rule is a Codex governance change, NOT a DSH implementation deliverable"
+    },
+    {
+      "partition_id": "DEF-N03-01",
+      "author": "orchestration/Codex session (2026-10-04)",
+      "role": "removed two out-of-scope agent-memory files from the repository root",
+      "files": [
+        ".workbuddy/memory/2026-10-04.md (removed)",
+        ".workbuddy-ai/memory/2026-10-04.md (removed)"
+      ],
+      "note": "archived at tmp/orchestration/archive/DEF-N03-01/archive-evidence.json; OWNERSHIP.json, the checker and the test assertions were NOT changed"
+    },
+    {
+      "partition_id": "N02-R02/G00",
+      "author": "Codex N02-R02 independent reviewer (2026-10-04)",
+      "role": "restored the official G00 on the current inputs",
+      "files": [
+        "artifacts/gates/G00.json",
+        "artifacts/gates/G00-checks.log",
+        "docs/architecture/CONTRACT_FREEZE.json",
+        "docs/architecture/CONTRACT_FREEZE.md"
+      ],
+      "note": "prerequisite evidence for this round; not produced by DSH"
+    },
+    {
+      "partition_id": "tmp/orchestration/workbuddy-ai",
+      "author": "WorkBuddy-AI auxiliary session (2026-10-04, still writing at evidence time)",
+      "role": "auxiliary dependency-reuse probe under its own tmp partition",
+      "files": [
+        "tmp/orchestration/workbuddy-ai/reuse/.probe/*.json"
+      ],
+      "note": "legitimate under the parallel-dispatch rules, but its live rewrites make P01-03's whole-repository immutability assertion red while it runs; see DEF-N03-02"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".node-version",
+      "exists": true,
+      "bytes": 3,
+      "sha256": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56"
+    },
+    {
+      "path": ".python-version",
+      "exists": true,
+      "bytes": 5,
+      "sha256": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d"
+    },
+    {
+      "path": "apps/backend/pyproject.toml",
+      "exists": true,
+      "bytes": 839,
+      "sha256": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344"
+    },
+    {
+      "path": "apps/backend/src/logistics_backend/__init__.py",
+      "exists": true,
+      "bytes": 1715,
+      "sha256": "01a2b2aeae06be11ca9888649fb22376da8984099707512ea70b7f0e40ff4ff1"
+    },
+    {
+      "path": "apps/frontend/package.json",
+      "exists": true,
+      "bytes": 499,
+      "sha256": "7a38cc372c366b088043d919f76430ac2716beebba16a2dd1f78d27e1c740b31"
+    },
+    {
+      "path": "docs/implementation/P01-01.md",
+      "exists": true,
+      "bytes": 9169,
+      "sha256": "5ac137a1f458db41369d0c80f82a1fe21960ab825393cc465139bc7907f825f8"
+    },
+    {
+      "path": "docs/implementation/reports/P01-01.md",
+      "exists": true,
+      "bytes": 14967,
+      "sha256": "27243fdab310f25484b4ed2b1417d666234d94da528ea158e5c542d8f700a0a7"
+    },
+    {
+      "path": "package-lock.json",
+      "exists": true,
+      "bytes": 2078,
+      "sha256": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458"
+    },
+    {
+      "path": "package.json",
+      "exists": true,
+      "bytes": 500,
+      "sha256": "ce0558100177c7d49889bedf4527e1995a52c066d5f7d6e737b03c6be63f7755"
+    },
+    {
+      "path": "packages/agents/pyproject.toml",
+      "exists": true,
+      "bytes": 450,
+      "sha256": "39e80e877bc134cdf99f60c31aba1a9194d4eac699008d892ed08a0d3e557140"
+    },
+    {
+      "path": "packages/agents/src/logistics_agents/__init__.py",
+      "exists": true,
+      "bytes": 1955,
+      "sha256": "13233646cf62444aa2452351f69a4c7fdb60ae0b5b7c9b17c1e0302871dc3d1b"
+    },
+    {
+      "path": "packages/contracts/pyproject.toml",
+      "exists": true,
+      "bytes": 471,
+      "sha256": "25bdb3a6d7f85ba1b114ac10668b955b5e98c981fe5ef6cdfb7f283950c10a0c"
+    },
+    {
+      "path": "packages/contracts/src/logistics_contracts/__init__.py",
+      "exists": true,
+      "bytes": 1398,
+      "sha256": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67"
+    },
+    {
+      "path": "packages/domain/pyproject.toml",
+      "exists": true,
+      "bytes": 361,
+      "sha256": "f4d4e90bd87b0161f980b51129312a815cd7a99ca657a81ee26b0424259ebf64"
+    },
+    {
+      "path": "packages/domain/src/logistics_domain/__init__.py",
+      "exists": true,
+      "bytes": 2129,
+      "sha256": "8093a7e57882419f66c72b64f2a84f9f1f0055b60d1ad088392a048b658efa91"
+    },
+    {
+      "path": "packages/evaluation/pyproject.toml",
+      "exists": true,
+      "bytes": 453,
+      "sha256": "3e25b4617df419c8a72d4056bd9bf1e53a7b1ad56ee41037f7ce12c8d5989c15"
+    },
+    {
+      "path": "packages/evaluation/src/logistics_evaluation/__init__.py",
+      "exists": true,
+      "bytes": 1310,
+      "sha256": "2dd2b07402f79594cee052f14f0f31f6fbfa505f0757e7753d9e953ae61caed9"
+    },
+    {
+      "path": "packages/optimization/pyproject.toml",
+      "exists": true,
+      "bytes": 485,
+      "sha256": "cdc1172cb720fb2446adf66f6347acfbdf34342df28c170159f0194f14710643"
+    },
+    {
+      "path": "packages/optimization/src/logistics_optimization/__init__.py",
+      "exists": true,
+      "bytes": 1741,
+      "sha256": "52e301b5ceaa4fc656702979b82fcf1832e86e6f876280c82a0505f7d937acc1"
+    },
+    {
+      "path": "packages/simulation/pyproject.toml",
+      "exists": true,
+      "bytes": 463,
+      "sha256": "000af2c9be683a8fd176cde8d054308f28419dc8ebbe1a3b0471241f9964d165"
+    },
+    {
+      "path": "packages/simulation/src/logistics_simulation/__init__.py",
+      "exists": true,
+      "bytes": 1556,
+      "sha256": "cf73c5463a41d33a8815cd4512b3fcc236fc2a7983d03e101b7b07db3f876789"
+    },
+    {
+      "path": "playwright.config.ts",
+      "exists": true,
+      "bytes": 1076,
+      "sha256": "1bba66b20430fac67663744d35f847228ca65ab42f821dae9d0d4a9ac6378d15"
+    },
+    {
+      "path": "pyproject.toml",
+      "exists": true,
+      "bytes": 2064,
+      "sha256": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886"
+    },
+    {
+      "path": "tests/integration/test_p01_01_workspace_bootstrap.py",
+      "exists": true,
+      "bytes": 13299,
+      "sha256": "160c74f89cb6ae51d828d240d0a59c7e878861beceb7731508d6a5571ff8092e"
+    },
+    {
+      "path": "tests/unit/test_p01_01_workspace_bootstrap.py",
+      "exists": true,
+      "bytes": 15079,
+      "sha256": "4210258a3f3ebb92a7c0b2a48139375f165e585232ce0b6eb4e3ecc23eb36c26"
+    },
+    {
+      "path": "uv.lock",
+      "exists": true,
+      "bytes": 47815,
+      "sha256": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5"
+    }
+  ],
+  "command_logs": {
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd1-pytest.log": {
+      "sha256": "daa2f15e45cc65c8f04a4b6eac4d1eaba11ddfbbe56e90a7c6a77edd53d84869",
+      "bytes": 765
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd2-uv-sync-frozen.log": {
+      "sha256": "404bfcaa0849c3e35eaebddba2b5b142acfc52c7482fd1b2471cd13a427e1d30",
+      "bytes": 609
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3-npm-ci-run1.log": {
+      "sha256": "6a720051f56ffc2401d8dd116b856aaf35cb7412fa8c30495d323c557969e0a7",
+      "bytes": 551
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3b-npm-ci-run2.log": {
+      "sha256": "8b9bdf00e72ca2b5cee1dcfee57ae9e36442598fc3bda98c00ae68def37267a2",
+      "bytes": 666
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt1.log": {
+      "sha256": "2a2151a9bade2f9f55f8baad9f9ccc19c664d588f9b1dc67119169e8170608d2",
+      "bytes": 4076
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt2.log": {
+      "sha256": "4ba550f6c0eecb74b3128f775fda7d1f8f0419c8d6b55f4e8d52c78aad7898ba",
+      "bytes": 4183
+    }
+  },
+  "commands_executed": [
+    {
+      "id": "cmd1-pytest",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_01_workspace_bootstrap.py",
+        "tests/integration/test_p01_01_workspace_bootstrap.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0 with real passing tests",
+      "observed": {
+        "passed": 56,
+        "failed": 0
+      },
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd1-pytest.log",
+      "log_sha256": "daa2f15e45cc65c8f04a4b6eac4d1eaba11ddfbbe56e90a7c6a77edd53d84869",
+      "exit_code_and_counts_read_from_log": true
+    },
+    {
+      "id": "cmd2-uv-sync-frozen",
+      "argv": [
+        "uv",
+        "sync",
+        "--frozen"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0; frozen lock honoured, nothing re-resolved",
+      "observed": {},
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd2-uv-sync-frozen.log",
+      "log_sha256": "404bfcaa0849c3e35eaebddba2b5b142acfc52c7482fd1b2471cd13a427e1d30",
+      "exit_code_and_counts_read_from_log": true
+    },
+    {
+      "id": "cmd3-npm-ci-run1",
+      "argv": [
+        "npm",
+        "ci"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0",
+      "observed": {},
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3-npm-ci-run1.log",
+      "log_sha256": "6a720051f56ffc2401d8dd116b856aaf35cb7412fa8c30495d323c557969e0a7",
+      "exit_code_and_counts_read_from_log": true
+    },
+    {
+      "id": "cmd3b-npm-ci-run2",
+      "argv": [
+        "npm",
+        "ci"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0; package-lock.json sha256 identical before/after (Test Case 2)",
+      "observed": {},
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3b-npm-ci-run2.log",
+      "log_sha256": "8b9bdf00e72ca2b5cee1dcfee57ae9e36442598fc3bda98c00ae68def37267a2",
+      "exit_code_and_counts_read_from_log": true
+    }
+  ],
+  "supplementary_commands": [
+    {
+      "id": "phase01-full-regression-attempt1",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "expectation": "exit 0; phase-wide regression for the frozen candidate",
+      "observed": {
+        "passed": 225,
+        "failed": 1
+      },
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt1.log",
+      "log_sha256": "2a2151a9bade2f9f55f8baad9f9ccc19c664d588f9b1dc67119169e8170608d2",
+      "exit_code_and_counts_read_from_log": true,
+      "note": "The phase-wide regression is RED for as long as the concurrent WorkBuddy-AI session keeps appending to tmp/orchestration/workbuddy-ai/reuse/.probe/sqlalchemy.json. tests/integration/test_p01_03_migration_governance.py::test_test_case_2_unmapped_status_is_rejected_without_side_effects snapshots every file in the repository and asserts byte equality, so an unrelated live writer is reported as a side effect of the rejected conversion. Both attempts and the earlier quiet-window run are recorded as-is; see tmp/N03/defects/DEF-N03-02-*.md"
+    },
+    {
+      "id": "phase01-full-regression-attempt2",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "expectation": "exit 0; phase-wide regression for the frozen candidate",
+      "observed": {
+        "passed": 225,
+        "failed": 1
+      },
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt2.log",
+      "log_sha256": "4ba550f6c0eecb74b3128f775fda7d1f8f0419c8d6b55f4e8d52c78aad7898ba",
+      "exit_code_and_counts_read_from_log": true,
+      "note": "The phase-wide regression is RED for as long as the concurrent WorkBuddy-AI session keeps appending to tmp/orchestration/workbuddy-ai/reuse/.probe/sqlalchemy.json. tests/integration/test_p01_03_migration_governance.py::test_test_case_2_unmapped_status_is_rejected_without_side_effects snapshots every file in the repository and asserts byte equality, so an unrelated live writer is reported as a side effect of the rejected conversion. Both attempts and the earlier quiet-window run are recorded as-is; see tmp/N03/defects/DEF-N03-02-*.md"
+    }
+  ],
+  "counts": {
+    "task_suites": {
+      "passed": 56,
+      "failed": 0
+    },
+    "phase_regression_attempts": [
+      {
+        "id": "phase01-full-regression-attempt1",
+        "exit_code": 1,
+        "observed": {
+          "passed": 225,
+          "failed": 1
+        }
+      },
+      {
+        "id": "phase01-full-regression-attempt2",
+        "exit_code": 1,
+        "observed": {
+          "passed": 225,
+          "failed": 1
+        }
+      }
+    ],
+    "npm_ci_lock_stable": true
+  },
+  "prior_rounds_archive": {
+    "archive_root": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03",
+    "manifest": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/archive-manifest.json",
+    "manifest_sha256": "7a642cfc12862d5d0340d7ee3713868108061e48c0880fde341bcc99c4233683",
+    "file_count": 5,
+    "checked": "every archived copy verified sha256(copy) == sha256(source) at copy time",
+    "prior_handoff_copy": {
+      "path": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/docs-handoff-dsh.md",
+      "exists": true,
+      "bytes": 6071,
+      "sha256": "4b24490d1904d06b7003e1b1598f7e4210765622cf3468bbff9f1f16326f417b"
+    }
+  },
+  "defects_reported_this_round": [
+    "DEF-N03-02 (phase regression fragility, see human handoff)"
+  ],
+  "limitations": [
+    "Phase 01 delivers engineering scaffolding only: no domain entity, solver, simulation, API or UI behaviour is implemented yet.",
+    "UV_CACHE_DIR was redirected to tmp/N03/uv-cache for this session because the default uv cache is not writable here; uv.lock is unchanged and uv sync --frozen exits 0.",
+    "No Git repository exists in this checkout, so the candidate identity is a content hash over the runner's 77-file whitelist.",
+    "Node 22 is the declared baseline but the host runs Node 24; CI (GitHub Actions) has never been executed.",
+    "The phase-wide regression is RED while a concurrent WorkBuddy-AI session keeps rewriting a file under tmp/: both recorded attempts show 225 passed / 1 failed, and the single failure is P01-03's whole-repository immutability assertion blaming that unrelated file.",
+    "An earlier run of the same command in this session, before that writer became active, reported 226 passed / exit 0; its raw log was overwritten by the later attempt and is therefore NOT offered as evidence.",
+    "G01 remains unsigned: the two missing ZCode prechecks, the stale P01-01 precheck and the missing G01 Codex review are outside DSH's role to write."
+  ],
+  "remaining_risks": [
+    "Any later change to a whitelisted file produces a new candidate and invalidates this evidence, this round's prechecks and the bound G00 reference.",
+    "The reviewer must confirm at review time that code_revision is still 23930f7a... and that artifacts/gates/G00.json still hashes as recorded here.",
+    "ZCode's independent phase regression cannot be green unless the WorkBuddy-AI writer is paused or P01-03's assertion scope is fixed first (DEF-N03-02)."
+  ],
+  "secrets_recorded": []
+}

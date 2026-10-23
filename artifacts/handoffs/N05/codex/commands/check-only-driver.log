@@ -1,0 +1,18 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE", "-B", "tmp/N05/check_only_verify.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:45:51.419018+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+{"check_id": "official-check-only", "argv": ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/gates.py", "--phase", "01", "--revision", "auto", "--check-only"], "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent", "exit_code": 0, "started_at": "2026-10-04T20:45:51.528449+00:00", "finished_at": "2026-10-04T20:45:51.839879+00:00", "log_path": "artifacts/handoffs/N05/codex/commands/official-check-only.log", "log_sha256": "011e55aafa2f44346c7e3b21def9d345a04027015446b3fbc6940715bcfa97be"}
+check-only: gate G01 revision content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c
+check-only: recorded status=passed, failed_checks=[]
+check-only: all recorded inputs are fresh; gate state unchanged (no file written)
+check-only: gate not signed (no evidence file written)
+
+
+{"exit_code": 0, "all_bytes_unchanged": true, "file_count": 16}
+
+## stderr
+
+## exit_code: 0

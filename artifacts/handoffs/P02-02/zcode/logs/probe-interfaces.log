@@ -1,0 +1,11 @@
+########## PROBE: absent public interfaces
+logistics_domain imported from D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\domain\src\logistics_domain\__init__.py
+logistics_contracts imported from D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\contracts\src\logistics_contracts\__init__.py
+logistics_domain.entities: NotImplementedError -> logistics_domain.entities is not implemented yet (P02-02/P02-03: 32 domain entities per DOMAIN_CATALOG); see docs/implementation/P01-01.md for the delivered scope of the workspace bootstrap
+logistics_domain.states: NotImplementedError -> logistics_domain.states is not implemented yet (P02-01: single status enum per entity, illegal transitions rejected); see docs/implementation/P01-01.md for the delivered scope of the workspace bootstrap
+logistics_domain.units: NotImplementedError -> logistics_domain.units is not implemented yet (P02-01: integer second/metre/gram/cm3/decic/fen value objects); see docs/implementation/P01-01.md for the delivered scope of the workspace bootstrap
+logistics_domain.ids: NotImplementedError -> logistics_domain.ids is not implemented yet (P02-01: typed identifier primitives (UUID-based)); see docs/implementation/P01-01.md for the delivered scope of the workspace bootstrap
+logistics_contracts.dto: NotImplementedError -> logistics_contracts.dto is not implemented yet (P02-04/P05-01/P06-01: boundary DTOs with extra=forbid); see docs/implementation/P01-01.md for the delivered scope of the workspace bootstrap
+logistics_contracts.mapping: NotImplementedError -> logistics_contracts.mapping is not implemented yet (P02-04: domain<->DTO mapping, no business rules duplicated); see docs/implementation/P01-01.md for the delivered scope of the workspace bootstrap
+logistics_contracts.export_schema: NotImplementedError -> logistics_contracts.export_schema is not implemented yet (P02-04: deterministic JSON Schema export via scripts/export_contracts.py); see docs/implementation/P01-01.md for the delivered scope of the workspace bootstrap
+EXIT_CODE=0

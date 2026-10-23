@@ -1,0 +1,477 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P04-02",
+  "slug": "database-seed",
+  "phase": 4,
+  "phase_gate": "G04",
+  "owner": "A",
+  "role": "DSH-initial-development",
+  "status": "BLOCKED",
+  "final_status": "BLOCKED",
+  "record_round": 1,
+  "verdict_reason": "Both declared dependencies are unmet, and the task's data source and database target are each independently unreachable. (1) G03 has no record at all: artifacts/gates/ contains only G00-checks.log, G00.json and G01.json, and this round's phase-04 probe reports '[FAIL] previous-gate:G03: missing artifacts/gates/G03.json' with 'G04: 5/17 checks passed'. (2) P04-01, the task that must produce the scenario fixtures this seeder imports, is BLOCKED (round 2 of its own evidence record, 2 of 9 deliverables present and both are BLOCKED documents; artifacts/handoffs/P04-01/zcode/precheck.json does not exist, so there is no valid Z_PRECHECK_PASSED). Concretely there is nothing to seed: data/scenarios/ contains only README.md, so scripts/generate_scenarios.py and all four fixture JSON files (tiny_transport, tiny_warehouse, invalid_cases, manifest) are absent, and data/seed/ does not exist at all. (3) The database target is unreachable: psql and pg_ctl are absent from PATH, the Docker daemon is down ('failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine'), TEST_DATABASE_URL is unset, and uv.lock contains no psycopg/sqlalchemy/alembic/asyncpg, so neither the real-PostgreSQL integration test this task requires nor G03's own exit criteria can be satisfied. (4) The import target does not exist either: the declared entry point python -m logistics_backend.cli.seed fails because logistics_backend.cli is absent, and apps/backend/src/logistics_backend/__init__.py ships only layer constants and states that nothing is implemented yet. Zero of the seven deliverables were created. No ZCode pre-acceptance is requested, because there is no candidate to review.",
+  "started_at_local": "2026-09-15T07:10:00-07:00",
+  "recorded_at_local": "2026-09-15T07:25:00-07:00",
+  "candidate": {
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "vcs": "no .git anywhere in this checkout ('git rev-parse HEAD' -> 'fatal: not a git repository'); the revision label is a content hash computed by scripts/gates.py GateRunner.compute_revision()",
+    "revision_label_measured_this_round": "content-sha256:611588e4a13f3d2e6e34151a122201e8b49b6fc657b9f9fb0fe085b23ac79dcd",
+    "measured_by": "tmp/dsh-p0402/g04/G04.json (non-official probe record), field code_revision",
+    "revision_label_is_self_perturbing": "compute_revision() enumerates the whole tree including artifacts/handoffs/**, .mimosa/** and tmp/**, so writing this record and its logs moves the label again. An exact match is impossible until the P01-02 defect (volatile revision inputs) is fixed. The value above was measured by the probe run, not copied from an earlier record.",
+    "recent_labels": [
+      "content-sha256:ac5ea4c948dac6145582fa230e565baa6274b47479750fe40a594e56c5d946af (P04-01 phase-04 probe)",
+      "content-sha256:3200484a8fb23c460b12defbcb29bb9308bd59aa4e146d1cb154db31b762e20e (P04-01 phase-03 probe)",
+      "content-sha256:018d80108f3fb2771e14bbc956ba5ed3878f82581fb38463a659ece4b9e73cbf (P04-01 round 1)"
+    ],
+    "growth_note": "the label has moved on every evidence round purely because evidence directories fall inside its hash scope; it is not a measure of code change"
+  },
+  "dependency_check": {
+    "method": "each declared dependency was re-verified by running the Gate runner and by direct filesystem and import probes; no dependency was accepted on the basis of a filename existing",
+    "declared_deps": [
+      "G03",
+      "P04-01"
+    ],
+    "source": "docs/plan/TASK_MANIFEST.json (P04-02 'deps': ['G03','P04-01']); TASK_GRAPH.md:71; docs/plan/PHASE_GATES.md:25 declares G03 failure as blocking Phase 04",
+    "G03": {
+      "status": "not_signed",
+      "record": "artifacts/gates/G03.json",
+      "record_exists": false,
+      "artifacts_gates_dir_contents": [
+        "G00-checks.log",
+        "G00.json",
+        "G01.json"
+      ],
+      "probe_argv": "uv run python scripts/gates.py --phase 04 --revision auto --out-dir tmp/dsh-p0402/g04",
+      "probe_exit_code": 1,
+      "probe_result": "G04: 5/17 checks passed; '[FAIL] previous-gate:G03: missing artifacts/gates/G03.json'",
+      "satisfied": false,
+      "why_not_signed": "G03 requires P03-01..P03-04 to reach READY_FOR_ZCODE/Z_PRECHECK_PASSED; all four remain BLOCKED on both the DSH and ZCode sides and none of their declared deliverables exist"
+    },
+    "P04-01": {
+      "status": "BLOCKED",
+      "is_a_task_not_a_gate": "P04-01 is a same-phase predecessor task, so per the task instruction it needs a valid Z_PRECHECK_PASSED",
+      "evidence_record": "artifacts/handoffs/P04-01/dsh/evidence.json (sha256 1bd668e74d7b2835e90f4791b21cc7c892687dff059a93ea12e653336f38c4de)",
+      "recorded_status": "BLOCKED (record_round 2, deliverable_present_count 2/9 and both present files are BLOCKED documents)",
+      "zcode_precheck": "artifacts/handoffs/P04-01/zcode/precheck.json does NOT exist, so no Z_PRECHECK_PASSED exists",
+      "produced_data": "none: data/scenarios/ contains only README.md; scripts/generate_scenarios.py and all four fixture JSON files are absent",
+      "satisfied": false,
+      "why_it_matters_most": "P04-02's entire purpose is to import the P04-01 scenario bundles into the database. With P04-01 producing zero fixtures there is no data to import, so the task cannot be implemented even if G03 were signed."
+    },
+    "G02": {
+      "status": "not_signed",
+      "record_exists": false,
+      "probe_result": "'[FAIL] previous-gate:G02: missing artifacts/gates/G02.json'",
+      "satisfied": false
+    },
+    "G01": {
+      "status": "failed",
+      "record": "artifacts/gates/G01.json",
+      "record_sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "failed_checks": [
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ],
+      "satisfied": false
+    },
+    "G00": {
+      "status": "passed",
+      "record": "artifacts/gates/G00.json",
+      "record_sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "satisfied": true
+    },
+    "conclusion": "P04-02 is blocked on both declared dependencies at once: G03 has no record and P04-01 is BLOCKED with no fixtures and no ZCode precheck. The task instruction is explicit that a missing or failed prerequisite must be reported as a concrete blocker and that the Gate must not be jumped."
+  },
+  "frozen_interface_unreachable": {
+    "declared_interface": "python -m logistics_backend.cli.seed --scenario tiny_transport --database-url-env TEST_DATABASE_URL",
+    "source": "docs/prompts/01-foundation/P04-02-database-seed.md",
+    "module_state": {
+      "import logistics_backend": "OK - apps/backend/src/logistics_backend/__init__.py (layer constants only)",
+      "import logistics_backend.cli": "ModuleNotFoundError: No module named 'logistics_backend.cli'",
+      "import logistics_backend.cli.seed": "ModuleNotFoundError: No module named 'logistics_backend.cli'",
+      "package_self_description": "apps/backend/src/logistics_backend/__init__.py docstring: 'The API prefix is /api/v1 ... Nothing is implemented yet: P03-03 onwards delivers persistence, P05-01 the composition root and error protocol.' Its __getattr__ raises NotImplementedError for bootstrap/app/router/services/worker."
+    },
+    "model_types": {
+      "declared_model": "ScenarioBundle、ImportReceipt",
+      "ScenarioBundle": {
+        "owner_per_contract": "NONE - registered contract gap",
+        "registered_as": "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md (status open)",
+        "impact_on_this_task": "P04-02 must accept a ScenarioBundle as its input, but the type has no frozen owner or shape anywhere in DATA_CONTRACTS.md; P04-02's allow-list likewise contains no domain-type module"
+      },
+      "ImportReceipt": {
+        "owner_per_contract": "no named-Schema row found in docs/architecture/DATA_CONTRACTS.md",
+        "owner_per_prompt": "the P04-02 prompt lists 'ScenarioBundle、ImportReceipt' under Domain Model but assigns no carrier file",
+        "impact_on_this_task": "the receipt shape (inserted/skipped/no_change counts, dataset_version, dataset_hash) cannot be expressed as a frozen type; returning an ad-hoc dict would violate Architecture Constraint 1"
+      }
+    },
+    "sequence_note": "G03 and P04-01 are the current blocking causes; the type gaps are additional independent causes that would surface the moment those were fixed."
+  },
+  "prerequisite_task_state": {
+    "phase_04_other_task": {
+      "P04-01": "dsh status=BLOCKED (round 2), zcode precheck absent, fixtures 0/4 produced"
+    },
+    "phase_03_all_blocked": {
+      "P03-01": "dsh=BLOCKED, zcode precheck=BLOCKED",
+      "P03-02": "dsh=BLOCKED, zcode precheck=BLOCKED",
+      "P03-03": "dsh=BLOCKED, zcode precheck=BLOCKED",
+      "P03-04": "dsh=BLOCKED, zcode precheck=BLOCKED"
+    },
+    "data_scenarios_dir_state": "data/scenarios/ contains only README.md (sha256 aeb9c3013e9da650ec2d86f10eb415e612625df78d2cd10ba4b5f9223a525439); none of the four fixture JSON files exist and scripts/generate_scenarios.py does not exist",
+    "data_seed_dir_state": "data/seed/ does NOT exist; data/ contains only the scenarios subdirectory",
+    "p03_04_evidence_sha256": "87043018ac1a916e8dc18d4e088dddd1a6b14285dc85bde74b6df0e6ce6eb0df"
+  },
+  "deliverable_presence": {
+    "apps/backend/src/logistics_backend/cli/seed.py": false,
+    "data/seed/README.md": false,
+    "docs/implementation/P04-02.md": false,
+    "docs/implementation/reports/P04-02.md": false,
+    "tests/unit/test_p04_02_database_seed.py": false,
+    "tests/integration/test_p04_02_database_seed.py": false
+  },
+  "deliverable_present_count": 0,
+  "deliverable_expected_count": 7,
+  "deliverable_count_note": "7 = the 6 files in the manifest allow-list plus this record's own artifacts/handoffs/P04-02/dsh/evidence.json. Only the evidence record and the DSH logs (which by the task prompt belong under artifacts/handoffs/P04-02/dsh/) exist; all 6 allow-listed deliverables are absent, so implementation/data/test output is 0/6.",
+  "deliverables_deliberately_not_created": {
+    "reason": "The seeder's only legitimate input is a P04-01 ScenarioBundle, and no fixture exists. Building the CLI against hand-written stand-in data would violate the Business Rule against embedding the expected plan into the running implementation, would fabricate the deterministic dataset_hash and idempotence evidence G04 depends on, and could not be verified against a real PostgreSQL because that database is unreachable. There is also no frozen ImportReceipt type to return, so any receipt would be an undefined dict (Architecture Constraint 1).",
+    "not_a_partial_delivery": "no file under the P04-02 allow-list was created, so nothing here can be mistaken for a partial implementation",
+    "note_on_the_two_test_cases": "Both Test Cases require a real PostgreSQL plus P04-01 fixtures: Test Case 1 ('same data imported twice => second run inserted=0') and Test Case 2 ('second object has an invalid FK => the whole import rolls back'). Neither the data nor the database exists."
+  },
+  "environment_fingerprint": {
+    "os": "Windows 11",
+    "python": "3.12.10",
+    "python_pin": ".python-version = 3.12",
+    "uv": "0.12.13",
+    "uv_on_path": false,
+    "uv_resolved_to": "tools/bin/uv.exe (workspace bootstrap copy)",
+    "pytest": "9.1.1",
+    "postgresql_client": "psql NOT FOUND on PATH",
+    "postgresql_server_pg_ctl": "pg_ctl NOT FOUND on PATH",
+    "docker_cli": "present at C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe",
+    "docker_daemon": "DOWN - 'docker version' fails with 'failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running'",
+    "isolated_postgres_reachable": false,
+    "test_database_url_env": "not set (TEST_DATABASE_URL unset)",
+    "workspace_lock_database_deps": "uv.lock (sha256 89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5) contains no psycopg, sqlalchemy, alembic or asyncpg entries",
+    "backend_pyproject_deps": "apps/backend/pyproject.toml (sha256 97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344) declares only fastapi, uvicorn and the six workspace packages - no database driver, no ORM, no migration tool",
+    "relevance_to_this_task": "P04-02 is a database task: it must insert a dataset transactionally into a real PostgreSQL and prove idempotence and rollback against it. Without a driver in the lock, without a reachable server and without TEST_DATABASE_URL, both its integration test and G04's 'same-seed second import neither duplicates nor clears an existing database' criterion are unreachable. tests/conftest.py fails (never skips) when TEST_DATABASE_URL or psycopg is missing, so the integration test cannot even be collected into a passing state honestly.",
+    "note": "no secret, credential or personal datum is recorded in this fingerprint; only environment variable NAMES are mentioned"
+  },
+  "commands": [
+    {
+      "check_id": "P04-02-cmd1",
+      "argv": "uv run pytest tests/unit/test_p04_02_database_seed.py tests/integration/test_p04_02_database_seed.py -q",
+      "argv_resolved": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe run pytest tests/unit/test_p04_02_database_seed.py tests/integration/test_p04_02_database_seed.py -q",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4,
+      "stdout": "no tests ran in 0.00s",
+      "stderr": "ERROR: file or directory not found: tests/unit/test_p04_02_database_seed.py",
+      "test_counts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "collected": 0
+      },
+      "log_path": "artifacts/handoffs/P04-02/dsh/logs/cmd1-pytest.log",
+      "log_sha256": "f6df96e9088ca2987aae126446c193cf8826e525ca7494b93ce1643c72769545",
+      "log_bytes": 123,
+      "mandatory": true,
+      "passed": false,
+      "interpretation": "NOT EXECUTED, not failed and not passed. Zero collected cases is never acceptance evidence; the Gate runner classifies this as 'no test summary found; a zero-case run is not acceptance evidence'."
+    },
+    {
+      "check_id": "P04-02-cmd2",
+      "argv": "uv run python scripts/check_architecture.py",
+      "argv_resolved": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe run python scripts/check_architecture.py",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "stdout": "architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0",
+      "stderr": "(none)",
+      "log_path": "artifacts/handoffs/P04-02/dsh/logs/cmd2-architecture.log",
+      "log_sha256": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "log_bytes": 77,
+      "mandatory": true,
+      "passed": true,
+      "caveat": "VACUOUS PASS and it must not be cited as P04-02 evidence: the 7 scanned modules are the untouched P01-01 placeholder packages and this task added no code. For this task it additionally cannot detect the failure mode it is meant to guard (Architecture Constraint 1, 'cross-boundary undefined dict'), because there is no seeder and no ImportReceipt type to inspect. Note also that logistics_backend.cli is not even a scanned module."
+    },
+    {
+      "check_id": "dependency-probe-phase04",
+      "argv": "uv run python scripts/gates.py --phase 04 --revision auto --out-dir tmp/dsh-p0402/g04",
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "G04: 5/17 checks passed; status=failed",
+      "key_failures": [
+        "[FAIL] previous-gate:G01: status=failed",
+        "[FAIL] previous-gate:G02: missing artifacts/gates/G02.json",
+        "[FAIL] previous-gate:G03: missing artifacts/gates/G03.json",
+        "[FAIL] P04-01-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence",
+        "[FAIL] P04-02-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence",
+        "[FAIL] dsh-evidence:P04-01: unexpected status='BLOCKED'",
+        "[FAIL] dsh-evidence:P04-02: missing artifacts/handoffs/P04-02/dsh/evidence.json (true at the time of the probe; written afterwards)",
+        "[FAIL] zcode-precheck:P04-01: missing artifacts/handoffs/P04-01/zcode/precheck.json",
+        "[FAIL] zcode-precheck:P04-02: missing artifacts/handoffs/P04-02/zcode/precheck.json",
+        "[FAIL] codex-review: missing artifacts/gates/G04-codex-review.json"
+      ],
+      "passing_checks": [
+        "P04-01-cmd2 and P04-02-cmd2 (both vacuous architecture passes)",
+        "previous-gate:G00: status=passed",
+        "docs:docs/implementation/P04-01.md: present",
+        "docs:docs/implementation/reports/P04-01.md: present"
+      ],
+      "log_path": "artifacts/handoffs/P04-02/dsh/logs/gates-probe-phase04.log",
+      "log_sha256": "37dbe3e0b9a287fd848eadb281baefc28c7b600d5e6b6f024d7e63744277aebf",
+      "log_bytes": 3078,
+      "mandatory": false,
+      "passed": false,
+      "note": "non-official out-dir; artifacts/gates/G04.json was NOT written or overwritten. The 5 passing checks are documentation-existence and vacuous-command rows only; both declared dependencies fail."
+    }
+  ],
+  "blocking_defects": [
+    {
+      "id": "B1",
+      "severity": "blocking",
+      "title": "Declared dependency G03 has no record, and Phase 03 is blocked in its entirety",
+      "evidence": [
+        "artifacts/gates/G03.json does not exist; artifacts/gates/ contains only G00-checks.log, G00.json and G01.json",
+        "phase-04 probe: '[FAIL] previous-gate:G03: missing artifacts/gates/G03.json'",
+        "P03-01..P03-04 dsh evidence and zcode prechecks all BLOCKED; none of their declared deliverables exist",
+        "docs/plan/PHASE_GATES.md:25 declares G03 failure as blocking Phase 04"
+      ],
+      "impact": "no Phase 04 task can start or be accepted",
+      "responsible_task": "ZCode (P01 prechecks) + Codex (G01 review) then role A (P02-01..P02-04) then re-issue P03-01..P03-04 to reach G03"
+    },
+    {
+      "id": "B2",
+      "severity": "blocking",
+      "title": "Declared dependency P04-01 is BLOCKED and produced no fixtures, so there is no dataset to seed",
+      "evidence": [
+        "artifacts/handoffs/P04-01/dsh/evidence.json status=BLOCKED (round 2), deliverable_present_count 2/9 with both present files being BLOCKED documents",
+        "artifacts/handoffs/P04-01/zcode/precheck.json does not exist, so no valid Z_PRECHECK_PASSED exists for this same-phase predecessor",
+        "data/scenarios/ contains only README.md; scripts/generate_scenarios.py and all four fixture JSON files are absent"
+      ],
+      "impact": "P04-02 has no input data at all; its stated purpose (reproducible database seed import of the scenario bundles) cannot be performed, and hand-writing stand-in data would fabricate the very determinism evidence G04 must check",
+      "responsible_task": "P04-01 (after ARCH-0006 is decided and G03 is signed)"
+    },
+    {
+      "id": "B3",
+      "severity": "blocking",
+      "title": "No reachable PostgreSQL, and no database driver in the workspace lock",
+      "evidence": [
+        "psql and pg_ctl are not on PATH",
+        "the Docker CLI exists but the daemon is down: 'failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine'",
+        "TEST_DATABASE_URL is unset; tests/conftest.py fails rather than skips when it is missing",
+        "uv.lock contains no psycopg/sqlalchemy/alembic/asyncpg; apps/backend/pyproject.toml declares no database dependency"
+      ],
+      "impact": "the required real-PostgreSQL integration test, Test Case 1 (idempotence) and Test Case 2 (rollback), and G04's 'same-seed second import neither duplicates nor clears an existing database' criterion are all unreachable",
+      "responsible_task": "project management (lock decision + Phase 01 environment manual defining isolated PostgreSQL startup and TEST_DATABASE_URL)"
+    },
+    {
+      "id": "B4",
+      "severity": "blocking",
+      "title": "The declared entry point does not exist",
+      "evidence": [
+        "python -m logistics_backend.cli.seed is the frozen interface, but 'import logistics_backend.cli' raises ModuleNotFoundError: No module named 'logistics_backend.cli'",
+        "apps/backend/src/logistics_backend/__init__.py ships only SCHEMA_VERSION/PACKAGE_NAME/LAYER/API_PREFIX and states 'Nothing is implemented yet: P03-03 onwards delivers persistence, P05-01 the composition root and error protocol'"
+      ],
+      "impact": "there is no CLI module, no persistence layer and no composition root for the seeder to assemble against",
+      "responsible_task": "role A: P03-03/P03-04 (persistence) then this task; P05-01 (composition root) is a later phase"
+    },
+    {
+      "id": "B5",
+      "severity": "blocking (contract gap)",
+      "title": "Neither declared model type has a frozen carrier: ScenarioBundle has no owner and ImportReceipt has no named-Schema row",
+      "evidence": [
+        "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md is still open for ScenarioBundle",
+        "no named-Schema row for ImportReceipt was found in docs/architecture/DATA_CONTRACTS.md",
+        "P04-02's allow-list contains no domain-type or DTO module, so it cannot define them without violating Architecture Constraint 6 (duplicate domain model)",
+        "the task's Output section requires a typed result, and returning '任意dict' is forbidden by Architecture Constraint 1"
+      ],
+      "impact": "even with data and a database, the receipt the seeder must return has no frozen type, so the interface cannot be satisfied without either duplicating a domain model or returning an undefined dict",
+      "responsible_task": "contract owner (DATA_CONTRACTS.md maintainer); the ScenarioBundle half is already registered as ARCH-0006"
+    },
+    {
+      "id": "B6",
+      "severity": "documentation gap (non-blocking for this record, blocking for continuity)",
+      "title": "The workflow documents this task is told to read and follow do not exist",
+      "evidence": [
+        "docs/workflow/ does not exist at all (glob over docs/workflow/** returns no files)",
+        "docs/workflow/README.md, docs/workflow/HANDOFF_CONTRACT.md and docs/workflow/02-ZCODE-PRECHECK.md are all absent although the task instruction cites all three",
+        "scripts/gates.py hardcodes artifacts/handoffs/<TASK>/zcode/precheck.json instead of reading a contract"
+      ],
+      "impact": "the handoff format and the ZCode pre-acceptance procedure are defined only by scripts/gates.py and by copying earlier records",
+      "responsible_task": "Codex (ARCH-0004) / project management"
+    }
+  ],
+  "systemic_finding": {
+    "id": "SYS-2",
+    "title": "Seven consecutive DSH task rounds now terminate BLOCKED from one unrepaired root cause, and Phase 04 tasks are being issued while both of their declared dependencies are unmet",
+    "evidence": [
+      "blocked set: P03-01..P03-04 (DSH + ZCode), P04-01 (two rounds), P04-02 (this record) - seven DSH rounds across two phases",
+      "Phase 02 and Phase 03 deliverable files present on disk: 0",
+      "G04 probe is unchanged at 5/17 and all of its passing checks are documentation-existence or vacuous-command rows; both declared dependencies of this task fail",
+      "this task was described as depending on '已经交付且证据有效: G03、P04-01'; measured, G03 has no record whatsoever and P04-01's own evidence record says BLOCKED with 0 fixtures"
+    ],
+    "interpretation": "Task issuance is running ahead of the dependency state. Because G04 counts documentation rows as passes, adding BLOCKED reports raises the counter without producing any deliverable, which makes the counters look like progress.",
+    "impact": "every further task request reproduces this record with a different task id; no Phase 04 deliverable can exist until the barrier is repaired",
+    "recommended_single_next_action": "repair the barrier as one unit, in the order given by docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md: (1) ZCode writes the three P01 prechecks with freshly computed hashes, (2) Codex writes the G01 review in the same session before any other write, (3) the lock and environment decisions are taken so a real isolated PostgreSQL is reachable, (4) role A delivers P02-01..P02-04 and G02 is signed, (5) P03-01..P03-04 are re-issued to reach G03, (6) P04-01 is re-issued and pre-accepted to produce the fixtures, (7) only then P04-02"
+  },
+  "prohibited_actions_not_taken": [
+    "no Gate was signed, overwritten or skipped: artifacts/gates/ still contains only G00-checks.log, G00.json and G01.json; the probe wrote to a non-official out-dir under tmp/dsh-p0402/",
+    "no Codex review record and no ZCode precheck record was fabricated; artifacts/handoffs/P04-02/zcode/ was not created",
+    "no stand-in or hand-written dataset was created to make the seeder appear to work, and no fixture was invented (that would violate '不可把期望方案装入运行实现' and fabricate the deterministic dataset_hash)",
+    "no SQLite or other test double was substituted for the required isolated real PostgreSQL",
+    "ScenarioBundle and ImportReceipt were NOT invented in this task; the ScenarioBundle gap stays registered as ARCH-0006 rather than being silently resolved",
+    "no CLI seed module, no fake ImportReceipt dict and no TODO placeholder was created; the missing capability fails loudly by construction (logistics_backend.cli does not exist, and logistics_backend.__getattr__ raises NotImplementedError for unimplemented names)",
+    "no file outside the P04-02 allow-list was modified; demo/ and demos/ were not touched; earlier tasks' evidence, Gate records and audit content were not edited; contracts/*.json and generated.ts were not touched; no package marker was changed. In particular docs/architecture/issues/README.md was deliberately NOT edited: the ImportReceipt gap was confirmed but is folded into the existing ARCH-0006 decision instead of being registered as a duplicate issue record outside this task's scope."
+  ],
+  "architecture_issues_registered": [
+    {
+      "id": "ARCH-0006",
+      "status": "open",
+      "blocking": "no",
+      "title": "ScenarioBundle has no frozen owner",
+      "file": "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md",
+      "registered_in_round": "P04-01 round 1 (not this task)",
+      "relevance_to_this_task": "P04-02 declares ScenarioBundle as part of its Domain Model and must consume it as input, so the same unresolved ownership blocks this task's interface as well"
+    },
+    {
+      "id": "ARCH-0007-candidate",
+      "status": "confirmed_gap_but_not_registered_as_an_issue_record",
+      "title": "ImportReceipt has no named-Schema row and no carrier file in any task allow-list",
+      "verification": "The named-Schema table in docs/architecture/DATA_CONTRACTS.md was read exhaustively, lines 15-68, this round. It contains no ImportReceipt row. The nearest neighbours that DO have owners are CommitReceipt (P02-03) and JobRef (P05-03), which shows the contract does assign receipt-shaped types when it intends to; ImportReceipt is an omission, not an implied inheritance.",
+      "why_not_registered_as_an_issue_record": "The gap is confirmed, but the same unresolved decision already covers the sibling type: ARCH-0006 is open for ScenarioBundle and its own text already names this task and this type ('同类风险也存在于后续引用该返回类型的 P04-02（ScenarioBundle、ImportReceipt）'). Registering a second issue would duplicate an existing record and require editing docs/architecture/issues/README.md, a file outside this task's allow-list. It is therefore reported here so the contract owner can fold it into the single ARCH-0006 decision.",
+      "evidence": [
+        "the P04-02 prompt lists the Domain Model as 'ScenarioBundle、ImportReceipt'",
+        "P04-02's manifest allow-list contains no domain-type or DTO module: apps/backend/src/logistics_backend/cli/seed.py and data/seed/README.md only",
+        "grep for ImportReceipt across docs/ matches only: docs/plan/TASK_MANIFEST.json (the P04-02 model field), docs/prompts/01-foundation/P04-02-database-seed.md (line 68), and docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md (line 13, which already flags this task and type)",
+        "exhaustive read of the DATA_CONTRACTS.md named-Schema table (lines 15-68) finds CommitReceipt->P02-03 and JobRef->P05-03 but no ImportReceipt row"
+      ],
+      "impact_if_confirmed": "the seeder's declared output has no frozen type, so the interface cannot be satisfied without duplicating a domain model or returning an undefined dict"
+    }
+  ],
+  "not_verified": [
+    "Every P04-02 requirement is UNVERIFIED because nothing was implemented. This includes: schema/hash validation before insertion, transactional insertion, returning no_change when the same dataset_hash already exists, requiring a new dataset_version when content changes, restricting writes to an explicitly named test/demo database, never clearing a database by default, stable fixture IDs, never overwriting existing related facts, and the typed ImportReceipt result. No item may be read as passing or failing.",
+    "Test Case 1: same data imported twice => second run inserted=0 - not exercised; there is no seeder, no dataset and no database.",
+    "Test Case 2: second object has an invalid FK => the whole import rolls back - not exercised; same reason. Note this case in particular needs a real PostgreSQL with real FK constraints, which is unreachable.",
+    "The declared interface python -m logistics_backend.cli.seed --scenario tiny_transport --database-url-env TEST_DATABASE_URL was not exercised; logistics_backend.cli does not exist.",
+    "G04 exit criteria from docs/plan/PHASE_GATES.md:26: 'T1/W1/I1/M1 data hashes reproducible' (belongs to P04-01), '每个反例有原因' (P04-01), and 'same-seed second import neither duplicates nor clears an existing database' (this task) - none exercised.",
+    "The Edge Cases list (empty set, duplicate IDs, illegal enum/unit, negative value/integer overflow, missing association, equal boundary times, stale revision, cancel/timeout, dependency unavailable) is entirely UNVERIFIED. The HTTP-flavoured items (401/403/409/503, If-Match, Idempotency-Key) are not applicable: this task exposes a CLI entry point, not an HTTP route, so no meaningless assertions were added for them.",
+    "Observability requirements for this task (check pass/fail counts, duration, processed file count, saved report) could not be produced because there was no seed run to measure. Values are reported as 0/null rather than fabricated.",
+    "No p04_02.started / p04_02.completed / p04_02.rejected event was emitted, because no P04-02 code path was executed. The structured substitute is this record's commands[] array plus the three raw logs, which carry argv, cwd, exit code, stdout, stderr and sha256.",
+    "Known limitation of this record: the ARCH-0007-candidate observation on ImportReceipt is confirmed against an exhaustive read of the DATA_CONTRACTS.md named-Schema table (lines 15-68) but is deliberately NOT registered as a separate issue record, because ARCH-0006 already covers the same unresolved decision and already names this task and this type."
+  ],
+  "known_limitations": [
+    "This record is BLOCKED on purpose: scripts/gates.py accepts only 'READY_FOR_ZCODE' or 'Z_PRECHECK_PASSED' as a DSH handoff status and reports anything else as a failed check. Nothing in this record may be reused as acceptance evidence.",
+    "P04-02-cmd2 exit 0 is vacuous (no P04-02 code exists to scan) and is not acceptance evidence; it also cannot see logistics_backend.cli, which is not a scanned module.",
+    "The recorded revision label is self-perturbing by construction (see candidate.revision_label_is_self_perturbing).",
+    "The workflow documents the task instruction cites (docs/workflow/README.md, docs/workflow/HANDOFF_CONTRACT.md, docs/workflow/02-ZCODE-PRECHECK.md) do not exist in this checkout, so this record's format follows scripts/gates.py plus the style of the earlier P02/P03/P04-01 records.",
+    "This is a dependency-state report. It asserts nothing about the correctness of the seed algorithm described in the task prompt or of the data definitions in docs/plan/TEST_FIXTURES.md, neither of which this task could exercise."
+  ],
+  "remaining_risks": [
+    {
+      "risk": "The barrier stays unrepaired while task issuance continues, so Phase 04 accumulates BLOCKED records instead of deliverables; both of this task's declared dependencies were unmet at issuance time despite being described as delivered.",
+      "evidence": "SYS-2 above; G04 unchanged at 5/17 with only documentation and vacuous rows passing; 0 Phase 02 and 0 Phase 03 deliverable files on disk",
+      "impact": "no engineering progress; the project accumulates evidence of absence instead of fixtures, seeders, persistence or UI",
+      "next_owner_task": "ZCode (3 P01 prechecks) + Codex (G01 review, workflow docs) + project management (lock, environment manual), then role A on P02-01..P02-04"
+    },
+    {
+      "risk": "When P04-02 is finally re-issued, an implementer under delivery pressure may seed hand-written sample rows and a fake receipt to make the command appear to work, fabricating the idempotence and rollback evidence G04 depends on.",
+      "evidence": "Test Cases 1 and 2 are exactly about idempotence and transactional rollback, and the ImportReceipt type has no frozen owner; there is no fixture data to seed either",
+      "impact": "G04's 'same-seed second import neither duplicates nor clears an existing database' would rest on invented data, and later phases would inherit a seed path that cannot be regenerated or audited",
+      "next_owner_task": "P04-02 after G03 and P04-01; the ZCode precheck must run the import twice against a real isolated PostgreSQL and inspect the actual row counts and FK failure behaviour"
+    },
+    {
+      "risk": "A seeded dataset could silently diverge from docs/plan/TEST_FIXTURES.md and from P04-01's emitted hashes, so the 'data hashes reproducible' half of G04 would pass on the wrong numbers.",
+      "evidence": "the task requires verifying schema and hash before insertion and binding results to an input snapshot; the T1 hand-calculated values (9000 m, 1400 fen, A start 300, B start 560, return 1020 s) are the reference",
+      "impact": "later solver/simulation acceptance would be measured against wrong seeded data",
+      "next_owner_task": "P04-01 then P04-02; the precheck must recompute dataset hashes from the fixtures rather than trusting a recorded value"
+    },
+    {
+      "risk": "Without a database driver in the lock and without a reachable server, the integration test cannot be honestly collected, inviting a later shortcut such as substituting SQLite or marking the test skipped.",
+      "evidence": "uv.lock has no psycopg/sqlalchemy/alembic; Docker daemon down; psql/pg_ctl absent; TEST_DATABASE_URL unset; tests/conftest.py fails rather than skips when they are missing",
+      "impact": "a skipped or SQLite-backed integration test would let a fake success pass as acceptance for a real PostgreSQL requirement",
+      "next_owner_task": "project management (lock + environment manual), then P04-02; a critical skip must be treated as non-acceptance"
+    },
+    {
+      "risk": "Gate revision labels remain unreproducible and keep moving on every evidence write.",
+      "evidence": "compute_revision() hashes artifacts/handoffs/**, .mimosa/** and tmp/**; seven distinct labels have now been measured across seven rounds",
+      "impact": "no Gate record can be tied to a reproducible candidate revision",
+      "next_owner_task": "P01-02 (volatile revision inputs); note the ordering warning in the barrier plan - changing scripts/gates.py invalidates G01's registered inputs"
+    }
+  ],
+  "files_created_by_dsh": [
+    "artifacts/handoffs/P04-02/dsh/evidence.json",
+    "artifacts/handoffs/P04-02/dsh/logs/cmd1-pytest.log",
+    "artifacts/handoffs/P04-02/dsh/logs/cmd2-architecture.log",
+    "artifacts/handoffs/P04-02/dsh/logs/gates-probe-phase04.log",
+    "docs/handoffs/P04-02/dsh.md",
+    "docs/implementation/P04-02.md",
+    "docs/implementation/reports/P04-02.md",
+    "tmp/dsh-p0402/g04/** (non-official probe record under the gitignored tmp/)"
+  ],
+  "files_modified_by_dsh": [],
+  "files_modified_note": "No pre-existing file was modified by this task. In particular docs/architecture/issues/README.md was NOT touched: the ImportReceipt observation is recorded as an unconfirmed candidate in this evidence file rather than registered as a new issue, precisely because registering it would require modifying that file on the basis of a non-exhaustive check.",
+  "input_hashes": {
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "docs/plan/TASK_MANIFEST.json": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+    "docs/prompts/01-foundation/P04-02-database-seed.md": "c584c3d6fe800e6b9d76ee7a423a425ff2c9f3cf1880f3dbde78b20afcffd9db",
+    "docs/architecture/DATA_CONTRACTS.md": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+    "docs/architecture/issues/README.md": "924e579f4b16e5ca698441cadafb11b930f2b5a854e34c35b81fe7ec7a7a3f20",
+    "data/scenarios/README.md": "aeb9c3013e9da650ec2d86f10eb415e612625df78d2cd10ba4b5f9223a525439",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "artifacts/gates/G01.json": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+    "artifacts/handoffs/P04-01/dsh/evidence.json": "1bd668e74d7b2835e90f4791b21cc7c892687dff059a93ea12e653336f38c4de",
+    "artifacts/handoffs/P04-01/dsh/logs/r2-gates-probe-phase04.log": "aba2acaf688dccb4cf63d90c7e44c825ea828ed14ac052d2f46c1b521368ee22",
+    "apps/backend/src/logistics_backend/__init__.py": "01a2b2aeae06be11ca9888649fb22376da8984099707512ea70b7f0e40ff4ff1",
+    "apps/backend/pyproject.toml": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "packages/domain/src/logistics_domain/__init__.py": "8093a7e57882419f66c72b64f2a84f9f1f0055b60d1ad088392a048b658efa91",
+    "packages/contracts/src/logistics_contracts/__init__.py": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "scripts/gates.py": "67351df627a747f9cb1d5ea5c8ddcdc01093a10e161f198cc9c35a92ecf49873",
+    "scripts/check_architecture.py": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5"
+  },
+  "output_hashes": {
+    "implementation_files": "none: 0 of the 6 allow-listed deliverables were written, so the output of this task is dependency evidence plus task documentation",
+    "contract_version_before": "1.0.0",
+    "contract_version_after": "1.0.0",
+    "contract_version_note": "no frozen contract file was touched; the ImportReceipt observation is recorded here as an unconfirmed candidate rather than registered as an issue",
+    "check_logs": {
+      "artifacts/handoffs/P04-02/dsh/logs/cmd1-pytest.log": "f6df96e9088ca2987aae126446c193cf8826e525ca7494b93ce1643c72769545",
+      "artifacts/handoffs/P04-02/dsh/logs/cmd2-architecture.log": "5e06f5906e456cf14045650fe43dc582d8eaf41c07758f7668b559ff49d99ac6",
+      "artifacts/handoffs/P04-02/dsh/logs/gates-probe-phase04.log": "37dbe3e0b9a287fd848eadb281baefc28c7b600d5e6b6f024d7e63744277aebf"
+    }
+  },
+  "logging": {
+    "events_emitted": [],
+    "reason": "no p04_02.started/p04_02.completed/p04_02.rejected event was emitted because no P04-02 code path was executed. The structured substitute is this record's commands[] array plus the three raw log files, which carry argv, cwd, exit code, stdout, stderr and sha256.",
+    "metrics": {
+      "planning_check_passed": 0,
+      "planning_check_failed": 0,
+      "planning_check_duration_ms": 0,
+      "files_processed": 0,
+      "gate_probe_commands_counted_by_runner": 4,
+      "gate_probe_command_time_ms": 4,
+      "gate_probe_checks": "17 checks in G04, of which 5 passed",
+      "gate_probe_total_duration_ms": 1202,
+      "mandatory_commands_executed": 2,
+      "note": "the task's observability requirement (check pass/fail counts, duration, processed file count) has no seed run to measure because none occurred; the gate-probe measurements above are reported instead of fabricated seed metrics. No metric labels use order_id/vehicle_id/trace_id."
+    }
+  },
+  "secrets_or_personal_data_logged": false,
+  "requested_status": "BLOCKED",
+  "signs_gate": false,
+  "gate_signed": null,
+  "next_actions": [
+    "Do not re-issue P04-02 until both declared dependencies are genuinely satisfied. This task was issued with 'G03、P04-01' described as delivered, but G03 has no record and P04-01 is BLOCKED with no fixtures and no ZCode precheck.",
+    "Repair the barrier per docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md: ZCode writes the three P01 prechecks with freshly computed hashes; Codex writes artifacts/gates/G01-codex-review.json in the same session before any other write.",
+    "Project management: allow psycopg/SQLAlchemy/Alembic into the workspace lock and write the Phase 01 environment manual defining isolated PostgreSQL startup and TEST_DATABASE_URL. Ordering rule: uv.lock and apps/backend/pyproject.toml are G01 inputs, so do this before G01's final sign or G01 must be re-signed.",
+    "Contract owner: decide ARCH-0006 (who defines ScenarioBundle) and verify the unconfirmed ImportReceipt gap recorded in this file, ideally in one decision, before P04-01/P04-02 are re-issued.",
+    "Role A / DSH: deliver P02-01..P02-04 in order, sign G02, re-issue P03-01..P03-04 to reach G03, re-issue P04-01 to produce and pre-accept the fixtures, and only then re-issue P04-02 so the seeder can import real fixtures into a real isolated PostgreSQL and prove idempotence (inserted=0 on the second run) and FK-failure rollback.",
+    "Do not start Phase 05 or any later phase: docs/plan/PHASE_GATES.md forbids crossing an unsigned Gate."
+  ],
+  "reviewer": "DSH (self-report; no independent review was performed and none is claimed)"
+}

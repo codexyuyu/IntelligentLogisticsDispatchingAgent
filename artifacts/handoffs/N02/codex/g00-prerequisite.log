@@ -1,0 +1,13 @@
+{
+  "command_scope": "read-only G00 prerequisites; not a G01 acceptance run",
+  "checks": [
+    {
+      "id": "previous-gate:G00",
+      "gate": "G01",
+      "description": "前序 Gate 证据有效",
+      "passed": false,
+      "detail": "frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded; frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+    }
+  ],
+  "official_records_written": false
+}

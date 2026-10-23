@@ -1,0 +1,28 @@
+{
+  "task_id": "N05-R02-IMPACT",
+  "scope": "exclusive task npm cache environment only; no source, lock, test, global setting or Gate fields changed",
+  "started_at": "2026-10-05T09:01:07.006Z",
+  "finished_at": "2026-10-05T09:01:07.056Z",
+  "passed": true,
+  "packages": [
+    {
+      "package": "node_modules/@playwright/test",
+      "url": "https://registry.npmjs.org/@playwright/test/-/test-1.63.0.tgz",
+      "integrity": "sha512-oxMK4vllB9RK5NQ2l1pq1IfOf2AvnEuj/vYGDj0H2nMtmtZpKtCwt/l00GEO6xjGfpBNAvjovvYdCm50dRQkpQ==",
+      "bytes": 8749
+    },
+    {
+      "package": "node_modules/playwright",
+      "url": "https://registry.npmjs.org/playwright/-/playwright-1.63.0.tgz",
+      "integrity": "sha512-+7ziBLidS4NaNCdt57SUDT+wYmmd5fmiQejUic/kb+YsYSCPyOOE9sebzMjNmQrsnNpDJqd4WHvV/8lfKfUDUg==",
+      "bytes": 899597
+    },
+    {
+      "package": "node_modules/playwright-core",
+      "url": "https://registry.npmjs.org/playwright-core/-/playwright-core-1.63.0.tgz",
+      "integrity": "sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==",
+      "bytes": 3123044
+    }
+  ],
+  "network_requests": 0
+}

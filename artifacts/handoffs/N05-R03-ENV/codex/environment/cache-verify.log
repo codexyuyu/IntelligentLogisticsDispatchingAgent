@@ -1,0 +1,8 @@
+# argv: ['node', 'C:\\Users\\30382\\AppData\\Local\\Temp\\IntelligentLogisticsDispatchingAgent-n05-r03-env\\cache-verify.cjs']
+# started_at: 2026-10-05T09:18:04.781640+00:00
+## stdout
+{"passed":true,"network_requests":0,"cache_writes":0,"verified_at":"2026-10-05T09:18:04.919Z","cases":[{"cache":"C:/Users/30382/AppData/Local/Temp/IntelligentLogisticsDispatchingAgent-n05-r02-impact/npm-cache/_cacache","packages":[{"package":"node_modules/@playwright/test","integrity":"sha512-oxMK4vllB9RK5NQ2l1pq1IfOf2AvnEuj/vYGDj0H2nMtmtZpKtCwt/l00GEO6xjGfpBNAvjovvYdCm50dRQkpQ==","bytes":8749},{"package":"node_modules/playwright","integrity":"sha512-+7ziBLidS4NaNCdt57SUDT+wYmmd5fmiQejUic/kb+YsYSCPyOOE9sebzMjNmQrsnNpDJqd4WHvV/8lfKfUDUg==","bytes":899597},{"package":"node_modules/playwright-core","integrity":"sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==","bytes":3123044}]},{"cache":"C:\\Users\\30382\\AppData\\Local\\Temp\\IntelligentLogisticsDispatchingAgent-n05-r03-env\\npm-cache\\_cacache","packages":[{"package":"node_modules/@playwright/test","integrity":"sha512-oxMK4vllB9RK5NQ2l1pq1IfOf2AvnEuj/vYGDj0H2nMtmtZpKtCwt/l00GEO6xjGfpBNAvjovvYdCm50dRQkpQ==","bytes":8749},{"package":"node_modules/playwright","integrity":"sha512-+7ziBLidS4NaNCdt57SUDT+wYmmd5fmiQejUic/kb+YsYSCPyOOE9sebzMjNmQrsnNpDJqd4WHvV/8lfKfUDUg==","bytes":899597},{"package":"node_modules/playwright-core","integrity":"sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==","bytes":3123044}]}]}
+
+## stderr
+
+## exit_code: 0

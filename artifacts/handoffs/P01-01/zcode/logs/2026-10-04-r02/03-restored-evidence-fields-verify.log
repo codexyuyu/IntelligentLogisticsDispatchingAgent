@@ -1,0 +1,35 @@
+{
+ "artifacts_is_dict": true,
+ "artifacts_keys": [
+  "backend_pyproject",
+  "frontend_package_json",
+  "integration_test",
+  "node_version_file",
+  "package_lock",
+  "playwright_config",
+  "python_version_file",
+  "root_package_json",
+  "root_pyproject",
+  "unit_test",
+  "uv_lock"
+ ],
+ "all_artifact_hashes_match_disk": true,
+ "python_workspace_members_match": true,
+ "python_workspace_members": [
+  "logistics-agents",
+  "logistics-backend",
+  "logistics-contracts",
+  "logistics-domain",
+  "logistics-evaluation",
+  "logistics-optimization",
+  "logistics-simulation"
+ ],
+ "tool_versions.python_matches_runtime": true,
+ "tool_versions.node": "24.18.0",
+ "dependencies_lock.uv_sha_match": true,
+ "dependencies_lock.npm_sha_match": true,
+ "legacy_demo.file_count": 173,
+ "legacy_demo.demo_zip_sha_match": true,
+ "deliverable_files_count": 26,
+ "validation_commands_exist": true
+}

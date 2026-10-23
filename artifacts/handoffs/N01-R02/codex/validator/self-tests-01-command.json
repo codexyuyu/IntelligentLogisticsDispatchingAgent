@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "-c",
+    "import json,sys; from tools.ai_coding_plan.validate_plan import run_self_tests; ok,count=run_self_tests(); print(json.dumps({'self_tests_ok':ok,'count':count})); sys.exit(0 if ok else 1)"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T13:57:00.165667+00:00",
+  "finished_at": "2026-10-04T13:57:00.359546+00:00",
+  "exit_code": 0,
+  "log_path": "tmp/N01-R02/validator/self-tests-01.log",
+  "log_sha256": "90fa652e4edc280b8aaae1a38c7e602821bbd37abcc6c55a53c171b01304eff8"
+}

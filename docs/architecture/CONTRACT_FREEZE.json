@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0.0",
+  "plan_version": "1.0.3",
+  "reviewed_at": "2026-10-04T14:48:49.292386+00:00",
+  "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+  "frozen_contract_version": "2.0.0",
+  "legacy_contract_version": "0.1.0",
+  "code_revision": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "unresolved_blocking_issues": [],
+  "non_blocking_observations": [
+    "This review freezes document design and bounded design predicates, not business implementation or application acceptance.",
+    "scripts/gates.py and scripts/check_architecture.py exist in current Phase01 skeleton; G01 remains not validly accepted.",
+    "No Git repository; runner content manifests and the planner input-map revision are distinct documented hash formulas.",
+    "ARCH-0001 historical non-blocking tracing-column observation remains; precise manifest phase gates enforce the actual barriers.",
+    "Issue README pending-N02 descriptions remain implementation history; acceptance of N02-F01/F03/F04 and final F02-C01 is recorded here with independent evidence; issue source is not edited.",
+    "CalendarDTO overlap, full Scenario FK/calendar integrity, OnArc temporal rules, and CargoType are outside the inherited bounded example harness; corresponding business gates still require real models/validators.",
+    "The persistent plan checker verifies the C01 enum/ref/target graph and does not independently freeze every payload field; reviewed bytes and combined structural design replay cover this candidate."
+  ],
+  "change_policy": {
+    "major": "破坏字段/单位/enum/路径/必需语义",
+    "minor": "新增可选字段",
+    "patch": "兼容修复",
+    "order": "domain -> DTO -> ports -> callers -> tests -> 生成产物；生成产物禁止手改"
+  },
+  "artifacts": [
+    {
+      "path": "PROJECT_MASTER_PLAN.md",
+      "sha256": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+      "role": "总体设计：阶段、目标结构、验收定义",
+      "consumers": "全部Task的上下文约束"
+    },
+    {
+      "path": "TASK_GRAPH.md",
+      "sha256": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+      "role": "109个Task/40个Gate的依赖与并行写集合",
+      "consumers": "G00–G39依赖判定"
+    },
+    {
+      "path": "docs/architecture/ARCHITECTURE_OVERVIEW.md",
+      "sha256": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+      "role": "模块图、依赖方向、层禁止项",
+      "consumers": "P01-02层边界检查、P02起全阶段"
+    },
+    {
+      "path": "docs/architecture/DOMAIN_CATALOG.md",
+      "sha256": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35",
+      "role": "32实体、状态、生命周期",
+      "consumers": "P02-01..P02-04、P03、P04"
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "sha256": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+      "role": "边界DTO/Protocol、单位、错误、SolveStatus/JobStatus",
+      "consumers": "P02-04、P05-01、P06-01"
+    },
+    {
+      "path": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "sha256": "9f24acf68605981f85890d16e614976c4a9f4c6268c7c4e6138609f75d227d91",
+      "role": "包路径、组合根、内部接口接线、文件变更证据",
+      "consumers": "P01-01、P01-02、P01-03"
+    },
+    {
+      "path": "docs/api/API_CONTRACT.md",
+      "sha256": "b9104cd2bc26f39c7c529924ea68903420560488b514e0845ae953a2794364d9",
+      "role": "HTTP前缀、错误码、幂等/If-Match/actor/trace_id",
+      "consumers": "P05-01..P05-03、P16、P24-02"
+    },
+    {
+      "path": "docs/algorithms/OPTIMIZATION_CONTRACT.md",
+      "sha256": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+      "role": "候选/硬约束/独立校验/预算与状态",
+      "consumers": "P06–P10、P15–P16"
+    },
+    {
+      "path": "docs/algorithms/SIMULATION_CONTRACT.md",
+      "sha256": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+      "role": "仿真状态、事件、RNG、快照与分支隔离",
+      "consumers": "P11–P13、P28"
+    },
+    {
+      "path": "docs/algorithms/METRICS_CONTRACT.md",
+      "sha256": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+      "role": "14项指标公式、分母缺失语义",
+      "consumers": "P32-01..P32-03、P33"
+    },
+    {
+      "path": "docs/plan/TEST_FIXTURES.md",
+      "sha256": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+      "role": "T1/W1/J1/I1/S1/M1可手算验收数据",
+      "consumers": "P04-01起全部算法与集成Task"
+    },
+    {
+      "path": "docs/plan/PHASE_GATES.md",
+      "sha256": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+      "role": "40个Gate的必需Task与附加业务断言",
+      "consumers": "全部Gate"
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-decisions.json",
+      "sha256": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+      "role": "196 named type and exact EntityKind/event-reference normative decisions",
+      "consumers": "P02 and corresponding downstream contract consumers"
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+      "sha256": "9bf3e3c00513cb04ad5549b2344d12cae553914a49935135bcffaba60cba8ab8",
+      "role": "1.0.0 -> 2.0.0 migration facts and N01-R02 closure scope",
+      "consumers": "P02 and corresponding downstream contract consumers"
+    },
+    {
+      "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "sha256": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+      "role": "unique type carriers/tasks and same-task primitives -> states dependency",
+      "consumers": "P02 and corresponding downstream contract consumers"
+    }
+  ],
+  "review_task": "N02-R02",
+  "reviewed_candidate": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "reviewed_dirty_tree_hash": "content-sha256:1f46a24cc017ed209fc3c049239de9be1cea7053992e4d49469af98c6addeed0",
+  "revision_semantics": "code_revision/reviewed_candidate identify the independently reviewed pre-recovery 77-file candidate. Freeze JSON/MD are included in runner identity; post-recovery identity is recomputed in N02-R02 handoff, never embedded into itself.",
+  "accepted_findings": [
+    "N02-F01",
+    "N02-F02 (Scenario plus N02-R01-F02-C01)",
+    "N02-F03",
+    "N02-F04"
+  ],
+  "review_evidence": {
+    "path": "artifacts/handoffs/N02-R02/codex/review-decision.json",
+    "sha256": "19d322d9ccf021abe714395d29afc6c2542205b95159d2193ca2f1e136f32e56"
+  },
+  "history": {
+    "previous_reviewed_at": "2026-09-12T00:00:00+00:00",
+    "previous_reviewer": "planner-checker:tools/ai_coding_plan/validate_plan.py --self-test --record-g00",
+    "previous_plan_version": "1.0.0",
+    "previous_frozen_contract_version": "1.0.0",
+    "archive_manifest": "artifacts/handoffs/N02-R02/codex/archive-manifest.json",
+    "archive_manifest_sha256": "e76426e308d009a897b3beca925a6599d603ff812370614b3e4c016f87e8cc33",
+    "original_records": [
+      {
+        "original_path": "docs/architecture/CONTRACT_FREEZE.json",
+        "archive_path": "artifacts/handoffs/N02-R02/codex/archive/docs/architecture/CONTRACT_FREEZE.json",
+        "sha256": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+        "bytes": 4804
+      },
+      {
+        "original_path": "docs/architecture/CONTRACT_FREEZE.md",
+        "archive_path": "artifacts/handoffs/N02-R02/codex/archive/docs/architecture/CONTRACT_FREEZE.md",
+        "sha256": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+        "bytes": 25740
+      },
+      {
+        "original_path": "artifacts/gates/G00.json",
+        "archive_path": "artifacts/handoffs/N02-R02/codex/archive/artifacts/gates/G00.json",
+        "sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+        "bytes": 4068
+      },
+      {
+        "original_path": "artifacts/gates/G00-checks.log",
+        "archive_path": "artifacts/handoffs/N02-R02/codex/archive/artifacts/gates/G00-checks.log",
+        "sha256": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+        "bytes": 1254
+      }
+    ],
+    "original_non_blocking_observations": [
+      "本轮只冻结文档契约；尚无应用代码、尚无任何应用测试执行证据。",
+      "scripts/gates.py 与 scripts/check_architecture.py 由 P01-02 交付；交付前 G01 及之后无法判定 passed。",
+      "仓库当前没有 Git；code_revision 使用 no-git，Gate 证据按 PHASE_GATES 用相关源文件清单 hash 替代。",
+      "旧 demo 契约版本 0.1.0 只作为迁移输入；v1 契约版本 1.0.0，禁止覆盖旧版本文件。",
+      "ARCH-0001（非阻断）：需求追踪表 R08 行的验证 Gate 与其任务所属阶段不一致；详见 docs/architecture/issues/README.md。",
+      "ARCH-0002（非阻断）：旧基线清单为登记集合而非穷举集合；详见 docs/architecture/issues/README.md。",
+      "ARCH-0003（非阻断）：任务 Prompt 要求的错误码 UNSUPPORTED 未登记在 DATA_CONTRACTS 错误表中，需在 P05-01 错误协议实现前裁定；详见 docs/architecture/issues/README.md。"
+    ]
+  },
+  "migration": {
+    "from_business_contract": "1.0.0",
+    "to_business_contract": "2.0.0",
+    "plan": "1.0.3",
+    "new_required_fields_and_exact_values": "breaking contract decisions from N01-R01 plus N01-R02 closure; no automatic compatibility",
+    "old_demo": "0.1.0 read-only migration input; original versions/bytes/hashes retained",
+    "legacy_event_conversion": "trusted mapping of target/kind/UUID/revision required; preserve original bytes/hash/version and conversion record; reject unknown mappings",
+    "order": "domain -> DTO -> ports -> consumers -> tests -> generated Schema/OpenAPI/TS",
+    "affected_gate_evidence": "G00 recovered only by actual planner run; affected prior G01/P01 handoff/prechecks remain stale or missing and require N03/N04/N05; downstream phases stay blocked by G01"
+  }
+}

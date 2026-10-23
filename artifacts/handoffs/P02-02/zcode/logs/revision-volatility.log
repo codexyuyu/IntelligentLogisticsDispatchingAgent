@@ -1,0 +1,6 @@
+rows: 1173 revision: content-sha256:f9ba8e61d5d9bdf18a859631f020c19ba0a2451613148bd4d9c5f2249952fdf9
+delta since the previous tool call (no source file touched by hand):
+  added  : 5 {'artifacts': 3, 'tmp': 2}
+  changed: 1 {'.mimosa': 1}
+  removed: 0 {}
+  sample changed: ['.mimosa/hook-state/sess_b3dd4ebe-a25c-48e9-bd16-13fa266314d9.json']

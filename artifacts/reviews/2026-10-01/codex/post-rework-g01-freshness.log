@@ -1,0 +1,10 @@
+check-only: gate G01 revision content-sha256:ce098d796798201a137916345643505f8793e94fdc656dabab4329f309752600
+check-only: recorded status=failed, failed_checks=['zcode-precheck:P01-01', 'zcode-precheck:P01-02', 'zcode-precheck:P01-03', 'codex-review']
+check-only: STALE 4 stale input artifact hash(es), first: OWNERSHIP.json
+check-only: STALE recorded revision 'content-sha256:ab054daf9c6c1373c6503f603805756ef3ef9c5a60400d07d8e938d6987e532b' differs from current 'content-sha256:ce098d796798201a137916345643505f8793e94fdc656dabab4329f309752600'
+check-only: STALE artifacts/handoffs/P01-01/zcode/precheck.json: artifacts/handoffs/P01-01/zcode/precheck.json: scripts/gates.py has a stale input hash
+check-only: STALE missing artifacts/handoffs/P01-02/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+check-only: STALE missing artifacts/handoffs/P01-03/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+check-only: STALE missing artifacts/gates/G01-codex-review.json; a phase gate cannot be signed without the Codex review record
+check-only: STALE frozen input docs/architecture/issues/README.md drifted after the gate was recorded
+check-only: gate not signed (no evidence file written)

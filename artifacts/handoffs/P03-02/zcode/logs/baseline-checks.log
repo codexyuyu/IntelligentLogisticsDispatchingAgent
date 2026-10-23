@@ -1,0 +1,18 @@
+########## baseline + environment (Phase 03 DB relevance)
+-- check_ownership.py --json
+passed= True violations= 0 fallbacks= [] files= 1040
+-- uv lock --check / db packages present?
+Resolved 40 packages in 2ms
+locked packages: 40 | db/migration packages: NONE
+-- postgres reachable?
+which: no psql in (/d/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/tools/bin:/c/Users/30382/.local/bin:/c/Users/30382/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/usr/bin:/c/Users/30382/bin:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/c/Program Files/nodejs:/cmd:/c/Program Files/dotnet:/c/Program Files/Microsoft SQL Server/170/Tools/Binn:/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn:/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit:/c/Program Files/Docker/Docker/resources/bin:/c/Program Files/Tailscale:/c/Users/30382/.local/bin:/c/Users/30382/AppData/Local/Programs/Python/Python312/Scripts:/c/Users/30382/AppData/Local/Programs/Python/Python312:/c/Users/30382/AppData/Local/Programs/Python/Launcher:/c/Users/30382/AppData/Local/Microsoft/WindowsApps:/c/Users/30382/AppData/Roaming/npm:/c/Program Files/JetBrains/IntelliJ IDEA 2026.2/bin:/c/Users/30382/AppData/Local/Programs/Microsoft VS Code/bin:/c/Users/30382/AppData/Local/Kingsoft/WPS Office/12.1.0.27458/clitool:/c/Users/30382/.dotnet/tools:/c/Program Files/Obsidian:/c/Users/30382/AppData/Local/Programs/Ollama:/c/Users/30382/AppData/Roaming/npm/node_modules/bun/bin:/c/Users/30382/AppData/Local/Programs/ZCode/resources/tools/ripgrep:/c/Users/30382/AppData/Local/Programs/ZCode/resources/tools/ugrep:/c/Program Files/nodejs:/usr/bin/vendor_perl:/usr/bin/core_perl)
+which: no pg_ctl in (/d/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/tools/bin:/c/Users/30382/.local/bin:/c/Users/30382/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/usr/bin:/c/Users/30382/bin:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/c/Program Files/nodejs:/cmd:/c/Program Files/dotnet:/c/Program Files/Microsoft SQL Server/170/Tools/Binn:/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn:/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit:/c/Program Files/Docker/Docker/resources/bin:/c/Program Files/Tailscale:/c/Users/30382/.local/bin:/c/Users/30382/AppData/Local/Programs/Python/Python312/Scripts:/c/Users/30382/AppData/Local/Programs/Python/Python312:/c/Users/30382/AppData/Local/Programs/Python/Launcher:/c/Users/30382/AppData/Local/Microsoft/WindowsApps:/c/Users/30382/AppData/Roaming/npm:/c/Program Files/JetBrains/IntelliJ IDEA 2026.2/bin:/c/Users/30382/AppData/Local/Programs/Microsoft VS Code/bin:/c/Users/30382/AppData/Local/Kingsoft/WPS Office/12.1.0.27458/clitool:/c/Users/30382/.dotnet/tools:/c/Program Files/Obsidian:/c/Users/30382/AppData/Local/Programs/Ollama:/c/Users/30382/AppData/Roaming/npm/node_modules/bun/bin:/c/Users/30382/AppData/Local/Programs/ZCode/resources/tools/ripgrep:/c/Users/30382/AppData/Local/Programs/ZCode/resources/tools/ugrep:/c/Program Files/nodejs:/usr/bin/vendor_perl:/usr/bin/core_perl)
+TEST_DATABASE_URL: not set
+-- credential files (target tree)
+(none above = clean)
+-- secret literals (sk-/AKIA)
+(none above = clean)
+-- command injection entry points
+(none above = clean)
+-- SQL string assembly (Phase 03 relevance)
+(none above = clean)

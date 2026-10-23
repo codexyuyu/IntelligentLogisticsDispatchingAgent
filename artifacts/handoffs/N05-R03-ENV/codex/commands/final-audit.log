@@ -1,0 +1,18 @@
+# argv: [".venv\\Scripts\\python.exe", "-B", "C:/Users/30382/AppData/Local/Temp/IntelligentLogisticsDispatchingAgent-n05-r03-env/final.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T09:22:32.024940+00:00
+# system_temp: C:\Users\30382\AppData\Local\Temp\IntelligentLogisticsDispatchingAgent-n05-r03-env
+
+## stdout
+{"check_id": "post-sign-check-only", "argv": ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/gates.py", "--phase", "01", "--revision", "auto", "--check-only"], "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent", "exit_code": 0, "started_at": "2026-10-05T09:22:32.154322+00:00", "finished_at": "2026-10-05T09:22:32.422473+00:00", "log_path": "artifacts/handoffs/N05-R03-ENV/codex/commands/post-sign-check-only.log", "log_sha256": "174d4ba5d5323f1b18e54592ef37f4583fadbaa9282869ad25ee453d456b35c7"}
+check-only: gate G01 revision content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c
+check-only: recorded status=passed, failed_checks=[]
+check-only: all recorded inputs are fresh; gate state unchanged (no file written)
+check-only: gate not signed (no evidence file written)
+
+
+{"task_id": "N05-R03-ENV", "status": "PASSED", "official_G01_valid": true, "audited_at": "2026-10-05T09:22:32.710567+00:00", "code_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c", "dirty_tree_hash": "content-sha256:eaea942624f00e5da16e89a3e744d3a2c1c659fcf9eeda0a23787116681d636f", "candidate_file_count": 82, "G01_sha256": "50bae8ac3b7970864ccc7aa95a83fee89c9ef52c567e768824a49873ab5fda39", "review_sha256": "e64827a62caa4c497304c66d85df154ac6047e571b3c5947b97a2d7c93925efc", "G00_sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4", "official_input_count": 40, "review_input_count": 184, "official_task_tests": [56, 96, 74], "official_phase01_test_total": 226, "official_command_count": 7, "assertion_count": 5, "record_check_count": 14, "total_check_count": 26, "reused_independent_import_processes": 6, "precheck_inputs": 123, "precheck_command_logs": 29, "official_run_command": {"check_id": "official-g01", "argv": ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/gates.py", "--phase", "01", "--revision", "auto"], "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent", "exit_code": 0, "started_at": "2026-10-05T09:18:52.531197+00:00", "finished_at": "2026-10-05T09:19:58.601513+00:00", "log_path": "artifacts/handoffs/N05-R03-ENV/codex/commands/official-g01.log", "log_sha256": "0241a7143f5381ea3b5638df002de576b92af77d92b3c781e7352398a9dc7b4f"}, "old_official_archived_count": 14, "archive_file_count": 14, "post_sign_check_only_exit_code": 0, "post_sign_official_files_unchanged": 16, "problems": [], "P02_business_acceptance": false, "G02_signed": false}
+
+## stderr
+
+## exit_code: 0

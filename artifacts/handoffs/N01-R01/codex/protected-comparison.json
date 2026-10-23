@@ -1,0 +1,63 @@
+{
+  "count": 3418,
+  "unchanged": 3418,
+  "changed_paths": [],
+  "critical": {
+    "AGENTS.md": {
+      "before": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+      "after": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2"
+    },
+    "OWNERSHIP.json": {
+      "before": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+      "after": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8"
+    },
+    "scripts/gates.py": {
+      "before": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+      "after": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e"
+    },
+    "uv.lock": {
+      "before": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+      "after": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5"
+    },
+    "package-lock.json": {
+      "before": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+      "after": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458"
+    },
+    "docs/architecture/CONTRACT_FREEZE.json": {
+      "before": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "after": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2"
+    },
+    "docs/architecture/CONTRACT_FREEZE.md": {
+      "before": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "after": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272"
+    },
+    "artifacts/gates/G00.json": {
+      "before": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "after": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c"
+    },
+    "artifacts/gates/G00-checks.log": {
+      "before": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "after": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56"
+    },
+    "artifacts/gates/G01.json": {
+      "before": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "after": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4"
+    },
+    "docs/handoffs/N01/codex.md": {
+      "before": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43",
+      "after": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43"
+    },
+    "artifacts/handoffs/N01/codex/evidence.json": {
+      "before": "4f545890ef6562478e570153656ba35f9ef124eaaca99dcc73197cbde6f267d9",
+      "after": "4f545890ef6562478e570153656ba35f9ef124eaaca99dcc73197cbde6f267d9"
+    },
+    "docs/handoffs/N02/codex.md": {
+      "before": "4cdf3f4f42983c4d93b50303326562489066afedd61df7b2b716e248932dabcf",
+      "after": "4cdf3f4f42983c4d93b50303326562489066afedd61df7b2b716e248932dabcf"
+    },
+    "artifacts/handoffs/N02/codex/evidence.json": {
+      "before": "e9f6aae266b0230283165052f8a642e0c527c581ed268fb8ebfcabc8f2fadf40",
+      "after": "e9f6aae266b0230283165052f8a642e0c527c581ed268fb8ebfcabc8f2fadf40"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+[project]
+name = "logistics-backend"
+version = "0.1.0"
+description = "FastAPI composition root, application services, persistence adapters and bounded workers."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "sqlalchemy>=2.0,<3",
+    "alembic>=1.13,<2",
+    "psycopg[binary]>=3.2,<4",
+    "fastapi>=0.115",
+    "uvicorn>=0.32",
+    "logistics-contracts",
+    "logistics-domain",
+    "logistics-agents",
+    "logistics-optimization",
+    "logistics-simulation",
+    "logistics-evaluation",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+logistics-contracts = { workspace = true }
+logistics-domain = { workspace = true }
+logistics-agents = { workspace = true }
+logistics-optimization = { workspace = true }
+logistics-simulation = { workspace = true }
+logistics-evaluation = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/logistics_backend"]

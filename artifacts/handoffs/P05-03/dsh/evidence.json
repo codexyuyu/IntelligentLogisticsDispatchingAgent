@@ -1,0 +1,447 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P05-03",
+  "slug": "durable-jobs",
+  "phase": 5,
+  "phase_gate": "G05",
+  "owner": "A",
+  "role": "DSH initial-development agent",
+  "status": "BLOCKED",
+  "final_status": "BLOCKED",
+  "record_round": 1,
+  "verdict_reason": "Both declared dependencies are invalid at issue time (G04 has no record; P05-02 is BLOCKED with 0/9 deliverables), and four independent structural blockers make the task unimplementable inside its own whitelist: the two prerequisite files it is told to 'modify' (api/router.py, bootstrap.py) do not exist; the domain/contracts/persistence layers it must build on are undelivered; the third mandatory command is structurally impossible; and both Test Cases require a real PostgreSQL that is unavailable.",
+  "started_at_local": "2026-09-18T00:51:31-07:00",
+  "recorded_at_local": "2026-09-18T01:05:00-07:00",
+  "candidate": {
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "vcs": "none (no .git in this repository)",
+    "revision_label_measured_this_round": "content-sha256:6cec84a14861e3c0a2f25e7cf5efbafaa2fa49b861ab1f359d6fa6a716bf5430",
+    "measured_by": "scripts/gates.py --phase 05 --revision auto (tmp/dsh-p0503/g05/G05.json:code_revision)",
+    "revision_label_is_self_perturbing": "GateRunner.compute_revision() covers artifacts/handoffs/**, .mimosa/** and tmp/**, so writing this very evidence file changes the label. The value above is only valid for the instant it was measured and must not be treated as a stable build id.",
+    "note": "No commit, tag or branch exists. Per docs/plan/PHASE_GATES.md a file-manifest hash is the accepted substitute when there is no Git."
+  },
+  "dependency_check": {
+    "method": "Measured on disk this round, not inferred from file names or from the task prompt. Gate records read directly from artifacts/gates/; sibling task evidence read from artifacts/handoffs/*/dsh/evidence.json; prechecks read from artifacts/handoffs/*/zcode/precheck.json.",
+    "declared_deps": ["G04", "P05-02"],
+    "source": "docs/plan/TASK_MANIFEST.json (task P05-03 deps) and TASK_GRAPH.md:82 ('P05-03 ... G04, P05-02')",
+    "G04": {
+      "declared": true,
+      "record_path": "artifacts/gates/G04.json",
+      "exists": false,
+      "probe_result": "[FAIL] previous-gate:G04: missing artifacts/gates/G04.json",
+      "verdict": "INVALID - blocking (declared dependency #1)"
+    },
+    "P05-02": {
+      "declared": true,
+      "evidence_path": "artifacts/handoffs/P05-02/dsh/evidence.json",
+      "exists": true,
+      "status": "BLOCKED",
+      "deliverables": "0/9",
+      "precheck_path": "artifacts/handoffs/P05-02/zcode/precheck.json",
+      "precheck_exists": false,
+      "probe_result": "[FAIL] dsh-evidence:P05-02: unexpected status='BLOCKED'",
+      "verdict": "INVALID - blocking (declared dependency #2)"
+    },
+    "G05": {
+      "signoff": false,
+      "probe_result": "G05: 8/27 checks passed",
+      "verdict": "not signed; not attempted by this role"
+    },
+    "G01": {
+      "status": "failed",
+      "failed_checks": ["zcode-precheck:P01-01", "zcode-precheck:P01-02", "zcode-precheck:P01-03", "codex-review"],
+      "probe_result": "[FAIL] previous-gate:G01: status=failed",
+      "verdict": "INVALID - blocking"
+    },
+    "G02": {
+      "exists": false,
+      "probe_result": "[FAIL] previous-gate:G02: missing artifacts/gates/G02.json",
+      "verdict": "INVALID - blocking"
+    },
+    "G03": {
+      "exists": false,
+      "probe_result": "[FAIL] previous-gate:G03: missing artifacts/gates/G03.json",
+      "verdict": "INVALID - blocking"
+    },
+    "G00": {
+      "status": "passed",
+      "sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "probe_result": "[PASS] previous-gate:G00: status=passed",
+      "verdict": "valid (the only valid gate record in the chain)"
+    },
+    "P05-01": {
+      "status": "BLOCKED",
+      "deliverables": "0/11",
+      "precheck_exists": false,
+      "verdict": "INVALID - blocking (phase-5 predecessor)"
+    },
+    "conclusion": "Both declared dependencies fail at issue time. Gate chain state is G00=passed, G01=failed, G02/G03/G04=no record. The Phase 05 sibling tasks (P05-01, P05-02) are both BLOCKED with zero deliverables and no ZCode precheck."
+  },
+  "frozen_interface_unreachable": {
+    "declared_interface": "JobService.submit(request: JobRequest, key: str) -> JobRef; Worker.run_once() -> WorkOutcome",
+    "source": "docs/prompts/04-api/P05-03-durable-jobs.md (Interfaces) and docs/plan/TASK_MANIFEST.json (P05-03.interface)",
+    "module_state": {
+      "logistics_backend": "OK (placeholder package, P01-01)",
+      "logistics_backend.api": "ModuleNotFoundError",
+      "logistics_backend.api.jobs": "ModuleNotFoundError",
+      "logistics_backend.api.router": "ModuleNotFoundError",
+      "logistics_backend.application": "ModuleNotFoundError",
+      "logistics_backend.application.jobs": "ModuleNotFoundError",
+      "logistics_backend.persistence": "ModuleNotFoundError",
+      "logistics_backend.persistence.jobs": "ModuleNotFoundError",
+      "logistics_backend.worker": "ModuleNotFoundError",
+      "logistics_backend.bootstrap": "ModuleNotFoundError",
+      "logistics_domain": "OK (placeholder package, P01-01)",
+      "logistics_domain.jobs": "ModuleNotFoundError",
+      "logistics_contracts": "OK (placeholder package, P01-01)",
+      "logistics_contracts.jobs": "ModuleNotFoundError"
+    },
+    "model_types": {
+      "JobStatus": "Named in docs/architecture/DATA_CONTRACTS.md:9 (queued|running|completed|failed|cancelled). No module defines it. Entity ownership per DOMAIN_CATALOG.md:54; the owning deliverable is packages/domain/src/logistics_domain/*.py, owned by P02-02/P02-03, both BLOCKED.",
+      "Job": "Named as a DOMAIN_CATALOG entity (line 54) with fields kind/typed request ref/lease_owner/epoch/expires_at/attempt/deadline/result_ref. No module defines it.",
+      "JobKind": "Named only in the task prompt and TASK_MANIFEST.model. No row in DATA_CONTRACTS.md and no owning module.",
+      "LeaseToken": "Named only in the task prompt and TASK_MANIFEST.model. No row in DATA_CONTRACTS.md and no owning module.",
+      "Deadline": "Named only in the task prompt and TASK_MANIFEST.model. No row in DATA_CONTRACTS.md and no owning module.",
+      "JobRequest": "DATA_CONTRACTS.md:57 assigns 'JobRequest / JobRef' to P05-03. No module exists to carry it, and the P05-03 allowed_files list contains no contracts module.",
+      "JobRef": "DATA_CONTRACTS.md:57 assigns 'JobRequest / JobRef' to P05-03 (Ref = job_id,status,status_url,result_url,trace_id). No carrying module in the P05-03 whitelist.",
+      "WorkOutcome": "Named only in the task prompt Interfaces and TASK_MANIFEST.interface. Zero occurrences in DATA_CONTRACTS.md, DOMAIN_CATALOG.md and API_CONTRACT.md - it is not a frozen contract type."
+    },
+    "contract_gap": "P05-03 is the contract owner of JobRequest/JobRef (DATA_CONTRACTS.md:57) and of the Job entity (DOMAIN_CATALOG.md:54), but its allowed_files list contains no domain module and no contracts module. The only boundary-carrying file in the whitelist is contracts/openapi.json, which the task text explicitly forbids hand-editing ('contracts/*.json ... only the generator may update them'). logistics_contracts._PENDING_APIS registers dto/mapping/export_schema to P02-04 and errors to P05-01 - neither mentions a jobs DTO module, so even the 'pending' registry has no slot for this task's boundary types. A P05-03 implementer therefore has only three options: (a) duplicate the domain/DTO boundary layer (violates Architecture Constraint 6), (b) return undefined dicts/Any (violates Constraint 1), or (c) hand-write a generated artifact (explicitly forbidden). All three are prohibited.",
+    "observability_gap": {
+      "metrics_in_task_prompt": [
+        "http_requests_total{operation,status_class}",
+        "job_queue_wait_seconds",
+        "job_lease_expirations_total",
+        "commit_conflicts_total{reason}"
+      ],
+      "finding": "job_queue_wait_seconds and job_lease_expirations_total plausibly belong to this task, but the task prompt contains no metric-name registry, no unit/type definition and no export target. commit_conflicts_total{reason} belongs to P16-03 (commit_schedule), and http_requests_total{operation,status_class} is emitted by the HTTP edge owned by P05-01. This is the third consecutive Phase 05 task carrying the same out-of-scope metric paragraph (P05-01 and P05-02 reported it too).",
+      "status": "not implemented; 0 metrics emitted (no HTTP edge, no worker, no job code path executed)"
+    }
+  },
+  "prerequisite_task_state": {
+    "phase_05_siblings": {
+      "P05-01": "BLOCKED, 0/11 deliverables, no ZCode precheck",
+      "P05-02": "BLOCKED, 0/9 deliverables, no ZCode precheck"
+    },
+    "phase_04_all_blocked": {
+      "P04-01": "BLOCKED",
+      "P04-02": "BLOCKED",
+      "note": "G04 has no record at all, so the declared dependency is not merely stale but absent."
+    },
+    "phase_03_state": "P03-01..P03-04 DSH evidence all BLOCKED; the persistence layer this task must use (uow.py, idempotency.py, version_store.py, snapshots.py) does not exist.",
+    "phase_02_state": "P02-01..P02-04 ZCode prechecks all BLOCKED; no domain entity module and no contracts DTO module exists.",
+    "contracts_dir_state": "contracts/ contains only README.md and changes/README.md. contracts/openapi.json and contracts/schemas.json do not exist.",
+    "environment_manual": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md references a Phase 01 environment manual for starting an isolated PostgreSQL and setting TEST_DATABASE_URL; that manual does not exist in the repository."
+  },
+  "deliverable_presence": {
+    "apps/backend/src/logistics_backend/api/jobs.py": false,
+    "apps/backend/src/logistics_backend/application/jobs.py": false,
+    "apps/backend/src/logistics_backend/persistence/jobs.py": false,
+    "apps/backend/src/logistics_backend/worker.py": false,
+    "docs/handoffs/P05-03/dsh.md": true,
+    "docs/implementation/P05-03.md": true,
+    "docs/implementation/reports/P05-03.md": true,
+    "tests/integration/test_p05_03_durable_jobs.py": false,
+    "tests/unit/test_p05_03_durable_jobs.py": false,
+    "artifacts/handoffs/P05-03/dsh/evidence.json": true
+  },
+  "deliverable_present_count": 4,
+  "deliverable_expected_count": 10,
+  "deliverable_count_note": "The 4 present files are the evidence/documentation deliverables this DSH record is required to produce (evidence.json, dsh.md, P05-03.md, reports/P05-03.md). The 6 implementation/test files are absent by decision, not by omission - see deliverables_deliberately_not_created.",
+  "files_expected_to_be_modified": {
+    "apps/backend/src/logistics_backend/api/router.py": "does not exist - it is a P05-01 deliverable (TASK_MANIFEST P05-01.allowed_files) that was never created. The task prompt lists it as an 'existing prerequisite artifact to modify'.",
+    "apps/backend/src/logistics_backend/bootstrap.py": "does not exist - same as above (P05-01 deliverable).",
+    "contracts/openapi.json": "does not exist, and the task text forbids hand-writing it; the generator scripts/export_contracts.py is owned by P02-04 and does not exist either."
+  },
+  "deliverables_deliberately_not_created": {
+    "reason": "Creating them would require either implementing P05-01/P05-02's own deliverables (api/router.py, bootstrap.py, the master-data application service) - explicitly forbidden by the task's Out of Scope clause ('do not change another owner's implementation to mask integration errors') - or duplicating the domain/contracts boundary layer owned by P02-02/P02-03/P02-04 (forbidden by Architecture Constraint 6).",
+    "not_a_partial_delivery": "No skeleton, stub or placeholder was written into the whitelisted paths. Writing an importable module that raises NotImplementedError would make the package look delivered while the Test Cases remain unverifiable, which the task text calls out as forbidden ('unimplemented parts must fail explicitly, not return a fixed success').",
+    "note_on_the_two_test_cases": "Both Test Cases are PostgreSQL concurrency semantics. Case 1 (worker claims then crashes => lease expires => re-claimable) needs SKIP LOCKED, a lease_expires_at column and a second process; Case 2 (stale lease writes result => rejected, new result not overwritten) needs a real lease epoch CAS against a persisted row. Neither can be honestly asserted without a real isolated PostgreSQL, which is unavailable in this environment. No SQLite or fake was substituted."
+  },
+  "environment_fingerprint": {
+    "os": "Windows 11 (win32)",
+    "python": "3.12.10 (MSC v.1943 64 bit), pinned by .python-version",
+    "uv": "0.12.13 (0ebbd9274 2026-09-10 x86_64-pc-windows-msvc)",
+    "uv_on_path": false,
+    "uv_resolved_to": "tools/bin/uv.exe",
+    "pytest": "9.1.1",
+    "fastapi": "0.141.1",
+    "httpx": "not installed (ModuleNotFoundError) - relevant because Test Cases at the HTTP edge need a TestClient",
+    "psycopg": "not installed (ModuleNotFoundError)",
+    "psycopg2": "not installed (ModuleNotFoundError)",
+    "sqlalchemy": "not installed (ModuleNotFoundError)",
+    "alembic": "not installed (ModuleNotFoundError)",
+    "asyncpg": "not installed (ModuleNotFoundError)",
+    "postgresql_client": "psql not on PATH",
+    "postgresql_server_pg_ctl": "pg_ctl not on PATH",
+    "docker_daemon": "unreachable (docker info failed; npipe:////./pipe/dockerDesktopLinuxEngine)",
+    "isolated_postgres_reachable": false,
+    "test_database_url_env": "unset",
+    "workspace_lock_database_deps": "uv.lock contains 0 occurrences of sqlalchemy / alembic / psycopg / asyncpg; apps/backend/pyproject.toml declares none",
+    "conftest_behaviour_without_db": "tests/conftest.py fails (pytest.fail), it does not skip: line 157 fails when TEST_DATABASE_URL is absent, line 176 fails when psycopg is absent. A missing database can therefore never be laundered into a 'pass' or a silent skip.",
+    "note": "No credentials or secrets were read or logged. No user secret is included in this fingerprint."
+  },
+  "commands": [
+    {
+      "check_id": "P05-03-cmd1",
+      "manifest_command": "uv run pytest tests/unit/test_p05_03_durable_jobs.py tests/integration/test_p05_03_durable_jobs.py -q",
+      "argv": ["tools/bin/uv.exe", "run", "pytest", "tests/unit/test_p05_03_durable_jobs.py", "tests/integration/test_p05_03_durable_jobs.py", "-q"],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 4,
+      "test_counts": {"passed": 0, "failed": 0, "skipped": 0, "errors": 0, "collected": 0},
+      "stdout_tail": ["ERROR: file or directory not found: tests/unit/test_p05_03_durable_jobs.py", "no tests ran in 0.01s"],
+      "log_path": "artifacts/handoffs/P05-03/dsh/logs/cmd1-pytest.log",
+      "log_sha256": "25f2d0c3c220826022e2b96de6ef874aea0f1bfa82e2171de38480daffdd4710",
+      "log_bytes": 103,
+      "required": true,
+      "verdict": "FAIL - both test files are absent (zero cases collected). A zero-case run is not acceptance evidence."
+    },
+    {
+      "check_id": "P05-03-cmd2",
+      "manifest_command": "uv run python scripts/check_architecture.py",
+      "argv": ["tools/bin/uv.exe", "run", "python", "scripts/check_architecture.py"],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "stdout_tail": ["architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0"],
+      "log_path": "artifacts/handoffs/P05-03/dsh/logs/cmd2-architecture.log",
+      "log_sha256": "cabb9484368a603f7310b1a115a7405ec6fba8d4d64e0090acd37fa1ddd27b6e",
+      "log_bytes": 74,
+      "required": true,
+      "verdict": "HOLLOW PASS - exit 0 is real but empty. The 7 scanned modules are the untouched P01-01 placeholder packages. logistics_backend.api, .application, .persistence and .worker do not exist, so this checker cannot evaluate the rules that matter for this task ('application must not import adapters', 'DTO -> application -> UoW -> domain -> adapter', 'no long solve inside a request'). It must NOT be cited as acceptance evidence."
+    },
+    {
+      "check_id": "P05-03-cmd3",
+      "manifest_command": "uv run python scripts/export_contracts.py --check",
+      "argv": ["tools/bin/uv.exe", "run", "python", "scripts/export_contracts.py", "--check"],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 2,
+      "stdout_tail": ["can't open file 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\scripts\\export_contracts.py': [Errno 2] No such file or directory"],
+      "log_path": "artifacts/handoffs/P05-03/dsh/logs/cmd3-export-contracts.log",
+      "log_sha256": "968035c6d4d9698dffd97a4300203823ecf7d9258dbaf1a12d5918b146bc787d",
+      "log_bytes": 218,
+      "required": true,
+      "verdict": "FAIL - structurally impossible. scripts/export_contracts.py does not exist; it is a P02-04 deliverable. This is the identical exit-2 root cause reported by P05-01 and P05-02, i.e. the third consecutive round."
+    },
+    {
+      "check_id": "gates-probe-phase05",
+      "argv": ["tools/bin/uv.exe", "run", "python", "scripts/gates.py", "--phase", "05", "--revision", "auto", "--out-dir", "tmp/dsh-p0503/g05"],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "result": "G05: 8/27 checks passed",
+      "key_failures": [
+        "previous-gate:G01: status=failed",
+        "previous-gate:G02: missing artifacts/gates/G02.json",
+        "previous-gate:G03: missing artifacts/gates/G03.json",
+        "previous-gate:G04: missing artifacts/gates/G04.json",
+        "dsh-evidence:P05-01: unexpected status='BLOCKED'",
+        "dsh-evidence:P05-02: unexpected status='BLOCKED'",
+        "P05-03-cmd1: exit_code=4",
+        "P05-03-cmd3: exit_code=2"
+      ],
+      "log_path": "artifacts/handoffs/P05-03/dsh/logs/gates-probe-phase05.log",
+      "log_sha256": "8e924b9e84ff7c894b090096b4089a03d37950514067cea22c7dd960fc821661",
+      "log_bytes": 2235,
+      "required": false,
+      "verdict": "Non-official probe written to gitignored tmp/ only. No Gate record was created or overwritten by this role. G05 count moved 6/27 (P05-02 round) -> 8/27 purely because this round added the P05-03 doc/report rows; task-command pass count is unchanged (all 3 of this task's commands fail except the hollow cmd2)."
+    }
+  ],
+  "blocking_defects": [
+    {
+      "id": "BLK-1",
+      "title": "Declared dependency G04 has no evidence record",
+      "evidence": "artifacts/gates/ contains only G00-checks.log, G00.json, G01.json. Probe: '[FAIL] previous-gate:G04: missing artifacts/gates/G04.json'.",
+      "impact": "Phase 05 cannot start. Per docs/plan/PHASE_GATES.md, missing gate evidence means failure, not an open item."
+    },
+    {
+      "id": "BLK-2",
+      "title": "Declared dependency P05-02 is BLOCKED with 0/9 deliverables and no ZCode precheck",
+      "evidence": "artifacts/handoffs/P05-02/dsh/evidence.json status=BLOCKED; artifacts/handoffs/P05-02/zcode/precheck.json absent; probe '[FAIL] dsh-evidence:P05-02: unexpected status=BLOCKED'.",
+      "impact": "No valid Z_PRECHECK_PASSED for a same-phase predecessor, which the task text requires before a dependent task may proceed."
+    },
+    {
+      "id": "BLK-3",
+      "title": "The two files the task is told to modify do not exist",
+      "evidence": "apps/backend/src/logistics_backend/api/router.py and .../bootstrap.py are listed under P05-03 'Files - expected to modify existing prerequisite artifacts', but `find apps` returns only __init__.py. Both are P05-01 deliverables (TASK_MANIFEST P05-01.allowed_files).",
+      "impact": "There is no route table to register the jobs endpoints on and no composition root to assemble JobService into. Creating them inside P05-03 would implement P05-01 under another owner's name and would be silently overwritten when P05-01 is re-issued."
+    },
+    {
+      "id": "BLK-4",
+      "title": "Domain, contracts and persistence layers are undelivered",
+      "evidence": "Module probe: logistics_domain.jobs, logistics_contracts.jobs, logistics_contracts.dto, logistics_backend.application, logistics_backend.persistence, logistics_backend.worker all raise ModuleNotFoundError. logistics_domain and logistics_contracts are placeholder packages whose __getattr__ raises NotImplementedError for every pending name, with owners P02-01..P02-04 (all precheck BLOCKED) and P05-01 (BLOCKED).",
+      "impact": "Job/JobKind/JobStatus/LeaseToken/Deadline have no definition site inside this task's whitelist, and there is no unit-of-work, idempotency store or version store to build durable jobs on."
+    },
+    {
+      "id": "BLK-5",
+      "title": "The third mandatory command is structurally impossible",
+      "evidence": "scripts/export_contracts.py does not exist (exit 2, Errno 2). contracts/openapi.json does not exist either, and the task text forbids hand-writing contracts/*.json.",
+      "impact": "Acceptance Criterion 2 ('all listed commands actually executed with exit code 0') cannot be satisfied by any implementation confined to the P05-03 whitelist. Third consecutive round with this identical root cause."
+    },
+    {
+      "id": "BLK-6",
+      "title": "No isolated PostgreSQL, and no database driver in the workspace lock",
+      "evidence": "psql and pg_ctl not on PATH; docker daemon unreachable; TEST_DATABASE_URL unset; uv.lock has 0 occurrences of psycopg/sqlalchemy/alembic/asyncpg. tests/conftest.py:157 and :176 pytest.fail (not skip) in this state.",
+      "impact": "Both Test Cases are PostgreSQL concurrency semantics (SKIP LOCKED claim, lease expiry re-claim, lease-epoch CAS rejecting a stale writer). They cannot be asserted without a real isolated PostgreSQL, and the task forbids substituting SQLite or a fake."
+    },
+    {
+      "id": "BLK-7",
+      "title": "Boundary types owned by this task have no carrying module in the whitelist",
+      "evidence": "DATA_CONTRACTS.md:57 assigns JobRequest/JobRef to P05-03; DOMAIN_CATALOG.md:54 names the Job entity. P05-03.allowed_files contains no packages/contracts and no packages/domain module. logistics_contracts._PENDING_APIS has no 'jobs' slot. WorkOutcome appears nowhere in the frozen contracts.",
+      "impact": "See frozen_interface_unreachable.contract_gap. Implementer is forced into one of three explicitly forbidden options."
+    }
+  ],
+  "systemic_finding": {
+    "id": "ARCH-0010-candidate",
+    "title": "Task-whitelist vs contract-ownership mismatch: a task is named owner of a type but is given no file to define it in",
+    "evidence": [
+      "P05-01 (BLOCKED): Settings/ActorContext/ErrorEnvelope/HealthResponse have no DATA_CONTRACTS row and no whitelisted module.",
+      "P05-02 (BLOCKED): MasterDataUpdate/ResourceDTO/OrderPage have no DATA_CONTRACTS row and no whitelisted module.",
+      "P05-03 (this round): JobRequest/JobRef ARE assigned to P05-03 by DATA_CONTRACTS.md:57, but P05-03.allowed_files has no contracts module; JobKind/LeaseToken/Deadline/WorkOutcome are not frozen types at all.",
+      "docs/architecture/issues/README.md already carries ARCH-0006 for the same class of problem."
+    ],
+    "interpretation": "The manifest derives a task's writable set from a file list, while the contract documents assign type ownership by task id. The two are not cross-checked, so a task can be the named owner of a boundary type with no legal place to put it. This is the fourth occurrence of the pattern (P05-01, P05-02, P05-03, plus ARCH-0006) and it is now the dominant blocker class in the repository.",
+    "impact": "Every future task in this phase inherits the same dead end until the two sources of truth are reconciled. Re-issuing tasks one by one cannot fix it.",
+    "recommended_single_next_action": "Contract owner to make one decision that (a) reconciles ARCH-0006 with the P05-01/P05-02/P05-03 boundary-type gaps, and (b) either adds the missing boundary modules to the relevant allowed_files lists or records the types as owned by a preceding task. Do this once, not per task."
+  },
+  "prohibited_actions_not_taken": [
+    "Did not create apps/backend/src/logistics_backend/api/router.py or bootstrap.py (P05-01 deliverables; would mask a P05-01 integration gap under a P05-03 name).",
+    "Did not create any domain entity module or duplicate Job/JobKind/JobStatus/LeaseToken/Deadline (Architecture Constraint 6).",
+    "Did not create a contracts DTO module or duplicate JobRequest/JobRef/WorkOutcome (Architecture Constraint 1/6).",
+    "Did not hand-write contracts/openapi.json (explicitly forbidden: 'contracts/*.json ... only the generator may update them').",
+    "Did not create scripts/export_contracts.py (P02-04 deliverable).",
+    "Did not hardcode 409/422/lease behaviour to make the two Test Cases appear to pass.",
+    "Did not substitute SQLite, an in-memory lease table or a fake worker for the real PostgreSQL boundary.",
+    "Did not add psycopg/sqlalchemy/alembic to uv.lock or apps/backend/pyproject.toml (both are G01 input artifacts; changing them would invalidate G01 and is a project-management decision).",
+    "Did not use a critical skip to make the suite look green.",
+    "Did not write, overwrite or delete any file under artifacts/gates/.",
+    "Did not modify any existing file in the repository (files_modified_by_dsh is empty).",
+    "Did not modify docs/architecture/issues/README.md to register the issue (it is outside the whitelist; the finding is recorded here instead)."
+  ],
+  "architecture_issues_registered": [],
+  "architecture_issues_note": "The boundary-type gap is a blocking condition of this task itself rather than a non-blocking design observation, and registering it would require editing docs/architecture/issues/README.md, which is outside this task's whitelist. It is therefore recorded as ARCH-0010-candidate in this evidence file, with a recommendation to merge it into the single ARCH-0006 decision. Consistent with the P05-01/P05-02 rounds.",
+  "not_verified": [
+    "Test Case 1: worker claims then crashes => lease expires => job re-claimable. UNVERIFIED (no worker, no lease table, no database).",
+    "Test Case 2: stale lease writes result => rejected and the new result is not overwritten. UNVERIFIED (no lease epoch CAS, no persisted row).",
+    "Interface JobService.submit(request: JobRequest, key: str) -> JobRef. UNVERIFIED (no JobService, no JobRequest, no JobRef).",
+    "Interface Worker.run_once() -> WorkOutcome. UNVERIFIED (no worker; WorkOutcome is not even a frozen contract type).",
+    "HTTP endpoints GET /api/v1/jobs/{id} and POST /api/v1/jobs/{id}/cancel (API_CONTRACT.md:33). UNVERIFIED (no app, no router, no HTTP test client).",
+    "Business Rules: PostgreSQL-persisted jobs; default process concurrency 1; long re-solves not run via FastAPI BackgroundTasks; lease epoch prevents a stale worker write-back. UNVERIFIED.",
+    "Algorithm: SKIP LOCKED claim, heartbeat renewal, independent-process deadline; cancellation flag with terminal-state CAS; expired-lease reclamation; retry with a bounded ceiling. UNVERIFIED.",
+    "Edge Cases: empty set, duplicate ids, illegal enum/unit, negative/overflow, missing relation, boundary time equality, stale revision, cancel/timeout, dependency unavailable. All UNVERIFIED. The cancel/timeout and stale-lease cases are precisely the two Test Cases.",
+    "Error Handling mapping: INVALID_INPUT/422, INVALID_TRANSITION, UNSUPPORTED, 409 version/resource/idempotency conflicts, 401/403, 503 dependency unavailable; TIMEOUT/UNKNOWN/INFEASIBLE as typed results rather than 500. UNVERIFIED.",
+    "Logging events p05_03.started/completed/rejected and the structured fields (operation, trace_id, input/output hash, schema_version, status, duration_ms, error code). Not emitted - no P05-03 code path was executed.",
+    "Observability metrics http_requests_total{operation,status_class}, job_queue_wait_seconds, job_lease_expirations_total, commit_conflicts_total{reason}. Not implemented, 0 emitted.",
+    "G05 exit assertions from docs/plan/PHASE_GATES.md:27 - 'API auth, errors, pagination, revision and durable Job acceptable; after killing the worker the lease is re-claimable; no long solve blocks a request'. Entirely without evidence; belongs to the phase, not to this task alone.",
+    "Acceptance Criterion 2 (all three commands exit 0 with real test counts). Not met: exit codes are 4 / 0(hollow) / 2."
+  ],
+  "applicability_notes": [
+    "Not applicable to this task's own output: the candidate/validated/confirmed three-state requirement, version_id/parent_version_id/snapshot_hash on formal plans, and the solver TIMEOUT/UNKNOWN/INFEASIBLE typed-result rule - this task produces no schedule data. They apply to the job payloads it would persist, which cannot be built.",
+    "Test fixtures T1/W1/I1/S1/M1 from docs/plan/TEST_FIXTURES.md are not consumed: this task's Test Cases are lease-concurrency cases, not fixture-numeric cases. No fixture value was invented to fill the gap."
+  ],
+  "known_limitations": [
+    "This record delivers evidence and documentation only. Zero implementation artifacts were produced, by decision.",
+    "The repository has no VCS, so no commit-level provenance exists; the revision label is a self-perturbing content hash.",
+    "The Gate probe was run into gitignored tmp/ only; this role created no Gate record and signed nothing."
+  ],
+  "remaining_risks": [
+    {
+      "risk": "Re-issuing P05-03 without repairing the prerequisite chain reproduces this exact BLOCKED outcome.",
+      "evidence": "This is the 10th consecutive DSH round across phases 03/04/05 producing BLOCKED; the P05-02 round measured that the G05 counter grew only through documentation rows while task-command passes stayed flat.",
+      "impact": "Cost without progress.",
+      "next_owner": "Project management / contract owner"
+    },
+    {
+      "risk": "If the database dependency decision (psycopg + SQLAlchemy/Alembic) is taken after G01 is signed, G01's input hashes drift and G01 must be re-signed.",
+      "evidence": "uv.lock and apps/backend/pyproject.toml are both registered in artifacts/gates/G01.json input_artifact_hashes; docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md records this sequencing hazard explicitly.",
+      "impact": "Double sign-off cost.",
+      "next_owner": "Project management"
+    },
+    {
+      "risk": "Boundary-type ownership remains unresolved, so the same dead end recurs in every remaining Phase 05 task.",
+      "evidence": "ARCH-0006 plus the P05-01/P05-02/P05-03 occurrences.",
+      "impact": "Phase 05 is unstartable as specified.",
+      "next_owner": "Contract owner, merged into the single ARCH-0006 decision"
+    }
+  ],
+  "files_created_by_dsh": [
+    "artifacts/handoffs/P05-03/dsh/evidence.json",
+    "artifacts/handoffs/P05-03/dsh/logs/cmd1-pytest.log",
+    "artifacts/handoffs/P05-03/dsh/logs/cmd2-architecture.log",
+    "artifacts/handoffs/P05-03/dsh/logs/cmd3-export-contracts.log",
+    "artifacts/handoffs/P05-03/dsh/logs/env-probe-modules.log",
+    "artifacts/handoffs/P05-03/dsh/logs/gates-probe-phase05.log",
+    "docs/handoffs/P05-03/dsh.md",
+    "docs/implementation/P05-03.md",
+    "docs/implementation/reports/P05-03.md",
+    "tmp/dsh-p0503/g05/G05.json (non-official probe record, gitignored)"
+  ],
+  "files_modified_by_dsh": [],
+  "files_modified_note": "No existing file was touched. In particular: api/router.py and bootstrap.py were not created (P05-01 scope); no contracts/ or domain module was created; contracts/openapi.json was neither created nor hand-written; uv.lock and apps/backend/pyproject.toml are unchanged; docs/architecture/issues/README.md is unchanged; artifacts/gates/** is unchanged.",
+  "input_hashes": {
+    "TASK_GRAPH.md": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+    "docs/plan/TASK_MANIFEST.json": "aa8dfad3ca0d2059ea5dd8db502f4fbb7d0cc4a2c9b1789d90785f5b9fdc12e5",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md": "8434a8409b4e8568cf21d1a349caaefb405e4e44dc95789a3165e5b221d6e564",
+    "docs/architecture/DOMAIN_CATALOG.md": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+    "docs/architecture/DATA_CONTRACTS.md": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+    "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+    "docs/api/API_CONTRACT.md": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+    "docs/plan/TEST_FIXTURES.md": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+    "docs/prompts/04-api/P05-03-durable-jobs.md": "62f8bf9386358212a3c07dd8fff7424ed9bb11d1837d59526be5ac393b5f38ae",
+    "docs/handoffs/P05-01/dsh.md": "7450fd2b1d476f2a851f40334ebc90ae19240b396761945f62cf864002cfadd0",
+    "docs/handoffs/P05-02/dsh.md": "4dcd789f21b1e32e47284087a6dce5469edc243d6c41c6f9ebdfb51408fbf09b",
+    "artifacts/handoffs/P05-01/dsh/evidence.json": "bb53bde6b108f0da488a7a5583a40433de204bfc6bf142b767bf1a234c5e01d9",
+    "artifacts/handoffs/P05-02/dsh/evidence.json": "06686907c7721c21ae79cbef0a6c2276a4a74ab1c907f94dc7784672291313fa",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "artifacts/gates/G01.json": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+    "scripts/gates.py": "67351df627a747f9cb1d5ea5c8ddcdc01093a10e161f198cc9c35a92ecf49873",
+    "scripts/check_architecture.py": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "packages/contracts/src/logistics_contracts/__init__.py": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67",
+    "packages/domain/src/logistics_domain/__init__.py": "8093a7e57882419f66c72b64f2a84f9f1f0055b60d1ad088392a048b658efa91",
+    "apps/backend/src/logistics_backend/__init__.py": "01a2b2aeae06be11ca9888649fb22376da8984099707512ea70b7f0e40ff4ff1",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "apps/backend/pyproject.toml": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344",
+    "docs/plan/PACKAGE_MANIFEST.json": "77500d24af03ad942ece0efe7e641f405393bfed31d0b9a9dcab6610c1dbea4c",
+    "contracts/README.md": "d0a4ea110736e6cf73d64387346ebc954b5e25de9f511b2b62c22e313e31335a",
+    "contracts/changes/README.md": "2a695d21ffaf8681d4e7c8903c98a8beb6af8fff9340bfcff13cb5ee672e85c5"
+  },
+  "output_hashes": {
+    "implementation_files": "none (0 implementation deliverables)",
+    "contract_version_before": "1.0.0",
+    "contract_version_after": "1.0.0",
+    "contract_version_note": "No frozen contract file was touched. No contract change was proposed, because the boundary-type gap is a blocker to be decided by the contract owner rather than a migration this task may perform.",
+    "check_logs": {
+      "cmd1-pytest.log": "25f2d0c3c220826022e2b96de6ef874aea0f1bfa82e2171de38480daffdd4710",
+      "cmd2-architecture.log": "cabb9484368a603f7310b1a115a7405ec6fba8d4d64e0090acd37fa1ddd27b6e",
+      "cmd3-export-contracts.log": "968035c6d4d9698dffd97a4300203823ecf7d9258dbaf1a12d5918b146bc787d",
+      "env-probe-modules.log": "7c701c088a9f26588e50794c80e2707cb755be322cd4ae153afe28b646afb734",
+      "gates-probe-phase05.log": "8e924b9e84ff7c894b090096b4089a03d37950514067cea22c7dd960fc821661"
+    }
+  },
+  "logging": {
+    "events_emitted": [],
+    "reason": "No P05-03 code path was executed, so p05_03.started / p05_03.completed / p05_03.rejected could not be emitted. The structured substitute is this file's commands[] array plus the five raw logs.",
+    "metrics": {
+      "http_requests_total": 0,
+      "job_queue_wait_seconds": 0,
+      "job_lease_expirations_total": 0,
+      "commit_conflicts_total": 0,
+      "note": "Zero because nothing runs. Recorded honestly rather than omitted; see frozen_interface_unreachable.observability_gap for the scope-overlap finding."
+    }
+  },
+  "secrets_or_personal_data_logged": false,
+  "requested_status": "BLOCKED",
+  "signs_gate": false,
+  "gate_signed": null,
+  "next_actions": [
+    "Do not re-issue P05-03 until G04 is signed and P05-02 has a valid Z_PRECHECK_PASSED.",
+    "Follow docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md: repair G01 (4 missing records: 3 ZCode prechecks + 1 Codex review) first.",
+    "Project management to take the environment decision once and before G01's final sign-off: add the database driver (psycopg + SQLAlchemy/Alembic) to the workspace lock, install an HTTP test client, stand up an isolated PostgreSQL, define TEST_DATABASE_URL, and write the missing Phase 01 environment manual.",
+    "Contract owner to make one merged decision covering ARCH-0006 and the P05-01/P05-02/P05-03 boundary-type gaps, including a legal home for JobRequest/JobRef (this task's own contract types) and a ruling on JobKind/LeaseToken/Deadline/WorkOutcome, which are not frozen types.",
+    "Deliver P02-01 -> P02-04 (P02-04 also provides scripts/export_contracts.py, without which every task's third command fails), sign G02; then P03-01 -> P03-04, sign G03; then re-issue P04-01/P04-02, sign G04; then P05-01 and P05-02.",
+    "Only then re-issue P05-03, and pre-accept it against a real isolated PostgreSQL where a worker is actually killed mid-claim and a stale lease actually attempts a write-back.",
+    "Do not start Phase 06 or any later phase: G02, G03, G04 and G05 are all unsigned."
+  ],
+  "reviewer": "DSH (initial-development agent A)"
+}

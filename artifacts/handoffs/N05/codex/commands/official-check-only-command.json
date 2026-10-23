@@ -1,0 +1,20 @@
+{
+  "check_id": "official-check-only",
+  "argv": [
+    "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+    "run",
+    "python",
+    "scripts/gates.py",
+    "--phase",
+    "01",
+    "--revision",
+    "auto",
+    "--check-only"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-04T20:45:51.528449+00:00",
+  "finished_at": "2026-10-04T20:45:51.839879+00:00",
+  "log_path": "artifacts/handoffs/N05/codex/commands/official-check-only.log",
+  "log_sha256": "011e55aafa2f44346c7e3b21def9d345a04027015446b3fbc6940715bcfa97be"
+}

@@ -1,0 +1,11 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE", "-B", "tmp/N05/probes.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:33:57.637002+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+{"passed": true, "count": 52, "output": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\artifacts\\handoffs\\N05\\codex\\independent-probes.json"}
+
+## stderr
+
+## exit_code: 0

@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-01",
+  "scene": "workspace-bootstrap",
+  "phase_gate": "G01",
+  "status": "READY_FOR_ZCODE",
+  "generated_at": "2026-09-12T00:00:00+00:00",
+  "code_revision": "content-sha256:3a522f70f304188a375b601cf8eff51dc19eb8812b85c7883070b5ed2a0da7b8",
+  "artifacts": {
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5"
+    },
+    "package_lock": {
+      "path": "package-lock.json",
+      "sha256": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458"
+    },
+    "root_pyproject": {
+      "path": "pyproject.toml",
+      "sha256": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886"
+    },
+    "root_package_json": {
+      "path": "package.json",
+      "sha256": "ce0558100177c7d49889bedf4527e1995a52c066d5f7d6e737b03c6be63f7755"
+    },
+    "python_version_file": {
+      "path": ".python-version",
+      "sha256": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d"
+    },
+    "node_version_file": {
+      "path": ".node-version",
+      "sha256": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56"
+    },
+    "playwright_config": {
+      "path": "playwright.config.ts",
+      "sha256": "1bba66b20430fac67663744d35f847228ca65ab42f821dae9d0d4a9ac6378d15"
+    },
+    "frontend_package_json": {
+      "path": "apps/frontend/package.json",
+      "sha256": "7a38cc372c366b088043d919f76430ac2716beebba16a2dd1f78d27e1c740b31"
+    },
+    "backend_pyproject": {
+      "path": "apps/backend/pyproject.toml",
+      "sha256": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344"
+    },
+    "unit_test": {
+      "path": "tests/unit/test_p01_01_workspace_bootstrap.py",
+      "sha256": "4210258a3f3ebb92a7c0b2a48139375f165e585232ce0b6eb4e3ecc23eb36c26"
+    },
+    "integration_test": {
+      "path": "tests/integration/test_p01_01_workspace_bootstrap.py",
+      "sha256": "160c74f89cb6ae51d828d240d0a59c7e878861beceb7731508d6a5571ff8092e"
+    }
+  },
+  "command_logs": {
+    "artifacts/handoffs/P01-01/dsh/logs/npm_ci.log": {
+      "sha256": "1f2fc355303c54f283d3bbe356360857394a3230238c51775b1a9f76edfa955d",
+      "bytes": 294
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/pytest.log": {
+      "sha256": "75fa0e13c0a2b243cbe1c5386ed7b3f721372501255b9ccf7e1d42a7ac748bb2",
+      "bytes": 490
+    },
+    "artifacts/handoffs/P01-01/dsh/logs/uv_sync_frozen.log": {
+      "sha256": "3226cdb567e9e722372b86e8fb391aa32f7f037e8a41781ec6223701741ffe90",
+      "bytes": 309
+    }
+  },
+  "python_workspace_members": [
+    "logistics-agents",
+    "logistics-backend",
+    "logistics-contracts",
+    "logistics-domain",
+    "logistics-evaluation",
+    "logistics-optimization",
+    "logistics-simulation"
+  ],
+  "importable_packages": [
+    "logistics_agents",
+    "logistics_backend",
+    "logistics_contracts",
+    "logistics_domain",
+    "logistics_evaluation",
+    "logistics_optimization",
+    "logistics_simulation"
+  ],
+  "python_workspace_member_modules": {
+    "logistics_domain": "packages/domain/src/logistics_domain/__init__.py",
+    "logistics_contracts": "packages/contracts/src/logistics_contracts/__init__.py",
+    "logistics_optimization": "packages/optimization/src/logistics_optimization/__init__.py",
+    "logistics_simulation": "packages/simulation/src/logistics_simulation/__init__.py",
+    "logistics_agents": "packages/agents/src/logistics_agents/__init__.py",
+    "logistics_evaluation": "packages/evaluation/src/logistics_evaluation/__init__.py",
+    "logistics_backend": "apps/backend/src/logistics_backend/__init__.py"
+  },
+  "dependencies_lock": {
+    "uv_lock_path": "uv.lock",
+    "uv_lock_sha256": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "package_lock_path": "package-lock.json",
+    "package_lock_sha256": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+    "locked_package_count": 40,
+    "npm_lockfile_version": 3,
+    "frozen_install_command": "uv sync --frozen",
+    "npm_install_command": "npm ci"
+  },
+  "tool_versions": {
+    "python": "3.12.10",
+    "python_executable": "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "uv": "uv 0.12.13 (0ebbd9274 2026-09-10 x86_64-pc-windows-msvc)",
+    "uv_executable": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\tools\\bin\\uv.exe",
+    "node": "24.18.0",
+    "npm": "11.16.0",
+    "os": "Windows 11"
+  },
+  "environment_variables_referenced": [
+    "TEST_DATABASE_URL",
+    "PLAYWRIGHT_BASE_URL",
+    "UV_LINK_MODE"
+  ],
+  "secrets_recorded": [],
+  "legacy_demo": {
+    "path": "demo/",
+    "read_only": true,
+    "file_count": 173,
+    "hash_algorithm": "sha256",
+    "tree_sha256": "c9a1b33e4a0acf19e0b8c041d76f33b559c8843d76b3d0f8c23f7daf2687d337",
+    "tree_hash_definition": "sha256 over sorted '<relative_path>\\0<file_sha256>\\n' for every demo/ file registered by docs/architecture/BASELINE_INVENTORY.json (the G00 gate rejects directory paths, so the inventory registers files only)",
+    "demo_zip": {
+      "path": "demo.zip",
+      "sha256": "e0350b75239807047b1dbdb25f69fed5c6c26e34929731d0658db83a58f0e904"
+    },
+    "baseline_inventory": "docs/architecture/BASELINE_INVENTORY.json"
+  },
+  "validation_commands": [
+    {
+      "id": "pytest",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_01_workspace_bootstrap.py",
+        "tests/integration/test_p01_01_workspace_bootstrap.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/pytest-q.log"
+    },
+    {
+      "id": "uv_sync_frozen",
+      "argv": [
+        "uv",
+        "sync",
+        "--frozen"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/uv-sync-frozen.log"
+    },
+    {
+      "id": "npm_ci",
+      "argv": [
+        "npm",
+        "ci"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "log_path": "artifacts/handoffs/P01-01/dsh/logs/npm-ci.log"
+    }
+  ],
+  "limitations": [
+    "Phase 01 delivers the workspace skeleton only: no domain entity, solver, simulation, API or UI behaviour exists yet.",
+    "The root README.md declared by pyproject.toml is absent in this checkout; hatchling is not asked to build the root project (package = false).",
+    "uv 0.12.13 is not installed system-wide on this host; it was bootstrapped into tools/bin/uv.exe for this task and is not part of the workspace deliverable set.",
+    "No Git repository exists in this checkout, so code_revision is a content hash of the bootstrap artifact set.",
+    "Playwright is installed and configured but no e2e spec exists before P24-01; an empty Playwright run is not acceptance evidence."
+  ]
+}

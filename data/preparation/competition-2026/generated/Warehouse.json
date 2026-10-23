@@ -1,0 +1,82 @@
+[
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          3600
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1",
+    "id": "7cbb263f-0229-518a-9190-490db79766ea",
+    "kind": "Warehouse",
+    "node_id": "9c03f1fa-126b-5004-8ac2-b0913217a625",
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "timezone": "UTC"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1",
+    "id": "f6984808-3bf2-5ff2-bc03-3b1b598cd7ae",
+    "kind": "Warehouse",
+    "node_id": "2b728566-7cf5-5fb7-82cd-b6337c3024b8",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "timezone": "UTC"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1",
+    "id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "kind": "Warehouse",
+    "node_id": "82774a13-729e-596a-87c0-62f65fdb0c67",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "timezone": "UTC"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H2",
+    "id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "kind": "Warehouse",
+    "node_id": "b6e97486-52cb-527e-bb09-2edb0f59f1e6",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "timezone": "UTC"
+  }
+]

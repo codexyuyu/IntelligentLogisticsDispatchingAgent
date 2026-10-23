@@ -1,0 +1,36 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260915044035
+Username: YUYU\30382
+RunAs User: YUYU\30382
+Configuration Name: 
+Machine: YUYU (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -NoProfile -NonInteractive -Command [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false); $OutputEncoding = [System.Text.UTF8Encoding]::new($false); $uv = "D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\tools\bin\uv.exe"
+$logDir = "artifacts\handoffs\P03-01\dsh\logs"
+$log = Join-Path $logDir "cmd2-architecture.log"
+Start-Transcript -Path $log -Force | Out-Null
+Write-Output "# argv: uv run python scripts/check_architecture.py (P03-01 mandatory command 2)"
+Write-Output "# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent"
+& $uv run python scripts/check_architecture.py 2>&1
+Write-Output "EXIT_CODE=$LASTEXITCODE"
+Stop-Transcript | Out-Null
+Write-Output "=== cmd2 tail ==="; Get-Content $log | Select-Object -Last 8
+Write-Output "=== hashes ==="; Get-ChildItem $logDir -File | ForEach-Object { "{0}  {1}  {2} bytes" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name, $_.Length }
+Process ID: 34764
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+# argv: uv run python scripts/check_architecture.py (P03-01 mandatory command 2)
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+
+EXIT_CODE=0
+**********************
+Windows PowerShell transcript end
+End time: 20260915044035
+**********************

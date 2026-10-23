@@ -1,0 +1,176 @@
+{
+  "schema_version": "project-review/1",
+  "review_as_of": "2026-10-01",
+  "generated_at_utc": "2026-10-01T13:59:49.683746+00:00",
+  "reviewer": "Codex",
+  "scope": "current implementation inspection and execution prompt corrections",
+  "status": "REVIEW_COMPLETE_WITH_FINDINGS",
+  "signs_gate": false,
+  "next_task": "P01-02 / rework-2026-10-01",
+  "official_gate_integrity": {
+    "G00": {
+      "before_sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "after_sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "unchanged": true
+    },
+    "G01": {
+      "before_sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "after_sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "unchanged": true
+    }
+  },
+  "g01_recorded_input_hash_count": 40,
+  "g01_recorded_input_drift": [],
+  "commands": [
+    {
+      "argv": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp",
+        "tmp/codex-review-20261001-tests",
+        "--tb=short"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "environment_overrides": {},
+      "exit_code": 1,
+      "log_path": "artifacts/reviews/2026-10-01/codex/pytest-current.log",
+      "log_sha256": "31d0c57f7572a5ae3837b4c78bdadf116e3fd02f4411e914bbfd439fcd386144",
+      "test_counts": {
+        "failed": 5,
+        "passed": 182,
+        "skipped": 0,
+        "collected": 187
+      }
+    },
+    {
+      "argv": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp",
+        "tmp/codex-review-20261001-isolated-tests",
+        "--tb=short"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "tmp/codex-review-20261001-uv-cache",
+        "UV_OFFLINE": "1"
+      },
+      "exit_code": 1,
+      "log_path": "artifacts/reviews/2026-10-01/codex/pytest-isolated-cache.log",
+      "log_sha256": "02b989ad2eff11f83f66ea5cc1aa133c14e574e511613e7d26c87fd400d62b8f",
+      "test_counts": {
+        "failed": 1,
+        "passed": 186,
+        "skipped": 0,
+        "collected": 187
+      }
+    },
+    {
+      "argv": [
+        ".venv/Scripts/python.exe",
+        "scripts/gates.py",
+        "--phase",
+        "01",
+        "--revision",
+        "auto",
+        "--check-only"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "environment_overrides": {},
+      "exit_code": 1,
+      "log_path": "artifacts/reviews/2026-10-01/codex/g01-freshness-current.log",
+      "log_sha256": "e05f093db8afc3ca00680b081e9f91dcbe2279c67ac5e230a04778c5d56046d8",
+      "test_counts": {}
+    },
+    {
+      "argv": [
+        ".venv/Scripts/python.exe",
+        "scripts/check_architecture.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "environment_overrides": {},
+      "exit_code": 0,
+      "log_path": "artifacts/reviews/2026-10-01/codex/architecture-current.log",
+      "log_sha256": "cabb9484368a603f7310b1a115a7405ec6fba8d4d64e0090acd37fa1ddd27b6e",
+      "test_counts": {}
+    },
+    {
+      "argv": [
+        "tools/bin/uv.exe",
+        "lock",
+        "--check"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "tmp/codex-review-20261001-uv-cache",
+        "UV_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "log_path": "artifacts/reviews/2026-10-01/codex/lock-check-current.log",
+      "log_sha256": "c683dc7830882ca7628b123b7e041dcbdad24336bf4000be5a66db8a084a1473",
+      "test_counts": {}
+    },
+    {
+      "argv": [
+        ".venv/Scripts/python.exe",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "environment_overrides": {},
+      "exit_code": 0,
+      "log_path": "artifacts/reviews/2026-10-01/codex/plan-before.log",
+      "log_sha256": "041287126de9fac50e99ddf4f6a2cfcfa77726379adfbd0d5b596f30cd11b43e",
+      "test_counts": {}
+    },
+    {
+      "argv": [
+        ".venv/Scripts/python.exe",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "environment_overrides": {},
+      "exit_code": 0,
+      "log_path": "artifacts/reviews/2026-10-01/codex/plan-after.log",
+      "log_sha256": "041287126de9fac50e99ddf4f6a2cfcfa77726379adfbd0d5b596f30cd11b43e",
+      "test_counts": {}
+    }
+  ],
+  "probe_results_path": "artifacts/reviews/2026-10-01/codex/snapshot-and-evidence-probes.json",
+  "probe_results_sha256": "dad4947ea0679e2bea89ca60521fa4a232667c57e607695782b253e0bf856451",
+  "prompt_and_document_outputs": {
+    "AGENTS.md": "b1934bc5a34b056d73974e568ac986d2a5fb30eaa981124a131043343cdb0d97",
+    "README.md": "95668dc63f265107e8fa42b1b43c1390af4218d1bb57259c3b587cf0636a4542",
+    "AI-CODING-PLAN.md": "56a4558c3e80febb89b8422dbeaae477ecbcf2c5e2d7be0690bf6713f37abeae",
+    "docs/prompts/README.md": "a24289d9494171db7bfbb97e7be9e02a8886183836d3e74e593769bf9ced2aa3",
+    "docs/prompts/01-foundation/P01-02-checks-and-gate-runner.md": "89b34bc99fb2498943700538cc3b4a28af1b68f5e2cdc72208d8c7ae861e779a",
+    "docs/agent-toolchain/README.md": "c1b48d258bc853ddb5f207e8fede1d2edf04ebc1e40ed2a98014f597ad5197d0",
+    "docs/agent-toolchain/00-common.md": "dc19f47c7270f9b33e51658d8ccfeda113a6df028cc567020c9c0543fa6e5fbf",
+    "docs/agent-toolchain/04-dsh-development.md": "915eb2fffefa187b874932b7f4b2146d991f57d9234b8473ec6bc90f0d0088c8",
+    "docs/agent-toolchain/10-daily-dispatch.md": "eeff340c036447f5eec0815643c05aaab1ca6166bb9edcbf51da1551178d7f39",
+    "docs/agent-toolchain/11-dsh-repair-g01.md": "78a6728a1aee4be7ac1b3cc74d6d28e0db00b2b33c4e399d4def648b2e557180",
+    "docs/agent-toolchain/current-project-review-2026-10-01.md": "9303b879df006edaee42b6a78341fb0d36a82c15a46d45f61377c8344a54fb4a",
+    "docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md": "3d13963dc728e93b858537e9ae8e19097db75e42ea77df450551148c6130b97f"
+  },
+  "local_links_checked": true,
+  "local_link_errors": [],
+  "limitations": [
+    "Business source files and tests were not changed; Gate defects remain assigned to DSH.",
+    "Initial cache permission failures were isolated; existing code then produced 186 passed / 1 failed.",
+    "No Gate or independent precheck was signed; no DSH user profile was edited.",
+    "No real PostgreSQL, API, worker, solver, simulation, LLM or browser business acceptance was run."
+  ]
+}

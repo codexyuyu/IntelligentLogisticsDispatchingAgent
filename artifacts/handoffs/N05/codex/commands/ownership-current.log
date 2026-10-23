@@ -1,0 +1,64 @@
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/check_ownership.py", "--json"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:36:11.257919+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+{
+  "schema_version": "1.0.0",
+  "check": "ownership-and-migration",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "manifest": "OWNERSHIP.json",
+  "manifest_schema_version": "1.0.0",
+  "owner_count": 2,
+  "path_rule_count": 61,
+  "legacy_status_tables": {
+    "EventType": 5,
+    "JobStatus": 5,
+    "OperationStatus": 6,
+    "PlanStatus": 8,
+    "SolveStatus": 10,
+    "TemperatureZone": 2
+  },
+  "coverage": {
+    "files_scanned": 4346,
+    "files_per_owner": {
+      "A": 4342,
+      "B": 4
+    },
+    "default_owner_fallbacks": []
+  },
+  "pending_owner_paths": [
+    {
+      "code": "OWN-B-PATH-PENDING",
+      "detail": "B-owned prefix 'tests/solver/' is declared but not created yet (later phase delivers it)"
+    },
+    {
+      "code": "OWN-B-PATH-PENDING",
+      "detail": "B-owned prefix 'tests/simulation/' is declared but not created yet (later phase delivers it)"
+    },
+    {
+      "code": "OWN-B-PATH-PENDING",
+      "detail": "B-owned prefix 'data/transport/' is declared but not created yet (later phase delivers it)"
+    },
+    {
+      "code": "OWN-B-PATH-PENDING",
+      "detail": "B-owned prefix 'data/simulation/' is declared but not created yet (later phase delivers it)"
+    },
+    {
+      "code": "OWN-B-PATH-PENDING",
+      "detail": "B-owned prefix 'benchmarks/transport/' is declared but not created yet (later phase delivers it)"
+    },
+    {
+      "code": "OWN-B-PATH-PENDING",
+      "detail": "B-owned prefix 'benchmarks/simulation/' is declared but not created yet (later phase delivers it)"
+    }
+  ],
+  "passed": true,
+  "violation_count": 0,
+  "violations": []
+}
+
+## stderr
+
+## exit_code: 0

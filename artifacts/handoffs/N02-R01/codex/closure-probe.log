@@ -1,0 +1,11 @@
+{"probe": "saved empty ScenarioBundle", "accepted": true, "result": true, "expected_accepted": true, "matches_expected": true}
+{"probe": "ScenarioRef dataset version mismatch", "accepted": false, "exception": "scenario identity mismatch", "expected_accepted": false, "matches_expected": true}
+{"probe": "ScenarioInput expected_plan injection", "accepted": false, "exception": "missing or extra fields: {'expected_plan'}", "expected_accepted": false, "matches_expected": true}
+{"probe": "calendar overlap negative", "accepted": false, "exception": "overlap/order/range", "expected_accepted": false, "matches_expected": true}
+{"probe": "CalendarDTO mapped overlap; harness limitation", "accepted": true, "result": null, "expected_accepted": false, "matches_expected": false}
+{"probe": "RegionRef empty nodes; harness limitation", "accepted": true, "result": null, "expected_accepted": false, "matches_expected": false}
+{"probe": "OnArcLocation reversed timestamps; harness limitation", "accepted": true, "result": null, "expected_accepted": false, "matches_expected": false}
+{"probe": "Scenario dangling warehouse/missing calendar binding; harness limitation", "accepted": true, "result": true, "expected_accepted": false, "matches_expected": false}
+{"probe": "harness hardcoded vehicle EntityRef", "accepted": true, "result": null, "expected_accepted": true, "matches_expected": true}
+{"probe": "harness rejects driver EntityRef despite Driver master entity", "accepted": false, "exception": "unknown entity kind in example", "expected_accepted": false, "matches_expected": true}
+{"normative_gap_reproduced": true, "checker_errors": [], "definition_occurrences": 10, "harness_semantic_limits": 4, "runtime_acceptance": "NOT_RUN"}

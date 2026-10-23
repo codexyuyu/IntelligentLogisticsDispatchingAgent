@@ -1,0 +1,7 @@
+########## RE-VERIFICATION PASS 2 (2026-09-15)
+########## cmd1: uv run pytest tests/unit/test_p02_02_master_entities.py tests/integration/test_p02_02_master_entities.py -q
+ERROR: file or directory not found: tests/unit/test_p02_02_master_entities.py
+
+
+no tests ran in 0.00s
+EXIT_CODE=4

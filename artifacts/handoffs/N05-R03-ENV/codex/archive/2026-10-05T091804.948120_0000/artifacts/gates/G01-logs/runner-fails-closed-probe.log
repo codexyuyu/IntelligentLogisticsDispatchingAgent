@@ -1,0 +1,12 @@
+# check: runner-fails-closed-probe
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "-c", "import sys; sys.exit(1)"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T09:05:01.612535+00:00
+# expectation: must fail
+
+## stdout
+
+## stderr
+
+## exit_code: 1
+## duration_ms: 109

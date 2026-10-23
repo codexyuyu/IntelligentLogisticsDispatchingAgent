@@ -1,0 +1,14 @@
+{
+  "check_id": "initial-audit",
+  "argv": [
+    ".venv\\Scripts\\python.exe",
+    "-B",
+    "tmp/N05-R01/audit.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-05T03:34:28.910412+00:00",
+  "finished_at": "2026-10-05T03:34:29.910666+00:00",
+  "log_path": "artifacts/handoffs/N05-R01/codex/commands/initial-audit.log",
+  "log_sha256": "f36b60e13dfe012234b664ef08a368bc74a22149669bffccf955503cc5f01720"
+}

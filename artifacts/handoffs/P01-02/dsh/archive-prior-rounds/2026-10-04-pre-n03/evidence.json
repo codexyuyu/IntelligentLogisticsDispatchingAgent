@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-02",
+  "round": "rework-2026-10-01",
+  "scene": "checks-and-gate-runner-rework",
+  "phase_gate": "G01",
+  "status": "READY_FOR_ZCODE",
+  "generated_at": "2026-10-01T14:21:41.141707+00:00",
+  "role": "dsh",
+  "signs_gate": false,
+  "candidate": {
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "vcs": "no .git in this checkout; identity is the content-sha256 candidate manifest",
+    "formula": "code_revision = \"content-sha256:\" + sha256(\"\\n\".join(f\"{path}\\0{sha256(content)}\")) over the relevant-file whitelist, paths sorted byte-wise; dirty_tree_hash = same rows as f\"{path}\\0{size}\\0{sha256(content)}\"",
+    "relevant_file_count": 71,
+    "relevant_files_sample": [
+      ".github/workflows/ci.yml",
+      ".node-version",
+      ".python-version",
+      "OWNERSHIP.json",
+      "PROJECT_MASTER_PLAN.md",
+      "TASK_GRAPH.md",
+      "apps/backend/pyproject.toml",
+      "apps/backend/src/logistics_backend/__init__.py",
+      "apps/frontend/package.json",
+      "apps/frontend/src/test/setup.ts",
+      "apps/frontend/vitest.config.ts",
+      "contracts/README.md"
+    ],
+    "code_revision": "content-sha256:afbc7e4c72fa384665cc19fc917d5a1047f4847f2b482e5f16605f15eb0d9af0",
+    "dirty_tree_hash": "content-sha256:f1eced23323f788ca822675d854df12710a235c669a5e710aededaa6c21bbc2a"
+  },
+  "artifacts": {
+    "gate_runner": {
+      "path": "scripts/gates.py",
+      "sha256": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e"
+    },
+    "unit_test": {
+      "path": "tests/unit/test_p01_02_checks_and_gate_runner.py",
+      "sha256": "8537ac2d7da78ddfe523a1fc82b31e71569bae2c009b6c4995a81bc6c0a10d63"
+    },
+    "integration_test": {
+      "path": "tests/integration/test_p01_02_checks_and_gate_runner.py",
+      "sha256": "c2563290c021b5ed8a42084ff6fd4cb15c4ccee2a978a3e91527a9bdc6234414"
+    },
+    "task_doc": {
+      "path": "docs/implementation/P01-02.md",
+      "sha256": "28197dfb8fcdc8d8bcadc2e6821411e905ee7b70d423d44ee0134ee50e47ed4c"
+    },
+    "completion_report": {
+      "path": "docs/implementation/reports/P01-02.md",
+      "sha256": "edd2c01815abd2f809994683de62f94645931129dd27c5c5062ff67767c7887d"
+    },
+    "handoff": {
+      "path": "docs/handoffs/P01-02/dsh.md",
+      "sha256": "5cb4862e8bbd37c7711c0edb1a2bac418eb7e171a142c8c0c8ef02e1f379684d"
+    },
+    "probe_script": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/negative-probes.py",
+      "sha256": "bb324032cbf457950e9940a55f1afd80b393bbb0225c54bead14ddaff9123ef0"
+    },
+    "previous_round_evidence": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/previous-round-evidence.json",
+      "sha256": "f216a3e9693002cb6aebdfbe3e09083217e5ef5378aa75354b97ec8236d56f30"
+    },
+    "phase_gate_evidence": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4"
+    },
+    "previous_gate_evidence": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c"
+    }
+  },
+  "command_logs": {
+    "cmd1-p01-02-suites.log": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd1-p01-02-suites.log",
+      "sha256": "7226c1c34c5f6f954a6fa706798788a2757bc6060a2d6f47f29a385891dfa992",
+      "bytes": 368
+    },
+    "cmd2-check-architecture.log": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd2-check-architecture.log",
+      "sha256": "3374b32c9c5e8ee09bf5b7154fa5d5372a73d54ecca683838476ac925dd0cbd8",
+      "bytes": 150
+    },
+    "cmd3-full-suites.log": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd3-full-suites.log",
+      "sha256": "2d19c3e5f3be08bcc1039089f2292d681abcd34ea7253b566eb178d1c9092d44",
+      "bytes": 5990
+    },
+    "cmd4-gate-check-only.log": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd4-gate-check-only.log",
+      "sha256": "3e339129854c879cbe58337c8ddda057ceca6a303fa43f6cc4877a615a119adf",
+      "bytes": 2548
+    },
+    "negative-probes.log": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/negative-probes.log",
+      "sha256": "2b70b6996897909899b36a506d6876469a78a747710d6675b68b3a23e9627844",
+      "bytes": 3138
+    },
+    "env-lock-check.log": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/env-lock-check.log",
+      "sha256": "e9ce1e339592ab5521241f8b4f9e004d443a33c8bcef1a8b1f4dd14e2b155bba",
+      "bytes": 752
+    },
+    "baseline-p01-02-suites.log": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/baseline-p01-02-suites.log",
+      "sha256": "94cad97806ba4078cc0b44dc3580874702ee3c9c8e642fcdc98fee04a5137b4d",
+      "bytes": 5072
+    },
+    "revision-stability-probe.log": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/revision-stability-probe.log",
+      "sha256": "d3f67e2af32bcbc7096cdeac1b36c92b5ec61ab8e565cac9d1f3b3985c99a98b",
+      "bytes": 1068
+    },
+    "ownership-fallback-proof.log": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/ownership-fallback-proof.log",
+      "sha256": "8d7a5e48a12d9d2e7f58b440fb92ef8306a2bbff56d928758561d45af01839d1",
+      "bytes": 302
+    },
+    "pre-change-hashes.txt": {
+      "path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/pre-change-hashes.txt",
+      "sha256": "f483ba4485ce8aa5112b8608d99962dc1d68482a611e2a2a331fefc6b5d452c8",
+      "bytes": 648
+    }
+  },
+  "counts": {
+    "p01_02_suites": {
+      "collected": 96,
+      "passed": 96,
+      "failed": null,
+      "skipped": null,
+      "errors": null
+    },
+    "full_suites": {
+      "collected": 226,
+      "passed": 224,
+      "failed": 2,
+      "skipped": null,
+      "errors": null
+    },
+    "baseline_p01_02_suites": {
+      "collected": 57,
+      "passed": 56,
+      "failed": 1,
+      "skipped": null,
+      "errors": null
+    },
+    "layer_check_modules_scanned": 7,
+    "layer_check_violations": 0
+  },
+  "commands_executed": [
+    {
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_02_checks_and_gate_runner.py",
+        "tests/integration/test_p01_02_checks_and_gate_runner.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd1-p01-02-suites.log"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/check_architecture.py"
+      ],
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd2-check-architecture.log"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q"
+      ],
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd3-full-suites.log",
+      "note": "the two failures are the pre-existing AGENTS.md ownership fallbacks, not this candidate"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/gates.py",
+        "--phase",
+        "01",
+        "--revision",
+        "auto",
+        "--check-only"
+      ],
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/cmd4-gate-check-only.log",
+      "note": "current-state freshness check; NOT a gate sign-off"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/negative-probes.py"
+      ],
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/negative-probes.log"
+    },
+    {
+      "argv": [
+        "uv",
+        "lock",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P01-02/dsh/rework-2026-10-01/env-lock-check.log"
+    }
+  ],
+  "defects_fixed": {
+    "1_worktree_dependent_test": {
+      "change": "controlled temp-repo scenarios for missing pre-check / missing review / input drift; the real-tree probe asserts only invariants matching current inputs and cross-checks the runner verdict against a test-side recomputation; the official record hash is captured before the call",
+      "test": "tests/unit/test_p01_02_checks_and_gate_runner.py, tests/integration/test_p01_02_checks_and_gate_runner.py::test_repository_phase_one_gate_is_fail_closed"
+    },
+    "2_candidate_self_perturbation": {
+      "change": "whitelist relevant-file manifest + documented formulas; candidate and tree fingerprint recorded separately; scratch/evidence/report/review writes no longer move either value",
+      "probe": "negative-probes.log: tmp_log / mimosa_state / handoff_log / evidence_generator all false; relevant source change true"
+    },
+    "3_empty_precheck_hashes": {
+      "change": "non-empty, well-formed, on-disk-fresh input map that covers the required inputs; task_id, phase_gate, reviewer and status must match; Codex review likewise rejects an empty set",
+      "probe": "negative-probes.log: empty_precheck_input_hashes_accepted false, complete_precheck_accepted true"
+    },
+    "4_status_only_previous_gate": {
+      "change": "F2/F3/F4/F6 validation of fields, commands, integer exit codes, raw logs, frozen inputs and dependency hashes; self/forward references and dependency cycles rejected; log_hash and log_sha256 accepted per concrete schema, neither present is rejected",
+      "probe": "negative-probes.log: previous_gate_status_without_evidence_accepted false, complete_previous_gate_accepted true"
+    }
+  },
+  "verification_probes": {
+    "observed": {
+      "empty_precheck_input_hashes_accepted": false,
+      "complete_precheck_accepted": true,
+      "previous_gate_status_without_evidence_accepted": false,
+      "complete_previous_gate_accepted": true,
+      "tmp_log_changes_revision": false,
+      "mimosa_state_changes_revision": false,
+      "handoff_log_changes_revision": false,
+      "evidence_generator_changes_dirty_tree_hash": false,
+      "relevant_source_change_moves_revision": true,
+      "relevant_source_change_moves_dirty_tree": true
+    },
+    "expected": {
+      "empty_precheck_input_hashes_accepted": false,
+      "complete_precheck_accepted": true,
+      "previous_gate_status_without_evidence_accepted": false,
+      "complete_previous_gate_accepted": true,
+      "tmp_log_changes_revision": false,
+      "mimosa_state_changes_revision": false,
+      "handoff_log_changes_revision": false,
+      "evidence_generator_changes_dirty_tree_hash": false,
+      "relevant_source_change_moves_revision": true,
+      "relevant_source_change_moves_dirty_tree": true
+    },
+    "matches": {
+      "empty_precheck_input_hashes_accepted": true,
+      "complete_precheck_accepted": true,
+      "previous_gate_status_without_evidence_accepted": true,
+      "complete_previous_gate_accepted": true,
+      "tmp_log_changes_revision": true,
+      "mimosa_state_changes_revision": true,
+      "handoff_log_changes_revision": true,
+      "evidence_generator_changes_dirty_tree_hash": true,
+      "relevant_source_change_moves_revision": true,
+      "relevant_source_change_moves_dirty_tree": true
+    },
+    "all_match": true
+  },
+  "freshness_after_this_round": {
+    "official_g01_record_sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+    "official_g01_record_untouched_by_this_round": true,
+    "g01_recorded_inputs_now_stale": [
+      "docs/implementation/P01-02.md",
+      "docs/implementation/reports/P01-02.md",
+      "scripts/gates.py"
+    ],
+    "g00_recorded_inputs_now_stale": [
+      "docs/architecture/issues/README.md"
+    ],
+    "p01_01_precheck_now_stale": [
+      "scripts/gates.py"
+    ]
+  },
+  "out_of_scope_blockers": [
+    {
+      "id": "R-G00-DRIFT",
+      "finding": "the official artifacts/gates/G00.json record's frozen input docs/architecture/issues/README.md changed on 2026-09-15 06:26, after the record was written on 2026-09-14 06:54",
+      "impact": "by F2/F6 the G00 evidence no longer holds, so G01 and every downstream gate stay blocked even after the pre-check and Codex review records exist",
+      "owner": "Phase 00 owner / project management",
+      "fix": "re-record G00 on the current candidate with tools/ai_coding_plan/validate_plan.py --record-g00 (outside this task's write scope; DSH did not modify it)"
+    },
+    {
+      "id": "R-OWNERSHIP-AGENTS-MD",
+      "finding": "scripts/check_ownership.py reports default_owner_fallbacks == ['AGENTS.md']; AGENTS.md was created by the 2026-10-01 prompt round at 06:59, after the Codex baseline run at 04:43",
+      "impact": "tests/unit and tests/integration P01-03 ownership assertions fail, so the phase regression is not green",
+      "owner": "P01-03 / project management",
+      "fix": "add an explicit ownership rule for AGENTS.md in OWNERSHIP.json (outside this task's write scope)"
+    }
+  ],
+  "tool_versions": {
+    "python": "3.12.10",
+    "uv": "uv 0.12.13 (0ebbd9274 2026-09-10 x86_64-pc-windows-msvc)",
+    "uv_cache_dir": "tmp/dsh-p01-02-rework/uv-cache (the default user cache is not writable on this host)",
+    "os": "Windows 11"
+  },
+  "environment_notes": [
+    "UV_CACHE_DIR was redirected into the repository because the default uv cache directory is not writable for this session; uv lock --check still exits 0 and uv.lock was not modified.",
+    "No database, solver, simulation, LLM or browser acceptance is in scope for Phase 01."
+  ],
+  "secrets_recorded": [],
+  "gate_state": {
+    "gate_id": "G01",
+    "status": "failed",
+    "failed_checks": [
+      "zcode-precheck:P01-01",
+      "zcode-precheck:P01-02",
+      "zcode-precheck:P01-03",
+      "codex-review"
+    ],
+    "note": "G01 is NOT signed. DSH does not write ZCode pre-acceptance or Codex review records; the official record was not modified by this round."
+  },
+  "limitations": [
+    "This round fixes only the Phase 01 gate mechanism; G02-G39 business assertions are out of scope.",
+    "The planner-schema G00 record structurally lacks started_at/dirty_tree_hash/acceptance_artifacts; that difference is registered explicitly and does not relax command, exit-code, log, input or dependency checks.",
+    "tools/bin/uv.exe (41.5 MB vendored binary) is excluded from the candidate on purpose.",
+    "Temporary controlled repositories prove the judgements; they are not business acceptance."
+  ]
+}

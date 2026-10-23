@@ -1,0 +1,270 @@
+{"name": "F03 abutting intervals and zero capacity accepted", "passed": true, "detail": "True"}
+{"name": "F03 rejects overlap", "passed": true, "detail": "overlap/order/range"}
+{"name": "F03 rejects float", "passed": true, "detail": "int64 required"}
+{"name": "F03 rejects bool", "passed": true, "detail": "int64 required"}
+{"name": "F03 rejects negative version", "passed": true, "detail": "nonnegative integer required"}
+{"name": "F03 rejects fractional epoch", "passed": true, "detail": "UTC seconds Z required"}
+{"name": "F03 rejects unsorted intervals", "passed": true, "detail": "overlap/order/range"}
+{"name": "F03 empty calendar means explicit unavailability", "passed": true, "detail": "True"}
+{"name": "F03 explicit capture rebase/intersection without source mutation", "passed": true, "detail": "True"}
+{"name": "F03 source/hash/projected calendar is recomputable", "passed": true, "detail": "True"}
+{"name": "F03 stale source hash rejected", "passed": true, "detail": "calendar source hash mismatch"}
+{"name": "F03 unrebased integer intervals rejected", "passed": true, "detail": "calendar projection mismatch"}
+{"name": "F01/F04 legal optimization branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01/F04 legal simulation branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01/F04 legal reschedule branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01/F04 legal experiment branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01/F04 legal metric branch/ref metadata", "passed": true, "detail": "True"}
+{"name": "F01 legal optimization mode transport", "passed": true, "detail": "True"}
+{"name": "F01 legal optimization mode warehouse", "passed": true, "detail": "True"}
+{"name": "F01 legal optimization mode joint", "passed": true, "detail": "True"}
+{"name": "F01/F04 rejects unknown kind", "passed": true, "detail": "unknown enum JobKind"}
+{"name": "F01/F04 rejects family mismatch", "passed": true, "detail": "missing or extra fields: {'mode'}"}
+{"name": "F01/F04 rejects ref family mismatch", "passed": true, "detail": "family mismatch"}
+{"name": "F01/F04 rejects zero version", "passed": true, "detail": "positive integer required"}
+{"name": "F01/F04 rejects empty hash", "passed": true, "detail": "64 lowercase hex required"}
+{"name": "F01/F04 rejects uppercase hash", "passed": true, "detail": "64 lowercase hex required"}
+{"name": "F01/F04 rejects old schema", "passed": true, "detail": "literal mismatch"}
+{"name": "F01 nonoptimization extra mode rejected", "passed": true, "detail": "missing or extra fields: {'mode'}"}
+{"name": "F04 changed saved bytes rejected", "passed": true, "detail": "422 INVALID_INPUT hash/ref"}
+{"name": "F04 missing identity rejected", "passed": true, "detail": "404 NOT_FOUND"}
+{"name": "F04 old revision rejected", "passed": true, "detail": "409 STALE_SNAPSHOT"}
+{"name": "F04 metadata cannot replace a missing real capability", "passed": true, "detail": "501 capability unavailable; no Job created"}
+{"name": "Actor viewer cannot submit", "passed": true, "detail": "403 FORBIDDEN"}
+{"name": "Actor cross scope rejected", "passed": true, "detail": "403 FORBIDDEN"}
+{"name": "Actor unknown body permission field rejected", "passed": true, "detail": "missing or extra fields: {'permission'}"}
+{"name": "F04 JSON duplicate keys rejected", "passed": true, "detail": "duplicate JSON key x"}
+{"name": "F04 JSON nonfinite numbers rejected", "passed": true, "detail": "NaN"}
+{"name": "F02 complete typed empty scenario boundary accepted", "passed": true, "detail": "True"}
+{"name": "F02 canonical key reordering preserves identity", "passed": true, "detail": "True"}
+{"name": "F02 changed seed changes identity", "passed": true, "detail": "True"}
+{"name": "F02 independent typed sidecar accepted", "passed": true, "detail": "True"}
+{"name": "F02 oracle mutation cannot affect input hash", "passed": true, "detail": "True"}
+{"name": "F02 rejects version mismatch", "passed": true, "detail": "scenario identity mismatch"}
+{"name": "F02 rejects bad hash", "passed": true, "detail": "64 lowercase hex required"}
+{"name": "F02 rejects size mismatch", "passed": true, "detail": "size mismatch"}
+{"name": "F02 rejects seed tamper without rehash", "passed": true, "detail": "scenario content hash mismatch"}
+{"name": "F02 rejects oracle injection", "passed": true, "detail": "missing or extra fields: {'expected_plan'}"}
+{"name": "F02 rejects duplicate event authority", "passed": true, "detail": "missing or extra fields: {'event_specs'}"}
+{"name": "F02 rejects executable generation policy", "passed": true, "detail": "unknown enum GenerationPolicy"}
+{"name": "Resource equipment wrapper keeps inner equipment kind", "passed": true, "detail": "True"}
+{"name": "Resource mismatched branch/entity rejected", "passed": true, "detail": "missing or extra fields: {'quantity_capacity', 'setpoint_decic', 'allowed_zone_ids', 'allowed_cargo_types', 'code', 'kind', 'calendar', 'capacity_weight_g', 'capacity_volume_cm3'}"}
+{"name": "Resource vehicle is outside generic five-kind endpoint", "passed": true, "detail": "unknown discriminant"}
+{"name": "Resource capacity negative rejected", "passed": true, "detail": "nonpositive resource capacity"}
+{"name": "F03 Resource calendar units exceed known capacity rejected", "passed": true, "detail": "calendar units exceed resource capacity"}
+{"name": "F02 rehash outer bundle cannot hide stale inner snapshot", "passed": true, "detail": "snapshot content hash mismatch"}
+{"name": "F04 completed Job binds immutable command and typed result ref", "passed": true, "detail": "True"}
+{"name": "F04 lifecycle rejects completed without result", "passed": true, "detail": "typed completed result required"}
+{"name": "F04 lifecycle rejects wrong result family", "passed": true, "detail": "typed completed result required"}
+{"name": "F04 lifecycle rejects terminal lease retained", "passed": true, "detail": "nonrunning lease not released"}
+{"name": "F04 lifecycle rejects end before start", "passed": true, "detail": "invalid terminal time"}
+{"name": "F04 lifecycle rejects attempt limit", "passed": true, "detail": "attempt limit"}
+{"name": "F04 lifecycle rejects false worker failed", "passed": true, "detail": "failed needs error not result"}
+{"name": "F04 current unexpired lease accepted by contract predicate", "passed": true, "detail": "True"}
+{"name": "F04 old lease epoch rejected", "passed": true, "detail": "lease_lost: no current Job write"}
+{"name": "F04 expired lease rejected", "passed": true, "detail": "lease_lost: no current Job write"}
+{"name": "Registered type/task/module graph closed", "passed": true, "detail": "True"}
+{"name": "Persistent checker catches missing named type", "passed": true, "detail": "True"}
+{"name": "Persistent checker catches future type owner", "passed": true, "detail": "True"}
+{"name": "Persistent checker catches hidden oracle path", "passed": true, "detail": "True"}
+{"name": "Persistent checker catches source enum duplicate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields CargoCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields OrderCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields VehicleCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields DriverCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields WarehouseCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields ZoneCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields LocationCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields DockCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields WorkerCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields EquipmentCreate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields OrderUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields VehicleUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields DriverUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields WarehouseUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields ZoneUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields LocationUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields DockUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields WorkerUpdate", "passed": true, "detail": "True"}
+{"name": "Exact master projection inherited fields EquipmentUpdate", "passed": true, "detail": "True"}
+{"name": "19 master create/patch projections and 9 query types have unique explicit shapes", "passed": true, "detail": "True"}
+{"name": "Manifest business node identities and initial states preserved", "passed": true, "detail": "True"}
+Rendered 109 prompts, 40 gates, task graph and indexes.
+{"name": "114 generator outputs exactly enumerated before mutation", "passed": true, "detail": "True"}
+{"name": "Generated outputs reproduce byte for byte", "passed": true, "detail": "True"}
+{"name": "All modified-document local file links valid", "passed": true, "detail": "True"}
+{"name": "3786 this-round protected files preserve original bytes", "passed": true, "detail": "True"}
+{"name": "N01-R02 EntityKind is complete normative enum, not existing leaf", "passed": true, "detail": "True"}
+{"name": "N01-R02 EntityRef is an explicit closed record", "passed": true, "detail": "True"}
+{"name": "N01-R02 target catalogue covers every normative enum value", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member ORDER=order parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member CARGO=cargo parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member VEHICLE=vehicle parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member DRIVER=driver parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member WAREHOUSE=warehouse parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member WAREHOUSE_ZONE=zone parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member STORAGE_LOCATION=location parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member DOCK=dock parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member WORKER=worker parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member EQUIPMENT=equipment parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member TRANSPORT_TASK=transport_task parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member WAREHOUSE_TASK=warehouse_task parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member ROUTE=route parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member ROUTE_STOP=route_stop parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member SCHEDULE=schedule parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member SCHEDULE_TASK=schedule_task parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member SCHEDULE_VERSION=schedule_version parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member CONSTRAINT=constraint parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member OPTIMIZATION_REQUEST=optimization_request parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member OPTIMIZATION_RESULT=optimization_result parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member SIMULATION=simulation parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member SIMULATION_SNAPSHOT=simulation_snapshot parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member EVENT=event parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member EXCEPTION_EVENT=exception_event parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member RESCHEDULE_REQUEST=reschedule_request parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member RESCHEDULE_RESULT=reschedule_result parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member AGENT_RUN=agent_run parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member TOOL_CALL=tool_call parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member DECISION_RECORD=decision_record parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member EXPERIMENT=experiment parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member METRIC=metric parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member EXPERIMENT_RESULT=experiment_result parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member PLANNING_SNAPSHOT=planning_snapshot parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member JOB=job parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member JOB_ATTEMPT=job_attempt parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member IDEMPOTENCY=idempotency parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member RESERVATION=reservation parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member INVENTORY_LEDGER=inventory_ledger parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member OUTBOX=outbox parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member AUDIT_ENTRY=audit_entry parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member LIFECYCLE_EVENT=lifecycle_event parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member EXECUTION_SNAPSHOT=execution_snapshot parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member CONFIRMATION_TOKEN=confirmation_token parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member TRAVEL_MATRIX=travel_matrix parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 normative member REGION=region parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 driver reference parses using normative enum", "passed": true, "detail": "True"}
+{"name": "N01-R02 EntityRef rejects unknown kind", "passed": true, "detail": "True"}
+{"name": "N01-R02 EntityRef rejects case-changed kind", "passed": true, "detail": "True"}
+{"name": "N01-R02 EntityRef rejects missing revision", "passed": true, "detail": "True"}
+{"name": "N01-R02 EntityRef rejects negative revision", "passed": true, "detail": "True"}
+{"name": "N01-R02 EntityRef rejects boolean revision", "passed": true, "detail": "True"}
+{"name": "N01-R02 EntityRef rejects extra reference field", "passed": true, "detail": "True"}
+{"name": "N01-R02 event samples cover every normative event variant", "passed": true, "detail": "True"}
+{"name": "N01-R02 complete real-shaped fact ScenarioInput parses", "passed": true, "detail": "True"}
+{"name": "N01-R02 vehicle_failure mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 vehicle_failure unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 vehicle_failure wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 vehicle_failure inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 vehicle_failure inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 vehicle_failure optional unpinned identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 vehicle_failure target absent from selected fact snapshot rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 transport_delay mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 transport_delay unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 transport_delay wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 transport_delay inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 transport_delay inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 transport_delay optional unpinned identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 transport_delay target absent from selected fact snapshot rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic_disruption mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic_disruption unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic_disruption wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic_disruption inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic_disruption inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather_change mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather_change unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather_change wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather_change inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather_change inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 cargo_anomaly mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 cargo_anomaly unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 cargo_anomaly wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 cargo_anomaly inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 cargo_anomaly inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 cargo_anomaly optional unpinned identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 cargo_anomaly target absent from selected fact snapshot rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 order_cancellation mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 order_cancellation unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 order_cancellation wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 order_cancellation inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 order_cancellation inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 order_cancellation optional unpinned identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 order_cancellation target absent from selected fact snapshot rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_increase mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_increase unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_increase wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_increase inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_increase inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_increase optional unpinned identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_increase target absent from selected fact snapshot rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_decrease mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_decrease unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_decrease wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_decrease inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_decrease inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_decrease optional unpinned identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 demand_decrease target absent from selected fact snapshot rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 equipment_failure mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 equipment_failure unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 equipment_failure wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 equipment_failure inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 equipment_failure inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 equipment_failure optional unpinned identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 equipment_failure target absent from selected fact snapshot rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse_resource_unavailable mapped reference accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse_resource_unavailable unknown entity kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse_resource_unavailable wrong existing target kind rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse_resource_unavailable inconsistent or missing target identity rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse_resource_unavailable inconsistent revision rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse_resource_unavailable optional unpinned identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic several arcs in the selected matrix accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic reverse directions are distinct arcs accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic open multiplier accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic empty arcs rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic duplicate directed arc rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic self arc rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic arcs from two snapshot matrices rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic reference switched to other matrix rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic null matrix version rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic unchanged version rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic lower version rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic closure with multiplier rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic open without multiplier rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 traffic extra matrix selector rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather reordered region set preserves identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather empty region rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather duplicate region node rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather unknown region node rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather same region ID changed membership rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather advance only first affected matrix rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather unchanged second matrix version rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather ref ID differs from inline region rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 weather explicit new region identity accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse warehouse complete resource branch accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse warehouse resource ID mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse warehouse resource revision mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse warehouse both stale revisions rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse zone complete resource branch accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse zone resource ID mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse zone resource revision mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse zone both stale revisions rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse location complete resource branch accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse location resource ID mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse location resource revision mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse location both stale revisions rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse dock complete resource branch accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse dock resource ID mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse dock resource revision mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse dock both stale revisions rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse worker complete resource branch accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse worker resource ID mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse worker resource revision mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse worker both stale revisions rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse equipment complete resource branch accepted", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse equipment resource ID mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse equipment resource revision mismatch rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse equipment both stale revisions rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse unsupported vehicle resource rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 warehouse unsupported transport task resource rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 vehicle target with Order record shape rejected", "passed": true, "detail": "True"}
+{"name": "N01-R02 fixed snapshot keeps valid historical fact binding accepted", "passed": true, "detail": "True"}
+{"status": "PASS", "checks": 268, "passed": 268, "failed": 0, "protected_file_count": 3786, "protected_changes": [], "changed_files": ["docs/architecture/DATA_CONTRACTS.md", "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md", "contracts/changes/N01-R01-contract-decisions.json", "contracts/changes/N01-R01-contract-freeze-2.0.0.md", "tools/ai_coding_plan/validate_plan.py"], "freeze_drift": ["docs/architecture/DOMAIN_CATALOG.md", "docs/architecture/DATA_CONTRACTS.md", "docs/architecture/IMPLEMENTATION_CONVENTIONS.md", "docs/api/API_CONTRACT.md"], "limitations": ["Executable design examples only, no business classes or HTTP/DB acceptance.", "Existing source leaf fields reused; full inherited schema behavior requires real G02 exports/tests.", "resolve examples check reference metadata and failure ordering only; no real capability parser/worker was run.", "Inherited parse-only adapters still do not enforce CalendarDTO overlap, RegionRef nonempty nodes, OnArc temporal order, or complete Scenario FK/calendar binding integrity; N02-R01 limitations are retained.", "New event-reference predicates validate the normative mapping against a fixed design fact snapshot; they are not domain classes, ingest services, DB/solver/SimPy acceptance, or live revalidation of old audit references.", "Inherited entity adapters verify named field structure and selected primitive constraints; CargoType/Skill/Qualification and full inherited entity state machines remain outside this bounded design harness."], "round": "N01-R02", "inherited_check_count": 95, "event_reference_check_count": 173, "event_case_counts": {"total": 173, "positive": 81, "negative": 92, "matched": 173, "mismatched": 0}, "source_inputs": {"contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b", "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8", "tmp/N01-R02/scope-before.json": "c2318084aab658689467c22f60cf24458f2eef99005d088dd34abbb775ad8299", "tmp/N01-R01/verify_contracts.py": "bf93287d4d68e2a05d7cdb3f482da6d196787e6fe3ce980097a907c4eedbfa42", "tmp/N01-R02/examples/verify_design_examples.py": "596f6977f952acb218e430786cc0f866034672ff97bb3f6d891e1a3b5fb4e118", "tmp/N01-R02/examples/event_reference_examples.py": "fab928af04142838439bdce20256955cdefa84c1b100811cb84a128a39640a58", "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44", "tools/ai_coding_plan/render_plan.py": "049699b81267c49c2794a5c3ef71aee5c8fbe202df79cfd100565ffc2fb5249b"}}

@@ -1,0 +1,43 @@
+{
+  "task_id": "P02-01",
+  "round": "P02-01-F01",
+  "reason": "byte-for-byte archive of the DSH records and task documents before the Reservation lifecycle rework",
+  "file_count": 5,
+  "entries": [
+    {
+      "path": "docs/handoffs/P02-01/dsh.md",
+      "archived_as": "artifacts/handoffs/P02-01/dsh/archive/f01-before/P02-01__dsh.md",
+      "bytes": 5799,
+      "sha256": "b3de54ebb24300388bcec4c6911964252a2358eb6bf82fae2e9c2c7a13364d49",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/dsh/evidence.json",
+      "archived_as": "artifacts/handoffs/P02-01/dsh/archive/f01-before/P02-01__dsh__evidence.json",
+      "bytes": 13389,
+      "sha256": "36f08ff6a8b983c8ba749ef1bbf6fc4b0ae157059e4036f1e6f7917ec274c4c8",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P02-01/dsh/seal.json",
+      "archived_as": "artifacts/handoffs/P02-01/dsh/archive/f01-before/P02-01__dsh__seal.json",
+      "bytes": 5326,
+      "sha256": "cd6731c117a11215dbceb1d1878415db890172fdf35e6af1fa9516eb40b9ba1b",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/implementation/P02-01.md",
+      "archived_as": "artifacts/handoffs/P02-01/dsh/archive/f01-before/docs__implementation__P02-01.md",
+      "bytes": 7331,
+      "sha256": "ac9b8f0e0dabcadba0218bd772cd6f25e1b7eb1e42228457cb2a8d06a823ce57",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/implementation/reports/P02-01.md",
+      "archived_as": "artifacts/handoffs/P02-01/dsh/archive/f01-before/docs__implementation__reports__P02-01.md",
+      "bytes": 7720,
+      "sha256": "c3e518b5d24d6132ff679609916567f03b530f8810f913cb81b581374115d8f1",
+      "byte_identical": true
+    }
+  ]
+}

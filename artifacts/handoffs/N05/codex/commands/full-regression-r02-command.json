@@ -1,0 +1,17 @@
+{
+  "check_id": "full-regression-r02",
+  "argv": [
+    "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+    "run",
+    "pytest",
+    "tests/unit",
+    "tests/integration",
+    "-q"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-04T20:30:59.909240+00:00",
+  "finished_at": "2026-10-04T20:31:46.858783+00:00",
+  "log_path": "artifacts/handoffs/N05/codex/commands/full-regression-r02.log",
+  "log_sha256": "608d2e657e53d84cce6391401c6896026c5d22f12bf56e7b1ca8d6449a9eaa4d"
+}

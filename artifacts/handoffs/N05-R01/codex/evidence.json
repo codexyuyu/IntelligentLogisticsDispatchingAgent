@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "N05-R01",
+  "phase_gate": "G01",
+  "status": "PASSED",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "generated_at": "2026-10-05T03:48:52.392116+00:00",
+  "reviewer": "Codex N05-R01 /root/n05_independent (original independent reviewer; no candidate implementation edits)",
+  "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+  "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297",
+  "candidate_file_count": 82,
+  "official_G01_valid": true,
+  "official_G01_sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+  "review_sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+  "dependency_evidence_hashes": {
+    "G00": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4"
+  },
+  "final_audit": {
+    "task_id": "N05-R01",
+    "status": "PASSED",
+    "official_G01_valid": true,
+    "audited_at": "2026-10-05T03:46:48.976732+00:00",
+    "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+    "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297",
+    "candidate_file_count": 82,
+    "G01_sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+    "review_sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+    "G00_sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+    "official_input_count": 40,
+    "review_input_count": 262,
+    "official_task_tests": [
+      56,
+      96,
+      74
+    ],
+    "official_phase01_test_total": 226,
+    "marker_import_permutations": 6,
+    "reused_independent_probe_count": 52,
+    "official_command_count": 7,
+    "assertion_count": 5,
+    "total_check_count": 26,
+    "official_raw_log_hashes": {
+      "artifacts/gates/G01-logs/clean-install-imports.log": "a4e1f14d61e596e6d1575c3225f3825300e97a52e521d9c9e133f3e7e95a2ee8",
+      "artifacts/gates/G01-logs/layer-boundaries-json.log": "3b36342254828fc4f42bcb656aebff811cb63296876d0a9bea1a2cd25713a276",
+      "artifacts/gates/G01-logs/layer-boundaries.log": "9b34025934d32087b1b96602ba06fa176e285f92de69acc9bf34d0de09c2aa74",
+      "artifacts/gates/G01-logs/lock-reproducible.log": "9c24d57ee0b4efdf73d2e20fa25a8ec420f6f77010e39f8f9b84b20320874e18",
+      "artifacts/gates/G01-logs/P01-01-cmd1.log": "95b6f8d96d90d504f6d757a642238740c041324b2f587bdc18960f6a26f26bd2",
+      "artifacts/gates/G01-logs/P01-01-cmd2.log": "5f502835131921c3f5d046ef462e513e64cada1a337b75fbb3e42d1d3024f665",
+      "artifacts/gates/G01-logs/P01-01-cmd3.log": "7b4082d9dd9fa1107c31242e54af49c75d4d8c2ed98099a897898cf72d9294e3",
+      "artifacts/gates/G01-logs/P01-02-cmd1.log": "26d850500c6937c757092169326e5c13673ede42ba5e8bdf1994183055356c68",
+      "artifacts/gates/G01-logs/P01-02-cmd2.log": "946dea8d22ecd6f67c863a9aaa940d1ba1ce6f7f64bf05502e24b5c6153303b0",
+      "artifacts/gates/G01-logs/P01-03-cmd1.log": "e7373358fd1ef24801a8d7544ce084aa7d2f05aab8815d1ca8a4a19242231f67",
+      "artifacts/gates/G01-logs/P01-03-cmd2.log": "0705f854aff1f7935b3b0b699f13da0448e493c3fa107c1f67ee4467280eec78",
+      "artifacts/gates/G01-logs/runner-fails-closed-probe.log": "6a2d65cd1eac94b24b7f89588f69be776158b2584f3f20d3b17f7b91fa5577a5"
+    },
+    "official_run_command": {
+      "check_id": "official-g01",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "python",
+        "scripts/gates.py",
+        "--phase",
+        "01",
+        "--revision",
+        "auto"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-05T03:41:35.113192+00:00",
+      "finished_at": "2026-10-05T03:43:22.720574+00:00",
+      "log_path": "artifacts/handoffs/N05-R01/codex/commands/official-g01.log",
+      "log_sha256": "e53d20862546e9365f07a280f8d8f9e920b629e5d3ac08aebfe60f6d616e4c4c"
+    },
+    "archive_count": 14,
+    "problems": [],
+    "P02_business_precheck_done_by_N05": false,
+    "G02_signed_by_N05": false
+  },
+  "commands": [
+    {
+      "check_id": "final-audit",
+      "argv": [
+        ".venv\\Scripts\\python.exe",
+        "-B",
+        "tmp/N05-R01/final_audit.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-05T03:46:48.552584+00:00",
+      "finished_at": "2026-10-05T03:46:48.992573+00:00",
+      "log_path": "artifacts/handoffs/N05-R01/codex/commands/final-audit.log",
+      "log_sha256": "805340422744eacf0c376fe1a2c1c5e5073206e1511c710e7ed991a3f506fa17"
+    },
+    {
+      "check_id": "initial-audit",
+      "argv": [
+        ".venv\\Scripts\\python.exe",
+        "-B",
+        "tmp/N05-R01/audit.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-05T03:34:28.910412+00:00",
+      "finished_at": "2026-10-05T03:34:29.910666+00:00",
+      "log_path": "artifacts/handoffs/N05-R01/codex/commands/initial-audit.log",
+      "log_sha256": "f36b60e13dfe012234b664ef08a368bc74a22149669bffccf955503cc5f01720"
+    },
+    {
+      "check_id": "marker-probe",
+      "argv": [
+        ".venv\\Scripts\\python.exe",
+        "-B",
+        "tmp/N05-R01/marker_probe.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-05T03:36:11.063030+00:00",
+      "finished_at": "2026-10-05T03:36:11.899977+00:00",
+      "log_path": "artifacts/handoffs/N05-R01/codex/commands/marker-probe.log",
+      "log_sha256": "16cbd0828dc68f6499be7d6775fc7930596c9448f6e6c9e5160dae1300c3b48b"
+    },
+    {
+      "check_id": "official-check-only",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "python",
+        "scripts/gates.py",
+        "--phase",
+        "01",
+        "--revision",
+        "auto",
+        "--check-only"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-05T03:46:25.715403+00:00",
+      "finished_at": "2026-10-05T03:46:26.001583+00:00",
+      "log_path": "artifacts/handoffs/N05-R01/codex/commands/official-check-only.log",
+      "log_sha256": "7f494c058862f5c11e71755b075e3b5a1c6e996c4e0352171a9e474c69b514c8"
+    },
+    {
+      "check_id": "official-g01",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "python",
+        "scripts/gates.py",
+        "--phase",
+        "01",
+        "--revision",
+        "auto"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-05T03:41:35.113192+00:00",
+      "finished_at": "2026-10-05T03:43:22.720574+00:00",
+      "log_path": "artifacts/handoffs/N05-R01/codex/commands/official-g01.log",
+      "log_sha256": "e53d20862546e9365f07a280f8d8f9e920b629e5d3ac08aebfe60f6d616e4c4c"
+    },
+    {
+      "check_id": "review-and-archive",
+      "argv": [
+        ".venv\\Scripts\\python.exe",
+        "-B",
+        "tmp/N05-R01/review_and_archive.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "started_at": "2026-10-05T03:41:04.160674+00:00",
+      "finished_at": "2026-10-05T03:41:05.528381+00:00",
+      "log_path": "artifacts/handoffs/N05-R01/codex/commands/review-and-archive.log",
+      "log_sha256": "ca48218e7f77f4005735c1ce940722290ee38e08b83422c84c6a52a632d93a2f"
+    }
+  ],
+  "reused_not_rerun": {
+    "P01-02_four_rework_items": {
+      "independent_probe_count": 52,
+      "basis": "The controlled positive/negative probes use unchanged gates.py/check_architecture.py and unchanged probe script; all 53 previous N05 sealed outputs and probe raw log remain byte-identical. The real candidate marker delta is separately probed this round."
+    },
+    "clean_install": {
+      "basis": "Original fresh environment locked installation remains valid for unchanged package metadata and uv.lock; this round six outside-cwd -I processes in that environment exercise current editable source exports."
+    },
+    "P01-02_P01-03_prechecks": {
+      "basis": "Their implementation/tests, input and log hashes are unchanged. Their old whole-candidate identity is historical scope information, not a claim that candidate82 already ran previously."
+    }
+  },
+  "limitations": [
+    "Phase01 only; P02 business precheck and G02 signing NOT_RUN. No database, solver, simulation, model or browser acceptance claimed.",
+    "No Git repository or actual GitHub Actions execution. Installed Node24 runtime is exercised; Node22 itself is not.",
+    "Dedicated existing N05 uv cache and exclusive system TEMP/pytest roots avoid previously confirmed default cache/pytest permissions; no global configuration changed.",
+    "The prior clean installation was a fresh environment using frozen locked artifacts offline; current marker import probe reuses that environment. No second fresh installation is claimed.",
+    "Prior N05 52 rework probes and 226 regression are reused evidence for unchanged subjects, not rerun results. Formal current Phase01 task suites are executed by the following Gate.",
+    "Current runner lacks G02-G39 business assertion registrations; later signing needs separately scoped coverage governance."
+  ],
+  "findings": [],
+  "implementation_edits": [],
+  "precheck_edits": [],
+  "dispatched_tasks": [],
+  "P02_business_precheck_done_by_N05": false,
+  "G02_signed_by_N05": false,
+  "next_executor": "root: original P02-01 author refreshes only dependency evidence; then original ZCode P02-01 business precheck",
+  "report": {
+    "path": "docs/handoffs/N05-R01/codex.md",
+    "sha256": "0ad4d4b6af28552d167c851a46008a85ba641afc02c87c373a1236e1c8043898"
+  }
+}

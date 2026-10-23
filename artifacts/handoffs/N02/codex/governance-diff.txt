@@ -1,0 +1,3419 @@
+--- before/artifacts/handoffs/N01/codex/candidate-files.json
++++ current/artifacts/handoffs/N01/codex/candidate-files.json
+@@ -0,0 +1,384 @@
++{
++  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
++  "code_revision": "content-sha256:3525ed5b78851ea5d4fc7b5305b6b2e9f45bfedf7ee8742e3478ce6174e585a4",
++  "dirty_tree_hash": "content-sha256:a3f7e8b9addb3ff67f7a2e25068ce729ccb986866060e02e56250057c3cb9d8e",
++  "file_count": 75,
++  "files": [
++    {
++      "path": ".github/workflows/ci.yml",
++      "sha256": "139d37c92f1bdf8d82c0771b081bb82d674dfbf6da22fa50135d27bd19a10e35",
++      "bytes": 3369
++    },
++    {
++      "path": ".node-version",
++      "sha256": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
++      "bytes": 3
++    },
++    {
++      "path": ".python-version",
++      "sha256": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
++      "bytes": 5
++    },
++    {
++      "path": "OWNERSHIP.json",
++      "sha256": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
++      "bytes": 3238
++    },
++    {
++      "path": "PROJECT_MASTER_PLAN.md",
++      "sha256": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
++      "bytes": 17178
++    },
++    {
++      "path": "TASK_GRAPH.md",
++      "sha256": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
++      "bytes": 31805
++    },
++    {
++      "path": "apps/backend/pyproject.toml",
++      "sha256": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344",
++      "bytes": 839
++    },
++    {
++      "path": "apps/backend/src/logistics_backend/__init__.py",
++      "sha256": "01a2b2aeae06be11ca9888649fb22376da8984099707512ea70b7f0e40ff4ff1",
++      "bytes": 1715
++    },
++    {
++      "path": "apps/frontend/package.json",
++      "sha256": "7a38cc372c366b088043d919f76430ac2716beebba16a2dd1f78d27e1c740b31",
++      "bytes": 499
++    },
++    {
++      "path": "apps/frontend/src/test/setup.ts",
++      "sha256": "322a23afd1a0070b4ca7d27d52bc15d84f36d190dd444a35163c08f2b6d8003a",
++      "bytes": 1176
++    },
++    {
++      "path": "apps/frontend/vitest.config.ts",
++      "sha256": "3f5c86e2273cd9becf71d0edeb32d3cecdab7dbf0432c95caa9ebed8a1f10e9c",
++      "bytes": 831
++    },
++    {
++      "path": "contracts/README.md",
++      "sha256": "d0a4ea110736e6cf73d64387346ebc954b5e25de9f511b2b62c22e313e31335a",
++      "bytes": 446
++    },
++    {
++      "path": "contracts/changes/N01-governance-1.0.1.md",
++      "sha256": "35ddc2f9c3ed2f14ed95cdad44bf737686befdd84d8992793c610f72d807594c",
++      "bytes": 3721
++    },
++    {
++      "path": "contracts/changes/README.md",
++      "sha256": "2a695d21ffaf8681d4e7c8903c98a8beb6af8fff9340bfcff13cb5ee672e85c5",
++      "bytes": 3281
++    },
++    {
++      "path": "data/scenarios/README.md",
++      "sha256": "aeb9c3013e9da650ec2d86f10eb415e612625df78d2cd10ba4b5f9223a525439",
++      "bytes": 663
++    },
++    {
++      "path": "deploy/README.md",
++      "sha256": "caa9177a9b8ce20f819c48cf287e5cef37561dd52294150e8223bf2b301c3fda",
++      "bytes": 1081
++    },
++    {
++      "path": "docs/algorithms/METRICS_CONTRACT.md",
++      "sha256": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
++      "bytes": 5314
++    },
++    {
++      "path": "docs/algorithms/OPTIMIZATION_CONTRACT.md",
++      "sha256": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
++      "bytes": 9300
++    },
++    {
++      "path": "docs/algorithms/SIMULATION_CONTRACT.md",
++      "sha256": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
++      "bytes": 3588
++    },
++    {
++      "path": "docs/api/API_CONTRACT.md",
++      "sha256": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
++      "bytes": 10294
++    },
++    {
++      "path": "docs/architecture/ARCHITECTURE_OVERVIEW.md",
++      "sha256": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
++      "bytes": 6878
++    },
++    {
++      "path": "docs/architecture/BASELINE_INVENTORY.json",
++      "sha256": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
++      "bytes": 71637
++    },
++    {
++      "path": "docs/architecture/BASELINE_INVENTORY.md",
++      "sha256": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694",
++      "bytes": 38909
++    },
++    {
++      "path": "docs/architecture/CONTRACT_FREEZE.json",
++      "sha256": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
++      "bytes": 4804
++    },
++    {
++      "path": "docs/architecture/CONTRACT_FREEZE.md",
++      "sha256": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
++      "bytes": 25740
++    },
++    {
++      "path": "docs/architecture/DATA_CONTRACTS.md",
++      "sha256": "8091763a21416f57b70a5b71b6c408ba02b19c051ad0ab52f754814981e0ec2e",
++      "bytes": 18980
++    },
++    {
++      "path": "docs/architecture/DOMAIN_CATALOG.md",
++      "sha256": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
++      "bytes": 14792
++    },
++    {
++      "path": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
++      "sha256": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
++      "bytes": 9267
++    },
++    {
++      "path": "docs/architecture/LEGACY_ADAPTATION.md",
++      "sha256": "adfd5345fd6c7ecf63b39bb04fb437fdf6a4ca34a4162855dfc4b7f14cfbd214",
++      "bytes": 11786
++    },
++    {
++      "path": "docs/architecture/MIGRATION_MAP.md",
++      "sha256": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b",
++      "bytes": 23623
++    },
++    {
++      "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
++      "sha256": "bf77dcfcd119306b7852843b18f761a4fe2ac2702309b71b5c9c2681aff0ffcf",
++      "bytes": 15441
++    },
++    {
++      "path": "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md",
++      "sha256": "861a8332b50799d3c76cb50992a437dee74c2a10bb151563337695924966d5c1",
++      "bytes": 6064
++    },
++    {
++      "path": "docs/architecture/issues/ARCH-0007-early-named-types.md",
++      "sha256": "84c09d14b4b9f0183c17ce7d2b8ffad1410e67a2c0b3b2bf885249ab5bba4f42",
++      "bytes": 2090
++    },
++    {
++      "path": "docs/architecture/issues/ARCH-0008-p36-02-ownership.md",
++      "sha256": "5cbfc6fbddef9edecce0855773409f20c5af945a4b9f715ca3b36b103d001c6f",
++      "bytes": 1631
++    },
++    {
++      "path": "docs/architecture/issues/README.md",
++      "sha256": "a3588b546b09f86fbb7e8298a220c3b64741f1620e51593bc6eb89e2432f83ff",
++      "bytes": 24573
++    },
++    {
++      "path": "docs/plan/GATE_EXECUTION_CONTRACT.md",
++      "sha256": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
++      "bytes": 6627
++    },
++    {
++      "path": "docs/plan/PHASE_GATES.md",
++      "sha256": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
++      "bytes": 10470
++    },
++    {
++      "path": "docs/plan/TASK_MANIFEST.json",
++      "sha256": "6196c9ccf1e2490639186fe05b7b8a4d20013fe869f354d7b6d38280f5869a0e",
++      "bytes": 264483
++    },
++    {
++      "path": "docs/plan/TEST_FIXTURES.md",
++      "sha256": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
++      "bytes": 6824
++    },
++    {
++      "path": "package-lock.json",
++      "sha256": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
++      "bytes": 2078
++    },
++    {
++      "path": "package.json",
++      "sha256": "ce0558100177c7d49889bedf4527e1995a52c066d5f7d6e737b03c6be63f7755",
++      "bytes": 500
++    },
++    {
++      "path": "packages/agents/pyproject.toml",
++      "sha256": "39e80e877bc134cdf99f60c31aba1a9194d4eac699008d892ed08a0d3e557140",
++      "bytes": 450
++    },
++    {
++      "path": "packages/agents/src/logistics_agents/__init__.py",
++      "sha256": "13233646cf62444aa2452351f69a4c7fdb60ae0b5b7c9b17c1e0302871dc3d1b",
++      "bytes": 1955
++    },
++    {
++      "path": "packages/contracts/pyproject.toml",
++      "sha256": "25bdb3a6d7f85ba1b114ac10668b955b5e98c981fe5ef6cdfb7f283950c10a0c",
++      "bytes": 471
++    },
++    {
++      "path": "packages/contracts/src/logistics_contracts/__init__.py",
++      "sha256": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67",
++      "bytes": 1398
++    },
++    {
++      "path": "packages/domain/pyproject.toml",
++      "sha256": "f4d4e90bd87b0161f980b51129312a815cd7a99ca657a81ee26b0424259ebf64",
++      "bytes": 361
++    },
++    {
++      "path": "packages/domain/src/logistics_domain/__init__.py",
++      "sha256": "8093a7e57882419f66c72b64f2a84f9f1f0055b60d1ad088392a048b658efa91",
++      "bytes": 2129
++    },
++    {
++      "path": "packages/evaluation/pyproject.toml",
++      "sha256": "3e25b4617df419c8a72d4056bd9bf1e53a7b1ad56ee41037f7ce12c8d5989c15",
++      "bytes": 453
++    },
++    {
++      "path": "packages/evaluation/src/logistics_evaluation/__init__.py",
++      "sha256": "2dd2b07402f79594cee052f14f0f31f6fbfa505f0757e7753d9e953ae61caed9",
++      "bytes": 1310
++    },
++    {
++      "path": "packages/optimization/pyproject.toml",
++      "sha256": "cdc1172cb720fb2446adf66f6347acfbdf34342df28c170159f0194f14710643",
++      "bytes": 485
++    },
++    {
++      "path": "packages/optimization/src/logistics_optimization/__init__.py",
++      "sha256": "52e301b5ceaa4fc656702979b82fcf1832e86e6f876280c82a0505f7d937acc1",
++      "bytes": 1741
++    },
++    {
++      "path": "packages/simulation/pyproject.toml",
++      "sha256": "000af2c9be683a8fd176cde8d054308f28419dc8ebbe1a3b0471241f9964d165",
++      "bytes": 463
++    },
++    {
++      "path": "packages/simulation/src/logistics_simulation/__init__.py",
++      "sha256": "cf73c5463a41d33a8815cd4512b3fcc236fc2a7983d03e101b7b07db3f876789",
++      "bytes": 1556
++    },
++    {
++      "path": "pyproject.toml",
++      "sha256": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
++      "bytes": 2064
++    },
++    {
++      "path": "scripts/check_architecture.py",
++      "sha256": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5",
++      "bytes": 14584
++    },
++    {
++      "path": "scripts/check_ownership.py",
++      "sha256": "63bf2bf43263b2f8251c4e5d09b771f8b4c948a94592bccdbc3f5b121c02fa5a",
++      "bytes": 20870
++    },
++    {
++      "path": "scripts/gates.py",
++      "sha256": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
++      "bytes": 64543
++    },
++    {
++      "path": "tests/conftest.py",
++      "sha256": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
++      "bytes": 7757
++    },
++    {
++      "path": "tests/integration/test_p01_01_workspace_bootstrap.py",
++      "sha256": "160c74f89cb6ae51d828d240d0a59c7e878861beceb7731508d6a5571ff8092e",
++      "bytes": 13299
++    },
++    {
++      "path": "tests/integration/test_p01_02_checks_and_gate_runner.py",
++      "sha256": "c2563290c021b5ed8a42084ff6fd4cb15c4ccee2a978a3e91527a9bdc6234414",
++      "bytes": 39197
++    },
++    {
++      "path": "tests/integration/test_p01_03_migration_governance.py",
++      "sha256": "d534312ba79d96fdcb547ee9c231df2c1d839a97fc983f6546457040aada2120",
++      "bytes": 12149
++    },
++    {
++      "path": "tests/unit/test_p01_01_workspace_bootstrap.py",
++      "sha256": "4210258a3f3ebb92a7c0b2a48139375f165e585232ce0b6eb4e3ecc23eb36c26",
++      "bytes": 15079
++    },
++    {
++      "path": "tests/unit/test_p01_02_checks_and_gate_runner.py",
++      "sha256": "8537ac2d7da78ddfe523a1fc82b31e71569bae2c009b6c4995a81bc6c0a10d63",
++      "bytes": 47748
++    },
++    {
++      "path": "tests/unit/test_p01_03_migration_governance.py",
++      "sha256": "10a12609375d0d22409fea4fb321e10e7a21287016f2dfbe2c0cd4bab2a968fb",
++      "bytes": 21776
++    },
++    {
++      "path": "tools/ai_coding_plan/baseline_inventory_generate.py",
++      "sha256": "d23a3a8c327274e0bf7cf646bf8df0f4e10a2f78ccc376b3bb6a11728ee97c74",
++      "bytes": 32454
++    },
++    {
++      "path": "tools/ai_coding_plan/build_catalog.py",
++      "sha256": "2d72eb86d5ad5da13d65587ee3bbf5ab56a578522d42d777a9490f73b2c04fe4",
++      "bytes": 95039
++    },
++    {
++      "path": "tools/ai_coding_plan/check_gate_contract.py",
++      "sha256": "8328b7c3b59f20cc1414207ce64dc28f949194b579c0d745c823efbb8bfbd619",
++      "bytes": 3644
++    },
++    {
++      "path": "tools/ai_coding_plan/contract_freeze_generate.py",
++      "sha256": "e8c31bc0d0c2f29bef92d5ab003112c7b5b6a1a4c53ca9d8414755b3ef09d8db",
++      "bytes": 5460
++    },
++    {
++      "path": "tools/ai_coding_plan/p01_01_evidence_generate.py",
++      "sha256": "2ba963b2967730b8f86c2343842b3603758d035d29bdb45eab848f97ffd1a066",
++      "bytes": 9759
++    },
++    {
++      "path": "tools/ai_coding_plan/p01_01_run_validation.py",
++      "sha256": "9c1ce4cf134a20f57db18f62d9e6f748632f6d233ed50cfdef3d2ff9ba8d320e",
++      "bytes": 3775
++    },
++    {
++      "path": "tools/ai_coding_plan/p01_02_evidence_generate.py",
++      "sha256": "8d5b6f5340db54c15e743289391c660e702907fc0f0201c5ae9efb74ca5dd255",
++      "bytes": 9683
++    },
++    {
++      "path": "tools/ai_coding_plan/p01_03_evidence_generate.py",
++      "sha256": "dd48c0a79887fd534e2ceb469d380649132ebc9b89098c89953553d7c30f0177",
++      "bytes": 10173
++    },
++    {
++      "path": "tools/ai_coding_plan/render_plan.py",
++      "sha256": "d6e20b697f1c7dab8e376dc1a656705fceb25e76edecd95f4af56a6c686f202c",
++      "bytes": 38965
++    },
++    {
++      "path": "tools/ai_coding_plan/validate_plan.py",
++      "sha256": "9b78001aee05849b8d90aada72333ae532116628d95f9876370a4cda8eb2d41b",
++      "bytes": 19831
++    },
++    {
++      "path": "uv.lock",
++      "sha256": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
++      "bytes": 47815
++    }
++  ],
++  "formula": "sha256 UTF-8 newline-joined path NUL digest; dirty adds size; no trailing newline"
++}
+--- before/contracts/changes/N01-governance-1.0.1.md
++++ current/contracts/changes/N01-governance-1.0.1.md
+@@ -0,0 +1,27 @@
++# N01最小治理修正：规划1.0.0→1.0.2
++
++2026-10-03，实施者Codex N01；下一独立复核者Codex N02。本文件是迁移说明，不是冻结审查或Gate通过记录。
++
++变更前精确白名单与现场hash已保存为`tmp/N01/scope-before.json`，共134条精确路径（含109个prompt及N01产物）。治理交接中的`governance-files.json`保存实际差异。执行器、OWNERSHIP、依赖锁、业务源码、历史交接及官方Gate记录不在修改范围；已解决的AGENTS.md归属不再返工。
++
++| 缺口 | 最小修正 | 版本与迁移 |
++| --- | --- | --- |
++| ARCH-0004 | 三份workflow文档严格对应实际读取字段/路径与冻结F1–F9，显式列未自动检查的规范要求 | 新流程文档1.0.0；不放宽执行器，不改旧审查记录 |
++| ARCH-0003 | renderer改为请求未知必需能力INVALID_INPUT/422+UnsupportedDetail；校验unsupported_codes保持拒绝有效候选；开发未实现仍501/不得进Gate | 不新增ErrorCode，不改变业务Schema1.0.0；109项prompt从源重生成 |
++| ARCH-0005 | catalog补齐P01-02缺review、check-only不签收两个案例；checker增加用例表与manifest精确比对及正反例 | 计划1.0.2，planned/not_run保留初始值，不迁移实时状态 |
++| ARCH-0006/0007 | 早期纯值定义归属明确；Settings/CLI/HTTP/Job分别合法承载；补P05边界映射白名单；具体字段证据不足保留派发前阻断 | DATA_CONTRACTS归属段修正，业务Schema版本不变；定义/DTO/ports/调用方/测试/生成物尚未实施，不生成空Schema冒充迁移 |
++| ARCH-0008 | P36-02 A基准/回归/整合，B矩阵源码与solver缓存验证，贡献清单覆盖全白名单 | OWNERSHIP路径不变；任务owner不覆盖路径，A整合不授权编辑B源码 |
++
++受影响证据：
++
++- G00当前已因issue登记漂移无效；本次又修改冻结的DATA_CONTRACTS。N02必须独立核验12项冻结制品、173项旧资产以及本次决定；先归档原冻结记录/G00/原始日志，再记录本次真实reviewer/时间与核验hash。未决类型缺口作为后续任务派发阻断，不把全系统类型契约声称已完备。
++- manifest变化及109个prompt的规则/版本变化使P01-01/02/03的旧输入绑定失效；候选也变化。N03 DSH只刷新自身交接，N04 ZCode三任务重验，N05独立Codex审查G01。禁止只补旧hash恢复通过。
++- G02及下游须先解除对应具名类型未决；G36涉及P36-02分工及真实缓存/回归验收。G02–G39还缺执行器附加断言覆盖；本轮未修执行器、未签后续Gate。
++
++业务迁移顺序保留domain→DTO→ports→调用方→测试→生成物；本轮只有规划/归属修正，未来字段决定如改变Schema语义须另行版本裁定及真实生成/验收。旧CONTRACT_FREEZE的hash/reviewer/日期保留原字节，故本轮结束其DATA_CONTRACTS条目预期不再新鲜，这不是新签收。
++
++环境：本轮不需要数据库、求解器或模型；未核实这些服务的运行条件，未创建环境任务卡、未运行其smoke、未改现有模型或全局配置。
++
++## 1.0.1→1.0.2复核修正
++
++修改前精确130项白名单、前后版本与Gate/迁移影响保存在`tmp/N01/recheck-20261003/scope-correction-before.json`，全部落于原134项白名单；上次N01文档/证据/日志字节副本在该目录的before树。修正JobKind/JobStatus与P02-01 states的唯一枚举定义冲突，JobKind未决必须在P02-01派发前裁定；补Resource及主数据各具名类型/简称未决审计；G00独立引导流程与G01–G39常规流程区分。catalog改动后重生成1.0.2，执行器、OWNERSHIP、官方记录、业务Schema均不改。
+--- before/docs/architecture/DATA_CONTRACTS.md
++++ current/docs/architecture/DATA_CONTRACTS.md
+@@ -80,6 +80,8 @@
+ 
+ `ScenarioSpec`的纯数据形状也在P02-04定义，P04负责生成；`ScenarioEngine`的加载实现可在P12-04装配。P02的Schema导出仅依赖完整contracts类型；P05才将已实现路由OpenAPI加入同一导出器，不能让P02导入尚不存在的FastAPI应用。
+ 
++2026-10-03 N01 归属修正（规划1.0.2，业务Schema仍1.0.0）：`ScenarioBundle`、`ScenarioRef`的唯一纯值定义归P02-04 `domain/runtime.py`，边界映射归同任务`contracts/runtime.py`；P04生成/导入、P12加载、P16提供视图，均复用定义。Job及实体直接引用的纯值类型也在P02-04定义，JobKind/JobStatus等公共枚举仅引用P02-01 `domain/states.py`的唯一定义，不能在runtime或DTO重复定义；P03只持久化，P05只实现作业行为和DTO映射。完整承载路径及逐项未决见[具名类型归属审计](TYPE_DEFINITION_OWNERSHIP.md)。本次只裁定归属，不补造字段；ARCH-0006/ARCH-0007所列字段、联合分支和前向依赖须由A契约治理在下发对应定义/消费任务前裁定；JobKind成员未决在P02-01派发前解决，未决时禁止派发。此规则不授权P03/P04/P05创建缺失的公共领域类型。
++
+ | 接口 | 签名 | 允许副作用 |
+ | --- | --- | --- |
+ | TransportSolver | solve(problem:TransportProblem,budget:SolveBudget)->TransportSolution | 无，受限CPU计算 |
+--- before/docs/architecture/TYPE_DEFINITION_OWNERSHIP.md
++++ current/docs/architecture/TYPE_DEFINITION_OWNERSHIP.md
+@@ -0,0 +1,110 @@
++# 早期具名类型定义任务与合法承载审计
++
++2026-10-03 N01；规划1.0.0→1.0.2（含1.0.1复核修正）。证据为当前[DATA_CONTRACTS](DATA_CONTRACTS.md)、[DOMAIN_CATALOG](DOMAIN_CATALOG.md)、[IMPLEMENTATION_CONVENTIONS](IMPLEMENTATION_CONVENTIONS.md)、[API_CONTRACT](../api/API_CONTRACT.md)、[catalog源码](../../tools/ai_coding_plan/build_catalog.py)及重生成[manifest](../plan/TASK_MANIFEST.json)。当前正式domain/backend源码只有工程marker，没有这些业务类型的实现；“定义任务已裁定”不代表类型已经实现。
++
++本审计覆盖N01点名类型及P02–P05接口中直接相关的具名类型。后续所有阶段的全部具名Schema不是本次穷举范围；其未实现/未审查状态不得解释成已补齐。
++
++下表使用完整路径的简写：
++
++| 简写 | 完整文件路径 |
++| --- | --- |
++| domain.states | `packages/domain/src/logistics_domain/states.py` |
++| domain.resources | `packages/domain/src/logistics_domain/resources.py` |
++| domain.runtime | `packages/domain/src/logistics_domain/runtime.py` |
++| contracts.runtime | `packages/contracts/src/logistics_contracts/runtime.py` |
++| contracts.common | `packages/contracts/src/logistics_contracts/common.py` |
++| contracts.entities | `packages/contracts/src/logistics_contracts/entities.py` |
++| contracts.http | `packages/contracts/src/logistics_contracts/http.py` |
++| backend.bootstrap | `apps/backend/src/logistics_backend/bootstrap.py` |
++| backend.seed | `apps/backend/src/logistics_backend/cli/seed.py` |
++| backend.master_data | `apps/backend/src/logistics_backend/application/master_data.py` |
++| backend.jobs | `apps/backend/src/logistics_backend/application/jobs.py` |
++| persistence.runtime | `apps/backend/src/logistics_backend/persistence/runtime_models.py` |
++| persistence.jobs | `apps/backend/src/logistics_backend/persistence/jobs.py` |
++
++所有文件归A；上述定义者的白名单已由catalog明确，不给消费任务添加domain类型写权限。P05-01增加contracts.http，P05-03增加contracts.runtime，仅作对应HTTP/Job边界映射，不授权重复领域实体。
++
++| 类型（逐项） | 当前证据 | 定义任务 / 唯一承载 | 决定与未决 |
++| --- | --- | --- | --- |
++| ScenarioSpec | IMPLEMENTATION_CONVENTIONS内部表已有id/version/seed/epoch/horizon/size/policy/event_specs | P02-04 / domain.runtime；DTO同任务contracts.runtime | 原归属确认；嵌套类型须完整，不允许Any |
++| ScenarioRef | DOMAIN_CATALOG Simulation/Experiment引用；无完整字段行 | P02-04 / domain.runtime | 归属裁定；ID/version/hash引用语义未决，阻断P02-04派发 |
++| ScenarioBundle | P04-01返回、ScenarioEngine返回、GET scenarios响应；无字段行 | P02-04 / domain.runtime；边界映射contracts.runtime | ARCH-0006归属裁定；bundle成员/版本/期望不变量与运行数据隔离规范未决，阻断P02-04派发；P04不能自造 |
++| ImportReceipt | P04-02 model、rule/cases说明同hash no_change、二次inserted=0、事务回滚 | P04-02 / backend.seed（CLI内部具名结果） | 非跨模块领域实体；完整计数/版本/拒绝结果结构证据不足，须A治理先裁定再派发P04-02；不猜DTO |
++| Settings | P05-01 create_app(settings: Settings)；bootstrap唯一组合根 | P05-01 / backend.bootstrap | 内部配置所有权已裁定；必需配置项、校验/默认值/secret处理字段未决，阻断P05-01派发 |
++| ActorContext | DATA_CONTRACTS ScheduleService参数、API鉴权产生actor/role/scope，不接受body自报 | P02-04 / domain.runtime；P05认证产生值 | 字段/对象scope规则未完全冻结，阻断P02-04派发；P05不能另造同名领域类型 |
++| HealthResponse | API_CONTRACT /health端点、P05-01签名 | P05-01 / contracts.http | 归属和白名单已补；具体响应字段证据不足，阻断P05-01派发 |
++| ReadinessResponse | API_CONTRACT /ready；P05-01要求DB不可用ready503/live200 | P05-01 / contracts.http | 同上；不把DB配置存在等同ready通过 |
++| MasterData | catalog中没有这个独立类型名 | 不新增类型 | 是能力统称，不能据标题发明实体或DTO |
++| MasterDataService | P05-02 update签名和业务规则 | P05-02 / backend.master_data | 应用服务归属确认；不是传输模型 |
++| MasterDataUpdate | P05-02签名；API_CONTRACT列Order/Vehicle/Resource等更新类型 | P05-02 / contracts.http | 判别分支与必需字段未决；不得把不同更新命令合成自由dict，阻断P05-02派发 |
++| Resource | P02-02接口返回类型；DOMAIN_CATALOG只有具名资源实体，没有Resource独立字段行 | P02-02 / domain.resources（归属裁定） | class或具名union关系未决，阻断P02-02派发；不能当自由dict或自造额外实体 |
++| ResourceDTO | P02-02接口ResourceDTO.to_domain()->Resource；P05-02返回；API_CONTRACT资源kind白名单 | P02-02 / contracts.entities；P05-02复用 | 当前契约未清楚说明ResourceDTO/Resource与已有具体资源实体的union关系；阻断P02-02派发，不能在http.py定义第二份 |
++| OrderPage | API_CONTRACT通用items/next_cursor/has_more + P05-02 endpoint | P05-02 / contracts.http | 分页包结构有依据；OrderDTO复用P02-02，cursor具体语义实施须对冻结规则验证 |
++| OrderDTO | P02-02接口与DOMAIN_CATALOG Order | P02-02 / contracts.entities | 原归属确认，HTTP不能复制实体字段/状态定义 |
++| PageQuery / OrderFilter | API_CONTRACT端点/通用limit1..200、稳定排序 | P05-02 / contracts.http | limit等已有依据，过滤字段枚举未完整，阻断P05-02派发 |
++| Job | DOMAIN_CATALOG辅助记录列kind/typed请求引用/lease/attempt/deadline/result_ref | P02-04 / domain.runtime；P03-02 ORM在persistence.runtime | 纯实体归属补明确，P05只实现行为；typed引用需提前确定，不能导入未来请求类 |
++| JobAttempt | DOMAIN_CATALOG辅助记录列开始结束/原始错误 | P02-04 / domain.runtime；P03-02持久化 | 原辅助实体任务归属明确；错误记录脱敏规则需验收 |
++| JobKind | P05-03 model；P02-01要求所有ID/Enum及公共状态来自domain.states | P02-01 / domain.states | 成员命名及与请求kind的映射未完整冻结，阻断P02-01派发；P02-04/P05仅引用，不重复定义 |
++| JobStatus | DATA_CONTRACTS明确queued/running/completed/failed/cancelled语义；P02-01定义唯一公共枚举 | P02-01 / domain.states | P02-04/P05仅引用，不新增/重命名状态，不把INFEASIBLE当worker failed |
++| JobRequest | DATA_CONTRACTS五类判别payload，定义归P05-03 | P05-03 / contracts.runtime | P05时P06/P11/P14/P32请求未定义的前向依赖未解决；A契约治理必须先裁定完整纯类型或具名引用策略，禁止Any/空类占位；阻断P05-03派发 |
++| JobRef | DATA_CONTRACTS已列job_id/status/status_url/result_url/trace_id | P05-03 / contracts.runtime | 补合法白名单；遵循已列字段，消费端复用 |
++| JobView | API_CONTRACT GET jobs/cancel；无完整字段行 | P05-03 / contracts.runtime | 状态展示字段、lease可见范围未决，阻断P05-03派发 |
++| CancelCommand | API_CONTRACT jobs/cancel及后续agent cancel引用 | P05-03 / contracts.runtime（Job取消） | 不确认跨能力同名命令可共用；其完整字段及后续同名关系未决，阻断P05-03派发 |
++| JobResult | API_CONTRACT结果判别union归P16-01 | P16-01 / contracts.runtime（后续复用边界模块须在派发前补白名单） | 当前P16-01未给该文件；不能宣称已授权，列后续治理未决；不在P05提前造类型 |
++| LeaseToken | P05-03 model、epoch防旧worker提交规则 | P05-03 / backend.jobs | 工作协议内部值，字段/租约身份规范未决，阻断P05-03派发 |
++| Deadline | P05-03 model及SolveBudget deadline字段线索 | P05-03 / backend.jobs（作业内部协议） | 公共期限语义与既有Agent/SolveBudget如何共享证据不足，须治理决定，不复制公共类型；阻断P05-03派发 |
++| WorkOutcome | P05-03 Worker.run_once返回，无字段行 | P05-03 / backend.jobs | 内部结果结构未决，阻断P05-03派发 |
++| ErrorEnvelope / ErrorDetail | DATA_CONTRACTS公共错误形状/判别union | P02-04 / contracts.common | 原归属；UNSUPPORTED不是已登记ErrorCode，采用INVALID_INPUT+UnsupportedDetail；校验unsupported_codes是独立结果字段 |
++
++## P05-02主数据端点的补充逐项审计
++
++来源为API_CONTRACT的主数据端点表。下表只登记原文类型名称或明确标注的简称；对Create/Update等简称不猜测完整Python类名。字段、union与简称全名证据不足，均由A契约治理在定义/消费任务派发前裁定。具体实体DTO复用P02-02，不在P05重复实体。
++
++| 引用类型 / 原文简称 | 定义任务 / 合法承载 | 当前依据及未决 |
++| --- | --- | --- |
++| OrderCreate | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| OrderUpdate | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| VehicleFilter | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| VehiclePage | P05-02 / contracts.http | 分页组合使用既有items/next_cursor/has_more；具体元素与游标语义须核验 |
++| VehicleCreate | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| VehicleUpdate | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| DriverQuery | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| DriverPage | P05-02 / contracts.http | 分页组合使用既有items/next_cursor/has_more；具体元素与游标语义须核验 |
++| WarehouseFilter | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| WarehousePage | P05-02 / contracts.http | 分页组合使用既有items/next_cursor/has_more；具体元素与游标语义须核验 |
++| WarehouseCreate | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| ZoneQuery | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| ZonePage | P05-02 / contracts.http | 分页组合使用既有items/next_cursor/has_more；具体元素与游标语义须核验 |
++| LocationQuery | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| LocationPage | P05-02 / contracts.http | 分页组合使用既有items/next_cursor/has_more；具体元素与游标语义须核验 |
++| DockQuery | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| DockPage | P05-02 / contracts.http | 分页组合使用既有items/next_cursor/has_more；具体元素与游标语义须核验 |
++| WorkerQuery | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| WorkerPage | P05-02 / contracts.http | 分页组合使用既有items/next_cursor/has_more；具体元素与游标语义须核验 |
++| EquipmentQuery | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| EquipmentPage | P05-02 / contracts.http | 分页组合使用既有items/next_cursor/has_more；具体元素与游标语义须核验 |
++| ResourceUpdate | P05-02 / contracts.http | 端点给出名称/作用，完整字段或判别分支未决，阻断P05-02派发 |
++| CalendarDTO | P05-02 / contracts.http | HTTP边界映射，须复用已裁定的ResourceCalendar纯值形状；字段与早期归属未决 |
++| VehicleDTO | P02-02 / contracts.entities；P05-02复用 | DOMAIN_CATALOG对应具体实体的边界投影；字段和命名映射按唯一导出核验，不复制到http |
++| DriverDTO | P02-02 / contracts.entities；P05-02复用 | DOMAIN_CATALOG对应具体实体的边界投影；字段和命名映射按唯一导出核验，不复制到http |
++| WarehouseDTO | P02-02 / contracts.entities；P05-02复用 | DOMAIN_CATALOG对应具体实体的边界投影；字段和命名映射按唯一导出核验，不复制到http |
++| ZoneDTO | P02-02 / contracts.entities；P05-02复用 | DOMAIN_CATALOG对应具体实体的边界投影；字段和命名映射按唯一导出核验，不复制到http |
++| StorageLocationDTO | P02-02 / contracts.entities；P05-02复用 | DOMAIN_CATALOG对应具体实体的边界投影；字段和命名映射按唯一导出核验，不复制到http |
++| DockDTO | P02-02 / contracts.entities；P05-02复用 | DOMAIN_CATALOG对应具体实体的边界投影；字段和命名映射按唯一导出核验，不复制到http |
++| WorkerDTO | P02-02 / contracts.entities；P05-02复用 | DOMAIN_CATALOG对应具体实体的边界投影；字段和命名映射按唯一导出核验，不复制到http |
++| EquipmentDTO | P02-02 / contracts.entities；P05-02复用 | DOMAIN_CATALOG对应具体实体的边界投影；字段和命名映射按唯一导出核验，不复制到http |
++| Driver Create（端点原文简称） | P05-02 / contracts.http | 正式具名Schema名称及完整字段未冻结，保持未决，不据简称自造类 |
++| Driver Update（端点原文简称） | P05-02 / contracts.http | 正式具名Schema名称及完整字段未冻结，保持未决，不据简称自造类 |
++| Warehouse Update（端点原文简称） | P05-02 / contracts.http | 正式具名Schema名称及完整字段未冻结，保持未决，不据简称自造类 |
++| Zone Create（端点原文简称） | P05-02 / contracts.http | 正式具名Schema名称及完整字段未冻结，保持未决，不据简称自造类 |
++| Location Create（端点原文简称） | P05-02 / contracts.http | 正式具名Schema名称及完整字段未冻结，保持未决，不据简称自造类 |
++| Dock Create（端点原文简称） | P05-02 / contracts.http | 正式具名Schema名称及完整字段未冻结，保持未决，不据简称自造类 |
++| Worker Create（端点原文简称） | P05-02 / contracts.http | 正式具名Schema名称及完整字段未冻结，保持未决，不据简称自造类 |
++| Equipment Create（端点原文简称） | P05-02 / contracts.http | 正式具名Schema名称及完整字段未冻结，保持未决，不据简称自造类 |
++| ResourceCalendar | DATA_CONTRACTS已给intervals/version；纯值定义任务/承载仍未明示 | 须在P02资源实体引用前由A裁定，P05 CalendarDTO只映射；不可自行在HTTP模块造公共纯值类型 |
++
++## 未决项的解除条件
++
++ARCH-0006/ARCH-0007由A契约治理负责，不交P03/P04/P05自造。P02-01/P02-02/P02-04及对应消费任务下发前，必须形成具体字段、判别分支、依赖方向、合法承载白名单和正反例的契约差异，按changes流程经独立复核/冻结后才能下发。归属修正本身不足以证明G02类型完整或Schema可导出。
++
++本次未创建上述类型，未生成业务Schema/OpenAPI/TS，未启动业务任务，未验证PostgreSQL/模型smoke。未检查的外部服务/凭据记NOT_RUN，不据此创建推测性环境任务卡。
+--- before/docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md
++++ current/docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md
+@@ -1,11 +1,13 @@
+-# ARCH-0006 ScenarioBundle 无任何冻结归属
++# ARCH-0006 ScenarioBundle归属已裁定，字段未决
++
++当前状态（2026-10-03）：decided；P02-04派发前blocking=yes。下文open描述为原发现历史，末尾N01决定替代旧决定。
+ 
+ - `id`：`ARCH-0006`
+ - `status`：`open`
+ - `discovered_by_task`：`P04-01`（`canonical-fixtures`），在按任务书核对 `generate_scenario(spec: ScenarioSpec, seed: int) -> ScenarioBundle` 的签名右侧类型来源时发现：`ScenarioSpec` 有明确归属，**`ScenarioBundle` 在任何冻结制品中都没有被指派给某个任务**。
+ - `title`：`ScenarioBundle` 出现在多处已冻结的接口签名中，但 `DATA_CONTRACTS.md` 只指派了 `ScenarioSpec` 的形状归属（P02-04），未指派 `ScenarioBundle`。
+ - `evidence`：
+-  - 需要它的签名：`docs/architecture/DATA_CONTRACTS.md:94`（`ScenarioEngine.load(ref:ScenarioRef)->ScenarioBundle`）、`docs/prompts/03-database/../01-foundation/P04-01-canonical-fixtures.md:90`（`generate_scenario(spec: ScenarioSpec, seed: int) -> ScenarioBundle`）、`docs/api/API_CONTRACT.md:47`（`GET /scenarios/{id}` → `ScenarioBundle`）。
++  - 需要它的签名：`docs/architecture/DATA_CONTRACTS.md:94`（`ScenarioEngine.load(ref:ScenarioRef)->ScenarioBundle`）、`docs/prompts/01-foundation/P04-01-canonical-fixtures.md:90`（`generate_scenario(spec: ScenarioSpec, seed: int) -> ScenarioBundle`）、`docs/api/API_CONTRACT.md:47`（`GET /scenarios/{id}` → `ScenarioBundle`）。
+   - **明确指派了 `ScenarioSpec`**：`docs/architecture/DATA_CONTRACTS.md:81` —— “`ScenarioSpec`的纯数据形状也在**P02-04**定义，P04负责生成；`ScenarioEngine`的加载实现可在P12-04装配。”
+   - **未指派 `ScenarioBundle` 的形状定义任务**：`DATA_CONTRACTS.md` 的具名 Schema 表（第 20–60 行区间）内**没有** `ScenarioBundle` 行；第 94 行的 Protocol 表只给出签名，没有形状归属。`docs/architecture/DOMAIN_CATALOG.md` 中 `Scenario` 相关条目只有 `Simulation`（第 39 行）与 `Experiment`（第 48 行）两个**实体**，均不是 `ScenarioBundle`。
+   - 唯一提到它的“模型”清单是 `docs/prompts/07-simulation/P11-01-simulation-contract.md:69`（“Simulation、SimulationSnapshot、**ScenarioSpec**、TwinState、RngState”）——该处列的是 `ScenarioSpec`，**不是** `ScenarioBundle`；`ScenarioBundle` 只出现在同一文件的接口签名 `ScenarioEngine.load(...) -> ScenarioBundle`（第 88 行）。
+@@ -19,3 +21,13 @@
+   无论选哪一项，都属于契约变更，须先写 `contracts/changes/` 说明，再按 domain → DTO → ports → 调用方 → 测试 → 生成物 顺序迁移，并重验受影响 Gate。
+ - `owner`：契约所有者（`docs/architecture/DATA_CONTRACTS.md` 的维护方）决定归属；落地由被指派的阶段任务执行。与 `P04-01` 的重新下发存在时序依赖。
+ - `links`：`docs/architecture/DATA_CONTRACTS.md`（第 81、94 行）、`docs/architecture/IMPLEMENTATION_CONVENTIONS.md`（第 33 行）、`docs/api/API_CONTRACT.md`（第 47 行）、`docs/prompts/01-foundation/P04-01-canonical-fixtures.md`（第 90 行）、`docs/prompts/01-foundation/P04-02-database-seed.md`（第 68 行）、`artifacts/handoffs/P04-01/dsh/evidence.json`（`frozen_interface_unreachable`）。
++
++## 2026-10-03 N01决定
++
++- status：decided（归属），字段未决。
++- blocking：yes；P02-04及ScenarioBundle消费任务派发前必须解决形状。
++- decision：选择早期纯值归属P02-04，完整路径为`packages/domain/src/logistics_domain/runtime.py`；边界映射为`packages/contracts/src/logistics_contracts/runtime.py`。依据DATA_CONTRACTS的早期纯值规则及P04首次使用顺序，不延至P11，不允许P04重复定义。
++- owner：A契约治理决定字段；P02-04实施，P04/P12/P16复用。
++- unresolved：bundle成员、ScenarioRef完整引用/版本/hash语义、fixture期望与正式输入隔离结构证据不足。N01未创建字段；A治理须在派发前提交具体契约、正反例、依赖与生成验证决定。
++- changed：catalog/runtime任务规则和model、DATA_CONTRACTS归属段、生成manifest/prompts、类型审计/issue索引及changes说明。业务Schema未生成，旧冻结hash/reviewer不更新，N02独立复核决定后续冻结。
++- links：[类型审计](../TYPE_DEFINITION_OWNERSHIP.md)、[迁移说明](../../../contracts/changes/N01-governance-1.0.1.md)。
+--- before/docs/architecture/issues/ARCH-0007-early-named-types.md
++++ current/docs/architecture/issues/ARCH-0007-early-named-types.md
+@@ -0,0 +1,16 @@
++# ARCH-0007 早期具名类型字段与前向依赖缺口
++
++- id：ARCH-0007
++- status：open
++- discovered_by_task：N01治理，按P02–P05接口及冻结契约逐项核验。
++- title：ImportReceipt、Settings、MasterDataUpdate、JobRequest等具名类型缺完整字段/联合分支及可满足的类型依赖。
++- evidence：[逐项审计](../TYPE_DEFINITION_OWNERSHIP.md)给出逐项类型的来源、定义任务和完整承载路径。P04-02只列ImportReceipt和inserted=0；P05-01只用Settings签名；P05-02用MasterDataUpdate但API表给多种命令；JobRequest在P05-03引用后续P06/P11/P14/P32能力的payload。当前正式包尚无业务定义，不能从现有源码复原字段。
++- impact：P02完整类型/Schema导出以及P03–P05消费依赖无法仅凭当前描述验证；任意dict、空类、未来导入或复制DTO均不构成解决。
++- blocking：yes；P02-01/P02-02/P02-04及相关P04/P05任务派发前，字段/引用/union未决项必须决定。N02独立判断这些缺口对冻结/G00的影响，本issue不冒作Gate结论。
++- decision：归属与合法文件按审计/catalog决定；字段和JobRequest前向依赖保持open。A契约治理负责提交具体字段、判别成员、无未来导入的类型依赖、完整白名单、正反例及必要版本迁移，再独立复核。禁止交P03/P04/P05自造公共类型。
++- owner：A契约治理；实施仅在已指派任务及其白名单中执行。
++- links：[DATA_CONTRACTS](../DATA_CONTRACTS.md)、[迁移说明](../../../contracts/changes/N01-governance-1.0.1.md)。
++
++## N01重复请求内复核修正（规划1.0.2）
++
++原1.0.1审计将JobKind/JobStatus误指派到P02-04 runtime；已更正为P02-01 states.py唯一定义，P02-04/P05复用，catalog及DATA_CONTRACTS同步。JobKind成员未决阻断点前移到P02-01派发前，未猜测成员。补单列Resource及P05-02主数据端点过滤器、命令、分页、实体DTO、ResourceCalendar/CalendarDTO审计；简称的正式类型名证据不足保持未决。未新增业务实现或修改路径权限。
+--- before/docs/architecture/issues/ARCH-0008-p36-02-ownership.md
++++ current/docs/architecture/issues/ARCH-0008-p36-02-ownership.md
+@@ -0,0 +1,12 @@
++# ARCH-0008 P36-02矩阵源码与任务归属冲突
++
++- id：ARCH-0008
++- status：decided
++- discovered_by_task：N01对manifest与OWNERSHIP逐路径核验。
++- title：P36-02原任务owner为A，matrix.py/matrix_cache.py按路径归B。
++- evidence：[OWNERSHIP](../../../OWNERSHIP.json)的最长前缀规则将`packages/optimization/`及`tests/solver/`归B；[catalog](../../../tools/ai_coding_plan/build_catalog.py)原phase=36默认A；矩阵源码实际路径为`packages/optimization/src/logistics_optimization/transport/matrix.py`、`matrix_cache.py`。
++- impact：若按任务标题给A矩阵写权限，会违反路径所有权；G36缓存正确性及跨域基准证据需要两方贡献。
++- blocking：no（治理分工已裁定；真实贡献和验收尚未运行）。
++- decision：B贡献两项矩阵源码及`tests/solver/test_p36_02_bounded_performance_fix.py`，负责缓存命中/版本失效/有界内存/超大entry正反例；A负责既有unit/integration测试、`docs/performance/CHANGE_EVIDENCE.md`、`benchmarks/regression.json`和本任务报告/交接，承担整合责任。catalog生成`contributions`与`integration_owner=A`，贡献集合无交集且并集为任务精确白名单，新增solver测试纳入必需命令。B先交贡献候选/日志/hash，A核验整合后由ZCode独立预验收，再独立Codex审查G36。
++- owner：A/B按路径；A整合者不获得B源码权限。B贡献证据由真实B执行者生成；本轮不创建B/DSH记录，不修改矩阵实现。
++- links：[manifest](../../plan/TASK_MANIFEST.json)、[迁移说明](../../../contracts/changes/N01-governance-1.0.1.md)。
+--- before/docs/architecture/issues/README.md
++++ current/docs/architecture/issues/README.md
+@@ -60,14 +60,18 @@
+ 
+ ## 当前登记
+ 
++以下表格是当前决定；后文原发现记录保留为历史，2026-10-03的补充决定优先于旧open描述。N01实施决定不是独立验收。
++
+ | id | status | blocking | 标题 | 影响 | owner |
+ | --- | --- | --- | --- | --- | --- |
+ | `ARCH-0001` | `open`（非阻断） | no | 需求追踪表 R08 行的验证 Gate 与其任务所属阶段不一致 | 只影响追踪表的 Gate 列；Phase 15/16 的完整性仍由 `G15`/`G16` 保证 | `P00-03` |
+ | `ARCH-0002` | `closed`（非阻断） | no | 旧基线清单只覆盖登记条目；已改为穷举覆盖并加覆盖闸门 | 曾影响清单可追溯性；现在由 `coverage.unregistered_file_count == 0` 闭环 | `P00-01` |
+-| `ARCH-0003` | `open`（非阻断） | no | 109 个任务 Prompt 的 Error Handling 使用 `UNSUPPORTED`，但冻结错误表未登记该错误码 | 影响未知必需能力的 HTTP 语义：可能被实现成 422 之外的自造状态码 | `P05-01`（错误协议） |
+-| `ARCH-0004` | `open`（非阻断） | yes（阻断 G01 签收，不阻断开发） | 交接契约文档缺失：`docs/workflow/README.md`、`02-ZCODE-PRECHECK.md`、`HANDOFF_CONTRACT.md` 在仓库中不存在 | Codex review 与 ZCode 预验收记录的存放格式无契约来源；本任务只能自行约定，且 G01 因缺少这两类记录无法签收 | 项目管理侧 + `P01-03` |
+-| `ARCH-0005` | `open`（非阻断） | no | `docs/prompts/01-foundation/P01-02`（计划 1.0.0）与 `TASK_MANIFEST.json` 只列 2 条 Test Case，实际任务书（1.1.0）列 4 条 | 用例 3/4（Codex review 缺失 / `--check-only` 不签收）在冻结清单中没有来源，Gate 证据与清单口径可能不一致 | 规划版本对齐任务 |
+-| `ARCH-0006` | `open`（非阻断） | no | `ScenarioBundle` 出现在多处已冻结的接口签名中，但契约只指派了 `ScenarioSpec` 的形状归属（P02-04），未指派 `ScenarioBundle` | P04-01 的返回类型无承载模块（白名单不含领域类型文件）；重发时会在"重复定义 Domain Model"与"返回未定义 dict"之间二选一 | 契约所有者决定归属；落地由被指派阶段任务执行 |
++| `ARCH-0003` | `closed`（N01治理差异待N02独立复核） | no | Prompt未知能力错误码与冻结错误表不一致 | 改用INVALID_INPUT/422+UnsupportedDetail，开发未实现501/校验unsupported_codes语义保留 | A / N01 |
++| `ARCH-0004` | `closed`（文档缺口已补，待N02复核） | no（G01仍缺独立审查记录） | 三份workflow交接契约缺失 | 已补实际路径/字段/职责/失效顺序，不代表G01签收 | A / N01 |
++| `ARCH-0005` | `closed`（源与生成物已对齐，待独立复核） | no | P01-02四条用例与manifest不一致 | catalog回填，checker精确比对；规划1.0.2，不改实时状态 | A / N01 |
++| `ARCH-0006` | `decided`（归属已定，字段未决） | yes：P02-04派发前 | ScenarioBundle缺定义归属与字段规范 | P02-04 runtime唯一纯值定义；字段不得猜测 | A契约治理；实施P02-04 |
++| `ARCH-0007` | `open` | yes：P02-01/P02-02/P02-04及相关P04/P05任务派发前 | 早期具名类型字段、union及前向依赖不完整 | 逐项承载与未决见TYPE_DEFINITION_OWNERSHIP | A契约治理 |
++| `ARCH-0008` | `decided` | no | P36-02任务A与矩阵路径B冲突 | B矩阵贡献与缓存验证，A基准/回归/整合；路径权限不变 | A/B按文件；A整合 |
+ 
+ ### ARCH-0001 需求追踪表 Gate 列与阶段屏障不严格对齐
+ 
+@@ -151,3 +155,16 @@
+ - `decision`：`open`。候选：(a) 把 `ScenarioBundle` 纯数据形状补入具名 Schema 表并归 `P02-04`（与同段 `ScenarioSpec` 的“被后续阶段引用的纯值类型必须由 P02 定义”规则一致）；(b) 若判定其属仿真域装配产物，则在契约中显式写明定义任务（如 `P11-01`）并在清单 `allowed_files` 给出承载模块；(c) 若判定 `P04-01` 应为定义者，须把承载文件加入其 `files`/`allowed_files`。任一项均属契约变更，先写 `contracts/changes/`，再按 domain → DTO → ports → 调用方 → 测试 → 生成物 顺序迁移并重验受影响 Gate。
+ - `owner`：契约所有者（`DATA_CONTRACTS.md` 维护方）决定归属；落地由被指派阶段任务执行，与 `P04-01` 重新下发存在时序依赖。
+ - `links`：`docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md`、`docs/architecture/DATA_CONTRACTS.md`（第 81、94 行）、`docs/architecture/IMPLEMENTATION_CONVENTIONS.md`（第 33 行）、`docs/api/API_CONTRACT.md`（第 47 行）、`docs/prompts/01-foundation/P04-01-canonical-fixtures.md`（第 90 行）、`artifacts/handoffs/P04-01/dsh/evidence.json`。
++
++## 2026-10-03 N01治理决定（替代相关历史open结论）
++
++- ARCH-0003：closed。renderer以DATA_CONTRACTS既有INVALID_INPUT/422、UnsupportedDetail、ValidationReport.unsupported_codes及开发501规则消除自造UNSUPPORTED错误码；全部109项prompt从源重生成。不新增业务ErrorCode或变更HTTP标准。独立核验交N02。
++- ARCH-0004：closed（仅文档缺口）。补[workflow入口](../../workflow/README.md)、[ZCode步骤](../../workflow/02-ZCODE-PRECHECK.md)、[交接契约](../../workflow/HANDOFF_CONTRACT.md)，忠实记录执行器的phase_gate及四类必需输入，区分实际读取检查与人工/冻结规则要求。未修改执行器；G01仍因缺/失效证据阻断。
++- ARCH-0005：closed（规划口径）。build_catalog增加缺review/输入漂移及check-only不签收两个案例，render重生成manifest/prompt；validate_plan增加案例逐项比对及正/负例，版本1.0.2。109项Task仍planned，40项Gate仍not_run。此前外部1.1.0任务书只作为缺口线索，没有复制另一工作根规划。
++- ARCH-0006：decided；字段未决导致P02-04派发阻断。ScenarioBundle和ScenarioRef纯值归P02-04 domain/runtime.py，DTO映射同任务contracts/runtime.py；P04生成/导入、P12加载、P16视图均复用。完整成员/版本/引用语义证据不足，不填dict/Any或猜测字段。详见[独立issue](ARCH-0006-scenario-bundle-ownership.md)。
++- ARCH-0007：open；Settings、ImportReceipt、MasterDataUpdate等承载已明确，字段及JobRequest未来请求union依赖仍未决。详见[逐项审计](../TYPE_DEFINITION_OWNERSHIP.md)和[issue](ARCH-0007-early-named-types.md)。A契约治理必须先决定并独立复核，再派发相应任务。
++- ARCH-0008：decided；P36-02沿用路径归属，按B源码/缓存验证与A基准/回归/整合拆分，manifest贡献集合覆盖完整白名单。详见[issue](ARCH-0008-p36-02-ownership.md)。
++
++修改清单及冻结迁移见[contracts change](../../../contracts/changes/N01-governance-1.0.1.md)。本轮不重写CONTRACT_FREEZE或G00，不冒签ZCode/Codex通过。未决项须由N02评估是否阻断本次冻结/G00；本登记不预先替独立审查者作通过决定。
++
++N01同任务复核修正：1.0.1误列JobKind/JobStatus在runtime定义，1.0.2改为P02-01 states唯一定义并前移成员未决阻断；补主数据具名类型审计。G00常规流程例外在workflow明确。不是N02审查或Gate签收。
+--- before/docs/handoffs/N01/codex.md
++++ current/docs/handoffs/N01/codex.md
+@@ -0,0 +1,50 @@
++# N01 Codex治理 → 独立Codex N02
++
++结论：治理差异已落地，待独立N02复核；没有签收G00/G01，也没有启动P02。工作根为`D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent`；无Git，保留既有模型。P01-02四项返工保持READY_FOR_ZCODE，AGENTS.md所有权不再分配DSH返工。
++
++本角色状态：READY_FOR_N02（治理交接，不是正式业务Task或通过记录）。机器证据及最终候选见[evidence.json](../../../artifacts/handoffs/N01/codex/evidence.json)，完整候选范围见[candidate-files.json](../../../artifacts/handoffs/N01/codex/candidate-files.json)，精确差异与前后hash见[governance-files.json](../../../artifacts/handoffs/N01/codex/governance-files.json)。
++
++## 治理差异
++
++| 项 | 处理结果 |
++| --- | --- |
++| ARCH-0004 | [workflow](../../workflow/README.md)、[ZCode步骤](../../workflow/02-ZCODE-PRECHECK.md)、[HANDOFF_CONTRACT](../../workflow/HANDOFF_CONTRACT.md)已补；按实际读取字段、路径、候选冻结/非空输入hash、角色、原始日志、失败退回与生成顺序说明 |
++| ARCH-0003 | renderer消除未知能力UNSUPPORTED错误码指令，使用既有INVALID_INPUT/422+UnsupportedDetail；校验unsupported_codes、开发未实现501规则保留 |
++| ARCH-0005 | catalog P01-02用例由2条补到4条，缺review/输入漂移及check-only不签收有来源；checker加用例逐项比对，源重生成 |
++| ARCH-0006 | ScenarioBundle/ScenarioRef纯值归P02-04 runtime，P04/P12/P16复用；字段未决，禁止自造，阻断相关任务派发 |
++| ARCH-0007 | [具名类型逐项审计](../../architecture/TYPE_DEFINITION_OWNERSHIP.md)明确定义任务/合法文件/证据不足；补P05-01 http和P05-03 runtime边界映射白名单，未实施类型 |
++| ARCH-0008 | P36-02 B矩阵源码与solver缓存验证、A基准/回归/整合；manifest贡献集合覆盖完整白名单，新增B测试加入必需命令；OWNERSHIP不变 |
++
++规划版本1.0.0→1.0.2（1.0.1复核更正为1.0.2）；业务Schema及执行器格式仍1.0.0。变更源为build_catalog/render_plan/validate_plan，109个prompt从源重生成；Task的planned、Gate的not_run均保持规划初值，未改实时状态。迁移细节见[changes说明](../../../contracts/changes/N01-governance-1.0.1.md)。
++
++## 验证与限制
++
++| 实际命令 | 退出码 | 结果 / 原始日志 |
++| --- | --- | --- |
++| `python tools/ai_coding_plan/render_plan.py` | 0 | 109 prompts/40 gates；[render.log](../../../artifacts/handoffs/N01/codex/render.log) |
++| `python tools/ai_coding_plan/validate_plan.py --self-test` | 0 | 15自测试通过，109任务/40Gate，errors=[]；[plan-check.log](../../../artifacts/handoffs/N01/codex/plan-check.log) |
++| `python tmp/N01/verify.py` | 0 | 36/36治理检查；[validation.log](../../../artifacts/handoffs/N01/codex/validation.log) |
++
++验证包含受控沙箱的hash完整/空/缺/漂移、错误身份/状态/revision、缺review、前序Gate仅status、命令exit=1/缺exit/缺日志、check-only无写入；生成物逐字节复现；新文档本地链接；P36贡献集合与实际路径所有权；相关文件候选公式独立复算。沙箱成功样例不是正式预验收。规划自测试新增用例表一致/缺行/多行三个正反例，不改执行器。
++
++287项原Gate/日志/交接/冻结记录及受保护执行器、OWNERSHIP哈希均未变；正式执行器未修改，业务源码/依赖锁未修改。完整226 passed是2026-10-01既有证据，本N01没有重复业务回归，不把其写为本轮实跑。
++
++当前读取检查仍有规范覆盖边界：DSH证据字段/hash、ZCode命令/log/revision、Codex必需输入覆盖、前序Gate pytest计数等需独立核验；G02–G39附加断言尚未注册。本轮忠实记录这些边界，没有放宽判定或替其声明通过；后续执行器治理须独立限定任务/测试/审查。
++
++环境方面未检查外部PostgreSQL/模型凭据或运行服务，未创建推测性环境卡，相关smoke为NOT_RUN；没有业务Schema/OpenAPI/TS生成、数据库/求解器/仿真/模型/浏览器业务验收。
++
++## 受影响预验收与未决
++
++- 冻结12项制品中，本次DATA_CONTRACTS归属段改变，原冻结该条hash不再新鲜；其余11项hash一致。CONTRACT_FREEZE reviewer/日期/hash保持历史原字节，待N02独立复核；不得只换hash复制旧审查身份。
++- G00原issues/README输入漂移，本次还增加DATA_CONTRACTS漂移。N02先评估ARCH-0006/0007未决是否阻断冻结/G00，再独立核验决定及冻结/旧资产。成立时先归档旧冻结/G00/原始日志，再执行N02授权的正式恢复流程；本N01未执行record-g00。
++- manifest及任务prompt改变，使P01-01/02/03旧输入绑定均失效；实现候选也改变。N03 DSH刷新自身交接，N04 ZCode按新输入三任务重验，N05独立Codex审查G01；不沿用旧通过。
++- 具名类型未决主要为ScenarioRef/Bundle、ActorContext、ResourceDTO/Resource关系、ImportReceipt/Settings/HTTP命令、JobView/CancelCommand/LeaseToken/Deadline/WorkOutcome，以及JobRequest前向payload依赖。完整逐项恢复条件见ARCH-0006/0007和审计；A契约治理须在相应定义/消费任务派发前决定，不能交P03/P04/P05自造。
++- P16-01 JobResult的contracts.runtime白名单仍需后续治理；本次仅登记，不扩至后续功能规划。P36-02分工已决定，实际贡献/性能验收未运行。
++
++下一执行者：与本N01实现上下文分离的独立Codex N02；本交接不创建新聊天、不投送其他执行者、不写他人交接或通过记录。
++
++## 重复请求内复核更正
++
++更正上次归属错误：JobKind/JobStatus由P02-01 states.py唯一定义，P02-04/P05只引用；JobKind成员未决阻断P02-01派发前。补Resource及P05-02主数据端点逐项类型审计，原文简称全名未冻结则明确未决。workflow明确G00不读取P00 precheck/G00-codex-review，常规顺序只适用G01–G39。
++
++本次并行只读质量检查不构成N02；N02仍须独立复核冻结影响及未决项。旧N01交付原字节保存在`tmp/N01/recheck-20261003/before/`；新输入已实跑重验并重新生成自己的N01交接哈希，不沿用旧候选结论。
+--- before/docs/plan/TASK_MANIFEST.json
++++ current/docs/plan/TASK_MANIFEST.json
+@@ -1,6 +1,6 @@
+ {
+-  "plan_version": "1.0.0",
+-  "generated_date": "2026-09-12",
++  "plan_version": "1.0.2",
++  "generated_date": "2026-10-03",
+   "implementation_status": "not_started_by_this_plan",
+   "phase_names": [
+     "需求冻结与 Architecture Contract",
+@@ -287,7 +287,9 @@
+       "algorithm": "运行各任务命令及阶段附加验收，核验前 Gate 与证据依赖；用子进程参数数组；提供 --check-only 与过期检查。",
+       "cases": [
+         "命令 exit=1 => G01 failed 且进程非零",
+-        "domain 导入 fastapi => 层边界检查失败"
++        "domain 导入 fastapi => 层边界检查失败",
++        "缺少 Codex review 或 ZCode 输入哈希过期 => G01 failed 且进程非零",
++        "--check-only => 不写 Gate 记录或日志，已有记录保持原字节"
+       ],
+       "deps": [
+         "G00",
+@@ -389,7 +391,7 @@
+       ],
+       "interface": "TimeWindow(start_s: int, end_s: int); transition(state: EntityState, event: Transition) -> EntityState",
+       "model": "所有 ID / Enum、TimeWindow、Money、ViolationCode",
+-      "rule": "UUID、UTC 时间、整数秒/米/克/立方厘米/分/十分之一摄氏度；资源占用 [start,end)；服务开始窗闭区间。",
++      "rule": "UUID、UTC 时间、整数秒/米/克/立方厘米/分/十分之一摄氏度；资源占用 [start,end)；服务开始窗闭区间。 JobStatus/JobKind等公共枚举唯一在states.py定义；JobStatus遵循DATA_CONTRACTS既有成员和语义；JobKind成员仍未决，ARCH-0007须由A治理在本任务派发前裁定，后续P02-04/P05仅复用。",
+       "algorithm": "不可变值对象；按实体状态转换表显式校验；错误只用领域类型，不依赖 Pydantic。",
+       "cases": [
+         "[0,10) 和 [10,20) => 不冲突",
+@@ -541,8 +543,8 @@
+         "scripts/export_contracts.py"
+       ],
+       "interface": "export_contracts() -> SchemaBundle; ErrorEnvelope(code, message, trace_id, details: tuple[ErrorDetail,...])",
+-      "model": "Simulation、SimulationSnapshot、Event、ExceptionEvent、AgentRun、ToolCall、DecisionRecord、Experiment、Metric、ExperimentResult；辅助实体见目录",
+-      "rule": "边界 extra=forbid；discriminated union；业务 enum 只从 domain 引入；JSONB 也绑定 versioned schema。 P02必须把所有实体引用的纯值类型完整定义，含TwinState/ExecutionEvent/PendingEvent/RngState/AgentBudget/ExperimentSpec；后续领域阶段复用它们，只实现Problem/Request映射和算法，不重复实体。",
++      "model": "Simulation、SimulationSnapshot、Event、ExceptionEvent、AgentRun、ToolCall、DecisionRecord、Experiment、Metric、ExperimentResult；辅助实体见目录；ScenarioSpec、ScenarioRef、ScenarioBundle、Job、JobAttempt、ActorContext及其纯值引用；JobKind/JobStatus只引用P02-01 states.py唯一枚举",
++      "rule": "边界 extra=forbid；discriminated union；业务 enum 只从 domain 引入；JSONB 也绑定 versioned schema。 P02必须把所有实体引用的纯值类型完整定义，含TwinState/ExecutionEvent/PendingEvent/RngState/AgentBudget/ExperimentSpec；后续领域阶段复用它们，只实现Problem/Request映射和算法，不重复实体。 ScenarioBundle及ScenarioRef唯一纯值定义归domain/runtime.py，边界映射归contracts/runtime.py；字段未决不得自行补全，须先完成ARCH-0006/ARCH-0007的派发前契约裁定。Job实体在本任务定义，JobKind/JobStatus仅引用P02-01 states.py，不在runtime.py重复定义；P03只持久化，P05只实现作业行为。",
+       "algorithm": "逐一映射运行实体；导出确定排序 JSON Schema；生成文件只由脚本更新并提供 --check。",
+       "cases": [
+         "Event(kind=vehicle_failure,payload 缺 vehicle_id) => 校验失败",
+@@ -852,7 +854,7 @@
+       ],
+       "interface": "python -m logistics_backend.cli.seed --scenario tiny_transport --database-url-env TEST_DATABASE_URL",
+       "model": "ScenarioBundle、ImportReceipt",
+-      "rule": "仅显式测试/演示库；禁止默认清空数据库；fixture ID 稳定；已有关联事实不得被覆盖。",
++      "rule": "仅显式测试/演示库；禁止默认清空数据库；fixture ID 稳定；已有关联事实不得被覆盖。 ImportReceipt为本任务cli/seed.py内的具名CLI导入回执，不是领域实体；字段未决见ARCH-0007，裁定前不派发，不在P03/P04自造公共类型。",
+       "algorithm": "验证 schema/hash 后事务插入；已有相同 hash 返回 no_change；内容变化要求新 dataset_version。",
+       "cases": [
+         "同数据导入两次 => 第二次 inserted=0",
+@@ -901,11 +903,12 @@
+         "apps/backend/src/logistics_backend/bootstrap.py",
+         "apps/backend/src/logistics_backend/main.py",
+         "contracts/openapi.json",
++        "packages/contracts/src/logistics_contracts/http.py",
+         "scripts/export_contracts.py"
+       ],
+       "interface": "create_app(settings: Settings) -> FastAPI; GET /api/v1/health -> HealthResponse",
+       "model": "Settings、ActorContext、ErrorEnvelope、HealthResponse",
+-      "rule": "仅 bootstrap 装配 adapters；API 不 import OR-Tools；MVP viewer/operator 简单角色；开发模式只绑定本机。",
++      "rule": "仅 bootstrap 装配 adapters；API 不 import OR-Tools；MVP viewer/operator 简单角色；开发模式只绑定本机。 Settings唯一配置定义放bootstrap.py；HealthResponse/ReadinessResponse边界定义放contracts/http.py；ActorContext纯值复用P02-04。字段未决见ARCH-0007，未裁定不派发。",
+       "algorithm": "lifespan 管理连接；trace_id 贯穿；认证和 body 限额中间件；ready 与 live 分离。",
+       "cases": [
+         "无凭据请求受保护写接口 => 401",
+@@ -938,6 +941,7 @@
+         "contracts/openapi.json",
+         "docs/implementation/P05-01.md",
+         "docs/implementation/reports/P05-01.md",
++        "packages/contracts/src/logistics_contracts/http.py",
+         "scripts/export_contracts.py",
+         "tests/integration/test_p05_01_api_composition.py",
+         "tests/unit/test_p05_01_api_composition.py"
+@@ -963,7 +967,7 @@
+       ],
+       "interface": "MasterDataService.update(cmd: MasterDataUpdate, expected_revision: int) -> ResourceDTO; GET /api/v1/orders -> OrderPage",
+       "model": "Order、Vehicle、Warehouse、资源子项与日历；API_CONTRACT 主数据表",
+-      "rule": "只允许 draft 订单修改需求；已下发变更走事件；生成 OpenAPI；分页 limit 1..200；排序稳定。",
++      "rule": "只允许 draft 订单修改需求；已下发变更走事件；生成 OpenAPI；分页 limit 1..200；排序稳定。 MasterData不是已登记类型名；MasterDataService定义在application/master_data.py。MasterDataUpdate/分页请求归contracts/http.py，ResourceDTO复用P02-02 contracts/entities.py，不能在http.py复制同名实体DTO；字段与ResourceDTO覆盖范围见ARCH-0007，未裁定不派发。",
+       "algorithm": "API DTO → application → UoW → domain 校验 → adapter；按 If-Match 防丢更新；停用不硬删除。",
+       "cases": [
+         "If-Match=2、实际 revision=3 => 409",
+@@ -1018,11 +1022,12 @@
+         "apps/backend/src/logistics_backend/bootstrap.py",
+         "apps/backend/src/logistics_backend/persistence/jobs.py",
+         "apps/backend/src/logistics_backend/worker.py",
+-        "contracts/openapi.json"
++        "contracts/openapi.json",
++        "packages/contracts/src/logistics_contracts/runtime.py"
+       ],
+       "interface": "JobService.submit(request: JobRequest, key: str) -> JobRef; Worker.run_once() -> WorkOutcome",
+       "model": "Job、JobKind、JobStatus、LeaseToken、Deadline",
+-      "rule": "PostgreSQL 持久化 job；进程并发默认 1；不以 FastAPI BackgroundTasks 运行重求解；lease epoch 防旧 worker 写回。",
++      "rule": "PostgreSQL 持久化 job；进程并发默认 1；不以 FastAPI BackgroundTasks 运行重求解；lease epoch 防旧 worker 写回。 JobRequest/JobRef/JobView/CancelCommand唯一边界定义放contracts/runtime.py；Job复用P02-04，JobKind/JobStatus复用P02-01 states.py。LeaseToken/Deadline/WorkOutcome为application/jobs.py内具名工作协议；字段和JobRequest前向类型依赖未决见ARCH-0007，未裁定不派发。",
+       "algorithm": "SKIP LOCKED 领取、心跳续约、独立进程 deadline；取消标志与终态 CAS；过期租约回收、重试有上限。",
+       "cases": [
+         "worker 领取后崩溃 => 租约到期可重领",
+@@ -1057,6 +1062,7 @@
+         "contracts/openapi.json",
+         "docs/implementation/P05-03.md",
+         "docs/implementation/reports/P05-03.md",
++        "packages/contracts/src/logistics_contracts/runtime.py",
+         "tests/integration/test_p05_03_durable_jobs.py",
+         "tests/unit/test_p05_03_durable_jobs.py"
+       ],
+@@ -5188,7 +5194,7 @@
+       ],
+       "interface": "BoundedMatrixCache.get_or_load(query: MatrixQuery, loader: MatrixLoader) -> TravelMatrix",
+       "model": "BudgetLedger、MatrixCacheKey、BenchmarkReport",
+-      "rule": "仅实施矩阵缓存的内存上限、LRU淘汰和版本失效；不修改算法语义或公共矩阵接口；基准必须给出前后结果，即使无提速。",
++      "rule": "仅实施矩阵缓存的内存上限、LRU淘汰和版本失效；不修改算法语义或公共矩阵接口；基准必须给出前后结果，即使无提速。 按文件分工：B实现matrix.py/matrix_cache.py及tests/solver的缓存正反例；A负责tests/unit、tests/integration、CHANGE_EVIDENCE、regression.json和跨域整合。A是整合主写者，仅整合B交付，不取得B路径编辑权；先B贡献、后A整合、再ZCode独立预验收/G36审查。",
+       "algorithm": "以节点顺序/profile/time_bucket/matrix_version为键；默认64MiB上限，计算entry字节成本，超大entry不缓存；独立计算命中率/内存峰值/耗时并复验全部硬约束。",
+       "cases": [
+         "缓存命中但matrix_version改变 => 必须失效",
+@@ -5203,13 +5209,13 @@
+       "phase_gate": "G36",
+       "unit_test": "tests/unit/test_p36_02_bounded_performance_fix.py",
+       "integration_test": "tests/integration/test_p36_02_bounded_performance_fix.py",
+-      "special_test": null,
++      "special_test": "tests/solver/test_p36_02_bounded_performance_fix.py",
+       "task_doc": "docs/implementation/P36-02.md",
+       "report": "docs/implementation/reports/P36-02.md",
+       "status": "planned",
+-      "owner": "A",
+-      "commands": [
+-        "uv run pytest tests/unit/test_p36_02_bounded_performance_fix.py tests/integration/test_p36_02_bounded_performance_fix.py -q",
++      "owner": "A (基准、回归与整合), B (矩阵源码及缓存验证；按文件分工)",
++      "commands": [
++        "uv run pytest tests/unit/test_p36_02_bounded_performance_fix.py tests/integration/test_p36_02_bounded_performance_fix.py tests/solver/test_p36_02_bounded_performance_fix.py -q",
+         "uv run python scripts/check_architecture.py"
+       ],
+       "allowed_files": [
+@@ -5220,8 +5226,25 @@
+         "packages/optimization/src/logistics_optimization/transport/matrix.py",
+         "packages/optimization/src/logistics_optimization/transport/matrix_cache.py",
+         "tests/integration/test_p36_02_bounded_performance_fix.py",
++        "tests/solver/test_p36_02_bounded_performance_fix.py",
+         "tests/unit/test_p36_02_bounded_performance_fix.py"
+       ],
++      "contributions": {
++        "B": [
++          "packages/optimization/src/logistics_optimization/transport/matrix.py",
++          "packages/optimization/src/logistics_optimization/transport/matrix_cache.py",
++          "tests/solver/test_p36_02_bounded_performance_fix.py"
++        ],
++        "A": [
++          "benchmarks/regression.json",
++          "docs/implementation/P36-02.md",
++          "docs/implementation/reports/P36-02.md",
++          "docs/performance/CHANGE_EVIDENCE.md",
++          "tests/integration/test_p36_02_bounded_performance_fix.py",
++          "tests/unit/test_p36_02_bounded_performance_fix.py"
++        ]
++      },
++      "integration_owner": "A",
+       "blocks": [
+         "G36"
+       ],
+--- before/docs/prompts/00-master/P00-01-baseline-inventory.md
++++ current/docs/prompts/00-master/P00-01-baseline-inventory.md
+@@ -1,6 +1,6 @@
+ # P00-01 · 登记旧 demo 资产与目标目录迁移映射
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G00
++计划版本1.0.2 · 状态planned · 阶段Gate G00
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/00-master/P00-02-freeze-contracts.md
++++ current/docs/prompts/00-master/P00-02-freeze-contracts.md
+@@ -1,6 +1,6 @@
+ # P00-02 · 冻结单位、职责、错误和接口契约
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G00
++计划版本1.0.2 · 状态planned · 阶段Gate G00
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/00-master/P00-03-gate-contract.md
++++ current/docs/prompts/00-master/P00-03-gate-contract.md
+@@ -1,6 +1,6 @@
+ # P00-03 · 核验任务 DAG 与失败关闭的 Gate 规则
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G00
++计划版本1.0.2 · 状态planned · 阶段Gate G00
+ 
+ ## Context
+ 
+@@ -112,7 +112,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/01-foundation/P01-01-workspace-bootstrap.md
++++ current/docs/prompts/01-foundation/P01-01-workspace-bootstrap.md
+@@ -1,6 +1,6 @@
+ # P01-01 · 建立目标 Monorepo 与可复现依赖环境
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G01
++计划版本1.0.2 · 状态planned · 阶段Gate G01
+ 
+ ## Context
+ 
+@@ -135,7 +135,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/01-foundation/P01-02-checks-and-gate-runner.md
++++ current/docs/prompts/01-foundation/P01-02-checks-and-gate-runner.md
+@@ -1,6 +1,6 @@
+ # P01-02 · 建立分层检查、CI 与阶段证据执行器
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G01
++计划版本1.0.2 · 状态planned · 阶段Gate G01
+ 
+ ## Context
+ 
+@@ -20,8 +20,6 @@
+ - [Gate](../../../docs/plan/PHASE_GATES.md)
+ 
+ ## Current State
+-
+-2026-10-01 返工后：四项限定修复已交付 READY_FOR_ZCODE 并停写，本任务测试为 96 passed；仍待独立预验收。Codex 已补 AGENTS.md 所有权，当前完整 unit/integration 为 226 passed。G00 问题登记输入漂移及 Phase 01 新候选审查按[完整派发清单](../../agent-toolchain/12-project-completion-dispatch.md)处理；不默认重启同一返工。原[限定返工卡](../../agent-toolchain/11-dsh-repair-g01.md)和[返工前检查](../../agent-toolchain/current-project-review-2026-10-01.md)保留作历史依据。下文“理论上已交付”和 planned 是初始规划描述，不是当前验收结论；不启动 Phase 02 或冒签 G01。
+ 
+ 理论上以下依赖已经交付且证据有效：`G00、P01-01`。用TASK_GRAPH和Gate证据逐项核验，不能仅根据文件名存在认定完成。
+ 
+@@ -115,13 +113,13 @@
+ 
+ ## Edge Cases
+ 
+-必须处理：命令 exit=1 => G01 failed 且进程非零；domain 导入 fastapi => 层边界检查失败。
++必须处理：命令 exit=1 => G01 failed 且进程非零；domain 导入 fastapi => 层边界检查失败；缺少 Codex review 或 ZCode 输入哈希过期 => G01 failed 且进程非零；--check-only => 不写 Gate 记录或日志，已有记录保持原字节。
+ 
+ 共同边界按本任务适用范围测试：空集合、重复ID、非法枚举/单位、负值/整数溢出、缺失关联、边界时间相等、过期revision、取消/超时、依赖不可用。对不适用项在Completion Report说明，不为制造覆盖率添加无意义断言。
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+@@ -147,6 +145,8 @@
+ | --- | --- | --- |
+ | 1 | 命令 exit=1 => G01 failed 且进程非零 | 必须按箭头右侧断言；禁止只断言status非空。 |
+ | 2 | domain 导入 fastapi => 层边界检查失败 | 必须按箭头右侧断言；禁止只断言status非空。 |
++| 3 | 缺少 Codex review 或 ZCode 输入哈希过期 => G01 failed 且进程非零 | 必须按箭头右侧断言；禁止只断言status非空。 |
++| 4 | --check-only => 不写 Gate 记录或日志，已有记录保持原字节 | 必须按箭头右侧断言；禁止只断言status非空。 |
+ 
+ 正例数值来自TEST_FIXTURES手算；负例一次仅改指定字段，明确断言错误码/违规位置及无副作用。多可行解场景检查不变量/目标容许范围，不随意固定solver搜索顺序。
+ 
+--- before/docs/prompts/01-foundation/P01-03-migration-governance.md
++++ current/docs/prompts/01-foundation/P01-03-migration-governance.md
+@@ -1,6 +1,6 @@
+ # P01-03 · 建立新路径所有权及旧契约转换验收入口
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G01
++计划版本1.0.2 · 状态planned · 阶段Gate G01
+ 
+ ## Context
+ 
+@@ -117,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/01-foundation/P04-01-canonical-fixtures.md
++++ current/docs/prompts/01-foundation/P04-01-canonical-fixtures.md
+@@ -1,6 +1,6 @@
+ # P04-01 · 生成可手算的合成场景与反例数据
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G04
++计划版本1.0.2 · 状态planned · 阶段Gate G04
+ 
+ ## Context
+ 
+@@ -118,7 +118,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/01-foundation/P04-02-database-seed.md
++++ current/docs/prompts/01-foundation/P04-02-database-seed.md
+@@ -1,6 +1,6 @@
+ # P04-02 · 实现可重复执行的数据库种子导入
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G04
++计划版本1.0.2 · 状态planned · 阶段Gate G04
+ 
+ ## Context
+ 
+@@ -97,7 +97,7 @@
+ 
+ ## Business Rules
+ 
+-仅显式测试/演示库；禁止默认清空数据库；fixture ID 稳定；已有关联事实不得被覆盖。
++仅显式测试/演示库；禁止默认清空数据库；fixture ID 稳定；已有关联事实不得被覆盖。 ImportReceipt为本任务cli/seed.py内的具名CLI导入回执，不是领域实体；字段未决见ARCH-0007，裁定前不派发，不在P03/P04自造公共类型。
+ 
+ 所有业务结果绑定输入快照和规则版本。空输入仅在契约允许零需求时可返回有效空结果；有必需需求却无解不能返回空路线成功。已执行事实与已确认历史不可改写。
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/02-domain/P02-01-primitives-and-states.md
++++ current/docs/prompts/02-domain/P02-01-primitives-and-states.md
+@@ -1,6 +1,6 @@
+ # P02-01 · 实现领域 ID、单位与唯一状态枚举
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G02
++计划版本1.0.2 · 状态planned · 阶段Gate G02
+ 
+ ## Context
+ 
+@@ -98,7 +98,7 @@
+ 
+ ## Business Rules
+ 
+-UUID、UTC 时间、整数秒/米/克/立方厘米/分/十分之一摄氏度；资源占用 [start,end)；服务开始窗闭区间。
++UUID、UTC 时间、整数秒/米/克/立方厘米/分/十分之一摄氏度；资源占用 [start,end)；服务开始窗闭区间。 JobStatus/JobKind等公共枚举唯一在states.py定义；JobStatus遵循DATA_CONTRACTS既有成员和语义；JobKind成员仍未决，ARCH-0007须由A治理在本任务派发前裁定，后续P02-04/P05仅复用。
+ 
+ 所有业务结果绑定输入快照和规则版本。空输入仅在契约允许零需求时可返回有效空结果；有必需需求却无解不能返回空路线成功。已执行事实与已确认历史不可改写。
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/02-domain/P02-02-master-entities.md
++++ current/docs/prompts/02-domain/P02-02-master-entities.md
+@@ -1,6 +1,6 @@
+ # P02-02 · 实现订单、货物与运仓资源领域模型
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G02
++计划版本1.0.2 · 状态planned · 阶段Gate G02
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/02-domain/P02-03-planning-entities.md
++++ current/docs/prompts/02-domain/P02-03-planning-entities.md
+@@ -1,6 +1,6 @@
+ # P02-03 · 实现任务、版本与优化结果领域模型
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G02
++计划版本1.0.2 · 状态planned · 阶段Gate G02
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/02-domain/P02-04-runtime-contract-export.md
++++ current/docs/prompts/02-domain/P02-04-runtime-contract-export.md
+@@ -1,6 +1,6 @@
+ # P02-04 · 实现运行记录模型与 Schema 导出
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G02
++计划版本1.0.2 · 状态planned · 阶段Gate G02
+ 
+ ## Context
+ 
+@@ -69,7 +69,7 @@
+ 
+ ## Domain Model
+ 
+-Simulation、SimulationSnapshot、Event、ExceptionEvent、AgentRun、ToolCall、DecisionRecord、Experiment、Metric、ExperimentResult；辅助实体见目录。实体字段/状态/生命周期以DOMAIN_CATALOG为准；本任务新增的非实体view只组合既有字段。每实体继承UUID、唯一status Enum、UTC created_at/updated_at、row_version、schema_version，不复制业务模型。
++Simulation、SimulationSnapshot、Event、ExceptionEvent、AgentRun、ToolCall、DecisionRecord、Experiment、Metric、ExperimentResult；辅助实体见目录；ScenarioSpec、ScenarioRef、ScenarioBundle、Job、JobAttempt、ActorContext及其纯值引用；JobKind/JobStatus只引用P02-01 states.py唯一枚举。实体字段/状态/生命周期以DOMAIN_CATALOG为准；本任务新增的非实体view只组合既有字段。每实体继承UUID、唯一status Enum、UTC created_at/updated_at、row_version、schema_version，不复制业务模型。
+ 
+ ## Input
+ 
+@@ -101,7 +101,7 @@
+ 
+ ## Business Rules
+ 
+-边界 extra=forbid；discriminated union；业务 enum 只从 domain 引入；JSONB 也绑定 versioned schema。 P02必须把所有实体引用的纯值类型完整定义，含TwinState/ExecutionEvent/PendingEvent/RngState/AgentBudget/ExperimentSpec；后续领域阶段复用它们，只实现Problem/Request映射和算法，不重复实体。
++边界 extra=forbid；discriminated union；业务 enum 只从 domain 引入；JSONB 也绑定 versioned schema。 P02必须把所有实体引用的纯值类型完整定义，含TwinState/ExecutionEvent/PendingEvent/RngState/AgentBudget/ExperimentSpec；后续领域阶段复用它们，只实现Problem/Request映射和算法，不重复实体。 ScenarioBundle及ScenarioRef唯一纯值定义归domain/runtime.py，边界映射归contracts/runtime.py；字段未决不得自行补全，须先完成ARCH-0006/ARCH-0007的派发前契约裁定。Job实体在本任务定义，JobKind/JobStatus仅引用P02-01 states.py，不在runtime.py重复定义；P03只持久化，P05只实现作业行为。
+ 
+ 所有业务结果绑定输入快照和规则版本。空输入仅在契约允许零需求时可返回有效空结果；有必需需求却无解不能返回空路线成功。已执行事实与已确认历史不可改写。
+ 
+@@ -119,7 +119,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/03-database/P03-01-resource-schema.md
++++ current/docs/prompts/03-database/P03-01-resource-schema.md
+@@ -1,6 +1,6 @@
+ # P03-01 · 创建主数据与资源迁移
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G03
++计划版本1.0.2 · 状态planned · 阶段Gate G03
+ 
+ ## Context
+ 
+@@ -117,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/03-database/P03-02-planning-schema.md
++++ current/docs/prompts/03-database/P03-02-planning-schema.md
+@@ -1,6 +1,6 @@
+ # P03-02 · 创建不可变计划、运行与审计迁移
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G03
++计划版本1.0.2 · 状态planned · 阶段Gate G03
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/03-database/P03-03-repositories-and-snapshot.md
++++ current/docs/prompts/03-database/P03-03-repositories-and-snapshot.md
+@@ -1,6 +1,6 @@
+ # P03-03 · 实现快照读取与事务工作单元
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G03
++计划版本1.0.2 · 状态planned · 阶段Gate G03
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/03-database/P03-04-atomic-version-store.md
++++ current/docs/prompts/03-database/P03-04-atomic-version-store.md
+@@ -1,6 +1,6 @@
+ # P03-04 · 实现版本 CAS、资源预留与幂等存储
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G03
++计划版本1.0.2 · 状态planned · 阶段Gate G03
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/04-api/P05-01-api-composition.md
++++ current/docs/prompts/04-api/P05-01-api-composition.md
+@@ -1,6 +1,6 @@
+ # P05-01 · 建立 FastAPI 组合根、错误协议与基础鉴权
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G05
++计划版本1.0.2 · 状态planned · 阶段Gate G05
+ 
+ ## Context
+ 
+@@ -58,6 +58,7 @@
+ - `contracts/openapi.json`
+ - `docs/implementation/P05-01.md`
+ - `docs/implementation/reports/P05-01.md`
++- `packages/contracts/src/logistics_contracts/http.py`
+ - `tests/integration/test_p05_01_api_composition.py`
+ - `tests/unit/test_p05_01_api_composition.py`
+ 
+@@ -101,7 +102,7 @@
+ 
+ ## Business Rules
+ 
+-仅 bootstrap 装配 adapters；API 不 import OR-Tools；MVP viewer/operator 简单角色；开发模式只绑定本机。
++仅 bootstrap 装配 adapters；API 不 import OR-Tools；MVP viewer/operator 简单角色；开发模式只绑定本机。 Settings唯一配置定义放bootstrap.py；HealthResponse/ReadinessResponse边界定义放contracts/http.py；ActorContext纯值复用P02-04。字段未决见ARCH-0007，未裁定不派发。
+ 
+ 所有业务结果绑定输入快照和规则版本。空输入仅在契约允许零需求时可返回有效空结果；有必需需求却无解不能返回空路线成功。已执行事实与已确认历史不可改写。
+ 
+@@ -119,7 +120,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/04-api/P05-02-master-data-services.md
++++ current/docs/prompts/04-api/P05-02-master-data-services.md
+@@ -1,6 +1,6 @@
+ # P05-02 · 实现主数据分页读写服务与资源日历 API
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G05
++计划版本1.0.2 · 状态planned · 阶段Gate G05
+ 
+ ## Context
+ 
+@@ -54,7 +54,6 @@
+ - `apps/backend/src/logistics_backend/application/master_data.py`
+ - `docs/implementation/P05-02.md`
+ - `docs/implementation/reports/P05-02.md`
+-- `packages/contracts/src/logistics_contracts/http.py`
+ - `tests/integration/test_p05_02_master_data_services.py`
+ - `tests/unit/test_p05_02_master_data_services.py`
+ 
+@@ -63,6 +62,7 @@
+ - `apps/backend/src/logistics_backend/api/router.py`
+ - `apps/backend/src/logistics_backend/bootstrap.py`
+ - `contracts/openapi.json`
++- `packages/contracts/src/logistics_contracts/http.py`
+ 
+ 禁止修改：`demo/`、`demos/`教学代码、非本任务文件、已提交历史版本或审计内容。`contracts/*.json`和`generated.ts`若列入范围只能运行生成器更新，不得手改。包marker只有确需导出本任务类型时可修改，须先在完成报告列出精确路径；不能借此越过接口边界。
+ 
+@@ -100,7 +100,7 @@
+ 
+ ## Business Rules
+ 
+-只允许 draft 订单修改需求；已下发变更走事件；生成 OpenAPI；分页 limit 1..200；排序稳定。
++只允许 draft 订单修改需求；已下发变更走事件；生成 OpenAPI；分页 limit 1..200；排序稳定。 MasterData不是已登记类型名；MasterDataService定义在application/master_data.py。MasterDataUpdate/分页请求归contracts/http.py，ResourceDTO复用P02-02 contracts/entities.py，不能在http.py复制同名实体DTO；字段与ResourceDTO覆盖范围见ARCH-0007，未裁定不派发。
+ 
+ 所有业务结果绑定输入快照和规则版本。空输入仅在契约允许零需求时可返回有效空结果；有必需需求却无解不能返回空路线成功。已执行事实与已确认历史不可改写。
+ 
+@@ -118,7 +118,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/04-api/P05-03-durable-jobs.md
++++ current/docs/prompts/04-api/P05-03-durable-jobs.md
+@@ -1,6 +1,6 @@
+ # P05-03 · 实现作业租约、超时取消与受限 worker
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G05
++计划版本1.0.2 · 状态planned · 阶段Gate G05
+ 
+ ## Context
+ 
+@@ -64,6 +64,7 @@
+ - `apps/backend/src/logistics_backend/api/router.py`
+ - `apps/backend/src/logistics_backend/bootstrap.py`
+ - `contracts/openapi.json`
++- `packages/contracts/src/logistics_contracts/runtime.py`
+ 
+ 禁止修改：`demo/`、`demos/`教学代码、非本任务文件、已提交历史版本或审计内容。`contracts/*.json`和`generated.ts`若列入范围只能运行生成器更新，不得手改。包marker只有确需导出本任务类型时可修改，须先在完成报告列出精确路径；不能借此越过接口边界。
+ 
+@@ -101,7 +102,7 @@
+ 
+ ## Business Rules
+ 
+-PostgreSQL 持久化 job；进程并发默认 1；不以 FastAPI BackgroundTasks 运行重求解；lease epoch 防旧 worker 写回。
++PostgreSQL 持久化 job；进程并发默认 1；不以 FastAPI BackgroundTasks 运行重求解；lease epoch 防旧 worker 写回。 JobRequest/JobRef/JobView/CancelCommand唯一边界定义放contracts/runtime.py；Job复用P02-04，JobKind/JobStatus复用P02-01 states.py。LeaseToken/Deadline/WorkOutcome为application/jobs.py内具名工作协议；字段和JobRequest前向类型依赖未决见ARCH-0007，未裁定不派发。
+ 
+ 所有业务结果绑定输入快照和规则版本。空输入仅在契约允许零需求时可返回有效空结果；有必需需求却无解不能返回空路线成功。已执行事实与已确认历史不可改写。
+ 
+@@ -119,7 +120,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/04-api/P16-01-optimization-job-api.md
++++ current/docs/prompts/04-api/P16-01-optimization-job-api.md
+@@ -1,6 +1,6 @@
+ # P16-01 · 实现运输、仓储和重排作业 API
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G16
++计划版本1.0.2 · 状态planned · 阶段Gate G16
+ 
+ ## Context
+ 
+@@ -118,7 +118,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/04-api/P16-02-joint-planning-service.md
++++ current/docs/prompts/04-api/P16-02-joint-planning-service.md
+@@ -1,6 +1,6 @@
+ # P16-02 · 实现有界仓运窗口反馈协调服务
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G16
++计划版本1.0.2 · 状态planned · 阶段Gate G16
+ 
+ ## Context
+ 
+@@ -117,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/04-api/P16-03-validated-commit-api.md
++++ current/docs/prompts/04-api/P16-03-validated-commit-api.md
+@@ -1,6 +1,6 @@
+ # P16-03 · 实现重新校验后的版本确认服务
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G16
++计划版本1.0.2 · 状态planned · 阶段Gate G16
+ 
+ ## Context
+ 
+@@ -117,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/04-api/P16-04-simulation-query-api.md
++++ current/docs/prompts/04-api/P16-04-simulation-query-api.md
+@@ -1,6 +1,6 @@
+ # P16-04 · 实现仿真控制、版本对比与结果查询 API
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G16
++计划版本1.0.2 · 状态planned · 阶段Gate G16
+ 
+ ## Context
+ 
+@@ -118,7 +118,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/05-transport-solver/P06-01-transport-contract.md
++++ current/docs/prompts/05-transport-solver/P06-01-transport-contract.md
+@@ -1,6 +1,6 @@
+ # P06-01 · 实现运输请求、结果和 Solver Protocol
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G06
++计划版本1.0.2 · 状态planned · 阶段Gate G06
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/05-transport-solver/P06-02-distance-matrix.md
++++ current/docs/prompts/05-transport-solver/P06-02-distance-matrix.md
+@@ -1,6 +1,6 @@
+ # P06-02 · 实现版本化道路距离和时间矩阵提供器
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G06
++计划版本1.0.2 · 状态planned · 阶段Gate G06
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/05-transport-solver/P07-01-vrp-base.md
++++ current/docs/prompts/05-transport-solver/P07-01-vrp-base.md
+@@ -1,6 +1,6 @@
+ # P07-01 · 实现多起终点车辆路径基本求解
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G07
++计划版本1.0.2 · 状态planned · 阶段Gate G07
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/05-transport-solver/P07-02-capacity-and-pickup.md
++++ current/docs/prompts/05-transport-solver/P07-02-capacity-and-pickup.md
+@@ -1,6 +1,6 @@
+ # P07-02 · 实现重量、容积和提送货载荷约束
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G07
++计划版本1.0.2 · 状态planned · 阶段Gate G07
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/05-transport-solver/P07-03-time-windows.md
++++ current/docs/prompts/05-transport-solver/P07-03-time-windows.md
+@@ -1,6 +1,6 @@
+ # P07-03 · 实现服务时间、等待、班次与硬时间窗
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G07
++计划版本1.0.2 · 状态planned · 阶段Gate G07
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/05-transport-solver/P07-04-temperature-and-cargo.md
++++ current/docs/prompts/05-transport-solver/P07-04-temperature-and-cargo.md
+@@ -1,6 +1,6 @@
+ # P07-04 · 实现温区、货物类型与车辆允许集合
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G07
++计划版本1.0.2 · 状态planned · 阶段Gate G07
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/05-transport-solver/P07-05-objective-function.md
++++ current/docs/prompts/05-transport-solver/P07-05-objective-function.md
+@@ -1,6 +1,6 @@
+ # P07-05 · 实现可解释费用与可选订单目标函数
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G07
++计划版本1.0.2 · 状态planned · 阶段Gate G07
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/05-transport-solver/P07-06-result-status-validation.md
++++ current/docs/prompts/05-transport-solver/P07-06-result-status-validation.md
+@@ -1,6 +1,6 @@
+ # P07-06 · 实现运输结果提取、状态映射和独立重算
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G07
++计划版本1.0.2 · 状态planned · 阶段Gate G07
+ 
+ ## Context
+ 
+@@ -138,7 +138,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/05-transport-solver/P07-07-transport-adapter.md
++++ current/docs/prompts/05-transport-solver/P07-07-transport-adapter.md
+@@ -1,6 +1,6 @@
+ # P07-07 · 装配运输 Solver 并验证数值与预算边界
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G07
++计划版本1.0.2 · 状态planned · 阶段Gate G07
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P08-01-warehouse-contract.md
++++ current/docs/prompts/06-warehouse-solver/P08-01-warehouse-contract.md
+@@ -1,6 +1,6 @@
+ # P08-01 · 实现仓储任务与资源日历协议
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G08
++计划版本1.0.2 · 状态planned · 阶段Gate G08
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P08-02-inventory-and-handoffs.md
++++ current/docs/prompts/06-warehouse-solver/P08-02-inventory-and-handoffs.md
+@@ -1,6 +1,6 @@
+ # P08-02 · 实现库存占用和仓运交接约束模型
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G08
++计划版本1.0.2 · 状态planned · 阶段Gate G08
+ 
+ ## Context
+ 
+@@ -117,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P09-01-intervals-precedence.md
++++ current/docs/prompts/06-warehouse-solver/P09-01-intervals-precedence.md
+@@ -1,6 +1,6 @@
+ # P09-01 · 实现仓储区间、互斥资源与任务依赖
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G09
++计划版本1.0.2 · 状态planned · 阶段Gate G09
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P09-02-cumulative-resources.md
++++ current/docs/prompts/06-warehouse-solver/P09-02-cumulative-resources.md
+@@ -1,6 +1,6 @@
+ # P09-02 · 实现人员、设备和温区容量限制
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G09
++计划版本1.0.2 · 状态planned · 阶段Gate G09
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P09-03-storage-capacity.md
++++ current/docs/prompts/06-warehouse-solver/P09-03-storage-capacity.md
+@@ -1,6 +1,6 @@
+ # P09-03 · 实现库位库存区间和冷链容量约束
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G09
++计划版本1.0.2 · 状态planned · 阶段Gate G09
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P09-04-sequence-setup.md
++++ current/docs/prompts/06-warehouse-solver/P09-04-sequence-setup.md
+@@ -1,6 +1,6 @@
+ # P09-04 · 实现清洁及月台、温区、分拣切换时间
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G09
++计划版本1.0.2 · 状态planned · 阶段Gate G09
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P09-05-warehouse-result.md
++++ current/docs/prompts/06-warehouse-solver/P09-05-warehouse-result.md
+@@ -1,6 +1,6 @@
+ # P09-05 · 装配仓储目标、结果提取与独立校验
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G09
++计划版本1.0.2 · 状态planned · 阶段Gate G09
+ 
+ ## Context
+ 
+@@ -138,7 +138,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P10-01-validator-protocol.md
++++ current/docs/prompts/06-warehouse-solver/P10-01-validator-protocol.md
+@@ -1,6 +1,6 @@
+ # P10-01 · 实现统一校验报告与约束覆盖注册表
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G10
++计划版本1.0.2 · 状态planned · 阶段Gate G10
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P10-02-joint-validator.md
++++ current/docs/prompts/06-warehouse-solver/P10-02-joint-validator.md
+@@ -1,6 +1,6 @@
+ # P10-02 · 实现跨仓运链、库存和资源完整校验
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G10
++计划版本1.0.2 · 状态planned · 阶段Gate G10
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/06-warehouse-solver/P10-03-validator-adversarial-suite.md
++++ current/docs/prompts/06-warehouse-solver/P10-03-validator-adversarial-suite.md
+@@ -1,6 +1,6 @@
+ # P10-03 · 建立独立硬约束反例与小规模 oracle 套件
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G10
++计划版本1.0.2 · 状态planned · 阶段Gate G10
+ 
+ ## Context
+ 
+@@ -139,7 +139,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/07-simulation/P11-01-simulation-contract.md
++++ current/docs/prompts/07-simulation/P11-01-simulation-contract.md
+@@ -1,6 +1,6 @@
+ # P11-01 · 实现仿真场景、状态、快照与随机源契约
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G11
++计划版本1.0.2 · 状态planned · 阶段Gate G11
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/07-simulation/P11-02-execution-state-machine.md
++++ current/docs/prompts/07-simulation/P11-02-execution-state-machine.md
+@@ -1,6 +1,6 @@
+ # P11-02 · 实现订单、车辆和仓库执行状态转换
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G11
++计划版本1.0.2 · 状态planned · 阶段Gate G11
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/07-simulation/P12-01-simpy-kernel.md
++++ current/docs/prompts/07-simulation/P12-01-simpy-kernel.md
+@@ -1,6 +1,6 @@
+ # P12-01 · 实现 SimPy 时间推进与稳定事件调度内核
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G12
++计划版本1.0.2 · 状态planned · 阶段Gate G12
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/07-simulation/P12-02-transport-execution.md
++++ current/docs/prompts/07-simulation/P12-02-transport-execution.md
+@@ -1,6 +1,6 @@
+ # P12-02 · 实现车辆移动、服务与订单交付过程
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G12
++计划版本1.0.2 · 状态planned · 阶段Gate G12
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/07-simulation/P12-03-warehouse-execution.md
++++ current/docs/prompts/07-simulation/P12-03-warehouse-execution.md
+@@ -1,6 +1,6 @@
+ # P12-03 · 实现仓储资源争用、作业与库存演化
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G12
++计划版本1.0.2 · 状态planned · 阶段Gate G12
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/07-simulation/P12-04-snapshot-replay.md
++++ current/docs/prompts/07-simulation/P12-04-snapshot-replay.md
+@@ -1,6 +1,6 @@
+ # P12-04 · 实现快照恢复和反事实分支隔离
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G12
++计划版本1.0.2 · 状态planned · 阶段Gate G12
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/07-simulation/P13-01-event-ingestion.md
++++ current/docs/prompts/07-simulation/P13-01-event-ingestion.md
+@@ -1,6 +1,6 @@
+ # P13-01 · 实现十类异常事件的校验、去重与排序
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G13
++计划版本1.0.2 · 状态planned · 阶段Gate G13
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/07-simulation/P13-02-event-api-and-outbox.md
++++ current/docs/prompts/07-simulation/P13-02-event-api-and-outbox.md
+@@ -1,6 +1,6 @@
+ # P13-02 · 实现事件注入服务及持久化分发
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G13
++计划版本1.0.2 · 状态planned · 阶段Gate G13
+ 
+ ## Context
+ 
+@@ -118,7 +118,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/08-exception/P14-01-impact-graph.md
++++ current/docs/prompts/08-exception/P14-01-impact-graph.md
+@@ -1,6 +1,6 @@
+ # P14-01 · 实现异常影响依赖图与最小闭包
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G14
++计划版本1.0.2 · 状态planned · 阶段Gate G14
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/08-exception/P14-02-execution-freeze.md
++++ current/docs/prompts/08-exception/P14-02-execution-freeze.md
+@@ -1,6 +1,6 @@
+ # P14-02 · 实现不可逆事实、在途起点与重排边界提取
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G14
++计划版本1.0.2 · 状态planned · 阶段Gate G14
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/08-exception/P15-01-candidate-policies.md
++++ current/docs/prompts/08-exception/P15-01-candidate-policies.md
+@@ -1,6 +1,6 @@
+ # P15-01 · 实现局部候选策略与救援交接任务生成
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G15
++计划版本1.0.2 · 状态planned · 阶段Gate G15
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/08-exception/P15-02-local-solve.md
++++ current/docs/prompts/08-exception/P15-02-local-solve.md
+@@ -1,6 +1,6 @@
+ # P15-02 · 实现冻结边界下的局部重新求解
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G15
++计划版本1.0.2 · 状态planned · 阶段Gate G15
+ 
+ ## Context
+ 
+@@ -139,7 +139,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/08-exception/P15-03-bounded-escalation.md
++++ current/docs/prompts/08-exception/P15-03-bounded-escalation.md
+@@ -1,6 +1,6 @@
+ # P15-03 · 实现局部扩展与全局剩余任务降级策略
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G15
++计划版本1.0.2 · 状态planned · 阶段Gate G15
+ 
+ ## Context
+ 
+@@ -137,7 +137,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/08-exception/P15-04-version-diff.md
++++ current/docs/prompts/08-exception/P15-04-version-diff.md
+@@ -1,6 +1,6 @@
+ # P15-04 · 实现版本差异与候选排序
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G15
++计划版本1.0.2 · 状态planned · 阶段Gate G15
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P17-01-tool-schemas.md
++++ current/docs/prompts/09-agents/P17-01-tool-schemas.md
+@@ -1,6 +1,6 @@
+ # P17-01 · 实现 Agent 标准工具注册、权限与参数协议
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G17
++计划版本1.0.2 · 状态planned · 阶段Gate G17
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P17-02-business-tools.md
++++ current/docs/prompts/09-agents/P17-02-business-tools.md
+@@ -1,6 +1,6 @@
+ # P17-02 · 实现工具到业务服务的唯一适配层
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G17
++计划版本1.0.2 · 状态planned · 阶段Gate G17
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P18-01-llm-provider.md
++++ current/docs/prompts/09-agents/P18-01-llm-provider.md
+@@ -1,6 +1,6 @@
+ # P18-01 · 实现模型供应商抽象与结构化响应边界
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G18
++计划版本1.0.2 · 状态planned · 阶段Gate G18
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P18-02-llm-resilience.md
++++ current/docs/prompts/09-agents/P18-02-llm-resilience.md
+@@ -1,6 +1,6 @@
+ # P18-02 · 实现模型预算、重试、脱敏与故障降级
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G18
++计划版本1.0.2 · 状态planned · 阶段Gate G18
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P19-01-intent-extraction.md
++++ current/docs/prompts/09-agents/P19-01-intent-extraction.md
+@@ -1,6 +1,6 @@
+ # P19-01 · 实现 Coordinator 意图及约束抽取
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G19
++计划版本1.0.2 · 状态planned · 阶段Gate G19
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P19-02-coordinator-state-machine.md
++++ current/docs/prompts/09-agents/P19-02-coordinator-state-machine.md
+@@ -1,6 +1,6 @@
+ # P19-02 · 实现 Coordinator 任务分解与有界运行状态机
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G19
++计划版本1.0.2 · 状态planned · 阶段Gate G19
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P20-01-transport-agent-tools.md
++++ current/docs/prompts/09-agents/P20-01-transport-agent-tools.md
+@@ -1,6 +1,6 @@
+ # P20-01 · 实现 TransportAgent 求解工具工作流
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G20
++计划版本1.0.2 · 状态planned · 阶段Gate G20
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P20-02-transport-explanation.md
++++ current/docs/prompts/09-agents/P20-02-transport-explanation.md
+@@ -1,6 +1,6 @@
+ # P20-02 · 实现有证据的运输结果解释
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G20
++计划版本1.0.2 · 状态planned · 阶段Gate G20
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P21-01-warehouse-agent-tools.md
++++ current/docs/prompts/09-agents/P21-01-warehouse-agent-tools.md
+@@ -1,6 +1,6 @@
+ # P21-01 · 实现 WarehouseAgent 排程与窗口报价工作流
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G21
++计划版本1.0.2 · 状态planned · 阶段Gate G21
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P21-02-warehouse-explanation.md
++++ current/docs/prompts/09-agents/P21-02-warehouse-explanation.md
+@@ -1,6 +1,6 @@
+ # P21-02 · 实现仓储甘特与资源瓶颈解释数据
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G21
++计划版本1.0.2 · 状态planned · 阶段Gate G21
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P22-01-exception-agent-tools.md
++++ current/docs/prompts/09-agents/P22-01-exception-agent-tools.md
+@@ -1,6 +1,6 @@
+ # P22-01 · 实现 ExceptionAgent 九步处置工作流
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G22
++计划版本1.0.2 · 状态planned · 阶段Gate G22
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P22-02-exception-explanation.md
++++ current/docs/prompts/09-agents/P22-02-exception-explanation.md
+@@ -1,6 +1,6 @@
+ # P22-02 · 实现异常处置链和版本差异解释
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G22
++计划版本1.0.2 · 状态planned · 阶段Gate G22
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P23-01-agent-orchestration.md
++++ current/docs/prompts/09-agents/P23-01-agent-orchestration.md
+@@ -1,6 +1,6 @@
+ # P23-01 · 实现四角色路由、取消与有界协调
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G23
++计划版本1.0.2 · 状态planned · 阶段Gate G23
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/09-agents/P23-02-agent-api-safety.md
++++ current/docs/prompts/09-agents/P23-02-agent-api-safety.md
+@@ -1,6 +1,6 @@
+ # P23-02 · 实现 Agent 会话 API 与攻击性输入验收
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G23
++计划版本1.0.2 · 状态planned · 阶段Gate G23
+ 
+ ## Context
+ 
+@@ -117,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P24-01-react-shell.md
++++ current/docs/prompts/10-frontend/P24-01-react-shell.md
+@@ -1,6 +1,6 @@
+ # P24-01 · 建立 React 应用壳、路由与统一状态展示
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G24
++计划版本1.0.2 · 状态planned · 阶段Gate G24
+ 
+ ## Context
+ 
+@@ -118,7 +118,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P24-02-generated-api-client.md
++++ current/docs/prompts/10-frontend/P24-02-generated-api-client.md
+@@ -1,6 +1,6 @@
+ # P24-02 · 建立 OpenAPI 生成客户端和数据请求层
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G24
++计划版本1.0.2 · 状态planned · 阶段Gate G24
+ 
+ ## Context
+ 
+@@ -117,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P25-01-orders-ui.md
++++ current/docs/prompts/10-frontend/P25-01-orders-ui.md
+@@ -1,6 +1,6 @@
+ # P25-01 · 实现订单查询、编辑和取消事件入口
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G25
++计划版本1.0.2 · 状态planned · 阶段Gate G25
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P25-02-vehicles-ui.md
++++ current/docs/prompts/10-frontend/P25-02-vehicles-ui.md
+@@ -1,6 +1,6 @@
+ # P25-02 · 实现车辆、司机和可用日历页面
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G25
++计划版本1.0.2 · 状态planned · 阶段Gate G25
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P25-03-warehouses-ui.md
++++ current/docs/prompts/10-frontend/P25-03-warehouses-ui.md
+@@ -1,6 +1,6 @@
+ # P25-03 · 实现仓库、温区、库位及作业资源页面
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G25
++计划版本1.0.2 · 状态planned · 阶段Gate G25
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P26-01-transport-request-ui.md
++++ current/docs/prompts/10-frontend/P26-01-transport-request-ui.md
+@@ -1,6 +1,6 @@
+ # P26-01 · 实现运输请求、作业进度与不可行诊断页面
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G26
++计划版本1.0.2 · 状态planned · 阶段Gate G26
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P26-02-transport-plan-ui.md
++++ current/docs/prompts/10-frontend/P26-02-transport-plan-ui.md
+@@ -1,6 +1,6 @@
+ # P26-02 · 实现路线、逐站执行表和候选确认视图
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G26
++计划版本1.0.2 · 状态planned · 阶段Gate G26
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P27-01-warehouse-gantt-ui.md
++++ current/docs/prompts/10-frontend/P27-01-warehouse-gantt-ui.md
+@@ -1,6 +1,6 @@
+ # P27-01 · 实现仓储请求和资源甘特图
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G27
++计划版本1.0.2 · 状态planned · 阶段Gate G27
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P27-02-joint-handoff-ui.md
++++ current/docs/prompts/10-frontend/P27-02-joint-handoff-ui.md
+@@ -1,6 +1,6 @@
+ # P27-02 · 实现仓运交接与联合方案对照视图
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G27
++计划版本1.0.2 · 状态planned · 阶段Gate G27
+ 
+ ## Context
+ 
+@@ -114,7 +114,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P28-01-simulation-controls-ui.md
++++ current/docs/prompts/10-frontend/P28-01-simulation-controls-ui.md
+@@ -1,6 +1,6 @@
+ # P28-01 · 实现数字孪生场景、暂停、步进和事件注入
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G28
++计划版本1.0.2 · 状态planned · 阶段Gate G28
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P28-02-replay-comparison-ui.md
++++ current/docs/prompts/10-frontend/P28-02-replay-comparison-ui.md
+@@ -1,6 +1,6 @@
+ # P28-02 · 实现快照回放和反事实分支对比
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G28
++计划版本1.0.2 · 状态planned · 阶段Gate G28
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P29-01-exception-center-ui.md
++++ current/docs/prompts/10-frontend/P29-01-exception-center-ui.md
+@@ -1,6 +1,6 @@
+ # P29-01 · 实现异常列表、影响图和处置流水
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G29
++计划版本1.0.2 · 状态planned · 阶段Gate G29
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P29-02-reschedule-diff-ui.md
++++ current/docs/prompts/10-frontend/P29-02-reschedule-diff-ui.md
+@@ -1,6 +1,6 @@
+ # P29-02 · 实现候选比较、版本差异和重排确认
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G29
++计划版本1.0.2 · 状态planned · 阶段Gate G29
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P30-01-agent-chat-ui.md
++++ current/docs/prompts/10-frontend/P30-01-agent-chat-ui.md
+@@ -1,6 +1,6 @@
+ # P30-01 · 实现聊天、澄清和工具执行状态页面
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G30
++计划版本1.0.2 · 状态planned · 阶段Gate G30
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P30-02-agent-confirmation-ui.md
++++ current/docs/prompts/10-frontend/P30-02-agent-confirmation-ui.md
+@@ -1,6 +1,6 @@
+ # P30-02 · 实现有证据的建议确认与风险提示
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G30
++计划版本1.0.2 · 状态planned · 阶段Gate G30
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P31-01-websocket-events.md
++++ current/docs/prompts/10-frontend/P31-01-websocket-events.md
+@@ -1,6 +1,6 @@
+ # P31-01 · 实现带游标的实时事件与断线补偿服务
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G31
++计划版本1.0.2 · 状态planned · 阶段Gate G31
+ 
+ ## Context
+ 
+@@ -118,7 +118,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/10-frontend/P31-02-frontend-realtime.md
++++ current/docs/prompts/10-frontend/P31-02-frontend-realtime.md
+@@ -1,6 +1,6 @@
+ # P31-02 · 实现前端实时订阅与轮询回退
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G31
++计划版本1.0.2 · 状态planned · 阶段Gate G31
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/11-evaluation/P32-01-metric-calculators.md
++++ current/docs/prompts/11-evaluation/P32-01-metric-calculators.md
+@@ -1,6 +1,6 @@
+ # P32-01 · 实现14项调度指标与统一统计口径
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G32
++计划版本1.0.2 · 状态planned · 阶段Gate G32
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/11-evaluation/P32-02-metrics-api.md
++++ current/docs/prompts/11-evaluation/P32-02-metrics-api.md
+@@ -1,6 +1,6 @@
+ # P32-02 · 实现指标持久化、版本比较与 Dashboard 聚合
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G32
++计划版本1.0.2 · 状态planned · 阶段Gate G32
+ 
+ ## Context
+ 
+@@ -118,7 +118,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/11-evaluation/P32-03-metrics-dashboard-ui.md
++++ current/docs/prompts/11-evaluation/P32-03-metrics-dashboard-ui.md
+@@ -1,6 +1,6 @@
+ # P32-03 · 实现 Dashboard 与 Metrics 图表页面
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G32
++计划版本1.0.2 · 状态planned · 阶段Gate G32
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/11-evaluation/P33-01-experiment-runner.md
++++ current/docs/prompts/11-evaluation/P33-01-experiment-runner.md
+@@ -1,6 +1,6 @@
+ # P33-01 · 实现对照实验、配对随机种子与结果留档
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G33
++计划版本1.0.2 · 状态planned · 阶段Gate G33
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/11-evaluation/P33-02-experiments-api-ui.md
++++ current/docs/prompts/11-evaluation/P33-02-experiments-api-ui.md
+@@ -1,6 +1,6 @@
+ # P33-02 · 实现实验创建、进度、结果与导出工作台
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G33
++计划版本1.0.2 · 状态planned · 阶段Gate G33
+ 
+ ## Context
+ 
+@@ -120,7 +120,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P34-01-transport-e2e.md
++++ current/docs/prompts/12-integration/P34-01-transport-e2e.md
+@@ -1,6 +1,6 @@
+ # P34-01 · 建立真实数据库运输请求到确认的端到端验收
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G34
++计划版本1.0.2 · 状态planned · 阶段Gate G34
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P34-02-joint-exception-e2e.md
++++ current/docs/prompts/12-integration/P34-02-joint-exception-e2e.md
+@@ -1,6 +1,6 @@
+ # P34-02 · 建立仓运联合与异常重排的完整端到端验收
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G34
++计划版本1.0.2 · 状态planned · 阶段Gate G34
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P34-03-failure-recovery-e2e.md
++++ current/docs/prompts/12-integration/P34-03-failure-recovery-e2e.md
+@@ -1,6 +1,6 @@
+ # P34-03 · 建立崩溃、并发、模型断线与陈旧提交验收
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G34
++计划版本1.0.2 · 状态planned · 阶段Gate G34
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P35-01-demo-normal.md
++++ current/docs/prompts/12-integration/P35-01-demo-normal.md
+@@ -1,6 +1,6 @@
+ # P35-01 · 交付 Scenario A 正常冷链运输演示
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G35
++计划版本1.0.2 · 状态planned · 阶段Gate G35
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P35-02-demo-joint.md
++++ current/docs/prompts/12-integration/P35-02-demo-joint.md
+@@ -1,6 +1,6 @@
+ # P35-02 · 交付 Scenario B 仓储和运输联合演示
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G35
++计划版本1.0.2 · 状态planned · 阶段Gate G35
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P35-03-demo-vehicle-failure.md
++++ current/docs/prompts/12-integration/P35-03-demo-vehicle-failure.md
+@@ -1,6 +1,6 @@
+ # P35-03 · 交付 Scenario C1 车辆故障局部重排演示
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G35
++计划版本1.0.2 · 状态planned · 阶段Gate G35
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P35-04-demo-order-cancel.md
++++ current/docs/prompts/12-integration/P35-04-demo-order-cancel.md
+@@ -1,6 +1,6 @@
+ # P35-04 · 交付 Scenario C2 订单取消局部重排演示
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G35
++计划版本1.0.2 · 状态planned · 阶段Gate G35
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P35-05-demo-weather.md
++++ current/docs/prompts/12-integration/P35-05-demo-weather.md
+@@ -1,6 +1,6 @@
+ # P35-05 · 交付 Scenario C3 天气变化与一键复现演示包
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G35
++计划版本1.0.2 · 状态planned · 阶段Gate G35
+ 
+ ## Context
+ 
+@@ -117,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P36-01-benchmark-harness.md
++++ current/docs/prompts/12-integration/P36-01-benchmark-harness.md
+@@ -1,6 +1,6 @@
+ # P36-01 · 建立可重复的容量、耗时和内存基准
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G36
++计划版本1.0.2 · 状态planned · 阶段Gate G36
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P36-02-bounded-performance-fix.md
++++ current/docs/prompts/12-integration/P36-02-bounded-performance-fix.md
+@@ -1,10 +1,10 @@
+ # P36-02 · 实现有内存上限的版本化矩阵缓存并复验
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G36
++计划版本1.0.2 · 状态planned · 阶段Gate G36
+ 
+ ## Context
+ 
+-你是本项目的Coding Agent。本项目以LLM工具调用 + OR-Tools确定性优化 + SimPy推演 + FastAPI/React/PostgreSQL实现冷链优先调度。当前任务位于Phase 36「Performance Optimization」，任务ID `P36-02`，负责方 `A`。只执行本任务，不实现整个模块或后续阶段。
++你是本项目的Coding Agent。本项目以LLM工具调用 + OR-Tools确定性优化 + SimPy推演 + FastAPI/React/PostgreSQL实现冷链优先调度。当前任务位于Phase 36「Performance Optimization」，任务ID `P36-02`，负责方 `A (基准、回归与整合), B (矩阵源码及缓存验证；按文件分工)`。只执行本任务，不实现整个模块或后续阶段。
+ 
+ 本Prompt连同仓库内契约足以工作，不依赖历史聊天。开始时读取以下本地规范；字段以契约实施后的唯一Python类型为准，文档若冲突先记录issue：
+ 
+@@ -56,6 +56,7 @@
+ - `docs/performance/CHANGE_EVIDENCE.md`
+ - `packages/optimization/src/logistics_optimization/transport/matrix_cache.py`
+ - `tests/integration/test_p36_02_bounded_performance_fix.py`
++- `tests/solver/test_p36_02_bounded_performance_fix.py`
+ - `tests/unit/test_p36_02_bounded_performance_fix.py`
+ 
+ 预计修改已有前置产物：
+@@ -98,7 +99,7 @@
+ 
+ ## Business Rules
+ 
+-仅实施矩阵缓存的内存上限、LRU淘汰和版本失效；不修改算法语义或公共矩阵接口；基准必须给出前后结果，即使无提速。
++仅实施矩阵缓存的内存上限、LRU淘汰和版本失效；不修改算法语义或公共矩阵接口；基准必须给出前后结果，即使无提速。 按文件分工：B实现matrix.py/matrix_cache.py及tests/solver的缓存正反例；A负责tests/unit、tests/integration、CHANGE_EVIDENCE、regression.json和跨域整合。A是整合主写者，仅整合B交付，不取得B路径编辑权；先B贡献、后A整合、再ZCode独立预验收/G36审查。
+ 
+ 所有业务结果绑定输入快照和规则版本。空输入仅在契约允许零需求时可返回有效空结果；有必需需求却无解不能返回空路线成功。已执行事实与已确认历史不可改写。
+ 
+@@ -116,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+@@ -158,7 +159,7 @@
+ 从仓库根目录执行。Phase01之后使用已锁定环境；数据库任务先按环境手册启动隔离PostgreSQL。以下为完成本任务后的强制命令，**本轮规划没有执行未来应用测试**：
+ 
+ ```powershell
+-uv run pytest tests/unit/test_p36_02_bounded_performance_fix.py tests/integration/test_p36_02_bounded_performance_fix.py -q
++uv run pytest tests/unit/test_p36_02_bounded_performance_fix.py tests/integration/test_p36_02_bounded_performance_fix.py tests/solver/test_p36_02_bounded_performance_fix.py -q
+ uv run python scripts/check_architecture.py
+ ```
+ 
+--- before/docs/prompts/12-integration/P37-01-security-boundary.md
++++ current/docs/prompts/12-integration/P37-01-security-boundary.md
+@@ -1,6 +1,6 @@
+ # P37-01 · 验证并修复访问控制、输入边界和依赖安全
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G37
++计划版本1.0.2 · 状态planned · 阶段Gate G37
+ 
+ ## Context
+ 
+@@ -115,7 +115,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P37-02-observability-audit.md
++++ current/docs/prompts/12-integration/P37-02-observability-audit.md
+@@ -1,6 +1,6 @@
+ # P37-02 · 实现全链追踪、指标端点和审计可检索性
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G37
++计划版本1.0.2 · 状态planned · 阶段Gate G37
+ 
+ ## Context
+ 
+@@ -120,7 +120,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/12-integration/P37-03-backup-and-recovery.md
++++ current/docs/prompts/12-integration/P37-03-backup-and-recovery.md
+@@ -1,6 +1,6 @@
+ # P37-03 · 验证数据库备份恢复、迁移回滚与作业恢复
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G37
++计划版本1.0.2 · 状态planned · 阶段Gate G37
+ 
+ ## Context
+ 
+@@ -117,7 +117,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/13-release/P38-01-developer-docs.md
++++ current/docs/prompts/13-release/P38-01-developer-docs.md
+@@ -1,6 +1,6 @@
+ # P38-01 · 交付与实际实现一致的架构、API和算法文档
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G38
++计划版本1.0.2 · 状态planned · 阶段Gate G38
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/13-release/P38-02-operator-docs.md
++++ current/docs/prompts/13-release/P38-02-operator-docs.md
+@@ -1,6 +1,6 @@
+ # P38-02 · 交付演示、异常处置、运维和模型配置手册
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G38
++计划版本1.0.2 · 状态planned · 阶段Gate G38
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/13-release/P39-01-release-candidate.md
++++ current/docs/prompts/13-release/P39-01-release-candidate.md
+@@ -1,6 +1,6 @@
+ # P39-01 · 生成可安装发布候选及完整性清单
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G39
++计划版本1.0.2 · 状态planned · 阶段Gate G39
+ 
+ ## Context
+ 
+@@ -118,7 +118,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/13-release/P39-02-release-gate.md
++++ current/docs/prompts/13-release/P39-02-release-gate.md
+@@ -1,6 +1,6 @@
+ # P39-02 · 签收发布 Gate 与复现证据索引
+ 
+-计划版本1.0.0 · 状态planned · 阶段Gate G39
++计划版本1.0.2 · 状态planned · 阶段Gate G39
+ 
+ ## Context
+ 
+@@ -116,7 +116,7 @@
+ 
+ ## Error Handling
+ 
+-输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
++输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。
+ 
+ 仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。
+ 
+--- before/docs/prompts/README.md
++++ current/docs/prompts/README.md
+@@ -1,8 +1,6 @@
+ # 独立Coding Prompt索引
+ 
+ 共109个Prompt，40个Phase，14个目录。编号Pxx-yy中的xx是Phase，目录数字不是Phase编号。每个文件可以完整交给新的Codex执行；先核验Dependencies，严格执行Gate。
+-
+-2026-10-01 返工后入口：[从 Phase 01 解阻至完成的完整派发](../agent-toolchain/12-project-completion-dispatch.md)。P01-02 四项返工已交付并停写；先按 N01–N05 解阻与独立验收，不默认重启旧返工。G01 有效签收后按下面任务 DAG 继续；静态任务索引不代表已实现进度。
+ 
+ [返回使用入口](../../AI-CODING-PLAN.md) · [Task Graph](../../TASK_GRAPH.md) · [Gate](../plan/PHASE_GATES.md)
+ 
+--- before/docs/workflow/02-ZCODE-PRECHECK.md
++++ current/docs/workflow/02-ZCODE-PRECHECK.md
+@@ -0,0 +1,22 @@
++# ZCode独立预验收
++
++版本1.0.0；按[交接契约](HANDOFF_CONTRACT.md)、[冻结Gate规则](../plan/GATE_EXECUTION_CONTRACT.md)、[当前派发](../agent-toolchain/12-project-completion-dispatch.md)执行。单任务预验收不签阶段Gate，不使下一阶段自动可启动。
++
++1. 核验实际工作根、任务ID、角色、候选清单、A/B白名单和最早前置。P01-02四项返工已READY_FOR_ZCODE，不重复分配已修复的AGENTS.md所有权缺口。
++2. 读取manifest/prompt、冻结规则和实际实现；复算候选revision、每个DSH产物/hash、原始日志/hash、退出码与测试数；历史DSH结论不是独立验证。
++3. 冻结必要输入，记录`verified_input_hashes`的四类必需输入及实际核验的源码/配置/契约/日志/前序Gate。读取之前记录hash，测试结束再次比较；输入变化则停止该轮并重开新候选审查。
++4. 在当前锁定环境独立复跑任务命令、正反例和必要边界。保存真实argv/cwd/exit_code/counts与完整stdout/stderr；PostgreSQL、OR-Tools、SimPy、模型、浏览器按任务使用真实依赖。缺凭据/外部服务写BLOCKED或NOT_RUN与责任方/恢复条件，不写通过，不用fake或skip替代验收。
++5. Gate负例在受控临时仓库；开发探针使用`--out-dir tmp/<task>/<round>/...`。对`--check-only`比较官方记录与日志的运行前后字节/hash，不把退出0当签收。不得删除真实review/precheck满足负例。
++6. 全部要求成立后先写本角色原始日志，再写本角色precheck；只在`artifacts/handoffs/<task>/zcode/`写独立结果。失败写FAILED/BLOCKED、具体缺陷、范围、责任方及恢复条件；退回实现/治理角色，ZCode不代改实现。
++7. 把precheck与日志交独立Codex；其review完成并真实Gate通过前禁止启动下一阶段。审查中修改源码必须产生新候选，不沿用原precheck。
++
++| 必查正反例 | 验收说明 |
++| --- | --- |
++| 完整非空输入hash且正确task/gate/reviewer | 读取规则通过，独立测试证据完整才可写通过 |
++| 空hash、漏prompt/DSH evidence、旧源码hash | 明确拒绝，不能手填通过 |
++| 命令exit=1、零用例、关键skip | 验收失败；保留日志 |
++| 仅status=passed的前序Gate、缺日志/命令退出码、依赖hash漂移 | 前置无效，停止下游 |
++| 缺Codex review、review revision错误 | Gate失败；precheck不能替代review |
++| check-only前后、写tmp/日志后候选不变 | 保持官方记录原字节，候选无自扰动；改相关源码后候选必变 |
++
++当前P01-01旧precheck已失效，P01-02/P01-03缺precheck；N01规划1.0.2改变manifest和prompts，使三个任务都须按新输入重验。先由N02独立复核G00与冻结迁移，再N03由DSH刷新自身交接，N04 ZCode验三个任务，N05独立Codex审查G01。本文件不宣称这些工作已完成。
+--- before/docs/workflow/HANDOFF_CONTRACT.md
++++ current/docs/workflow/HANDOFF_CONTRACT.md
+@@ -0,0 +1,94 @@
++# 交接记录契约
++
++版本1.0.0，2026-10-03。路径均相对正式工作根，sha256为实际文件字节的64位小写十六进制。格式依据[scripts/gates.py](../../scripts/gates.py)的`check_phase_handoffs`、`check_zcode_precheck`、`recorded_input_problems`、`check_codex_review`和`previous_gate_record_problems`；判定不得弱于[冻结规则F1–F9](../plan/GATE_EXECUTION_CONTRACT.md)。
++
++## 固定入口与角色
++
++| 产物 | 路径 | 生成者 |
++| --- | --- | --- |
++| 实现交接 | `docs/handoffs/<task>/dsh.md` | 对应DSH主写者 |
++| 实现机器证据 | `artifacts/handoffs/<task>/dsh/evidence.json` | 对应DSH主写者 |
++| 任务说明/完成报告 | manifest的`task_doc`、`report` | 对应主写者 |
++| 预验收记录 | `artifacts/handoffs/<task>/zcode/precheck.json` | 独立ZCode |
++| 预验收原始日志 | `artifacts/handoffs/<task>/zcode/logs/<round>/...` | 独立ZCode |
++| 阶段review | `artifacts/gates/GNN-codex-review.json` | 独立Codex |
++| 阶段证据/原始日志 | `artifacts/gates/GNN.json`、`GNN-logs/...`；G00为规划检查器格式 | 独立签收者实际调用工具 |
++
++执行器目前只认`dsh/evidence.json`实现通道，不支持通过另一个工具名自动替代。治理Codex写自己的N01交接，不冒写DSH。未来更换正式主实现通道须单独迁移读取规则。实现者可交READY_FOR_ZCODE；Z_PRECHECK_PASSED只由ZCode写precheck，DSH不得改自己的身份冒签。执行器兼容DSH证据中的旧Z_PRECHECK_PASSED值，仅属历史读取兼容。
++
++上述每Task预验收和阶段review流程适用于G01–G39。G00按[规划检查器](../../tools/ai_coding_plan/validate_plan.py)的引导路径与N02任务执行：读取P00交付/报告、冻结记录和基线，身份来自CONTRACT_FREEZE，不读取P00 precheck或G00-codex-review。不要求新造这两类记录，也不能以常规runner替代G00冻结复核。
++
++## 字段与实际检查
++
++| 记录 | 执行器当前直接检查 | 冻结规则/独立验收还要求 |
++| --- | --- | --- |
++| DSH evidence | 文件可读JSON，`status`为READY_FOR_ZCODE或历史Z_PRECHECK_PASSED；任务说明与报告存在 | task_id、phase_gate、role、owner/逐路径分工、root、候选revision/dirty hash、产物路径/hash、真实commands/exit_code/counts、原始日志hash、limitations、下一执行者。执行器未逐字段检查，ZCode必须核验 |
++| ZCode precheck | `task_id`与任务匹配，`phase_gate`匹配，`status=Z_PRECHECK_PASSED`，非空`reviewer`；`verified_input_hashes`非空、相对路径、合法digest、逐项存在且hash一致，并覆盖下表四类输入 | schema_version、root、真实审查时间/身份、code_revision/dirty hash、commands、test_counts、原始日志及hash、findings/limitations、产物完整性和独立复跑。当前执行器不比较precheck的code_revision、不自动校验其commands/logs；不能据此省略 |
++| Codex review | `gate_id`匹配，`status`为approved或passed，非空reviewer/code_revision；正常执行时revision匹配；`verified_input_hashes`非空且逐项新鲜 | 覆盖本阶段所有Task、全部precheck、相关候选文件、契约、前序Gate、日志、真实复现和附加业务断言。当前执行器没有Codex必需输入白名单，不能用一个无关hash替代这些输入 |
++
++ZCode最小必需输入由`required_precheck_inputs(task)`精确产生：
++
++| 输入键 | 规则 |
++| --- | --- |
++| `docs/plan/TASK_MANIFEST.json` | 所有任务共用 |
++| `docs/plan/PHASE_GATES.md` | 所有任务共用 |
++| 当前任务manifest的`prompt` | 存在非空prompt时必需；当前109项均有 |
++| `artifacts/handoffs/<task>/dsh/evidence.json` | 当前任务实现证据 |
++
++审查还应把实际核验的源码/配置/契约/产物/原始日志、workflow规范、GATE_EXECUTION_CONTRACT及前序Gate加入`verified_input_hashes`。键使用仓库内POSIX相对路径，不含绝对路径、`..`越界或自引用输出；不要把未生成的本Gate JSON加入review。空对象、缺必需输入、非法digest、文件缺失或漂移均不得通过。
++
++## 最小结构说明（模板，不是通过记录）
++
++```text
++ZCode:
++  schema_version: 1.0.0
++  task_id: Pxx-yy
++  phase_gate: Gxx
++  status: Z_PRECHECK_PASSED | FAILED | BLOCKED
++  reviewer: 本次真实独立审查者
++  code_revision: 本次实际复算值
++  verified_input_hashes: {相对路径: 实测sha256, ...}  # 四类必需输入及实际核验输入
++  commands: [{argv, cwd, exit_code, test_counts, log_path, log_sha256}, ...]
++  limitations / findings: 实际未覆盖项与缺陷
++Codex:
++  schema_version: 1.0.0
++  gate_id: Gxx
++  status: approved | passed | failed | blocked
++  reviewer / code_revision / verified_input_hashes / commands / limitations: 同上
++```
++
++所有通过状态只能在相应验证真实完成后生成；模板不能复制为正式记录。失败状态会被执行器拒绝，不以成功字符串包装BLOCKED/NOT_RUN。字段名大小写按上述实际读取规则，不用人类交接中的表格字段代替JSON。
++
++## Gate记录与日志
++
++完整字段以冻结契约§2为准。当前runner为1.0.0，命令日志字段是`log_sha256`；规划G00使用`log_hash`，前序Gate检查按具体producer兼容两种字段，缺两者均拒绝。G00规划格式用`scope/checker_counts`标识，不含runner的started_at/dirty_tree_hash/acceptance_artifacts；这是已有格式兼容，不授权手写一个字段不全的“passed”。
++
++前序记录必须有非空commands；argv非空字符串数组、cwd非空、exit_code整数且为0，原始日志存在、非空、hash匹配；pytest结果须有真实正数passed且无关键skip；这是冻结F5要求，当前前序记录检查未重验test_counts，独立审查须核验。`input_artifact_hashes`非空并新鲜；`dependency_evidence_hashes`只引用更早Gate、hash新鲜、无前向/自引用/环。schema要求的身份、环境、限制字段完整。不得仅凭status或编号判断有效。
++
++runner的`runs[]`只保留有限旧摘要，不能代替旧JSON/日志逐字节归档；当前`run_command`会重用日志名。因此每次正式重验前先由签收者归档旧JSON、review、日志及hash，禁止覆盖失败原始证据后只保留摘要。开发复现使用每轮独立tmp目录。
++
++## 候选冻结与生成顺序
++
++当前`GateRunner.relevant_files()`的白名单和排除常量是候选文件集的事实来源。UTF-8、仓库相对POSIX路径排序，最后一行无额外换行：
++
++```text
++code_revision = content-sha256: + sha256("\n".join(path + "\0" + sha256(file_bytes)))
++dirty_tree_hash = content-sha256: + sha256("\n".join(path + "\0" + size + "\0" + sha256(file_bytes)))
++```
++
++源码/配置/业务Schema/冻结规划输入纳入；workflow/prompts/日志/报告/审查记录/tmp/缓存排除。输入证据分别哈希，不混入候选；必要的被排除文档改动仍使绑定它们的审查失效。冻结后任何相关文件改动产生新候选，应停止旧审查并按影响重验。
++
++先治理与生成源码/Schema，后实现测试，后候选清单，再DSH报告/日志/交接/evidence，后ZCode日志/precheck，再Codex日志/review，最后正式Gate。输出不能引用自身hash。候选变化后不得只重算旧记录hash并沿用旧通过、旧身份或日期。
++
++## 正反例与执行边界
++
++| 场景 | 必须观察的结果 |
++| --- | --- |
++| 沙箱中必需输入与额外源码/log hash正确，task/gate/reviewer/status匹配 | precheck读取检查通过；仍须独立检查真实测试及完整Gate条件 |
++| `verified_input_hashes={}`或只绑定某无关文件 | precheck拒绝；Codex空集合拒绝，无关输入即使读取检查通过也不满足独立审查要求 |
++| 修改一个输入字节，保持旧digest | 输入漂移，拒绝；回对应责任方重新审查 |
++| 缺review、revision错误、命令exit=1、缺原始日志、G00仅含status | 阶段失败，非零退出，不得进下阶段 |
++| 只运行`--check-only`且无记录，退出0 | 没有签收；官方Gate存在性必须另查 |
++| `--skip-commands`或tmp的`--out-dir` | 不能构成官方签收；skip必失败 |
++
++以上例子应在受控副本运行，不删除正式记录或向正式领域文件注入负例。当前只注册G01附加断言；F7/F8/F9的后续覆盖不能由空注册或通用limitations代替。下一阶段之前另做明确范围的执行器治理任务；本N01未修改执行器。
+--- before/docs/workflow/README.md
++++ current/docs/workflow/README.md
+@@ -0,0 +1,32 @@
++# 任务交接与阶段签收
++
++契约版本1.0.0；2026-10-03 N01补齐ARCH-0004。本文描述流程，不是预验收或Gate通过记录。当前根为`D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent`，无Git；保留既有模型。
++
++依据：[实际执行器](../../scripts/gates.py)、[冻结Gate规则](../plan/GATE_EXECUTION_CONTRACT.md)、[阶段断言](../plan/PHASE_GATES.md)、[当前派发顺序](../agent-toolchain/12-project-completion-dispatch.md)。格式详见[交接契约](HANDOFF_CONTRACT.md)，ZCode执行步骤见[独立预验收](02-ZCODE-PRECHECK.md)。
++
++| 角色 | 产物及责任 | 边界 |
++| --- | --- | --- |
++| DSH主实现者 | 自己的实现、任务文档、完成报告、`dsh/evidence.json` | 只在任务白名单及A/B路径权限内写；不写ZCode/Codex记录，不签官方Gate |
++| B贡献者 | B文件及带候选/日志/hash的贡献清单交A整合 | 贡献清单不是执行器消费的DSH/ZCode记录；A不能因整合责任获得B源码写权限 |
++| ZCode独立预验收 | 每Task的`zcode/precheck.json`及原始日志 | 冻结候选上核验与复跑；不改实现，不冒写DSH状态 |
++| Codex治理/实现 | 治理差异及自己的交接 | 修改候选后交新的独立上下文，不自称完成独立审查 |
++| Codex独立阶段审查 | `GNN-codex-review.json`，成立后按正式流程运行Gate | 覆盖当前候选、所有Task预验收、全部前序Gate及附加断言；无真实证据不签 |
++
++G00使用独立引导流程：N02复核冻结记录、基线、问题登记及P00证据后，按派发规则调用规划检查器；签收身份来自CONTRACT_FREEZE。该检查器不读取P00 ZCode precheck或G00-codex-review，不应为适配常规流程制造这些记录。本N01不执行该引导签收。
++
++G01–G39的固定顺序：
++
++1. 治理决定、白名单、环境必要条件先成立；核验前序Gate及真实依赖。不从manifest的`planned/not_run`推断进度。
++2. 完成实现及必要Schema生成、测试，停止候选文件写入；复算相关文件清单及revision。先冻结业务候选，再生成实现交接。
++3. DSH先保存原始日志，再完成报告/任务说明，最后写自己的evidence哈希；若evidence索引handoff，先落handoff再哈希，不互相引用形成环。
++4. ZCode读取冻结候选及DSH交付，独立复跑、核验输入和日志；先保存日志/报告，再写precheck。失败只写自己的失败记录、缺陷和恢复条件，退回对应责任方。
++5. 本阶段全部precheck有效后，独立Codex审查当前候选，先保存审查日志再写review；review不绑定尚未生成的本Gate证据，避免循环。
++6. 独立签收者先逐字节归档旧官方JSON和原始日志，再运行正式Gate，核验输出与日志、依赖哈希；任何失败保留原始证据，禁止启动下阶段。
++
++候选、输入、日志三类哈希分别保存。workflow/prompts/报告/日志不进入执行器候选清单，但审查记录必须显式绑定所消费的文档与证据。流程文档改动不能因revision不变就沿用旧结论。
++
++开发探针仅写`tmp/<task>/<round>/...`并使用`--out-dir`；其`official_gate_record=false`不是签收。`--check-only`不运行命令、不写记录；无记录时当前执行器也可能退出0，不能据此启动下阶段。官方记录必须实际存在且规则、输入、日志和依赖均有效。
++
++候选或公共契约变化后，由原角色在新输入上重验受影响任务与全部下游Gate；禁止只换日期/hash恢复旧通过。执行器只注册G01附加断言，G02–G39必须在对应签收前完成断言/证据覆盖治理，不得把空注册视为通过。
++
++本轮下一执行者是独立Codex N02。P01-02保持READY_FOR_ZCODE；先完成G00复核，再N03刷新DSH自身交接、N04三任务ZCode重验、N05独立G01审查。本轮不执行`--record-g00`、不重启旧返工、不启动P02。
+--- before/tools/ai_coding_plan/build_catalog.py
++++ current/tools/ai_coding_plan/build_catalog.py
+@@ -3,6 +3,8 @@
+ import json
+ 
+ ROOT = Path(__file__).resolve().parents[2]
++PLAN_VERSION = '1.0.2'
++GENERATED_DATE = '2026-10-03'
+ TASKS = []
+ PHASES = [
+     '需求冻结与 Architecture Contract','Monorepo 与工程基础','Domain Model',
+@@ -62,7 +64,7 @@
+     'GateEvidence、import boundary rules',
+     'Gate 读取 manifest 要求命令并亲自执行；失败不得写 passed；不接受用户手填成功；原始日志与哈希必须保存。',
+     '运行各任务命令及阶段附加验收，核验前 Gate 与证据依赖；用子进程参数数组；提供 --check-only 与过期检查。',
+-    '命令 exit=1 => G01 failed 且进程非零 / domain 导入 fastapi => 层边界检查失败')
++    '命令 exit=1 => G01 failed 且进程非零 / domain 导入 fastapi => 层边界检查失败 / 缺少 Codex review 或 ZCode 输入哈希过期 => G01 failed 且进程非零 / --check-only => 不写 Gate 记录或日志，已有记录保持原字节')
+ add(1,'migration-governance','建立新路径所有权及旧契约转换验收入口',
+     'OWNERSHIP.json;docs/architecture/LEGACY_ADAPTATION.md;contracts/changes/README.md;scripts/check_ownership.py',
+     'resolve_owner(path: str) -> Literal["A", "B"]',
+@@ -75,7 +77,7 @@
+     'packages/domain/src/logistics_domain/primitives.py;packages/domain/src/logistics_domain/states.py;packages/domain/src/logistics_domain/errors.py',
+     'TimeWindow(start_s: int, end_s: int); transition(state: EntityState, event: Transition) -> EntityState',
+     '所有 ID / Enum、TimeWindow、Money、ViolationCode',
+-    'UUID、UTC 时间、整数秒/米/克/立方厘米/分/十分之一摄氏度；资源占用 [start,end)；服务开始窗闭区间。',
++    'UUID、UTC 时间、整数秒/米/克/立方厘米/分/十分之一摄氏度；资源占用 [start,end)；服务开始窗闭区间。 JobStatus/JobKind等公共枚举唯一在states.py定义；JobStatus遵循DATA_CONTRACTS既有成员和语义；JobKind成员仍未决，ARCH-0007须由A治理在本任务派发前裁定，后续P02-04/P05仅复用。',
+     '不可变值对象；按实体状态转换表显式校验；错误只用领域类型，不依赖 Pydantic。',
+     '[0,10) 和 [10,20) => 不冲突 / delivered -> draft => INVALID_TRANSITION')
+ add(2,'master-entities','实现订单、货物与运仓资源领域模型',
+@@ -852,6 +854,15 @@
+     early_runtime=next(t for t in TASKS if t['id']=='P02-04')
+     early_runtime['files'].append('packages/domain/src/logistics_domain/execution.py')
+     early_runtime['rule'] += ' P02必须把所有实体引用的纯值类型完整定义，含TwinState/ExecutionEvent/PendingEvent/RngState/AgentBudget/ExperimentSpec；后续领域阶段复用它们，只实现Problem/Request映射和算法，不重复实体。'
++    early_runtime['model'] += '；ScenarioSpec、ScenarioRef、ScenarioBundle、Job、JobAttempt、ActorContext及其纯值引用；JobKind/JobStatus只引用P02-01 states.py唯一枚举'
++    early_runtime['rule'] += ' ScenarioBundle及ScenarioRef唯一纯值定义归domain/runtime.py，边界映射归contracts/runtime.py；字段未决不得自行补全，须先完成ARCH-0006/ARCH-0007的派发前契约裁定。Job实体在本任务定义，JobKind/JobStatus仅引用P02-01 states.py，不在runtime.py重复定义；P03只持久化，P05只实现作业行为。'
++    definition_rules = {
++        'P04-02': ' ImportReceipt为本任务cli/seed.py内的具名CLI导入回执，不是领域实体；字段未决见ARCH-0007，裁定前不派发，不在P03/P04自造公共类型。',
++        'P05-01': ' Settings唯一配置定义放bootstrap.py；HealthResponse/ReadinessResponse边界定义放contracts/http.py；ActorContext纯值复用P02-04。字段未决见ARCH-0007，未裁定不派发。',
++        'P05-02': ' MasterData不是已登记类型名；MasterDataService定义在application/master_data.py。MasterDataUpdate/分页请求归contracts/http.py，ResourceDTO复用P02-02 contracts/entities.py，不能在http.py复制同名实体DTO；字段与ResourceDTO覆盖范围见ARCH-0007，未裁定不派发。',
++        'P05-03': ' JobRequest/JobRef/JobView/CancelCommand唯一边界定义放contracts/runtime.py；Job复用P02-04，JobKind/JobStatus复用P02-01 states.py。LeaseToken/Deadline/WorkOutcome为application/jobs.py内具名工作协议；字段和JobRequest前向类型依赖未决见ARCH-0007，未裁定不派发。',
++        'P36-02': ' 按文件分工：B实现matrix.py/matrix_cache.py及tests/solver的缓存正反例；A负责tests/unit、tests/integration、CHANGE_EVIDENCE、regression.json和跨域整合。A是整合主写者，仅整合B交付，不取得B路径编辑权；先B贡献、后A整合、再ZCode独立预验收/G36审查。',
++    }
+     wiring={
+         'P05-01':['apps/backend/src/logistics_backend/api/router.py'],
+         'P17-02':['apps/backend/src/logistics_backend/bootstrap.py'],
+@@ -868,6 +879,9 @@
+     }
+     for t in TASKS:
+         t['files']+=wiring.get(t['id'],[])
++        t['rule'] += definition_rules.get(t['id'], '')
++        if t['id']=='P05-01': t['files'].append('packages/contracts/src/logistics_contracts/http.py')
++        if t['id']=='P05-03': t['files'].append('packages/contracts/src/logistics_contracts/runtime.py')
+         t['prompt'] = f"docs/prompts/{GROUPS[t['phase']]}/{t['id']}-{t['slug']}.md"
+         t['phase_gate'] = f"G{t['phase']:02d}"
+         if t['phase'] > 0:
+@@ -877,6 +891,7 @@
+         t['unit_test'] = f'tests/unit/test_{short}.py'
+         t['integration_test'] = f'tests/integration/test_{short}.py'
+         t['special_test'] = f"tests/{'simulation' if k=='simulation' else 'solver'}/test_{short}.py" if k in ('simulation','solver') else None
++        if t['id']=='P36-02': t['special_test']=f'tests/solver/test_{short}.py'
+         if k in ('frontend','fullstack'):
+             t['unit_test'] = f'apps/frontend/src/test/{short}.unit.test.tsx'
+             t['integration_test'] = f'apps/frontend/src/test/{short}.integration.test.tsx'
+@@ -888,6 +903,7 @@
+         t['status'] = 'planned'
+         t['owner'] = 'B' if t['phase'] in (6,7,11,12) else 'A'
+         if t['id']=='P13-01': t['owner']='A (公共事件服务), B (simulation/events.py；按文件分工)'
++        if t['id']=='P36-02': t['owner']='A (基准、回归与整合), B (矩阵源码及缓存验证；按文件分工)'
+         if t['phase']==0:
+             t['commands']=[f'python tools/ai_coding_plan/validate_plan.py --self-test --task {t["id"]}']
+         elif k=='docs':
+@@ -918,6 +934,12 @@
+         t['files']=sorted(set(t['files']))
+         tests=[v for v in [t['unit_test'],t['integration_test'],t['special_test']] if v and '::' not in v and ' --' not in v]
+         t['allowed_files']=sorted(set(t['files']+tests+[t['task_doc'],t['report']]))
++        if t['id']=='P36-02':
++            t['contributions'] = {
++                'B': [p for p in t['allowed_files'] if p.startswith(('packages/optimization/', 'tests/solver/'))],
++                'A': [p for p in t['allowed_files'] if not p.startswith(('packages/optimization/', 'tests/solver/'))],
++            }
++            t['integration_owner'] = 'A'
+     gates=[dict(id=f'G{p:02d}',phase=p,deps=[t['id'] for t in TASKS if t['phase']==p],status='not_run') for p in range(40)]
+     nodes=TASKS+gates
+     by_id={t['id']:t for t in nodes}
+@@ -933,7 +955,7 @@
+         t['parallel']=[q['id'] for q in TASKS if q['id']!=t['id'] and q['phase']==t['phase']
+             and q['id'] not in ancestors(t['id']) and t['id'] not in ancestors(q['id'])
+             and not(set(t['allowed_files'])&set(q['allowed_files']))]
+-    return dict(plan_version='1.0.0',generated_date='2026-09-12',implementation_status='not_started_by_this_plan',
++    return dict(plan_version=PLAN_VERSION,generated_date=GENERATED_DATE,implementation_status='not_started_by_this_plan',
+         phase_names=PHASES,tasks=TASKS,gates=gates)
+ 
+ if __name__=='__main__':
+--- before/tools/ai_coding_plan/render_plan.py
++++ current/tools/ai_coding_plan/render_plan.py
+@@ -2,7 +2,7 @@
+ from pathlib import Path
+ import json
+ import re
+-from build_catalog import ROOT, enrich
++from build_catalog import ROOT, enrich, PLAN_VERSION
+ 
+ HEADINGS=['Context','Current State','Objective','Scope','Out of Scope','Architecture Constraints','Files','Domain Model','Input','Output','Interfaces','Data Contract','Business Rules','Algorithm','Edge Cases','Error Handling','Logging','Observability','Testing','Test Cases','Acceptance Criteria','Validation Commands','Documentation','Completion Report']
+ REFERENCES=[
+@@ -170,7 +170,7 @@
+       'Business Rules':t['rule']+'\n\n所有业务结果绑定输入快照和规则版本。空输入仅在契约允许零需求时可返回有效空结果；有必需需求却无解不能返回空路线成功。已执行事实与已确认历史不可改写。',
+       'Algorithm':alg,
+       'Edge Cases':'必须处理：'+ '；'.join(t['cases'])+'。\n\n共同边界按本任务适用范围测试：空集合、重复ID、非法枚举/单位、负值/整数溢出、缺失关联、边界时间相等、过期revision、取消/超时、依赖不可用。对不适用项在Completion Report说明，不为制造覆盖率添加无意义断言。',
+-      'Error Handling':'输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；未知必需能力→UNSUPPORTED并拒绝有效结果；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。\n\n仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。',
++      'Error Handling':'输入契约错误→INVALID_INPUT/422；非法状态→INVALID_TRANSITION；请求未知必需能力→INVALID_INPUT/422并用UnsupportedDetail说明，拒绝有效结果；独立硬校验发现未支持规则时保留unsupported_codes且不得报告有效候选；开发期间未实现能力仍按DATA_CONTRACTS返回501且不得进入对应Gate，不自造UNSUPPORTED错误码；版本/资源/幂等冲突→409；权限→401/403；依赖不可用→503。求解TIMEOUT/UNKNOWN/INFEASIBLE为typed结果，不统一包装成500。\n\n仅捕获明确可处理的第三方异常并保留cause/trace；边界可最后捕获未预期错误记录脱敏stack并返回INTERNAL_ERROR，禁止except Exception: pass。重试仅幂等暂态操作，有最大次数与deadline；不重试业务硬约束失败。',
+       'Logging':f'事件名使用 `{tid.lower().replace("-","_")}.started/completed/rejected`（纯函数由调用边界记录）。记录operation、trace_id、输入/输出hash、schema_version、结果状态、duration_ms、明确错误码；涉及求解追加引擎版本/配置/seed，涉及版本追加base/candidate/version引用。禁止输出secret、完整个人数据或模型内部思维。文档任务保存检查日志与文件hash。',
+       'Observability':observation+'。\n\n不得用order_id/vehicle_id/trace_id作metric标签；这些只在日志或trace。此阶段还没有完整监控backend时，先输出结构化测量/诊断，P37接统一出口；不能因此跳过可观察结果。',
+       'Testing':f'- Unit Test：`{t["unit_test"]}`；测试本任务规则/转换/状态或文档检查负例。\n- Integration Test：`{t["integration_test"]}`；验证真实相邻模块的数据/服务边界；涉及数据库使用隔离真实PostgreSQL。'+extra+'\n- 所有测试均有确定数据和预期，不用固定假成功掩盖缺失实现；命令零用例或关键skip视为未验收。',
+@@ -180,7 +180,7 @@
+       'Documentation':f'更新 `{t["task_doc"]}`：已实现能力、接口/单位、输入输出样例、状态与失败语义、实际限制、关联测试。完成报告写 `{t["report"]}`。公共契约变化另追加contracts/changes说明及架构issue，重新导出Schema/OpenAPI/TS并重验受影响Gate，不通过聊天补交接。',
+       'Completion Report':'最终答复和报告必须逐项包含：\n\n- Files created（精确路径）\n- Files modified（精确路径及原因）\n- Tests added（文件、用例和覆盖的业务边界）\n- Commands executed（实际命令、工作目录、环境）\n- Test results（exit code、passed/failed/skipped数量、原始日志与产物位置）\n- Known limitations（支持/不支持及用户可见行为）\n- Remaining risks（有证据的风险、影响、下一责任任务）\n\n另记录Task ID、契约版本前后、输入/输出hash、当前代码revision/相关文件hash、Gate证据引用。不得声称尚未运行的测试通过，不把本任务完成说成整个系统完成。',
+     }
+-    return f'# {tid} · {t["title"]}\n\n计划版本1.0.0 · 状态planned · 阶段Gate {t["phase_gate"]}\n\n'+'\n\n'.join('## '+h+'\n\n'+sections[h] for h in HEADINGS)+'\n'
++    return f'# {tid} · {t["title"]}\n\n计划版本{PLAN_VERSION} · 状态planned · 阶段Gate {t["phase_gate"]}\n\n'+'\n\n'.join('## '+h+'\n\n'+sections[h] for h in HEADINGS)+'\n'
+ 
+ def write(path,content):
+     target=ROOT/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_text(content,encoding='utf-8')
+--- before/tools/ai_coding_plan/validate_plan.py
++++ current/tools/ai_coding_plan/validate_plan.py
+@@ -75,6 +75,12 @@
+         elif not target.exists():errors.append(str(path.relative_to(root))+': missing local link '+dest)
+     return errors
+ 
++def validate_cases(body, task):
++    """Compare concrete case rows, so prompt/manifest drift cannot pass silently."""
++    section = re.search(r'^## Test Cases\s*\n(.*?)(?=^## |\Z)', body, re.M | re.S)
++    rows = re.findall(r'^\|\s*\d+\s*\|\s*(.*?)\s*\|', section.group(1), re.M) if section else []
++    return [] if rows == task['cases'] else [task['id']+': prompt/manifest Test Cases drift']
++
+ def validate_artifacts(data,task_id=None):
+     errors=validate_graph(data);tasks=data['tasks'];gates=data['gates']
+     if len(gates)!=40 or {g['id'] for g in gates}!={f'G{p:02d}' for p in range(40)}:errors.append('40 numbered gates required')
+@@ -103,6 +109,7 @@
+         if not file.exists():errors.append('missing prompt '+t['prompt']);continue
+         body=file.read_text(encoding='utf-8')
+         errors+=validate_prompt(body,t['id'],t['kind']=='solver')
++        errors+=validate_cases(body,t)
+         for command in t['commands']:
+             if command not in body:errors.append(t['id']+': prompt/manifest command drift')
+         for required_path in t['allowed_files']:
+@@ -122,13 +129,22 @@
+     for ref in re.findall(r'\b(?:P\d{2}-\d{2}|G\d{2})\b',trace):
+         if ref not in by_id:errors.append('traceability has unknown node '+ref)
+     paths=[ROOT/'PROJECT_MASTER_PLAN.md',ROOT/'TASK_GRAPH.md',ROOT/'AI-CODING-PLAN.md']
+-    for directory in ['docs/architecture','docs/api','docs/algorithms','docs/plan','docs/prompts']:
++    for directory in ['docs/architecture','docs/api','docs/algorithms','docs/plan','docs/prompts','docs/workflow']:
+         paths.extend((ROOT/directory).rglob('*.md'))
+     for path in paths:
+         if path.name!='USER_REQUIREMENTS.md':errors+=local_links(path,ROOT)
+     return errors,dict(tasks=len(tasks),gates=len(gates),prompt_groups=len(EXPECTED_GROUPS),required_prompt_sections=len(REQUIRED),required_entities=len(ENTITY_NAMES),markdown_files=len(paths),selected_prompts=len(selected))
+ 
+ class CheckerTests(unittest.TestCase):
++    def test_matching_cases(self):
++        task = dict(id='P01-02', cases=['input => expected'])
++        self.assertEqual(validate_cases('## Test Cases\n\n| 1 | input => expected | assert |\n', task), [])
++    def test_missing_case(self):
++        task = dict(id='P01-02', cases=['input => expected', 'missing => reject'])
++        self.assertTrue(validate_cases('## Test Cases\n\n| 1 | input => expected | assert |\n', task))
++    def test_extra_case(self):
++        task = dict(id='P01-02', cases=['input => expected'])
++        self.assertTrue(validate_cases('## Test Cases\n\n| 1 | input => expected | assert |\n| 2 | extra => reject | assert |\n', task))
+     def fixture(self):
+         tasks=[dict(id='P00-01',phase=0,deps=[],blocks=['P00-02'],parallel=[],allowed_files=['a']),dict(id='P00-02',phase=0,deps=['P00-01'],blocks=['G00'],parallel=[],allowed_files=['b'])]
+         return dict(tasks=tasks,gates=[dict(id='G00',phase=0,deps=['P00-02'],blocks=[])])

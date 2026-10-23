@@ -1,0 +1,11 @@
+logistics_domain -> D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\domain\src\logistics_domain\__init__.py
+logistics_contracts -> D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\contracts\src\logistics_contracts\__init__.py
+logistics_optimization -> D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\optimization\src\logistics_optimization\__init__.py
+logistics_simulation -> D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\simulation\src\logistics_simulation\__init__.py
+logistics_agents -> D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\agents\src\logistics_agents\__init__.py
+logistics_evaluation -> D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\evaluation\src\logistics_evaluation\__init__.py
+THIRD_PARTY=[]
+LOUD={'entities': 'NotImplementedError', 'ids': 'NotImplementedError', 'units': 'NotImplementedError', 'ports': 'NotImplementedError'}
+DELIVERED_TO_DRAFT=InvalidTransitionError
+RESERVATION_STATES=['expired', 'released']
+RELEASED_IN_UNION=True

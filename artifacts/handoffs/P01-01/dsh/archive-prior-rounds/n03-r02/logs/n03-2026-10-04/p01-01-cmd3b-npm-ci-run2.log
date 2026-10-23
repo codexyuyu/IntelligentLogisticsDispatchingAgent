@@ -1,0 +1,19 @@
+# check: p01-01-cmd3b-npm-ci-run2
+# argv: ["npm", "ci"]
+# resolved_executable: C:\Program Files\nodejs\npm.CMD
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T15:55:54.369416+00:00
+# expectation: exit 0; package-lock.json sha256 identical before/after (Test Case 2)
+# package-lock.json sha256 before: fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+# package-lock.json sha256 after:  fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+
+## stdout
+
+added 4 packages, and audited 6 packages in 13s
+
+found 0 vulnerabilities
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 13406

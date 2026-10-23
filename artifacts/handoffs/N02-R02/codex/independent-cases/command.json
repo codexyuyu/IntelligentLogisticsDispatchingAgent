@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "tmp/N02-R02/independent-cases/probe.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at_utc": "2026-10-04T14:45:55.697819+00:00",
+  "finished_at_utc": "2026-10-04T14:45:56.792917+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N02-R02/codex/independent-cases/run.log",
+  "log_sha256": "caa96d1f7ca7dd215343d6615d418d041c9cadd3ae2351a191d86c726a28bc75",
+  "python_executable_sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+  "capture_argv": [
+    "tmp/N02-R02/independent-cases/capture.py"
+  ],
+  "capture_cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "capture_sha256": "7834225664de5c2e320ab6a7f2e564007b803dfdc8ef46d7a7d5c1c6b640a9b5"
+}

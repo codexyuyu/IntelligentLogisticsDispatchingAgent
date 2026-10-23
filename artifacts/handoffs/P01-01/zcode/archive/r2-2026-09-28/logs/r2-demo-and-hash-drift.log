@@ -1,0 +1,7 @@
+dsh artifact/log hash drift: NONE (14/14 fresh)
+demo entries: 173 missing: none
+demo tree sha256: c9a1b33e4a0acf19e0b8c041d76f33b559c8843d76b3d0f8c23f7daf2687d337
+matches DSH legacy_demo.tree_sha256: True
+demo.zip sha256: e0350b75239807047b1dbdb25f69fed5c6c26e34929731d0658db83a58f0e904
+matches DSH legacy_demo.demo_zip.sha256: True
+EXIT=0

@@ -1,0 +1,42 @@
+{
+  "total": 287,
+  "unchanged": 287,
+  "changed_paths": [],
+  "critical_records": {
+    "docs/architecture/CONTRACT_FREEZE.json": {
+      "before": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "after": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "unchanged": true
+    },
+    "docs/architecture/CONTRACT_FREEZE.md": {
+      "before": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "after": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "unchanged": true
+    },
+    "artifacts/gates/G00.json": {
+      "before": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "after": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+      "unchanged": true
+    },
+    "artifacts/gates/G00-checks.log": {
+      "before": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "after": "da0893c481685cf6f1c07bf72e43f6c1df577c153ff6f20715bd79e0d3af2e56",
+      "unchanged": true
+    },
+    "artifacts/gates/G01.json": {
+      "before": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "after": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "unchanged": true
+    },
+    "scripts/gates.py": {
+      "before": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+      "after": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+      "unchanged": true
+    },
+    "OWNERSHIP.json": {
+      "before": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+      "after": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+      "unchanged": true
+    }
+  }
+}

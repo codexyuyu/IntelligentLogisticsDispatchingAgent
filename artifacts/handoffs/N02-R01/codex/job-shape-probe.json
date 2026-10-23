@@ -1,0 +1,187 @@
+{
+  "independent_job_shape_checks": 45,
+  "passed": 45,
+  "results": [
+    {
+      "name": "accept optimization",
+      "passed": true
+    },
+    {
+      "name": "metadata optimization",
+      "passed": true
+    },
+    {
+      "name": "actor optimization",
+      "passed": true
+    },
+    {
+      "name": "ref mismatch optimization",
+      "passed": true
+    },
+    {
+      "name": "body actor optimization",
+      "passed": true
+    },
+    {
+      "name": "bool version optimization",
+      "passed": true
+    },
+    {
+      "name": "uppercase hash optimization",
+      "passed": true
+    },
+    {
+      "name": "accept simulation",
+      "passed": true
+    },
+    {
+      "name": "metadata simulation",
+      "passed": true
+    },
+    {
+      "name": "actor simulation",
+      "passed": true
+    },
+    {
+      "name": "ref mismatch simulation",
+      "passed": true
+    },
+    {
+      "name": "body actor simulation",
+      "passed": true
+    },
+    {
+      "name": "bool version simulation",
+      "passed": true
+    },
+    {
+      "name": "uppercase hash simulation",
+      "passed": true
+    },
+    {
+      "name": "accept reschedule",
+      "passed": true
+    },
+    {
+      "name": "metadata reschedule",
+      "passed": true
+    },
+    {
+      "name": "actor reschedule",
+      "passed": true
+    },
+    {
+      "name": "ref mismatch reschedule",
+      "passed": true
+    },
+    {
+      "name": "body actor reschedule",
+      "passed": true
+    },
+    {
+      "name": "bool version reschedule",
+      "passed": true
+    },
+    {
+      "name": "uppercase hash reschedule",
+      "passed": true
+    },
+    {
+      "name": "accept experiment",
+      "passed": true
+    },
+    {
+      "name": "metadata experiment",
+      "passed": true
+    },
+    {
+      "name": "actor experiment",
+      "passed": true
+    },
+    {
+      "name": "ref mismatch experiment",
+      "passed": true
+    },
+    {
+      "name": "body actor experiment",
+      "passed": true
+    },
+    {
+      "name": "bool version experiment",
+      "passed": true
+    },
+    {
+      "name": "uppercase hash experiment",
+      "passed": true
+    },
+    {
+      "name": "accept metric",
+      "passed": true
+    },
+    {
+      "name": "metadata metric",
+      "passed": true
+    },
+    {
+      "name": "actor metric",
+      "passed": true
+    },
+    {
+      "name": "ref mismatch metric",
+      "passed": true
+    },
+    {
+      "name": "body actor metric",
+      "passed": true
+    },
+    {
+      "name": "bool version metric",
+      "passed": true
+    },
+    {
+      "name": "uppercase hash metric",
+      "passed": true
+    },
+    {
+      "name": "mode transport",
+      "passed": true
+    },
+    {
+      "name": "mode warehouse",
+      "passed": true
+    },
+    {
+      "name": "mode joint",
+      "passed": true
+    },
+    {
+      "name": "unknown kind",
+      "passed": true
+    },
+    {
+      "name": "old schema",
+      "passed": true
+    },
+    {
+      "name": "unknown mode",
+      "passed": true
+    },
+    {
+      "name": "nonoptimization mode simulation",
+      "passed": true
+    },
+    {
+      "name": "nonoptimization mode reschedule",
+      "passed": true
+    },
+    {
+      "name": "nonoptimization mode experiment",
+      "passed": true
+    },
+    {
+      "name": "nonoptimization mode metric",
+      "passed": true
+    }
+  ],
+  "limitations": "Design data shape/discriminants only; no real capability parser, JobService, worker, HTTP or DB executed."
+}

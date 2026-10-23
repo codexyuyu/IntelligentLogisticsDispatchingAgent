@@ -1,0 +1,19 @@
+[project]
+name = "logistics-simulation"
+version = "0.1.0"
+description = "Digital-twin SimPy kernel, execution state machines, event engine and snapshot replay."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "logistics-domain",
+    "simpy>=4.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+logistics-domain = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/logistics_simulation"]

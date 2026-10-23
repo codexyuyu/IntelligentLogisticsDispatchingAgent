@@ -1,0 +1,21 @@
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "pytest", "tests/unit", "tests/integration", "-q"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:30:59.909240+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+........................................................................ [ 31%]
+........................................................................ [ 63%]
+........................................................................ [ 95%]
+..........                                                               [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\_pytest\cacheprovider.py:469
+  D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.venv\Lib\site-packages\_pytest\cacheprovider.py:469: PytestCacheWarning: could not create cache path D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\.pytest_cache\v\cache\nodeids: [WinError 5] 拒绝访问。: 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+226 passed, 1 warning in 46.45s
+
+## stderr
+
+## exit_code: 0

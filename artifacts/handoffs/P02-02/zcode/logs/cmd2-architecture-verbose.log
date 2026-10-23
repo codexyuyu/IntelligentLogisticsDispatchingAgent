@@ -1,0 +1,10 @@
+########## uv run python scripts/check_architecture.py --verbose
+  layer agents: 1 module(s)
+  layer backend: 1 module(s)
+  layer contracts: 1 module(s)
+  layer domain: 1 module(s)
+  layer evaluation: 1 module(s)
+  layer optimization: 1 module(s)
+  layer simulation: 1 module(s)
+architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0
+EXIT_CODE=0

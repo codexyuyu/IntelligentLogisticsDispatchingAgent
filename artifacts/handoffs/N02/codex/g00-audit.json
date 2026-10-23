@@ -1,0 +1,184 @@
+{
+  "status_field": "passed",
+  "total": 25,
+  "matched": 23,
+  "mismatches": [
+    {
+      "path": "docs/architecture/issues/README.md",
+      "expected": "93bd4ed9a23fa988001c5d535f28a9b86a923fc37c75512b5eb3e73002671695",
+      "actual": "a3588b546b09f86fbb7e8298a220c3b64741f1620e51593bc6eb89e2432f83ff",
+      "passed": false
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "expected": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+      "actual": "8091763a21416f57b70a5b71b6c408ba02b19c051ad0ab52f754814981e0ec2e",
+      "passed": false
+    }
+  ],
+  "inputs": [
+    {
+      "path": "docs/architecture/BASELINE_INVENTORY.json",
+      "expected": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+      "actual": "bcf5dda7f45d750bb63bacea8b3f288ad97e07f62b1cf4bac9c4a3b73ca7fe93",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/BASELINE_INVENTORY.md",
+      "expected": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694",
+      "actual": "5aefb933b0fa8986d59b13136355efa9fdc93ab2061b8b10c5dc28d837791694",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/MIGRATION_MAP.md",
+      "expected": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b",
+      "actual": "b588fd80f3960784f715d9717a97854c467523184fe1a841d9ff05ddbb21934b",
+      "passed": true
+    },
+    {
+      "path": "docs/implementation/P00-01.md",
+      "expected": "ce86f77f11cfab16e8c08b9ff00edcf9835351d0e1b3f87d3d91e63b984b1833",
+      "actual": "ce86f77f11cfab16e8c08b9ff00edcf9835351d0e1b3f87d3d91e63b984b1833",
+      "passed": true
+    },
+    {
+      "path": "docs/implementation/reports/P00-01.md",
+      "expected": "888e208ee01519ffc30868ca7902fe9c42b78d41e5f6006e6e746b98f2405865",
+      "actual": "888e208ee01519ffc30868ca7902fe9c42b78d41e5f6006e6e746b98f2405865",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.json",
+      "expected": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "actual": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/CONTRACT_FREEZE.md",
+      "expected": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "actual": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/issues/README.md",
+      "expected": "93bd4ed9a23fa988001c5d535f28a9b86a923fc37c75512b5eb3e73002671695",
+      "actual": "a3588b546b09f86fbb7e8298a220c3b64741f1620e51593bc6eb89e2432f83ff",
+      "passed": false
+    },
+    {
+      "path": "docs/implementation/P00-02.md",
+      "expected": "a0eae411e5e68b9dc358b8ac100ebe0919fbf01a0350453ef3a44342918f73f4",
+      "actual": "a0eae411e5e68b9dc358b8ac100ebe0919fbf01a0350453ef3a44342918f73f4",
+      "passed": true
+    },
+    {
+      "path": "docs/implementation/reports/P00-02.md",
+      "expected": "dba5fe5f8a3bd5c05bbc5e331b4ee126ca95af4e2b1c00637dfd10497133dff2",
+      "actual": "dba5fe5f8a3bd5c05bbc5e331b4ee126ca95af4e2b1c00637dfd10497133dff2",
+      "passed": true
+    },
+    {
+      "path": "docs/plan/GATE_EXECUTION_CONTRACT.md",
+      "expected": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+      "actual": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+      "passed": true
+    },
+    {
+      "path": "docs/implementation/P00-03.md",
+      "expected": "dddda2c1a9b9619cb86625e6c825b0e2280bf833b19256ae4e5dc5430469a688",
+      "actual": "dddda2c1a9b9619cb86625e6c825b0e2280bf833b19256ae4e5dc5430469a688",
+      "passed": true
+    },
+    {
+      "path": "docs/implementation/reports/P00-03.md",
+      "expected": "61fa11c736daeb59e7515303c6bff1db4a2cda55e11965936b50fb0eac33279c",
+      "actual": "61fa11c736daeb59e7515303c6bff1db4a2cda55e11965936b50fb0eac33279c",
+      "passed": true
+    },
+    {
+      "path": "PROJECT_MASTER_PLAN.md",
+      "expected": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+      "actual": "f3a6a0c670a684e144bcaa4e5a9bcab62a8cf50be2bedb9c1f8c913d6de5d85b",
+      "passed": true
+    },
+    {
+      "path": "TASK_GRAPH.md",
+      "expected": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+      "actual": "0b3bcfd59bf5681588a81b18f2773c37f4c3462fb7a2aa0625068f5bac792207",
+      "passed": true
+    },
+    {
+      "path": "docs/algorithms/METRICS_CONTRACT.md",
+      "expected": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+      "actual": "1314ca2b110efb4dc4a19005597f8b51a539edd32586502170789da06166a0a4",
+      "passed": true
+    },
+    {
+      "path": "docs/algorithms/OPTIMIZATION_CONTRACT.md",
+      "expected": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+      "actual": "2e7fde48e229d53c753f411bc054a21be022a66804ef6d805025897467ff94c8",
+      "passed": true
+    },
+    {
+      "path": "docs/algorithms/SIMULATION_CONTRACT.md",
+      "expected": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+      "actual": "f2473b962dfda20dd0866008a3f9389ab3f1ecfd3d07cc3049c3c744042c748c",
+      "passed": true
+    },
+    {
+      "path": "docs/api/API_CONTRACT.md",
+      "expected": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+      "actual": "2728f1cf12d8f6d71a5eeee1942154827f6893850c279d64af3701fc84dc10b9",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/ARCHITECTURE_OVERVIEW.md",
+      "expected": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+      "actual": "4fc77cbd959fce6da3b7ed921dedf4d0dd077529245aab75c9b3365fc0565aeb",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "expected": "1c77514c9c95b68977f5780fdc4c7a21d791cc590bc7a0f140b42d5c924f422e",
+      "actual": "8091763a21416f57b70a5b71b6c408ba02b19c051ad0ab52f754814981e0ec2e",
+      "passed": false
+    },
+    {
+      "path": "docs/architecture/DOMAIN_CATALOG.md",
+      "expected": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+      "actual": "0c0626524587e5ade733a7ecdbc907c98a6a34a1f61a194a0131184ff17403b1",
+      "passed": true
+    },
+    {
+      "path": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "expected": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+      "actual": "9dc54ce285adec42a1142ab1c52394d5593b7cc4e368132201cee62bf721f6e8",
+      "passed": true
+    },
+    {
+      "path": "docs/plan/PHASE_GATES.md",
+      "expected": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+      "actual": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+      "passed": true
+    },
+    {
+      "path": "docs/plan/TEST_FIXTURES.md",
+      "expected": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+      "actual": "25bd3ca95188e749949ac806ef92ae76d702e5bbaf2b68228dc4d930b0b7927f",
+      "passed": true
+    }
+  ],
+  "current_runner_schema": "planner",
+  "current_runner_problems": [
+    "frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+  ],
+  "current_runner_checks": [
+    {
+      "id": "previous-gate:G00",
+      "passed": false,
+      "detail": "frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded; frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+    }
+  ],
+  "dependency_evidence_hashes": {}
+}

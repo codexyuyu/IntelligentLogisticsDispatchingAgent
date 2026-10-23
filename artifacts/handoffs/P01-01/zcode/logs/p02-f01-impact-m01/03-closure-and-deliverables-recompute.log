@@ -1,0 +1,3 @@
+P01-02 | status: Z_PRECHECK_PASSED | inputs: 36 | stale: NONE | badlogs: NONE
+P01-03 | status: Z_PRECHECK_PASSED | inputs: 33 | stale: NONE | badlogs: NONE
+P01-01 evidence deliverable_files: 26 | drift vs disk: 0

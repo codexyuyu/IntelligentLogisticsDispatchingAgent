@@ -1,0 +1,32 @@
+########## DRY RUN (non-official out-dir): uv run python scripts/gates.py --phase 02 --revision auto --out-dir tmp/zcode-g02-dryrun
+wrote tmp/zcode-g02-dryrun/G02.json (status: failed)
+G02: 5/27 checks passed
+  [FAIL] P02-01-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P02-01-cmd2: manifest command must succeed
+  [FAIL] P02-02-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P02-02-cmd2: manifest command must succeed
+  [FAIL] P02-03-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P02-03-cmd2: manifest command must succeed
+  [FAIL] P02-04-cmd1: exit_code=4 (expected 0); no test summary found; a zero-case run is not acceptance evidence
+  [PASS] P02-04-cmd2: manifest command must succeed
+  [PASS] previous-gate:G00: status=passed
+  [FAIL] previous-gate:G01: status=failed
+  [FAIL] dsh-evidence:P02-01: missing artifacts/handoffs/P02-01/dsh/evidence.json
+  [FAIL] dsh-evidence:P02-02: missing artifacts/handoffs/P02-02/dsh/evidence.json
+  [FAIL] dsh-evidence:P02-03: missing artifacts/handoffs/P02-03/dsh/evidence.json
+  [FAIL] dsh-evidence:P02-04: missing artifacts/handoffs/P02-04/dsh/evidence.json
+  [FAIL] docs:docs/implementation/P02-01.md: missing docs/implementation/P02-01.md
+  [FAIL] docs:docs/implementation/reports/P02-01.md: missing docs/implementation/reports/P02-01.md
+  [FAIL] docs:docs/implementation/P02-02.md: missing docs/implementation/P02-02.md
+  [FAIL] docs:docs/implementation/reports/P02-02.md: missing docs/implementation/reports/P02-02.md
+  [FAIL] docs:docs/implementation/P02-03.md: missing docs/implementation/P02-03.md
+  [FAIL] docs:docs/implementation/reports/P02-03.md: missing docs/implementation/reports/P02-03.md
+  [FAIL] docs:docs/implementation/P02-04.md: missing docs/implementation/P02-04.md
+  [FAIL] docs:docs/implementation/reports/P02-04.md: missing docs/implementation/reports/P02-04.md
+  [FAIL] zcode-precheck:P02-01: missing artifacts/handoffs/P02-01/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] zcode-precheck:P02-02: missing artifacts/handoffs/P02-02/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] zcode-precheck:P02-03: missing artifacts/handoffs/P02-03/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] zcode-precheck:P02-04: missing artifacts/handoffs/P02-04/zcode/precheck.json; the phase handoff contract requires a pre-acceptance record
+  [FAIL] codex-review: missing artifacts/gates/G02-codex-review.json; a phase gate cannot be signed without the Codex review record
+  commands: 8, median 241 ms, total 2071 ms
+EXIT_CODE=1

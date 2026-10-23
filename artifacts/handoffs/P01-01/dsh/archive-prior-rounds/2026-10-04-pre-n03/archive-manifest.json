@@ -1,0 +1,44 @@
+{
+  "task_id": "P01-01",
+  "round": "2026-10-04-pre-n03",
+  "archived_at_utc_source": "copied with shutil.copy2 (byte-identical; mtime preserved)",
+  "source_dir": "artifacts/handoffs/P01-01/dsh",
+  "file_count": 5,
+  "entries": [
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/evidence.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/evidence.json",
+      "bytes": 7073,
+      "sha256": "aff5d7939f0ce47c8357b6e3bbe6c7717590b8e5d817bea3c9589182900bafe1",
+      "source_sha256_at_copy": "aff5d7939f0ce47c8357b6e3bbe6c7717590b8e5d817bea3c9589182900bafe1"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/npm_ci.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/npm_ci.log",
+      "bytes": 294,
+      "sha256": "1f2fc355303c54f283d3bbe356360857394a3230238c51775b1a9f76edfa955d",
+      "source_sha256_at_copy": "1f2fc355303c54f283d3bbe356360857394a3230238c51775b1a9f76edfa955d"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/pytest.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/pytest.log",
+      "bytes": 490,
+      "sha256": "75fa0e13c0a2b243cbe1c5386ed7b3f721372501255b9ccf7e1d42a7ac748bb2",
+      "source_sha256_at_copy": "75fa0e13c0a2b243cbe1c5386ed7b3f721372501255b9ccf7e1d42a7ac748bb2"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/uv_sync_frozen.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/uv_sync_frozen.log",
+      "bytes": 309,
+      "sha256": "3226cdb567e9e722372b86e8fb391aa32f7f037e8a41781ec6223701741ffe90",
+      "source_sha256_at_copy": "3226cdb567e9e722372b86e8fb391aa32f7f037e8a41781ec6223701741ffe90"
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/validation-summary.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/2026-10-04-pre-n03/logs/validation-summary.json",
+      "bytes": 1929,
+      "sha256": "7acce9b3c46401a79c96e9fbf13732568519a52f5e00224926d58e43065fed96",
+      "source_sha256_at_copy": "7acce9b3c46401a79c96e9fbf13732568519a52f5e00224926d58e43065fed96"
+    }
+  ]
+}

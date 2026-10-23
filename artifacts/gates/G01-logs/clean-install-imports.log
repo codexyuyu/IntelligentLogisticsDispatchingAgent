@@ -1,0 +1,13 @@
+# check: clean-install-imports
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", ".gate-probe-G01.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T09:19:57.264558+00:00
+# expectation: six packages must import
+
+## stdout
+IMPORT_PROBE={"logistics_domain": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\__init__.py", "logistics_contracts": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\contracts\\src\\logistics_contracts\\__init__.py", "logistics_optimization": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\optimization\\src\\logistics_optimization\\__init__.py", "logistics_simulation": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\simulation\\src\\logistics_simulation\\__init__.py", "logistics_agents": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\agents\\src\\logistics_agents\\__init__.py", "logistics_evaluation": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\evaluation\\src\\logistics_evaluation\\__init__.py"}
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 156

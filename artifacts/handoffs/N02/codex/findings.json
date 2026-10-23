@@ -1,0 +1,77 @@
+{
+  "status": "BLOCKED",
+  "adjudicator": "Codex N02 /root/n02_independent",
+  "decision_kind": "Independent semantic judgment derived from current P00/G00 contracts; not a recorded Gate run.",
+  "freeze_basis": [
+    {
+      "path": "docs/prompts/00-master/P00-02-freeze-contracts.md",
+      "lines": [
+        67,
+        99,
+        105
+      ]
+    },
+    {
+      "path": "docs/plan/PHASE_GATES.md",
+      "line": 21
+    },
+    {
+      "path": "docs/plan/GATE_EXECUTION_CONTRACT.md",
+      "line": 19
+    },
+    {
+      "path": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+      "line": 13
+    }
+  ],
+  "findings": [
+    {
+      "id": "N02-F01",
+      "owner": "A contract governance",
+      "subject": "JobKind members and request-kind mapping",
+      "observed": "Unique definition assigned to P02-01 states.py; members and mapping remain unresolved.",
+      "impact": "G00 freeze BLOCKED; P02-01 dispatch BLOCKED",
+      "source": {
+        "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+        "line": 47
+      },
+      "restoration": "Freeze complete enum membership, naming, kind mapping and positive/negative cases while retaining one states.py definition."
+    },
+    {
+      "id": "N02-F02",
+      "owner": "A contract governance",
+      "subject": "ScenarioRef and ScenarioBundle shapes",
+      "observed": "Ownership assigned to P02-04 runtime; fields, reference/version/hash semantics and expectation/input isolation unresolved.",
+      "impact": "G00 freeze BLOCKED; P02-04 and consumers BLOCKED",
+      "source": {
+        "path": "docs/architecture/issues/ARCH-0006-scenario-bundle-ownership.md",
+        "line": 31
+      },
+      "restoration": "Freeze complete field and nested-type shapes, reference semantics and isolation invariants with verifiable cases."
+    },
+    {
+      "id": "N02-F03",
+      "owner": "A contract governance",
+      "subject": "ResourceCalendar unique defining task and module",
+      "observed": "intervals/version already specified in DATA_CONTRACTS:7; definition task and carrier remain unspecified before P02-02 direct consumers.",
+      "impact": "G00 definition mapping BLOCKED; P02-02 consumers BLOCKED",
+      "source": {
+        "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+        "line": 104
+      },
+      "restoration": "Decide earliest unique defining task/module and CalendarInterval dependencies; align catalog, file whitelist and consumer edges; HTTP CalendarDTO only maps the shared type."
+    },
+    {
+      "id": "N02-F04",
+      "owner": "A contract governance",
+      "subject": "JobRequest forward type dependencies",
+      "observed": "P05-03 must define five payload branches, but required request types originate in P06/P11/P14/P32 and no complete early type/reference strategy is frozen.",
+      "impact": "G00 type/dependency freeze BLOCKED; P05-03 dispatch BLOCKED",
+      "source": {
+        "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+        "line": 49
+      },
+      "restoration": "Freeze complete early pure types or named reference strategy, discriminators/version/parsing rules and satisfiable definition/consumer dependencies; prohibit future imports, Any and empty placeholders."
+    }
+  ]
+}

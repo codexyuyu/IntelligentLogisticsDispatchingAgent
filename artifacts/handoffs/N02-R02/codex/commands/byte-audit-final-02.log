@@ -1,0 +1,337 @@
+{
+  "status": "PASS",
+  "reviewer": "Codex N02-R02 /root/n02_r02_independent",
+  "checked_at": "2026-10-04T14:45:01.530203+00:00",
+  "reviewed_candidate": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "file_count": 77,
+  "governance_changed_files": [
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "before_sha256": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+      "after_sha256": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+      "before_bytes": 69687,
+      "after_bytes": 79824
+    },
+    {
+      "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "before_sha256": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+      "after_sha256": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+      "before_bytes": 38568,
+      "after_bytes": 40830
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-decisions.json",
+      "before_sha256": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+      "after_sha256": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+      "before_bytes": 94064,
+      "after_bytes": 109715
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+      "before_sha256": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+      "after_sha256": "9bf3e3c00513cb04ad5549b2344d12cae553914a49935135bcffaba60cba8ab8",
+      "before_bytes": 3047,
+      "after_bytes": 5382
+    },
+    {
+      "path": "tools/ai_coding_plan/validate_plan.py",
+      "before_sha256": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+      "after_sha256": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+      "before_bytes": 48040,
+      "after_bytes": 65385
+    }
+  ],
+  "protected_count": 3786,
+  "protected_changes": [],
+  "observed_external_additions": [
+    {
+      "path": "artifacts/dispatch/2026-10-04/parallel/messages/dsh/N03.md",
+      "sha256": "fa8e9dce54cfd374eb9e67053d1a27633a31508609cd40e361d31efa2d9e7e47",
+      "bytes": 1667,
+      "last_write_utc": "2026-10-04T14:40:17.022017+00:00",
+      "classification": "outside N01 baseline and this reviewer output; candidate-excluded concurrent addition; authorship not inferred from timestamps"
+    },
+    {
+      "path": "artifacts/dispatch/2026-10-04/parallel/messages/workbuddy/current-evidence-index.md",
+      "sha256": "2e749bb63bed99bf0407ad4585c80a040e7520728ae59b81d7db18c390b627ea",
+      "bytes": 1040,
+      "last_write_utc": "2026-10-04T14:40:14.739246+00:00",
+      "classification": "outside N01 baseline and this reviewer output; candidate-excluded concurrent addition; authorship not inferred from timestamps"
+    },
+    {
+      "path": "artifacts/dispatch/2026-10-04/parallel/messages/zcode/N02-R02-contract.md",
+      "sha256": "8940009b22605fdbd36a1656d84078012de97dbed040f7b650cee509879158a3",
+      "bytes": 1443,
+      "last_write_utc": "2026-10-04T14:40:12.214337+00:00",
+      "classification": "outside N01 baseline and this reviewer output; candidate-excluded concurrent addition; authorship not inferred from timestamps"
+    },
+    {
+      "path": "docs/agent-toolchain/13-partitioned-parallel-dispatch.md",
+      "sha256": "fee78af5909960f7aaae9bd581523927d951857c9b24d6bfb4c5ddffb76c4a40",
+      "bytes": 6281,
+      "last_write_utc": "2026-10-04T14:34:32.047625+00:00",
+      "classification": "outside N01 baseline and this reviewer output; candidate-excluded concurrent addition; authorship not inferred from timestamps"
+    },
+    {
+      "path": "docs/agent-toolchain/14-agent-prompt-dispatch-checklist.md",
+      "sha256": "4077f1eeb26f1dbd1de7a18b1be1dcd2f87b3df0e5c453bd354417baa3da24e2",
+      "bytes": 76462,
+      "last_write_utc": "2026-10-04T14:41:59.844631+00:00",
+      "classification": "outside N01 baseline and this reviewer output; candidate-excluded concurrent addition; authorship not inferred from timestamps"
+    }
+  ],
+  "type_count": 196,
+  "modified_types": [
+    "CargoAnomalyPayload",
+    "DemandDecreasePayload",
+    "DemandIncreasePayload",
+    "EntityKind",
+    "EntityRef",
+    "EquipmentFailurePayload",
+    "OrderCancellationPayload",
+    "TrafficDisruptionPayload",
+    "TransportDelayPayload",
+    "VehicleFailurePayload",
+    "WarehouseResourceUnavailablePayload",
+    "WeatherChangePayload"
+  ],
+  "preserved_self_tests": 43,
+  "current_self_tests": 73,
+  "record_g00_ast_unchanged": true,
+  "protected_function_byte_hashes": [
+    {
+      "name": "record_g00",
+      "sha256": "6726a1f866e9f345ac6ea3feeba4d924bad6e1381ace601e9fbeb5c5632b88a9",
+      "bytes": 3999
+    },
+    {
+      "name": "test_boundary_extra_field_cannot_hide_a_missing_type",
+      "sha256": "df6eff18133c8070ef80f6a6e6f974cca85ac9f343c3c600bd62ec335d017dce",
+      "bytes": 256
+    },
+    {
+      "name": "test_calendar_dto_cannot_define_second_domain_type",
+      "sha256": "8f497f368b6b5e571601b35c54681b344834550c57d1c986c19eded5f9b13bea",
+      "bytes": 252
+    },
+    {
+      "name": "test_calendar_ownership_cannot_move_later",
+      "sha256": "d718875f655f69a73450f80ce33c3c3e9fdf9bba6370bc5f8b60596c4497985b",
+      "bytes": 352
+    },
+    {
+      "name": "test_calendar_version_cannot_be_omitted",
+      "sha256": "44030ca8c9cc9fc57906596b68c8a47e6ef0c9c56581237919ebee7bedda21e4",
+      "bytes": 247
+    },
+    {
+      "name": "test_closed_contract_graph",
+      "sha256": "199ff9624d3e1a5d47e10abc040e61c0438e7c09dba030812ddfcaed5e4acada",
+      "bytes": 145
+    },
+    {
+      "name": "test_cross_phase_parallel",
+      "sha256": "12f09a6985ccee79b78fa19dc31082a39c46c4803a79cce2a1509868bb5d410b",
+      "bytes": 200
+    },
+    {
+      "name": "test_cycle",
+      "sha256": "495f0094007f8fecbec62b111481c09682eff032fd3536cd096a26a76398b4e7",
+      "bytes": 145
+    },
+    {
+      "name": "test_direct_expected_scalar_cannot_leak",
+      "sha256": "7d8d48c3c72847de301afc6821e4a428dd3c4e0c44f7310392524ef14e5cfc93",
+      "bytes": 438
+    },
+    {
+      "name": "test_domain_cannot_import_contracts",
+      "sha256": "01acb40c97ce1650ccd527ca675b8424199d958f153233235adeb4ec5f8ebe2d",
+      "bytes": 314
+    },
+    {
+      "name": "test_duplicate_definition",
+      "sha256": "327a05dd73db59af7374be44d9c0201e7c227d9936d94ad97a7fd2a205835386",
+      "bytes": 212
+    },
+    {
+      "name": "test_duplicate_id",
+      "sha256": "b7a16be045e02dc886cd285d352495d2fa4daeef6799015c57462c13578a2037",
+      "bytes": 174
+    },
+    {
+      "name": "test_empty_record_is_rejected",
+      "sha256": "efb633c447662b8409e76a88306f6ba5c2f613934c29e4141a920b1ad78d6b1a",
+      "bytes": 210
+    },
+    {
+      "name": "test_entity_set",
+      "sha256": "15ed2a2f6aab2f7372fa7ce55c5682723e0d9a93b5ae7625a3d9277aa6d719a0",
+      "bytes": 75
+    },
+    {
+      "name": "test_event_spec_has_one_authority",
+      "sha256": "06a77eb39d8ff55cd250ed70167382e0f2ad264d99ec017aabac35066de9c6d1",
+      "bytes": 256
+    },
+    {
+      "name": "test_existing_leaf_requires_evidenced_source",
+      "sha256": "ef0678880e8d9b1b07edab090745a91e88b6ce92b7590aeaae443d7a6af192f9",
+      "bytes": 275
+    },
+    {
+      "name": "test_expectation_cannot_leak_transitively",
+      "sha256": "9259e774752c1b0195fa45355e63ef3f6697ce7caa6c7ea1e1a42c43476dd3a6",
+      "bytes": 462
+    },
+    {
+      "name": "test_extra_case",
+      "sha256": "f2fe96f554957fae3a740018aefa1bbc43a6c419fe1b14ab35adc1de4353af9e",
+      "bytes": 233
+    },
+    {
+      "name": "test_formal_input_cannot_contain_solver_answer",
+      "sha256": "c0c1c59c15edca5ecdda336c90400eb04e9c7bdbfac88ff0190c96d367634d32",
+      "bytes": 440
+    },
+    {
+      "name": "test_free_dictionary_is_not_a_type",
+      "sha256": "3debe16c81bbe59d0f3acf5076ec72764a2b312797f39e1bf52d567ad30a9cc2",
+      "bytes": 227
+    },
+    {
+      "name": "test_future_definition_task",
+      "sha256": "727c83a9318c1fff264b7e85eea91b9c658894e9ce8bc1252c42f8b69af531a6",
+      "bytes": 386
+    },
+    {
+      "name": "test_job_request_cannot_reference_future_dto",
+      "sha256": "1d521be8ea2995d625d648799cd83afcaeb5ab253af6c4a5a164bfad3c2084bf",
+      "bytes": 244
+    },
+    {
+      "name": "test_matching_cases",
+      "sha256": "8f0a0df4ebc4e781eb3e0db415ba79095974793be64fe7d08aa6d4cca2b396f4",
+      "bytes": 208
+    },
+    {
+      "name": "test_mismatched_kind_mapping",
+      "sha256": "0bdcf9a03a28c940454650bd01a2e624e31dd39c4aa584226d7c781fcd7b6c3e",
+      "bytes": 220
+    },
+    {
+      "name": "test_missing_case",
+      "sha256": "084257886bc8adee0810eed1830b4c296eb94509196389a0ddaca4793708efaa",
+      "bytes": 222
+    },
+    {
+      "name": "test_missing_cross_module_dependency",
+      "sha256": "105416785a19b24f4b4214ae10960718b8af1c965bd8cdba2a6483f23c93ab94",
+      "bytes": 250
+    },
+    {
+      "name": "test_missing_dependency",
+      "sha256": "a8759435846041ce43b58e07fd1235530857489c93abf95d180d79850363a8df",
+      "bytes": 174
+    },
+    {
+      "name": "test_missing_optimization_mode",
+      "sha256": "e9f1d7f645166c31657a5499e12bcfa4d2ba0bd2c171cf5206411d28692a37f5",
+      "bytes": 233
+    },
+    {
+      "name": "test_missing_prompt_sections",
+      "sha256": "42ead5cef059931d411d4bc8af7f3a5030279e7dc0d68126e18e93cc1534b120",
+      "bytes": 102
+    },
+    {
+      "name": "test_missing_solver_sections",
+      "sha256": "1e5ba462d3858c42de9bfac437e1f8dea5942cbe49adeb845b3576d7d71c7c83",
+      "bytes": 204
+    },
+    {
+      "name": "test_module_cycle",
+      "sha256": "7c7d47ae6ce2df9bc085d679d5b2fb166ff90a5c7c6b5396564ae92e20d73792",
+      "bytes": 281
+    },
+    {
+      "name": "test_parallel_dependency",
+      "sha256": "168758f5ff4247a21959adcb5aa8584fa6ea62af035f1858f145dd90d2e40bb4",
+      "bytes": 217
+    },
+    {
+      "name": "test_parallel_write_collision",
+      "sha256": "7b6869b1d01e4153a71901969fcf94ac63cfa281833bb3531f0e1b44b6fd38b9",
+      "bytes": 323
+    },
+    {
+      "name": "test_payload_family_literal_required",
+      "sha256": "dc495f9392fec8c437f34f54cfe211662c93a01fa941422ec496ceaf6a8b4ec1",
+      "bytes": 232
+    },
+    {
+      "name": "test_reference_cycle",
+      "sha256": "cb94d607187fc77c05a12ecf4354ab23b59734eed77a9fb365849189c19ba027",
+      "bytes": 203
+    },
+    {
+      "name": "test_reordered_prompt_sections",
+      "sha256": "939e62e1234d3b330c00f721d901da5f4219d067234237e01213e6ff12046739",
+      "bytes": 199
+    },
+    {
+      "name": "test_request_hash_cannot_be_optional",
+      "sha256": "691e469b76aa2530acd5b1a79e84348f08d44283f5f7614741726ae810748f4a",
+      "bytes": 237
+    },
+    {
+      "name": "test_request_reference_family_is_unique_enum",
+      "sha256": "9d983f8f354e18ca5fb00bb6e4bf61e3392738b03840035d205c5e64ef5da04b",
+      "bytes": 255
+    },
+    {
+      "name": "test_reverse_blocks",
+      "sha256": "eedb9d82c073738078632523c0fc7f0f251c5271ba697fbe6f2a3c0cd83ad140",
+      "bytes": 161
+    },
+    {
+      "name": "test_scenario_identity_must_bind_dataset_and_schema",
+      "sha256": "8d97434ffe0385ddff566d22a59ac239d62acb2b2dd4d0d4b2906455de2401a1",
+      "bytes": 259
+    },
+    {
+      "name": "test_union_discriminator_must_match_branch",
+      "sha256": "5d849b72e0de6e324400430a119ad47d80e22d935c61e42a27efcf3cae9e89c8",
+      "bytes": 260
+    },
+    {
+      "name": "test_unknown_referenced_type",
+      "sha256": "1d25bb798e3ee0feceb03fec652a8562544d5072791925fcb1bd36d7066ab5d5",
+      "bytes": 236
+    },
+    {
+      "name": "test_valid_graph",
+      "sha256": "b1d5fe617460b7c64931d42759996359c5ebaa524798255ccc1317af12f0686e",
+      "bytes": 84
+    },
+    {
+      "name": "test_wrong_carrier",
+      "sha256": "30f2109cbb97f9db34a2d35ebe0b1e38ae16c62356897dbcb140b5022277e6b6",
+      "bytes": 253
+    }
+  ],
+  "legacy_entries": 173,
+  "old_freeze_drift": [
+    "docs/architecture/DOMAIN_CATALOG.md",
+    "docs/architecture/DATA_CONTRACTS.md",
+    "docs/architecture/IMPLEMENTATION_CONVENTIONS.md",
+    "docs/api/API_CONTRACT.md"
+  ],
+  "old_g00_problems": [
+    "frozen input docs/api/API_CONTRACT.md drifted after the gate was recorded",
+    "frozen input docs/architecture/DATA_CONTRACTS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/DOMAIN_CATALOG.md drifted after the gate was recorded",
+    "frozen input docs/architecture/IMPLEMENTATION_CONVENTIONS.md drifted after the gate was recorded",
+    "frozen input docs/architecture/issues/README.md drifted after the gate was recorded"
+  ]
+}

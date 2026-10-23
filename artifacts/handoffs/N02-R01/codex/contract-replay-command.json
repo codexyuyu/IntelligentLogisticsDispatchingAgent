@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "python",
+    "tmp/N02-R01/replay_contract_examples.py",
+    "independent"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T03:21:19.574982+00:00",
+  "finished_at": "2026-10-04T03:21:19.620137+00:00",
+  "exit_code": 2,
+  "log_path": "artifacts/handoffs/N02-R01/codex/contract-replay.log",
+  "log_hash": "1f587d0754d6adbc3e1dd9c91c92373ee66bad55dcc9790bb4b76815ed919418",
+  "log_bytes": 172,
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

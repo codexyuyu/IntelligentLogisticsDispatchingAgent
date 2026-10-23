@@ -1,0 +1,7 @@
+{
+ "verified_against": "round p02-f01-impact record (pre-edit state, same 54 inputs + 11 logs)",
+ "stale_inputs": [],
+ "bad_logs": [],
+ "inputs": 54,
+ "commands": 11
+}

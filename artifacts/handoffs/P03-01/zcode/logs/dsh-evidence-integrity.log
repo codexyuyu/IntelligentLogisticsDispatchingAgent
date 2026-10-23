@@ -1,0 +1,24 @@
+=== DSH evidence integrity re-check (independent recomputation) ===
+status           : BLOCKED | requested_status: BLOCKED
+signs_gate       : False | gate_signed: None
+
+-- command log hashes recorded by DSH vs file on disk:
+   P03-01-cmd1: exit=4 recorded=6b6bb15e4ceb… actual=6b6bb15e4ceb -> match
+   P03-01-cmd2: exit=0 recorded=851bb7bdbfc5… actual=851bb7bdbfc5 -> match
+   dependency-probe-phase02: exit=1 recorded=258605668239… actual=258605668239 -> match
+   dependency-probe-phase03: exit=1 recorded=258605668239… actual=258605668239 -> match
+   all log hashes verified: True
+
+-- input_hashes recorded by DSH vs recomputation:
+   inputs recorded: 16 | mismatched: NONE
+
+-- DSH deliverable_presence vs real state right now:
+   alembic.ini: recorded=False now=False
+   apps/backend/migrations/env.py: recorded=False now=False
+   apps/backend/migrations/versions/0001_resources.py: recorded=False now=False
+   apps/backend/src/logistics_backend/persistence/resource_models.py: recorded=False now=False
+   tests/unit/test_p03_01_resource_schema.py: recorded=False now=False
+   tests/integration/test_p03_01_resource_schema.py: recorded=False now=False
+   docs/implementation/P03-01.md: recorded=False now=True  <-- CHANGED after the record was written
+   docs/implementation/reports/P03-01.md: recorded=False now=True  <-- CHANGED after the record was written
+   recorded present count: 0 / 8

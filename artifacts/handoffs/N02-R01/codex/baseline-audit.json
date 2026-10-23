@@ -1,0 +1,873 @@
+{
+  "count": 173,
+  "passed": 173,
+  "unregistered_ordinary_files": [],
+  "derived_trees": "NOT_RUN; excluded by frozen coverage policy",
+  "files": [
+    {
+      "path": "demo/.editorconfig",
+      "recorded": "87aa196f57c7ac4beae5d2b8bdde0fc771b72ebf8cb4535736f62a2cee3b28b6",
+      "actual": "87aa196f57c7ac4beae5d2b8bdde0fc771b72ebf8cb4535736f62a2cee3b28b6"
+    },
+    {
+      "path": "demo/.env.example",
+      "recorded": "28b1631e8b71b668025f8b5de56f5e85f3cf0c76126a827394c59a0934ea19fc",
+      "actual": "28b1631e8b71b668025f8b5de56f5e85f3cf0c76126a827394c59a0934ea19fc"
+    },
+    {
+      "path": "demo/.gitattributes",
+      "recorded": "265cfb9d9150e7285a23e46892be45932056e99b6f5ac169070b84dab8decbe0",
+      "actual": "265cfb9d9150e7285a23e46892be45932056e99b6f5ac169070b84dab8decbe0"
+    },
+    {
+      "path": "demo/.github/workflows/checks.yml",
+      "recorded": "8dbd81bf6dc305f54596f9bf128703a196f1c15652876a537a26524d00d8a33e",
+      "actual": "8dbd81bf6dc305f54596f9bf128703a196f1c15652876a537a26524d00d8a33e"
+    },
+    {
+      "path": "demo/.gitignore",
+      "recorded": "f4cc6abb7102c108dbeafe509d78b6e4f22e53ca558d3b13bb3a97e421991d90",
+      "actual": "f4cc6abb7102c108dbeafe509d78b6e4f22e53ca558d3b13bb3a97e421991d90"
+    },
+    {
+      "path": "demo/.venv/pyvenv.cfg",
+      "recorded": "16e3f877e24343f9f0d6a30449532b097509e95f598f37d8f64cd242c8f576af",
+      "actual": "16e3f877e24343f9f0d6a30449532b097509e95f598f37d8f64cd242c8f576af"
+    },
+    {
+      "path": "demo/AGENTS.md",
+      "recorded": "b5dbaddda018ccf4a3e08279dfd8e38285517a6c49e6e7cff5beefdbec138159",
+      "actual": "b5dbaddda018ccf4a3e08279dfd8e38285517a6c49e6e7cff5beefdbec138159"
+    },
+    {
+      "path": "demo/DEV_LOG.md",
+      "recorded": "7b405c08258d15004f7b593fa5bd1f0b5023a95114213408e249111ad9f204bf",
+      "actual": "7b405c08258d15004f7b593fa5bd1f0b5023a95114213408e249111ad9f204bf"
+    },
+    {
+      "path": "demo/FILE_MAP.md",
+      "recorded": "e1a6e018fb29bc89fc00f0f73fec373ee40fbba230c0818698a2a88ed07d27ab",
+      "actual": "e1a6e018fb29bc89fc00f0f73fec373ee40fbba230c0818698a2a88ed07d27ab"
+    },
+    {
+      "path": "demo/OWNERSHIP.json",
+      "recorded": "a56724ad26b04dd55836e7150e8bed665e6f6d6456221806647c5e8083ee95d1",
+      "actual": "a56724ad26b04dd55836e7150e8bed665e6f6d6456221806647c5e8083ee95d1"
+    },
+    {
+      "path": "demo/README.md",
+      "recorded": "7a9118cebcc687d815e2f0f21b39d1257e814b55541cc6790114eb1cc2bbe859",
+      "actual": "7a9118cebcc687d815e2f0f21b39d1257e814b55541cc6790114eb1cc2bbe859"
+    },
+    {
+      "path": "demo/backend/app/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/adapters/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/adapters/llm/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/adapters/llm/gateway.py",
+      "recorded": "78499bccfb2ed193eab09e9beaa2fb46a468382a9b8d68da022fe5bec216e7bb",
+      "actual": "78499bccfb2ed193eab09e9beaa2fb46a468382a9b8d68da022fe5bec216e7bb"
+    },
+    {
+      "path": "demo/backend/app/adapters/llm/prompts.py",
+      "recorded": "963f62dc13324604cc096c7d78330be4b82b621d8ea7e9d5a2088438a4e09c5d",
+      "actual": "963f62dc13324604cc096c7d78330be4b82b621d8ea7e9d5a2088438a4e09c5d"
+    },
+    {
+      "path": "demo/backend/app/adapters/matrix/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/adapters/matrix/fixed.py",
+      "recorded": "1e9703e79a29cf2c92d09ea3a777b04bfde727ac289012d3cd74bff36343da2a",
+      "actual": "1e9703e79a29cf2c92d09ea3a777b04bfde727ac289012d3cd74bff36343da2a"
+    },
+    {
+      "path": "demo/backend/app/adapters/matrix/osrm.py",
+      "recorded": "47275ba6fcbf5b1d360f52f510891d608e4d0cfd160a366f03819ab7bebc078c",
+      "actual": "47275ba6fcbf5b1d360f52f510891d608e4d0cfd160a366f03819ab7bebc078c"
+    },
+    {
+      "path": "demo/backend/app/adapters/persistence/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/adapters/persistence/jobs.py",
+      "recorded": "2d4e789a8f65c416424b4fd8ee21884fdd0da36fda0cd4b71215391f077fcd1e",
+      "actual": "2d4e789a8f65c416424b4fd8ee21884fdd0da36fda0cd4b71215391f077fcd1e"
+    },
+    {
+      "path": "demo/backend/app/adapters/persistence/models.py",
+      "recorded": "92baeb67787ed59c80f20d514f68478d841f5afd33a62b8ef3018b12bc09e79c",
+      "actual": "92baeb67787ed59c80f20d514f68478d841f5afd33a62b8ef3018b12bc09e79c"
+    },
+    {
+      "path": "demo/backend/app/adapters/persistence/plan_commit.py",
+      "recorded": "59cabe85318e408b92ad31a2fd2b2745f70e295f3a5de82548db030d86b3cff5",
+      "actual": "59cabe85318e408b92ad31a2fd2b2745f70e295f3a5de82548db030d86b3cff5"
+    },
+    {
+      "path": "demo/backend/app/adapters/persistence/snapshots.py",
+      "recorded": "9edee8582ba1f5b8379ca8452732b0a58e17ce33d753cd76664a53fc5be3d07e",
+      "actual": "9edee8582ba1f5b8379ca8452732b0a58e17ce33d753cd76664a53fc5be3d07e"
+    },
+    {
+      "path": "demo/backend/app/adapters/routing/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/adapters/routing/ortools_solver.py",
+      "recorded": "089e46014b8b93677b7cd754d8525f1027cb5da0ae4c95b9bb9fca9c4d174d91",
+      "actual": "089e46014b8b93677b7cd754d8525f1027cb5da0ae4c95b9bb9fca9c4d174d91"
+    },
+    {
+      "path": "demo/backend/app/adapters/simulation/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/adapters/simulation/event_sources.py",
+      "recorded": "5197f26ad35f796eefba14fa47bbae7265d6bb9b05650d9aa77ee1d5f6cdbd6c",
+      "actual": "5197f26ad35f796eefba14fa47bbae7265d6bb9b05650d9aa77ee1d5f6cdbd6c"
+    },
+    {
+      "path": "demo/backend/app/adapters/simulation/simpy_simulator.py",
+      "recorded": "394a99c3535d7ddae7fad2fadf72069a29f8aaa3d9416fac95c37c4f14efa401",
+      "actual": "394a99c3535d7ddae7fad2fadf72069a29f8aaa3d9416fac95c37c4f14efa401"
+    },
+    {
+      "path": "demo/backend/app/adapters/simulation/state_projection.py",
+      "recorded": "87eb8730bbcba64562b38b430d8339c18346fa46075b316a05aeefd5719e8517",
+      "actual": "87eb8730bbcba64562b38b430d8339c18346fa46075b316a05aeefd5719e8517"
+    },
+    {
+      "path": "demo/backend/app/adapters/warehouse/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/adapters/warehouse/cp_sat_scheduler.py",
+      "recorded": "4804098e71f3dbe0c9070dff500dafd18766c27ead258221c4ee7451caa18f77",
+      "actual": "4804098e71f3dbe0c9070dff500dafd18766c27ead258221c4ee7451caa18f77"
+    },
+    {
+      "path": "demo/backend/app/adapters/warehouse/resource_calendar.py",
+      "recorded": "6d062499eeadc06bdd3d0a43574f0ff617081e282bd8fa22cd1342b407c27263",
+      "actual": "6d062499eeadc06bdd3d0a43574f0ff617081e282bd8fa22cd1342b407c27263"
+    },
+    {
+      "path": "demo/backend/app/api/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/api/dependencies.py",
+      "recorded": "d499eb3bee30db47d9a7b1db9b875168da56bae699e441ac587f9400d9641381",
+      "actual": "d499eb3bee30db47d9a7b1db9b875168da56bae699e441ac587f9400d9641381"
+    },
+    {
+      "path": "demo/backend/app/api/routes/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/api/routes/events.py",
+      "recorded": "4165180580c885df6163d3737a20466a2e686c5eac820964599f32532555cd52",
+      "actual": "4165180580c885df6163d3737a20466a2e686c5eac820964599f32532555cd52"
+    },
+    {
+      "path": "demo/backend/app/api/routes/evidence.py",
+      "recorded": "77c3697e6e0007d33e80546ed1a906d794b3972a1eb5d52629f82a5149d7109b",
+      "actual": "77c3697e6e0007d33e80546ed1a906d794b3972a1eb5d52629f82a5149d7109b"
+    },
+    {
+      "path": "demo/backend/app/api/routes/jobs.py",
+      "recorded": "118c885ff872de4f5dd76fe727a68bd5d2ae2eff6010bd84fdc7d6c610bbcccc",
+      "actual": "118c885ff872de4f5dd76fe727a68bd5d2ae2eff6010bd84fdc7d6c610bbcccc"
+    },
+    {
+      "path": "demo/backend/app/api/routes/planning.py",
+      "recorded": "5014b0981d729131e28fde211be2aba4dcc5325502f9e6aab7bd606b43c737a5",
+      "actual": "5014b0981d729131e28fde211be2aba4dcc5325502f9e6aab7bd606b43c737a5"
+    },
+    {
+      "path": "demo/backend/app/api/routes/plans.py",
+      "recorded": "b3be75006de2c4293fce5452d03a7457433601bb2c5050d2a8e4a83696a26f48",
+      "actual": "b3be75006de2c4293fce5452d03a7457433601bb2c5050d2a8e4a83696a26f48"
+    },
+    {
+      "path": "demo/backend/app/api/routes/requests.py",
+      "recorded": "86ec5d64115848b26e54d5904f8057bc897dd924054c000bb3cd8fd644e345da",
+      "actual": "86ec5d64115848b26e54d5904f8057bc897dd924054c000bb3cd8fd644e345da"
+    },
+    {
+      "path": "demo/backend/app/api/routes/scenarios.py",
+      "recorded": "0903bc097f99fd6b4a44b17d48a242fed2cb6da94ed80b1d2562a754bb8b4f11",
+      "actual": "0903bc097f99fd6b4a44b17d48a242fed2cb6da94ed80b1d2562a754bb8b4f11"
+    },
+    {
+      "path": "demo/backend/app/api/routes/simulations.py",
+      "recorded": "75091bfbd9f899a93b30f85523fe710626795f83e1a5f5f4b6acc0da44f1ede9",
+      "actual": "75091bfbd9f899a93b30f85523fe710626795f83e1a5f5f4b6acc0da44f1ede9"
+    },
+    {
+      "path": "demo/backend/app/application/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/application/confirm_plan.py",
+      "recorded": "2199e346a75c3b77c7b6690e139241e90955307da49756b3f9571e10cdf229e0",
+      "actual": "2199e346a75c3b77c7b6690e139241e90955307da49756b3f9571e10cdf229e0"
+    },
+    {
+      "path": "demo/backend/app/application/contract_net.py",
+      "recorded": "75e94c7cd3c3f9a2e4c8b4a940cce60c02a7e9136aa25c12a89dc8155fd50314",
+      "actual": "75e94c7cd3c3f9a2e4c8b4a940cce60c02a7e9136aa25c12a89dc8155fd50314"
+    },
+    {
+      "path": "demo/backend/app/application/coordinator.py",
+      "recorded": "24e3993260a1acab195e4a59c0147571fde4dfde5bfaeb02671c3f756bdf19df",
+      "actual": "24e3993260a1acab195e4a59c0147571fde4dfde5bfaeb02671c3f756bdf19df"
+    },
+    {
+      "path": "demo/backend/app/application/handle_event.py",
+      "recorded": "4853409bb1c2677067e1fb0791b64066d7f19027c8e5744f0f7e56a9332fee31",
+      "actual": "4853409bb1c2677067e1fb0791b64066d7f19027c8e5744f0f7e56a9332fee31"
+    },
+    {
+      "path": "demo/backend/app/application/http_services.py",
+      "recorded": "1512a547d335ff0d0395d3c0b1fc648e67b53b5801859bfcd3e93555b8570cb2",
+      "actual": "1512a547d335ff0d0395d3c0b1fc648e67b53b5801859bfcd3e93555b8570cb2"
+    },
+    {
+      "path": "demo/backend/app/application/impact_analysis.py",
+      "recorded": "8f3382c376992ca703c43026dc81a3b2519ebfd72e12bbe9088046d8f2cfb7be",
+      "actual": "8f3382c376992ca703c43026dc81a3b2519ebfd72e12bbe9088046d8f2cfb7be"
+    },
+    {
+      "path": "demo/backend/app/application/warehouse_selection.py",
+      "recorded": "fba49a5ece82d739e8c4ad83ba901ca50411807cc16dff087946efb7810e0079",
+      "actual": "fba49a5ece82d739e8c4ad83ba901ca50411807cc16dff087946efb7810e0079"
+    },
+    {
+      "path": "demo/backend/app/bootstrap.py",
+      "recorded": "2906af0a9746a737377483de537f6a091aabefbd054aab4deb344d7f0fd384da",
+      "actual": "2906af0a9746a737377483de537f6a091aabefbd054aab4deb344d7f0fd384da"
+    },
+    {
+      "path": "demo/backend/app/common/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/common/errors.py",
+      "recorded": "8cd54688ceb346b3901ea9cd2af3098da00b6176e26a91bf6a6558d458427b0b",
+      "actual": "8cd54688ceb346b3901ea9cd2af3098da00b6176e26a91bf6a6558d458427b0b"
+    },
+    {
+      "path": "demo/backend/app/contracts/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/contracts/common.py",
+      "recorded": "0b50a3ccdc87ce500b08626542c8486f4d07bbc87480542fe1dea0115795187a",
+      "actual": "0b50a3ccdc87ce500b08626542c8486f4d07bbc87480542fe1dea0115795187a"
+    },
+    {
+      "path": "demo/backend/app/contracts/entities.py",
+      "recorded": "5739adb9abc9c100c77902e35a48cae674a398460c021a7d69b8a5691d7081cd",
+      "actual": "5739adb9abc9c100c77902e35a48cae674a398460c021a7d69b8a5691d7081cd"
+    },
+    {
+      "path": "demo/backend/app/contracts/events.py",
+      "recorded": "ec416c9bffb55bc4d7ca5ea8540421ac74b78e8f9c514801e2b09c8d0e14b845",
+      "actual": "ec416c9bffb55bc4d7ca5ea8540421ac74b78e8f9c514801e2b09c8d0e14b845"
+    },
+    {
+      "path": "demo/backend/app/contracts/http.py",
+      "recorded": "1fdea5c40efcc53755f25a71e6422de43566507560f76644e104083c7ce54ce4",
+      "actual": "1fdea5c40efcc53755f25a71e6422de43566507560f76644e104083c7ce54ce4"
+    },
+    {
+      "path": "demo/backend/app/contracts/planning.py",
+      "recorded": "a63fd7bcc10fc9c0f49748c4c237ef4832be3f2c4d6fd2fa885e602493155a09",
+      "actual": "a63fd7bcc10fc9c0f49748c4c237ef4832be3f2c4d6fd2fa885e602493155a09"
+    },
+    {
+      "path": "demo/backend/app/domain/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/domain/cold_chain_rules.py",
+      "recorded": "77aeda7647ea85b6e47bb0582815a7531d2f0fb3f3fa3b14dbd674892e33d2b7",
+      "actual": "77aeda7647ea85b6e47bb0582815a7531d2f0fb3f3fa3b14dbd674892e33d2b7"
+    },
+    {
+      "path": "demo/backend/app/domain/inventory.py",
+      "recorded": "a6b470d28f4f243cc2e086c1cc2a9820136958bb450cc3d7c0ca2f0ad88d9e8a",
+      "actual": "a6b470d28f4f243cc2e086c1cc2a9820136958bb450cc3d7c0ca2f0ad88d9e8a"
+    },
+    {
+      "path": "demo/backend/app/domain/plan_rules.py",
+      "recorded": "45f5221309360cbc9da50f751b5b30f548309dcd52a2e6d159c1f48f6e8a5e81",
+      "actual": "45f5221309360cbc9da50f751b5b30f548309dcd52a2e6d159c1f48f6e8a5e81"
+    },
+    {
+      "path": "demo/backend/app/domain/state_transitions.py",
+      "recorded": "5e84dbad6cce3a510c1d8472361aac50112bda1fa497717f5eab126715cecc34",
+      "actual": "5e84dbad6cce3a510c1d8472361aac50112bda1fa497717f5eab126715cecc34"
+    },
+    {
+      "path": "demo/backend/app/domain/states.py",
+      "recorded": "7ceb99b1804a651870a0c5f6e870dd871a47d94a9f38057b4fcec538d2a3dec1",
+      "actual": "7ceb99b1804a651870a0c5f6e870dd871a47d94a9f38057b4fcec538d2a3dec1"
+    },
+    {
+      "path": "demo/backend/app/domain/transport_rules.py",
+      "recorded": "22faa527050ff29e2074614ebf22667c5524f36d3ba1d7efbca9528d0cebd885",
+      "actual": "22faa527050ff29e2074614ebf22667c5524f36d3ba1d7efbca9528d0cebd885"
+    },
+    {
+      "path": "demo/backend/app/domain/warehouse_rules.py",
+      "recorded": "0b2e4e2659018c9e18818b77d909293ff3dc0a61d509c04838d10e26907d299e",
+      "actual": "0b2e4e2659018c9e18818b77d909293ff3dc0a61d509c04838d10e26907d299e"
+    },
+    {
+      "path": "demo/backend/app/main.py",
+      "recorded": "35bd8d3dfbc18997a28a4fc07e03467d3ab19912bfa7315641361e4d24062fd3",
+      "actual": "35bd8d3dfbc18997a28a4fc07e03467d3ab19912bfa7315641361e4d24062fd3"
+    },
+    {
+      "path": "demo/backend/app/ports/__init__.py",
+      "recorded": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec",
+      "actual": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "demo/backend/app/ports/language_model.py",
+      "recorded": "0db1259a039607482647cd49ef3c9fc2fbff1101a54b0703dcbbe3e65960fbbd",
+      "actual": "0db1259a039607482647cd49ef3c9fc2fbff1101a54b0703dcbbe3e65960fbbd"
+    },
+    {
+      "path": "demo/backend/app/ports/matrix.py",
+      "recorded": "8622a29c7e429c1f4301dbf4946bc910e11c8ecbd839e41789ed43c43e8bb0c1",
+      "actual": "8622a29c7e429c1f4301dbf4946bc910e11c8ecbd839e41789ed43c43e8bb0c1"
+    },
+    {
+      "path": "demo/backend/app/ports/routing.py",
+      "recorded": "53b57d190100bfba3ad1c5f76dcf08f04d3d4623cc1b9f14a1dcbae72170b306",
+      "actual": "53b57d190100bfba3ad1c5f76dcf08f04d3d4623cc1b9f14a1dcbae72170b306"
+    },
+    {
+      "path": "demo/backend/app/ports/simulation.py",
+      "recorded": "41ca3d37a04d86fbe89e6962c9fb43754a64a767c9717d5f1be3e57e22dc3b30",
+      "actual": "41ca3d37a04d86fbe89e6962c9fb43754a64a767c9717d5f1be3e57e22dc3b30"
+    },
+    {
+      "path": "demo/backend/app/ports/storage.py",
+      "recorded": "494206c80ab66b2ff82d81965fa8a214cbf9a1ac8e75aded66767721a7494fc8",
+      "actual": "494206c80ab66b2ff82d81965fa8a214cbf9a1ac8e75aded66767721a7494fc8"
+    },
+    {
+      "path": "demo/backend/app/ports/warehouse.py",
+      "recorded": "8f808b7c914bc7385dac0b42c9aa61266a41549089b7ccdc8292af152517d427",
+      "actual": "8f808b7c914bc7385dac0b42c9aa61266a41549089b7ccdc8292af152517d427"
+    },
+    {
+      "path": "demo/backend/app/worker.py",
+      "recorded": "cc3d2a02298be34c27410b01093d600d65f17683100cf258ea0f593039ae5301",
+      "actual": "cc3d2a02298be34c27410b01093d600d65f17683100cf258ea0f593039ae5301"
+    },
+    {
+      "path": "demo/backend/migrations/README.md",
+      "recorded": "00834177a4c824511d8658aa698117c28a2112c6b83c26b2911b4e7a56bbaaa2",
+      "actual": "00834177a4c824511d8658aa698117c28a2112c6b83c26b2911b4e7a56bbaaa2"
+    },
+    {
+      "path": "demo/backend/migrations/versions/.gitkeep",
+      "recorded": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "demo/backend/pyproject.toml",
+      "recorded": "f33a053b36f37f2bd568ac108f58cc28a78f1b5e9c4da7c1f1c455650f57d7fa",
+      "actual": "f33a053b36f37f2bd568ac108f58cc28a78f1b5e9c4da7c1f1c455650f57d7fa"
+    },
+    {
+      "path": "demo/backend/requirements-lock.txt",
+      "recorded": "5790cbce0d14e7bf7c9f4ae717b70261c452e6b716e48e960195a4e86e0f10ac",
+      "actual": "5790cbce0d14e7bf7c9f4ae717b70261c452e6b716e48e960195a4e86e0f10ac"
+    },
+    {
+      "path": "demo/backend/requirements-optional.txt",
+      "recorded": "36f45944fcd55dacde53071a706e0a86afadff610f39783033b963b01839b7e0",
+      "actual": "36f45944fcd55dacde53071a706e0a86afadff610f39783033b963b01839b7e0"
+    },
+    {
+      "path": "demo/backend/requirements.txt",
+      "recorded": "6f803f1f5fc8cc81f90dfe27f9fc749b7ef3fc6180ef94ea42be3cbd0f6e7a52",
+      "actual": "6f803f1f5fc8cc81f90dfe27f9fc749b7ef3fc6180ef94ea42be3cbd0f6e7a52"
+    },
+    {
+      "path": "demo/backend/tests/fakes/README.md",
+      "recorded": "b6adb917c365384cb388d0dd23208cf5c618ea9ff1f0035db4b1031aad2b1e60",
+      "actual": "b6adb917c365384cb388d0dd23208cf5c618ea9ff1f0035db4b1031aad2b1e60"
+    },
+    {
+      "path": "demo/backend/tests/integration/README.md",
+      "recorded": "e2bb252974fc2d64df89a37b9ee1c889b364023d66a3c01dda637c1cda67fd5d",
+      "actual": "e2bb252974fc2d64df89a37b9ee1c889b364023d66a3c01dda637c1cda67fd5d"
+    },
+    {
+      "path": "demo/backend/tests/llm/README.md",
+      "recorded": "d26a0956be842c14b10127c5f98832f5e5ea1e4891fdd1c166367aa43f7b2078",
+      "actual": "d26a0956be842c14b10127c5f98832f5e5ea1e4891fdd1c166367aa43f7b2078"
+    },
+    {
+      "path": "demo/backend/tests/simulation/README.md",
+      "recorded": "3ff2e93e7b9955b419896552b9ce4b9d3ed81377c686e16bff66d4587ee298b4",
+      "actual": "3ff2e93e7b9955b419896552b9ce4b9d3ed81377c686e16bff66d4587ee298b4"
+    },
+    {
+      "path": "demo/backend/tests/test_contracts.py",
+      "recorded": "f9205fa3905457cbd1b50bcde9f41ca7f80c161b515dda96dfa8e5af1787e6b7",
+      "actual": "f9205fa3905457cbd1b50bcde9f41ca7f80c161b515dda96dfa8e5af1787e6b7"
+    },
+    {
+      "path": "demo/backend/tests/test_scaffold.py",
+      "recorded": "2b3a7e120c5dc37a0b9991ab17fb1c51159f3f737650c0e229262e4b84d52ffb",
+      "actual": "2b3a7e120c5dc37a0b9991ab17fb1c51159f3f737650c0e229262e4b84d52ffb"
+    },
+    {
+      "path": "demo/backend/tests/transport/README.md",
+      "recorded": "e18eb6f9cbbdb28341434610ecc1ce4c1dd88f2f288c797a2683f00ed3cd6771",
+      "actual": "e18eb6f9cbbdb28341434610ecc1ce4c1dd88f2f288c797a2683f00ed3cd6771"
+    },
+    {
+      "path": "demo/backend/tests/warehouse/README.md",
+      "recorded": "33dbb664bf82580d4971a080b0089b591d7d3a7a20d8102c5aa120bb986e8dc2",
+      "actual": "33dbb664bf82580d4971a080b0089b591d7d3a7a20d8102c5aa120bb986e8dc2"
+    },
+    {
+      "path": "demo/benchmarks/joint/README.md",
+      "recorded": "2fa871c909def0114e1e41f514246cd37f2987c2f35104996100dcdecd3d6312",
+      "actual": "2fa871c909def0114e1e41f514246cd37f2987c2f35104996100dcdecd3d6312"
+    },
+    {
+      "path": "demo/benchmarks/llm/README.md",
+      "recorded": "adb0406e73fd95d6eb5ec6b2d5dfb6d40bccdc1d7f6c9517ff5fe904cab8e21d",
+      "actual": "adb0406e73fd95d6eb5ec6b2d5dfb6d40bccdc1d7f6c9517ff5fe904cab8e21d"
+    },
+    {
+      "path": "demo/benchmarks/simulation/README.md",
+      "recorded": "e6e9db0b2ab4af6033052e046b8fb564355d8def9dbf291f18ac26a7a5880bb1",
+      "actual": "e6e9db0b2ab4af6033052e046b8fb564355d8def9dbf291f18ac26a7a5880bb1"
+    },
+    {
+      "path": "demo/benchmarks/transport/README.md",
+      "recorded": "7eacffdf7fbf8d340c052a31f3d0cbcb9385dd9faacb51c5e57bb09f9340464a",
+      "actual": "7eacffdf7fbf8d340c052a31f3d0cbcb9385dd9faacb51c5e57bb09f9340464a"
+    },
+    {
+      "path": "demo/benchmarks/warehouse/README.md",
+      "recorded": "d9c3277f4fe6575045caf768348978ab7c78dda9374ff99a6a7c2f5da33f01e5",
+      "actual": "d9c3277f4fe6575045caf768348978ab7c78dda9374ff99a6a7c2f5da33f01e5"
+    },
+    {
+      "path": "demo/contracts/README.md",
+      "recorded": "63ba1dea7e0564274a07ecc11e59da248e10972efd3aae90e53a338a7eac4cb3",
+      "actual": "63ba1dea7e0564274a07ecc11e59da248e10972efd3aae90e53a338a7eac4cb3"
+    },
+    {
+      "path": "demo/contracts/VERSION",
+      "recorded": "3d097c315a1c543040f548da4c7051265e94c77211a2411ced1d4621344270de",
+      "actual": "3d097c315a1c543040f548da4c7051265e94c77211a2411ced1d4621344270de"
+    },
+    {
+      "path": "demo/contracts/changes/TEMPLATE.md",
+      "recorded": "13496fd33de4e91742bfb965bd201409e606f75ff6faf94ee0e4e5297a87847e",
+      "actual": "13496fd33de4e91742bfb965bd201409e606f75ff6faf94ee0e4e5297a87847e"
+    },
+    {
+      "path": "demo/contracts/examples/dispatch_request.json",
+      "recorded": "b88ef3a8e5441b7ad6dd5dc06174e8547dc2a1d9cd08146a5047eae06a59b8ea",
+      "actual": "b88ef3a8e5441b7ad6dd5dc06174e8547dc2a1d9cd08146a5047eae06a59b8ea"
+    },
+    {
+      "path": "demo/contracts/examples/event_departure_delayed.json",
+      "recorded": "f512feef9e8f583becd8a779c62a89b1bd93be1ee9395ebfb635f4347ab11bd1",
+      "actual": "f512feef9e8f583becd8a779c62a89b1bd93be1ee9395ebfb635f4347ab11bd1"
+    },
+    {
+      "path": "demo/contracts/examples/routing_request.json",
+      "recorded": "2e94d906aca137cd49d513c6718fba943bd18e3f1798c5ce048069c3a63dbd75",
+      "actual": "2e94d906aca137cd49d513c6718fba943bd18e3f1798c5ce048069c3a63dbd75"
+    },
+    {
+      "path": "demo/contracts/examples/routing_result_not_implemented.json",
+      "recorded": "d163f45e21b8b83de85220bb9d9be2a34d525aa8f38f4c8f50083c8718de16f5",
+      "actual": "d163f45e21b8b83de85220bb9d9be2a34d525aa8f38f4c8f50083c8718de16f5"
+    },
+    {
+      "path": "demo/contracts/examples/scenario_import_request.json",
+      "recorded": "ff33e8d67349e994244f6e15f85b75cd65c6c27d8e32d49c5f9810047562ddd8",
+      "actual": "ff33e8d67349e994244f6e15f85b75cd65c6c27d8e32d49c5f9810047562ddd8"
+    },
+    {
+      "path": "demo/contracts/openapi.json",
+      "recorded": "3add6302409bdd739ce2e5342fbb935556ce9477b9675b34b7887a7758081545",
+      "actual": "3add6302409bdd739ce2e5342fbb935556ce9477b9675b34b7887a7758081545"
+    },
+    {
+      "path": "demo/contracts/schemas.json",
+      "recorded": "2928bf52d2dd9bf44e858c836ed4b7f03ffad427af6f1f86f0e5ff9de5e6a051",
+      "actual": "2928bf52d2dd9bf44e858c836ed4b7f03ffad427af6f1f86f0e5ff9de5e6a051"
+    },
+    {
+      "path": "demo/data/scenarios/README.md",
+      "recorded": "e2bcc699f433d040c84c984cce541cc5e0b416685fb6a7e7bfbcd0b289390154",
+      "actual": "e2bcc699f433d040c84c984cce541cc5e0b416685fb6a7e7bfbcd0b289390154"
+    },
+    {
+      "path": "demo/data/scenarios/two_warehouses_20_orders.json",
+      "recorded": "592ece17d7f190cad52cc53b594a2da060586255e16dafa039121866773be2df",
+      "actual": "592ece17d7f190cad52cc53b594a2da060586255e16dafa039121866773be2df"
+    },
+    {
+      "path": "demo/data/simulation/README.md",
+      "recorded": "5574e8d30a7a7c4d5e5c64a34bb570fcc33c862565daf2771e32bd3181d840cc",
+      "actual": "5574e8d30a7a7c4d5e5c64a34bb570fcc33c862565daf2771e32bd3181d840cc"
+    },
+    {
+      "path": "demo/data/transport/README.md",
+      "recorded": "7da741c05e7d47609ddfb1fffa234d5e49d162ba4aa88913338bac5951ccbd00",
+      "actual": "7da741c05e7d47609ddfb1fffa234d5e49d162ba4aa88913338bac5951ccbd00"
+    },
+    {
+      "path": "demo/deploy/README.md",
+      "recorded": "24008c1157b193999c7f8a92129ef73372b86550918ba1ca9602892030a94a7e",
+      "actual": "24008c1157b193999c7f8a92129ef73372b86550918ba1ca9602892030a94a7e"
+    },
+    {
+      "path": "demo/deploy/compose.yaml",
+      "recorded": "e1e2fc6ca9eedb2a6d3a8c55daa937afcd08343d570d4da8f2a11d28b002db5b",
+      "actual": "e1e2fc6ca9eedb2a6d3a8c55daa937afcd08343d570d4da8f2a11d28b002db5b"
+    },
+    {
+      "path": "demo/docs/ARCHITECTURE.md",
+      "recorded": "c0e5a31a163040fe59db5bc2707b6658324bcec845e5c95ef4bc0f15d9fc0708",
+      "actual": "c0e5a31a163040fe59db5bc2707b6658324bcec845e5c95ef4bc0f15d9fc0708"
+    },
+    {
+      "path": "demo/docs/LINEAR_PLAN.md",
+      "recorded": "75809e37b2544359f4308b2654df2aa18a89b2147d5cbebceac86e73d1fcc3e6",
+      "actual": "75809e37b2544359f4308b2654df2aa18a89b2147d5cbebceac86e73d1fcc3e6"
+    },
+    {
+      "path": "demo/docs/LINEAR_SYNC.md",
+      "recorded": "6a373bcbcc1dd346ef88652ea3ed602152ec8dd95bd88593ce67d2963814968f",
+      "actual": "6a373bcbcc1dd346ef88652ea3ed602152ec8dd95bd88593ce67d2963814968f"
+    },
+    {
+      "path": "demo/docs/NAMING.md",
+      "recorded": "a3c8ec08ce4697676c0a13902618e5def07a6f951c681413276112cc5976ba62",
+      "actual": "a3c8ec08ce4697676c0a13902618e5def07a6f951c681413276112cc5976ba62"
+    },
+    {
+      "path": "demo/docs/OPEN_SOURCE.md",
+      "recorded": "9112be2db2633ee301af41b90a0628769d8a9424ffa077d05710ebd0f2429847",
+      "actual": "9112be2db2633ee301af41b90a0628769d8a9424ffa077d05710ebd0f2429847"
+    },
+    {
+      "path": "demo/docs/ROADMAP.md",
+      "recorded": "c65903dc26336f3e788822929c6fce6ab6ac1aff7b97fa3e78c5cc61d44bf817",
+      "actual": "c65903dc26336f3e788822929c6fce6ab6ac1aff7b97fa3e78c5cc61d44bf817"
+    },
+    {
+      "path": "demo/docs/VERIFICATION.md",
+      "recorded": "e20e7b0fde0884c17b6848025990f8290b79c22fee5e49cf0b3f2a0e4a5f48f2",
+      "actual": "e20e7b0fde0884c17b6848025990f8290b79c22fee5e49cf0b3f2a0e4a5f48f2"
+    },
+    {
+      "path": "demo/docs/devlog/entries/20260910-0000-ac-scaffold.md",
+      "recorded": "dc2704e0da1cd2c0db927bb5994b4509d45dae3720de860f3c3dc8c6fd6b7d55",
+      "actual": "dc2704e0da1cd2c0db927bb5994b4509d45dae3720de860f3c3dc8c6fd6b7d55"
+    },
+    {
+      "path": "demo/docs/devlog/entries/20260910-1200-a-linear-plan.md",
+      "recorded": "1989857503168fb2f74d8af4800f518c66555e3f182f0b042e7ec0995f6577ac",
+      "actual": "1989857503168fb2f74d8af4800f518c66555e3f182f0b042e7ec0995f6577ac"
+    },
+    {
+      "path": "demo/docs/devlog/entries/README.md",
+      "recorded": "128274cc91f70639dbcdeffa8cda86d88260b75a0454905386d0f0734954a1cd",
+      "actual": "128274cc91f70639dbcdeffa8cda86d88260b75a0454905386d0f0734954a1cd"
+    },
+    {
+      "path": "demo/docs/handoff/A_CODEX.md",
+      "recorded": "6012f286dc56241a7de0bf7bf171bafc341a374fbfc46b4e23c31d29679d6c3c",
+      "actual": "6012f286dc56241a7de0bf7bf171bafc341a374fbfc46b4e23c31d29679d6c3c"
+    },
+    {
+      "path": "demo/docs/handoff/B_CODEX.md",
+      "recorded": "af128276aae19fdd9fdf921571576b12d7705965be7256a54021dfccb8c4ba55",
+      "actual": "af128276aae19fdd9fdf921571576b12d7705965be7256a54021dfccb8c4ba55"
+    },
+    {
+      "path": "demo/docs/linear_tasks.json",
+      "recorded": "41137f635dc8755856e9f5a2ef8773fd883ec79db0e6260c89f9e0f834a9c116",
+      "actual": "41137f635dc8755856e9f5a2ef8773fd883ec79db0e6260c89f9e0f834a9c116"
+    },
+    {
+      "path": "demo/frontend/MODEL_ASSETS.md",
+      "recorded": "0027677475236ed1e8096f0190de9053d6723deb06bffac26a13a698b24eb22c",
+      "actual": "0027677475236ed1e8096f0190de9053d6723deb06bffac26a13a698b24eb22c"
+    },
+    {
+      "path": "demo/frontend/README.md",
+      "recorded": "86454b46ad2419be1c185e755426f0ec8cf9a782b7c4e4f6a7667b56a3936885",
+      "actual": "86454b46ad2419be1c185e755426f0ec8cf9a782b7c4e4f6a7667b56a3936885"
+    },
+    {
+      "path": "demo/frontend/dist/assets/index-BbLVtfpI.css",
+      "recorded": "c9add014c5690e4801334aae4033e5b2d6d6c9554b3b823d5cd01a55cf24e8ca",
+      "actual": "c9add014c5690e4801334aae4033e5b2d6d6c9554b3b823d5cd01a55cf24e8ca"
+    },
+    {
+      "path": "demo/frontend/dist/assets/index-D7Yu-JIO.js",
+      "recorded": "eb8c444c685a8a1f815703ccdb065c31bc970da9b3b7295871c25eba15b8edd1",
+      "actual": "eb8c444c685a8a1f815703ccdb065c31bc970da9b3b7295871c25eba15b8edd1"
+    },
+    {
+      "path": "demo/frontend/dist/index.html",
+      "recorded": "d21f594851faf4d2964daf098f2038cdf17d2473638a1f5feae45a731ceffa46",
+      "actual": "d21f594851faf4d2964daf098f2038cdf17d2473638a1f5feae45a731ceffa46"
+    },
+    {
+      "path": "demo/frontend/index.html",
+      "recorded": "c1f80a00ab648af0b75897c6f2fa4c74c210fd77242cb61806afaca609ec2ba2",
+      "actual": "c1f80a00ab648af0b75897c6f2fa4c74c210fd77242cb61806afaca609ec2ba2"
+    },
+    {
+      "path": "demo/frontend/node_modules/.package-lock.json",
+      "recorded": "b12159f5688aa80ec72a070055a485117d8fceed26071d15c6da20eba381252d",
+      "actual": "b12159f5688aa80ec72a070055a485117d8fceed26071d15c6da20eba381252d"
+    },
+    {
+      "path": "demo/frontend/package-lock.json",
+      "recorded": "156c59c23bda06654726af32d444a8c2588f1fa15e744a9e597f054146f0f435",
+      "actual": "156c59c23bda06654726af32d444a8c2588f1fa15e744a9e597f054146f0f435"
+    },
+    {
+      "path": "demo/frontend/package.json",
+      "recorded": "99e397c267afc1837d3d9cd030c1bb473ff27ac6c3b6e76cc8bbf8127807b545",
+      "actual": "99e397c267afc1837d3d9cd030c1bb473ff27ac6c3b6e76cc8bbf8127807b545"
+    },
+    {
+      "path": "demo/frontend/public/favicon.svg",
+      "recorded": "b1a9de383c4e850515adbf623815cd99271e3584c822a0199a9d35e14cc1da43",
+      "actual": "b1a9de383c4e850515adbf623815cd99271e3584c822a0199a9d35e14cc1da43"
+    },
+    {
+      "path": "demo/frontend/scripts/contracts.mjs",
+      "recorded": "45526397ee013f7ac25a63c37c2183accd827a19d6bfd90391072452c050c493",
+      "actual": "45526397ee013f7ac25a63c37c2183accd827a19d6bfd90391072452c050c493"
+    },
+    {
+      "path": "demo/frontend/scripts/model-budget.test.mjs",
+      "recorded": "bcf9cbd4166968cbbf4ff3543f6298d63d05007eca789a9446637db8454aa639",
+      "actual": "bcf9cbd4166968cbbf4ff3543f6298d63d05007eca789a9446637db8454aa639"
+    },
+    {
+      "path": "demo/frontend/src/App.tsx",
+      "recorded": "e86e3c98d7235302a1f44b6783c9bb1274cbd7e4fe432d72861a8f0e94583f33",
+      "actual": "e86e3c98d7235302a1f44b6783c9bb1274cbd7e4fe432d72861a8f0e94583f33"
+    },
+    {
+      "path": "demo/frontend/src/client/api.ts",
+      "recorded": "5c5ab80c00986296cff1bc10e83b392114d53b467f24b10556935389b7218537",
+      "actual": "5c5ab80c00986296cff1bc10e83b392114d53b467f24b10556935389b7218537"
+    },
+    {
+      "path": "demo/frontend/src/client/generated.ts",
+      "recorded": "8a3477e2d8a590b5a688fc4cf967b3b92acfdaef236062fee0f5ec00e3eba8ed",
+      "actual": "8a3477e2d8a590b5a688fc4cf967b3b92acfdaef236062fee0f5ec00e3eba8ed"
+    },
+    {
+      "path": "demo/frontend/src/components/ModulePlaceholder.tsx",
+      "recorded": "639116e30b83e6933136d1152d6a216a1aaceb35edfed4ada4bc2b611f902b10",
+      "actual": "639116e30b83e6933136d1152d6a216a1aaceb35edfed4ada4bc2b611f902b10"
+    },
+    {
+      "path": "demo/frontend/src/components/scene/LogisticsScene.tsx",
+      "recorded": "3de16eefde40c8af433603dd1adc510cece019318267e311008cd35e5c49c655",
+      "actual": "3de16eefde40c8af433603dd1adc510cece019318267e311008cd35e5c49c655"
+    },
+    {
+      "path": "demo/frontend/src/components/scene/modelAssets.ts",
+      "recorded": "36b37047a771ec6f1d52e75e1bf52abb837cdcb434071b8c8b4e1733fa5ebeb8",
+      "actual": "36b37047a771ec6f1d52e75e1bf52abb837cdcb434071b8c8b4e1733fa5ebeb8"
+    },
+    {
+      "path": "demo/frontend/src/components/scene/scene.css",
+      "recorded": "b68e023c4ca863dcbf5ff6c12d019d7ee28b3531c25d9eee0457969e85316dc8",
+      "actual": "b68e023c4ca863dcbf5ff6c12d019d7ee28b3531c25d9eee0457969e85316dc8"
+    },
+    {
+      "path": "demo/frontend/src/features/WorkspacePages.tsx",
+      "recorded": "ea40b826226a6af8b9d3b351f3e668799529cfb5d74afbad4a2b7b1c2067ee52",
+      "actual": "ea40b826226a6af8b9d3b351f3e668799529cfb5d74afbad4a2b7b1c2067ee52"
+    },
+    {
+      "path": "demo/frontend/src/features/events/Page.tsx",
+      "recorded": "1e1d3a96a58e552bceaad86f9385fd37f39228de34c0c41ff08203a97b8891dc",
+      "actual": "1e1d3a96a58e552bceaad86f9385fd37f39228de34c0c41ff08203a97b8891dc"
+    },
+    {
+      "path": "demo/frontend/src/features/experiments/Page.tsx",
+      "recorded": "be3f337d838ff2e7877258f9ab1e2edd62103bde2d49ef31ae8a7c86e72ea7e3",
+      "actual": "be3f337d838ff2e7877258f9ab1e2edd62103bde2d49ef31ae8a7c86e72ea7e3"
+    },
+    {
+      "path": "demo/frontend/src/features/orders/Page.tsx",
+      "recorded": "26ec9de8635bd4a620e5a2551179669ddb931e73f90bfdbfd4a19ef8417ae7c9",
+      "actual": "26ec9de8635bd4a620e5a2551179669ddb931e73f90bfdbfd4a19ef8417ae7c9"
+    },
+    {
+      "path": "demo/frontend/src/features/plans/Page.tsx",
+      "recorded": "929fc0838392cfe15b231efb0a79161813e7eeefd83554753775aa158e5e809d",
+      "actual": "929fc0838392cfe15b231efb0a79161813e7eeefd83554753775aa158e5e809d"
+    },
+    {
+      "path": "demo/frontend/src/features/simulations/Page.tsx",
+      "recorded": "9125d28bde610bf908983118a323e9ddfc7817ec3d4025a530309591a8ba1cd0",
+      "actual": "9125d28bde610bf908983118a323e9ddfc7817ec3d4025a530309591a8ba1cd0"
+    },
+    {
+      "path": "demo/frontend/src/features/vehicles/Page.tsx",
+      "recorded": "9a0d0a99b4f5798caf21dceb99f1e05a77491d1ad17c13ce61fe72f4d386396e",
+      "actual": "9a0d0a99b4f5798caf21dceb99f1e05a77491d1ad17c13ce61fe72f4d386396e"
+    },
+    {
+      "path": "demo/frontend/src/features/warehouses/Page.tsx",
+      "recorded": "b642f6a793a1e3c47995569324105abcb8a6e8dc3f5cba3e0fd4902e406940ee",
+      "actual": "b642f6a793a1e3c47995569324105abcb8a6e8dc3f5cba3e0fd4902e406940ee"
+    },
+    {
+      "path": "demo/frontend/src/features/workspace.css",
+      "recorded": "c05c9bf6bc2c3a10221e524057e6d08d7d386bbdfe688cf77f9fcde83ac3555d",
+      "actual": "c05c9bf6bc2c3a10221e524057e6d08d7d386bbdfe688cf77f9fcde83ac3555d"
+    },
+    {
+      "path": "demo/frontend/src/main.tsx",
+      "recorded": "7d6c9f5f326240ce86fe54e4f77dbae6ae743ba720fa67bd42262cf672960aee",
+      "actual": "7d6c9f5f326240ce86fe54e4f77dbae6ae743ba720fa67bd42262cf672960aee"
+    },
+    {
+      "path": "demo/frontend/src/styles.css",
+      "recorded": "0b5515a6b0726893555551080d378fb47d156c36141c3119168b76aeae2ff04d",
+      "actual": "0b5515a6b0726893555551080d378fb47d156c36141c3119168b76aeae2ff04d"
+    },
+    {
+      "path": "demo/frontend/tsconfig.json",
+      "recorded": "1cc66413b4c36162eb4f510ab18e630d233f90a4bad5aaaf410826e9031fabac",
+      "actual": "1cc66413b4c36162eb4f510ab18e630d233f90a4bad5aaaf410826e9031fabac"
+    },
+    {
+      "path": "demo/frontend/vite.config.ts",
+      "recorded": "0b2dd0624269e623da0ed1723bfef5e24aa25ab5235633faa5a9b8cee7585475",
+      "actual": "0b2dd0624269e623da0ed1723bfef5e24aa25ab5235633faa5a9b8cee7585475"
+    },
+    {
+      "path": "demo/platform/wanwu/README.md",
+      "recorded": "4c6f8184a8d798f9e742f23eb6b72aaf4a4e394eab22f662db6085613ad804ff",
+      "actual": "4c6f8184a8d798f9e742f23eb6b72aaf4a4e394eab22f662db6085613ad804ff"
+    },
+    {
+      "path": "demo/reference_demos/README.md",
+      "recorded": "e93f8ee08312f2ceed19ac0aa1be3838eb4694e47126a997feb4cfdfa15ad87f",
+      "actual": "e93f8ee08312f2ceed19ac0aa1be3838eb4694e47126a997feb4cfdfa15ad87f"
+    },
+    {
+      "path": "demo/reference_demos/exception_replan.py",
+      "recorded": "240539cda8a955f82856bc5e368fad09259e8900b1b24e8303296557f7eca18d",
+      "actual": "240539cda8a955f82856bc5e368fad09259e8900b1b24e8303296557f7eca18d"
+    },
+    {
+      "path": "demo/reference_demos/requirements-lock.txt",
+      "recorded": "d203903de2313be3b7cb4900be4b00ed71227bcfecbebafce970d064b27204cf",
+      "actual": "d203903de2313be3b7cb4900be4b00ed71227bcfecbebafce970d064b27204cf"
+    },
+    {
+      "path": "demo/reference_demos/requirements.txt",
+      "recorded": "92857eeff2e29f0bbb846e88105c1068dad1f65a652c76cea8a639f30a0552d3",
+      "actual": "92857eeff2e29f0bbb846e88105c1068dad1f65a652c76cea8a639f30a0552d3"
+    },
+    {
+      "path": "demo/reference_demos/run.py",
+      "recorded": "cc7eafc6ae3c69ccbace2fea94939a12b86bba804acf4ebd8d22ed4741ad47c6",
+      "actual": "cc7eafc6ae3c69ccbace2fea94939a12b86bba804acf4ebd8d22ed4741ad47c6"
+    },
+    {
+      "path": "demo/reference_demos/test_demos.py",
+      "recorded": "6eb49da3f660647abea09660a540f043452fd841f231d7aab4bf7ccdce00d3fa",
+      "actual": "6eb49da3f660647abea09660a540f043452fd841f231d7aab4bf7ccdce00d3fa"
+    },
+    {
+      "path": "demo/reference_demos/transport.py",
+      "recorded": "c780b34145dfe988cb3bc490bf48ef572f951874850d0b9ee6b5298c6c6a499c",
+      "actual": "c780b34145dfe988cb3bc490bf48ef572f951874850d0b9ee6b5298c6c6a499c"
+    },
+    {
+      "path": "demo/reference_demos/validation.py",
+      "recorded": "86850ee6c5e6d2c5c36d5b219b81b53040fe1586201095909aea39691f02a721",
+      "actual": "86850ee6c5e6d2c5c36d5b219b81b53040fe1586201095909aea39691f02a721"
+    },
+    {
+      "path": "demo/reference_demos/warehouse.py",
+      "recorded": "a0457fdd27b81cfc186c076f65f73fcb015cd5d66a850e61870922b14c4a4f96",
+      "actual": "a0457fdd27b81cfc186c076f65f73fcb015cd5d66a850e61870922b14c4a4f96"
+    },
+    {
+      "path": "demo/scripts/build_file_map.py",
+      "recorded": "b9c753df851a0ccacc034c5d48043ed682871f5a6f9b14f72cbc9eebaeffd080",
+      "actual": "b9c753df851a0ccacc034c5d48043ed682871f5a6f9b14f72cbc9eebaeffd080"
+    },
+    {
+      "path": "demo/scripts/check_project.py",
+      "recorded": "f98d9c0677981521d0955a556826cfbd737d1080c7ddc34d5335a11ac0d4a2e9",
+      "actual": "f98d9c0677981521d0955a556826cfbd737d1080c7ddc34d5335a11ac0d4a2e9"
+    },
+    {
+      "path": "demo/scripts/export_contracts.py",
+      "recorded": "30f0efde3fe4c4c6d4a344bf73f91dd0f21e1c2199f692623bfa660edb4c2f6c",
+      "actual": "30f0efde3fe4c4c6d4a344bf73f91dd0f21e1c2199f692623bfa660edb4c2f6c"
+    },
+    {
+      "path": "demo/scripts/package_demo.py",
+      "recorded": "ac1ec7b12d6e1e7f31d39eb45d82bb68467f09f1082bc7592114a7bdbf389925",
+      "actual": "ac1ec7b12d6e1e7f31d39eb45d82bb68467f09f1082bc7592114a7bdbf389925"
+    },
+    {
+      "path": "demo/scripts/project_files.py",
+      "recorded": "97d7a48247fc2160ac7356ae05bc7536b0a26b15b32111ba18aacb6bb8f5fe18",
+      "actual": "97d7a48247fc2160ac7356ae05bc7536b0a26b15b32111ba18aacb6bb8f5fe18"
+    }
+  ]
+}

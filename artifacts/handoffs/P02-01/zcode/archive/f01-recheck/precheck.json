@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P02-01",
+  "phase_gate": "G02",
+  "status": "FAILED",
+  "reviewer": "ZCode P02-01 (independent ZCode pre-acceptance session; GLM-5.3-Flash via ZCode CLI)",
+  "reviewed_at": "2026-10-05T04:12:05.272676+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "round": "2026-10-05",
+  "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+  "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297",
+  "verified_input_hashes": {
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/prompts/02-domain/P02-01-primitives-and-states.md": "d4bbc3c460df9d8e7f2104d92fafceee66cdc0f66882faf735ba825975cdaaa8",
+    "artifacts/handoffs/P02-01/dsh/evidence.json": "36f08ff6a8b983c8ba749ef1bbf6fc4b0ae157059e4036f1e6f7917ec274c4c8",
+    "docs/plan/GATE_EXECUTION_CONTRACT.md": "be0e01f06e7df982afb63a99cf512e7cc2b03117179cd7bf57cf28d932555eaa",
+    "docs/workflow/02-ZCODE-PRECHECK.md": "f05e310fc1a20e610457719c2ca1ba3afad4b33206247f66f992f6c422a3372d",
+    "docs/workflow/HANDOFF_CONTRACT.md": "7c40a6429e73059543375dfabf81e0642809347f88493e0393a7b68456269280",
+    "docs/agent-toolchain/00-common.md": "dc19f47c7270f9b33e51658d8ccfeda113a6df028cc567020c9c0543fa6e5fbf",
+    "docs/agent-toolchain/05-zcode-precheck.md": "e97a3f160265d4a21e1410dadcfca522892a22430d4d82e441b9164bc2c8805c",
+    "docs/agent-toolchain/12-project-completion-dispatch.md": "44450a2794a1e2deadf9f8c7d8744927afa14ed4e37d614fd555e1d30b83339b",
+    "docs/agent-toolchain/15-autonomous-orchestration.md": "055ffe685e22dc2beb1165abeb44f6260aaa1d9a6d71e512bec07c771ac69e34",
+    "artifacts/dispatch/2026-10-04/orchestration/zcode/P02-01-current.md": "911150b194caa5f2d759a0f7e82528f2ce33b4d74208334bfdd5c711262e361b",
+    "artifacts/dispatch/2026-10-01/completion/messages/zcode/P02-01.md": "397844a47936f67cdc531d6929aa1d3007ac54534ce53d31d79f73513cdaf35b",
+    "artifacts/gates/G00.json": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+    "artifacts/gates/G00-checks.log": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+    "artifacts/gates/G01.json": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+    "artifacts/gates/G01-codex-review.json": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+    "artifacts/handoffs/P02-01/dsh/dependency-refresh-r01.json": "b542026f8fea5c1620a0e20479ee66c7e073fa0e33022f5ed31a1d73422756a9",
+    "artifacts/handoffs/P02-01/dsh/dependency-refresh-r01-seal.json": "5c7b3b717863a216abf70c79c3c69eb3c6052f601aa0cb3b8eaf3ef62ca75de2",
+    "docs/handoffs/P02-01/dsh-r01.md": "7b2d70d1dbad44f1231117161691afae54bc1a74febfcaa766e5c70411f12286",
+    "docs/handoffs/P02-01/dsh.md": "b3de54ebb24300388bcec4c6911964252a2358eb6bf82fae2e9c2c7a13364d49",
+    "artifacts/handoffs/P02-01/dsh/seal.json": "cd6731c117a11215dbceb1d1878415db890172fdf35e6af1fa9516eb40b9ba1b",
+    "docs/handoffs/N05-R01/codex.md": "0ad4d4b6af28552d167c851a46008a85ba641afc02c87c373a1236e1c8043898",
+    "packages/domain/src/logistics_domain/states.py": "0a3da52dc111ba5becd0e3e84572c85abd26b80492480445e2910a9b83caecaa",
+    "packages/domain/src/logistics_domain/primitives.py": "f86e18a4738f3841b45e14509bcc6bea80a5eebf30861f28ff919bf06c660304",
+    "packages/domain/src/logistics_domain/errors.py": "feb045410bcba16658d5def4143c746649386fe7fad9d9bc6ed31db4da11a56b",
+    "packages/domain/src/logistics_domain/__init__.py": "21334c02c11a33f45445a12324be954187a5ed8ae775010158a0608946c50076",
+    "tests/unit/test_p02_01_primitives_and_states.py": "c66f2d51aae63187730ca6617c07510fbbb1503c4a9a05f3fe0d2cda4a429f56",
+    "tests/integration/test_p02_01_primitives_and_states.py": "ebaed4a42dc895be8bc1638311df808e9986266e600fa24d138baa1bf9d6f151",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+    "docs/architecture/DOMAIN_CATALOG.md": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+    "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+    "docs/architecture/issues/README.md": "c0c8c3ff2c88c3fc6de818a8cf9ec866fe644479ba3b88b0c3911024d109256d",
+    "docs/implementation/P02-01.md": "ac9b8f0e0dabcadba0218bd772cd6f25e1b7eb1e42228457cb2a8d06a823ce57",
+    "docs/implementation/reports/P02-01.md": "c3e518b5d24d6132ff679609916567f03b530f8810f913cb81b581374115d8f1",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5"
+  },
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "tmp/N04/audit_n04.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P02-01/zcode/logs/2026-10-05/01-candidate-g00-audit.log",
+      "log_sha256": "67c3a054649092e458d895b218bde4fd3258733b4b1c3eaa16c028074126fd63",
+      "note": "candidate recomputed: dadad196 (82 files), unchanged; G00 fresh; demo 173/173; no .workbuddy files"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "-c",
+        "<GateRunner.previous_gate_record_problems('G01')>"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P02-01/zcode/logs/2026-10-05/02-g01-previous-gate-check.log",
+      "log_sha256": "6a068a6aa37123dca03ddb7d08331f650da0a70c9bc3cc40a4e85a947f82d4e5",
+      "note": "current G01 (a7eed6ae..., passed, revision=dadad196) validated as the preceding gate with zero problems; review c41888a... approved with 262 fresh inputs"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p02_01_primitives_and_states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P02-01/zcode/logs/2026-10-05/10-p02-01-cmd1-pytest.log",
+      "log_sha256": "187674e129c56a1887a052d12d107be9600d743b0b96cb4b7aedbb3d473cb2df",
+      "test_counts": {
+        "passed": 46
+      },
+      "note": "required manifest command: 46 passed, exit 0 (46 collected, no skips)"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p02_01_primitives_and_states.py",
+        "tests/integration/test_p02_01_primitives_and_states.py",
+        "--collect-only",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P02-01/zcode/logs/2026-10-05/11-p02-01-collect-only.log",
+      "log_sha256": "14a3c1491e82d779e3bb3b9f04b6d40f2ef0cf121c45023e19dad29118ed5853",
+      "note": "46 collected = 46 executed; no hollow suite"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/check_architecture.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P02-01/zcode/logs/2026-10-05/12-p02-01-cmd2-check-architecture.log",
+      "log_sha256": "73a1da398b76900242048f63728fedaeb9a0c9b68ff49de067fd4b22c2e60894",
+      "note": "scanned 10 modules across 7 layers; violations=0"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "tmp/P02-01-Z/probe_business.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "log_path": "artifacts/handoffs/P02-01/zcode/logs/2026-10-05/21-business-probes-run2-authoritative.log",
+      "log_sha256": "bfded0538bb1bc7bcb3b44cd0ed5d31d2a9e8f5f2cd6eabb5a033c459d4063d1",
+      "note": "52 independent probes written from the original task prompt and frozen contracts (not from the DSH tests): 48 pass, 4 fail - two failures were my own probe bugs (TC2 union expectation, EntityKind table parser), fixed and re-verified as PASS in this same log run; the two substantive failures are the reservation lifecycle defect ZC-P02-01-F01 and its probe reflection. Run1 (20-...) is kept as history including those probe bugs."
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "tmp/N04/audit_n04.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/P02-01/zcode/logs/2026-10-05/30-post-probe-no-self-perturbation-audit.log",
+      "log_sha256": "67c3a054649092e458d895b218bde4fd3258733b4b1c3eaa16c028074126fd63",
+      "note": "post-probe recomputation: candidate byte-identical (no self-perturbation from this precheck round)"
+    }
+  ],
+  "findings": [
+    {
+      "id": "ZC-P02-01-F01",
+      "severity": "major",
+      "summary": "The delivered Reservation lifecycle diverges from the frozen DOMAIN_CATALOG: the catalog-named state word 'released' does not exist anywhere in the delivered vocabulary, and the reservation graph's edges do not match the catalog chain.",
+      "location": "packages/domain/src/logistics_domain/states.py:794-801 (reservation graph), states.py EntityState union (~lines 312-398, no RELEASED member); authority: docs/architecture/DOMAIN_CATALOG.md:54 auxiliary prose 'Reservation(held→committed→released/expired)'.",
+      "expected": "Per the catalog chain: a 'released' lifecycle state exists; edges held→committed, committed→released, committed→expired.",
+      "actual": "EntityState has no RELEASED member (the union over all graphs, asserted 69 states, contains no 'released'); the reservation graph is held→{committed, cancelled, expired}, committed→{cancelled}; committed→released and committed→expired are absent; the extra edges held→expired, held→cancelled and committed→cancelled are not granted by the catalog prose.",
+      "trigger": "Any consumer expressing a released reservation, or any comparison of LIFECYCLE_TRANSITIONS with the catalog auxiliary section (this round's independent probe, log 21, checks 'LC all catalog chain edges...' and 'LC reservation held->committed->released/expired').",
+      "observable_impact": "The G02 phase criterion '32 entities and auxiliary records are expressible' cannot express a released reservation; P03-04 (version CAS / resource reservation storage) and the reservation APIs of P05/P16 inherit a vocabulary that conflates an operational release with a cancellation.",
+      "reproduction": "uv run python -c \"import sys; sys.path.insert(0,'packages/domain/src'); from logistics_domain import states as S; print([m.name for m in S.EntityState if m.name=='RELEASED']); g=S.LIFECYCLE_TRANSITIONS['reservation']; print({k.value: sorted(x.value for x in v) for k,v in sorted(g.items())})\" → prints [] and the diverging graph; see log 21 checks 'LC reservation...' / 'LC EntityState == union'.",
+      "responsible_party": "DSH-A (P02-01 lifecycle transcription, owner of states.py); A contract governance owns the DOMAIN_CATALOG wording.",
+      "limited_fix_suggestion": "Candidate change limited to states.py (+ its own tests): add RELEASED=\"released\" to EntityState and set the reservation graph to the catalog-faithful edges held→{committed}, committed→{released, expired}. The extra edges (held→cancelled/expired, committed→cancelled) are business-sensible but not granted by the catalog: keep them only if governance amends DOMAIN_CATALOG/registers an issue explicitly; do not retain them silently. Then re-run the required P02-01 commands and re-dispatch this precheck. The simulation ambiguity below should be resolved in the same governance pass."
+    },
+    {
+      "id": "ZC-P02-01-N01",
+      "severity": "minor / observation",
+      "summary": "DOMAIN_CATALOG line 39 prose 'created→running↔paused→completed' is ambiguous; the delivered simulation graph reads the main line as created→running→completed with running↔paused (no paused→completed). The reading is business-coherent and invents nothing, but neither reading is documented and the alternative (paused→completed) is grammatically available.",
+      "responsible_party": "A contract governance (catalog wording); not blocking on its own - flagged so it is registered and clarified together with ZC-P02-01-F01."
+    }
+  ],
+  "limitations": [
+    "This is a FAILED record: no Z_PRECHECK_PASSED is claimed for P02-01; G02 stays blocked and P02-02 must not start.",
+    "Everything else verified green this round: required 46/46, architecture 10 modules / 0 violations, the six task test cases reproduced independently, JobKind/JobStatus/JobOptimizationMode frozen values exact, EntityKind 45/45 equals the frozen DATA_CONTRACTS table, no second enum definition in the tree, UNSUPPORTED absent, HTTP mapping bijective, calendar/time-window semantics correct including all six negative shapes, ConstraintCode/ViolationCode delivered as NewType without invented members, isolated-interpreter purity with zero third-party modules, loud-failure semantics preserved.",
+    "The three governance gaps disclosed in the DSH evidence (ARCH-P02-01-A ConstraintCode/ViolationCode members, ARCH-P02-01-B SafeArtifactPath shape, ARCH-P02-01-C marker - resolved in task) are not yet registered in docs/architecture/issues/README.md; registration was explicitly routed to governance by the task and is not counted as a P02-01 defect here.",
+    "No full unit/integration regression was run per dispatch; DSH's current-candidate run (272 passed / exit 0, round p02-01-2026-10-04) remains the sourced dependency evidence.",
+    "No database, solver, simulation, LLM or browser acceptance is in scope for this task."
+  ]
+}

@@ -1,0 +1,29 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.EXE", "-B", "tmp/N05/clean_install.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:34:15.312834+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+{"check_id": "clean-env-sync", "argv": ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "sync", "--frozen"], "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent", "exit_code": 4294967295, "started_at": "2026-10-04T20:34:15.396853+00:00", "finished_at": "2026-10-04T20:41:10.462185+00:00", "log_path": "artifacts/handoffs/N05/codex/commands/clean-env-sync.log", "log_sha256": "09280492fe2de6216fbdff1d5caaca573e41380cc49c27238171154c1e417a0b"}
+
+DispatchingAgent/packages/simulation
+Downloading pygments (1.2MiB)
+Downloading pandas (9.4MiB)
+Downloading numpy (12.0MiB)
+Downloading ruff (10.1MiB)
+Downloading ortools (22.8MiB)
+Downloading pydantic-core (1.9MiB)
+WARN Retry attempt #0. Sleeping 1.5842489s before the next attempt
+WARN Retry attempt #1. Sleeping 2.8125045s before the next attempt
+      Built logistics-optimization @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/optimization
+      Built logistics-backend @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/apps/backend
+      Built logistics-contracts @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/contracts
+      Built logistics-agents @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/agents
+      Built logistics-domain @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/domain
+      Built logistics-simulation @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/simulation
+      Built logistics-evaluation @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/evaluation
+
+
+## stderr
+
+## exit_code: 4294967295

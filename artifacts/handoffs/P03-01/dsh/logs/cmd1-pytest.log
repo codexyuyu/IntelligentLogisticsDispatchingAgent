@@ -1,0 +1,44 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260915044028
+Username: YUYU\30382
+RunAs User: YUYU\30382
+Configuration Name: 
+Machine: YUYU (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -NoProfile -NonInteractive -Command [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false); $OutputEncoding = [System.Text.UTF8Encoding]::new($false); $uv = "D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\tools\bin\uv.exe"
+$logDir = "artifacts\handoffs\P03-01\dsh\logs"
+New-Item -ItemType Directory -Force -Path $logDir | Out-Null
+$log = Join-Path $logDir "cmd1-pytest.log"
+Start-Transcript -Path $log -Force | Out-Null
+Write-Output "# argv: uv run pytest tests/unit/test_p03_01_resource_schema.py tests/integration/test_p03_01_resource_schema.py -q"
+Write-Output "# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent"
+& $uv run pytest tests/unit/test_p03_01_resource_schema.py tests/integration/test_p03_01_resource_schema.py -q 2>&1
+Write-Output "EXIT_CODE=$LASTEXITCODE"
+Stop-Transcript | Out-Null
+Get-Content $log | Select-Object -Last 14
+Process ID: 35516
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+# argv: uv run pytest tests/unit/test_p03_01_resource_schema.py tests/integration/test_p03_01_resource_schema.py -q
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+uv.exe : ERROR: file or directory not found: tests/unit/test_p03_01_resource_schema.py
+At line:8 char:1
++ & $uv run pytest tests/unit/test_p03_01_resource_schema.py tests/inte ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: file or ...ource_schema.py:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+
+EXIT_CODE=4
+**********************
+Windows PowerShell transcript end
+End time: 20260915044029
+**********************

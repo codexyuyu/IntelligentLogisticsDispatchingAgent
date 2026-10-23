@@ -1,0 +1,10 @@
+########## baseline + environment
+-- check_ownership.py --json
+passed= True violations= 0 fallbacks= [] files= 1087
+-- uv lock --check + db packages
+Resolved 40 packages in 1ms
+locked: 40 | db: NONE
+-- postgres:
+   TEST_DATABASE_URL: not set
+-- credentials/secrets/injection:
+(no lines above in the last three groups = clean)

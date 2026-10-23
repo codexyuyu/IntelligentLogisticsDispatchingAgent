@@ -1,0 +1,64 @@
+--- tmp/N01-R01/verify_contracts.py
++++ tmp/N01-R02/examples/verify_design_examples.py
+@@ -3,15 +3,19 @@
+ from datetime import datetime, timezone, timedelta
+ from pathlib import Path
+ from uuid import UUID
++sys.dont_write_bytecode=True
+ ROOT=Path.cwd().resolve()
+-OUT=ROOT/'artifacts/handoffs/N01-R01/codex'
++if ROOT != Path(r'D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent'):
++    raise SystemExit('Wrong workspace root; no writes authorized')
++OUT=ROOT/'artifacts/handoffs/N01-R02/codex/examples'
++OUT.mkdir(parents=True,exist_ok=True)
+ suffix='-'+sys.argv[1] if len(sys.argv)>1 else ''
+ sys.path.insert(0,str(ROOT/'tools/ai_coding_plan'))
+ import validate_plan, render_plan
+ spec=json.loads((ROOT/'contracts/changes/N01-R01-contract-decisions.json').read_text(encoding='utf-8'))
+ types={r['name']:r for r in spec['types']}
+ manifest=json.loads((ROOT/'docs/plan/TASK_MANIFEST.json').read_text(encoding='utf-8'))
+-scope=json.loads((ROOT/'tmp/N01-R01/scope-before.json').read_text(encoding='utf-8'))
++scope=json.loads((ROOT/'tmp/N01-R02/scope-before.json').read_text(encoding='utf-8'))
+ results=[]
+ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+ def check(name,fn,expected=True):
+@@ -95,7 +99,7 @@
+         exact(value,['entity_ref','row_version']);parse('EntityRef',value['entity_ref']);parse('NonNegativeInt',value['row_version']);return
+     if name=='EntityRef':
+         exact(value,['kind','id','revision']);parse('UUID',value['id']);parse('NonNegativeInt?',value['revision']);
+-        if value['kind'] not in {'vehicle','order','cargo','dock','worker','equipment','warehouse','zone','location','transport_task','warehouse_task'}:raise ValueError('unknown entity kind in example')
++        parse('EntityKind',value['kind']) # Sole source: this round's normative enum.
+         return
+     if name=='TimeWindow':
+         exact(value,['earliest_s','latest_s']);parse('NonNegativeInt',value['earliest_s']);parse('NonNegativeInt',value['latest_s'])
+@@ -306,8 +310,8 @@
+     keys=set(re.findall(r'(?:^|;\s*)([a-z_][a-z0-9_]*):',line.split('|')[3].strip()))
+     check('Exact master projection inherited fields '+projection['name'],lambda p=projection,k=keys:set(p['selected_fields'])<=k and not set(p['selected_fields'])&set(p['server_common_fields']))
+ check('19 master create/patch projections and 9 query types have unique explicit shapes',lambda:len(spec['master_projections'])==19 and len({p['name'] for p in spec['master_projections']})==19 and len(spec['master_queries'])==9)
+-check('Manifest business node identities and initial states preserved',lambda:[t['id'] for t in manifest['tasks']]==[t['id'] for t in json.loads((ROOT/'tmp/N01-R01/before/docs/plan/TASK_MANIFEST.json').read_text(encoding='utf-8'))['tasks']] and all(t['status']=='planned' for t in manifest['tasks']) and all(g['status']=='not_run' for g in manifest['gates']))
+-with tempfile.TemporaryDirectory(prefix='render-',dir=ROOT/'tmp/N01-R01') as directory:
++check('Manifest business node identities and initial states preserved',lambda:[t['id'] for t in manifest['tasks']]==scope['manifest_task_ids'] and all(t['status']=='planned' for t in manifest['tasks']) and all(g['status']=='not_run' for g in manifest['gates']))
++with tempfile.TemporaryDirectory(prefix='render-',dir=ROOT/'tmp/N01-R02/examples') as directory:
+     render_plan.ROOT=Path(directory);render_plan.main()
+     actual={p.relative_to(directory).as_posix():sha(p) for p in Path(directory).rglob('*') if p.is_file()}
+     check('114 generator outputs exactly enumerated before mutation',lambda:set(actual)==set(scope['generated_outputs']))
+@@ -317,12 +321,16 @@
+     if p.endswith('.md') and (ROOT/p).is_file():links+=validate_plan.local_links(ROOT/p,ROOT)
+ check('All modified-document local file links valid',lambda:not links)
+ protected_changes=[p for p,h in scope['protected'].items() if not (ROOT/p).is_file() or sha(ROOT/p)!=h]
+-check('3418 protected files preserve original bytes',lambda:not protected_changes)
++check(str(len(scope['protected']))+' this-round protected files preserve original bytes',lambda:not protected_changes)
+ changed=[p for p,h in scope['before'].items() if (ROOT/p).is_file() and sha(ROOT/p)!=h]
+ freeze=json.loads((ROOT/'docs/architecture/CONTRACT_FREEZE.json').read_text(encoding='utf-8'))
+ freeze_drift=[r['path'] for r in freeze['artifacts'] if sha(ROOT/r['path'])!=r['sha256']]
+-summary=dict(status='PASS' if all(r['passed'] for r in results) else 'FAIL',checks=len(results),passed=sum(r['passed'] for r in results),failed=sum(not r['passed'] for r in results),results=results,protected_file_count=len(scope['protected']),protected_changes=protected_changes,changed_files=changed,freeze_drift=freeze_drift,limitations=['Executable design examples only, no business classes or HTTP/DB acceptance.','Existing source leaf fields reused; full inherited schema behavior requires real G02 exports/tests.','resolve examples check reference metadata and failure ordering only; no real capability parser/worker was run.'])
++inherited_check_count=len(results)
++from event_reference_examples import run_examples
++event_examples=run_examples(check,parse,spec,digest,patch,epoch)
++summary=dict(status='PASS' if all(r['passed'] for r in results) else 'FAIL',checks=len(results),passed=sum(r['passed'] for r in results),failed=sum(not r['passed'] for r in results),results=results,protected_file_count=len(scope['protected']),protected_changes=protected_changes,changed_files=changed,freeze_drift=freeze_drift,limitations=['Executable design examples only, no business classes or HTTP/DB acceptance.','Existing source leaf fields reused; full inherited schema behavior requires real G02 exports/tests.','resolve examples check reference metadata and failure ordering only; no real capability parser/worker was run.', 'Inherited parse-only adapters still do not enforce CalendarDTO overlap, RegionRef nonempty nodes, OnArc temporal order, or complete Scenario FK/calendar binding integrity; N02-R01 limitations are retained.', 'New event-reference predicates validate the normative mapping against a fixed design fact snapshot; they are not domain classes, ingest services, DB/solver/SimPy acceptance, or live revalidation of old audit references.', 'Inherited entity adapters verify named field structure and selected primitive constraints; CargoType/Skill/Qualification and full inherited entity state machines remain outside this bounded design harness.'])
++summary.update(round='N01-R02',inherited_check_count=inherited_check_count,event_reference_check_count=len(results)-inherited_check_count,event_case_counts=event_examples['case_counts'],source_inputs={p:sha(ROOT/p) for p in ['contracts/changes/N01-R01-contract-decisions.json','docs/plan/TASK_MANIFEST.json','tmp/N01-R02/scope-before.json','tmp/N01-R01/verify_contracts.py','tmp/N01-R02/examples/verify_design_examples.py','tmp/N01-R02/examples/event_reference_examples.py','tools/ai_coding_plan/validate_plan.py','tools/ai_coding_plan/render_plan.py']})
+ (OUT/('contract-validation'+suffix+'.json')).write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+-(OUT/('contract-examples'+suffix+'.json')).write_text(json.dumps(dict(calendar=cal,job_commands=commands,actor=actor,scenario=bundle,expectations=oracle,resource=dict(kind='equipment',value=equipment)),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
++(OUT/('contract-examples'+suffix+'.json')).write_text(json.dumps(dict(calendar=cal,job_commands=commands,actor=actor,scenario=bundle,expectations=oracle,resource=dict(kind='equipment',value=equipment),event_references=event_examples),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ print(json.dumps({k:v for k,v in summary.items() if k!='results'},ensure_ascii=False))
+ sys.exit(0 if summary['status']=='PASS' else 1)

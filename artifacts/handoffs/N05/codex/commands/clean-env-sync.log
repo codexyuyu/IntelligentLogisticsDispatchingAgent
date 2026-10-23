@@ -1,0 +1,34 @@
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "sync", "--frozen"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:34:15.396853+00:00
+# system_temp_capture: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main
+
+## stdout
+
+## stderr
+Using CPython 3.12.10 interpreter at: C:\Users\30382\AppData\Local\Programs\Python\Python312\python.exe
+Creating virtual environment at: C:\Users\30382\AppData\Local\Temp\N05-independent\2026-10-04-main\fresh-python-env
+   Building logistics-agents @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/agents
+   Building logistics-backend @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/apps/backend
+   Building logistics-contracts @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/contracts
+   Building logistics-domain @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/domain
+   Building logistics-evaluation @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/evaluation
+   Building logistics-optimization @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/optimization
+   Building logistics-simulation @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/simulation
+Downloading pygments (1.2MiB)
+Downloading pandas (9.4MiB)
+Downloading numpy (12.0MiB)
+Downloading ruff (10.1MiB)
+Downloading ortools (22.8MiB)
+Downloading pydantic-core (1.9MiB)
+WARN Retry attempt #0. Sleeping 1.5842489s before the next attempt
+WARN Retry attempt #1. Sleeping 2.8125045s before the next attempt
+      Built logistics-optimization @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/optimization
+      Built logistics-backend @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/apps/backend
+      Built logistics-contracts @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/contracts
+      Built logistics-agents @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/agents
+      Built logistics-domain @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/domain
+      Built logistics-simulation @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/simulation
+      Built logistics-evaluation @ file:///D:/Agent/DeepSeekHarness/IntelligentLogisticsDispatchingAgent/packages/evaluation
+
+## exit_code: 4294967295

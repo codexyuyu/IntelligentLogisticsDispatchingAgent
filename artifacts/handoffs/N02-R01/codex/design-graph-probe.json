@@ -1,0 +1,180 @@
+{
+  "design_errors": [],
+  "registered_types": 196,
+  "tasks": 109,
+  "gates": 40,
+  "plan_version": "1.0.3",
+  "DAG": "acyclic; reverse edges, gate dependencies and phase barriers match",
+  "requirement_groups": 18,
+  "phase00_delivery_files": 13,
+  "phase00": [
+    {
+      "task": "P00-01",
+      "allowed_files": [
+        "docs/architecture/BASELINE_INVENTORY.json",
+        "docs/architecture/BASELINE_INVENTORY.md",
+        "docs/architecture/MIGRATION_MAP.md",
+        "docs/implementation/P00-01.md",
+        "docs/implementation/reports/P00-01.md"
+      ],
+      "missing": [],
+      "missing_report_headers": [],
+      "reports": "historical implementation reports only; not current independent acceptance"
+    },
+    {
+      "task": "P00-02",
+      "allowed_files": [
+        "docs/architecture/CONTRACT_FREEZE.json",
+        "docs/architecture/CONTRACT_FREEZE.md",
+        "docs/architecture/issues/README.md",
+        "docs/implementation/P00-02.md",
+        "docs/implementation/reports/P00-02.md"
+      ],
+      "missing": [],
+      "missing_report_headers": [],
+      "reports": "historical implementation reports only; not current independent acceptance"
+    },
+    {
+      "task": "P00-03",
+      "allowed_files": [
+        "docs/implementation/P00-03.md",
+        "docs/implementation/reports/P00-03.md",
+        "docs/plan/GATE_EXECUTION_CONTRACT.md"
+      ],
+      "missing": [],
+      "missing_report_headers": [],
+      "reports": "historical implementation reports only; not current independent acceptance"
+    }
+  ],
+  "JobRequest_declared_reachable_types": [
+    {
+      "name": "ExperimentJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py"
+    },
+    {
+      "name": "JobCommand",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py"
+    },
+    {
+      "name": "JobKind",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py"
+    },
+    {
+      "name": "JobOptimizationMode",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py"
+    },
+    {
+      "name": "JobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py"
+    },
+    {
+      "name": "JobRequest",
+      "task": "P02-04",
+      "path": "packages/contracts/src/logistics_contracts/runtime.py"
+    },
+    {
+      "name": "MetricJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py"
+    },
+    {
+      "name": "OptimizationJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py"
+    },
+    {
+      "name": "RequestRef",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py"
+    },
+    {
+      "name": "RescheduleJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py"
+    },
+    {
+      "name": "SimulationJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py"
+    }
+  ],
+  "JobRequest_module_count": 3,
+  "early_runtime_consumers": [
+    {
+      "task": "P05-01",
+      "early_runtime_available": true
+    },
+    {
+      "task": "P05-02",
+      "early_runtime_available": true
+    },
+    {
+      "task": "P05-03",
+      "early_runtime_available": true
+    },
+    {
+      "task": "P16-01",
+      "early_runtime_available": true
+    }
+  ],
+  "single_fault_mutations": [
+    {
+      "mutation": "duplicate",
+      "rejected": true,
+      "errors": [
+        "contract decisions: duplicate type RequestRef"
+      ]
+    },
+    {
+      "mutation": "future",
+      "rejected": true,
+      "errors": [
+        "contract decisions: RequestRef: carrier outside definition task whitelist packages/domain/src/logistics_domain/runtime.py",
+        "contract decisions: OptimizationJobPayload: future or unordered type dependency RequestRef (P32-01 -> P02-04)",
+        "contract decisions: SimulationJobPayload: future or unordered type dependency RequestRef (P32-01 -> P02-04)",
+        "contract decisions: RescheduleJobPayload: future or unordered type dependency RequestRef (P32-01 -> P02-04)",
+        "contract decisions: ExperimentJobPayload: future or unordered type dependency RequestRef (P32-01 -> P02-04)",
+        "contract decisions: MetricJobPayload: future or unordered type dependency RequestRef (P32-01 -> P02-04)",
+        "contract decisions: RequestMetadata: future or unordered type dependency RequestRef (P32-01 -> P02-04)",
+        "contract decisions: RequestRef: wrong definition task; required P02-04"
+      ]
+    },
+    {
+      "mutation": "wrong_mapping",
+      "rejected": true,
+      "errors": [
+        "contract decisions: JobKind/payload mapping mismatch"
+      ]
+    },
+    {
+      "mutation": "outside_whitelist",
+      "rejected": true,
+      "errors": [
+        "contract decisions: RequestRef: carrier outside definition task whitelist packages/domain/src/logistics_domain/unlisted.py",
+        "contract decisions: registered carrier missing from module dependency graph packages/domain/src/logistics_domain/unlisted.py",
+        "contract decisions: RequestRef: undeclared module dependency packages/domain/src/logistics_domain/states.py",
+        "contract decisions: OptimizationJobPayload: undeclared module dependency packages/domain/src/logistics_domain/unlisted.py",
+        "contract decisions: SimulationJobPayload: undeclared module dependency packages/domain/src/logistics_domain/unlisted.py",
+        "contract decisions: RescheduleJobPayload: undeclared module dependency packages/domain/src/logistics_domain/unlisted.py",
+        "contract decisions: ExperimentJobPayload: undeclared module dependency packages/domain/src/logistics_domain/unlisted.py",
+        "contract decisions: MetricJobPayload: undeclared module dependency packages/domain/src/logistics_domain/unlisted.py",
+        "contract decisions: RequestMetadata: undeclared module dependency packages/domain/src/logistics_domain/unlisted.py",
+        "contract decisions: RequestRef: wrong unique carrier; required packages/domain/src/logistics_domain/runtime.py"
+      ]
+    },
+    {
+      "mutation": "domain_to_contracts",
+      "rejected": true,
+      "errors": [
+        "contract decisions: packages/domain/src/logistics_domain/runtime.py: domain imports non-domain module packages/contracts/src/logistics_contracts/runtime.py",
+        "contract decisions: module dependency cycle packages/domain/src/logistics_domain/runtime.py"
+      ]
+    }
+  ],
+  "limitation": "existing leaves are not expanded by the registered design graph; semantic closure requires source review"
+}

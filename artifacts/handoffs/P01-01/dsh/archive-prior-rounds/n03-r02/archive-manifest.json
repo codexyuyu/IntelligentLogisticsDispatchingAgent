@@ -1,0 +1,120 @@
+{
+  "task_id": "P01-01",
+  "round": "n03-r02",
+  "reason": "byte-for-byte archive of the N03-R01 records before refreshing for the P02-01 package-marker change",
+  "file_count": 16,
+  "entries": [
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/evidence.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/evidence.json",
+      "bytes": 25029,
+      "sha256": "0eb8782c1d602a1b5c2f9b2df023ce8dffe34f999d84c2e6246695cdac901b9e",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd1-pytest.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/n03-2026-10-04/p01-01-cmd1-pytest.log",
+      "bytes": 765,
+      "sha256": "daa2f15e45cc65c8f04a4b6eac4d1eaba11ddfbbe56e90a7c6a77edd53d84869",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd2-uv-sync-frozen.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/n03-2026-10-04/p01-01-cmd2-uv-sync-frozen.log",
+      "bytes": 609,
+      "sha256": "404bfcaa0849c3e35eaebddba2b5b142acfc52c7482fd1b2471cd13a427e1d30",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3-npm-ci-run1.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/n03-2026-10-04/p01-01-cmd3-npm-ci-run1.log",
+      "bytes": 551,
+      "sha256": "6a720051f56ffc2401d8dd116b856aaf35cb7412fa8c30495d323c557969e0a7",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/p01-01-cmd3b-npm-ci-run2.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/n03-2026-10-04/p01-01-cmd3b-npm-ci-run2.log",
+      "bytes": 666,
+      "sha256": "8b9bdf00e72ca2b5cee1dcfee57ae9e36442598fc3bda98c00ae68def37267a2",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt1.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/n03-2026-10-04/phase01-full-regression-attempt1.log",
+      "bytes": 4076,
+      "sha256": "2a2151a9bade2f9f55f8baad9f9ccc19c664d588f9b1dc67119169e8170608d2",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt2.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/n03-2026-10-04/phase01-full-regression-attempt2.log",
+      "bytes": 4183,
+      "sha256": "4ba550f6c0eecb74b3128f775fda7d1f8f0419c8d6b55f4e8d52c78aad7898ba",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-r01-2026-10-04/full-regression.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/n03-r01-2026-10-04/full-regression.log",
+      "bytes": 815,
+      "sha256": "934eba35ce732b94d805ad744621bce43d93a8bdf9fdbbe270ac1e1276be6e9c",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-r01-2026-10-04/required-56-confirm.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/n03-r01-2026-10-04/required-56-confirm.log",
+      "bytes": 650,
+      "sha256": "2b931cad90a7119c03d1f68f9da0051e5ba0461f1efa8cb25a538632178e10f0",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/n03-r01-2026-10-04/required-56.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/n03-r01-2026-10-04/required-56.log",
+      "bytes": 668,
+      "sha256": "708c47da570eae904d1ceba2747a37ca1ff16331938d7aace63d7d5988acac31",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/npm_ci.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/npm_ci.log",
+      "bytes": 294,
+      "sha256": "1f2fc355303c54f283d3bbe356360857394a3230238c51775b1a9f76edfa955d",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/pytest.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/pytest.log",
+      "bytes": 490,
+      "sha256": "75fa0e13c0a2b243cbe1c5386ed7b3f721372501255b9ccf7e1d42a7ac748bb2",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/uv_sync_frozen.log",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/uv_sync_frozen.log",
+      "bytes": 309,
+      "sha256": "3226cdb567e9e722372b86e8fb391aa32f7f037e8a41781ec6223701741ffe90",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/logs/validation-summary.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/logs/validation-summary.json",
+      "bytes": 1929,
+      "sha256": "7acce9b3c46401a79c96e9fbf13732568519a52f5e00224926d58e43065fed96",
+      "byte_identical": true
+    },
+    {
+      "path": "artifacts/handoffs/P01-01/dsh/seal.json",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/seal.json",
+      "bytes": 5965,
+      "sha256": "afe259f0da36bd937e2531acf68b98369742286cb55d4666611be2cbea56e875",
+      "byte_identical": true
+    },
+    {
+      "path": "docs/handoffs/P01-01/dsh.md",
+      "archived_as": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02/docs-handoff-dsh.md",
+      "bytes": 18545,
+      "sha256": "1e6cb3ac70e148c0281d65163a0157d31b8f0067adeca842eae23388a1704937",
+      "byte_identical": true
+    }
+  ]
+}

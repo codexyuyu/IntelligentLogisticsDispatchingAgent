@@ -1,0 +1,60 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260915052357
+Username: YUYU\30382
+RunAs User: YUYU\30382
+Configuration Name: 
+Machine: YUYU (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -NoProfile -NonInteractive -Command [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false); $OutputEncoding = [System.Text.UTF8Encoding]::new($false); $uv = "D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\tools\bin\uv.exe"
+$logDir = "artifacts\handoffs\P03-03\dsh\logs"
+$log = Join-Path $logDir "gates-probe-phase02-phase03.log"
+Start-Transcript -Path $log -Force | Out-Null
+Write-Output "# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent"
+Write-Output "# Purpose: record whether P03-03 prerequisites G02 and P03-02 are satisfied. Non-official out-dir so no Gate record is signed."
+Write-Output "`n=== uv run python scripts/gates.py --phase 02 --revision auto --out-dir tmp/dsh-p0303-g02-probe ==="
+& $uv run python scripts/gates.py --phase 02 --revision auto --out-dir tmp/dsh-p0303-g02-probe 2>&1
+Write-Output "EXIT_CODE_PHASE02=$LASTEXITCODE"
+Write-Output "`n=== uv run python scripts/gates.py --phase 03 --revision auto --out-dir tmp/dsh-p0303-g03-probe ==="
+& $uv run python scripts/gates.py --phase 03 --revision auto --out-dir tmp/dsh-p0303-g03-probe 2>&1
+Write-Output "EXIT_CODE_PHASE03=$LASTEXITCODE"
+Stop-Transcript | Out-Null
+
+Write-Output "=== gate records still untouched ==="; Get-ChildItem artifacts\gates -File | Select-Object -ExpandProperty Name
+Write-Output "=== log hashes ==="; Get-ChildItem $logDir -File | ForEach-Object { "{0}  {1}  {2}" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name, $_.Length }
+Write-Output "=== revision before handoff ==="
+$code = @'
+import sys, importlib.util
+from pathlib import Path
+root = Path(r"D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent")
+spec = importlib.util.spec_from_file_location("g3", root / "scripts/gates.py")
+m = importlib.util.module_from_spec(spec); sys.modules["g3"] = m; spec.loader.exec_module(m)
+r = m.GateRunner.__new__(m.GateRunner); r.root = root; r.revision = "auto"
+print("REVISION=" + r.compute_revision())
+'@
+$code | & $uv run python -
+Write-Output "=== input hashes ==="
+foreach($p in @('docs/prompts/03-database/P03-03-repositories-and-snapshot.md','artifacts/handoffs/P03-02/dsh/evidence.json','artifacts/handoffs/P03-02/zcode/precheck.json')){ "{0}  {1}" -f (Get-FileHash $p -Algorithm SHA256).Hash.ToLower(),$p }
+Process ID: 1356
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# Purpose: record whether P03-03 prerequisites G02 and P03-02 are satisfied. Non-official out-dir so no Gate record is signed.
+
+=== uv run python scripts/gates.py --phase 02 --revision auto --out-dir tmp/dsh-p0303-g02-probe ===
+
+EXIT_CODE_PHASE02=1
+
+=== uv run python scripts/gates.py --phase 03 --revision auto --out-dir tmp/dsh-p0303-g03-probe ===
+
+EXIT_CODE_PHASE03=1
+**********************
+Windows PowerShell transcript end
+End time: 20260915052416
+**********************

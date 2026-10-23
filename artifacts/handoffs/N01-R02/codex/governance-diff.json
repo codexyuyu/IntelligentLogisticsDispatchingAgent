@@ -1,0 +1,70 @@
+{
+  "changed_count": 5,
+  "changes": [
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "before_sha256": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+      "after_sha256": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+      "before_bytes": 69687,
+      "after_bytes": 79824
+    },
+    {
+      "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "before_sha256": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+      "after_sha256": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+      "before_bytes": 38568,
+      "after_bytes": 40830
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-decisions.json",
+      "before_sha256": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+      "after_sha256": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+      "before_bytes": 94064,
+      "after_bytes": 109715
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+      "before_sha256": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+      "after_sha256": "9bf3e3c00513cb04ad5549b2344d12cae553914a49935135bcffaba60cba8ab8",
+      "before_bytes": 3047,
+      "after_bytes": 5382
+    },
+    {
+      "path": "tools/ai_coding_plan/validate_plan.py",
+      "before_sha256": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+      "after_sha256": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+      "before_bytes": 48040,
+      "after_bytes": 65385
+    }
+  ],
+  "added_existing_source_paths": [],
+  "deleted_existing_source_paths": [],
+  "patch_sha256": "176385a2334ddc5abd61610e473ca66fd4bab156dd0c01a79349551477b21840",
+  "semantic": {
+    "defined_type_count": 196,
+    "added_types": [],
+    "modified_types": [
+      "CargoAnomalyPayload",
+      "DemandDecreasePayload",
+      "DemandIncreasePayload",
+      "EntityKind",
+      "EntityRef",
+      "EquipmentFailurePayload",
+      "OrderCancellationPayload",
+      "TrafficDisruptionPayload",
+      "TransportDelayPayload",
+      "VehicleFailurePayload",
+      "WarehouseResourceUnavailablePayload",
+      "WeatherChangePayload"
+    ],
+    "payload_fields_and_variants_unchanged": true,
+    "other_types_unchanged": true,
+    "module_edges_added": [
+      {
+        "source": "packages/domain/src/logistics_domain/primitives.py",
+        "target": "packages/domain/src/logistics_domain/states.py"
+      }
+    ],
+    "task_order_and_manifest_unchanged": true
+  }
+}

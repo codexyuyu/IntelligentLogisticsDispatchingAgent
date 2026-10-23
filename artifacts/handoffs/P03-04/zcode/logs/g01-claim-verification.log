@@ -1,0 +1,26 @@
+=== verifying the load-bearing claims in docs/plan/BARRIER_REMEDIATION_G01_G02_G03.md ===
+
+claim: "G01.json input_artifact_hashes 40/40 unchanged (drifted=0)"
+  measured: 40 recorded inputs, 0 drifted -> confirms the claim
+
+claim: "failed_checks is exactly the 4 missing review records"
+  G01.json failed_checks: ['zcode-precheck:P01-01', 'zcode-precheck:P01-02', 'zcode-precheck:P01-03', 'codex-review']
+
+claim: "uv.lock and apps/backend/pyproject.toml are registered as G01 input artifacts"
+  matched input keys: ['apps/backend/pyproject.toml', 'packages/agents/pyproject.toml', 'packages/contracts/pyproject.toml', 'packages/domain/pyproject.toml', 'packages/evaluation/pyproject.toml', 'packages/optimization/pyproject.toml', 'packages/simulation/pyproject.toml', 'pyproject.toml', 'uv.lock']
+
+claim: "artifacts/handoffs/P01-02/dsh/evidence.json records a stale conftest hash (95ad3430...) while disk is b4c985aa..."
+  recorded conftest hashes in that evidence: [('/artifacts/conftest/sha256', '95ad3430baec228b737b150debc97e71dd19297ebc76715584938b10ab58607a')]
+  current tests/conftest.py sha256         : b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8
+  stale as claimed                         : True
+
+claim: "the 4 failing checks are 3 missing zcode prechecks + 1 missing codex review"
+  artifacts/handoffs/P01-01/zcode/precheck.json: MISSING
+  artifacts/handoffs/P01-02/zcode/precheck.json: MISSING
+  artifacts/handoffs/P01-03/zcode/precheck.json: MISSING
+  artifacts/gates/G01-codex-review.json: MISSING
+
+claim: "the 3 DSH evidences are READY_FOR_ZCODE and therefore accepted"
+  P01-01: status=READY_FOR_ZCODE -> accepted=True
+  P01-02: status=READY_FOR_ZCODE -> accepted=True
+  P01-03: status=READY_FOR_ZCODE -> accepted=True

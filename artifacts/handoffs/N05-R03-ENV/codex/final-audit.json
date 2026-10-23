@@ -1,0 +1,119 @@
+{
+  "task_id": "N05-R03-ENV",
+  "status": "PASSED",
+  "official_G01_valid": true,
+  "audited_at": "2026-10-05T09:22:32.710567+00:00",
+  "code_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+  "dirty_tree_hash": "content-sha256:eaea942624f00e5da16e89a3e744d3a2c1c659fcf9eeda0a23787116681d636f",
+  "candidate_file_count": 82,
+  "G01_sha256": "50bae8ac3b7970864ccc7aa95a83fee89c9ef52c567e768824a49873ab5fda39",
+  "review_sha256": "e64827a62caa4c497304c66d85df154ac6047e571b3c5947b97a2d7c93925efc",
+  "G00_sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+  "official_input_count": 40,
+  "review_input_count": 184,
+  "official_task_tests": [
+    56,
+    96,
+    74
+  ],
+  "official_phase01_test_total": 226,
+  "official_command_count": 7,
+  "assertion_count": 5,
+  "record_check_count": 14,
+  "total_check_count": 26,
+  "reused_independent_import_processes": 6,
+  "retained_layer_sources": [
+    {
+      "layer": "domain",
+      "path": "packages/domain/src/logistics_domain/__init__.py",
+      "sha256": "21334c02c11a33f45445a12324be954187a5ed8ae775010158a0608946c50076"
+    },
+    {
+      "layer": "domain",
+      "path": "packages/domain/src/logistics_domain/errors.py",
+      "sha256": "feb045410bcba16658d5def4143c746649386fe7fad9d9bc6ed31db4da11a56b"
+    },
+    {
+      "layer": "domain",
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "sha256": "f86e18a4738f3841b45e14509bcc6bea80a5eebf30861f28ff919bf06c660304"
+    },
+    {
+      "layer": "domain",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "sha256": "297425132e3e5c8416332cd4e5f0f60c0dd3db9ae8e65b34e75d2af1f7013211"
+    },
+    {
+      "layer": "contracts",
+      "path": "packages/contracts/src/logistics_contracts/__init__.py",
+      "sha256": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67"
+    },
+    {
+      "layer": "optimization",
+      "path": "packages/optimization/src/logistics_optimization/__init__.py",
+      "sha256": "52e301b5ceaa4fc656702979b82fcf1832e86e6f876280c82a0505f7d937acc1"
+    },
+    {
+      "layer": "simulation",
+      "path": "packages/simulation/src/logistics_simulation/__init__.py",
+      "sha256": "cf73c5463a41d33a8815cd4512b3fcc236fc2a7983d03e101b7b07db3f876789"
+    },
+    {
+      "layer": "agents",
+      "path": "packages/agents/src/logistics_agents/__init__.py",
+      "sha256": "13233646cf62444aa2452351f69a4c7fdb60ae0b5b7c9b17c1e0302871dc3d1b"
+    },
+    {
+      "layer": "evaluation",
+      "path": "packages/evaluation/src/logistics_evaluation/__init__.py",
+      "sha256": "2dd2b07402f79594cee052f14f0f31f6fbfa505f0757e7753d9e953ae61caed9"
+    },
+    {
+      "layer": "backend",
+      "path": "apps/backend/src/logistics_backend/__init__.py",
+      "sha256": "01a2b2aeae06be11ca9888649fb22376da8984099707512ea70b7f0e40ff4ff1"
+    }
+  ],
+  "precheck_inputs": 123,
+  "precheck_command_logs": 29,
+  "official_raw_log_hashes": {
+    "artifacts/gates/G01-logs/clean-install-imports.log": "c5896f321eb77f251e37e5ba925adc59e55e3d0824482a5bd6e6cae16108ec3e",
+    "artifacts/gates/G01-logs/layer-boundaries-json.log": "24a5d2f949090d1b53f50369d5158405f4a4ebe523ae7d89f9699c565fbc2003",
+    "artifacts/gates/G01-logs/layer-boundaries.log": "ce86e9319c68fa2dab0a4d0d132490d7f7a665c1ce583b869e7e41accf51a7b1",
+    "artifacts/gates/G01-logs/lock-reproducible.log": "5cff75d4bf073531cc752c73f6ff9d9da52fef890445a353262e7f0bac791a72",
+    "artifacts/gates/G01-logs/P01-01-cmd1.log": "39d6293193f0630feb3650da3ba093f119eff8d4a0c3e868c46160fc4594ace6",
+    "artifacts/gates/G01-logs/P01-01-cmd2.log": "28170780624e250479f9f4cf2e41a89c1be20eaa484dae6fd00ab110ff155f4c",
+    "artifacts/gates/G01-logs/P01-01-cmd3.log": "6265e71789ddbf71ea80966a604d4440719f6ffdc8839cf1d5c0810ef6381a85",
+    "artifacts/gates/G01-logs/P01-02-cmd1.log": "69de1f66ecec79e4cfcd84036479de108e224a092643f25cd288ae008309d462",
+    "artifacts/gates/G01-logs/P01-02-cmd2.log": "2226c9681a4c79b709bc100b7e3017d524c7549343fe446e6b9e6bb20aba2607",
+    "artifacts/gates/G01-logs/P01-03-cmd1.log": "d6cbf25615e8aee72920be803613162c5803d660f08759b764ff49ba3b4639d1",
+    "artifacts/gates/G01-logs/P01-03-cmd2.log": "dedbe655e913a15044e74e7296a92e98cc23d62f7932b844657189b7c3919a41",
+    "artifacts/gates/G01-logs/runner-fails-closed-probe.log": "9ab65636b94bd6525d3b4767f1cb20cb3a591407aea63e50079f6f1cfcf726ee"
+  },
+  "official_run_command": {
+    "check_id": "official-g01",
+    "argv": [
+      "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+      "run",
+      "python",
+      "scripts/gates.py",
+      "--phase",
+      "01",
+      "--revision",
+      "auto"
+    ],
+    "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "exit_code": 0,
+    "started_at": "2026-10-05T09:18:52.531197+00:00",
+    "finished_at": "2026-10-05T09:19:58.601513+00:00",
+    "log_path": "artifacts/handoffs/N05-R03-ENV/codex/commands/official-g01.log",
+    "log_sha256": "0241a7143f5381ea3b5638df002de576b92af77d92b3c781e7352398a9dc7b4f"
+  },
+  "old_official_archived_count": 14,
+  "archive_file_count": 14,
+  "post_sign_check_only_exit_code": 0,
+  "post_sign_official_files_unchanged": 16,
+  "problems": [],
+  "P02_business_acceptance": false,
+  "G02_signed": false
+}

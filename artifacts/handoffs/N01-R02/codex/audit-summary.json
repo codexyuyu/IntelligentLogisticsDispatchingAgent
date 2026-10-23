@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "task": "N01-R02",
+  "code_revision": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "dirty_tree_hash": "content-sha256:1f46a24cc017ed209fc3c049239de9be1cea7053992e4d49469af98c6addeed0",
+  "candidate_file_count": 77,
+  "changed_existing_file_count": 5,
+  "protected_file_count": 3786,
+  "enum_members": 45,
+  "catalogue_entities": 32,
+  "catalogue_auxiliary_entities": 11,
+  "pure_targets": [
+    "TravelMatrix",
+    "RegionRef"
+  ],
+  "event_mappings": 10,
+  "type_count": 196,
+  "original_test_methods_unchanged": 43,
+  "current_test_methods": 73,
+  "record_g00_ast_and_bytes_unchanged": true,
+  "record_g00_bytes_sha256": "6726a1f866e9f345ac6ea3feeba4d924bad6e1381ace601e9fbeb5c5632b88a9",
+  "final_commands": [
+    {
+      "descriptor": "tmp/N01-R02/validator/plan-validation-02-command.json",
+      "descriptor_sha256": "f0d8a9493e513c7989e2af075a3dfbac361bd5e6cdfa056de8cc90fc51adbe10",
+      "log_path": "tmp/N01-R02/validator/plan-validation-02.log",
+      "log_sha256": "2e8da1ef32acbe18bb8aac40f8f907fa54debea4108faac70b57b2d409151fff",
+      "exit_code": 0,
+      "all_current_inputs_match": true
+    },
+    {
+      "descriptor": "artifacts/handoffs/N01-R02/codex/examples/contract-check-final01-command.json",
+      "descriptor_sha256": "23b83be750ab6f504d8714bbedb3649b9b06c9f5aa6210d9de395a99a479cf47",
+      "log_path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-final01.log",
+      "log_sha256": "da533b48ca41f9003d107e48f8eaa60f53d035e4cce5dddfe90db8cfcd9a60e2",
+      "exit_code": 0,
+      "all_current_inputs_match": true
+    }
+  ],
+  "G00_valid": false,
+  "N03_may_start": false,
+  "writes_only_own_evidence": true
+}

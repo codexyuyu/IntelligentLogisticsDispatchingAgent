@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python",
+    "tmp/N02-R01/probe_g00.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T03:25:04.302044+00:00",
+  "finished_at": "2026-10-04T03:25:04.415456+00:00",
+  "exit_code": 1,
+  "log_path": "artifacts/handoffs/N02-R01/codex/g00-prerequisite.log",
+  "log_hash": "34f54b3ff5bfe56332b83b5ff20e10359ebad67e85cc03a9a284aad85498d860",
+  "log_bytes": 763,
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

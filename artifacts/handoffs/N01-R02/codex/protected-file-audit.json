@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-10-04T14:13:01.501922+00:00",
+  "registered_count": 3786,
+  "unchanged_count": 3786,
+  "changed_or_missing": [],
+  "unexpected_outside_scope": [],
+  "missing_paths": [],
+  "baseline_path": "artifacts/handoffs/N01-R02/codex/scope-before.json",
+  "baseline_sha256": "c2318084aab658689467c22f60cf24458f2eef99005d088dd34abbb775ad8299",
+  "excluded_derived_parts": [
+    ".git",
+    ".mimosa",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "whitelist": [
+    "docs/architecture/DATA_CONTRACTS.md",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+    "contracts/changes/N01-R01-contract-decisions.json",
+    "contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+    "tools/ai_coding_plan/validate_plan.py"
+  ],
+  "own_output_prefixes": [
+    "tmp/N01-R02/",
+    "artifacts/handoffs/N01-R02/",
+    "docs/handoffs/N01-R02/"
+  ],
+  "official_records_and_old_handoffs_and_logs_unchanged": true
+}

@@ -1,0 +1,209 @@
+{
+  "task_id": "N05-R01",
+  "passed": true,
+  "case_count": 6,
+  "cases": [
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import sys, json, pathlib, importlib\nbefore=set(sys.modules)\nORDER=['errors', 'primitives', 'states']\nfor name in ORDER:\n    exec('from logistics_domain import '+name)\nimport logistics_domain as package\nout={'order':ORDER,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'exports':{},'pending':{},'unknown':None}\nfor name in ('errors','primitives','states'):\n    actual=getattr(package,name)\n    assert actual is importlib.import_module('logistics_domain.'+name)\n    assert name in package.__all__\n    out['exports'][name]=str(pathlib.Path(actual.__file__).resolve())\nfor name in ('entities','ids','units','ports'):\n    try: getattr(package,name)\n    except NotImplementedError as e:\n        assert name in str(e) and 'not implemented yet' in str(e)\n        out['pending'][name]=type(e).__name__\n    else: raise AssertionError('undelivered API unexpectedly succeeded: '+name)\ntry:getattr(package,'n05_unknown_name')\nexcept AttributeError:out['unknown']='AttributeError'\nelse:raise AssertionError('unknown API unexpectedly succeeded')\nroots={name.split('.',1)[0] for name in set(sys.modules)-before}\nthird=sorted(roots-set(sys.stdlib_module_names)-{'logistics_domain'})\nassert not third, third\nout['third_party_roots']=third\nassert out['isolated']==1\nprint(json.dumps(out))\n"
+      ],
+      "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+      "exit_code": 0,
+      "stdout": {
+        "order": [
+          "errors",
+          "primitives",
+          "states"
+        ],
+        "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+        "isolated": 1,
+        "exports": {
+          "errors": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\errors.py",
+          "primitives": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\primitives.py",
+          "states": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\states.py"
+        },
+        "pending": {
+          "entities": "NotImplementedError",
+          "ids": "NotImplementedError",
+          "units": "NotImplementedError",
+          "ports": "NotImplementedError"
+        },
+        "unknown": "AttributeError",
+        "third_party_roots": []
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import sys, json, pathlib, importlib\nbefore=set(sys.modules)\nORDER=['errors', 'states', 'primitives']\nfor name in ORDER:\n    exec('from logistics_domain import '+name)\nimport logistics_domain as package\nout={'order':ORDER,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'exports':{},'pending':{},'unknown':None}\nfor name in ('errors','primitives','states'):\n    actual=getattr(package,name)\n    assert actual is importlib.import_module('logistics_domain.'+name)\n    assert name in package.__all__\n    out['exports'][name]=str(pathlib.Path(actual.__file__).resolve())\nfor name in ('entities','ids','units','ports'):\n    try: getattr(package,name)\n    except NotImplementedError as e:\n        assert name in str(e) and 'not implemented yet' in str(e)\n        out['pending'][name]=type(e).__name__\n    else: raise AssertionError('undelivered API unexpectedly succeeded: '+name)\ntry:getattr(package,'n05_unknown_name')\nexcept AttributeError:out['unknown']='AttributeError'\nelse:raise AssertionError('unknown API unexpectedly succeeded')\nroots={name.split('.',1)[0] for name in set(sys.modules)-before}\nthird=sorted(roots-set(sys.stdlib_module_names)-{'logistics_domain'})\nassert not third, third\nout['third_party_roots']=third\nassert out['isolated']==1\nprint(json.dumps(out))\n"
+      ],
+      "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+      "exit_code": 0,
+      "stdout": {
+        "order": [
+          "errors",
+          "states",
+          "primitives"
+        ],
+        "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+        "isolated": 1,
+        "exports": {
+          "errors": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\errors.py",
+          "primitives": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\primitives.py",
+          "states": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\states.py"
+        },
+        "pending": {
+          "entities": "NotImplementedError",
+          "ids": "NotImplementedError",
+          "units": "NotImplementedError",
+          "ports": "NotImplementedError"
+        },
+        "unknown": "AttributeError",
+        "third_party_roots": []
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import sys, json, pathlib, importlib\nbefore=set(sys.modules)\nORDER=['primitives', 'errors', 'states']\nfor name in ORDER:\n    exec('from logistics_domain import '+name)\nimport logistics_domain as package\nout={'order':ORDER,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'exports':{},'pending':{},'unknown':None}\nfor name in ('errors','primitives','states'):\n    actual=getattr(package,name)\n    assert actual is importlib.import_module('logistics_domain.'+name)\n    assert name in package.__all__\n    out['exports'][name]=str(pathlib.Path(actual.__file__).resolve())\nfor name in ('entities','ids','units','ports'):\n    try: getattr(package,name)\n    except NotImplementedError as e:\n        assert name in str(e) and 'not implemented yet' in str(e)\n        out['pending'][name]=type(e).__name__\n    else: raise AssertionError('undelivered API unexpectedly succeeded: '+name)\ntry:getattr(package,'n05_unknown_name')\nexcept AttributeError:out['unknown']='AttributeError'\nelse:raise AssertionError('unknown API unexpectedly succeeded')\nroots={name.split('.',1)[0] for name in set(sys.modules)-before}\nthird=sorted(roots-set(sys.stdlib_module_names)-{'logistics_domain'})\nassert not third, third\nout['third_party_roots']=third\nassert out['isolated']==1\nprint(json.dumps(out))\n"
+      ],
+      "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+      "exit_code": 0,
+      "stdout": {
+        "order": [
+          "primitives",
+          "errors",
+          "states"
+        ],
+        "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+        "isolated": 1,
+        "exports": {
+          "errors": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\errors.py",
+          "primitives": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\primitives.py",
+          "states": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\states.py"
+        },
+        "pending": {
+          "entities": "NotImplementedError",
+          "ids": "NotImplementedError",
+          "units": "NotImplementedError",
+          "ports": "NotImplementedError"
+        },
+        "unknown": "AttributeError",
+        "third_party_roots": []
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import sys, json, pathlib, importlib\nbefore=set(sys.modules)\nORDER=['primitives', 'states', 'errors']\nfor name in ORDER:\n    exec('from logistics_domain import '+name)\nimport logistics_domain as package\nout={'order':ORDER,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'exports':{},'pending':{},'unknown':None}\nfor name in ('errors','primitives','states'):\n    actual=getattr(package,name)\n    assert actual is importlib.import_module('logistics_domain.'+name)\n    assert name in package.__all__\n    out['exports'][name]=str(pathlib.Path(actual.__file__).resolve())\nfor name in ('entities','ids','units','ports'):\n    try: getattr(package,name)\n    except NotImplementedError as e:\n        assert name in str(e) and 'not implemented yet' in str(e)\n        out['pending'][name]=type(e).__name__\n    else: raise AssertionError('undelivered API unexpectedly succeeded: '+name)\ntry:getattr(package,'n05_unknown_name')\nexcept AttributeError:out['unknown']='AttributeError'\nelse:raise AssertionError('unknown API unexpectedly succeeded')\nroots={name.split('.',1)[0] for name in set(sys.modules)-before}\nthird=sorted(roots-set(sys.stdlib_module_names)-{'logistics_domain'})\nassert not third, third\nout['third_party_roots']=third\nassert out['isolated']==1\nprint(json.dumps(out))\n"
+      ],
+      "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+      "exit_code": 0,
+      "stdout": {
+        "order": [
+          "primitives",
+          "states",
+          "errors"
+        ],
+        "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+        "isolated": 1,
+        "exports": {
+          "errors": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\errors.py",
+          "primitives": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\primitives.py",
+          "states": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\states.py"
+        },
+        "pending": {
+          "entities": "NotImplementedError",
+          "ids": "NotImplementedError",
+          "units": "NotImplementedError",
+          "ports": "NotImplementedError"
+        },
+        "unknown": "AttributeError",
+        "third_party_roots": []
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import sys, json, pathlib, importlib\nbefore=set(sys.modules)\nORDER=['states', 'errors', 'primitives']\nfor name in ORDER:\n    exec('from logistics_domain import '+name)\nimport logistics_domain as package\nout={'order':ORDER,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'exports':{},'pending':{},'unknown':None}\nfor name in ('errors','primitives','states'):\n    actual=getattr(package,name)\n    assert actual is importlib.import_module('logistics_domain.'+name)\n    assert name in package.__all__\n    out['exports'][name]=str(pathlib.Path(actual.__file__).resolve())\nfor name in ('entities','ids','units','ports'):\n    try: getattr(package,name)\n    except NotImplementedError as e:\n        assert name in str(e) and 'not implemented yet' in str(e)\n        out['pending'][name]=type(e).__name__\n    else: raise AssertionError('undelivered API unexpectedly succeeded: '+name)\ntry:getattr(package,'n05_unknown_name')\nexcept AttributeError:out['unknown']='AttributeError'\nelse:raise AssertionError('unknown API unexpectedly succeeded')\nroots={name.split('.',1)[0] for name in set(sys.modules)-before}\nthird=sorted(roots-set(sys.stdlib_module_names)-{'logistics_domain'})\nassert not third, third\nout['third_party_roots']=third\nassert out['isolated']==1\nprint(json.dumps(out))\n"
+      ],
+      "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+      "exit_code": 0,
+      "stdout": {
+        "order": [
+          "states",
+          "errors",
+          "primitives"
+        ],
+        "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+        "isolated": 1,
+        "exports": {
+          "errors": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\errors.py",
+          "primitives": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\primitives.py",
+          "states": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\states.py"
+        },
+        "pending": {
+          "entities": "NotImplementedError",
+          "ids": "NotImplementedError",
+          "units": "NotImplementedError",
+          "ports": "NotImplementedError"
+        },
+        "unknown": "AttributeError",
+        "third_party_roots": []
+      },
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import sys, json, pathlib, importlib\nbefore=set(sys.modules)\nORDER=['states', 'primitives', 'errors']\nfor name in ORDER:\n    exec('from logistics_domain import '+name)\nimport logistics_domain as package\nout={'order':ORDER,'cwd':str(pathlib.Path.cwd()),'isolated':sys.flags.isolated,'exports':{},'pending':{},'unknown':None}\nfor name in ('errors','primitives','states'):\n    actual=getattr(package,name)\n    assert actual is importlib.import_module('logistics_domain.'+name)\n    assert name in package.__all__\n    out['exports'][name]=str(pathlib.Path(actual.__file__).resolve())\nfor name in ('entities','ids','units','ports'):\n    try: getattr(package,name)\n    except NotImplementedError as e:\n        assert name in str(e) and 'not implemented yet' in str(e)\n        out['pending'][name]=type(e).__name__\n    else: raise AssertionError('undelivered API unexpectedly succeeded: '+name)\ntry:getattr(package,'n05_unknown_name')\nexcept AttributeError:out['unknown']='AttributeError'\nelse:raise AssertionError('unknown API unexpectedly succeeded')\nroots={name.split('.',1)[0] for name in set(sys.modules)-before}\nthird=sorted(roots-set(sys.stdlib_module_names)-{'logistics_domain'})\nassert not third, third\nout['third_party_roots']=third\nassert out['isolated']==1\nprint(json.dumps(out))\n"
+      ],
+      "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+      "exit_code": 0,
+      "stdout": {
+        "order": [
+          "states",
+          "primitives",
+          "errors"
+        ],
+        "cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+        "isolated": 1,
+        "exports": {
+          "errors": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\errors.py",
+          "primitives": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\primitives.py",
+          "states": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\packages\\domain\\src\\logistics_domain\\states.py"
+        },
+        "pending": {
+          "entities": "NotImplementedError",
+          "ids": "NotImplementedError",
+          "units": "NotImplementedError",
+          "ports": "NotImplementedError"
+        },
+        "unknown": "AttributeError",
+        "third_party_roots": []
+      },
+      "stderr": ""
+    }
+  ],
+  "outside_cwd": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-R01-independent\\2026-10-04-main\\outside-cwd",
+  "python": "C:\\Users\\30382\\AppData\\Local\\Temp\\N05-independent\\2026-10-04-main\\fresh-python-env-r02\\Scripts\\python.exe",
+  "undelivered_failure_ast_unchanged": true,
+  "scope": "public package entry/import order and stdlib purity only; no P02 business precheck"
+}

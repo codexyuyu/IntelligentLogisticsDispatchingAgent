@@ -1,0 +1,58 @@
+{
+  "task_id": "N05",
+  "status": "PASSED",
+  "official_G01_valid": true,
+  "audited_at": "2026-10-04T20:46:00.667968+00:00",
+  "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+  "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+  "candidate_file_count": 77,
+  "G01_sha256": "b7ac0c60de7438dc0cd88cc7f277b6ac2e93b8216ee05efdfb3124089c98dee8",
+  "review_sha256": "1cfd47668b64b49062c14eb0af648d8fd23eaf86748bc0b68ecb3421331e185d",
+  "G00_sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+  "official_input_count": 40,
+  "review_input_count": 371,
+  "official_task_tests": [
+    56,
+    96,
+    74
+  ],
+  "full_regression_tests": 226,
+  "independent_probe_count": 52,
+  "official_command_count": 7,
+  "assertion_count": 5,
+  "official_raw_log_hashes": {
+    "artifacts/gates/G01-logs/clean-install-imports.log": "94e609489d5b61deb61a3a996eea801adf9aa4bb4ae16d4ac2ee3990a18d4e51",
+    "artifacts/gates/G01-logs/layer-boundaries-json.log": "e2f166bbcf41b33b8df4348310728ebae34ff140347159d0d338330551f4fcc5",
+    "artifacts/gates/G01-logs/layer-boundaries.log": "c1c8e4e9edc50d787732d72ef41a15f0c2c9585441bea8a62c15eae601ca8ce0",
+    "artifacts/gates/G01-logs/lock-reproducible.log": "fb9c0eb138949d2a2ef37d42749aaddb27fa1cd2d65e0a8ba73d28dda12e5761",
+    "artifacts/gates/G01-logs/P01-01-cmd1.log": "0adbbade78d8aac21fceb35faed46e74a371b014eddf3a33e61666c0b941b882",
+    "artifacts/gates/G01-logs/P01-01-cmd2.log": "ec5ecde45f639a1de3cd15f52345a6e8b13235f5895600617f9cd4c3adc15abc",
+    "artifacts/gates/G01-logs/P01-01-cmd3.log": "835438e65f6e120bead9729b16260e752d95a8ac4ca9e35be930195a11537d9d",
+    "artifacts/gates/G01-logs/P01-02-cmd1.log": "249822d1a13dd8774023d8ddaa0846c44274285499348a29da12203a9fef49bf",
+    "artifacts/gates/G01-logs/P01-02-cmd2.log": "1549765c1c71addb73d909c6c78221d08f4bfa7a9ab0dad21ba68325670f1e3b",
+    "artifacts/gates/G01-logs/P01-03-cmd1.log": "687eff690993c43868f1474e8e6719a24ed7a91dbf1e8e28df84e64a7ae1c67a",
+    "artifacts/gates/G01-logs/P01-03-cmd2.log": "257f960ca21c10710a556bd1bfc49d92cde47c4d1c46252e28abca4ebfdeb33d",
+    "artifacts/gates/G01-logs/runner-fails-closed-probe.log": "7d1bf6703821d7200961adb6841462a620ebf1b6ef8c1058d5fe721fae69f4b0"
+  },
+  "official_run_command": {
+    "check_id": "official-g01",
+    "argv": [
+      "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+      "run",
+      "python",
+      "scripts/gates.py",
+      "--phase",
+      "01",
+      "--revision",
+      "auto"
+    ],
+    "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "exit_code": 0,
+    "started_at": "2026-10-04T20:43:58.837912+00:00",
+    "finished_at": "2026-10-04T20:44:51.159917+00:00",
+    "log_path": "artifacts/handoffs/N05/codex/commands/official-g01.log",
+    "log_sha256": "0dbd52ac9518be07b186f40c90b32b179640db13a6a11895f8737aae9f857d09"
+  },
+  "archive_count": 13,
+  "problems": []
+}

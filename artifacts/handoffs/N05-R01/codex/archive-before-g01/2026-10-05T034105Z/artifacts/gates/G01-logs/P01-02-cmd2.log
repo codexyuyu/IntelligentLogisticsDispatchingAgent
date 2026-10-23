@@ -1,0 +1,13 @@
+# check: P01-02-cmd2
+# argv: ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/check_architecture.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T20:44:25.269306+00:00
+# expectation: manifest command must succeed
+
+## stdout
+architecture-layers: scanned 7 module(s) across 7 layer(s); violations=0
+
+## stderr
+
+## exit_code: 0
+## duration_ms: 203

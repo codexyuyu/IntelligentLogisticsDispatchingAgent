@@ -1,0 +1,40 @@
+# argv: ["C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe", "tools/ai_coding_plan/validate_plan.py", "--self-test"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+## stdout
+{
+  "status": "PASS",
+  "checker_tests": 15,
+  "tasks": 109,
+  "gates": 40,
+  "prompt_groups": 14,
+  "required_prompt_sections": 24,
+  "required_entities": 32,
+  "markdown_files": 140,
+  "selected_prompts": 109,
+  "errors": []
+}
+
+## stderr
+test_cross_phase_parallel (__main__.CheckerTests.test_cross_phase_parallel) ... ok
+test_cycle (__main__.CheckerTests.test_cycle) ... ok
+test_duplicate_id (__main__.CheckerTests.test_duplicate_id) ... ok
+test_entity_set (__main__.CheckerTests.test_entity_set) ... ok
+test_extra_case (__main__.CheckerTests.test_extra_case) ... ok
+test_matching_cases (__main__.CheckerTests.test_matching_cases) ... ok
+test_missing_case (__main__.CheckerTests.test_missing_case) ... ok
+test_missing_dependency (__main__.CheckerTests.test_missing_dependency) ... ok
+test_missing_prompt_sections (__main__.CheckerTests.test_missing_prompt_sections) ... ok
+test_missing_solver_sections (__main__.CheckerTests.test_missing_solver_sections) ... ok
+test_parallel_dependency (__main__.CheckerTests.test_parallel_dependency) ... ok
+test_parallel_write_collision (__main__.CheckerTests.test_parallel_write_collision) ... ok
+test_reordered_prompt_sections (__main__.CheckerTests.test_reordered_prompt_sections) ... ok
+test_reverse_blocks (__main__.CheckerTests.test_reverse_blocks) ... ok
+test_valid_graph (__main__.CheckerTests.test_valid_graph) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+
+
+## exit_code: 0

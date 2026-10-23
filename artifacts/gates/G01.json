@@ -1,0 +1,731 @@
+{
+  "schema_version": "1.0.0",
+  "gate_id": "G01",
+  "phase": 1,
+  "status": "passed",
+  "started_at": "2026-10-05T09:18:52.705872+00:00",
+  "finished_at": "2026-10-05T09:19:58.122409+00:00",
+  "code_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+  "dirty_tree_hash": "content-sha256:eaea942624f00e5da16e89a3e744d3a2c1c659fcf9eeda0a23787116681d636f",
+  "dependency_evidence_hashes": {
+    "G00": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4"
+  },
+  "input_artifact_hashes": {
+    "docs/implementation/P01-01.md": "5ac137a1f458db41369d0c80f82a1fe21960ab825393cc465139bc7907f825f8",
+    "docs/implementation/reports/P01-01.md": "27243fdab310f25484b4ed2b1417d666234d94da528ea158e5c542d8f700a0a7",
+    ".node-version": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
+    ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+    "apps/backend/pyproject.toml": "97c9e2470fcdd0127d77ae122d539fb214c24bcfbe98db2ec11c8ef9c7de9344",
+    "apps/backend/src/logistics_backend/__init__.py": "01a2b2aeae06be11ca9888649fb22376da8984099707512ea70b7f0e40ff4ff1",
+    "apps/frontend/package.json": "7a38cc372c366b088043d919f76430ac2716beebba16a2dd1f78d27e1c740b31",
+    "package-lock.json": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
+    "package.json": "ce0558100177c7d49889bedf4527e1995a52c066d5f7d6e737b03c6be63f7755",
+    "packages/agents/pyproject.toml": "39e80e877bc134cdf99f60c31aba1a9194d4eac699008d892ed08a0d3e557140",
+    "packages/agents/src/logistics_agents/__init__.py": "13233646cf62444aa2452351f69a4c7fdb60ae0b5b7c9b17c1e0302871dc3d1b",
+    "packages/contracts/pyproject.toml": "25bdb3a6d7f85ba1b114ac10668b955b5e98c981fe5ef6cdfb7f283950c10a0c",
+    "packages/contracts/src/logistics_contracts/__init__.py": "f36a68ce8a6cd8970cccc5e1e9809fb299544d2bc3e4f669e17f52d18cc26e67",
+    "packages/domain/pyproject.toml": "f4d4e90bd87b0161f980b51129312a815cd7a99ca657a81ee26b0424259ebf64",
+    "packages/domain/src/logistics_domain/__init__.py": "21334c02c11a33f45445a12324be954187a5ed8ae775010158a0608946c50076",
+    "packages/evaluation/pyproject.toml": "3e25b4617df419c8a72d4056bd9bf1e53a7b1ad56ee41037f7ce12c8d5989c15",
+    "packages/evaluation/src/logistics_evaluation/__init__.py": "2dd2b07402f79594cee052f14f0f31f6fbfa505f0757e7753d9e953ae61caed9",
+    "packages/optimization/pyproject.toml": "cdc1172cb720fb2446adf66f6347acfbdf34342df28c170159f0194f14710643",
+    "packages/optimization/src/logistics_optimization/__init__.py": "52e301b5ceaa4fc656702979b82fcf1832e86e6f876280c82a0505f7d937acc1",
+    "packages/simulation/pyproject.toml": "000af2c9be683a8fd176cde8d054308f28419dc8ebbe1a3b0471241f9964d165",
+    "packages/simulation/src/logistics_simulation/__init__.py": "cf73c5463a41d33a8815cd4512b3fcc236fc2a7983d03e101b7b07db3f876789",
+    "playwright.config.ts": "1bba66b20430fac67663744d35f847228ca65ab42f821dae9d0d4a9ac6378d15",
+    "pyproject.toml": "2dd7679e709ee1c33ebef19a974bcd9a8741a70d89054812792c5469f114d886",
+    "uv.lock": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "docs/implementation/P01-02.md": "28197dfb8fcdc8d8bcadc2e6821411e905ee7b70d423d44ee0134ee50e47ed4c",
+    "docs/implementation/reports/P01-02.md": "edd2c01815abd2f809994683de62f94645931129dd27c5c5062ff67767c7887d",
+    ".github/workflows/ci.yml": "139d37c92f1bdf8d82c0771b081bb82d674dfbf6da22fa50135d27bd19a10e35",
+    "apps/frontend/src/test/setup.ts": "322a23afd1a0070b4ca7d27d52bc15d84f36d190dd444a35163c08f2b6d8003a",
+    "apps/frontend/vitest.config.ts": "3f5c86e2273cd9becf71d0edeb32d3cecdab7dbf0432c95caa9ebed8a1f10e9c",
+    "scripts/check_architecture.py": "2489d0d7ecba7c160e1b65147b58b5cf80440a88955638c9683238ebbd76fba5",
+    "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+    "tests/conftest.py": "b4c985aa1b08f4c5af94c5ee2fdc7cf76b23c81568f9fc3b2e6c9670072dc1f8",
+    "docs/implementation/P01-03.md": "7b2bdfd3fc884a4784a608b54c95491ff57796d215f2df415621288d28ddc943",
+    "docs/implementation/reports/P01-03.md": "e701639756cb8abbe662bf5c1d015f801f4e44eca0ba7ef3732909ca767b7282",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "contracts/changes/README.md": "2a695d21ffaf8681d4e7c8903c98a8beb6af8fff9340bfcff13cb5ee672e85c5",
+    "docs/architecture/LEGACY_ADAPTATION.md": "adfd5345fd6c7ecf63b39bb04fb437fdf6a4ca34a4162855dfc4b7f14cfbd214",
+    "scripts/check_ownership.py": "63bf2bf43263b2f8251c4e5d09b771f8b4c948a94592bccdbc3f5b121c02fa5a",
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05"
+  },
+  "environment_fingerprint": {
+    "python": "3.12.10",
+    "os": "Windows 11",
+    "uv": "uv 0.12.16 (761ff1379 2026-09-17 x86_64-pc-windows-msvc)",
+    "node": "v24.18.0",
+    "npm": "11.16.0"
+  },
+  "commands": [
+    {
+      "check_id": "P01-01-cmd1",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_01_workspace_bootstrap.py",
+        "tests/integration/test_p01_01_workspace_bootstrap.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "duration_ms": 2890,
+      "log_path": "artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "log_sha256": "39d6293193f0630feb3650da3ba093f119eff8d4a0c3e868c46160fc4594ace6",
+      "required": true,
+      "test_counts": {
+        "passed": 56
+      },
+      "stdout_tail": [
+        "    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))",
+        "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
+        "56 passed, 1 warning in 2.39s"
+      ]
+    },
+    {
+      "check_id": "P01-01-cmd2",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "sync",
+        "--frozen"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "duration_ms": 46,
+      "log_path": "artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "log_sha256": "28170780624e250479f9f4cf2e41a89c1be20eaa484dae6fd00ab110ff155f4c",
+      "required": true,
+      "stdout_tail": [
+        "Checked 39 packages in 3ms"
+      ]
+    },
+    {
+      "check_id": "P01-01-cmd3",
+      "argv": [
+        "C:\\Program Files\\nodejs\\npm.CMD",
+        "ci"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "duration_ms": 13436,
+      "log_path": "artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "log_sha256": "6265e71789ddbf71ea80966a604d4440719f6ffdc8839cf1d5c0810ef6381a85",
+      "required": true,
+      "stdout_tail": [
+        "added 4 packages, and audited 6 packages in 13s",
+        "found 0 vulnerabilities"
+      ]
+    },
+    {
+      "check_id": "P01-02-cmd1",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_02_checks_and_gate_runner.py",
+        "tests/integration/test_p01_02_checks_and_gate_runner.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "duration_ms": 19438,
+      "log_path": "artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "log_sha256": "69de1f66ecec79e4cfcd84036479de108e224a092643f25cd288ae008309d462",
+      "required": true,
+      "test_counts": {
+        "passed": 96
+      },
+      "stdout_tail": [
+        "    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))",
+        "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
+        "96 passed, 1 warning in 18.87s"
+      ]
+    },
+    {
+      "check_id": "P01-02-cmd2",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "python",
+        "scripts/check_architecture.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "duration_ms": 186,
+      "log_path": "artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "log_sha256": "2226c9681a4c79b709bc100b7e3017d524c7549343fe446e6b9e6bb20aba2607",
+      "required": true,
+      "stdout_tail": [
+        "architecture-layers: scanned 10 module(s) across 7 layer(s); violations=0"
+      ]
+    },
+    {
+      "check_id": "P01-03-cmd1",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_03_migration_governance.py",
+        "tests/integration/test_p01_03_migration_governance.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "duration_ms": 28172,
+      "log_path": "artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "log_sha256": "d6cbf25615e8aee72920be803613162c5803d660f08759b764ff49ba3b4639d1",
+      "required": true,
+      "test_counts": {
+        "passed": 74
+      },
+      "stdout_tail": [
+        "    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))",
+        "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
+        "74 passed, 1 warning in 27.67s"
+      ]
+    },
+    {
+      "check_id": "P01-03-cmd2",
+      "argv": [
+        "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+        "run",
+        "python",
+        "scripts/check_architecture.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "duration_ms": 202,
+      "log_path": "artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "log_sha256": "dedbe655e913a15044e74e7296a92e98cc23d62f7932b844657189b7c3919a41",
+      "required": true,
+      "stdout_tail": [
+        "architecture-layers: scanned 10 module(s) across 7 layer(s); violations=0"
+      ]
+    }
+  ],
+  "acceptance_assertions": [
+    {
+      "id": "clean-install-imports",
+      "gate": "G01",
+      "description": "六个包在仓库外 cwd 下仍可导入，且解析到各自 workspace src 目录",
+      "passed": true,
+      "detail": "六个包在仓库外 cwd 下仍可导入，且解析到各自 workspace src 目录"
+    },
+    {
+      "id": "layer-boundaries",
+      "gate": "G01",
+      "description": "分层检查通过：层依赖方向正确、domain 无第三方导入",
+      "passed": true,
+      "detail": "分层检查通过：层依赖方向正确、domain 无第三方导入"
+    },
+    {
+      "id": "lock-reproducible",
+      "gate": "G01",
+      "description": "依赖锁可复现：uv.lock 与各成员清单一致，且 npm 锁未漂移",
+      "passed": true,
+      "detail": "依赖锁可复现：uv.lock 与各成员清单一致，且 npm 锁未漂移"
+    },
+    {
+      "id": "runner-fails-closed",
+      "gate": "G01",
+      "description": "non-zero commands must fail the gate",
+      "passed": true,
+      "detail": "probe exited 1 and was evaluated as failed; injected exit=1 with counts {'passed': 55, 'failed': 1} was also rejected"
+    },
+    {
+      "id": "legacy-demo-untouched",
+      "gate": "G01",
+      "description": "旧 demo 未被覆盖：登记文件指纹与 demo.zip 哈希仍与 P01-01 基线证据一致",
+      "passed": true,
+      "detail": "旧 demo 未被覆盖：登记文件指纹与 demo.zip 哈希仍与 P01-01 基线证据一致"
+    }
+  ],
+  "record_checks": [
+    {
+      "id": "previous-gate:G00",
+      "gate": "G01",
+      "description": "前序 Gate 证据有效",
+      "passed": true,
+      "detail": "schema=planner status=passed commands=1 inputs=25"
+    },
+    {
+      "id": "dsh-evidence:P01-01",
+      "gate": "G01",
+      "description": "每个阶段任务都提供 DSH 证据",
+      "passed": true,
+      "detail": "status=READY_FOR_ZCODE"
+    },
+    {
+      "id": "dsh-evidence:P01-02",
+      "gate": "G01",
+      "description": "每个阶段任务都提供 DSH 证据",
+      "passed": true,
+      "detail": "status=READY_FOR_ZCODE"
+    },
+    {
+      "id": "dsh-evidence:P01-03",
+      "gate": "G01",
+      "description": "每个阶段任务都提供 DSH 证据",
+      "passed": true,
+      "detail": "status=READY_FOR_ZCODE"
+    },
+    {
+      "id": "docs:docs/implementation/P01-01.md",
+      "gate": "G01",
+      "description": "任务文档与完成报告齐备",
+      "passed": true,
+      "detail": "present"
+    },
+    {
+      "id": "docs:docs/implementation/reports/P01-01.md",
+      "gate": "G01",
+      "description": "任务文档与完成报告齐备",
+      "passed": true,
+      "detail": "present"
+    },
+    {
+      "id": "docs:docs/implementation/P01-02.md",
+      "gate": "G01",
+      "description": "任务文档与完成报告齐备",
+      "passed": true,
+      "detail": "present"
+    },
+    {
+      "id": "docs:docs/implementation/reports/P01-02.md",
+      "gate": "G01",
+      "description": "任务文档与完成报告齐备",
+      "passed": true,
+      "detail": "present"
+    },
+    {
+      "id": "docs:docs/implementation/P01-03.md",
+      "gate": "G01",
+      "description": "任务文档与完成报告齐备",
+      "passed": true,
+      "detail": "present"
+    },
+    {
+      "id": "docs:docs/implementation/reports/P01-03.md",
+      "gate": "G01",
+      "description": "任务文档与完成报告齐备",
+      "passed": true,
+      "detail": "present"
+    },
+    {
+      "id": "zcode-precheck:P01-01",
+      "gate": "G01",
+      "description": "ZCode 预验收记录存在、绑定本任务必需输入且其冻结输入未漂移",
+      "passed": true,
+      "detail": "artifacts/handoffs/P01-01/zcode/precheck.json: Z_PRECHECK_PASSED with 54 fresh input hash(es)"
+    },
+    {
+      "id": "zcode-precheck:P01-02",
+      "gate": "G01",
+      "description": "ZCode 预验收记录存在、绑定本任务必需输入且其冻结输入未漂移",
+      "passed": true,
+      "detail": "artifacts/handoffs/P01-02/zcode/precheck.json: Z_PRECHECK_PASSED with 36 fresh input hash(es)"
+    },
+    {
+      "id": "zcode-precheck:P01-03",
+      "gate": "G01",
+      "description": "ZCode 预验收记录存在、绑定本任务必需输入且其冻结输入未漂移",
+      "passed": true,
+      "detail": "artifacts/handoffs/P01-03/zcode/precheck.json: Z_PRECHECK_PASSED with 33 fresh input hash(es)"
+    },
+    {
+      "id": "codex-review",
+      "gate": "G01",
+      "description": "Codex 阶段 review 存在、覆盖当前 revision、绑定可核验输入且输入哈希未漂移",
+      "passed": true,
+      "detail": "codex review is valid for the current revision"
+    }
+  ],
+  "failed_checks": [],
+  "acceptance_artifacts": [
+    {
+      "path": "uv.lock",
+      "sha256": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458"
+    },
+    {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4"
+    }
+  ],
+  "limitations": [
+    "This gate was executed by DSH scripts/gates.py; Codex still owns the final phase sign-off.",
+    "No database, solver, simulation, LLM or browser acceptance is in scope for this phase."
+  ],
+  "reviewer": "dsh-scripts/gates.py",
+  "runs": [
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:40:32.848165+00:00",
+      "code_revision": "content-sha256:0a43b547550a5e3768face12083e187f62b3f2246a198f7c0b7d5eecf988bcfa",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "dsh-evidence:P01-02",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-02.md",
+        "docs:docs/implementation/reports/P01-02.md",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:40:56.489234+00:00",
+      "code_revision": "content-sha256:0a43b547550a5e3768face12083e187f62b3f2246a198f7c0b7d5eecf988bcfa",
+      "failed_checks": [
+        "P01-03-cmd1",
+        "dsh-evidence:P01-02",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-02.md",
+        "docs:docs/implementation/reports/P01-02.md",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:46:59.067914+00:00",
+      "code_revision": "content-sha256:aeabe217dcaed5c21d245895734bbac3f9cfa3d3348b8a59b30c8ee5c1c38f83",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "clean-install-imports",
+        "layer-boundaries",
+        "lock-reproducible",
+        "legacy-demo-untouched",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:47:21.806427+00:00",
+      "code_revision": "content-sha256:aeabe217dcaed5c21d245895734bbac3f9cfa3d3348b8a59b30c8ee5c1c38f83",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:47:52.393307+00:00",
+      "code_revision": "content-sha256:aeabe217dcaed5c21d245895734bbac3f9cfa3d3348b8a59b30c8ee5c1c38f83",
+      "failed_checks": [
+        "P01-03-cmd1",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:49:32.484298+00:00",
+      "code_revision": "content-sha256:8065d30996a21410254743590523b5d457c411b460c6d5641fb2e775847a0439",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "clean-install-imports",
+        "layer-boundaries",
+        "lock-reproducible",
+        "legacy-demo-untouched",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:50:01.131028+00:00",
+      "code_revision": "content-sha256:8065d30996a21410254743590523b5d457c411b460c6d5641fb2e775847a0439",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:51:54.704749+00:00",
+      "code_revision": "content-sha256:d9cf65d3c478c4b064d47d903023e6e05afad066adf539a00b06e339e26fd249",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "clean-install-imports",
+        "layer-boundaries",
+        "lock-reproducible",
+        "legacy-demo-untouched",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:52:11.096482+00:00",
+      "code_revision": "content-sha256:d9cf65d3c478c4b064d47d903023e6e05afad066adf539a00b06e339e26fd249",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:52:36.244829+00:00",
+      "code_revision": "content-sha256:d9cf65d3c478c4b064d47d903023e6e05afad066adf539a00b06e339e26fd249",
+      "failed_checks": [
+        "P01-03-cmd1",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:55:37.151105+00:00",
+      "code_revision": "content-sha256:eb9c49a143ef6d35c6c612833690d9779a32b2bd2f6a1ca71bf872fb21a4e827",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "clean-install-imports",
+        "layer-boundaries",
+        "lock-reproducible",
+        "legacy-demo-untouched",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:55:53.428175+00:00",
+      "code_revision": "content-sha256:eb9c49a143ef6d35c6c612833690d9779a32b2bd2f6a1ca71bf872fb21a4e827",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:56:16.886167+00:00",
+      "code_revision": "content-sha256:eb9c49a143ef6d35c6c612833690d9779a32b2bd2f6a1ca71bf872fb21a4e827",
+      "failed_checks": [
+        "P01-03-cmd1",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:57:20.285227+00:00",
+      "code_revision": "content-sha256:48510f5aa5cbbad1be7512490073344e6fde887136be2978c36990c17d53f711",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "clean-install-imports",
+        "layer-boundaries",
+        "lock-reproducible",
+        "legacy-demo-untouched",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T06:57:37.173726+00:00",
+      "code_revision": "content-sha256:48510f5aa5cbbad1be7512490073344e6fde887136be2978c36990c17d53f711",
+      "failed_checks": [
+        "P01-01-cmd1",
+        "P01-01-cmd2",
+        "P01-01-cmd3",
+        "P01-02-cmd1",
+        "P01-02-cmd2",
+        "P01-03-cmd1",
+        "P01-03-cmd2",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T07:45:03.700398+00:00",
+      "code_revision": "content-sha256:d31ad2a19d1c2c52cdf9aca2efd50a94b15253ed7f37c4f503110eacc166635f",
+      "failed_checks": [
+        "P01-03-cmd1",
+        "dsh-evidence:P01-03",
+        "docs:docs/implementation/P01-03.md",
+        "docs:docs/implementation/reports/P01-03.md",
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-09-14T13:15:11.596614+00:00",
+      "code_revision": "content-sha256:ab054daf9c6c1373c6503f603805756ef3ef9c5a60400d07d8e938d6987e532b",
+      "failed_checks": [
+        "zcode-precheck:P01-01",
+        "zcode-precheck:P01-02",
+        "zcode-precheck:P01-03",
+        "codex-review"
+      ]
+    },
+    {
+      "status": "passed",
+      "finished_at": "2026-10-04T20:44:50.643501+00:00",
+      "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+      "failed_checks": []
+    },
+    {
+      "status": "passed",
+      "finished_at": "2026-10-05T03:43:22.176003+00:00",
+      "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8",
+      "failed_checks": []
+    },
+    {
+      "status": "failed",
+      "finished_at": "2026-10-05T09:05:01.794948+00:00",
+      "code_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+      "failed_checks": [
+        "P01-01-cmd1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3262 @@
+{
+  "decision_round": "N01-R01",
+  "decision_status": "READY_FOR_INDEPENDENT_REVIEW",
+  "contract_version": "2.0.0",
+  "plan_version": "1.0.3",
+  "previous_contract_version": "1.0.0",
+  "previous_plan_version": "1.0.2",
+  "kind": "normative design annex; not business Schema export",
+  "types": [
+    {
+      "name": "JobKind",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "OPTIMIZATION": "optimization",
+        "SIMULATION": "simulation",
+        "RESCHEDULE": "reschedule",
+        "EXPERIMENT": "experiment",
+        "METRIC": "metric"
+      },
+      "rules": []
+    },
+    {
+      "name": "JobStatus",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "QUEUED": "queued",
+        "RUNNING": "running",
+        "COMPLETED": "completed",
+        "FAILED": "failed",
+        "CANCELLED": "cancelled"
+      },
+      "rules": []
+    },
+    {
+      "name": "JobOptimizationMode",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "TRANSPORT": "transport",
+        "WAREHOUSE": "warehouse",
+        "JOINT": "joint"
+      },
+      "rules": []
+    },
+    {
+      "name": "ActorRole",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "VIEWER": "viewer",
+        "OPERATOR": "operator"
+      },
+      "rules": []
+    },
+    {
+      "name": "ResourceKind",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "ZONE": "zone",
+        "LOCATION": "location",
+        "DOCK": "dock",
+        "WORKER": "worker",
+        "EQUIPMENT": "equipment"
+      },
+      "rules": []
+    },
+    {
+      "name": "GenerationPolicy",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "CANONICAL_T1": "canonical_t1",
+        "CANONICAL_W1": "canonical_w1",
+        "CANONICAL_J1": "canonical_j1",
+        "CANONICAL_I1": "canonical_i1",
+        "CANONICAL_S1": "canonical_s1",
+        "CANONICAL_M1": "canonical_m1",
+        "GRID_A": "grid_a",
+        "GRID_B": "grid_b",
+        "GRID_C1": "grid_c1",
+        "GRID_C2": "grid_c2",
+        "GRID_C3": "grid_c3",
+        "GRID": "grid"
+      },
+      "rules": []
+    },
+    {
+      "name": "CargoCondition",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "INTACT": "intact",
+        "TEMPERATURE_EXCURSION": "temperature_excursion",
+        "DAMAGED": "damaged",
+        "MISSING": "missing"
+      },
+      "rules": []
+    },
+    {
+      "name": "ReturnPolicy",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "RETURN_TO_ORIGIN": "return_to_origin",
+        "QUARANTINE": "quarantine"
+      },
+      "rules": []
+    },
+    {
+      "name": "WeatherProfile",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "CLEAR": "clear",
+        "RAIN": "rain",
+        "SNOW": "snow",
+        "STORM": "storm"
+      },
+      "rules": []
+    },
+    {
+      "name": "CalendarInterval",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "kind": "record",
+      "fields": {
+        "start_s": "NonNegativeInt",
+        "end_s": "NonNegativeInt",
+        "available_units": "NonNegativeInt"
+      },
+      "rules": [
+        "calendar.interval"
+      ]
+    },
+    {
+      "name": "ResourceCalendar",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "kind": "record",
+      "fields": {
+        "epoch_utc": "UTC",
+        "intervals": "CalendarInterval[]",
+        "version": "NonNegativeInt"
+      },
+      "rules": [
+        "calendar.order",
+        "calendar.epoch"
+      ]
+    },
+    {
+      "name": "Rational",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "kind": "record",
+      "fields": {
+        "numerator": "PositiveInt",
+        "denominator": "PositiveInt"
+      },
+      "rules": [
+        "Lowest terms; ceil(duration*numerator/denominator), int64 overflow rejected."
+      ]
+    },
+    {
+      "name": "EntityRef",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "ArtifactRef",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "TimeWindow",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "Load",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/primitives.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "ErrorCode",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "EntityKind",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "ConstraintCode",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "Order",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/orders.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "OrderDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "Order",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "Cargo",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/orders.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "CargoDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "Cargo",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "Vehicle",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "VehicleDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "Vehicle",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "Driver",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "DriverDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "Driver",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "Warehouse",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "WarehouseDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "Warehouse",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "WarehouseZone",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "ZoneDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "WarehouseZone",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "StorageLocation",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "StorageLocationDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "StorageLocation",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "Dock",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "DockDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "Dock",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "Worker",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "WorkerDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "Worker",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "Equipment",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "EquipmentDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "Equipment",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "ZoneResource",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=zone",
+        "value": "WarehouseZone"
+      },
+      "rules": []
+    },
+    {
+      "name": "ZoneResourceDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=zone",
+        "value": "ZoneDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "LocationResource",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=location",
+        "value": "StorageLocation"
+      },
+      "rules": []
+    },
+    {
+      "name": "LocationResourceDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=location",
+        "value": "StorageLocationDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "DockResource",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=dock",
+        "value": "Dock"
+      },
+      "rules": []
+    },
+    {
+      "name": "DockResourceDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=dock",
+        "value": "DockDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "WorkerResource",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=worker",
+        "value": "Worker"
+      },
+      "rules": []
+    },
+    {
+      "name": "WorkerResourceDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=worker",
+        "value": "WorkerDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "EquipmentResource",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=equipment",
+        "value": "Equipment"
+      },
+      "rules": []
+    },
+    {
+      "name": "EquipmentResourceDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=equipment",
+        "value": "EquipmentDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "Resource",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "union",
+      "discriminator": "kind",
+      "variants": {
+        "zone": "ZoneResource",
+        "location": "LocationResource",
+        "dock": "DockResource",
+        "worker": "WorkerResource",
+        "equipment": "EquipmentResource"
+      },
+      "rules": []
+    },
+    {
+      "name": "ResourceDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "union",
+      "discriminator": "kind",
+      "variants": {
+        "zone": "ZoneResourceDTO",
+        "location": "LocationResourceDTO",
+        "dock": "DockResourceDTO",
+        "worker": "WorkerResourceDTO",
+        "equipment": "EquipmentResourceDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "CalendarIntervalDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "CalendarInterval",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "CalendarDTO",
+      "task": "P02-02",
+      "path": "packages/contracts/src/logistics_contracts/entities.py",
+      "kind": "mapped",
+      "base": "ResourceCalendar",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ],
+      "extra_fields": {
+        "schema_version": "=2.0.0"
+      }
+    },
+    {
+      "name": "ResourceCalendarBinding",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "record",
+      "fields": {
+        "resource_id": "UUID",
+        "source_calendar": "ResourceCalendar",
+        "source_hash": "Sha256",
+        "calendar": "ResourceCalendar"
+      },
+      "rules": [
+        "resource.calendar_binding"
+      ]
+    },
+    {
+      "name": "ResourceBundle",
+      "task": "P02-02",
+      "path": "packages/domain/src/logistics_domain/resources.py",
+      "kind": "record",
+      "fields": {
+        "warehouses": "Warehouse[]",
+        "zones": "WarehouseZone[]",
+        "locations": "StorageLocation[]",
+        "docks": "Dock[]",
+        "workers": "Worker[]",
+        "equipment": "Equipment[]",
+        "calendars": "ResourceCalendarBinding[]"
+      },
+      "rules": [
+        "resource.bundle"
+      ]
+    },
+    {
+      "name": "InventoryEntry",
+      "task": "P02-03",
+      "path": "packages/domain/src/logistics_domain/planning.py",
+      "kind": "record",
+      "fields": {
+        "cargo_id": "UUID",
+        "location_id": "UUID",
+        "quantity_units": "NonNegativeInt",
+        "weight_g": "NonNegativeInt",
+        "volume_cm3": "NonNegativeInt"
+      },
+      "rules": [
+        "Snapshot FK and sums derive Cargo per-unit amounts; no double counting initial stock/arrival."
+      ]
+    },
+    {
+      "name": "PlanningScope",
+      "task": "P02-03",
+      "path": "packages/domain/src/logistics_domain/planning.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#关键-schema未列的实体字段继承-domain_catalog",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "TransportTask",
+      "task": "P02-03",
+      "path": "packages/domain/src/logistics_domain/planning.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "WarehouseTask",
+      "task": "P02-03",
+      "path": "packages/domain/src/logistics_domain/planning.py",
+      "kind": "existing",
+      "source": "docs/architecture/DOMAIN_CATALOG.md#32-个必需实体",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "TravelMatrix",
+      "task": "P02-03",
+      "path": "packages/domain/src/logistics_domain/planning.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#关键-schema未列的实体字段继承-domain_catalog",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "ResourceRevision",
+      "task": "P02-03",
+      "path": "packages/domain/src/logistics_domain/planning.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#关键-schema未列的实体字段继承-domain_catalog",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "ObjectivePolicy",
+      "task": "P02-03",
+      "path": "packages/domain/src/logistics_domain/planning.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#关键-schema未列的实体字段继承-domain_catalog",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "SolveBudget",
+      "task": "P02-03",
+      "path": "packages/domain/src/logistics_domain/planning.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#关键-schema未列的实体字段继承-domain_catalog",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "PlanningSnapshot",
+      "task": "P02-03",
+      "path": "packages/domain/src/logistics_domain/planning.py",
+      "kind": "record",
+      "fields": {
+        "id": "UUID",
+        "scope": "PlanningScope",
+        "orders": "Order[]",
+        "cargo": "Cargo[]",
+        "vehicles": "Vehicle[]",
+        "drivers": "Driver[]",
+        "resources": "ResourceBundle",
+        "inventory": "InventoryEntry[]",
+        "revisions": "ResourceRevision[]",
+        "matrices": "TravelMatrix[]",
+        "hash": "Sha256"
+      },
+      "rules": [
+        "snapshot.integrity"
+      ]
+    },
+    {
+      "name": "AtNodeLocation",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=at_node",
+        "node_id": "UUID"
+      },
+      "rules": []
+    },
+    {
+      "name": "OnArcLocation",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=on_arc",
+        "from_node_id": "UUID",
+        "to_node_id": "UUID",
+        "departed_at_s": "NonNegativeInt",
+        "expected_arrival_s": "NonNegativeInt",
+        "progress_numerator": "NonNegativeInt",
+        "progress_denominator": "PositiveInt"
+      },
+      "rules": [
+        "execution.location"
+      ]
+    },
+    {
+      "name": "ExecutionLocation",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "union",
+      "discriminator": "kind",
+      "variants": {
+        "at_node": "AtNodeLocation",
+        "on_arc": "OnArcLocation"
+      },
+      "rules": []
+    },
+    {
+      "name": "ArcRef",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "from_node_id": "UUID",
+        "to_node_id": "UUID"
+      },
+      "rules": []
+    },
+    {
+      "name": "RegionRef",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "region_id": "UUID",
+        "node_ids": "UUID[]"
+      },
+      "rules": []
+    },
+    {
+      "name": "VehicleFailurePayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=vehicle_failure",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "vehicle_id": "UUID",
+        "location": "ExecutionLocation",
+        "unavailable_until_s": "NonNegativeInt?",
+        "cargo_condition": "CargoCondition"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "TransportDelayPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=transport_delay",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "transport_task_id": "UUID",
+        "additional_seconds": "PositiveInt"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "TrafficDisruptionPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=traffic_disruption",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "arc_refs": "ArcRef[]",
+        "closure": "bool",
+        "travel_multiplier": "Rational?",
+        "new_matrix_version": "PositiveInt"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "WeatherChangePayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=weather_change",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "region_ref": "RegionRef",
+        "profile": "WeatherProfile",
+        "travel_multiplier": "Rational",
+        "new_matrix_version": "PositiveInt"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "CargoAnomalyPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=cargo_anomaly",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "cargo_id": "UUID",
+        "condition": "CargoCondition",
+        "quantity_units": "PositiveInt",
+        "measured_temp_decic": "int?"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "OrderCancellationPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=order_cancellation",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "order_id": "UUID",
+        "disposition_policy": "ReturnPolicy"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "DemandIncreasePayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=demand_increase",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "order_id": "UUID",
+        "delta_quantity": "PositiveInt",
+        "delta_weight_g": "PositiveInt",
+        "delta_volume_cm3": "PositiveInt"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "DemandDecreasePayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=demand_decrease",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "order_id": "UUID",
+        "delta_quantity": "PositiveInt",
+        "delta_weight_g": "PositiveInt",
+        "delta_volume_cm3": "PositiveInt"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "EquipmentFailurePayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=equipment_failure",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "equipment_id": "UUID",
+        "unavailable_until_s": "NonNegativeInt?",
+        "remaining_capacity_units": "NonNegativeInt"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "WarehouseResourceUnavailablePayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=warehouse_resource_unavailable",
+        "entity_ref": "EntityRef",
+        "effective_at_s": "NonNegativeInt",
+        "reason": "SafeText",
+        "resource_ref": "EntityRef",
+        "unavailable_window": "TimeWindow",
+        "remaining_capacity_units": "NonNegativeInt"
+      },
+      "rules": [
+        "event.references",
+        "event.branch"
+      ]
+    },
+    {
+      "name": "EventPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/execution.py",
+      "kind": "union",
+      "discriminator": "kind",
+      "variants": {
+        "vehicle_failure": "VehicleFailurePayload",
+        "transport_delay": "TransportDelayPayload",
+        "traffic_disruption": "TrafficDisruptionPayload",
+        "weather_change": "WeatherChangePayload",
+        "cargo_anomaly": "CargoAnomalyPayload",
+        "order_cancellation": "OrderCancellationPayload",
+        "demand_increase": "DemandIncreasePayload",
+        "demand_decrease": "DemandDecreasePayload",
+        "equipment_failure": "EquipmentFailurePayload",
+        "warehouse_resource_unavailable": "WarehouseResourceUnavailablePayload"
+      },
+      "rules": []
+    },
+    {
+      "name": "ScenarioEventSpec",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "event_id": "UUID",
+        "payload": "EventPayload"
+      },
+      "rules": [
+        "event.id_and_time"
+      ]
+    },
+    {
+      "name": "ScenarioSize",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "orders": "NonNegativeInt",
+        "cargo": "NonNegativeInt",
+        "vehicles": "NonNegativeInt",
+        "drivers": "NonNegativeInt",
+        "warehouses": "NonNegativeInt",
+        "zones": "NonNegativeInt",
+        "storage_locations": "NonNegativeInt",
+        "docks": "NonNegativeInt",
+        "workers": "NonNegativeInt",
+        "equipment": "NonNegativeInt",
+        "transport_tasks": "NonNegativeInt",
+        "warehouse_tasks": "NonNegativeInt",
+        "inventory_entries": "NonNegativeInt",
+        "matrices": "NonNegativeInt"
+      },
+      "rules": [
+        "scenario.size"
+      ]
+    },
+    {
+      "name": "ScenarioRef",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "scenario_id": "UUID",
+        "dataset_version": "PositiveInt",
+        "schema_version": "=2.0.0",
+        "content_hash": "Sha256"
+      },
+      "rules": []
+    },
+    {
+      "name": "ScenarioSpec",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "id": "UUID",
+        "version": "PositiveInt",
+        "schema_version": "=2.0.0",
+        "generator_version": "VersionText",
+        "seed": "Seed",
+        "epoch_utc": "UTC",
+        "horizon_s": "Horizon",
+        "size": "ScenarioSize",
+        "generation_policy": "GenerationPolicy",
+        "event_specs": "ScenarioEventSpec[]"
+      },
+      "rules": [
+        "scenario.spec"
+      ]
+    },
+    {
+      "name": "ScenarioInput",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "snapshot": "PlanningSnapshot",
+        "transport_tasks": "TransportTask[]",
+        "warehouse_tasks": "WarehouseTask[]"
+      },
+      "rules": [
+        "scenario.input"
+      ]
+    },
+    {
+      "name": "ScenarioBundle",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "ref": "ScenarioRef",
+        "spec": "ScenarioSpec",
+        "input": "ScenarioInput",
+        "source": "=synthetic"
+      },
+      "rules": [
+        "scenario.binding",
+        "scenario.hash",
+        "scenario.isolation"
+      ]
+    },
+    {
+      "name": "ExpectedInteger",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=integer",
+        "measure": "ExpectationMeasure",
+        "value": "NonNegativeInt"
+      },
+      "rules": []
+    },
+    {
+      "name": "ExpectationMeasure",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "DISTANCE_M": "distance_m",
+        "COST_CENTS": "cost_cents",
+        "COMPLETION_S": "completion_s",
+        "MAKESPAN_S": "makespan_s",
+        "CHANGED_TASKS": "changed_tasks"
+      },
+      "rules": []
+    },
+    {
+      "name": "ExpectedViolation",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=violation",
+        "code": "ConstraintCode"
+      },
+      "rules": []
+    },
+    {
+      "name": "ExpectedTaskSet",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=task_set",
+        "task_ids": "UUID[]"
+      },
+      "rules": []
+    },
+    {
+      "name": "FixtureExpectation",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "union",
+      "discriminator": "kind",
+      "variants": {
+        "integer": "ExpectedInteger",
+        "violation": "ExpectedViolation",
+        "task_set": "ExpectedTaskSet"
+      },
+      "rules": []
+    },
+    {
+      "name": "FixtureExpectations",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "scenario_ref": "ScenarioRef",
+        "expectations": "FixtureExpectation[]"
+      },
+      "rules": [
+        "oracle.separate"
+      ]
+    },
+    {
+      "name": "ActorContext",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "actor_id": "UUID",
+        "role": "ActorRole",
+        "scope_id": "UUID"
+      },
+      "rules": [
+        "actor.trusted"
+      ]
+    },
+    {
+      "name": "RequestRef",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "request_id": "UUID",
+        "version": "PositiveInt",
+        "schema_version": "=2.0.0",
+        "hash": "Sha256",
+        "family": "JobKind"
+      },
+      "rules": [
+        "request.immutable"
+      ]
+    },
+    {
+      "name": "OptimizationJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "family": "=optimization",
+        "request_ref": "RequestRef",
+        "mode": "JobOptimizationMode"
+      },
+      "rules": [
+        "job.discriminant"
+      ]
+    },
+    {
+      "name": "SimulationJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "family": "=simulation",
+        "request_ref": "RequestRef"
+      },
+      "rules": [
+        "job.discriminant"
+      ]
+    },
+    {
+      "name": "RescheduleJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "family": "=reschedule",
+        "request_ref": "RequestRef"
+      },
+      "rules": [
+        "job.discriminant"
+      ]
+    },
+    {
+      "name": "ExperimentJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "family": "=experiment",
+        "request_ref": "RequestRef"
+      },
+      "rules": [
+        "job.discriminant"
+      ]
+    },
+    {
+      "name": "MetricJobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "family": "=metric",
+        "request_ref": "RequestRef"
+      },
+      "rules": [
+        "job.discriminant"
+      ]
+    },
+    {
+      "name": "JobPayload",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "union",
+      "discriminator": "family",
+      "variants": {
+        "optimization": "OptimizationJobPayload",
+        "simulation": "SimulationJobPayload",
+        "reschedule": "RescheduleJobPayload",
+        "experiment": "ExperimentJobPayload",
+        "metric": "MetricJobPayload"
+      },
+      "rules": []
+    },
+    {
+      "name": "JobCommand",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "kind": "JobKind",
+        "payload": "JobPayload",
+        "deadline_utc": "UTC"
+      },
+      "rules": [
+        "job.discriminant"
+      ]
+    },
+    {
+      "name": "JobRequest",
+      "task": "P02-04",
+      "path": "packages/contracts/src/logistics_contracts/runtime.py",
+      "kind": "mapped",
+      "base": "JobCommand",
+      "rules": [
+        "Exact field/constraint projection; no independent entity or enum definition."
+      ]
+    },
+    {
+      "name": "RequestMetadata",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "ref": "RequestRef",
+        "scope_id": "UUID",
+        "owner_actor_id": "UUID",
+        "optimization_mode": "JobOptimizationMode?",
+        "media_type": "=application/json"
+      },
+      "rules": [
+        "request.metadata"
+      ]
+    },
+    {
+      "name": "JobResultRef",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "result_id": "UUID",
+        "version": "PositiveInt",
+        "schema_version": "=2.0.0",
+        "hash": "Sha256",
+        "family": "JobKind"
+      },
+      "rules": []
+    },
+    {
+      "name": "JobFailure",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "code": "ErrorCode",
+        "safe_message": "SafeText",
+        "trace_id": "UUID",
+        "retryable": "bool",
+        "diagnostic_ref": "ArtifactRef?"
+      },
+      "rules": [
+        "error.redaction"
+      ]
+    },
+    {
+      "name": "Job",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "id": "UUID",
+        "created_at": "UTC",
+        "updated_at": "UTC",
+        "row_version": "NonNegativeInt",
+        "schema_version": "=2.0.0",
+        "created_by": "UUID",
+        "status": "JobStatus",
+        "kind": "JobKind",
+        "command": "JobCommand",
+        "request_hash": "Sha256",
+        "trace_id": "UUID",
+        "actor_id": "UUID",
+        "scope_id": "UUID",
+        "available_at": "UTC",
+        "deadline_utc": "UTC",
+        "attempt": "NonNegativeInt",
+        "max_attempts": "PositiveInt",
+        "cancel_requested": "bool",
+        "lease_owner": "UUID?",
+        "lease_epoch": "NonNegativeInt",
+        "lease_expires_at": "UTC?",
+        "started_at": "UTC?",
+        "finished_at": "UTC?",
+        "result_ref": "JobResultRef?",
+        "failure": "JobFailure?"
+      },
+      "rules": [
+        "job.lifecycle"
+      ]
+    },
+    {
+      "name": "JobAttempt",
+      "task": "P02-04",
+      "path": "packages/domain/src/logistics_domain/runtime.py",
+      "kind": "record",
+      "fields": {
+        "id": "UUID",
+        "created_at": "UTC",
+        "updated_at": "UTC",
+        "row_version": "NonNegativeInt",
+        "schema_version": "=2.0.0",
+        "created_by": "UUID",
+        "status": "=recorded",
+        "job_id": "UUID",
+        "attempt_no": "PositiveInt",
+        "lease_owner": "UUID",
+        "lease_epoch": "PositiveInt",
+        "started_at": "UTC",
+        "finished_at": "UTC",
+        "outcome": "AttemptOutcome",
+        "failure": "JobFailure?",
+        "result_ref": "JobResultRef?"
+      },
+      "rules": [
+        "job.attempt"
+      ]
+    },
+    {
+      "name": "AttemptOutcome",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "COMPLETED": "completed",
+        "FAILED": "failed",
+        "CANCELLED": "cancelled",
+        "LEASE_LOST": "lease_lost"
+      },
+      "rules": []
+    },
+    {
+      "name": "ErrorEnvelope",
+      "task": "P02-04",
+      "path": "packages/contracts/src/logistics_contracts/common.py",
+      "kind": "existing",
+      "source": "docs/architecture/DATA_CONTRACTS.md#公共类型与状态",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "JobRef",
+      "task": "P05-03",
+      "path": "packages/contracts/src/logistics_contracts/runtime.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "job_id": "UUID",
+        "status": "JobStatus",
+        "status_url": "str",
+        "result_url": "str",
+        "trace_id": "UUID"
+      },
+      "rules": [
+        "job.urls"
+      ]
+    },
+    {
+      "name": "JobView",
+      "task": "P05-03",
+      "path": "packages/contracts/src/logistics_contracts/runtime.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "job_id": "UUID",
+        "kind": "JobKind",
+        "status": "JobStatus",
+        "row_version": "NonNegativeInt",
+        "created_at": "UTC",
+        "started_at": "UTC?",
+        "finished_at": "UTC?",
+        "attempt": "NonNegativeInt",
+        "max_attempts": "PositiveInt",
+        "deadline_utc": "UTC",
+        "cancel_requested": "bool",
+        "result_ref": "JobResultRef?",
+        "error": "ErrorEnvelope?",
+        "trace_id": "UUID"
+      },
+      "rules": [
+        "job.view"
+      ]
+    },
+    {
+      "name": "CancelCommand",
+      "task": "P05-03",
+      "path": "packages/contracts/src/logistics_contracts/runtime.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "expected_revision": "NonNegativeInt",
+        "reason": "SafeText"
+      },
+      "rules": [
+        "job.cancel"
+      ]
+    },
+    {
+      "name": "LeaseToken",
+      "task": "P05-03",
+      "path": "apps/backend/src/logistics_backend/application/jobs.py",
+      "kind": "record",
+      "fields": {
+        "job_id": "UUID",
+        "owner_id": "UUID",
+        "epoch": "PositiveInt",
+        "expires_at": "UTC"
+      },
+      "rules": [
+        "lease.cas"
+      ]
+    },
+    {
+      "name": "Deadline",
+      "task": "P05-03",
+      "path": "apps/backend/src/logistics_backend/application/jobs.py",
+      "kind": "record",
+      "fields": {
+        "expires_at_utc": "UTC"
+      },
+      "rules": [
+        "deadline.minimum"
+      ]
+    },
+    {
+      "name": "WorkIdle",
+      "task": "P05-03",
+      "path": "apps/backend/src/logistics_backend/application/jobs.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=idle"
+      },
+      "rules": []
+    },
+    {
+      "name": "WorkTerminal",
+      "task": "P05-03",
+      "path": "apps/backend/src/logistics_backend/application/jobs.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=terminal",
+        "job_id": "UUID",
+        "attempt_no": "PositiveInt",
+        "lease_epoch": "PositiveInt",
+        "status": "TerminalJobStatus",
+        "result_ref": "JobResultRef?",
+        "failure": "JobFailure?"
+      },
+      "rules": [
+        "job.lifecycle"
+      ]
+    },
+    {
+      "name": "TerminalJobStatus",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "COMPLETED": "completed",
+        "FAILED": "failed",
+        "CANCELLED": "cancelled"
+      },
+      "rules": []
+    },
+    {
+      "name": "WorkRetryScheduled",
+      "task": "P05-03",
+      "path": "apps/backend/src/logistics_backend/application/jobs.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=retry_scheduled",
+        "job_id": "UUID",
+        "attempt_no": "PositiveInt",
+        "lease_epoch": "PositiveInt",
+        "next_available_at": "UTC",
+        "failure": "JobFailure"
+      },
+      "rules": [
+        "job.retry"
+      ]
+    },
+    {
+      "name": "WorkLeaseLost",
+      "task": "P05-03",
+      "path": "apps/backend/src/logistics_backend/application/jobs.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=lease_lost",
+        "job_id": "UUID",
+        "attempt_no": "PositiveInt",
+        "lease_epoch": "PositiveInt",
+        "failure": "JobFailure"
+      },
+      "rules": [
+        "lease.cas"
+      ]
+    },
+    {
+      "name": "WorkOutcome",
+      "task": "P05-03",
+      "path": "apps/backend/src/logistics_backend/application/jobs.py",
+      "kind": "union",
+      "discriminator": "kind",
+      "variants": {
+        "idle": "WorkIdle",
+        "terminal": "WorkTerminal",
+        "retry_scheduled": "WorkRetryScheduled",
+        "lease_lost": "WorkLeaseLost"
+      },
+      "rules": []
+    },
+    {
+      "name": "ImportCount",
+      "task": "P04-02",
+      "path": "apps/backend/src/logistics_backend/cli/seed.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "EntityKind",
+        "inserted": "NonNegativeInt",
+        "unchanged": "NonNegativeInt"
+      },
+      "rules": []
+    },
+    {
+      "name": "ImportStatus",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "IMPORTED": "imported",
+        "NO_CHANGE": "no_change",
+        "REJECTED": "rejected"
+      },
+      "rules": []
+    },
+    {
+      "name": "ImportReceipt",
+      "task": "P04-02",
+      "path": "apps/backend/src/logistics_backend/cli/seed.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "scenario_ref": "ScenarioRef",
+        "status": "ImportStatus",
+        "counts": "ImportCount[]",
+        "inserted": "NonNegativeInt",
+        "unchanged": "NonNegativeInt",
+        "error": "ErrorEnvelope?"
+      },
+      "rules": [
+        "import.atomic"
+      ]
+    },
+    {
+      "name": "SecretValue",
+      "task": "P05-01",
+      "path": "apps/backend/src/logistics_backend/bootstrap.py",
+      "kind": "existing",
+      "source": "docs/architecture/IMPLEMENTATION_CONVENTIONS.md#n01-r01-早期配置与http闭包",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "CredentialGrant",
+      "task": "P05-01",
+      "path": "apps/backend/src/logistics_backend/bootstrap.py",
+      "kind": "record",
+      "fields": {
+        "actor_id": "UUID",
+        "role": "ActorRole",
+        "token_sha256": "Sha256"
+      },
+      "rules": []
+    },
+    {
+      "name": "RuntimeMode",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "DEVELOPMENT": "development",
+        "TEST": "test",
+        "PRODUCTION": "production"
+      },
+      "rules": []
+    },
+    {
+      "name": "Settings",
+      "task": "P05-01",
+      "path": "apps/backend/src/logistics_backend/bootstrap.py",
+      "kind": "record",
+      "fields": {
+        "mode": "RuntimeMode",
+        "database_url": "SecretValue",
+        "scope_id": "UUID",
+        "credentials": "CredentialGrant[]",
+        "bind_host": "str",
+        "bind_port": "PositiveInt",
+        "max_body_bytes": "PositiveInt",
+        "request_timeout_s": "PositiveInt"
+      },
+      "rules": [
+        "settings.core"
+      ]
+    },
+    {
+      "name": "HealthResponse",
+      "task": "P05-01",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "status": "=alive"
+      },
+      "rules": []
+    },
+    {
+      "name": "ReadyStatus",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "READY": "ready",
+        "NOT_READY": "not_ready"
+      },
+      "rules": []
+    },
+    {
+      "name": "DependencyStatus",
+      "task": "P02-01",
+      "path": "packages/domain/src/logistics_domain/states.py",
+      "kind": "enum",
+      "members": {
+        "AVAILABLE": "available",
+        "UNAVAILABLE": "unavailable"
+      },
+      "rules": []
+    },
+    {
+      "name": "ReadinessResponse",
+      "task": "P05-01",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "status": "ReadyStatus",
+        "database": "DependencyStatus",
+        "trace_id": "UUID"
+      },
+      "rules": [
+        "health.actual"
+      ]
+    },
+    {
+      "name": "CargoCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "OrderCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "VehicleCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "DriverCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "WarehouseCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "ZoneCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "LocationCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "DockCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "WorkerCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "EquipmentCreate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "OrderUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "VehicleUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "DriverUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "WarehouseUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "ZoneUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "LocationUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "DockUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "WorkerUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "EquipmentUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "OrderUpdateBranch",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=order",
+        "entity_id": "UUID",
+        "changes": "OrderUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "VehicleUpdateBranch",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=vehicle",
+        "entity_id": "UUID",
+        "changes": "VehicleUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "DriverUpdateBranch",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=driver",
+        "entity_id": "UUID",
+        "changes": "DriverUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "WarehouseUpdateBranch",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=warehouse",
+        "entity_id": "UUID",
+        "changes": "WarehouseUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "ZoneUpdateBranch",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=zone",
+        "entity_id": "UUID",
+        "changes": "ZoneUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "LocationUpdateBranch",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=location",
+        "entity_id": "UUID",
+        "changes": "LocationUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "DockUpdateBranch",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=dock",
+        "entity_id": "UUID",
+        "changes": "DockUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "WorkerUpdateBranch",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=worker",
+        "entity_id": "UUID",
+        "changes": "WorkerUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "EquipmentUpdateBranch",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=equipment",
+        "entity_id": "UUID",
+        "changes": "EquipmentUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "MasterDataUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "union",
+      "discriminator": "entity_kind",
+      "variants": {
+        "order": "OrderUpdateBranch",
+        "vehicle": "VehicleUpdateBranch",
+        "driver": "DriverUpdateBranch",
+        "warehouse": "WarehouseUpdateBranch",
+        "zone": "ZoneUpdateBranch",
+        "location": "LocationUpdateBranch",
+        "dock": "DockUpdateBranch",
+        "worker": "WorkerUpdateBranch",
+        "equipment": "EquipmentUpdateBranch"
+      },
+      "rules": []
+    },
+    {
+      "name": "ZoneResourceUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=zone",
+        "changes": "ZoneUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "LocationResourceUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=location",
+        "changes": "LocationUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "DockResourceUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=dock",
+        "changes": "DockUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "WorkerResourceUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=worker",
+        "changes": "WorkerUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "EquipmentResourceUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "kind": "=equipment",
+        "changes": "EquipmentUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "ResourceUpdate",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "union",
+      "discriminator": "kind",
+      "variants": {
+        "zone": "ZoneResourceUpdate",
+        "location": "LocationResourceUpdate",
+        "dock": "DockResourceUpdate",
+        "worker": "WorkerResourceUpdate",
+        "equipment": "EquipmentResourceUpdate"
+      },
+      "rules": []
+    },
+    {
+      "name": "OrderMasterView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=order",
+        "value": "OrderDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "VehicleMasterView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=vehicle",
+        "value": "VehicleDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "DriverMasterView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=driver",
+        "value": "DriverDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "WarehouseMasterView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=warehouse",
+        "value": "WarehouseDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "ZoneMasterView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=zone",
+        "value": "ZoneDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "LocationMasterView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=location",
+        "value": "StorageLocationDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "DockMasterView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=dock",
+        "value": "DockDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "WorkerMasterView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=worker",
+        "value": "WorkerDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "EquipmentMasterView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "entity_kind": "=equipment",
+        "value": "EquipmentDTO"
+      },
+      "rules": []
+    },
+    {
+      "name": "MasterDataView",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "union",
+      "discriminator": "entity_kind",
+      "variants": {
+        "order": "OrderMasterView",
+        "vehicle": "VehicleMasterView",
+        "driver": "DriverMasterView",
+        "warehouse": "WarehouseMasterView",
+        "zone": "ZoneMasterView",
+        "location": "LocationMasterView",
+        "dock": "DockMasterView",
+        "worker": "WorkerMasterView",
+        "equipment": "EquipmentMasterView"
+      },
+      "rules": []
+    },
+    {
+      "name": "PageQuery",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "cursor": "str?",
+        "limit": "PositiveInt"
+      },
+      "rules": [
+        "page.limit"
+      ]
+    },
+    {
+      "name": "OrderFilter",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "OrderPage",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "items": "OrderDTO[]",
+        "next_cursor": "str?",
+        "has_more": "bool"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    },
+    {
+      "name": "VehicleFilter",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "VehiclePage",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "items": "VehicleDTO[]",
+        "next_cursor": "str?",
+        "has_more": "bool"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    },
+    {
+      "name": "DriverQuery",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "DriverPage",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "items": "DriverDTO[]",
+        "next_cursor": "str?",
+        "has_more": "bool"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    },
+    {
+      "name": "WarehouseFilter",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "WarehousePage",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "items": "WarehouseDTO[]",
+        "next_cursor": "str?",
+        "has_more": "bool"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    },
+    {
+      "name": "ZoneQuery",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "ZonePage",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "items": "ZoneDTO[]",
+        "next_cursor": "str?",
+        "has_more": "bool"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    },
+    {
+      "name": "LocationQuery",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "LocationPage",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "items": "StorageLocationDTO[]",
+        "next_cursor": "str?",
+        "has_more": "bool"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    },
+    {
+      "name": "DockQuery",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "DockPage",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "items": "DockDTO[]",
+        "next_cursor": "str?",
+        "has_more": "bool"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    },
+    {
+      "name": "WorkerQuery",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "WorkerPage",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "items": "WorkerDTO[]",
+        "next_cursor": "str?",
+        "has_more": "bool"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    },
+    {
+      "name": "EquipmentQuery",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "existing",
+      "source": "docs/api/API_CONTRACT.md#n01-r01-主数据具名投影",
+      "rules": [
+        "Inherited current named contract; scheduled implementation, not an implemented class."
+      ]
+    },
+    {
+      "name": "EquipmentPage",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "schema_version": "=2.0.0",
+        "items": "EquipmentDTO[]",
+        "next_cursor": "str?",
+        "has_more": "bool"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    },
+    {
+      "name": "PagePosition",
+      "task": "P05-02",
+      "path": "packages/contracts/src/logistics_contracts/http.py",
+      "kind": "record",
+      "fields": {
+        "version": "=1",
+        "scope_id": "UUID",
+        "entity_kind": "EntityKind",
+        "filter_hash": "Sha256",
+        "after_created_at": "UTC",
+        "after_id": "UUID"
+      },
+      "rules": [
+        "page.cursor"
+      ]
+    }
+  ],
+  "module_dependencies": {
+    "packages/domain/src/logistics_domain/primitives.py": [],
+    "packages/domain/src/logistics_domain/states.py": [],
+    "packages/domain/src/logistics_domain/orders.py": [
+      "packages/domain/src/logistics_domain/primitives.py",
+      "packages/domain/src/logistics_domain/states.py"
+    ],
+    "packages/domain/src/logistics_domain/resources.py": [
+      "packages/domain/src/logistics_domain/primitives.py",
+      "packages/domain/src/logistics_domain/states.py"
+    ],
+    "packages/domain/src/logistics_domain/planning.py": [
+      "packages/domain/src/logistics_domain/primitives.py",
+      "packages/domain/src/logistics_domain/states.py",
+      "packages/domain/src/logistics_domain/orders.py",
+      "packages/domain/src/logistics_domain/resources.py"
+    ],
+    "packages/domain/src/logistics_domain/execution.py": [
+      "packages/domain/src/logistics_domain/primitives.py",
+      "packages/domain/src/logistics_domain/states.py",
+      "packages/domain/src/logistics_domain/planning.py",
+      "packages/domain/src/logistics_domain/resources.py"
+    ],
+    "packages/domain/src/logistics_domain/runtime.py": [
+      "packages/domain/src/logistics_domain/primitives.py",
+      "packages/domain/src/logistics_domain/states.py",
+      "packages/domain/src/logistics_domain/planning.py",
+      "packages/domain/src/logistics_domain/resources.py",
+      "packages/domain/src/logistics_domain/execution.py"
+    ],
+    "packages/contracts/src/logistics_contracts/entities.py": [
+      "packages/domain/src/logistics_domain/orders.py",
+      "packages/domain/src/logistics_domain/resources.py",
+      "packages/domain/src/logistics_domain/primitives.py",
+      "packages/domain/src/logistics_domain/states.py"
+    ],
+    "packages/contracts/src/logistics_contracts/common.py": [
+      "packages/domain/src/logistics_domain/primitives.py",
+      "packages/domain/src/logistics_domain/states.py"
+    ],
+    "packages/contracts/src/logistics_contracts/runtime.py": [
+      "packages/domain/src/logistics_domain/runtime.py",
+      "packages/domain/src/logistics_domain/execution.py",
+      "packages/domain/src/logistics_domain/states.py",
+      "packages/contracts/src/logistics_contracts/common.py"
+    ],
+    "packages/contracts/src/logistics_contracts/http.py": [
+      "packages/contracts/src/logistics_contracts/entities.py",
+      "packages/contracts/src/logistics_contracts/runtime.py",
+      "packages/contracts/src/logistics_contracts/common.py",
+      "packages/domain/src/logistics_domain/states.py",
+      "packages/domain/src/logistics_domain/runtime.py"
+    ],
+    "apps/backend/src/logistics_backend/bootstrap.py": [
+      "packages/domain/src/logistics_domain/runtime.py",
+      "packages/domain/src/logistics_domain/states.py"
+    ],
+    "apps/backend/src/logistics_backend/cli/seed.py": [
+      "packages/domain/src/logistics_domain/runtime.py",
+      "packages/contracts/src/logistics_contracts/common.py",
+      "packages/domain/src/logistics_domain/states.py"
+    ],
+    "apps/backend/src/logistics_backend/application/jobs.py": [
+      "packages/domain/src/logistics_domain/runtime.py",
+      "packages/domain/src/logistics_domain/states.py",
+      "packages/contracts/src/logistics_contracts/runtime.py"
+    ]
+  },
+  "job_kind_mapping": {
+    "optimization": "OptimizationJobPayload",
+    "simulation": "SimulationJobPayload",
+    "reschedule": "RescheduleJobPayload",
+    "experiment": "ExperimentJobPayload",
+    "metric": "MetricJobPayload"
+  },
+  "master_projections": [
+    {
+      "name": "CargoCreate",
+      "base": "Cargo",
+      "selected_fields": [
+        "cargo_type",
+        "quantity_units",
+        "weight_g",
+        "volume_cm3",
+        "min_temp_decic",
+        "max_temp_decic",
+        "max_exposure_s",
+        "batch_ref"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "OrderCreate",
+      "base": "Order",
+      "selected_fields": [
+        "external_ref",
+        "pickup_node_id",
+        "delivery_node_id",
+        "pickup_window",
+        "delivery_window",
+        "service_s",
+        "soft_due_at_s",
+        "must_serve",
+        "priority"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {
+        "cargo": "CargoCreate[]"
+      },
+      "path_fields": [],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "VehicleCreate",
+      "base": "Vehicle",
+      "selected_fields": [
+        "code",
+        "capacity_weight_g",
+        "capacity_volume_cm3",
+        "setpoint_decic",
+        "allowed_cargo_types",
+        "start_node_id",
+        "end_node_id",
+        "calendar",
+        "driver_id",
+        "fixed_cost_cents",
+        "rate_cents_per_km"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "DriverCreate",
+      "base": "Driver",
+      "selected_fields": [
+        "code",
+        "qualifications",
+        "shift",
+        "max_drive_s",
+        "max_work_s"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "WarehouseCreate",
+      "base": "Warehouse",
+      "selected_fields": [
+        "code",
+        "name",
+        "node_id",
+        "timezone",
+        "calendar"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "ZoneCreate",
+      "base": "WarehouseZone",
+      "selected_fields": [
+        "code",
+        "setpoint_decic",
+        "capacity_weight_g",
+        "capacity_volume_cm3",
+        "allowed_cargo_types"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {},
+      "path_fields": [
+        "warehouse_id"
+      ],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "LocationCreate",
+      "base": "StorageLocation",
+      "selected_fields": [
+        "zone_id",
+        "code",
+        "capacity_weight_g",
+        "capacity_volume_cm3",
+        "calendar"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "DockCreate",
+      "base": "Dock",
+      "selected_fields": [
+        "code",
+        "supported_operations",
+        "allowed_zone_ids",
+        "calendar"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {},
+      "path_fields": [
+        "warehouse_id"
+      ],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "WorkerCreate",
+      "base": "Worker",
+      "selected_fields": [
+        "skills",
+        "allowed_zone_ids",
+        "calendar",
+        "pool_id"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {},
+      "path_fields": [
+        "warehouse_id"
+      ],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "EquipmentCreate",
+      "base": "Equipment",
+      "selected_fields": [
+        "kind",
+        "quantity_capacity",
+        "allowed_zone_ids",
+        "calendar"
+      ],
+      "mode": "create",
+      "additional_typed_fields": {},
+      "path_fields": [
+        "warehouse_id"
+      ],
+      "nullable_fields": [
+        "soft_due_at_s",
+        "driver_id",
+        "pool_id"
+      ],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "OrderUpdate",
+      "base": "Order",
+      "selected_fields": [
+        "external_ref",
+        "pickup_node_id",
+        "delivery_node_id",
+        "pickup_window",
+        "delivery_window",
+        "service_s",
+        "soft_due_at_s",
+        "must_serve",
+        "priority"
+      ],
+      "mode": "patch",
+      "at_least_one": true,
+      "missing": "unchanged",
+      "null": "only original nullable field",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "VehicleUpdate",
+      "base": "Vehicle",
+      "selected_fields": [
+        "code",
+        "capacity_weight_g",
+        "capacity_volume_cm3",
+        "setpoint_decic",
+        "allowed_cargo_types",
+        "start_node_id",
+        "end_node_id",
+        "calendar",
+        "driver_id",
+        "fixed_cost_cents",
+        "rate_cents_per_km"
+      ],
+      "mode": "patch",
+      "at_least_one": true,
+      "missing": "unchanged",
+      "null": "only original nullable field",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "DriverUpdate",
+      "base": "Driver",
+      "selected_fields": [
+        "code",
+        "qualifications",
+        "shift",
+        "max_drive_s",
+        "max_work_s"
+      ],
+      "mode": "patch",
+      "at_least_one": true,
+      "missing": "unchanged",
+      "null": "only original nullable field",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "WarehouseUpdate",
+      "base": "Warehouse",
+      "selected_fields": [
+        "code",
+        "name",
+        "node_id",
+        "timezone",
+        "calendar"
+      ],
+      "mode": "patch",
+      "at_least_one": true,
+      "missing": "unchanged",
+      "null": "only original nullable field",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "ZoneUpdate",
+      "base": "WarehouseZone",
+      "selected_fields": [
+        "code",
+        "setpoint_decic",
+        "capacity_weight_g",
+        "capacity_volume_cm3",
+        "allowed_cargo_types"
+      ],
+      "mode": "patch",
+      "at_least_one": true,
+      "missing": "unchanged",
+      "null": "only original nullable field",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "LocationUpdate",
+      "base": "StorageLocation",
+      "selected_fields": [
+        "code",
+        "capacity_weight_g",
+        "capacity_volume_cm3"
+      ],
+      "mode": "patch",
+      "at_least_one": true,
+      "missing": "unchanged",
+      "null": "only original nullable field",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "DockUpdate",
+      "base": "Dock",
+      "selected_fields": [
+        "code",
+        "supported_operations",
+        "allowed_zone_ids"
+      ],
+      "mode": "patch",
+      "at_least_one": true,
+      "missing": "unchanged",
+      "null": "only original nullable field",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "WorkerUpdate",
+      "base": "Worker",
+      "selected_fields": [
+        "skills",
+        "allowed_zone_ids",
+        "pool_id"
+      ],
+      "mode": "patch",
+      "at_least_one": true,
+      "missing": "unchanged",
+      "null": "only original nullable field",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    },
+    {
+      "name": "EquipmentUpdate",
+      "base": "Equipment",
+      "selected_fields": [
+        "kind",
+        "quantity_capacity",
+        "allowed_zone_ids"
+      ],
+      "mode": "patch",
+      "at_least_one": true,
+      "missing": "unchanged",
+      "null": "only original nullable field",
+      "additional_typed_fields": {},
+      "path_fields": [],
+      "server_common_fields": [
+        "id",
+        "status",
+        "created_at",
+        "updated_at",
+        "row_version",
+        "created_by"
+      ]
+    }
+  ],
+  "master_queries": [
+    {
+      "name": "OrderFilter",
+      "entity_dto": "OrderDTO",
+      "inherits": "PageQuery",
+      "optional_exact_filter_fields": [
+        "status",
+        "external_ref"
+      ],
+      "matching": "exact",
+      "path_scope": "warehouse route scope remains authoritative"
+    },
+    {
+      "name": "VehicleFilter",
+      "entity_dto": "VehicleDTO",
+      "inherits": "PageQuery",
+      "optional_exact_filter_fields": [
+        "status",
+        "code",
+        "driver_id"
+      ],
+      "matching": "exact",
+      "path_scope": "warehouse route scope remains authoritative"
+    },
+    {
+      "name": "DriverQuery",
+      "entity_dto": "DriverDTO",
+      "inherits": "PageQuery",
+      "optional_exact_filter_fields": [
+        "status",
+        "code"
+      ],
+      "matching": "exact",
+      "path_scope": "warehouse route scope remains authoritative"
+    },
+    {
+      "name": "WarehouseFilter",
+      "entity_dto": "WarehouseDTO",
+      "inherits": "PageQuery",
+      "optional_exact_filter_fields": [
+        "status",
+        "code"
+      ],
+      "matching": "exact",
+      "path_scope": "warehouse route scope remains authoritative"
+    },
+    {
+      "name": "ZoneQuery",
+      "entity_dto": "ZoneDTO",
+      "inherits": "PageQuery",
+      "optional_exact_filter_fields": [
+        "status",
+        "code"
+      ],
+      "matching": "exact",
+      "path_scope": "warehouse route scope remains authoritative"
+    },
+    {
+      "name": "LocationQuery",
+      "entity_dto": "StorageLocationDTO",
+      "inherits": "PageQuery",
+      "optional_exact_filter_fields": [
+        "status",
+        "code",
+        "zone_id"
+      ],
+      "matching": "exact",
+      "path_scope": "warehouse route scope remains authoritative"
+    },
+    {
+      "name": "DockQuery",
+      "entity_dto": "DockDTO",
+      "inherits": "PageQuery",
+      "optional_exact_filter_fields": [
+        "status",
+        "code"
+      ],
+      "matching": "exact",
+      "path_scope": "warehouse route scope remains authoritative"
+    },
+    {
+      "name": "WorkerQuery",
+      "entity_dto": "WorkerDTO",
+      "inherits": "PageQuery",
+      "optional_exact_filter_fields": [
+        "status",
+        "pool_id"
+      ],
+      "matching": "exact",
+      "path_scope": "warehouse route scope remains authoritative"
+    },
+    {
+      "name": "EquipmentQuery",
+      "entity_dto": "EquipmentDTO",
+      "inherits": "PageQuery",
+      "optional_exact_filter_fields": [
+        "status",
+        "kind"
+      ],
+      "matching": "exact",
+      "path_scope": "warehouse route scope remains authoritative"
+    }
+  ],
+  "hash_rules": {
+    "request": "sha256 of immutable saved canonical JSON UTF8 bytes; never normalize on read to hide changed bytes",
+    "scenario": "sha256 canonical JSON {schema_version,scenario_id,dataset_version,spec,input,source}; excludes only ref.content_hash and separate expectations",
+    "canonical": "UTF8/no BOM/sorted keys/compact separators/allow_nan=false; duplicate keys rejected; UUID lowercase; UTC seconds Z; null explicit; arrays retain frozen order"
+  },
+  "source_evidence": [
+    "docs/handoffs/N02/codex.md",
+    "artifacts/handoffs/N02/codex/findings.json",
+    "docs/architecture/DATA_CONTRACTS.md",
+    "docs/architecture/DOMAIN_CATALOG.md",
+    "docs/api/API_CONTRACT.md",
+    "docs/plan/TEST_FIXTURES.md"
+  ],
+  "limitations": [
+    "Design only; no domain classes, DB or generated business Schema/OpenAPI/TS implemented.",
+    "Independent N02 must judge all freeze blockers; no Gate signature by implementer."
+  ]
+}

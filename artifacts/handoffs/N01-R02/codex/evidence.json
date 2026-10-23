@@ -1,0 +1,539 @@
+{
+  "schema_version": "N01-R02-handoff-1",
+  "task_id": "N01-R02",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "author": "Codex N01-R02 /root",
+  "sealed_at": "2026-10-04T14:17:51.912907+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "git_present": false,
+  "model_override": null,
+  "versions": {
+    "plan": "1.0.3",
+    "business_contract": "2.0.0",
+    "official_gate_evidence": "1.0.0"
+  },
+  "addressed_finding": "N02-R01-F02-C01",
+  "implementation_complete": true,
+  "independent_review": "NOT_RUN; next N02-R02",
+  "code_revision": "content-sha256:d1c94436a020158a0573d290443c7c6799711da6564b1609a294fb332d8b7f63",
+  "dirty_tree_hash": "content-sha256:1f46a24cc017ed209fc3c049239de9be1cea7053992e4d49469af98c6addeed0",
+  "previous_code_revision": "content-sha256:adbd8a1ccfa59e8b803acfbb8beb6e23d8fbdad28a51ededbb5862ee0c79ee98",
+  "candidate_manifest_path": "artifacts/handoffs/N01-R02/codex/candidate-after.json",
+  "changed_existing_files": [
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "before_sha256": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+      "after_sha256": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+      "before_bytes": 69687,
+      "after_bytes": 79824
+    },
+    {
+      "path": "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "before_sha256": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+      "after_sha256": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+      "before_bytes": 38568,
+      "after_bytes": 40830
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-decisions.json",
+      "before_sha256": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+      "after_sha256": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+      "before_bytes": 94064,
+      "after_bytes": 109715
+    },
+    {
+      "path": "contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+      "before_sha256": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+      "after_sha256": "9bf3e3c00513cb04ad5549b2344d12cae553914a49935135bcffaba60cba8ab8",
+      "before_bytes": 3047,
+      "after_bytes": 5382
+    },
+    {
+      "path": "tools/ai_coding_plan/validate_plan.py",
+      "before_sha256": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+      "after_sha256": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+      "before_bytes": 48040,
+      "after_bytes": 65385
+    }
+  ],
+  "protected_file_count": 3786,
+  "protected_changes": [],
+  "input_artifact_hashes": {
+    "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+    "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+    "contracts/changes/N01-R01-contract-freeze-2.0.0.md": "9bf3e3c00513cb04ad5549b2344d12cae553914a49935135bcffaba60cba8ab8",
+    "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+    "AGENTS.md": "863b17896eb5da257d5fe3f5dbec8fad88ba3f4e3e183f77de5984c682ec95a2",
+    "AI-CODING-PLAN.md": "4df46b9be2e59a6bd0842d5a7158c0b54dda3d2f9ab28ad3203640768b0b617b",
+    "OWNERSHIP.json": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8",
+    "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+    "docs/plan/PHASE_GATES.md": "91ed08079d56ea3e0b131a5abd0e49d743da9dac444260c1a917d0feee891a05",
+    "docs/architecture/DOMAIN_CATALOG.md": "d378f6b6a9682be34a859b6d46ee9ee902f06142bb21a07193ab75fd46bfdd35",
+    "scripts/gates.py": "658378b60d03a4b5d928891de2c1374ec97ddf14f85a6dc19caa47dfa915eb2e",
+    "docs/handoffs/N02-R01/codex.md": "1c7088ce69c7a5be78bbec6c0ce5e33e115b0d398979a529daa494ac8ae3e489",
+    "artifacts/handoffs/N02-R01/codex/blocker.json": "ad5d946c306bcc894ce859a22f39324aa34b1232597d7326deeb06bc07d81e33",
+    "artifacts/handoffs/N02-R01/codex/closure-probe.json": "2c5f0c2d7e17375e9e9c84f3bdd958d2c7ef150290090cc2c1608989ebf06741",
+    "docs/handoffs/N01-R01/codex.md": "e967798512107c7f4b39f8ed90f3c2a53ed23181443db131a5a0e04afd295405",
+    "artifacts/handoffs/N01-R01/codex/evidence.json": "f2072bea318d11b37568cf97e48e172071b6918cab8391b40d6946e71d5c990a",
+    "docs/architecture/CONTRACT_FREEZE.json": "8c2813398b276c90fa99517776629532b02cc0c0ef0b66905e3d6e2349da84c2",
+    "docs/architecture/CONTRACT_FREEZE.md": "a668d3dc53f8fcffb26ab242be8403559a7b17f8d989f23606750f948bc87272",
+    "artifacts/gates/G00.json": "cb1245e255f438e62ee3fb33a21317f65cdc91d13f7edc7d92236ffc22339a1c",
+    "tmp/N01-R02/scope-before.json": "c2318084aab658689467c22f60cf24458f2eef99005d088dd34abbb775ad8299",
+    "tmp/N01-R02/audit_final.py": "7536949a4a148d46a6531ddc507e609fab64ff95612bf28d5a84bd966598fa0a",
+    "tmp/N01-R02/deliver.py": "5f547636d7e0b3ed9783195b04456d4d94480ec92ab31483ee18cf96d0003fcc",
+    "tmp/N01-R02/seal_check.py": "a11fc80af2f407a5a5f4a29a8b0c77db929a20784cead1bd057f996905f6938c"
+  },
+  "commands": [
+    {
+      "descriptor": "artifacts/handoffs/N01-R02/codex/examples/contract-check-attempt01-command.json",
+      "descriptor_sha256": "e74212369dd974da63e83d7824c694163055d840c962610816a9514ec2df2cde",
+      "actual_argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tmp/N01-R02/examples/verify_design_examples.py",
+        "attempt01"
+      ],
+      "actual_cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:00:50.316780+00:00",
+      "finished_at": "2026-10-04T14:00:53.160067+00:00",
+      "exit_code": 0,
+      "original_log_path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-attempt01.log",
+      "durable_log_path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-attempt01.log",
+      "log_sha256": "afd95e6f27d00ea6c80241041085cfe6570f118b34d3b851f73ab53c1432119b",
+      "recorded_inputs": {
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "tmp/N01-R02/scope-before.json": "c2318084aab658689467c22f60cf24458f2eef99005d088dd34abbb775ad8299",
+        "tmp/N01-R01/verify_contracts.py": "bf93287d4d68e2a05d7cdb3f482da6d196787e6fe3ce980097a907c4eedbfa42",
+        "tmp/N01-R02/examples/verify_design_examples.py": "596f6977f952acb218e430786cc0f866034672ff97bb3f6d891e1a3b5fb4e118",
+        "tmp/N01-R02/examples/event_reference_examples.py": "fab928af04142838439bdce20256955cdefa84c1b100811cb84a128a39640a58",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "tools/ai_coding_plan/render_plan.py": "049699b81267c49c2794a5c3ef71aee5c8fbe202df79cfd100565ffc2fb5249b"
+      },
+      "current_input_matches": {
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "tmp/N01-R02/scope-before.json": true,
+        "tmp/N01-R01/verify_contracts.py": true,
+        "tmp/N01-R02/examples/verify_design_examples.py": true,
+        "tmp/N01-R02/examples/event_reference_examples.py": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "tools/ai_coding_plan/render_plan.py": true
+      },
+      "historical": false
+    },
+    {
+      "descriptor": "artifacts/handoffs/N01-R02/codex/examples/contract-check-final01-command.json",
+      "descriptor_sha256": "23b83be750ab6f504d8714bbedb3649b9b06c9f5aa6210d9de395a99a479cf47",
+      "actual_argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tmp/N01-R02/examples/verify_design_examples.py",
+        "final01"
+      ],
+      "actual_cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:01:58.771648+00:00",
+      "finished_at": "2026-10-04T14:02:01.700368+00:00",
+      "exit_code": 0,
+      "original_log_path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-final01.log",
+      "durable_log_path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-final01.log",
+      "log_sha256": "da533b48ca41f9003d107e48f8eaa60f53d035e4cce5dddfe90db8cfcd9a60e2",
+      "recorded_inputs": {
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8",
+        "tmp/N01-R02/scope-before.json": "c2318084aab658689467c22f60cf24458f2eef99005d088dd34abbb775ad8299",
+        "tmp/N01-R01/verify_contracts.py": "bf93287d4d68e2a05d7cdb3f482da6d196787e6fe3ce980097a907c4eedbfa42",
+        "tmp/N01-R02/examples/verify_design_examples.py": "596f6977f952acb218e430786cc0f866034672ff97bb3f6d891e1a3b5fb4e118",
+        "tmp/N01-R02/examples/event_reference_examples.py": "fab928af04142838439bdce20256955cdefa84c1b100811cb84a128a39640a58",
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "tools/ai_coding_plan/render_plan.py": "049699b81267c49c2794a5c3ef71aee5c8fbe202df79cfd100565ffc2fb5249b"
+      },
+      "current_input_matches": {
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "docs/plan/TASK_MANIFEST.json": true,
+        "tmp/N01-R02/scope-before.json": true,
+        "tmp/N01-R01/verify_contracts.py": true,
+        "tmp/N01-R02/examples/verify_design_examples.py": true,
+        "tmp/N01-R02/examples/event_reference_examples.py": true,
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "tools/ai_coding_plan/render_plan.py": true
+      },
+      "historical": false
+    },
+    {
+      "descriptor": "artifacts/handoffs/N01-R02/codex/final-audit-command.json",
+      "descriptor_sha256": "b8d046544839d189ae469dfd0fdcd39ee5571641477bfc8c1525db789f5af5a4",
+      "actual_argv": [
+        "python",
+        "-B",
+        "tmp/N01-R02/audit_final.py"
+      ],
+      "actual_cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:13:00.042597+00:00",
+      "finished_at": "2026-10-04T14:13:01.534963+00:00",
+      "exit_code": 0,
+      "original_log_path": "artifacts/handoffs/N01-R02/codex/final-audit.log",
+      "durable_log_path": "artifacts/handoffs/N01-R02/codex/final-audit.log",
+      "log_sha256": "d16e589704dfee20c9c7bfc766a23ffe5271c58c8c3856a3bdb1ad552c6ed16b",
+      "recorded_inputs": {},
+      "current_input_matches": {},
+      "historical": false
+    },
+    {
+      "descriptor": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-01-command.json",
+      "descriptor_sha256": "73beb510675b9f43204a31ce629617c1939d66cec64d67d536373a61fab60789",
+      "actual_argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "actual_cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T13:59:26.074535+00:00",
+      "finished_at": "2026-10-04T13:59:26.875367+00:00",
+      "exit_code": 1,
+      "original_log_path": "tmp/N01-R02/validator/plan-validation-01.log",
+      "durable_log_path": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-01.log",
+      "log_sha256": "86d38482bc2d2e0f96974bbc0116f859f22c344eef61851ef0bcdb337f08a071",
+      "recorded_inputs": {
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "contracts/changes/N01-R01-contract-decisions.json": "72e923cdd35fd2a6784002ac16a07e053c7e4605959da976d6e6c4b2b0b183c5",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "ccd58ffb8f61c00e1d6afdde9bc31a6c67e99db1166bb458d9adf881f666805a",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8"
+      },
+      "current_input_matches": {
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "contracts/changes/N01-R01-contract-decisions.json": false,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": false,
+        "docs/plan/TASK_MANIFEST.json": true
+      },
+      "historical": true
+    },
+    {
+      "descriptor": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-02-command.json",
+      "descriptor_sha256": "f0d8a9493e513c7989e2af075a3dfbac361bd5e6cdfa056de8cc90fc51adbe10",
+      "actual_argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "actual_cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T14:01:29.854908+00:00",
+      "finished_at": "2026-10-04T14:01:30.641052+00:00",
+      "exit_code": 0,
+      "original_log_path": "tmp/N01-R02/validator/plan-validation-02.log",
+      "durable_log_path": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-02.log",
+      "log_sha256": "2e8da1ef32acbe18bb8aac40f8f907fa54debea4108faac70b57b2d409151fff",
+      "recorded_inputs": {
+        "tools/ai_coding_plan/validate_plan.py": "57fa21805c4342784f34677e09d1e14bde178caf46f20c6df42502af5e31da44",
+        "contracts/changes/N01-R01-contract-decisions.json": "e9286aeaea6cdf553d76ee9d708a1c58aaf3d5363b28fc6582eab12e2f34836b",
+        "docs/architecture/DATA_CONTRACTS.md": "d200a3eb4a8add32ee5d962cbbbb24a247d4812434777b9f25d9cd3f25389e79",
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": "50653525a99785f299dc32caba4444c847ab1bb30c0fec26c761dcf4d78ba3a4",
+        "docs/plan/TASK_MANIFEST.json": "b7033186581448ae40867d5cfec058a149b75e48617f6555d1653005ed9297b8"
+      },
+      "current_input_matches": {
+        "tools/ai_coding_plan/validate_plan.py": true,
+        "contracts/changes/N01-R01-contract-decisions.json": true,
+        "docs/architecture/DATA_CONTRACTS.md": true,
+        "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md": true,
+        "docs/plan/TASK_MANIFEST.json": true
+      },
+      "historical": false
+    },
+    {
+      "descriptor": "artifacts/handoffs/N01-R02/codex/validator/self-tests-01-command.json",
+      "descriptor_sha256": "d054e93209f01148dd1e75487adab7ba6b2258fdd1ca29d8b01b9c7c6f9ed8f1",
+      "actual_argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-c",
+        "import json,sys; from tools.ai_coding_plan.validate_plan import run_self_tests; ok,count=run_self_tests(); print(json.dumps({'self_tests_ok':ok,'count':count})); sys.exit(0 if ok else 1)"
+      ],
+      "actual_cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "started_at": "2026-10-04T13:57:00.165667+00:00",
+      "finished_at": "2026-10-04T13:57:00.359546+00:00",
+      "exit_code": 0,
+      "original_log_path": "tmp/N01-R02/validator/self-tests-01.log",
+      "durable_log_path": "artifacts/handoffs/N01-R02/codex/validator/self-tests-01.log",
+      "log_sha256": "90fa652e4edc280b8aaae1a38c7e602821bbd37abcc6c55a53c171b01304eff8",
+      "recorded_inputs": {},
+      "current_input_matches": {},
+      "historical": true
+    }
+  ],
+  "validations": {
+    "planning_self_tests": 73,
+    "original_tests_unchanged": 43,
+    "design_checks": 268,
+    "inherited_design_checks": 95,
+    "new_design_checks": 173,
+    "new_positive": 81,
+    "new_negative": 92,
+    "generated_outputs_reproduced": 114,
+    "explicit_enum_members": 45,
+    "event_mappings": 10,
+    "type_count": 196,
+    "final_bound_commands_exit_zero": true,
+    "record_g00_unchanged": true
+  },
+  "G00_valid": false,
+  "N03_may_start": false,
+  "P02_started": false,
+  "official_records_written": [],
+  "record_g00_run": false,
+  "next_executor": "Independent Codex N02-R02",
+  "migration": "Complete the unaccepted 2.0.0 candidate; no release compatibility or guessed legacy conversion claim; invalidate affected earlier evidence",
+  "limitations": [
+    "Executable design examples only, no business classes or HTTP/DB acceptance.",
+    "Existing source leaf fields reused; full inherited schema behavior requires real G02 exports/tests.",
+    "resolve examples check reference metadata and failure ordering only; no real capability parser/worker was run.",
+    "Inherited parse-only adapters still do not enforce CalendarDTO overlap, RegionRef nonempty nodes, OnArc temporal order, or complete Scenario FK/calendar binding integrity; N02-R01 limitations are retained.",
+    "New event-reference predicates validate the normative mapping against a fixed design fact snapshot; they are not domain classes, ingest services, DB/solver/SimPy acceptance, or live revalidation of old audit references.",
+    "Inherited entity adapters verify named field structure and selected primitive constraints; CargoType/Skill/Qualification and full inherited entity state machines remain outside this bounded design harness."
+  ],
+  "output_manifest": [
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/audit-summary.json",
+      "sha256": "157e718feb5616a3c9637c1938f1f554a00ef2e3d2a11e8bce84e72ee23a3dc4",
+      "bytes": 1757
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/before/contracts/changes/N01-R01-contract-decisions.json",
+      "sha256": "21a2c7cd33cd72521674efac1de9c78ce2aeda46878df37dfa05901772572818",
+      "bytes": 94064
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/before/contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+      "sha256": "1436247008b1f7c6951fef96c4aff965891ce2fd82b98378994ec510028218c1",
+      "bytes": 3047
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/before/docs/architecture/DATA_CONTRACTS.md",
+      "sha256": "2e3ee81a03a093c69fd10763643eceb1d501f22222a5798e0bd94409e1dc7c1a",
+      "bytes": 69687
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/before/docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+      "sha256": "4344f1b7d49fd928d313320bcb8f58648ba9b4cdb9b0fd64dd1988bcecccb09d",
+      "bytes": 38568
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/before/tools/ai_coding_plan/validate_plan.py",
+      "sha256": "7954ea08500b36d5e722c6540da8ab04b48594f7858e118c88ebcaee53e4d082",
+      "bytes": 48040
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/candidate-after.json",
+      "sha256": "52f0ead6a059eb1b078a0cbf5f48b37dcfabe765728fb3ce8bdde61821e6ba94",
+      "bytes": 14400
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/candidate-before.json",
+      "sha256": "d12f8a5b894edb7f48b792d9fa327d697e56b3c4d33a69fda3490df4e3122928",
+      "bytes": 13693
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/enum-and-event-tables.md",
+      "sha256": "4a52576c4863654054427f28eba60c32ca6f2d3e95b2f0093762e4ca71a40656",
+      "bytes": 5216
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-attempt01-command.json",
+      "sha256": "e74212369dd974da63e83d7824c694163055d840c962610816a9514ec2df2cde",
+      "bytes": 1804
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-attempt01.log",
+      "sha256": "afd95e6f27d00ea6c80241041085cfe6570f118b34d3b851f73ab53c1432119b",
+      "bytes": 30410
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-final01-command.json",
+      "sha256": "23b83be750ab6f504d8714bbedb3649b9b06c9f5aa6210d9de395a99a479cf47",
+      "bytes": 1796
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/contract-check-final01.log",
+      "sha256": "da533b48ca41f9003d107e48f8eaa60f53d035e4cce5dddfe90db8cfcd9a60e2",
+      "bytes": 30410
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/contract-examples-attempt01.json",
+      "sha256": "ec1a1e6342683cde56f2fb93e6e933f91d3a8dc46589e9dd845424349934a81d",
+      "bytes": 163023
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/contract-examples-final01.json",
+      "sha256": "158d4812fb1e6a2282ffd71b4853bcd49afe3b076d14575c648a02c8232fdca8",
+      "bytes": 163023
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/contract-validation-attempt01.json",
+      "sha256": "24a9c8c41cfef631e242f408273f3413068ed504740e67ddd0c55a5642650cd7",
+      "bytes": 39428
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/contract-validation-final01.json",
+      "sha256": "7d10aeacf74f951ef77e07eae02a49e95bc16bdb462bb7cf497fc3021743af65",
+      "bytes": 39428
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/inherited-harness-copy.diff",
+      "sha256": "c3f43eaa9795f02feaeb408decb5fdbeb4e9d8b623900776333b1e0ec2754a6f",
+      "bytes": 7877
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/inherited-harness-source.json",
+      "sha256": "2066f9a1a81c1393b6ec05d9f5e3eba72f538ef81d21bef49d59b31351b05cbf",
+      "bytes": 424
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/examples/subtask-note.md",
+      "sha256": "ba39ad1c0677202e60c678997fb165ea2d15aebdc8c3cf1ccd13f63c50530948",
+      "bytes": 3102
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/final-audit-command.json",
+      "sha256": "b8d046544839d189ae469dfd0fdcd39ee5571641477bfc8c1525db789f5af5a4",
+      "bytes": 533
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/final-audit.log",
+      "sha256": "d16e589704dfee20c9c7bfc766a23ffe5271c58c8c3856a3bdb1ad552c6ed16b",
+      "bytes": 1563
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/governance-diff.json",
+      "sha256": "ddcade328e57fc4b2cf13b745db0c1ebf4d9dd8da002e5b79505016d6ea189ed",
+      "bytes": 2627
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/governance-diff.patch",
+      "sha256": "176385a2334ddc5abd61610e473ca66fd4bab156dd0c01a79349551477b21840",
+      "bytes": 70912
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/legacy-freeze-g00-state.json",
+      "sha256": "e2e73134cd84bf0c0807efed66b1679155f7be02fd0cb4754e73db9cf3f812dd",
+      "bytes": 1184
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/normative-decision.json",
+      "sha256": "4c323c3a492fc184d7c66a76ca76bf33e2bae79a951726636f3e6be80e885ab8",
+      "bytes": 14039
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/preserved-copies.json",
+      "sha256": "b2f101985094cea669f679f57538414bbc4379a847d7e8d03da60ae8c954fdec",
+      "bytes": 5694
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/protected-file-audit.json",
+      "sha256": "409bb627ba2009e59dd3d19f58daefa58172b677420fb5f589f4093ba07873df",
+      "bytes": 1041
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/reproduction/audit_final.py",
+      "sha256": "7536949a4a148d46a6531ddc507e609fab64ff95612bf28d5a84bd966598fa0a",
+      "bytes": 13226
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/reproduction/capture.py",
+      "sha256": "cb77a68b0091f9bcfc9a4cf3cff8d6c761cfd70a51c338e91f87d2083419149b",
+      "bytes": 1382
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/reproduction/deliver.py",
+      "sha256": "5f547636d7e0b3ed9783195b04456d4d94480ec92ab31483ee18cf96d0003fcc",
+      "bytes": 16450
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/reproduction/examples/capture_examples.py",
+      "sha256": "19b9a7513478cbed08da2b4dddc030c8731232b1738ecb6011b6c389e60044ac",
+      "bytes": 2767
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/reproduction/examples/event_reference_examples.py",
+      "sha256": "fab928af04142838439bdce20256955cdefa84c1b100811cb84a128a39640a58",
+      "bytes": 25540
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/reproduction/examples/prepare_copy.py",
+      "sha256": "ab5fdcac123f76d099a758b30c21c5d0263bb3942bbec5e4f036b91bcc0b6005",
+      "bytes": 5341
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/reproduction/examples/verify_design_examples.py",
+      "sha256": "596f6977f952acb218e430786cc0f866034672ff97bb3f6d891e1a3b5fb4e118",
+      "bytes": 30442
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/reproduction/seal_check.py",
+      "sha256": "a11fc80af2f407a5a5f4a29a8b0c77db929a20784cead1bd057f996905f6938c",
+      "bytes": 3566
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/scope-before.json",
+      "sha256": "c2318084aab658689467c22f60cf24458f2eef99005d088dd34abbb775ad8299",
+      "bytes": 581648
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/validator/ast-protection-final.json",
+      "sha256": "266e5224e360e3989e4ff76e769068790c0979ed7b5ebecd3784b651fa1ce948",
+      "bytes": 6520
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/validator/ast-protection.json",
+      "sha256": "1f103a24919922a0790934f8998a6e01714adcf5b108e85f31b85472be1a7c53",
+      "bytes": 6520
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-01-command.json",
+      "sha256": "73beb510675b9f43204a31ce629617c1939d66cec64d67d536373a61fab60789",
+      "bytes": 1167
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-01.log",
+      "sha256": "86d38482bc2d2e0f96974bbc0116f859f22c344eef61851ef0bcdb337f08a071",
+      "bytes": 8761
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-02-command.json",
+      "sha256": "f0d8a9493e513c7989e2af075a3dfbac361bd5e6cdfa056de8cc90fc51adbe10",
+      "bytes": 1167
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/validator/plan-validation-02.log",
+      "sha256": "2e8da1ef32acbe18bb8aac40f8f907fa54debea4108faac70b57b2d409151fff",
+      "bytes": 8643
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/validator/self-tests-01-command.json",
+      "sha256": "d054e93209f01148dd1e75487adab7ba6b2258fdd1ca29d8b01b9c7c6f9ed8f1",
+      "bytes": 669
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/validator/self-tests-01.log",
+      "sha256": "90fa652e4edc280b8aaae1a38c7e602821bbd37abcc6c55a53c171b01304eff8",
+      "bytes": 10040
+    },
+    {
+      "path": "artifacts/handoffs/N01-R02/codex/validator/validator-diff.patch",
+      "sha256": "f68e630a2f4858978aac01dd4375eb1b21483a8a0376214ba949425f664d3d4e",
+      "bytes": 23585
+    },
+    {
+      "path": "docs/handoffs/N01-R02/codex.md",
+      "sha256": "a45ade0e6115ae6f95e81943b5755563cb4259c0aaed01e145a238171e7a3d37",
+      "bytes": 13819
+    }
+  ],
+  "output_count": 47,
+  "manifest_exclusions": [
+    "evidence.json (self)",
+    "delivery-seal.log (post-seal verification)",
+    "delivery-seal-command.json (post-seal verification)"
+  ]
+}

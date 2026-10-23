@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\tmp\N02-R02\final_scope.py", line 45, in <module>
+    assert demopaths==inventorypaths,(len(demopaths),len(inventorypaths),sorted(demopaths^inventorypaths))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (171, 173, ['demo/.venv/pyvenv.cfg', 'demo/frontend/node_modules/.package-lock.json'])

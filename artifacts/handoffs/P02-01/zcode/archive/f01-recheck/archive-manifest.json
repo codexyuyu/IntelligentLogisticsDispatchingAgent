@@ -1,0 +1,52 @@
+[
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/logs/2026-10-05/01-candidate-g00-audit.log",
+  "sha256": "67c3a054649092e458d895b218bde4fd3258733b4b1c3eaa16c028074126fd63",
+  "bytes": 2505
+ },
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/logs/2026-10-05/02-g01-previous-gate-check.log",
+  "sha256": "6a068a6aa37123dca03ddb7d08331f650da0a70c9bc3cc40a4e85a947f82d4e5",
+  "bytes": 34
+ },
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/logs/2026-10-05/10-p02-01-cmd1-pytest.log",
+  "sha256": "187674e129c56a1887a052d12d107be9600d743b0b96cb4b7aedbb3d473cb2df",
+  "bytes": 101
+ },
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/logs/2026-10-05/11-p02-01-collect-only.log",
+  "sha256": "14a3c1491e82d779e3bb3b9f04b6d40f2ef0cf121c45023e19dad29118ed5853",
+  "bytes": 4782
+ },
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/logs/2026-10-05/12-p02-01-cmd2-check-architecture.log",
+  "sha256": "73a1da398b76900242048f63728fedaeb9a0c9b68ff49de067fd4b22c2e60894",
+  "bytes": 75
+ },
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/logs/2026-10-05/20-business-probes-run1-history.log",
+  "sha256": "1e8e499a8f6d9eb7423329e6e5d77f2bb3b049621c38721541e0c10a27fd8ea6",
+  "bytes": 11450
+ },
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/logs/2026-10-05/21-business-probes-run2-authoritative.log",
+  "sha256": "bfded0538bb1bc7bcb3b44cd0ed5d31d2a9e8f5f2cd6eabb5a033c459d4063d1",
+  "bytes": 13345
+ },
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/logs/2026-10-05/30-post-probe-no-self-perturbation-audit.log",
+  "sha256": "67c3a054649092e458d895b218bde4fd3258733b4b1c3eaa16c028074126fd63",
+  "bytes": 2505
+ },
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/precheck.json",
+  "sha256": "e517feec33e50cc56f4627bc1c74ccb698b8fb288090aeee40f1ed32d0e32394",
+  "bytes": 14714
+ },
+ {
+  "path": "artifacts/handoffs/P02-01/zcode/archive/f01-recheck/zcode.md",
+  "sha256": "b1b937352027e86a143f963c4e78e1470ef7f00d4fe04446352707613d71a865",
+  "bytes": 6080
+ }
+]

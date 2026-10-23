@@ -1,0 +1,336 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "P01-03",
+  "round": "n03-2026-10-04",
+  "scene": "migration-governance-refresh",
+  "title": "建立新路径所有权及旧契约转换验收入口",
+  "phase_gate": "G01",
+  "status": "READY_FOR_ZCODE",
+  "role": "dsh",
+  "owner": "A",
+  "signs_gate": false,
+  "next_executor": "ZCode N04 independent pre-acceptance (does not sign G01)",
+  "generated_at": "2026-10-04T16:01:57.403301+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "contract_versions": {
+    "plan": "1.0.3",
+    "business": "2.0.0",
+    "gate_evidence_schema": "1.0.0",
+    "handoff_contract": "docs/workflow/HANDOFF_CONTRACT.md v1.0.0"
+  },
+  "candidate": {
+    "vcs": "no .git in this checkout; identity is the content-sha256 candidate manifest",
+    "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+    "formula": "content-sha256: + sha256(\"\\n\".join(path + \"\\0\" + sha256(file_bytes)))",
+    "dirty_tree_formula": "content-sha256: + sha256(\"\\n\".join(path + \"\\0\" + size + \"\\0\" + sha256(file_bytes)))",
+    "relevant_file_count": 77,
+    "code_revision": "content-sha256:23930f7ae4218778ecbfb33367210f821fb53a1e9d39a2dd195cf2b4f0616c4c",
+    "dirty_tree_hash": "content-sha256:89f1fe4cd1ec0fb04445390586e26534b2a73f71d4f47ebfde3c78626a1957e3",
+    "recomputed_by": "tmp/N03/candidate/candidate-identity.py via GateRunner.relevant_manifest_rows() of scripts/gates.py",
+    "recomputation_log": "tmp/N03/candidate/candidate-identity.log",
+    "stable_across_this_round": true
+  },
+  "dependency_evidence": {
+    "G00": {
+      "path": "artifacts/gates/G00.json",
+      "sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4",
+      "log_path": "artifacts/gates/G00-checks.log",
+      "log_sha256": "55e1ad48e648674703ffa0eaa0082757fc31e8c9f5c1c1662d48a5b70dc34488",
+      "status": "passed",
+      "finished_at": "2026-10-04T14:48:59.955285+00:00",
+      "reviewer": "Codex N02-R02 /root/n02_r02_independent (independent reviewer; not N01 implementer)",
+      "code_revision": "content-sha256:5cee2f258fc7d49e3a1fb18209236782cc99fcc91544ec5d05cebd70bed54114",
+      "recorded_input_count": 25,
+      "inputs_fresh": true,
+      "independent_check": "tmp/N03/precondition/g00-drift-audit.py -> 25/25 inputs fresh, log hash fresh, exit 0",
+      "log": "tmp/N03/precondition/g00-drift-audit-after-n02r02.log"
+    },
+    "G01": {
+      "path": "artifacts/gates/G01.json",
+      "sha256": "4383ccac45dddcb465410ce4f4e2d0db7828d340e4d61ed49f87249d3f75c4d4",
+      "status": "failed",
+      "note": "historical phase record, NOT signed; this round neither wrote nor signed it"
+    }
+  },
+  "partition_contributions": [
+    {
+      "partition_id": "P01-03/impl",
+      "author": "DSH (A scope) implementation session",
+      "role": "main implementer (main writer) of this task",
+      "files": [
+        "OWNERSHIP.json",
+        "contracts/changes/README.md",
+        "docs/architecture/LEGACY_ADAPTATION.md",
+        "docs/implementation/P01-03.md",
+        "docs/implementation/reports/P01-03.md",
+        "scripts/check_ownership.py",
+        "tests/integration/test_p01_03_migration_governance.py",
+        "tests/unit/test_p01_03_migration_governance.py"
+      ],
+      "note": "implementation bytes are unchanged in this round; the original round artifacts are preserved under archive-prior-rounds/2026-10-04-pre-n03/"
+    },
+    {
+      "partition_id": "P01-03/round-n03-2026-10-04",
+      "author": "DSH-A (N03 integrator, this session)",
+      "role": "handoff + evidence refresh only",
+      "files": [
+        "docs/handoffs/P01-03/dsh.md",
+        "artifacts/handoffs/P01-03/dsh/evidence.json",
+        "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/",
+        "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/"
+      ],
+      "note": "no source, test, lock, ownership, contract or planning change was made in this round"
+    },
+    {
+      "partition_id": "OWNERSHIP/AGENTS.md",
+      "author": "Codex governance session (2026-10-01/03)",
+      "role": "governance fix outside Phase 01 task scopes",
+      "files": [
+        "OWNERSHIP.json"
+      ],
+      "note": "the explicit AGENTS.md -> A rule is a Codex governance change, NOT a DSH implementation deliverable"
+    },
+    {
+      "partition_id": "DEF-N03-01",
+      "author": "orchestration/Codex session (2026-10-04)",
+      "role": "removed two out-of-scope agent-memory files from the repository root",
+      "files": [
+        ".workbuddy/memory/2026-10-04.md (removed)",
+        ".workbuddy-ai/memory/2026-10-04.md (removed)"
+      ],
+      "note": "archived at tmp/orchestration/archive/DEF-N03-01/archive-evidence.json; OWNERSHIP.json, the checker and the test assertions were NOT changed"
+    },
+    {
+      "partition_id": "N02-R02/G00",
+      "author": "Codex N02-R02 independent reviewer (2026-10-04)",
+      "role": "restored the official G00 on the current inputs",
+      "files": [
+        "artifacts/gates/G00.json",
+        "artifacts/gates/G00-checks.log",
+        "docs/architecture/CONTRACT_FREEZE.json",
+        "docs/architecture/CONTRACT_FREEZE.md"
+      ],
+      "note": "prerequisite evidence for this round; not produced by DSH"
+    },
+    {
+      "partition_id": "tmp/orchestration/workbuddy-ai",
+      "author": "WorkBuddy-AI auxiliary session (2026-10-04, still writing at evidence time)",
+      "role": "auxiliary dependency-reuse probe under its own tmp partition",
+      "files": [
+        "tmp/orchestration/workbuddy-ai/reuse/.probe/*.json"
+      ],
+      "note": "legitimate under the parallel-dispatch rules, but its live rewrites make P01-03's whole-repository immutability assertion red while it runs; see DEF-N03-02"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "OWNERSHIP.json",
+      "exists": true,
+      "bytes": 3238,
+      "sha256": "782d695aab3f90082e75ff06339a9ba9aa40dbf5658e4be0d3183ad85ec402c8"
+    },
+    {
+      "path": "contracts/changes/README.md",
+      "exists": true,
+      "bytes": 3281,
+      "sha256": "2a695d21ffaf8681d4e7c8903c98a8beb6af8fff9340bfcff13cb5ee672e85c5"
+    },
+    {
+      "path": "docs/architecture/LEGACY_ADAPTATION.md",
+      "exists": true,
+      "bytes": 11786,
+      "sha256": "adfd5345fd6c7ecf63b39bb04fb437fdf6a4ca34a4162855dfc4b7f14cfbd214"
+    },
+    {
+      "path": "docs/implementation/P01-03.md",
+      "exists": true,
+      "bytes": 11670,
+      "sha256": "7b2bdfd3fc884a4784a608b54c95491ff57796d215f2df415621288d28ddc943"
+    },
+    {
+      "path": "docs/implementation/reports/P01-03.md",
+      "exists": true,
+      "bytes": 14618,
+      "sha256": "e701639756cb8abbe662bf5c1d015f801f4e44eca0ba7ef3732909ca767b7282"
+    },
+    {
+      "path": "scripts/check_ownership.py",
+      "exists": true,
+      "bytes": 20870,
+      "sha256": "63bf2bf43263b2f8251c4e5d09b771f8b4c948a94592bccdbc3f5b121c02fa5a"
+    },
+    {
+      "path": "tests/integration/test_p01_03_migration_governance.py",
+      "exists": true,
+      "bytes": 12149,
+      "sha256": "d534312ba79d96fdcb547ee9c231df2c1d839a97fc983f6546457040aada2120"
+    },
+    {
+      "path": "tests/unit/test_p01_03_migration_governance.py",
+      "exists": true,
+      "bytes": 21776,
+      "sha256": "10a12609375d0d22409fea4fb321e10e7a21287016f2dfbe2c0cd4bab2a968fb"
+    }
+  ],
+  "command_logs": {
+    "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/p01-03-cmd1-pytest.log": {
+      "sha256": "567d82396f10257c43be4803e4948fb51ec6496680e2a4eadde226840f1a9418",
+      "bytes": 850
+    },
+    "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/p01-03-cmd2-check-architecture.log": {
+      "sha256": "e660c7e6e67806186fdf98441a6e137a387ae5548a415e336509254863d5006a",
+      "bytes": 669
+    },
+    "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt1.log": {
+      "sha256": "2a2151a9bade2f9f55f8baad9f9ccc19c664d588f9b1dc67119169e8170608d2",
+      "bytes": 4076
+    },
+    "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt2.log": {
+      "sha256": "4ba550f6c0eecb74b3128f775fda7d1f8f0419c8d6b55f4e8d52c78aad7898ba",
+      "bytes": 4183
+    }
+  },
+  "commands_executed": [
+    {
+      "id": "cmd1-pytest",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit/test_p01_03_migration_governance.py",
+        "tests/integration/test_p01_03_migration_governance.py",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0 with real passing tests",
+      "observed": {
+        "passed": 74,
+        "failed": 0
+      },
+      "log_path": "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/p01-03-cmd1-pytest.log",
+      "log_sha256": "567d82396f10257c43be4803e4948fb51ec6496680e2a4eadde226840f1a9418",
+      "exit_code_and_counts_read_from_log": true
+    },
+    {
+      "id": "cmd2-check-architecture",
+      "argv": [
+        "uv",
+        "run",
+        "python",
+        "scripts/check_architecture.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "expectation": "exit 0; layer violations = 0",
+      "observed": {
+        "violations": 0
+      },
+      "log_path": "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/p01-03-cmd2-check-architecture.log",
+      "log_sha256": "e660c7e6e67806186fdf98441a6e137a387ae5548a415e336509254863d5006a",
+      "exit_code_and_counts_read_from_log": true
+    }
+  ],
+  "supplementary_commands": [
+    {
+      "id": "phase01-full-regression-attempt1",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "expectation": "exit 0; phase-wide regression for the frozen candidate",
+      "observed": {
+        "passed": 225,
+        "failed": 1
+      },
+      "log_path": "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt1.log",
+      "log_sha256": "2a2151a9bade2f9f55f8baad9f9ccc19c664d588f9b1dc67119169e8170608d2",
+      "exit_code_and_counts_read_from_log": true,
+      "note": "The phase-wide regression is RED for as long as the concurrent WorkBuddy-AI session keeps appending to tmp/orchestration/workbuddy-ai/reuse/.probe/sqlalchemy.json. tests/integration/test_p01_03_migration_governance.py::test_test_case_2_unmapped_status_is_rejected_without_side_effects snapshots every file in the repository and asserts byte equality, so an unrelated live writer is reported as a side effect of the rejected conversion. Both attempts and the earlier quiet-window run are recorded as-is; see tmp/N03/defects/DEF-N03-02-*.md"
+    },
+    {
+      "id": "phase01-full-regression-attempt2",
+      "argv": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/unit",
+        "tests/integration",
+        "-q"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 1,
+      "expectation": "exit 0; phase-wide regression for the frozen candidate",
+      "observed": {
+        "passed": 225,
+        "failed": 1
+      },
+      "log_path": "artifacts/handoffs/P01-03/dsh/logs/n03-2026-10-04/phase01-full-regression-attempt2.log",
+      "log_sha256": "4ba550f6c0eecb74b3128f775fda7d1f8f0419c8d6b55f4e8d52c78aad7898ba",
+      "exit_code_and_counts_read_from_log": true,
+      "note": "The phase-wide regression is RED for as long as the concurrent WorkBuddy-AI session keeps appending to tmp/orchestration/workbuddy-ai/reuse/.probe/sqlalchemy.json. tests/integration/test_p01_03_migration_governance.py::test_test_case_2_unmapped_status_is_rejected_without_side_effects snapshots every file in the repository and asserts byte equality, so an unrelated live writer is reported as a side effect of the rejected conversion. Both attempts and the earlier quiet-window run are recorded as-is; see tmp/N03/defects/DEF-N03-02-*.md"
+    }
+  ],
+  "counts": {
+    "task_suites": {
+      "passed": 74,
+      "failed": 0
+    },
+    "phase_regression_attempts": [
+      {
+        "id": "phase01-full-regression-attempt1",
+        "exit_code": 1,
+        "observed": {
+          "passed": 225,
+          "failed": 1
+        }
+      },
+      {
+        "id": "phase01-full-regression-attempt2",
+        "exit_code": 1,
+        "observed": {
+          "passed": 225,
+          "failed": 1
+        }
+      }
+    ],
+    "npm_ci_lock_stable": null
+  },
+  "prior_rounds_archive": {
+    "archive_root": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03",
+    "manifest": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/archive-manifest.json",
+    "manifest_sha256": "b5472f22155b27097d3af0d7b69d9bc77798915795a7b4e7b7b82cbcf69dc7f7",
+    "file_count": 5,
+    "checked": "every archived copy verified sha256(copy) == sha256(source) at copy time",
+    "prior_handoff_copy": {
+      "path": "artifacts/handoffs/P01-03/dsh/archive-prior-rounds/2026-10-04-pre-n03/docs-handoff-dsh.md",
+      "exists": true,
+      "bytes": 4306,
+      "sha256": "d577e2118a2d98b0123b91d0099409e858b5961021b2e484918870b5f6e373e1"
+    }
+  },
+  "defects_reported_this_round": [
+    "DEF-N03-02 (phase regression fragility, see human handoff)"
+  ],
+  "limitations": [
+    "Phase 01 delivers engineering scaffolding only: no domain entity, solver, simulation, API or UI behaviour is implemented yet.",
+    "UV_CACHE_DIR was redirected to tmp/N03/uv-cache for this session because the default uv cache is not writable here; uv.lock is unchanged and uv sync --frozen exits 0.",
+    "No Git repository exists in this checkout, so the candidate identity is a content hash over the runner's 77-file whitelist.",
+    "Node 22 is the declared baseline but the host runs Node 24; CI (GitHub Actions) has never been executed.",
+    "The phase-wide regression is RED while a concurrent WorkBuddy-AI session keeps rewriting a file under tmp/: both recorded attempts show 225 passed / 1 failed, and the single failure is P01-03's whole-repository immutability assertion blaming that unrelated file.",
+    "An earlier run of the same command in this session, before that writer became active, reported 226 passed / exit 0; its raw log was overwritten by the later attempt and is therefore NOT offered as evidence.",
+    "G01 remains unsigned: the two missing ZCode prechecks, the stale P01-01 precheck and the missing G01 Codex review are outside DSH's role to write."
+  ],
+  "remaining_risks": [
+    "Any later change to a whitelisted file produces a new candidate and invalidates this evidence, this round's prechecks and the bound G00 reference.",
+    "The reviewer must confirm at review time that code_revision is still 23930f7a... and that artifacts/gates/G00.json still hashes as recorded here.",
+    "ZCode's independent phase regression cannot be green unless the WorkBuddy-AI writer is paused or P01-03's assertion scope is fixed first (DEF-N03-02)."
+  ],
+  "secrets_recorded": []
+}

@@ -1,0 +1,65 @@
+# check: phase01-full-regression-attempt2
+# argv: ["uv", "run", "pytest", "tests/unit", "tests/integration", "-q"]
+# resolved_executable: C:\Users\30382\.local\bin\uv.EXE
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-04T15:59:10.763602+00:00
+# expectation: exit 0; rerun of the phase-wide regression after the concurrent tmp/ writer went quiet
+# package-lock.json sha256 before: fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+# package-lock.json sha256 after:  fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458
+
+## stdout
+........................................................................ [ 31%]
+........................................................................ [ 63%]
+........................................................................ [ 95%]
+.F........                                                               [100%]
+================================== FAILURES ===================================
+______ test_test_case_2_unmapped_status_is_rejected_without_side_effects ______
+
+run_command = <function run_command.<locals>.run at 0x000001C4FC2BBA60>
+ownership_module = <module 'dsh_check_ownership_under_test' from 'D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent\\scripts\\check_ownership.py'>
+
+    def test_test_case_2_unmapped_status_is_rejected_without_side_effects(run_command, ownership_module) -> None:
+        """Test Case 2: 未映射 v0.1 状态 => 明确拒绝而非猜测."""
+        snapshot = {
+            path.relative_to(REPO_ROOT).as_posix(): path.read_bytes()
+            for path in sorted(REPO_ROOT.rglob("*"))
+            if path.is_file() and not ({"__pycache__", ".pytest_cache", ".ruff_cache"} & set(path.parts))
+            and ".venv" not in path.parts and "node_modules" not in path.parts
+        }
+    
+        with pytest.raises(ownership_module.LegacyConversionError) as error:
+            ownership_module.convert_legacy_status("SolveStatus", "partially_solved")
+    
+        assert error.value.kind == "SolveStatus"
+        assert error.value.value == "partially_solved"
+        assert "no explicit v0.1 -> v1 conversion" in str(error.value)
+        # The known v0.1 vocabulary must be reported so the decision can be made deliberately.
+        assert error.value.known == tuple(sorted([
+            "optimal", "feasible", "infeasible_proven", "no_solution_within_budget",
+            "invalid_input", "model_invalid", "needs_clarification", "unsupported", "stale", "conflict",
+        ]))
+    
+        after = {
+            path.relative_to(REPO_ROOT).as_posix(): path.read_bytes()
+            for path in sorted(REPO_ROOT.rglob("*"))
+            if path.is_file() and not ({"__pycache__", ".pytest_cache", ".ruff_cache"} & set(path.parts))
+            and ".venv" not in path.parts and "node_modules" not in path.parts
+        }
+>       assert after == snapshot, "a rejected conversion must not modify the repository"
+E       AssertionError: a rejected conversion must not modify the repository
+E       assert {'.github/wor...Z"\n}\n', ...} == {'.github/wor...Z"\n}\n', ...}
+E         
+E         Omitting 2866 identical items, use -vv to show
+E         Differing items:
+E         {'tmp/orchestration/workbuddy-ai/reuse/.probe/sqlalchemy.json': b'{"info":{"author":null,"author_email":"Mike Bayer <m..."adad60eea2c4c2a1875eb6305a0b6e61a83163f8e233586a4d6a55221ef984fe"},"downloads":-1,"filename":"SQLAlchemy-1.3.18-cp27'} != {'tmp/orchestration/workbuddy-ai/reuse/.probe/sqlalchemy.json': b'{"info":{"author":null,"author_email":"Mike Bayer <m...sion":"cp36","requires_python":">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*","size":1210964,"upload_time":"2020-05-14T0'}
+E         Use -v to get more diff
+
+tests\integration\test_p01_03_migration_governance.py:163: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/integration/test_p01_03_migration_governance.py::test_test_case_2_unmapped_status_is_rejected_without_side_effects
+1 failed, 225 passed in 43.63s
+
+## stderr
+
+## exit_code: 1
+## duration_ms: 44077

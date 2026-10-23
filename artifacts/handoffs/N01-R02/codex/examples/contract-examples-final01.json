@@ -1,0 +1,4807 @@
+{
+  "calendar": {
+    "epoch_utc": "2026-09-12T00:00:00Z",
+    "intervals": [
+      {
+        "start_s": 0,
+        "end_s": 10,
+        "available_units": 1
+      },
+      {
+        "start_s": 10,
+        "end_s": 20,
+        "available_units": 0
+      }
+    ],
+    "version": 0
+  },
+  "job_commands": [
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "optimization",
+        "payload": {
+          "family": "optimization",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "optimization"
+          },
+          "mode": "transport"
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "optimization"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": "transport",
+        "media_type": "application/json"
+      }
+    ],
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "simulation",
+        "payload": {
+          "family": "simulation",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "simulation"
+          }
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "simulation"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": null,
+        "media_type": "application/json"
+      }
+    ],
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "reschedule",
+        "payload": {
+          "family": "reschedule",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "reschedule"
+          }
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "reschedule"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": null,
+        "media_type": "application/json"
+      }
+    ],
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "experiment",
+        "payload": {
+          "family": "experiment",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "experiment"
+          }
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "experiment"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": null,
+        "media_type": "application/json"
+      }
+    ],
+    [
+      {
+        "schema_version": "2.0.0",
+        "kind": "metric",
+        "payload": {
+          "family": "metric",
+          "request_ref": {
+            "request_id": "00000000-0000-0000-0000-00000000000a",
+            "version": 1,
+            "schema_version": "2.0.0",
+            "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+            "family": "metric"
+          }
+        },
+        "deadline_utc": "2026-09-12T00:01:00Z"
+      },
+      {
+        "ref": {
+          "request_id": "00000000-0000-0000-0000-00000000000a",
+          "version": 1,
+          "schema_version": "2.0.0",
+          "hash": "c11a596e58cb312f43933acd685e17877dc889707560280c698ba76fa5bba681",
+          "family": "metric"
+        },
+        "scope_id": "00000000-0000-0000-0000-000000000008",
+        "owner_actor_id": "00000000-0000-0000-0000-000000000009",
+        "optimization_mode": null,
+        "media_type": "application/json"
+      }
+    ]
+  ],
+  "actor": {
+    "actor_id": "00000000-0000-0000-0000-000000000009",
+    "role": "operator",
+    "scope_id": "00000000-0000-0000-0000-000000000008"
+  },
+  "scenario": {
+    "schema_version": "2.0.0",
+    "ref": {
+      "scenario_id": "00000000-0000-0000-0000-000000000001",
+      "dataset_version": 1,
+      "schema_version": "2.0.0",
+      "content_hash": "b27559938ea41cec947bd2dd5672a24a8f9ae9f32e701094675b67d0499bc042"
+    },
+    "spec": {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "version": 1,
+      "schema_version": "2.0.0",
+      "generator_version": "1.0.0",
+      "seed": 42,
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "horizon_s": 100,
+      "size": {
+        "orders": 0,
+        "cargo": 0,
+        "vehicles": 0,
+        "drivers": 0,
+        "warehouses": 0,
+        "zones": 0,
+        "storage_locations": 0,
+        "docks": 0,
+        "workers": 0,
+        "equipment": 0,
+        "transport_tasks": 0,
+        "warehouse_tasks": 0,
+        "inventory_entries": 0,
+        "matrices": 0
+      },
+      "generation_policy": "grid",
+      "event_specs": []
+    },
+    "input": {
+      "snapshot": {
+        "id": "00000000-0000-0000-0000-000000000032",
+        "scope": {
+          "order_ids": [],
+          "warehouse_ids": [],
+          "vehicle_ids": [],
+          "epoch_utc": "2026-09-12T00:00:00Z",
+          "horizon_s": 100
+        },
+        "orders": [],
+        "cargo": [],
+        "vehicles": [],
+        "drivers": [],
+        "resources": {
+          "warehouses": [],
+          "zones": [],
+          "locations": [],
+          "docks": [],
+          "workers": [],
+          "equipment": [],
+          "calendars": []
+        },
+        "inventory": [],
+        "revisions": [],
+        "matrices": [],
+        "hash": "744bf537d51120a3ce60f64d99468de0f318858c793724d05d2c6b50c2ffe2dc"
+      },
+      "transport_tasks": [],
+      "warehouse_tasks": []
+    },
+    "source": "synthetic"
+  },
+  "expectations": {
+    "schema_version": "2.0.0",
+    "scenario_ref": {
+      "scenario_id": "00000000-0000-0000-0000-000000000001",
+      "dataset_version": 1,
+      "schema_version": "2.0.0",
+      "content_hash": "b27559938ea41cec947bd2dd5672a24a8f9ae9f32e701094675b67d0499bc042"
+    },
+    "expectations": [
+      {
+        "kind": "integer",
+        "measure": "distance_m",
+        "value": 9000
+      }
+    ]
+  },
+  "resource": {
+    "kind": "equipment",
+    "value": {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "status": "available",
+      "created_at": "2026-09-12T00:00:00Z",
+      "updated_at": "2026-09-12T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000009",
+      "warehouse_id": "00000000-0000-0000-0000-000000000003",
+      "kind": "handling",
+      "quantity_capacity": 1,
+      "allowed_zone_ids": [],
+      "calendar": {
+        "epoch_utc": "2026-09-12T00:00:00Z",
+        "intervals": [
+          {
+            "start_s": 0,
+            "end_s": 10,
+            "available_units": 1
+          },
+          {
+            "start_s": 10,
+            "end_s": 20,
+            "available_units": 0
+          }
+        ],
+        "version": 0
+      }
+    }
+  },
+  "event_references": {
+    "normative_enum_members": {
+      "ORDER": "order",
+      "CARGO": "cargo",
+      "VEHICLE": "vehicle",
+      "DRIVER": "driver",
+      "WAREHOUSE": "warehouse",
+      "WAREHOUSE_ZONE": "zone",
+      "STORAGE_LOCATION": "location",
+      "DOCK": "dock",
+      "WORKER": "worker",
+      "EQUIPMENT": "equipment",
+      "TRANSPORT_TASK": "transport_task",
+      "WAREHOUSE_TASK": "warehouse_task",
+      "ROUTE": "route",
+      "ROUTE_STOP": "route_stop",
+      "SCHEDULE": "schedule",
+      "SCHEDULE_TASK": "schedule_task",
+      "SCHEDULE_VERSION": "schedule_version",
+      "CONSTRAINT": "constraint",
+      "OPTIMIZATION_REQUEST": "optimization_request",
+      "OPTIMIZATION_RESULT": "optimization_result",
+      "SIMULATION": "simulation",
+      "SIMULATION_SNAPSHOT": "simulation_snapshot",
+      "EVENT": "event",
+      "EXCEPTION_EVENT": "exception_event",
+      "RESCHEDULE_REQUEST": "reschedule_request",
+      "RESCHEDULE_RESULT": "reschedule_result",
+      "AGENT_RUN": "agent_run",
+      "TOOL_CALL": "tool_call",
+      "DECISION_RECORD": "decision_record",
+      "EXPERIMENT": "experiment",
+      "METRIC": "metric",
+      "EXPERIMENT_RESULT": "experiment_result",
+      "PLANNING_SNAPSHOT": "planning_snapshot",
+      "JOB": "job",
+      "JOB_ATTEMPT": "job_attempt",
+      "IDEMPOTENCY": "idempotency",
+      "RESERVATION": "reservation",
+      "INVENTORY_LEDGER": "inventory_ledger",
+      "OUTBOX": "outbox",
+      "AUDIT_ENTRY": "audit_entry",
+      "LIFECYCLE_EVENT": "lifecycle_event",
+      "EXECUTION_SNAPSHOT": "execution_snapshot",
+      "CONFIRMATION_TOKEN": "confirmation_token",
+      "TRAVEL_MATRIX": "travel_matrix",
+      "REGION": "region"
+    },
+    "normative_event_mapping": {
+      "vehicle_failure": {
+        "payload_type": "VehicleFailurePayload",
+        "allowed_kinds": [
+          "vehicle"
+        ],
+        "target": {
+          "source": "entity",
+          "type": "Vehicle",
+          "id_path": "vehicle_id",
+          "revision": "row_version_if_present"
+        },
+        "constraints": [
+          "target_exists_in_scope",
+          "entity_ref_id_equals_target_id"
+        ]
+      },
+      "transport_delay": {
+        "payload_type": "TransportDelayPayload",
+        "allowed_kinds": [
+          "transport_task"
+        ],
+        "target": {
+          "source": "entity",
+          "type": "TransportTask",
+          "id_path": "transport_task_id",
+          "revision": "row_version_if_present"
+        },
+        "constraints": [
+          "target_exists_in_scope",
+          "entity_ref_id_equals_target_id"
+        ]
+      },
+      "traffic_disruption": {
+        "payload_type": "TrafficDisruptionPayload",
+        "allowed_kinds": [
+          "travel_matrix"
+        ],
+        "target": {
+          "source": "snapshot_matrix",
+          "type": "TravelMatrix",
+          "id_path": "entity_ref.id",
+          "revision": "matrix_version_required"
+        },
+        "constraints": [
+          "target_exists_in_scope",
+          "nonempty_unique_directed_arcs",
+          "arc_nodes_in_target_matrix",
+          "new_matrix_version_gt_reference",
+          "one_matrix_per_event"
+        ]
+      },
+      "weather_change": {
+        "payload_type": "WeatherChangePayload",
+        "allowed_kinds": [
+          "region"
+        ],
+        "target": {
+          "source": "inline_region",
+          "type": "RegionRef",
+          "id_path": "region_ref.region_id",
+          "revision": "null_required"
+        },
+        "constraints": [
+          "entity_ref_id_equals_target_id",
+          "nonempty_unique_region_nodes",
+          "region_nodes_in_scene_matrix_union",
+          "same_region_id_same_node_set",
+          "affected_matrix_versions_strictly_advance"
+        ]
+      },
+      "cargo_anomaly": {
+        "payload_type": "CargoAnomalyPayload",
+        "allowed_kinds": [
+          "cargo"
+        ],
+        "target": {
+          "source": "entity",
+          "type": "Cargo",
+          "id_path": "cargo_id",
+          "revision": "row_version_if_present"
+        },
+        "constraints": [
+          "target_exists_in_scope",
+          "entity_ref_id_equals_target_id"
+        ]
+      },
+      "order_cancellation": {
+        "payload_type": "OrderCancellationPayload",
+        "allowed_kinds": [
+          "order"
+        ],
+        "target": {
+          "source": "entity",
+          "type": "Order",
+          "id_path": "order_id",
+          "revision": "row_version_if_present"
+        },
+        "constraints": [
+          "target_exists_in_scope",
+          "entity_ref_id_equals_target_id"
+        ]
+      },
+      "demand_increase": {
+        "payload_type": "DemandIncreasePayload",
+        "allowed_kinds": [
+          "order"
+        ],
+        "target": {
+          "source": "entity",
+          "type": "Order",
+          "id_path": "order_id",
+          "revision": "row_version_if_present"
+        },
+        "constraints": [
+          "target_exists_in_scope",
+          "entity_ref_id_equals_target_id"
+        ]
+      },
+      "demand_decrease": {
+        "payload_type": "DemandDecreasePayload",
+        "allowed_kinds": [
+          "order"
+        ],
+        "target": {
+          "source": "entity",
+          "type": "Order",
+          "id_path": "order_id",
+          "revision": "row_version_if_present"
+        },
+        "constraints": [
+          "target_exists_in_scope",
+          "entity_ref_id_equals_target_id"
+        ]
+      },
+      "equipment_failure": {
+        "payload_type": "EquipmentFailurePayload",
+        "allowed_kinds": [
+          "equipment"
+        ],
+        "target": {
+          "source": "entity",
+          "type": "Equipment",
+          "id_path": "equipment_id",
+          "revision": "row_version_if_present"
+        },
+        "constraints": [
+          "target_exists_in_scope",
+          "entity_ref_id_equals_target_id"
+        ]
+      },
+      "warehouse_resource_unavailable": {
+        "payload_type": "WarehouseResourceUnavailablePayload",
+        "allowed_kinds": [
+          "warehouse",
+          "zone",
+          "location",
+          "dock",
+          "worker",
+          "equipment"
+        ],
+        "target": {
+          "source": "resource_ref",
+          "types_by_kind": {
+            "warehouse": "Warehouse",
+            "zone": "WarehouseZone",
+            "location": "StorageLocation",
+            "dock": "Dock",
+            "worker": "Worker",
+            "equipment": "Equipment"
+          },
+          "id_path": "resource_ref.id",
+          "kind_path": "resource_ref.kind",
+          "revision": "row_version_if_present"
+        },
+        "constraints": [
+          "target_exists_in_scope",
+          "entity_ref_equals_resource_ref"
+        ]
+      }
+    },
+    "fixture_wrapper": {
+      "scenario_input": {
+        "snapshot": {
+          "id": "d7dceef5-be67-58b6-b05a-ba48b8e372b7",
+          "scope": {
+            "order_ids": [
+              "2c3cc20c-c9d1-5e3e-90ff-37024acb9029"
+            ],
+            "warehouse_ids": [
+              "2f0332b7-c05f-5094-bd72-26433816c87a"
+            ],
+            "vehicle_ids": [
+              "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4"
+            ],
+            "epoch_utc": "2026-09-12T00:00:00Z",
+            "horizon_s": 100
+          },
+          "orders": [
+            {
+              "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+              "status": "accepted",
+              "created_at": "2026-09-12T00:00:00Z",
+              "updated_at": "2026-09-12T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "external_ref": "N01-R02-design-order",
+              "pickup_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "delivery_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "cargo_ids": [
+                "c2819b34-7b4d-5beb-aea2-b6db4742576b"
+              ],
+              "pickup_window": {
+                "earliest_s": 0,
+                "latest_s": 100
+              },
+              "delivery_window": {
+                "earliest_s": 0,
+                "latest_s": 100
+              },
+              "service_s": 1,
+              "soft_due_at_s": null,
+              "must_serve": true,
+              "priority": 1
+            }
+          ],
+          "cargo": [
+            {
+              "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+              "status": "registered",
+              "created_at": "2026-09-12T00:00:00Z",
+              "updated_at": "2026-09-12T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+              "cargo_type": "design_fixture_unvalidated_cargo_type",
+              "quantity_units": 1,
+              "weight_g": 100,
+              "volume_cm3": 100,
+              "min_temp_decic": 0,
+              "max_temp_decic": 100,
+              "max_exposure_s": 100,
+              "batch_ref": "N01-R02-design-batch"
+            }
+          ],
+          "vehicles": [
+            {
+              "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+              "status": "available",
+              "created_at": "2026-09-12T00:00:00Z",
+              "updated_at": "2026-09-12T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "code": "N01-R02-V1",
+              "capacity_weight_g": 1000,
+              "capacity_volume_cm3": 1000,
+              "setpoint_decic": 50,
+              "allowed_cargo_types": [],
+              "start_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "end_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "calendar": {
+                "epoch_utc": "2026-09-12T00:00:00Z",
+                "intervals": [
+                  {
+                    "start_s": 0,
+                    "end_s": 100,
+                    "available_units": 1
+                  }
+                ],
+                "version": 3
+              },
+              "driver_id": "46d5fdb0-2d58-55f9-95bd-84dd37475b03",
+              "fixed_cost_cents": 1,
+              "rate_cents_per_km": 1
+            }
+          ],
+          "drivers": [
+            {
+              "id": "46d5fdb0-2d58-55f9-95bd-84dd37475b03",
+              "status": "active",
+              "created_at": "2026-09-12T00:00:00Z",
+              "updated_at": "2026-09-12T00:00:00Z",
+              "row_version": 3,
+              "schema_version": "2.0.0",
+              "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+              "code": "N01-R02-D1",
+              "qualifications": [],
+              "shift": {
+                "earliest_s": 0,
+                "latest_s": 100
+              },
+              "max_drive_s": 100,
+              "max_work_s": 100
+            }
+          ],
+          "resources": {
+            "warehouses": [
+              {
+                "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+                "status": "active",
+                "created_at": "2026-09-12T00:00:00Z",
+                "updated_at": "2026-09-12T00:00:00Z",
+                "row_version": 3,
+                "schema_version": "2.0.0",
+                "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+                "code": "N01-R02-W1",
+                "name": "Design Warehouse",
+                "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+                "timezone": "UTC",
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              }
+            ],
+            "zones": [
+              {
+                "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+                "status": "active",
+                "created_at": "2026-09-12T00:00:00Z",
+                "updated_at": "2026-09-12T00:00:00Z",
+                "row_version": 3,
+                "schema_version": "2.0.0",
+                "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+                "warehouse_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+                "code": "N01-R02-Z1",
+                "setpoint_decic": 50,
+                "capacity_weight_g": 1000,
+                "capacity_volume_cm3": 1000,
+                "allowed_cargo_types": []
+              }
+            ],
+            "locations": [
+              {
+                "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+                "status": "available",
+                "created_at": "2026-09-12T00:00:00Z",
+                "updated_at": "2026-09-12T00:00:00Z",
+                "row_version": 3,
+                "schema_version": "2.0.0",
+                "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+                "zone_id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+                "code": "N01-R02-L1",
+                "capacity_weight_g": 1000,
+                "capacity_volume_cm3": 1000,
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              }
+            ],
+            "docks": [
+              {
+                "id": "83d42d20-95be-5239-9506-293ef372baf9",
+                "status": "available",
+                "created_at": "2026-09-12T00:00:00Z",
+                "updated_at": "2026-09-12T00:00:00Z",
+                "row_version": 3,
+                "schema_version": "2.0.0",
+                "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+                "warehouse_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+                "code": "N01-R02-DO1",
+                "supported_operations": [],
+                "allowed_zone_ids": [
+                  "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e"
+                ],
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              }
+            ],
+            "workers": [
+              {
+                "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+                "status": "available",
+                "created_at": "2026-09-12T00:00:00Z",
+                "updated_at": "2026-09-12T00:00:00Z",
+                "row_version": 3,
+                "schema_version": "2.0.0",
+                "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+                "warehouse_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+                "skills": [],
+                "allowed_zone_ids": [
+                  "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e"
+                ],
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                },
+                "pool_id": null
+              }
+            ],
+            "equipment": [
+              {
+                "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+                "status": "available",
+                "created_at": "2026-09-12T00:00:00Z",
+                "updated_at": "2026-09-12T00:00:00Z",
+                "row_version": 3,
+                "schema_version": "2.0.0",
+                "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+                "warehouse_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+                "kind": "handling",
+                "quantity_capacity": 2,
+                "allowed_zone_ids": [
+                  "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e"
+                ],
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              }
+            ],
+            "calendars": [
+              {
+                "resource_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+                "source_calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                },
+                "source_hash": "f4262ad430c4c4126df8e6bd80ab29497de49c03e36aec43400ab0d8d6a77aa8",
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              },
+              {
+                "resource_id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+                "source_calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                },
+                "source_hash": "f4262ad430c4c4126df8e6bd80ab29497de49c03e36aec43400ab0d8d6a77aa8",
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              },
+              {
+                "resource_id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+                "source_calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                },
+                "source_hash": "f4262ad430c4c4126df8e6bd80ab29497de49c03e36aec43400ab0d8d6a77aa8",
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              },
+              {
+                "resource_id": "83d42d20-95be-5239-9506-293ef372baf9",
+                "source_calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                },
+                "source_hash": "f4262ad430c4c4126df8e6bd80ab29497de49c03e36aec43400ab0d8d6a77aa8",
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              },
+              {
+                "resource_id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+                "source_calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                },
+                "source_hash": "f4262ad430c4c4126df8e6bd80ab29497de49c03e36aec43400ab0d8d6a77aa8",
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              },
+              {
+                "resource_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+                "source_calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                },
+                "source_hash": "f4262ad430c4c4126df8e6bd80ab29497de49c03e36aec43400ab0d8d6a77aa8",
+                "calendar": {
+                  "epoch_utc": "2026-09-12T00:00:00Z",
+                  "intervals": [
+                    {
+                      "start_s": 0,
+                      "end_s": 100,
+                      "available_units": 1
+                    }
+                  ],
+                  "version": 3
+                }
+              }
+            ]
+          },
+          "inventory": [],
+          "revisions": [
+            {
+              "entity_ref": {
+                "kind": "order",
+                "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "cargo",
+                "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "driver",
+                "id": "46d5fdb0-2d58-55f9-95bd-84dd37475b03",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "vehicle",
+                "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "warehouse",
+                "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "zone",
+                "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "location",
+                "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "dock",
+                "id": "83d42d20-95be-5239-9506-293ef372baf9",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "worker",
+                "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "equipment",
+                "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+                "revision": 3
+              },
+              "row_version": 3
+            },
+            {
+              "entity_ref": {
+                "kind": "transport_task",
+                "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+                "revision": 3
+              },
+              "row_version": 3
+            }
+          ],
+          "matrices": [
+            {
+              "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+              "version": 3,
+              "node_ids": [
+                "13f617a8-9969-5b1c-81ba-ea31fef48431",
+                "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+                "01121757-264e-52b3-9b5d-1935f7d4e556"
+              ],
+              "distance_m": [
+                [
+                  0,
+                  10,
+                  10
+                ],
+                [
+                  10,
+                  0,
+                  10
+                ],
+                [
+                  10,
+                  10,
+                  0
+                ]
+              ],
+              "travel_s": [
+                [
+                  0,
+                  10,
+                  10
+                ],
+                [
+                  10,
+                  0,
+                  10
+                ],
+                [
+                  10,
+                  10,
+                  0
+                ]
+              ],
+              "source": "N01-R02 synthetic design fixture",
+              "observed_at": "2026-09-12T00:00:00Z",
+              "hash": "80dd09364f40089ec6d6a466f9f21ec86fab2a5f39fbd380917fabfe9a7b2649"
+            },
+            {
+              "id": "c618acd7-312a-507f-b004-2f8f03e1ac92",
+              "version": 7,
+              "node_ids": [
+                "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+                "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f",
+                "9552b9b0-3c1d-512b-bcee-f4dc6bc7ed85"
+              ],
+              "distance_m": [
+                [
+                  0,
+                  10,
+                  10
+                ],
+                [
+                  10,
+                  0,
+                  10
+                ],
+                [
+                  10,
+                  10,
+                  0
+                ]
+              ],
+              "travel_s": [
+                [
+                  0,
+                  10,
+                  10
+                ],
+                [
+                  10,
+                  0,
+                  10
+                ],
+                [
+                  10,
+                  10,
+                  0
+                ]
+              ],
+              "source": "N01-R02 synthetic design fixture",
+              "observed_at": "2026-09-12T00:00:00Z",
+              "hash": "044a013250d60c1adeef50b4003ea51a5dd6e8970ef61665fadea20c8141c187"
+            }
+          ],
+          "hash": "eef11cfdc80dc5b7f015a817bb07b0734ce27de01960fb0734b27139d320baf5"
+        },
+        "transport_tasks": [
+          {
+            "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+            "status": "pending",
+            "created_at": "2026-09-12T00:00:00Z",
+            "updated_at": "2026-09-12T00:00:00Z",
+            "row_version": 3,
+            "schema_version": "2.0.0",
+            "created_by": "ed1172a2-8176-5735-ab1a-77c86c54541d",
+            "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "leg_no": 1,
+            "pickup_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+            "delivery_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+            "cargo_ids": [
+              "c2819b34-7b4d-5beb-aea2-b6db4742576b"
+            ],
+            "predecessor_ids": [],
+            "service_s": 1
+          }
+        ],
+        "warehouse_tasks": []
+      },
+      "prior_region_refs": [
+        {
+          "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+          "node_ids": [
+            "13f617a8-9969-5b1c-81ba-ea31fef48431",
+            "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+            "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+            "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+          ]
+        }
+      ]
+    },
+    "base_events": {
+      "vehicle_failure": {
+        "kind": "vehicle_failure",
+        "entity_ref": {
+          "kind": "vehicle",
+          "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+          "revision": 3
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+        "location": {
+          "kind": "at_node",
+          "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+        },
+        "unavailable_until_s": 90,
+        "cargo_condition": "intact"
+      },
+      "transport_delay": {
+        "kind": "transport_delay",
+        "entity_ref": {
+          "kind": "transport_task",
+          "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+          "revision": 3
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "transport_task_id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+        "additional_seconds": 10
+      },
+      "traffic_disruption": {
+        "kind": "traffic_disruption",
+        "entity_ref": {
+          "kind": "travel_matrix",
+          "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+          "revision": 3
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "arc_refs": [
+          {
+            "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+            "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+          }
+        ],
+        "closure": true,
+        "travel_multiplier": null,
+        "new_matrix_version": 4
+      },
+      "weather_change": {
+        "kind": "weather_change",
+        "entity_ref": {
+          "kind": "region",
+          "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+          "revision": null
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "region_ref": {
+          "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+          "node_ids": [
+            "13f617a8-9969-5b1c-81ba-ea31fef48431",
+            "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+            "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+            "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+          ]
+        },
+        "profile": "rain",
+        "travel_multiplier": {
+          "numerator": 3,
+          "denominator": 2
+        },
+        "new_matrix_version": 8
+      },
+      "cargo_anomaly": {
+        "kind": "cargo_anomaly",
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+          "revision": 3
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "cargo_id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+        "condition": "damaged",
+        "quantity_units": 1,
+        "measured_temp_decic": null
+      },
+      "order_cancellation": {
+        "kind": "order_cancellation",
+        "entity_ref": {
+          "kind": "order",
+          "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "revision": 3
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+        "disposition_policy": "return_to_origin"
+      },
+      "demand_increase": {
+        "kind": "demand_increase",
+        "entity_ref": {
+          "kind": "order",
+          "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "revision": 3
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+        "delta_quantity": 1,
+        "delta_weight_g": 100,
+        "delta_volume_cm3": 100
+      },
+      "demand_decrease": {
+        "kind": "demand_decrease",
+        "entity_ref": {
+          "kind": "order",
+          "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "revision": 3
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+        "delta_quantity": 1,
+        "delta_weight_g": 100,
+        "delta_volume_cm3": 100
+      },
+      "equipment_failure": {
+        "kind": "equipment_failure",
+        "entity_ref": {
+          "kind": "equipment",
+          "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+          "revision": 3
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "equipment_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+        "unavailable_until_s": 90,
+        "remaining_capacity_units": 0
+      },
+      "warehouse_resource_unavailable": {
+        "kind": "warehouse_resource_unavailable",
+        "entity_ref": {
+          "kind": "worker",
+          "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+          "revision": 3
+        },
+        "effective_at_s": 20,
+        "reason": "N01-R02 design reference check",
+        "resource_ref": {
+          "kind": "worker",
+          "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+          "revision": 3
+        },
+        "unavailable_window": {
+          "earliest_s": 20,
+          "latest_s": 60
+        },
+        "remaining_capacity_units": 0
+      }
+    },
+    "cases": [
+      {
+        "name": "EntityKind is complete normative enum, not existing leaf",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "EntityRef is an explicit closed record",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "target catalogue covers every normative enum value",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member ORDER=order parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member CARGO=cargo parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member VEHICLE=vehicle parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member DRIVER=driver parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member WAREHOUSE=warehouse parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member WAREHOUSE_ZONE=zone parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member STORAGE_LOCATION=location parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member DOCK=dock parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member WORKER=worker parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member EQUIPMENT=equipment parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member TRANSPORT_TASK=transport_task parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member WAREHOUSE_TASK=warehouse_task parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member ROUTE=route parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member ROUTE_STOP=route_stop parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member SCHEDULE=schedule parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member SCHEDULE_TASK=schedule_task parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member SCHEDULE_VERSION=schedule_version parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member CONSTRAINT=constraint parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member OPTIMIZATION_REQUEST=optimization_request parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member OPTIMIZATION_RESULT=optimization_result parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member SIMULATION=simulation parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member SIMULATION_SNAPSHOT=simulation_snapshot parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member EVENT=event parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member EXCEPTION_EVENT=exception_event parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member RESCHEDULE_REQUEST=reschedule_request parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member RESCHEDULE_RESULT=reschedule_result parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member AGENT_RUN=agent_run parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member TOOL_CALL=tool_call parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member DECISION_RECORD=decision_record parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member EXPERIMENT=experiment parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member METRIC=metric parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member EXPERIMENT_RESULT=experiment_result parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member PLANNING_SNAPSHOT=planning_snapshot parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member JOB=job parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member JOB_ATTEMPT=job_attempt parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member IDEMPOTENCY=idempotency parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member RESERVATION=reservation parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member INVENTORY_LEDGER=inventory_ledger parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member OUTBOX=outbox parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member AUDIT_ENTRY=audit_entry parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member LIFECYCLE_EVENT=lifecycle_event parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member EXECUTION_SNAPSHOT=execution_snapshot parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member CONFIRMATION_TOKEN=confirmation_token parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member TRAVEL_MATRIX=travel_matrix parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "normative member REGION=region parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "driver reference parses using normative enum",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "EntityRef rejects unknown kind",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "unknown enum EntityKind",
+        "context": "base"
+      },
+      {
+        "name": "EntityRef rejects case-changed kind",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "unknown enum EntityKind",
+        "context": "base"
+      },
+      {
+        "name": "EntityRef rejects missing revision",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "missing or extra fields: {'revision'}",
+        "context": "base"
+      },
+      {
+        "name": "EntityRef rejects negative revision",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "nonnegative integer required",
+        "context": "base"
+      },
+      {
+        "name": "EntityRef rejects boolean revision",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "int64 required",
+        "context": "base"
+      },
+      {
+        "name": "EntityRef rejects extra reference field",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "missing or extra fields: {'live'}",
+        "context": "base"
+      },
+      {
+        "name": "event samples cover every normative event variant",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "complete real-shaped fact ScenarioInput parses",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base"
+      },
+      {
+        "name": "vehicle_failure mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "vehicle_failure",
+          "entity_ref": {
+            "kind": "vehicle",
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+          "location": {
+            "kind": "at_node",
+            "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+          },
+          "unavailable_until_s": 90,
+          "cargo_condition": "intact"
+        }
+      },
+      {
+        "name": "vehicle_failure unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "vehicle_failure",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+          "location": {
+            "kind": "at_node",
+            "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+          },
+          "unavailable_until_s": 90,
+          "cargo_condition": "intact"
+        }
+      },
+      {
+        "name": "vehicle_failure wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "vehicle_failure",
+          "entity_ref": {
+            "kind": "order",
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+          "location": {
+            "kind": "at_node",
+            "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+          },
+          "unavailable_until_s": 90,
+          "cargo_condition": "intact"
+        }
+      },
+      {
+        "name": "vehicle_failure inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "vehicle_failure",
+          "entity_ref": {
+            "kind": "vehicle",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+          "location": {
+            "kind": "at_node",
+            "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+          },
+          "unavailable_until_s": 90,
+          "cargo_condition": "intact"
+        }
+      },
+      {
+        "name": "vehicle_failure inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "vehicle_failure",
+          "entity_ref": {
+            "kind": "vehicle",
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+          "location": {
+            "kind": "at_node",
+            "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+          },
+          "unavailable_until_s": 90,
+          "cargo_condition": "intact"
+        }
+      },
+      {
+        "name": "vehicle_failure optional unpinned identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "vehicle_failure",
+          "entity_ref": {
+            "kind": "vehicle",
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+          "location": {
+            "kind": "at_node",
+            "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+          },
+          "unavailable_until_s": 90,
+          "cargo_condition": "intact"
+        }
+      },
+      {
+        "name": "vehicle_failure target absent from selected fact snapshot rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "target does not exist in selected fact snapshot",
+        "context": "base",
+        "payload": {
+          "kind": "vehicle_failure",
+          "entity_ref": {
+            "kind": "vehicle",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "vehicle_id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+          "location": {
+            "kind": "at_node",
+            "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+          },
+          "unavailable_until_s": 90,
+          "cargo_condition": "intact"
+        }
+      },
+      {
+        "name": "transport_delay mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "transport_delay",
+          "entity_ref": {
+            "kind": "transport_task",
+            "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "transport_task_id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+          "additional_seconds": 10
+        }
+      },
+      {
+        "name": "transport_delay unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "transport_delay",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "transport_task_id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+          "additional_seconds": 10
+        }
+      },
+      {
+        "name": "transport_delay wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "transport_delay",
+          "entity_ref": {
+            "kind": "order",
+            "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "transport_task_id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+          "additional_seconds": 10
+        }
+      },
+      {
+        "name": "transport_delay inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "transport_delay",
+          "entity_ref": {
+            "kind": "transport_task",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "transport_task_id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+          "additional_seconds": 10
+        }
+      },
+      {
+        "name": "transport_delay inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "transport_delay",
+          "entity_ref": {
+            "kind": "transport_task",
+            "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "transport_task_id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+          "additional_seconds": 10
+        }
+      },
+      {
+        "name": "transport_delay optional unpinned identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "transport_delay",
+          "entity_ref": {
+            "kind": "transport_task",
+            "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "transport_task_id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+          "additional_seconds": 10
+        }
+      },
+      {
+        "name": "transport_delay target absent from selected fact snapshot rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "target does not exist in selected fact snapshot",
+        "context": "base",
+        "payload": {
+          "kind": "transport_delay",
+          "entity_ref": {
+            "kind": "transport_task",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "transport_task_id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+          "additional_seconds": 10
+        }
+      },
+      {
+        "name": "traffic_disruption mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic_disruption unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic_disruption wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "order",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic_disruption inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "one selected snapshot matrix is required",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic_disruption inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "matrix revision must equal selected matrix version",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "weather_change mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather_change unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather_change wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "order",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather_change inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather_change inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "inline region has no revision and requires null",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "cargo_anomaly mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "cargo_anomaly",
+          "entity_ref": {
+            "kind": "cargo",
+            "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "cargo_id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+          "condition": "damaged",
+          "quantity_units": 1,
+          "measured_temp_decic": null
+        }
+      },
+      {
+        "name": "cargo_anomaly unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "cargo_anomaly",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "cargo_id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+          "condition": "damaged",
+          "quantity_units": 1,
+          "measured_temp_decic": null
+        }
+      },
+      {
+        "name": "cargo_anomaly wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "cargo_anomaly",
+          "entity_ref": {
+            "kind": "order",
+            "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "cargo_id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+          "condition": "damaged",
+          "quantity_units": 1,
+          "measured_temp_decic": null
+        }
+      },
+      {
+        "name": "cargo_anomaly inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "cargo_anomaly",
+          "entity_ref": {
+            "kind": "cargo",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "cargo_id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+          "condition": "damaged",
+          "quantity_units": 1,
+          "measured_temp_decic": null
+        }
+      },
+      {
+        "name": "cargo_anomaly inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "cargo_anomaly",
+          "entity_ref": {
+            "kind": "cargo",
+            "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "cargo_id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+          "condition": "damaged",
+          "quantity_units": 1,
+          "measured_temp_decic": null
+        }
+      },
+      {
+        "name": "cargo_anomaly optional unpinned identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "cargo_anomaly",
+          "entity_ref": {
+            "kind": "cargo",
+            "id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "cargo_id": "c2819b34-7b4d-5beb-aea2-b6db4742576b",
+          "condition": "damaged",
+          "quantity_units": 1,
+          "measured_temp_decic": null
+        }
+      },
+      {
+        "name": "cargo_anomaly target absent from selected fact snapshot rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "target does not exist in selected fact snapshot",
+        "context": "base",
+        "payload": {
+          "kind": "cargo_anomaly",
+          "entity_ref": {
+            "kind": "cargo",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "cargo_id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+          "condition": "damaged",
+          "quantity_units": 1,
+          "measured_temp_decic": null
+        }
+      },
+      {
+        "name": "order_cancellation mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "order_cancellation",
+          "entity_ref": {
+            "kind": "order",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "disposition_policy": "return_to_origin"
+        }
+      },
+      {
+        "name": "order_cancellation unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "order_cancellation",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "disposition_policy": "return_to_origin"
+        }
+      },
+      {
+        "name": "order_cancellation wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "order_cancellation",
+          "entity_ref": {
+            "kind": "cargo",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "disposition_policy": "return_to_origin"
+        }
+      },
+      {
+        "name": "order_cancellation inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "order_cancellation",
+          "entity_ref": {
+            "kind": "order",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "disposition_policy": "return_to_origin"
+        }
+      },
+      {
+        "name": "order_cancellation inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "order_cancellation",
+          "entity_ref": {
+            "kind": "order",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "disposition_policy": "return_to_origin"
+        }
+      },
+      {
+        "name": "order_cancellation optional unpinned identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "order_cancellation",
+          "entity_ref": {
+            "kind": "order",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "disposition_policy": "return_to_origin"
+        }
+      },
+      {
+        "name": "order_cancellation target absent from selected fact snapshot rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "target does not exist in selected fact snapshot",
+        "context": "base",
+        "payload": {
+          "kind": "order_cancellation",
+          "entity_ref": {
+            "kind": "order",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+          "disposition_policy": "return_to_origin"
+        }
+      },
+      {
+        "name": "demand_increase mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "demand_increase",
+          "entity_ref": {
+            "kind": "order",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_increase unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "demand_increase",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_increase wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "demand_increase",
+          "entity_ref": {
+            "kind": "cargo",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_increase inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "demand_increase",
+          "entity_ref": {
+            "kind": "order",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_increase inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "demand_increase",
+          "entity_ref": {
+            "kind": "order",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_increase optional unpinned identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "demand_increase",
+          "entity_ref": {
+            "kind": "order",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_increase target absent from selected fact snapshot rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "target does not exist in selected fact snapshot",
+        "context": "base",
+        "payload": {
+          "kind": "demand_increase",
+          "entity_ref": {
+            "kind": "order",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_decrease mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "demand_decrease",
+          "entity_ref": {
+            "kind": "order",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_decrease unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "demand_decrease",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_decrease wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "demand_decrease",
+          "entity_ref": {
+            "kind": "cargo",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_decrease inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "demand_decrease",
+          "entity_ref": {
+            "kind": "order",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_decrease inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "demand_decrease",
+          "entity_ref": {
+            "kind": "order",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_decrease optional unpinned identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "demand_decrease",
+          "entity_ref": {
+            "kind": "order",
+            "id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "2c3cc20c-c9d1-5e3e-90ff-37024acb9029",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "demand_decrease target absent from selected fact snapshot rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "target does not exist in selected fact snapshot",
+        "context": "base",
+        "payload": {
+          "kind": "demand_decrease",
+          "entity_ref": {
+            "kind": "order",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "order_id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+          "delta_quantity": 1,
+          "delta_weight_g": 100,
+          "delta_volume_cm3": 100
+        }
+      },
+      {
+        "name": "equipment_failure mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "equipment_failure",
+          "entity_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "equipment_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+          "unavailable_until_s": 90,
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "equipment_failure unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "equipment_failure",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "equipment_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+          "unavailable_until_s": 90,
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "equipment_failure wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "equipment_failure",
+          "entity_ref": {
+            "kind": "order",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "equipment_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+          "unavailable_until_s": 90,
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "equipment_failure inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "equipment_failure",
+          "entity_ref": {
+            "kind": "equipment",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "equipment_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+          "unavailable_until_s": 90,
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "equipment_failure inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "equipment_failure",
+          "entity_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "equipment_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+          "unavailable_until_s": 90,
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "equipment_failure optional unpinned identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "equipment_failure",
+          "entity_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "equipment_id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+          "unavailable_until_s": 90,
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "equipment_failure target absent from selected fact snapshot rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "target does not exist in selected fact snapshot",
+        "context": "base",
+        "payload": {
+          "kind": "equipment_failure",
+          "entity_ref": {
+            "kind": "equipment",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "equipment_id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+          "unavailable_until_s": 90,
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse_resource_unavailable mapped reference accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse_resource_unavailable unknown entity kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: unknown enum EntityKind",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "unregistered_entity_kind",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse_resource_unavailable wrong existing target kind rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "order",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse_resource_unavailable inconsistent or missing target identity rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "worker",
+            "id": "12c155bd-405d-5d29-bf89-37e780a2b092",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse_resource_unavailable inconsistent revision rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 4
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse_resource_unavailable optional unpinned identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": null
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "traffic several arcs in the selected matrix accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            },
+            {
+              "from_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "to_node_id": "01121757-264e-52b3-9b5d-1935f7d4e556"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic reverse directions are distinct arcs accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            },
+            {
+              "from_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "to_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic open multiplier accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": false,
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic empty arcs rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "nonempty unique directed nonself arcs required",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic duplicate directed arc rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "nonempty unique directed nonself arcs required",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            },
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic self arc rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "nonempty unique directed nonself arcs required",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic arcs from two snapshot matrices rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "every arc must belong to the one selected matrix",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            },
+            {
+              "from_node_id": "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "to_node_id": "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic reference switched to other matrix rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "matrix revision must equal selected matrix version",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "c618acd7-312a-507f-b004-2f8f03e1ac92",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic null matrix version rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "matrix revision must equal selected matrix version",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic unchanged version rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "new matrix version must strictly advance",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 3
+        }
+      },
+      {
+        "name": "traffic lower version rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "new matrix version must strictly advance",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 2
+        }
+      },
+      {
+        "name": "traffic closure with multiplier rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "closure requires null multiplier",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic open without multiplier rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "open disruption requires a positive Rational",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": false,
+          "travel_multiplier": null,
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "traffic extra matrix selector rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural EventPayload: missing or extra fields: {'matrix_ids'}",
+        "context": "base",
+        "payload": {
+          "kind": "traffic_disruption",
+          "entity_ref": {
+            "kind": "travel_matrix",
+            "id": "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "arc_refs": [
+            {
+              "from_node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "to_node_id": "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            }
+          ],
+          "closure": true,
+          "travel_multiplier": null,
+          "new_matrix_version": 4,
+          "matrix_ids": [
+            "675e1543-00de-5ea9-9e45-37fe2bf82ac4",
+            "c618acd7-312a-507f-b004-2f8f03e1ac92"
+          ]
+        }
+      },
+      {
+        "name": "weather reordered region set preserves identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "13f617a8-9969-5b1c-81ba-ea31fef48431"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather empty region rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "region nodes must be nonempty and unique",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": []
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather duplicate region node rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "region nodes must be nonempty and unique",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f",
+              "13f617a8-9969-5b1c-81ba-ea31fef48431"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather unknown region node rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "region node is absent from scene matrix union",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f",
+              "8475dc0b-c1c1-595f-8af5-26cad7326fd6"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather same region ID changed membership rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "same region_id must preserve the same node set",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather advance only first affected matrix rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "new version must advance every affected matrix",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 4
+        }
+      },
+      {
+        "name": "weather unchanged second matrix version rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "new version must advance every affected matrix",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 7
+        }
+      },
+      {
+        "name": "weather ref ID differs from inline region rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "7af0405a-112e-55c9-adfe-6a79ad7ebd69",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "00e89351-2507-5c8a-aeb6-da7c31f97284",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "weather explicit new region identity accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "weather_change",
+          "entity_ref": {
+            "kind": "region",
+            "id": "00e89351-2507-5c8a-aeb6-da7c31f97284",
+            "revision": null
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "region_ref": {
+            "region_id": "00e89351-2507-5c8a-aeb6-da7c31f97284",
+            "node_ids": [
+              "13f617a8-9969-5b1c-81ba-ea31fef48431",
+              "20717db8-2a66-52c4-9aaf-ccbd349bc833",
+              "15c9ae77-47e1-5e3d-b3a2-6d69f3772a58",
+              "e7554ccf-5a93-5639-8bbd-17bb2f0fa90f"
+            ]
+          },
+          "profile": "rain",
+          "travel_multiplier": {
+            "numerator": 3,
+            "denominator": 2
+          },
+          "new_matrix_version": 8
+        }
+      },
+      {
+        "name": "warehouse warehouse complete resource branch accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "warehouse",
+            "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "warehouse",
+            "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse warehouse resource ID mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "warehouse",
+            "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "warehouse",
+            "id": "18a98749-64cf-5fdf-821a-06966f170c9a",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse warehouse resource revision mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref differs from complete resource_ref",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "warehouse",
+            "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "warehouse",
+            "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+            "revision": null
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse warehouse both stale revisions rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "warehouse",
+            "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "warehouse",
+            "id": "2f0332b7-c05f-5094-bd72-26433816c87a",
+            "revision": 4
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse zone complete resource branch accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "zone",
+            "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "zone",
+            "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse zone resource ID mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "zone",
+            "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "zone",
+            "id": "18a98749-64cf-5fdf-821a-06966f170c9a",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse zone resource revision mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref differs from complete resource_ref",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "zone",
+            "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "zone",
+            "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+            "revision": null
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse zone both stale revisions rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "zone",
+            "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "zone",
+            "id": "a75d7b2c-c0fe-5ee0-8d24-83d2757f006e",
+            "revision": 4
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse location complete resource branch accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "location",
+            "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "location",
+            "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse location resource ID mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "location",
+            "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "location",
+            "id": "18a98749-64cf-5fdf-821a-06966f170c9a",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse location resource revision mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref differs from complete resource_ref",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "location",
+            "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "location",
+            "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+            "revision": null
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse location both stale revisions rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "location",
+            "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "location",
+            "id": "07465788-6a47-5a82-a9ff-eb2abb86718c",
+            "revision": 4
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse dock complete resource branch accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "dock",
+            "id": "83d42d20-95be-5239-9506-293ef372baf9",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "dock",
+            "id": "83d42d20-95be-5239-9506-293ef372baf9",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse dock resource ID mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "dock",
+            "id": "83d42d20-95be-5239-9506-293ef372baf9",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "dock",
+            "id": "18a98749-64cf-5fdf-821a-06966f170c9a",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse dock resource revision mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref differs from complete resource_ref",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "dock",
+            "id": "83d42d20-95be-5239-9506-293ef372baf9",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "dock",
+            "id": "83d42d20-95be-5239-9506-293ef372baf9",
+            "revision": null
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse dock both stale revisions rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "dock",
+            "id": "83d42d20-95be-5239-9506-293ef372baf9",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "dock",
+            "id": "83d42d20-95be-5239-9506-293ef372baf9",
+            "revision": 4
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse worker complete resource branch accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse worker resource ID mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "18a98749-64cf-5fdf-821a-06966f170c9a",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse worker resource revision mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref differs from complete resource_ref",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": null
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse worker both stale revisions rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "worker",
+            "id": "d961b54c-69c1-5406-a18c-5a2b106446c9",
+            "revision": 4
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse equipment complete resource branch accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse equipment resource ID mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref.id differs from mapped target id",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "equipment",
+            "id": "18a98749-64cf-5fdf-821a-06966f170c9a",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse equipment resource revision mismatch rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "entity_ref differs from complete resource_ref",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": null
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse equipment both stale revisions rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "reference revision differs from fact row_version",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 4
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "equipment",
+            "id": "93b36d63-f9cf-5c68-89d4-770db4d82a73",
+            "revision": 4
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse unsupported vehicle resource rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "vehicle",
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "vehicle",
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "warehouse unsupported transport task resource rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "event target kind is not allowed",
+        "context": "base",
+        "payload": {
+          "kind": "warehouse_resource_unavailable",
+          "entity_ref": {
+            "kind": "transport_task",
+            "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "resource_ref": {
+            "kind": "transport_task",
+            "id": "c5fc60cd-646f-5252-97e1-695094f32e9d",
+            "revision": 3
+          },
+          "unavailable_window": {
+            "earliest_s": 20,
+            "latest_s": 60
+          },
+          "remaining_capacity_units": 0
+        }
+      },
+      {
+        "name": "vehicle target with Order record shape rejected",
+        "expected_accepted": false,
+        "accepted": false,
+        "matches_expected": true,
+        "reason": "structural ScenarioInput: missing or extra fields: {'priority', 'start_node_id', 'fixed_cost_cents', 'must_serve', 'code', 'delivery_node_id', 'pickup_node_id', 'external_ref', 'calendar', 'service_s', 'rate_cents_per_km', 'capacity_weight_g', 'soft_due_at_s', 'capacity_volume_cm3', 'setpoint_decic', 'driver_id', 'allowed_cargo_types', 'delivery_window', 'pickup_window', 'cargo_ids', 'end_node_id'}",
+        "context": "vehicle slot contains Order shape",
+        "payload": {
+          "kind": "vehicle_failure",
+          "entity_ref": {
+            "kind": "vehicle",
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+          "location": {
+            "kind": "at_node",
+            "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+          },
+          "unavailable_until_s": 90,
+          "cargo_condition": "intact"
+        }
+      },
+      {
+        "name": "fixed snapshot keeps valid historical fact binding accepted",
+        "expected_accepted": true,
+        "accepted": true,
+        "matches_expected": true,
+        "reason": "accepted by bounded design predicate",
+        "context": "base",
+        "payload": {
+          "kind": "vehicle_failure",
+          "entity_ref": {
+            "kind": "vehicle",
+            "id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+            "revision": 3
+          },
+          "effective_at_s": 20,
+          "reason": "N01-R02 design reference check",
+          "vehicle_id": "0a45f1cf-bdbc-52a2-b0bf-599500ad74c4",
+          "location": {
+            "kind": "at_node",
+            "node_id": "13f617a8-9969-5b1c-81ba-ea31fef48431"
+          },
+          "unavailable_until_s": 90,
+          "cargo_condition": "intact"
+        }
+      }
+    ],
+    "case_counts": {
+      "total": 173,
+      "positive": 81,
+      "negative": 92,
+      "matched": 173,
+      "mismatched": 0
+    },
+    "limitations": [
+      "These are fixed-snapshot reference predicates only, not business runtime acceptance.",
+      "The ScenarioInput fixture uses exact current named fields; its CargoType string is explicitly unvalidated by inherited structural adapters and is not a normative enum decision.",
+      "No current live state is queried to revalidate persisted audit references.",
+      "All inherited N02-R01 parse-only/full-Schema/FK/calendar limitations remain documented."
+    ]
+  }
+}

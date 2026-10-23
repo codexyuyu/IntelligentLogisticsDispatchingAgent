@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "N01",
+  "role": "codex-governance",
+  "status": "READY_FOR_N02",
+  "signs_gate": false,
+  "generated_at": "2026-10-03T12:24:35.999081+00:00",
+  "root": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "vcs": "no-git",
+  "model": "existing session model unchanged",
+  "plan_version_before": "1.0.0",
+  "plan_version_after": "1.0.2",
+  "business_schema_version": "1.0.0",
+  "candidate": {
+    "code_revision": "content-sha256:3525ed5b78851ea5d4fc7b5305b6b2e9f45bfedf7ee8742e3478ce6174e585a4",
+    "dirty_tree_hash": "content-sha256:a3f7e8b9addb3ff67f7a2e25068ce729ccb986866060e02e56250057c3cb9d8e",
+    "relevant_file_count": 75,
+    "manifest_path": "artifacts/handoffs/N01/codex/candidate-files.json",
+    "manifest_sha256": "6eb29af5353e759bad5cd134efef7c9abee00e0f4c5c721c202f1e880b1ef7fb"
+  },
+  "governance_diff": {
+    "path": "artifacts/handoffs/N01/codex/governance-files.json",
+    "sha256": "8e13f3d9245b9202bf9af28d83cef454beff2e889ac4a2b907ded8c7203cf849"
+  },
+  "handoff": {
+    "path": "docs/handoffs/N01/codex.md",
+    "sha256": "edf4ae6a037740ed9ea29a16c47291daedaab542c47dbde6932b923f71928a43"
+  },
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tools/ai_coding_plan/validate_plan.py",
+        "--self-test"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01/codex/plan-check.log",
+      "log_sha256": "817f4ed13a69622fc4f296f9402ad1e8a43838c1e685760804d3f419c69efcc3"
+    },
+    {
+      "argv": [
+        "C:\\Users\\30382\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tmp/N01/verify.py"
+      ],
+      "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+      "exit_code": 0,
+      "log_path": "artifacts/handoffs/N01/codex/validation.log",
+      "log_sha256": "f9b499709884d73a88f7740cf5cd3f1d859a52f9aa317f4fa5cbba75402d84ca"
+    }
+  ],
+  "validation": {
+    "planner_self_tests_passed": 15,
+    "governance_checks_passed": 36,
+    "governance_checks_total": 36,
+    "protected_files_unchanged": 287,
+    "exact_generated_reproduction": true,
+    "local_document_links_passed": true
+  },
+  "freeze_drift": [
+    "docs/architecture/DATA_CONTRACTS.md"
+  ],
+  "g00_input_drift": [
+    "docs/architecture/issues/README.md",
+    "docs/architecture/DATA_CONTRACTS.md"
+  ],
+  "affected_prechecks": [
+    "P01-01",
+    "P01-02",
+    "P01-03"
+  ],
+  "unresolved_issues": [
+    "ARCH-0006: ownership decided, ScenarioRef/Bundle shapes not frozen; hold P02-04 dispatch",
+    "ARCH-0007: JobKind members unresolved before P02-01; named-type fields/unions/forward dependencies and ResourceCalendar ownership unresolved; hold affected tasks until A governance decision"
+  ],
+  "limitations": [
+    "Independent N02 review NOT_RUN; N02 must determine unresolved issue impact on freeze/G00",
+    "No record-g00, no official gate/precheck/review writes",
+    "Executor unchanged; G02-G39 assertion coverage still absent",
+    "No business type/Schema/API implementation",
+    "PostgreSQL/solver/simulation/model/browser acceptance NOT_RUN; external environment not audited; no speculative environment cards",
+    "Historical 226 passed belongs to prior 2026-10-01 run, not this run"
+  ],
+  "next_executor": "Independent Codex N02"
+}

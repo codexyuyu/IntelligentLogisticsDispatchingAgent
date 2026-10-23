@@ -1,0 +1,70 @@
+{
+  "id": "N02-R01-F02-C01",
+  "parent_id": "N02-F02",
+  "status": "OPEN_BLOCKING_G00",
+  "owner": "A contract governance",
+  "confirmed_fact": "EntityKind is declared existing but its named normative source only references it; complete members/serialized values are absent",
+  "independent_judgment": "Scenario event direct nested type closure is not frozen; G00 F7/P00-02 full Schema freeze is unmet",
+  "reference_chain": [
+    "ScenarioSpec.event_specs",
+    "ScenarioEventSpec.payload",
+    "EventPayload ten variants",
+    "payload.entity_ref",
+    "EntityRef.kind",
+    "EntityKind"
+  ],
+  "sources": [
+    {
+      "path": "contracts/changes/N01-R01-contract-decisions.json",
+      "line": 226
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "line": 7
+    },
+    {
+      "path": "docs/architecture/DATA_CONTRACTS.md",
+      "line": 128
+    },
+    {
+      "path": "tools/ai_coding_plan/validate_plan.py",
+      "line": 175
+    },
+    {
+      "path": "tmp/N01-R01/verify_contracts.py",
+      "line": 98
+    }
+  ],
+  "reproduction": {
+    "command": [
+      "python",
+      "tmp/N02-R01/closure_probe.py"
+    ],
+    "log_path": "artifacts/handoffs/N02-R01/codex/closure-probe.log",
+    "machine_result": "artifacts/handoffs/N02-R01/codex/closure-probe.json",
+    "checker_errors": [],
+    "existing_enum_members_present": false
+  },
+  "minimal_repair": [
+    "Decide EntityKind complete members/exact values and event EntityRef target mapping; keep P02-01 states owner and existing task order",
+    "Synchronize DATA_CONTRACTS, N01-R01 decision annex, type ownership audit and migration facts",
+    "Replace the example-only hardcoded enum with the normative decision; add positive/negative closure tests so an incomplete inherited enum cannot pass",
+    "Run affected design/plan checks for the new candidate, stop implementation writes, and submit independent N02 review"
+  ],
+  "bounded_paths": [
+    "docs/architecture/DATA_CONTRACTS.md",
+    "docs/architecture/TYPE_DEFINITION_OWNERSHIP.md",
+    "contracts/changes/N01-R01-contract-decisions.json",
+    "contracts/changes/N01-R01-contract-freeze-2.0.0.md",
+    "tools/ai_coding_plan/validate_plan.py",
+    "the A repair task own design examples/handoff/evidence/scratch"
+  ],
+  "scope_change_rule": "Exact authorized repair paths must come from a subsequent bounded task card; this review authorizes no business code changes",
+  "already_resolved_do_not_reopen": [
+    "N02-F01 JobKind decisions",
+    "N02-F02 Scenario fields/version/hash/isolation/ownership",
+    "N02-F03 Calendar early unique definition/dependencies/DTO mapping",
+    "N02-F04 JobRequest early named references"
+  ],
+  "recovery_condition": "Normative closure independently verified, then byte archive old freeze/G00/logs, update true review facts and hashes, run --self-test --record-g00 and verify current runner prerequisites"
+}

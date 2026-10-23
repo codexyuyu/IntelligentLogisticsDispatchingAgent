@@ -1,0 +1,18 @@
+########## interface probe: P02-03 public names
+logistics_domain -> D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\domain\src\logistics_domain\__init__.py
+  import logistics_domain.planning: ModuleNotFoundError -> No module named 'logistics_domain.planning'
+  getattr logistics_domain.planning: AttributeError -> module 'logistics_domain' has no attribute 'planning'
+logistics_contracts -> D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent\packages\contracts\src\logistics_contracts\__init__.py
+  import logistics_contracts.planning: ModuleNotFoundError -> No module named 'logistics_contracts.planning'
+  getattr logistics_contracts.planning: AttributeError -> module 'logistics_contracts' has no attribute 'planning'
+
+########## declared pending-API registry
+logistics_domain._PENDING_APIS keys   : ['entities', 'ids', 'ports', 'states', 'units']
+logistics_contracts._PENDING_APIS keys: ['dto', 'errors', 'export_schema', 'mapping']
+
+planning declared in domain registry   : False
+planning declared in contracts registry: False
+
+########## planning symbols in target tree
+tests\unit\test_p01_03_migration_governance.py:256:    # Confirmation is expressed by the immutable ScheduleVersion lifecycle.
+(no hits above = absent from implementation)

@@ -1,0 +1,233 @@
+{
+  "task_id": "N05-R02-IMPACT",
+  "status": "BLOCKED",
+  "created_at": "2026-10-05T09:08:18.659577+00:00",
+  "official_G01_valid": false,
+  "official_G01_status": "failed",
+  "official_G01_sha256": "9f30bb45307721ecdb6d85259bac18230002d91d6dc5eabc61f55fd41337e35c",
+  "review_sha256": "e64827a62caa4c497304c66d85df154ac6047e571b3c5947b97a2d7c93925efc",
+  "candidate_revision": "content-sha256:477a883d2a29deb5cb60f8269c8712693d9e7aedeb3a620ba4953a630289158c",
+  "file_count": 44,
+  "files": [
+    {
+      "path": "docs/handoffs/N05-R02-IMPACT/codex.md",
+      "sha256": "28ab6d3682cd046b5428a3ef0be421ce33abdc45ad92c10f5c15e5c0a54cc34d",
+      "bytes": 4863
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/analysis-sources/audit.py",
+      "sha256": "22cfac9bdd1eed9ddfa7c82ac6ad0ed57d799c1aeefb3a9bbd1bd030ab672e78",
+      "bytes": 13636
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/analysis-sources/common.py",
+      "sha256": "5ba60d7091b5bed354425dbfa98fe930ccfad3d297b2ace4af210b769704c420",
+      "bytes": 2707
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/analysis-sources/failure.py",
+      "sha256": "d76fd68c05542b7b1c90be7a7d2c5cd75fb682a998fa50791ace40a77baf9718",
+      "bytes": 11971
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/analysis-sources/probe.py",
+      "sha256": "7fafd0c2f872d82faebe7e399e0de991d0b8106526fd2e3079624ca954f3d636",
+      "bytes": 3478
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/analysis-sources/review.py",
+      "sha256": "6756ba38c860b3db1bb7f584bfbcd955355399c2cbb5019aeaae069a134b7ebf",
+      "bytes": 7649
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/analysis-sources/warm-npm.cjs",
+      "sha256": "b775d5bdd8a2b55160791817bdbb9e4fa15baa3339aff01ec57ef85e97a36227",
+      "bytes": 2115
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/dispatch/2026-10-04/orchestration/codex/N05-R02-IMPACT.md",
+      "sha256": "faf2291b757e0149c55dd2eaf809ab2a0634c94f193723146bad706eb34df310",
+      "bytes": 4228
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/dispatch/2026-10-04/orchestration/codex/P02-F01-recovery-routing.md",
+      "sha256": "007e4ca96c76fdc96a6e4743d9aeb9eac527ce1cf5f286620c96bd88ab3fac6e",
+      "bytes": 11879
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/dispatch/2026-10-04/orchestration/zcode/P01-01-IMPACT-F01-M01-scope-resolution.md",
+      "sha256": "bdcd27e31ea60db274dc8dc3ee3e8d7e0396ee7ea4254541980a7f053b521ff4",
+      "bytes": 1298
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-codex-review.json",
+      "sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275",
+      "bytes": 40273
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/clean-install-imports.log",
+      "sha256": "a4e1f14d61e596e6d1575c3225f3825300e97a52e521d9c9e133f3e7e95a2ee8",
+      "bytes": 1265
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/layer-boundaries-json.log",
+      "sha256": "3b36342254828fc4f42bcb656aebff811cb63296876d0a9bea1a2cd25713a276",
+      "bytes": 996
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/layer-boundaries.log",
+      "sha256": "9b34025934d32087b1b96602ba06fa176e285f92de69acc9bf34d0de09c2aa74",
+      "bytes": 433
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/lock-reproducible.log",
+      "sha256": "9c24d57ee0b4efdf73d2e20fa25a8ec420f6f77010e39f8f9b84b20320874e18",
+      "bytes": 338
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-01-cmd1.log",
+      "sha256": "95b6f8d96d90d504f6d757a642238740c041324b2f587bdc18960f6a26f26bd2",
+      "bytes": 1204
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-01-cmd2.log",
+      "sha256": "5f502835131921c3f5d046ef462e513e64cada1a337b75fbb3e42d1d3024f665",
+      "bytes": 350
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-01-cmd3.log",
+      "sha256": "7b4082d9dd9fa1107c31242e54af49c75d4d8c2ed98099a897898cf72d9294e3",
+      "bytes": 384
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-02-cmd1.log",
+      "sha256": "26d850500c6937c757092169326e5c13673ede42ba5e8bdf1994183055356c68",
+      "bytes": 1293
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-02-cmd2.log",
+      "sha256": "946dea8d22ecd6f67c863a9aaa940d1ba1ce6f7f64bf05502e24b5c6153303b0",
+      "bytes": 428
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-03-cmd1.log",
+      "sha256": "e7373358fd1ef24801a8d7544ce084aa7d2f05aab8815d1ca8a4a19242231f67",
+      "bytes": 1299
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/P01-03-cmd2.log",
+      "sha256": "0705f854aff1f7935b3b0b699f13da0448e493c3fa107c1f67ee4467280eec78",
+      "bytes": 428
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01-logs/runner-fails-closed-probe.log",
+      "sha256": "6a2d65cd1eac94b24b7f89588f69be776158b2584f3f20d3b17f7b91fa5577a5",
+      "bytes": 347
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/gates/G01.json",
+      "sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4",
+      "bytes": 29007
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/artifacts/handoffs/P02-01/dsh/archive/f01-before/docs__implementation__reports__P02-01.md",
+      "sha256": "c3e518b5d24d6132ff679609916567f03b530f8810f913cb81b581374115d8f1",
+      "bytes": 7720
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive/2026-10-05T084230Z/docs/prompts/02-domain/P02-01-primitives-and-states.md",
+      "sha256": "d4bbc3c460df9d8e7f2104d92fafceee66cdc0f66882faf735ba825975cdaaa8",
+      "bytes": 14624
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/archive-manifest.json",
+      "sha256": "ef617de5b71d10a6273eddbdd8deee6ff8cccf40748ac2d4a74fdee35b4636a9",
+      "bytes": 6700
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/commands/independent-import-probe-command.json",
+      "sha256": "eeeeb45f3a91152defb1ad43bc554a4ef9812a8aa7227f6969167bb93b397f1e",
+      "bytes": 600
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/commands/independent-import-probe.log",
+      "sha256": "139090c5831b32bbfcbea405d1857a8538c55b144399490776807f8f995ca9cb",
+      "bytes": 24646
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/commands/initial-audit-command.json",
+      "sha256": "a133250f02676757cee586ee4b3a5f0e9106d75da8b46509658cd36c35dfe8b0",
+      "bytes": 578
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/commands/initial-audit.log",
+      "sha256": "2e96392142ef395771bdfcbdccc35cc943b3ecccfe408e65d20589b4e5af534d",
+      "bytes": 776
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/commands/official-g01-command.json",
+      "sha256": "48423fe0a5ca0496a30434f8aaf3ce126654c541bae3fed43e68a3ee6181ef4b",
+      "bytes": 584
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/commands/official-g01.log",
+      "sha256": "82d568db53c42fa1e5029c10ad5cb8e65dea816ba3cec7611815b6f50cc2db78",
+      "bytes": 2526
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/commands/review-command.json",
+      "sha256": "93a5f9d85ab50eb7e3ee8688ba59900666079044cee59dfd92e76d0ab0a322f4",
+      "bytes": 565
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/commands/review.log",
+      "sha256": "d3ea483705d71a96319334abcba9183b6126a5d22d3b3a46bdd55e6e74a799da",
+      "bytes": 614
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/environment/2026-10-05T08_46_00_803Z-debug-0.log",
+      "sha256": "a18ba114033c7083722c1ac9e1100fcffc2fafe5beb765d888393b0371e01b43",
+      "bytes": 3854
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/environment/2026-10-05T09_03_06_804Z-debug-0.log",
+      "sha256": "63db40ad552e28f37dd1db8d7304eb2d290d04570f756745b5ec55512d29bc14",
+      "bytes": 2091
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/environment/npm-cache-warm.json",
+      "sha256": "f735d67f00062a9fe0da66dcf6bb8302cb3cda57695caaba5b2b991bd2159121",
+      "bytes": 1149
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/environment/npm-cache-warm.log",
+      "sha256": "393a136f735e36d83eb804f2a3a766ea0e4fc1abad687d4883903fc596f22c39",
+      "bytes": 992
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/environment/process-tree-before-cleanup.json",
+      "sha256": "e868f5726e7240dc6585d10a8e7775ee552c578097022f236c830dda7ff1a95b",
+      "bytes": 4791
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/evidence.json",
+      "sha256": "dfe7859ca251c17b8be03ac893c95957240ad9fbf51a99cff4211180ea80b895",
+      "bytes": 10476
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/final-audit.json",
+      "sha256": "9bdb849508aa2057bc37a3a4115f9f0e03b45328020b707769c9716c9e19a99a",
+      "bytes": 8262
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/independent-import-probe.json",
+      "sha256": "43b0a9c314593548b5042077c0d83231fd440fa0f37e5226ecacbf95fa28f8b2",
+      "bytes": 25633
+    },
+    {
+      "path": "artifacts/handoffs/N05-R02-IMPACT/codex/initial-audit.json",
+      "sha256": "4bf84cf1fab54dc86df78ace6436d952d6c8ca494b4cf67631f9c170193bd9d2",
+      "bytes": 147135
+    }
+  ]
+}

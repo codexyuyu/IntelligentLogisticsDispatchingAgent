@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "python",
+    "-B",
+    "tmp/N01-R02/seal_check.py"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "started_at": "2026-10-04T14:18:02.349264+00:00",
+  "finished_at": "2026-10-04T14:18:03.364336+00:00",
+  "exit_code": 0,
+  "log_path": "artifacts/handoffs/N01-R02/codex/delivery-seal.log",
+  "log_hash": "eec4094dd93dc997313fa491a03ca5b27ee80981bae1497d118e40f3be8d5aa5",
+  "log_bytes": 624,
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows"
+  }
+}

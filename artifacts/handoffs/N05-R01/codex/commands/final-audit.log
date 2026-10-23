@@ -1,0 +1,11 @@
+# argv: [".venv\\Scripts\\python.exe", "-B", "tmp/N05-R01/final_audit.py"]
+# cwd: D:\Agent\DeepSeekHarness\IntelligentLogisticsDispatchingAgent
+# started_at: 2026-10-05T03:46:48.552584+00:00
+# temp: C:\Users\30382\AppData\Local\Temp\N05-R01-independent\2026-10-04-main
+
+## stdout
+{"task_id": "N05-R01", "status": "PASSED", "official_G01_valid": true, "audited_at": "2026-10-05T03:46:48.976732+00:00", "code_revision": "content-sha256:dadad19614a86a39ddf880c8ae8011e5fff889d1f02d12b7a0cfa28aaaad3cf8", "dirty_tree_hash": "content-sha256:2b8deb75aa6b28d7529b6f00e0fc958d9556792574a6b8de7018ac4aac20d297", "candidate_file_count": 82, "G01_sha256": "a7eed6aee3f0e21b39e440aee6a7d4f2f5f74b5d1407eb4011eac7215a3b18c4", "review_sha256": "c41888a77a22d146502dd5f91de85f12f036c4cbd70fbf3de00d45789630a275", "G00_sha256": "c5e57a6d250ff83f9ceed524f6219a3b1cb9474697a3354b5f102fe24c3bb7e4", "official_input_count": 40, "review_input_count": 262, "official_task_tests": [56, 96, 74], "official_phase01_test_total": 226, "marker_import_permutations": 6, "reused_independent_probe_count": 52, "official_command_count": 7, "assertion_count": 5, "total_check_count": 26, "official_run_command": {"check_id": "official-g01", "argv": ["C:\\Users\\30382\\.local\\bin\\uv.EXE", "run", "python", "scripts/gates.py", "--phase", "01", "--revision", "auto"], "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent", "exit_code": 0, "started_at": "2026-10-05T03:41:35.113192+00:00", "finished_at": "2026-10-05T03:43:22.720574+00:00", "log_path": "artifacts/handoffs/N05-R01/codex/commands/official-g01.log", "log_sha256": "e53d20862546e9365f07a280f8d8f9e920b629e5d3ac08aebfe60f6d616e4c4c"}, "archive_count": 14, "problems": [], "P02_business_precheck_done_by_N05": false, "G02_signed_by_N05": false}
+
+## stderr
+
+## exit_code: 0

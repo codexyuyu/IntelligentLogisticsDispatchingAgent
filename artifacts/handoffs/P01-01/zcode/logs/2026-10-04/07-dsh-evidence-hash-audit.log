@@ -1,0 +1,8 @@
+=== P01-01 | status: READY_FOR_ZCODE | generated_at: 2026-09-12T00:00:00+00:00 | recorded code_revision: content-sha256:3a522f70f304188a375b601cf8eff51dc19eb8812b85c7883070b5ed2a0da7b8
+  artifacts+logs checked: 14, drift: 0
+=== P01-02 | status: READY_FOR_ZCODE | generated_at: 2026-10-01T14:21:41.141707+00:00 | recorded code_revision: content-sha256:afbc7e4c72fa384665cc19fc917d5a1047f4847f2b482e5f16605f15eb0d9af0
+  ARTIFACT-DRIFT previous_gate_evidence: artifacts/gates/G00.json recorded=cb1245e255f4 actual=c5e57a6d250f
+  artifacts+logs checked: 20, drift: 1
+=== P01-03 | status: READY_FOR_ZCODE | generated_at: 2026-09-12T00:00:00+00:00 | recorded code_revision: content-sha256:75608a5e7cbe4490ba15502de8f0041798bbe8a38438d2cb68989aaf1d0e3e5e
+  ARTIFACT-DRIFT ownership_manifest: OWNERSHIP.json recorded=bc86773d0d4c actual=782d695aab3f
+  artifacts+logs checked: 15, drift: 1

@@ -1,0 +1,16 @@
+{
+  "check_id": "ownership-current",
+  "argv": [
+    "C:\\Users\\30382\\.local\\bin\\uv.EXE",
+    "run",
+    "python",
+    "scripts/check_ownership.py",
+    "--json"
+  ],
+  "cwd": "D:\\Agent\\DeepSeekHarness\\IntelligentLogisticsDispatchingAgent",
+  "exit_code": 0,
+  "started_at": "2026-10-04T20:36:11.257919+00:00",
+  "finished_at": "2026-10-04T20:36:14.387452+00:00",
+  "log_path": "artifacts/handoffs/N05/codex/commands/ownership-current.log",
+  "log_sha256": "2df3612b07461692a02d407d59d5cc94807ffa9f60ddd459d12f4e05c64cfa6a"
+}
