@@ -88,6 +88,14 @@ The worker caps solver wall time at 5 seconds per job and backend/worker share a
 for immutable artifacts. The submitted `SolveBudgetDTO` is now pinned inside the job content, so a
 1s/3s request budget is honored up to the 5s server cap.
 
+Verified end-to-end in the Docker stack:
+
+- seed import
+- authenticated order query
+- transport Job (1s budget) → completed → result with 1 route
+- in-container demo → candidate valid, version 1, current task 1
+- Nginx `/api/v1/schedules/{id}/versions/current` returns the committed version
+
 ## Known product gaps
 
 - Most panels still accept raw JSON rather than form controls.
