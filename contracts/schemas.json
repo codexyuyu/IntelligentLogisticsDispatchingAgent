@@ -19277,6 +19277,147 @@
       "title": "VirtualStartDTO",
       "type": "object"
     },
+    "logistics_contracts.metrics.MetricHistoryPage": {
+      "$defs": {
+        "MetricRecordView": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "definition_version": {
+              "title": "Definition Version",
+              "type": "string"
+            },
+            "denominator": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Denominator"
+            },
+            "numerator": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Numerator"
+            },
+            "reason": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/MissingReason"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "record_id": {
+              "format": "uuid",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "sample_count": {
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "default": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/MetricSource"
+            },
+            "unit": {
+              "title": "Unit",
+              "type": "string"
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Value"
+            }
+          },
+          "required": [
+            "record_id",
+            "code",
+            "definition_version",
+            "source",
+            "unit",
+            "value",
+            "numerator",
+            "denominator",
+            "reason",
+            "sample_count",
+            "created_at"
+          ],
+          "title": "MetricRecordView",
+          "type": "object"
+        },
+        "MetricSource": {
+          "enum": [
+            "planned",
+            "simulation",
+            "actual"
+          ],
+          "title": "MetricSource",
+          "type": "string"
+        },
+        "MissingReason": {
+          "enum": [
+            "not_applicable",
+            "missing_data",
+            "division_by_zero"
+          ],
+          "title": "MissingReason",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/MetricRecordView"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "MetricHistoryPage",
+      "type": "object"
+    },
     "logistics_contracts.metrics.MetricPage": {
       "$defs": {
         "MetricSource": {
@@ -19387,6 +19528,11 @@
           "title": "Metrics",
           "type": "array"
         },
+        "recorded": {
+          "default": 0,
+          "title": "Recorded",
+          "type": "integer"
+        },
         "schema_version": {
           "const": "2.0.0",
           "default": "2.0.0",
@@ -19398,6 +19544,124 @@
         "metrics"
       ],
       "title": "MetricPage",
+      "type": "object"
+    },
+    "logistics_contracts.metrics.MetricRecordView": {
+      "$defs": {
+        "MetricSource": {
+          "enum": [
+            "planned",
+            "simulation",
+            "actual"
+          ],
+          "title": "MetricSource",
+          "type": "string"
+        },
+        "MissingReason": {
+          "enum": [
+            "not_applicable",
+            "missing_data",
+            "division_by_zero"
+          ],
+          "title": "MissingReason",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "definition_version": {
+          "title": "Definition Version",
+          "type": "string"
+        },
+        "denominator": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator"
+        },
+        "numerator": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Numerator"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "record_id": {
+          "format": "uuid",
+          "title": "Record Id",
+          "type": "string"
+        },
+        "sample_count": {
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/MetricSource"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "record_id",
+        "code",
+        "definition_version",
+        "source",
+        "unit",
+        "value",
+        "numerator",
+        "denominator",
+        "reason",
+        "sample_count",
+        "created_at"
+      ],
+      "title": "MetricRecordView",
       "type": "object"
     },
     "logistics_contracts.metrics.MetricValueDTO": {
@@ -19630,6 +19894,11 @@
         "orders_total": {
           "title": "Orders Total",
           "type": "integer"
+        },
+        "persist": {
+          "default": false,
+          "title": "Persist",
+          "type": "boolean"
         },
         "result": {
           "$ref": "#/$defs/SimulationResultDTO"
@@ -19918,6 +20187,11 @@
         "orders_total": {
           "title": "Orders Total",
           "type": "integer"
+        },
+        "persist": {
+          "default": false,
+          "title": "Persist",
+          "type": "boolean"
         },
         "plan": {
           "$ref": "#/$defs/TransportPlanDTO"

@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
+from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, StrictInt
 
@@ -30,6 +32,7 @@ class TransportMetricsRequest(BaseModel):
     plan: TransportPlanDTO
     orders_total: StrictInt
     vehicle_count: StrictInt
+    persist: bool = False
 
 
 class SimulationMetricsRequest(BaseModel):
@@ -37,9 +40,33 @@ class SimulationMetricsRequest(BaseModel):
     schema_version: Literal["2.0.0"] = "2.0.0"
     result: SimulationResultDTO
     orders_total: StrictInt
+    persist: bool = False
 
 
 class MetricPage(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal["2.0.0"] = "2.0.0"
     metrics: tuple[MetricValueDTO, ...]
+    recorded: StrictInt = 0
+
+
+class MetricRecordView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    record_id: UUID
+    code: str
+    definition_version: str
+    source: domain.MetricSource
+    unit: str
+    value: float | None
+    numerator: float | None
+    denominator: float | None
+    reason: domain.MissingReason | None
+    sample_count: StrictInt
+    created_at: datetime
+
+
+class MetricHistoryPage(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    items: tuple[MetricRecordView, ...]

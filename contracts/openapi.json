@@ -3626,6 +3626,29 @@
         "title": "MetricDeltaDTO",
         "type": "object"
       },
+      "MetricHistoryPage": {
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MetricRecordView"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "title": "MetricHistoryPage",
+        "type": "object"
+      },
       "MetricPage": {
         "additionalProperties": false,
         "properties": {
@@ -3635,6 +3658,11 @@
             },
             "title": "Metrics",
             "type": "array"
+          },
+          "recorded": {
+            "default": 0,
+            "title": "Recorded",
+            "type": "integer"
           },
           "schema_version": {
             "const": "2.0.0",
@@ -3647,6 +3675,104 @@
           "metrics"
         ],
         "title": "MetricPage",
+        "type": "object"
+      },
+      "MetricRecordView": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "definition_version": {
+            "title": "Definition Version",
+            "type": "string"
+          },
+          "denominator": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Denominator"
+          },
+          "numerator": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Numerator"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MissingReason"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "record_id": {
+            "format": "uuid",
+            "title": "Record Id",
+            "type": "string"
+          },
+          "sample_count": {
+            "title": "Sample Count",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "source": {
+            "$ref": "#/components/schemas/MetricSource"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "record_id",
+          "code",
+          "definition_version",
+          "source",
+          "unit",
+          "value",
+          "numerator",
+          "denominator",
+          "reason",
+          "sample_count",
+          "created_at"
+        ],
+        "title": "MetricRecordView",
         "type": "object"
       },
       "MetricSource": {
@@ -5301,6 +5427,11 @@
             "title": "Orders Total",
             "type": "integer"
           },
+          "persist": {
+            "default": false,
+            "title": "Persist",
+            "type": "boolean"
+          },
           "result": {
             "$ref": "#/components/schemas/SimulationResultDTO"
           },
@@ -5775,6 +5906,11 @@
           "orders_total": {
             "title": "Orders Total",
             "type": "integer"
+          },
+          "persist": {
+            "default": false,
+            "title": "Persist",
+            "type": "boolean"
           },
           "plan": {
             "$ref": "#/components/schemas/TransportPlanDTO"
@@ -9688,6 +9824,84 @@
         "summary": "Get Job Result",
         "tags": [
           "jobs"
+        ]
+      }
+    },
+    "/api/v1/metrics/history": {
+      "get": {
+        "operationId": "metric_history",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "code",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 64,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Code"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricHistoryPage"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Metric History",
+        "tags": [
+          "metrics"
         ]
       }
     },

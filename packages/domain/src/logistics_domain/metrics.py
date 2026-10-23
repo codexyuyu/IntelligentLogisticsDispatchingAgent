@@ -7,9 +7,10 @@ from dataclasses import dataclass
 from enum import StrEnum
 
 from logistics_domain.errors import InvalidInputError
+from logistics_domain.orders import Entity
 from logistics_domain.primitives import require_non_negative_int
 
-__all__ = ["MetricSource", "MetricValue", "MissingReason"]
+__all__ = ["MetricRecord", "MetricSource", "MetricValue", "MissingReason"]
 
 
 class MetricSource(StrEnum):
@@ -57,3 +58,25 @@ class MetricValue:
         if self.value is not None and self.reason is not None:
             raise InvalidInputError("a present metric cannot carry a missing reason")
         require_non_negative_int(self.sample_count, field="MetricValue.sample_count")
+
+
+@dataclass(frozen=True, slots=True)
+class MetricRecord(Entity):
+    lifecycle = "metric"
+
+    code: str
+    definition_version: str
+    source: MetricSource
+    unit: str
+    value: float | None
+    numerator: float | None
+    denominator: float | None
+    reason: MissingReason | None
+    sample_count: int
+
+    def __post_init__(self) -> None:
+        Entity.__post_init__(self)
+        MetricValue(code=self.code, definition_version=self.definition_version,
+            source=self.source, unit=self.unit, value=self.value,
+            numerator=self.numerator, denominator=self.denominator, reason=self.reason,
+            sample_count=self.sample_count)
