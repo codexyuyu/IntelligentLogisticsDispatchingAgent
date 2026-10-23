@@ -38,6 +38,11 @@ from logistics_contracts.planning import (
     ViolationDTO,
     WarehouseTaskDTO,
 )
+from logistics_contracts.simulation import (
+    SimulationEventDTO,
+    SimulationRequestDTO,
+    SimulationResultDTO,
+)
 from logistics_contracts.warehouse import (
     DiagnosticDTO as WarehouseDiagnosticDTO,
     WarehouseProblemDTO,
@@ -52,6 +57,7 @@ from logistics_contracts.transport import (
     VehicleStateDTO,
 )
 from logistics_domain import planning as domain
+from logistics_domain import simulation as simulation_domain
 from logistics_domain import transport as transport_domain
 from logistics_domain import warehouse as warehouse_domain
 from logistics_domain.primitives import Load
@@ -312,11 +318,30 @@ def warehouse_solution_dto(
         solver_evidence=tuple(evidence_dto(v) for v in value.solver_evidence))
 
 
+def simulation_event_dto(value: simulation_domain.SimulationEvent) -> SimulationEventDTO:
+    return SimulationEventDTO(event_id=value.event_id, time_s=value.time_s, kind=value.kind,
+        vehicle_id=value.vehicle_id, order_id=value.order_id, stop_id=value.stop_id)
+
+
+def simulation_request_dto(
+        value: simulation_domain.SimulationRequest) -> SimulationRequestDTO:
+    return SimulationRequestDTO(plan=plan_dto(value.plan),
+        stops=tuple(route_stop_dto(v) for v in value.stops), seed=value.seed,
+        until_s=value.until_s)
+
+
+def simulation_result_dto(
+        value: simulation_domain.SimulationResult) -> SimulationResultDTO:
+    return SimulationResultDTO(status=value.status, final_time_s=value.final_time_s,
+        events=tuple(simulation_event_dto(v) for v in value.events),
+        delivered_order_ids=value.delivered_order_ids, seed=value.seed)
+
+
 __all__ = [
     "binding_dto", "budget_dto", "bundle_dto", "calendar_dto", "evidence_dto",
     "inventory_dto", "matrix_dto", "metadata_dto", "node_dto", "objective_dto",
     "plan_dto", "policy_dto", "problem_dto", "revision_dto", "route_dto", "route_stop_dto",
     "scope_dto", "snapshot_dto", "solution_dto", "validation_dto", "vehicle_state_dto",
     "violation_dto", "warehouse_problem_dto", "warehouse_solution_dto",
-    "warehouse_task_dto",
+    "warehouse_task_dto", "simulation_request_dto", "simulation_result_dto",
 ]

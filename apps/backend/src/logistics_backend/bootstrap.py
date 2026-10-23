@@ -38,6 +38,11 @@ from logistics_backend.application.warehouse import (
     WarehouseResultStore,
 )
 from logistics_backend.application.events import EventService
+from logistics_backend.application.simulation import (
+    SimulationJobHandler,
+    SimulationResultStore,
+    SimulationService,
+)
 from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
@@ -87,6 +92,8 @@ class Services:
     warehouse: WarehouseOptimizationService
     warehouse_results: WarehouseResultStore
     events: EventService
+    simulations: SimulationService
+    simulation_results: SimulationResultStore
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -100,6 +107,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
                           mode=JobOptimizationMode.TRANSPORT)
         registry.register(JobKind.OPTIMIZATION, WarehouseJobHandler(),
                           mode=JobOptimizationMode.WAREHOUSE)
+        registry.register(JobKind.SIMULATION, SimulationJobHandler())
     jobs = JobService(repository, registry)
     snapshots = PlanningSnapshotStore(factory, settings.scope_id)
     services = Services(
@@ -112,6 +120,8 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         warehouse=WarehouseOptimizationService(snapshots, jobs),
         warehouse_results=WarehouseResultStore(),
         events=EventService(factory, settings.scope_id),
+        simulations=SimulationService(jobs),
+        simulation_results=SimulationResultStore(),
     )
     return engine, services
 
@@ -137,6 +147,8 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.warehouse = services.warehouse
     app.state.warehouse_results = services.warehouse_results
     app.state.events = services.events
+    app.state.simulations = services.simulations
+    app.state.simulation_results = services.simulation_results
     install_handlers(app)
 
     @app.middleware("http")

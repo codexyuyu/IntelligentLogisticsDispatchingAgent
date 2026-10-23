@@ -3,14 +3,14 @@ import argparse
 import json
 from pathlib import Path
 from pydantic import BaseModel
-from logistics_contracts import common, entities, events, http, planning, runtime, transport, warehouse
+from logistics_contracts import common, entities, events, http, planning, runtime, simulation, transport, warehouse
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED_BASES = {"Body", "Patch", "Record", "Detail", "EntityDTO", "PlanningEntityDTO"}
 
 def export_contracts():
     models = {}
-    for module in (common, entities, events, http, planning, runtime, transport, warehouse):
+    for module in (common, entities, events, http, planning, runtime, simulation, transport, warehouse):
         for name, value in vars(module).items():
             if (isinstance(value, type) and issubclass(value, BaseModel)
                     and value.__module__ == module.__name__ and name not in EXCLUDED_BASES):

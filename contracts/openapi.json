@@ -2121,6 +2121,25 @@
         "title": "JobView",
         "type": "object"
       },
+      "LoadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "volume_cm3": {
+            "title": "Volume Cm3",
+            "type": "integer"
+          },
+          "weight_g": {
+            "title": "Weight G",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "weight_g",
+          "volume_cm3"
+        ],
+        "title": "LoadDTO",
+        "type": "object"
+      },
       "LocationCreate": {
         "additionalProperties": false,
         "properties": {
@@ -3129,6 +3148,103 @@
         "title": "RouteDTO",
         "type": "object"
       },
+      "RouteStopDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "arrival_s": {
+            "title": "Arrival S",
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "created_by": {
+            "format": "uuid",
+            "title": "Created By",
+            "type": "string"
+          },
+          "departure_s": {
+            "title": "Departure S",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "load_after": {
+            "$ref": "#/components/schemas/LoadDTO"
+          },
+          "load_before": {
+            "$ref": "#/components/schemas/LoadDTO"
+          },
+          "node_id": {
+            "format": "uuid",
+            "title": "Node Id",
+            "type": "string"
+          },
+          "route_id": {
+            "format": "uuid",
+            "title": "Route Id",
+            "type": "string"
+          },
+          "row_version": {
+            "title": "Row Version",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sequence": {
+            "title": "Sequence",
+            "type": "integer"
+          },
+          "service_start_s": {
+            "title": "Service Start S",
+            "type": "integer"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EntityState"
+          },
+          "task_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Task Ids",
+            "type": "array"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "created_at",
+          "updated_at",
+          "row_version",
+          "schema_version",
+          "created_by",
+          "route_id",
+          "sequence",
+          "node_id",
+          "task_ids",
+          "arrival_s",
+          "service_start_s",
+          "departure_s",
+          "load_before",
+          "load_after"
+        ],
+        "title": "RouteStopDTO",
+        "type": "object"
+      },
       "SetupOperationDTO": {
         "additionalProperties": false,
         "properties": {
@@ -3176,6 +3292,178 @@
           "soft"
         ],
         "title": "Severity",
+        "type": "string"
+      },
+      "SimulationEventDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "format": "uuid",
+            "title": "Event Id",
+            "type": "string"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/SimulationEventKind"
+          },
+          "order_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Order Id"
+          },
+          "stop_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stop Id"
+          },
+          "time_s": {
+            "title": "Time S",
+            "type": "integer"
+          },
+          "vehicle_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vehicle Id"
+          }
+        },
+        "required": [
+          "event_id",
+          "time_s",
+          "kind",
+          "vehicle_id",
+          "order_id",
+          "stop_id"
+        ],
+        "title": "SimulationEventDTO",
+        "type": "object"
+      },
+      "SimulationEventKind": {
+        "enum": [
+          "arrival",
+          "service_start",
+          "departure",
+          "delivered"
+        ],
+        "title": "SimulationEventKind",
+        "type": "string"
+      },
+      "SimulationRequestDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "plan": {
+            "$ref": "#/components/schemas/TransportPlanDTO"
+          },
+          "seed": {
+            "title": "Seed",
+            "type": "integer"
+          },
+          "stops": {
+            "items": {
+              "$ref": "#/components/schemas/RouteStopDTO"
+            },
+            "title": "Stops",
+            "type": "array"
+          },
+          "until_s": {
+            "title": "Until S",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "plan",
+          "stops",
+          "seed",
+          "until_s"
+        ],
+        "title": "SimulationRequestDTO",
+        "type": "object"
+      },
+      "SimulationResultDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "delivered_order_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Delivered Order Ids",
+            "type": "array"
+          },
+          "events": {
+            "items": {
+              "$ref": "#/components/schemas/SimulationEventDTO"
+            },
+            "title": "Events",
+            "type": "array"
+          },
+          "final_time_s": {
+            "title": "Final Time S",
+            "type": "integer"
+          },
+          "seed": {
+            "title": "Seed",
+            "type": "integer"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SimulationStatus"
+          }
+        },
+        "required": [
+          "status",
+          "final_time_s",
+          "events",
+          "delivered_order_ids",
+          "seed"
+        ],
+        "title": "SimulationResultDTO",
+        "type": "object"
+      },
+      "SimulationResultView": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "const": "simulation",
+            "title": "Kind",
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/SimulationResultDTO"
+          }
+        },
+        "required": [
+          "kind",
+          "value"
+        ],
+        "title": "SimulationResultView",
+        "type": "object"
+      },
+      "SimulationStatus": {
+        "enum": [
+          "completed",
+          "cancelled",
+          "failed"
+        ],
+        "title": "SimulationStatus",
         "type": "string"
       },
       "SolveBudgetDTO": {
@@ -6118,6 +6406,7 @@
                 "schema": {
                   "discriminator": {
                     "mapping": {
+                      "simulation": "#/components/schemas/SimulationResultView",
                       "transport": "#/components/schemas/TransportResultView",
                       "warehouse": "#/components/schemas/WarehouseResultView"
                     },
@@ -6129,6 +6418,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/WarehouseResultView"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SimulationResultView"
                     }
                   ],
                   "title": "Response Get Job Result"
@@ -6901,6 +7193,74 @@
         "summary": "Put Calendar",
         "tags": [
           "master-data"
+        ]
+      }
+    },
+    "/api/v1/simulations": {
+      "post": {
+        "operationId": "submit_simulation",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "title": "Idempotency-Key",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulationRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobRef"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Submit Simulation",
+        "tags": [
+          "simulations"
         ]
       }
     },
