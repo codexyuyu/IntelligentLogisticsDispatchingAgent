@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Literal
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 
 
 class AgentChatRequest(BaseModel):
@@ -22,3 +22,21 @@ class AgentChatResponse(BaseModel):
     model: str
     provider_configured: bool
     trace_id: UUID
+
+
+class AgentRunView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    run_id: UUID
+    status: str
+    session_id: UUID | None
+    model: str | None
+    provider_configured: bool
+    latency_ms: StrictInt
+    trace_id: UUID
+
+
+class AgentRunPage(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    items: tuple[AgentRunView, ...]

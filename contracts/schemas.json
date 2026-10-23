@@ -72,6 +72,165 @@
       "title": "AgentChatResponse",
       "type": "object"
     },
+    "logistics_contracts.agents.AgentRunPage": {
+      "$defs": {
+        "AgentRunView": {
+          "additionalProperties": false,
+          "properties": {
+            "latency_ms": {
+              "title": "Latency Ms",
+              "type": "integer"
+            },
+            "model": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Model"
+            },
+            "provider_configured": {
+              "title": "Provider Configured",
+              "type": "boolean"
+            },
+            "run_id": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "default": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "session_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Id"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            },
+            "trace_id": {
+              "format": "uuid",
+              "title": "Trace Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "run_id",
+            "status",
+            "session_id",
+            "model",
+            "provider_configured",
+            "latency_ms",
+            "trace_id"
+          ],
+          "title": "AgentRunView",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/AgentRunView"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "AgentRunPage",
+      "type": "object"
+    },
+    "logistics_contracts.agents.AgentRunView": {
+      "additionalProperties": false,
+      "properties": {
+        "latency_ms": {
+          "title": "Latency Ms",
+          "type": "integer"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model"
+        },
+        "provider_configured": {
+          "title": "Provider Configured",
+          "type": "boolean"
+        },
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Session Id"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "trace_id": {
+          "format": "uuid",
+          "title": "Trace Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "status",
+        "session_id",
+        "model",
+        "provider_configured",
+        "latency_ms",
+        "trace_id"
+      ],
+      "title": "AgentRunView",
+      "type": "object"
+    },
     "logistics_contracts.common.ConflictDetail": {
       "$defs": {
         "EntityKind": {

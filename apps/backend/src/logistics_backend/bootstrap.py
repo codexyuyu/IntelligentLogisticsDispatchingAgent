@@ -46,6 +46,7 @@ from logistics_backend.application.simulation import (
 )
 from logistics_agents.llm import DeepSeekProvider, LLMSettings
 from logistics_agents.service import AgentChatService
+from logistics_backend.application.agent import AgentRunService
 from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
@@ -98,7 +99,7 @@ class Services:
     exceptions: ExceptionService
     simulations: SimulationService
     simulation_results: SimulationResultStore
-    agents: AgentChatService
+    agents: AgentRunService
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -128,7 +129,8 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         exceptions=ExceptionService(factory, settings.scope_id),
         simulations=SimulationService(jobs),
         simulation_results=SimulationResultStore(),
-        agents=AgentChatService(DeepSeekProvider(LLMSettings.from_env())),
+        agents=AgentRunService(factory,
+            AgentChatService(DeepSeekProvider(LLMSettings.from_env())), settings.scope_id),
     )
     return engine, services
 

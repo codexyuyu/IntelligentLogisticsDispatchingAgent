@@ -107,6 +107,96 @@
         "title": "AgentChatResponse",
         "type": "object"
       },
+      "AgentRunPage": {
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AgentRunView"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "title": "AgentRunPage",
+        "type": "object"
+      },
+      "AgentRunView": {
+        "additionalProperties": false,
+        "properties": {
+          "latency_ms": {
+            "title": "Latency Ms",
+            "type": "integer"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "provider_configured": {
+            "title": "Provider Configured",
+            "type": "boolean"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Session Id"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "trace_id": {
+            "format": "uuid",
+            "title": "Trace Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "run_id",
+          "status",
+          "session_id",
+          "model",
+          "provider_configured",
+          "latency_ms",
+          "trace_id"
+        ],
+        "title": "AgentRunView",
+        "type": "object"
+      },
       "ArcRefDTO": {
         "additionalProperties": false,
         "properties": {
@@ -7701,6 +7791,67 @@
           }
         },
         "summary": "Agent Chat",
+        "tags": [
+          "agents"
+        ]
+      }
+    },
+    "/api/v1/agents/runs": {
+      "get": {
+        "operationId": "list_agent_runs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentRunPage"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Agent Runs",
         "tags": [
           "agents"
         ]
