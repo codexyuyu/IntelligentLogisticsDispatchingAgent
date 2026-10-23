@@ -1,6 +1,42 @@
 {
   "components": {
     "schemas": {
+      "AdjustmentSpecDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "earliest_start_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Earliest Start S"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "strategy": {
+            "$ref": "#/components/schemas/RescheduleStrategy"
+          },
+          "task_id": {
+            "format": "uuid",
+            "title": "Task Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id",
+          "strategy",
+          "earliest_start_s",
+          "note"
+        ],
+        "title": "AdjustmentSpecDTO",
+        "type": "object"
+      },
       "AgentChatRequest": {
         "additionalProperties": false,
         "properties": {
@@ -3838,6 +3874,103 @@
         ],
         "title": "RescheduleBoundaryDTO",
         "type": "object"
+      },
+      "ReschedulePolicyDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "allow_scope_expansion": {
+            "title": "Allow Scope Expansion",
+            "type": "boolean"
+          },
+          "max_extra_delay_s": {
+            "title": "Max Extra Delay S",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "max_extra_delay_s",
+          "allow_scope_expansion"
+        ],
+        "title": "ReschedulePolicyDTO",
+        "type": "object"
+      },
+      "RescheduleProposalDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "adjustments": {
+            "items": {
+              "$ref": "#/components/schemas/AdjustmentSpecDTO"
+            },
+            "title": "Adjustments",
+            "type": "array"
+          },
+          "base_plan_hash": {
+            "title": "Base Plan Hash",
+            "type": "string"
+          },
+          "event_time_s": {
+            "title": "Event Time S",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "rationale": {
+            "title": "Rationale",
+            "type": "string"
+          },
+          "requires_manual_review": {
+            "title": "Requires Manual Review",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "base_plan_hash",
+          "event_time_s",
+          "adjustments",
+          "requires_manual_review",
+          "rationale"
+        ],
+        "title": "RescheduleProposalDTO",
+        "type": "object"
+      },
+      "RescheduleProposalRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "impact": {
+            "$ref": "#/components/schemas/ImpactRequestDTO"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/ReschedulePolicyDTO"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "impact",
+          "policy"
+        ],
+        "title": "RescheduleProposalRequest",
+        "type": "object"
+      },
+      "RescheduleStrategy": {
+        "enum": [
+          "defer",
+          "reassign",
+          "alternate_resource",
+          "rescue_handoff",
+          "return_to_origin",
+          "manual_review"
+        ],
+        "title": "RescheduleStrategy",
+        "type": "string"
       },
       "ResidualLoadDTO": {
         "additionalProperties": false,
@@ -8805,6 +8938,65 @@
           }
         },
         "summary": "Ready"
+      }
+    },
+    "/api/v1/reschedules/proposals": {
+      "post": {
+        "operationId": "propose_reschedule",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RescheduleProposalRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RescheduleProposalDTO"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Propose Reschedule",
+        "tags": [
+          "reschedule"
+        ]
       }
     },
     "/api/v1/resources/{kind}/{entity_id}": {

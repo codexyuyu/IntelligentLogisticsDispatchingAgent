@@ -47,6 +47,7 @@ from logistics_contracts.impact import (
     VirtualStartDTO,
 )
 from logistics_contracts.metrics import MetricValueDTO
+from logistics_contracts.reschedule import AdjustmentSpecDTO, RescheduleProposalDTO
 from logistics_contracts.simulation import (
     SimulationEventDTO,
     SimulationRequestDTO,
@@ -66,6 +67,7 @@ from logistics_contracts.transport import (
     VehicleStateDTO,
 )
 from logistics_domain import impact as impact_domain
+from logistics_domain import reschedule as reschedule_domain
 from logistics_domain import planning as domain
 from logistics_domain import simulation as simulation_domain
 from logistics_domain import transport as transport_domain
@@ -366,6 +368,19 @@ def boundary_dto(value: impact_domain.RescheduleBoundary) -> RescheduleBoundaryD
         mutable_task_ids=value.mutable_task_ids, immutable_hash=value.immutable_hash)
 
 
+def adjustment_dto(value: reschedule_domain.AdjustmentSpec) -> AdjustmentSpecDTO:
+    return AdjustmentSpecDTO(task_id=value.task_id, strategy=value.strategy,
+        earliest_start_s=value.earliest_start_s, note=value.note)
+
+
+def reschedule_proposal_dto(
+        value: reschedule_domain.RescheduleProposal) -> RescheduleProposalDTO:
+    return RescheduleProposalDTO(id=value.id, base_plan_hash=value.base_plan_hash,
+        event_time_s=value.event_time_s,
+        adjustments=tuple(adjustment_dto(item) for item in value.adjustments),
+        requires_manual_review=value.requires_manual_review, rationale=value.rationale)
+
+
 def metric_dto(value) -> MetricValueDTO:
     return MetricValueDTO(code=value.code, definition_version=value.definition_version,
         source=value.source, unit=value.unit, value=value.value,
@@ -399,5 +414,5 @@ __all__ = [
     "scope_dto", "snapshot_dto", "solution_dto", "validation_dto", "vehicle_state_dto",
     "violation_dto", "warehouse_problem_dto", "warehouse_solution_dto",
     "warehouse_task_dto", "simulation_request_dto", "simulation_result_dto", "metric_dto",
-    "impact_report_dto", "boundary_dto",
+    "impact_report_dto", "boundary_dto", "reschedule_proposal_dto",
 ]
