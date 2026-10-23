@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { getToken, request, setToken, type JobRef, type JobResult, type Page } from "./api";
 import { JsonPanel } from "./components/JsonPanel";
+import { SchedulePanel } from "./components/SchedulePanel";
 
 type OrderView = { id: string; external_ref: string; status: string };
 type ChatReply = { reply: string; model: string; provider_configured: boolean; trace_id: string };
-type Tab = "overview" | "transport" | "warehouse" | "simulation" | "events" | "metrics" | "reschedule" | "agent";
+type Tab = "overview" | "schedules" | "transport" | "warehouse" | "simulation" | "events" | "metrics" | "reschedule" | "agent";
 
-const TABS: readonly Tab[] = ["overview", "transport", "warehouse", "simulation", "events", "metrics", "reschedule", "agent"];
+const TABS: readonly Tab[] = ["overview", "schedules", "transport", "warehouse", "simulation", "events", "metrics", "reschedule", "agent"];
 
 const TITLES: Record<Tab, string> = {
   overview: "Overview",
+  schedules: "Schedules & versions",
   transport: "Transport optimization",
   warehouse: "Warehouse scheduling",
   simulation: "Simulation",
@@ -278,6 +280,8 @@ export default function App() {
             {job ? <p className="muted">{job.status}</p> : null}
           </section>
         ) : null}
+
+        {tab === "schedules" ? <SchedulePanel /> : null}
 
         {tab === "transport" ? (
           <JsonPanel title="Transport optimization" path="/optimizations/transport" initialBody={TRANSPORT}
