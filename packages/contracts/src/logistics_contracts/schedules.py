@@ -13,8 +13,8 @@ from logistics_contracts.planning import (
     PlanningScopeDTO,
     RouteStopDTO,
     TransportPlanDTO,
-    ValidationReportDTO,
 )
+from logistics_contracts.transport import TransportProblemDTO
 
 
 class ScheduleCreate(BaseModel):
@@ -44,7 +44,7 @@ class SchedulePage(BaseModel):
 class CandidateCreate(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal["2.0.0"] = "2.0.0"
-    scope: PlanningScopeDTO
+    problem: TransportProblemDTO
     plan: TransportPlanDTO
     stops: tuple[RouteStopDTO, ...]
     solver_evidence_refs: tuple[UUID, ...]
@@ -58,10 +58,11 @@ class CandidateView(BaseModel):
     schedule_id: UUID
     snapshot_id: UUID
     content_hash: str
+    validation_report_id: UUID
+    valid: bool
 
 
 class CommitRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal["2.0.0"] = "2.0.0"
     command: CommitCommandDTO
-    report: ValidationReportDTO

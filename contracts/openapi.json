@@ -546,14 +546,14 @@
           "plan": {
             "$ref": "#/components/schemas/TransportPlanDTO"
           },
+          "problem": {
+            "$ref": "#/components/schemas/TransportProblemDTO"
+          },
           "schema_version": {
             "const": "2.0.0",
             "default": "2.0.0",
             "title": "Schema Version",
             "type": "string"
-          },
-          "scope": {
-            "$ref": "#/components/schemas/PlanningScopeDTO"
           },
           "solver_evidence_refs": {
             "items": {
@@ -572,7 +572,7 @@
           }
         },
         "required": [
-          "scope",
+          "problem",
           "plan",
           "stops",
           "solver_evidence_refs"
@@ -607,13 +607,24 @@
             "format": "uuid",
             "title": "Snapshot Id",
             "type": "string"
+          },
+          "valid": {
+            "title": "Valid",
+            "type": "boolean"
+          },
+          "validation_report_id": {
+            "format": "uuid",
+            "title": "Validation Report Id",
+            "type": "string"
           }
         },
         "required": [
           "candidate_id",
           "schedule_id",
           "snapshot_id",
-          "content_hash"
+          "content_hash",
+          "validation_report_id",
+          "valid"
         ],
         "title": "CandidateView",
         "type": "object"
@@ -970,9 +981,6 @@
           "command": {
             "$ref": "#/components/schemas/CommitCommandDTO"
           },
-          "report": {
-            "$ref": "#/components/schemas/ValidationReportDTO"
-          },
           "schema_version": {
             "const": "2.0.0",
             "default": "2.0.0",
@@ -981,8 +989,7 @@
           }
         },
         "required": [
-          "command",
-          "report"
+          "command"
         ],
         "title": "CommitRequest",
         "type": "object"

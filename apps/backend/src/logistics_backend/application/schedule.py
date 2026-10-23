@@ -16,7 +16,9 @@ from logistics_backend.persistence.planning_models import (
     planning_snapshots,
     schedules,
 )
+from logistics_backend.persistence.validation_models import validation_reports
 from logistics_contracts.mapping import plan_dto, snapshot_dto
+from logistics_domain.planning import ValidationReport
 from logistics_contracts.planning import (
     CandidatePlanDTO,
     CommitCommandDTO,
@@ -25,6 +27,7 @@ from logistics_contracts.planning import (
     ObjectiveBreakdownDTO,
     ScheduleDTO,
     ScheduleTaskDTO,
+    ValidationReportDTO,
     WarehousePlanDTO,
 )
 from logistics_contracts.schedules import (
@@ -45,6 +48,7 @@ from logistics_domain.planning import (
     content_hash,
 )
 from logistics_domain.states import EntityState, ErrorCode
+from logistics_optimization.validation.transport import validate_transport
 
 
 class ScheduleService:
@@ -79,9 +83,9 @@ class ScheduleService:
 
     def create_candidate(self, schedule_id: UUID, command: CandidateCreate,
                          actor) -> CandidateView:
-        if self.snapshots is None:
-            raise ServiceError(ErrorCode.DEPENDENCY_UNAVAILABLE, "snapshot store unavailable")
-        scope = command.scope.to_domain()
+        problem = command.problem.to_domain()
+        snapshot = problem.snapshot
+        scope = snapshot.scope
         with self.uow_factory() as uow:
             schedule = uow.connection.execute(select(schedules).where(
                 schedules.c.id == schedule_id,
@@ -92,7 +96,6 @@ class ScheduleService:
                 or schedule["horizon_s"] != scope.horizon_s):
             raise ServiceError(ErrorCode.STALE_SNAPSHOT,
                 "candidate scope epoch/horizon differs from the schedule")
-        snapshot = self.snapshots.capture(scope)
         self._persist_snapshot(snapshot, actor)
         plan = command.plan.to_domain()
         stops = tuple(stop.to_domain() for stop in command.stops)
@@ -122,6 +125,8 @@ class ScheduleService:
             "task_assignments": tuple(tasks), "objective": objective,
             "solver_evidence_refs": command.solver_evidence_refs}
         digest = content_hash(body)
+        report = dataclasses.replace(validate_transport(plan, problem, stops),
+            candidate_hash=digest, snapshot_hash=snapshot.hash)
         candidate = CandidatePlan(id=candidate_id, schedule_id=schedule_id,
             base_version_id=command.base_version_id, snapshot_id=snapshot.id,
             snapshot_hash=snapshot.hash, epoch_utc=scope.epoch_utc,
@@ -151,14 +156,22 @@ class ScheduleService:
                 optional_unserved_penalty=0, soft_late_penalty=0, disturbance_penalty=0,
                 makespan_penalty=0, objective_total=objective.objective_total),
             content_hash=digest, solver_evidence_refs=command.solver_evidence_refs)
+        report_payload = json.loads(ValidationReportDTO.model_validate(
+            dataclasses.asdict(report)).model_dump_json())
         with self.uow_factory() as uow:
+            uow.connection.execute(validation_reports.insert().values(
+                id=report.id, scope_id=actor.scope_id, candidate_id=candidate_id,
+                candidate_hash=digest, snapshot_hash=snapshot.hash,
+                rules_version=report.rules_version, valid=report.valid,
+                report=report_payload, created_at=now, created_by=actor.actor_id))
             uow.connection.execute(candidate_plans.insert().values(
                 id=candidate.id, scope_id=actor.scope_id, schedule_id=schedule_id,
                 base_version_id=command.base_version_id, snapshot_id=snapshot.id,
                 snapshot_hash=snapshot.hash, content_hash=digest, created_at=now,
                 payload=json.loads(dto.model_dump_json())))
         return CandidateView(candidate_id=candidate.id, schedule_id=schedule_id,
-            snapshot_id=snapshot.id, content_hash=digest)
+            snapshot_id=snapshot.id, content_hash=digest,
+            validation_report_id=report.id, valid=report.valid)
 
     def _persist_snapshot(self, snapshot, actor) -> None:
         now = datetime.now(timezone.utc).replace(microsecond=0)
@@ -178,8 +191,16 @@ class ScheduleService:
             raise ServiceError(ErrorCode.INVALID_INPUT, "commit schedule id mismatch")
         if self.commits is None:
             raise ServiceError(ErrorCode.DEPENDENCY_UNAVAILABLE, "commit store unavailable")
+        with self.uow_factory() as uow:
+            row = uow.connection.execute(select(validation_reports).where(
+                validation_reports.c.candidate_id == request.command.candidate_id,
+                validation_reports.c.scope_id == actor.scope_id)).mappings().first()
+        if row is None:
+            raise ServiceError(ErrorCode.UNVERIFIED_SOLVER_RESULT,
+                "candidate has no stored validation report")
+        report = ValidationReportDTO.model_validate(row["report"]).to_domain()
         receipt = self.commits.commit(request.command.to_domain(),
-            request.report.to_domain(), actor=actor, trace_id=trace_id)
+            report, actor=actor, trace_id=trace_id)
         return CommitReceiptDTO.model_validate(dataclasses.asdict(receipt))
 
     def list(self, actor, limit: int = 50) -> SchedulePage:
