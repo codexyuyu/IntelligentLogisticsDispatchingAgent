@@ -68,6 +68,16 @@ class ExceptionEventDTO(Record):
     decision_record_id: UUID | None
 
 
+class ExceptionCreate(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    event_id: UUID
+    severity: domain.ExceptionSeverity
+    affected_entity_refs: tuple[EntityRefDTO, ...]
+    impact_report_ref: UUID | None = None
+    decision_record_id: UUID | None = None
+
+
 class ExceptionEventView(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal["2.0.0"] = "2.0.0"
@@ -76,3 +86,11 @@ class ExceptionEventView(BaseModel):
     severity: domain.ExceptionSeverity
     status: EntityState
     affected_entity_refs: tuple[EntityRefDTO, ...]
+    impact_report_ref: UUID | None
+    decision_record_id: UUID | None
+
+
+class ExceptionPage(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    items: tuple[ExceptionEventView, ...]

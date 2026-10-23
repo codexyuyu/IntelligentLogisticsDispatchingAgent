@@ -5040,6 +5040,160 @@
       "title": "EventViewDTO",
       "type": "object"
     },
+    "logistics_contracts.events.ExceptionCreate": {
+      "$defs": {
+        "EntityKind": {
+          "description": "Addressable kinds used by ``EntityRef.kind``.\n\nThe 45 members are the 32 required catalog entities, the required auxiliary entities and\nthe matrix / inline-region address kinds. Enum metadata only *names* lookup targets; this\nmodule imports no future entity model.",
+          "enum": [
+            "order",
+            "cargo",
+            "vehicle",
+            "driver",
+            "warehouse",
+            "zone",
+            "location",
+            "dock",
+            "worker",
+            "equipment",
+            "transport_task",
+            "warehouse_task",
+            "route",
+            "route_stop",
+            "schedule",
+            "schedule_task",
+            "schedule_version",
+            "constraint",
+            "optimization_request",
+            "optimization_result",
+            "simulation",
+            "simulation_snapshot",
+            "event",
+            "exception_event",
+            "reschedule_request",
+            "reschedule_result",
+            "agent_run",
+            "tool_call",
+            "decision_record",
+            "experiment",
+            "metric",
+            "experiment_result",
+            "planning_snapshot",
+            "job",
+            "job_attempt",
+            "idempotency",
+            "reservation",
+            "inventory_ledger",
+            "outbox",
+            "audit_entry",
+            "lifecycle_event",
+            "execution_snapshot",
+            "confirmation_token",
+            "travel_matrix",
+            "region"
+          ],
+          "title": "EntityKind",
+          "type": "string"
+        },
+        "EntityRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/EntityKind"
+            },
+            "revision": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Revision"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "revision"
+          ],
+          "title": "EntityRefDTO",
+          "type": "object"
+        },
+        "ExceptionSeverity": {
+          "enum": [
+            "critical",
+            "high",
+            "medium",
+            "low"
+          ],
+          "title": "ExceptionSeverity",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "affected_entity_refs": {
+          "items": {
+            "$ref": "#/$defs/EntityRefDTO"
+          },
+          "title": "Affected Entity Refs",
+          "type": "array"
+        },
+        "decision_record_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision Record Id"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "impact_report_ref": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impact Report Ref"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "severity": {
+          "$ref": "#/$defs/ExceptionSeverity"
+        }
+      },
+      "required": [
+        "event_id",
+        "severity",
+        "affected_entity_refs"
+      ],
+      "title": "ExceptionCreate",
+      "type": "object"
+    },
     "logistics_contracts.events.ExceptionEventDTO": {
       "$defs": {
         "EntityKind": {
@@ -5486,6 +5640,18 @@
           "title": "Affected Entity Refs",
           "type": "array"
         },
+        "decision_record_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Decision Record Id"
+        },
         "event_id": {
           "format": "uuid",
           "title": "Event Id",
@@ -5495,6 +5661,18 @@
           "format": "uuid",
           "title": "Exception Id",
           "type": "string"
+        },
+        "impact_report_ref": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Impact Report Ref"
         },
         "schema_version": {
           "const": "2.0.0",
@@ -5514,9 +5692,275 @@
         "event_id",
         "severity",
         "status",
-        "affected_entity_refs"
+        "affected_entity_refs",
+        "impact_report_ref",
+        "decision_record_id"
       ],
       "title": "ExceptionEventView",
+      "type": "object"
+    },
+    "logistics_contracts.events.ExceptionPage": {
+      "$defs": {
+        "EntityKind": {
+          "description": "Addressable kinds used by ``EntityRef.kind``.\n\nThe 45 members are the 32 required catalog entities, the required auxiliary entities and\nthe matrix / inline-region address kinds. Enum metadata only *names* lookup targets; this\nmodule imports no future entity model.",
+          "enum": [
+            "order",
+            "cargo",
+            "vehicle",
+            "driver",
+            "warehouse",
+            "zone",
+            "location",
+            "dock",
+            "worker",
+            "equipment",
+            "transport_task",
+            "warehouse_task",
+            "route",
+            "route_stop",
+            "schedule",
+            "schedule_task",
+            "schedule_version",
+            "constraint",
+            "optimization_request",
+            "optimization_result",
+            "simulation",
+            "simulation_snapshot",
+            "event",
+            "exception_event",
+            "reschedule_request",
+            "reschedule_result",
+            "agent_run",
+            "tool_call",
+            "decision_record",
+            "experiment",
+            "metric",
+            "experiment_result",
+            "planning_snapshot",
+            "job",
+            "job_attempt",
+            "idempotency",
+            "reservation",
+            "inventory_ledger",
+            "outbox",
+            "audit_entry",
+            "lifecycle_event",
+            "execution_snapshot",
+            "confirmation_token",
+            "travel_matrix",
+            "region"
+          ],
+          "title": "EntityKind",
+          "type": "string"
+        },
+        "EntityRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/EntityKind"
+            },
+            "revision": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Revision"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "revision"
+          ],
+          "title": "EntityRefDTO",
+          "type": "object"
+        },
+        "EntityState": {
+          "description": "Union of the lifecycle state words documented in ``DOMAIN_CATALOG.md``.\n\n``EntityState`` is deliberately the *union* over all catalog lifecycles: this task owns\nthe shared vocabulary, while per-entity precision comes from each entity's own status\nenum (P02-02/P02-03) and from :data:`LIFECYCLE_TRANSITIONS`. The lifecycle columns of\n``DOMAIN_CATALOG.md`` are the only source of members; a test asserts this enum covers\nexactly the states that appear in the graph.",
+          "enum": [
+            "draft",
+            "accepted",
+            "scheduled",
+            "in_execution",
+            "delivered",
+            "cancelled",
+            "cancel_requested",
+            "cancelled_after_return",
+            "registered",
+            "stored",
+            "loaded",
+            "in_transit",
+            "quarantined",
+            "returned",
+            "available",
+            "reserved",
+            "in_service",
+            "unavailable",
+            "retired",
+            "active",
+            "occupied",
+            "busy",
+            "failed",
+            "repairing",
+            "pending",
+            "ready",
+            "running",
+            "completed",
+            "interrupted",
+            "candidate",
+            "validated",
+            "published",
+            "superseded",
+            "planned",
+            "reached",
+            "servicing",
+            "dispatched",
+            "committed",
+            "released",
+            "rejected",
+            "expired",
+            "queued",
+            "recorded",
+            "suspended",
+            "deprecated",
+            "invalidated",
+            "created",
+            "paused",
+            "received",
+            "applied",
+            "duplicate",
+            "manual_required",
+            "unresolved",
+            "detected",
+            "analyzed",
+            "proposed",
+            "resolved",
+            "planning",
+            "executing",
+            "explaining",
+            "await_confirmation",
+            "waiting_input",
+            "requested",
+            "authorized",
+            "succeeded",
+            "denied",
+            "held",
+            "delivering",
+            "dead_letter",
+            "consumed"
+          ],
+          "title": "EntityState",
+          "type": "string"
+        },
+        "ExceptionEventView": {
+          "additionalProperties": false,
+          "properties": {
+            "affected_entity_refs": {
+              "items": {
+                "$ref": "#/$defs/EntityRefDTO"
+              },
+              "title": "Affected Entity Refs",
+              "type": "array"
+            },
+            "decision_record_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Decision Record Id"
+            },
+            "event_id": {
+              "format": "uuid",
+              "title": "Event Id",
+              "type": "string"
+            },
+            "exception_id": {
+              "format": "uuid",
+              "title": "Exception Id",
+              "type": "string"
+            },
+            "impact_report_ref": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Impact Report Ref"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "default": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "severity": {
+              "$ref": "#/$defs/ExceptionSeverity"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            }
+          },
+          "required": [
+            "exception_id",
+            "event_id",
+            "severity",
+            "status",
+            "affected_entity_refs",
+            "impact_report_ref",
+            "decision_record_id"
+          ],
+          "title": "ExceptionEventView",
+          "type": "object"
+        },
+        "ExceptionSeverity": {
+          "enum": [
+            "critical",
+            "high",
+            "medium",
+            "low"
+          ],
+          "title": "ExceptionSeverity",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ExceptionEventView"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "ExceptionPage",
       "type": "object"
     },
     "logistics_contracts.http.CargoCreate": {

@@ -1907,6 +1907,165 @@
         "title": "EventViewDTO",
         "type": "object"
       },
+      "ExceptionCreate": {
+        "additionalProperties": false,
+        "properties": {
+          "affected_entity_refs": {
+            "items": {
+              "$ref": "#/components/schemas/EntityRefDTO"
+            },
+            "title": "Affected Entity Refs",
+            "type": "array"
+          },
+          "decision_record_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decision Record Id"
+          },
+          "event_id": {
+            "format": "uuid",
+            "title": "Event Id",
+            "type": "string"
+          },
+          "impact_report_ref": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Impact Report Ref"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "severity": {
+            "$ref": "#/components/schemas/ExceptionSeverity"
+          }
+        },
+        "required": [
+          "event_id",
+          "severity",
+          "affected_entity_refs"
+        ],
+        "title": "ExceptionCreate",
+        "type": "object"
+      },
+      "ExceptionEventView": {
+        "additionalProperties": false,
+        "properties": {
+          "affected_entity_refs": {
+            "items": {
+              "$ref": "#/components/schemas/EntityRefDTO"
+            },
+            "title": "Affected Entity Refs",
+            "type": "array"
+          },
+          "decision_record_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decision Record Id"
+          },
+          "event_id": {
+            "format": "uuid",
+            "title": "Event Id",
+            "type": "string"
+          },
+          "exception_id": {
+            "format": "uuid",
+            "title": "Exception Id",
+            "type": "string"
+          },
+          "impact_report_ref": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Impact Report Ref"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "severity": {
+            "$ref": "#/components/schemas/ExceptionSeverity"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EntityState"
+          }
+        },
+        "required": [
+          "exception_id",
+          "event_id",
+          "severity",
+          "status",
+          "affected_entity_refs",
+          "impact_report_ref",
+          "decision_record_id"
+        ],
+        "title": "ExceptionEventView",
+        "type": "object"
+      },
+      "ExceptionPage": {
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ExceptionEventView"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "title": "ExceptionPage",
+        "type": "object"
+      },
+      "ExceptionSeverity": {
+        "enum": [
+          "critical",
+          "high",
+          "medium",
+          "low"
+        ],
+        "title": "ExceptionSeverity",
+        "type": "string"
+      },
       "FieldError": {
         "additionalProperties": false,
         "properties": {
@@ -6522,6 +6681,124 @@
         "summary": "Get Event",
         "tags": [
           "events"
+        ]
+      }
+    },
+    "/api/v1/exceptions": {
+      "get": {
+        "operationId": "list_exceptions",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionPage"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Exceptions",
+        "tags": [
+          "exceptions"
+        ]
+      },
+      "post": {
+        "operationId": "record_exception",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExceptionCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionEventView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Record Exception",
+        "tags": [
+          "exceptions"
         ]
       }
     },
