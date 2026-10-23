@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from uuid import UUID
+
 from fastapi import APIRouter, Depends, Query, Request
 
 from logistics_backend.api.dependencies import actor, operator
@@ -88,3 +90,21 @@ def list_agent_decisions(current: ActorContext = Depends(actor),
                          service: DecisionService = Depends(decision_service),
                          limit: int = Query(default=50, ge=1, le=200)):
     return service.list(current, limit)
+
+
+@router.post("/agents/decisions/{decision_id}/accept", response_model=DecisionView,
+             operation_id="accept_agent_decision")
+def accept_agent_decision(decision_id: UUID, current: ActorContext = Depends(operator),
+                          service: DecisionService = Depends(decision_service)):
+    from logistics_domain.states import EntityState
+
+    return service.transition(decision_id, EntityState.ACCEPTED, current)
+
+
+@router.post("/agents/decisions/{decision_id}/reject", response_model=DecisionView,
+             operation_id="reject_agent_decision")
+def reject_agent_decision(decision_id: UUID, current: ActorContext = Depends(operator),
+                          service: DecisionService = Depends(decision_service)):
+    from logistics_domain.states import EntityState
+
+    return service.transition(decision_id, EntityState.REJECTED, current)

@@ -57,6 +57,29 @@ class DecisionService:
                 rationale=decision.rationale, run_id=decision.run_id,
                 tool_call_id=decision.tool_call_id)
 
+    def transition(self, decision_id: UUID, target: EntityState, actor) -> DecisionView:
+        if target not in (EntityState.ACCEPTED, EntityState.REJECTED):
+            raise ServiceError(ErrorCode.INVALID_INPUT, "unsupported decision transition")
+        now = datetime.now(timezone.utc).replace(microsecond=0)
+        with self.uow_factory() as uow:
+            row = uow.connection.execute(select(decision_records).where(
+                decision_records.c.id == decision_id,
+                decision_records.c.scope_id == actor.scope_id).with_for_update()).mappings().first()
+            if row is None:
+                raise ServiceError(ErrorCode.NOT_FOUND, "decision not found")
+            from logistics_domain.states import allowed_next_states
+
+            if target not in allowed_next_states(EntityState(row["status"])):
+                raise ServiceError(ErrorCode.INVALID_TRANSITION,
+                    "decision cannot move to the requested status")
+            uow.connection.execute(decision_records.update().where(
+                decision_records.c.id == decision_id).values(status=target.value,
+                updated_at=now, row_version=row["row_version"] + 1))
+        return DecisionView(decision_id=row["id"], status=target.value,
+            decision_type=row["decision_type"], confidence=row["confidence"],
+            rationale=row["rationale"], run_id=row["run_id"],
+            tool_call_id=row["tool_call_id"])
+
     def list(self, actor, limit: int = 50) -> DecisionPage:
         with self.uow_factory() as uow:
             rows = uow.connection.execute(select(decision_records).where(

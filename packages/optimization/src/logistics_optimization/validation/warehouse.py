@@ -191,6 +191,26 @@ def validate_warehouse(problem: WarehouseProblem,
                 entity_refs=(), field_path="storage.zone_id", actual=str(zone_id),
                 expected=f"peak_weight<={zone.capacity_weight_g}, peak_volume<={zone.capacity_volume_cm3}",
                 message="storage allocation exceeds zone capacity"))
+    for resource_id, assignments in by_resource.items():
+        ordered = sorted(assignments, key=lambda item: item.start_s)
+        for left, right in zip(ordered, ordered[1:]):
+            left_task = tasks.get(left.task_id)
+            right_task = tasks.get(right.task_id)
+            if left_task is None or right_task is None:
+                continue
+            if left_task.setup_class == right_task.setup_class:
+                continue
+            matched = any(setup.resource_id == resource_id
+                and setup.from_class == left_task.setup_class
+                and setup.to_class == right_task.setup_class
+                and setup.start_s >= left.end_s and setup.end_s <= right.start_s
+                for setup in solution.setup_operations)
+            if not matched:
+                violations.append(Violation(code="missing_setup", severity=Severity.HARD,
+                    entity_refs=(), field_path="setup_operations",
+                    actual=f"{left_task.setup_class}->{right_task.setup_class}",
+                    expected="explicit setup between differing classes",
+                    message="adjacent tasks with different setup classes lack a setup operation"))
     setup_by_resource = defaultdict(list)
     for setup in solution.setup_operations:
         if setup.resource_id not in resource_by_id:
