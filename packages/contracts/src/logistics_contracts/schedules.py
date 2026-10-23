@@ -105,3 +105,29 @@ class ScheduleVersionDetailView(BaseModel):
     schema_version: Literal["2.0.0"] = "2.0.0"
     version: ScheduleVersionView
     tasks: tuple[ScheduleTaskView, ...]
+
+
+class ScheduleTaskChange(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    task_id: UUID
+    before_start_s: int
+    before_end_s: int
+    after_start_s: int
+    after_end_s: int
+    before_resource_ids: tuple[UUID, ...]
+    after_resource_ids: tuple[UUID, ...]
+
+
+class ScheduleDiffView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    schedule_id: UUID
+    base_version_id: UUID
+    candidate_version_id: UUID
+    base_hash: str
+    candidate_hash: str
+    added_task_ids: tuple[UUID, ...]
+    removed_task_ids: tuple[UUID, ...]
+    changed_tasks: tuple[ScheduleTaskChange, ...]
+    unchanged_count: int

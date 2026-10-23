@@ -37,7 +37,9 @@ from logistics_contracts.schedules import (
     CandidateView,
     CommitRequest,
     ScheduleCreate,
+    ScheduleDiffView,
     SchedulePage,
+    ScheduleTaskChange,
     ScheduleTaskView,
     ScheduleVersionDetailView,
     ScheduleVersionPage,
@@ -255,6 +257,51 @@ class ScheduleService:
             planned_start_s=task["planned_start_s"], planned_end_s=task["planned_end_s"],
             sequence=task["sequence"], status=task["status"]) for task in task_rows)
         return ScheduleVersionDetailView(version=self._version_view(row), tasks=tasks)
+
+    def diff(self, schedule_id: UUID, base_version_id: UUID, candidate_version_id: UUID,
+             actor) -> ScheduleDiffView:
+        schedule = self._require_schedule(schedule_id, actor)
+        with self.uow_factory() as uow:
+            versions = uow.connection.execute(select(schedule_versions).where(
+                schedule_versions.c.id.in_((base_version_id, candidate_version_id)),
+                schedule_versions.c.schedule_id == schedule_id,
+                schedule_versions.c.scope_id == actor.scope_id)).mappings().all()
+            if len(versions) != 2:
+                raise ServiceError(ErrorCode.NOT_FOUND, "one or both versions were not found")
+            by_id = {row["id"]: row for row in versions}
+            task_rows = uow.connection.execute(select(schedule_tasks).where(
+                schedule_tasks.c.version_id.in_((base_version_id, candidate_version_id)),
+                schedule_tasks.c.scope_id == actor.scope_id)).mappings().all()
+        before = {row["task_id"]: row for row in task_rows
+                  if row["version_id"] == base_version_id}
+        after = {row["task_id"]: row for row in task_rows
+                 if row["version_id"] == candidate_version_id}
+        added = tuple(sorted(set(after) - set(before), key=str))
+        removed = tuple(sorted(set(before) - set(after), key=str))
+        changed = []
+        unchanged = 0
+        for task_id in sorted(set(before) & set(after), key=str):
+            left, right = before[task_id], after[task_id]
+            left_resources = tuple(UUID(value) for value in
+                left["payload"].get("assigned_resource_ids", ()))
+            right_resources = tuple(UUID(value) for value in
+                right["payload"].get("assigned_resource_ids", ()))
+            if (left["planned_start_s"] != right["planned_start_s"]
+                    or left["planned_end_s"] != right["planned_end_s"]
+                    or left_resources != right_resources):
+                changed.append(ScheduleTaskChange(task_id=task_id,
+                    before_start_s=left["planned_start_s"], before_end_s=left["planned_end_s"],
+                    after_start_s=right["planned_start_s"], after_end_s=right["planned_end_s"],
+                    before_resource_ids=left_resources,
+                    after_resource_ids=right_resources))
+            else:
+                unchanged += 1
+        return ScheduleDiffView(schedule_id=schedule_id,
+            base_version_id=base_version_id, candidate_version_id=candidate_version_id,
+            base_hash=by_id[base_version_id]["content_hash"],
+            candidate_hash=by_id[candidate_version_id]["content_hash"],
+            added_task_ids=added, removed_task_ids=removed,
+            changed_tasks=tuple(changed), unchanged_count=unchanged)
 
     def _require_schedule(self, schedule_id: UUID, actor):
         with self.uow_factory() as uow:

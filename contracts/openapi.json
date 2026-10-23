@@ -5548,6 +5548,80 @@
         "title": "ScheduleCreate",
         "type": "object"
       },
+      "ScheduleDiffView": {
+        "additionalProperties": false,
+        "properties": {
+          "added_task_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Added Task Ids",
+            "type": "array"
+          },
+          "base_hash": {
+            "title": "Base Hash",
+            "type": "string"
+          },
+          "base_version_id": {
+            "format": "uuid",
+            "title": "Base Version Id",
+            "type": "string"
+          },
+          "candidate_hash": {
+            "title": "Candidate Hash",
+            "type": "string"
+          },
+          "candidate_version_id": {
+            "format": "uuid",
+            "title": "Candidate Version Id",
+            "type": "string"
+          },
+          "changed_tasks": {
+            "items": {
+              "$ref": "#/components/schemas/ScheduleTaskChange"
+            },
+            "title": "Changed Tasks",
+            "type": "array"
+          },
+          "removed_task_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Removed Task Ids",
+            "type": "array"
+          },
+          "schedule_id": {
+            "format": "uuid",
+            "title": "Schedule Id",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "unchanged_count": {
+            "title": "Unchanged Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "schedule_id",
+          "base_version_id",
+          "candidate_version_id",
+          "base_hash",
+          "candidate_hash",
+          "added_task_ids",
+          "removed_task_ids",
+          "changed_tasks",
+          "unchanged_count"
+        ],
+        "title": "ScheduleDiffView",
+        "type": "object"
+      },
       "SchedulePage": {
         "additionalProperties": false,
         "properties": {
@@ -5569,6 +5643,65 @@
           "items"
         ],
         "title": "SchedulePage",
+        "type": "object"
+      },
+      "ScheduleTaskChange": {
+        "additionalProperties": false,
+        "properties": {
+          "after_end_s": {
+            "title": "After End S",
+            "type": "integer"
+          },
+          "after_resource_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "After Resource Ids",
+            "type": "array"
+          },
+          "after_start_s": {
+            "title": "After Start S",
+            "type": "integer"
+          },
+          "before_end_s": {
+            "title": "Before End S",
+            "type": "integer"
+          },
+          "before_resource_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Before Resource Ids",
+            "type": "array"
+          },
+          "before_start_s": {
+            "title": "Before Start S",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "task_id": {
+            "format": "uuid",
+            "title": "Task Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id",
+          "before_start_s",
+          "before_end_s",
+          "after_start_s",
+          "after_end_s",
+          "before_resource_ids",
+          "after_resource_ids"
+        ],
+        "title": "ScheduleTaskChange",
         "type": "object"
       },
       "ScheduleTaskView": {
@@ -11753,6 +11886,85 @@
           }
         },
         "summary": "Get Current Schedule Version",
+        "tags": [
+          "schedules"
+        ]
+      }
+    },
+    "/api/v1/schedules/{schedule_id}/versions/{base_version_id}/diff/{candidate_version_id}": {
+      "get": {
+        "operationId": "diff_schedule_versions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "schedule_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Schedule Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "base_version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Base Version Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "candidate_version_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Candidate Version Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScheduleDiffView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Diff Schedule Versions",
         "tags": [
           "schedules"
         ]

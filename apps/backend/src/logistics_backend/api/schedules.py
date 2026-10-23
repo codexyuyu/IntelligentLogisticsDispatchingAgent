@@ -14,6 +14,7 @@ from logistics_contracts.schedules import (
     CandidateView,
     CommitRequest,
     ScheduleCreate,
+    ScheduleDiffView,
     SchedulePage,
     ScheduleVersionDetailView,
     ScheduleVersionPage,
@@ -65,6 +66,15 @@ def get_schedule_version(schedule_id: UUID, version_id: UUID,
                          current: ActorContext = Depends(actor),
                          service: ScheduleService = Depends(schedule_service)):
     return service.version_detail(schedule_id, version_id, current)
+
+
+@router.get("/schedules/{schedule_id}/versions/{base_version_id}/diff/{candidate_version_id}",
+            response_model=ScheduleDiffView, operation_id="diff_schedule_versions")
+def diff_schedule_versions(schedule_id: UUID, base_version_id: UUID,
+                           candidate_version_id: UUID,
+                           current: ActorContext = Depends(actor),
+                           service: ScheduleService = Depends(schedule_service)):
+    return service.diff(schedule_id, base_version_id, candidate_version_id, current)
 
 
 @router.post("/schedules/{schedule_id}/candidates", response_model=CandidateView,
