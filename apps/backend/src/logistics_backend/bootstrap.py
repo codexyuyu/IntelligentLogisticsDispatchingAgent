@@ -49,6 +49,7 @@ from logistics_agents.service import AgentChatService
 from logistics_backend.application.agent import AgentRunService
 from logistics_backend.application.tools import ToolService
 from logistics_backend.application.decision import DecisionService
+from logistics_backend.application.experiment import ExperimentService
 from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
@@ -104,6 +105,7 @@ class Services:
     agents: AgentRunService
     tools: ToolService
     decisions: DecisionService
+    experiments: ExperimentService
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -138,6 +140,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         agents=agents,
         tools=ToolService(jobs, agents, factory, settings.scope_id),
         decisions=DecisionService(factory, settings.scope_id),
+        experiments=ExperimentService(factory, settings.scope_id),
     )
     return engine, services
 
@@ -169,6 +172,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.agents = services.agents
     app.state.tools = services.tools
     app.state.decisions = services.decisions
+    app.state.experiments = services.experiments
     install_handlers(app)
 
     @app.middleware("http")

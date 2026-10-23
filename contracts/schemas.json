@@ -6906,6 +6906,11 @@
           "title": "Orders Total",
           "type": "integer"
         },
+        "persist": {
+          "default": false,
+          "title": "Persist",
+          "type": "boolean"
+        },
         "schema_version": {
           "const": "2.0.0",
           "default": "2.0.0",
@@ -7030,6 +7035,351 @@
         "deltas"
       ],
       "title": "ExperimentComparisonDTO",
+      "type": "object"
+    },
+    "logistics_contracts.experiment.ExperimentPage": {
+      "$defs": {
+        "ExperimentComparisonDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "base_label": {
+              "title": "Base Label",
+              "type": "string"
+            },
+            "candidate_label": {
+              "title": "Candidate Label",
+              "type": "string"
+            },
+            "deltas": {
+              "items": {
+                "$ref": "#/$defs/MetricDeltaDTO"
+              },
+              "title": "Deltas",
+              "type": "array"
+            }
+          },
+          "required": [
+            "base_label",
+            "candidate_label",
+            "deltas"
+          ],
+          "title": "ExperimentComparisonDTO",
+          "type": "object"
+        },
+        "ExperimentView": {
+          "additionalProperties": false,
+          "properties": {
+            "base_label": {
+              "title": "Base Label",
+              "type": "string"
+            },
+            "candidate_label": {
+              "title": "Candidate Label",
+              "type": "string"
+            },
+            "comparison": {
+              "$ref": "#/$defs/ExperimentComparisonDTO"
+            },
+            "experiment_id": {
+              "format": "uuid",
+              "title": "Experiment Id",
+              "type": "string"
+            },
+            "metric_version": {
+              "title": "Metric Version",
+              "type": "string"
+            },
+            "orders_total": {
+              "title": "Orders Total",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "default": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "experiment_id",
+            "status",
+            "base_label",
+            "candidate_label",
+            "orders_total",
+            "metric_version",
+            "comparison"
+          ],
+          "title": "ExperimentView",
+          "type": "object"
+        },
+        "MetricDeltaDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "base": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Base"
+            },
+            "candidate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Candidate"
+            },
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "delta": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Delta"
+            },
+            "reason": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/MissingReason"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "relative_change": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Relative Change"
+            }
+          },
+          "required": [
+            "code",
+            "base",
+            "candidate",
+            "delta",
+            "relative_change",
+            "reason"
+          ],
+          "title": "MetricDeltaDTO",
+          "type": "object"
+        },
+        "MissingReason": {
+          "enum": [
+            "not_applicable",
+            "missing_data",
+            "division_by_zero"
+          ],
+          "title": "MissingReason",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ExperimentView"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "ExperimentPage",
+      "type": "object"
+    },
+    "logistics_contracts.experiment.ExperimentView": {
+      "$defs": {
+        "ExperimentComparisonDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "base_label": {
+              "title": "Base Label",
+              "type": "string"
+            },
+            "candidate_label": {
+              "title": "Candidate Label",
+              "type": "string"
+            },
+            "deltas": {
+              "items": {
+                "$ref": "#/$defs/MetricDeltaDTO"
+              },
+              "title": "Deltas",
+              "type": "array"
+            }
+          },
+          "required": [
+            "base_label",
+            "candidate_label",
+            "deltas"
+          ],
+          "title": "ExperimentComparisonDTO",
+          "type": "object"
+        },
+        "MetricDeltaDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "base": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Base"
+            },
+            "candidate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Candidate"
+            },
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "delta": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Delta"
+            },
+            "reason": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/MissingReason"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "relative_change": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Relative Change"
+            }
+          },
+          "required": [
+            "code",
+            "base",
+            "candidate",
+            "delta",
+            "relative_change",
+            "reason"
+          ],
+          "title": "MetricDeltaDTO",
+          "type": "object"
+        },
+        "MissingReason": {
+          "enum": [
+            "not_applicable",
+            "missing_data",
+            "division_by_zero"
+          ],
+          "title": "MissingReason",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "base_label": {
+          "title": "Base Label",
+          "type": "string"
+        },
+        "candidate_label": {
+          "title": "Candidate Label",
+          "type": "string"
+        },
+        "comparison": {
+          "$ref": "#/$defs/ExperimentComparisonDTO"
+        },
+        "experiment_id": {
+          "format": "uuid",
+          "title": "Experiment Id",
+          "type": "string"
+        },
+        "metric_version": {
+          "title": "Metric Version",
+          "type": "string"
+        },
+        "orders_total": {
+          "title": "Orders Total",
+          "type": "integer"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "experiment_id",
+        "status",
+        "base_label",
+        "candidate_label",
+        "orders_total",
+        "metric_version",
+        "comparison"
+      ],
+      "title": "ExperimentView",
       "type": "object"
     },
     "logistics_contracts.experiment.MetricDeltaDTO": {

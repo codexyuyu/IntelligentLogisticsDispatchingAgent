@@ -1,23 +1,46 @@
-"""Paired experiment comparison API (P33-01 subset)."""
+"""Paired experiment comparison and persistence API (P33)."""
 
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends
+from uuid import UUID
 
-from logistics_backend.api.dependencies import actor
-from logistics_contracts.experiment import ExperimentCompareRequest, ExperimentComparisonDTO
-from logistics_contracts.mapping import experiment_comparison_dto
+from fastapi import APIRouter, Depends, Query, Request
+
+from logistics_backend.api.dependencies import actor, operator
+from logistics_backend.application.experiment import ExperimentService
+from logistics_contracts.experiment import (
+    ExperimentCompareRequest,
+    ExperimentComparisonDTO,
+    ExperimentPage,
+    ExperimentView,
+)
 from logistics_domain.runtime import ActorContext
-from logistics_evaluation.metrics import compare_metrics, simulation_metrics
 
 router = APIRouter(tags=["experiments"])
+
+
+def experiment_service(request: Request) -> ExperimentService:
+    return request.app.state.experiments
 
 
 @router.post("/experiments/compare", response_model=ExperimentComparisonDTO,
              operation_id="compare_experiment_results")
 def compare_experiment_results(command: ExperimentCompareRequest,
-                               current: ActorContext = Depends(actor)):
-    base = simulation_metrics(command.base.to_domain(), command.orders_total)
-    candidate = simulation_metrics(command.candidate.to_domain(), command.orders_total)
-    return experiment_comparison_dto(compare_metrics(command.base_label,
-        command.candidate_label, base, candidate))
+                               current: ActorContext = Depends(operator),
+                               service: ExperimentService = Depends(experiment_service)):
+    return service.compare(command, current)
+
+
+@router.get("/experiments", response_model=ExperimentPage,
+            operation_id="list_experiments")
+def list_experiments(current: ActorContext = Depends(actor),
+                     service: ExperimentService = Depends(experiment_service),
+                     limit: int = Query(default=50, ge=1, le=200)):
+    return service.list(current, limit)
+
+
+@router.get("/experiments/{experiment_id}", response_model=ExperimentView,
+            operation_id="get_experiment")
+def get_experiment(experiment_id: UUID, current: ActorContext = Depends(actor),
+                   service: ExperimentService = Depends(experiment_service)):
+    return service.get(experiment_id, current)

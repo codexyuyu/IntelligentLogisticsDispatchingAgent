@@ -7,8 +7,10 @@ from dataclasses import dataclass
 
 from logistics_domain.errors import InvalidInputError
 from logistics_domain.metrics import MissingReason
+from logistics_domain.orders import Entity
+from logistics_domain.primitives import require_int, require_non_negative_int
 
-__all__ = ["ExperimentComparison", "MetricDelta"]
+__all__ = ["ExperimentComparison", "ExperimentRecord", "MetricDelta"]
 
 
 @dataclass(frozen=True, slots=True)
@@ -52,3 +54,28 @@ class ExperimentComparison:
         for index, delta in enumerate(self.deltas):
             if not isinstance(delta, MetricDelta):
                 raise InvalidInputError(f"deltas[{index}] must be MetricDelta")
+
+
+@dataclass(frozen=True, slots=True)
+class ExperimentRecord(Entity):
+    lifecycle = "experiment"
+
+    base_label: str
+    candidate_label: str
+    orders_total: int
+    metric_version: str
+    base_result_json: str
+    candidate_result_json: str
+    comparison_json: str
+
+    def __post_init__(self) -> None:
+        Entity.__post_init__(self)
+        for name in ("base_label", "candidate_label", "metric_version"):
+            value = getattr(self, name)
+            if not isinstance(value, str) or not 1 <= len(value) <= 128:
+                raise InvalidInputError(f"ExperimentRecord.{name} must be 1..128 characters")
+        require_int(self.orders_total, field="ExperimentRecord.orders_total", minimum=0)
+        for name in ("base_result_json", "candidate_result_json", "comparison_json"):
+            if not isinstance(getattr(self, name), str):
+                raise InvalidInputError(f"ExperimentRecord.{name} must be a string")
+        require_non_negative_int(self.row_version, field="ExperimentRecord.row_version")

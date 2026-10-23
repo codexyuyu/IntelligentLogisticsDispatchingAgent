@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Literal
+from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, StrictInt
 
@@ -37,3 +38,22 @@ class ExperimentCompareRequest(BaseModel):
     base: SimulationResultDTO
     candidate: SimulationResultDTO
     orders_total: StrictInt
+    persist: bool = False
+
+
+class ExperimentView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    experiment_id: UUID
+    status: str
+    base_label: str
+    candidate_label: str
+    orders_total: StrictInt
+    metric_version: str
+    comparison: ExperimentComparisonDTO
+
+
+class ExperimentPage(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    items: tuple[ExperimentView, ...]

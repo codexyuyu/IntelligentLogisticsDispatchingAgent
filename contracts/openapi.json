@@ -2735,6 +2735,11 @@
             "title": "Orders Total",
             "type": "integer"
           },
+          "persist": {
+            "default": false,
+            "title": "Persist",
+            "type": "boolean"
+          },
           "schema_version": {
             "const": "2.0.0",
             "default": "2.0.0",
@@ -2775,6 +2780,79 @@
           "deltas"
         ],
         "title": "ExperimentComparisonDTO",
+        "type": "object"
+      },
+      "ExperimentPage": {
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ExperimentView"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "title": "ExperimentPage",
+        "type": "object"
+      },
+      "ExperimentView": {
+        "additionalProperties": false,
+        "properties": {
+          "base_label": {
+            "title": "Base Label",
+            "type": "string"
+          },
+          "candidate_label": {
+            "title": "Candidate Label",
+            "type": "string"
+          },
+          "comparison": {
+            "$ref": "#/components/schemas/ExperimentComparisonDTO"
+          },
+          "experiment_id": {
+            "format": "uuid",
+            "title": "Experiment Id",
+            "type": "string"
+          },
+          "metric_version": {
+            "title": "Metric Version",
+            "type": "string"
+          },
+          "orders_total": {
+            "title": "Orders Total",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "experiment_id",
+          "status",
+          "base_label",
+          "candidate_label",
+          "orders_total",
+          "metric_version",
+          "comparison"
+        ],
+        "title": "ExperimentView",
         "type": "object"
       },
       "FieldError": {
@@ -9092,6 +9170,67 @@
         ]
       }
     },
+    "/api/v1/experiments": {
+      "get": {
+        "operationId": "list_experiments",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentPage"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Experiments",
+        "tags": [
+          "experiments"
+        ]
+      }
+    },
     "/api/v1/experiments/compare": {
       "post": {
         "operationId": "compare_experiment_results",
@@ -9146,6 +9285,65 @@
           }
         },
         "summary": "Compare Experiment Results",
+        "tags": [
+          "experiments"
+        ]
+      }
+    },
+    "/api/v1/experiments/{experiment_id}": {
+      "get": {
+        "operationId": "get_experiment",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "experiment_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Experiment Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Experiment",
         "tags": [
           "experiments"
         ]
