@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { getToken, request, setToken, type JobRef, type JobResult, type Page } from "./api";
 import { JsonPanel } from "./components/JsonPanel";
 import { SchedulePanel } from "./components/SchedulePanel";
+import { ExceptionPanel } from "./components/ExceptionPanel";
 
 type OrderView = { id: string; external_ref: string; status: string };
 type ChatReply = { reply: string; model: string; provider_configured: boolean; trace_id: string };
-type Tab = "overview" | "schedules" | "transport" | "warehouse" | "simulation" | "events" | "metrics" | "reschedule" | "agent";
+type Tab = "overview" | "schedules" | "transport" | "warehouse" | "simulation" | "incidents" | "events" | "metrics" | "reschedule" | "agent";
 
-const TABS: readonly Tab[] = ["overview", "schedules", "transport", "warehouse", "simulation", "events", "metrics", "reschedule", "agent"];
+const TABS: readonly Tab[] = ["overview", "schedules", "transport", "warehouse", "simulation", "incidents", "events", "metrics", "reschedule", "agent"];
 
 const TITLES: Record<Tab, string> = {
   overview: "Overview",
@@ -15,6 +16,7 @@ const TITLES: Record<Tab, string> = {
   transport: "Transport optimization",
   warehouse: "Warehouse scheduling",
   simulation: "Simulation",
+  incidents: "Incidents & reschedule",
   events: "Event ingestion",
   metrics: "Metrics",
   reschedule: "Reschedule proposal",
@@ -295,6 +297,8 @@ export default function App() {
           <JsonPanel title="Simulation" path="/simulations" initialBody={SIMULATION}
             idempotent description="SimulationRequestDTO with an explicit plan and stop rows." />
         ) : null}
+        {tab === "incidents" ? <ExceptionPanel /> : null}
+
         {tab === "events" ? (
           <JsonPanel title="Event ingestion" path="/events" initialBody={EVENT}
             description="EventEnvelopeDTO; duplicate source/source_event_id returns a duplicate receipt." />
