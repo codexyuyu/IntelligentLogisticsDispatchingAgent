@@ -86,6 +86,22 @@ def test_impact_closure_marks_interrupted_and_mutable_tasks():
     assert analysis.boundary.frozen_task_ids == ()
 
 
+def test_impact_closure_walks_from_stop_to_all_route_tasks():
+    first_order, second_order = uuid4(), uuid4()
+    plan, first_stop = _plan(first_order)
+    second_stop = RouteStop(id=uuid4(), status=EntityState.PLANNED, created_at=EPOCH,
+        updated_at=EPOCH, row_version=0, schema_version="2.0.0", created_by=uuid4(),
+        route_id=first_stop.route_id, sequence=1, node_id=uuid4(),
+        task_ids=(second_order,), arrival_s=30, service_start_s=30, departure_s=40,
+        load_before=Load(10, 0), load_after=Load(0, 0))
+    request = ImpactRequestDTO(event=_envelope(first_order), plan=plan_dto(plan),
+        stops=(route_stop_dto(first_stop), route_stop_dto(second_stop)), event_time_s=15)
+    analysis = ImpactService().analyse(request)
+    assert analysis.report.affected_orders == tuple(sorted((first_order, second_order), key=str))
+    assert analysis.report.affected_tasks == tuple(sorted((first_order, second_order), key=str))
+    assert {path.code for path in analysis.report.reason_paths} >= {"closure.routes"}
+
+
 def test_reschedule_proposal_is_typed_and_does_not_claim_completion():
     order_id = uuid4()
     request = RescheduleProposalRequest(
