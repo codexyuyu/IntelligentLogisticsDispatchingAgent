@@ -48,6 +48,7 @@ from logistics_agents.llm import DeepSeekProvider, LLMSettings
 from logistics_agents.service import AgentChatService
 from logistics_backend.application.agent import AgentRunService
 from logistics_backend.application.tools import ToolService
+from logistics_backend.application.decision import DecisionService
 from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
@@ -102,6 +103,7 @@ class Services:
     simulation_results: SimulationResultStore
     agents: AgentRunService
     tools: ToolService
+    decisions: DecisionService
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -135,6 +137,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         simulation_results=SimulationResultStore(),
         agents=agents,
         tools=ToolService(jobs, agents, factory, settings.scope_id),
+        decisions=DecisionService(factory, settings.scope_id),
     )
     return engine, services
 
@@ -165,6 +168,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.simulation_results = services.simulation_results
     app.state.agents = services.agents
     app.state.tools = services.tools
+    app.state.decisions = services.decisions
     install_handlers(app)
 
     @app.middleware("http")

@@ -409,6 +409,7 @@ def test_lifecycle_edges_match_the_domain_catalog_rows() -> None:
         "reschedule_request",
         "agent_run",
         "tool_call",
+        "decision_record",
         "experiment",
         "metric",
         "job",

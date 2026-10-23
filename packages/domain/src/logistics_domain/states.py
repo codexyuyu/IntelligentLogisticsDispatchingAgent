@@ -753,6 +753,16 @@ LIFECYCLE_TRANSITIONS: Final[Mapping[LifecycleOwner, Mapping[EntityState, frozen
                     EntityState.CANCELLED: frozenset(),
                 }
             ),
+            "decision_record": MappingProxyType(
+                {
+                    EntityState.PROPOSED: frozenset(
+                        {EntityState.ACCEPTED, EntityState.REJECTED, EntityState.SUPERSEDED}
+                    ),
+                    EntityState.ACCEPTED: frozenset({EntityState.SUPERSEDED}),
+                    EntityState.REJECTED: frozenset({EntityState.SUPERSEDED}),
+                    EntityState.SUPERSEDED: frozenset(),
+                }
+            ),
             "experiment": MappingProxyType(
                 {
                     EntityState.DRAFT: frozenset(

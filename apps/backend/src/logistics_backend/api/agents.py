@@ -16,7 +16,9 @@ from logistics_contracts.agents import (
     AgentToolResultView,
     AgentToolSpecView,
 )
+from logistics_contracts.decision import DecisionCreate, DecisionPage, DecisionView
 from logistics_domain.runtime import ActorContext
+from logistics_backend.application.decision import DecisionService
 from logistics_backend.application.tools import ToolService
 
 router = APIRouter(tags=["agents"])
@@ -28,6 +30,10 @@ def agent_service(request: Request) -> AgentRunService:
 
 def tool_service(request: Request) -> ToolService:
     return request.app.state.tools
+
+
+def decision_service(request: Request) -> DecisionService:
+    return request.app.state.decisions
 
 
 @router.post("/agents/chat", response_model=AgentChatResponse, operation_id="agent_chat")
@@ -67,3 +73,18 @@ def invoke_agent_tool(name: str, command: AgentToolCallRequest, request: Request
     result = service.invoke(name, current, command.arguments, request.state.trace_id)
     return AgentToolResultView(name=result.name, ok=result.ok, content=result.content,
         error_code=result.error_code)
+
+
+@router.post("/agents/decisions", response_model=DecisionView, status_code=201,
+             operation_id="record_agent_decision")
+def record_agent_decision(command: DecisionCreate, current: ActorContext = Depends(operator),
+                          service: DecisionService = Depends(decision_service)):
+    return service.record(command, current)
+
+
+@router.get("/agents/decisions", response_model=DecisionPage,
+            operation_id="list_agent_decisions")
+def list_agent_decisions(current: ActorContext = Depends(actor),
+                         service: DecisionService = Depends(decision_service),
+                         limit: int = Query(default=50, ge=1, le=200)):
+    return service.list(current, limit)
