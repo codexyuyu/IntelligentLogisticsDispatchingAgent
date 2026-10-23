@@ -2776,6 +2776,29 @@
         "title": "JobView",
         "type": "object"
       },
+      "JointValidationRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "transport": {
+            "$ref": "#/components/schemas/TransportValidationRequest"
+          },
+          "warehouse": {
+            "$ref": "#/components/schemas/WarehouseValidationRequest"
+          }
+        },
+        "required": [
+          "transport",
+          "warehouse"
+        ],
+        "title": "JointValidationRequest",
+        "type": "object"
+      },
       "LoadDTO": {
         "additionalProperties": false,
         "properties": {
@@ -9555,6 +9578,65 @@
         "summary": "Submit Simulation",
         "tags": [
           "simulations"
+        ]
+      }
+    },
+    "/api/v1/validations/joint": {
+      "post": {
+        "operationId": "validate_joint_plan",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JointValidationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationReportDTO"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Validate Joint Plan",
+        "tags": [
+          "validation"
         ]
       }
     },

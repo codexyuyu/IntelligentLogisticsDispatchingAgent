@@ -24,3 +24,10 @@ class WarehouseValidationRequest(BaseModel):
     schema_version: Literal["2.0.0"] = "2.0.0"
     problem: WarehouseProblemDTO
     solution: WarehouseSolutionDTO
+
+
+class JointValidationRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    transport: TransportValidationRequest
+    warehouse: WarehouseValidationRequest
