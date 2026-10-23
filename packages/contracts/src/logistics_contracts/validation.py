@@ -8,6 +8,7 @@ from pydantic import BaseModel, ConfigDict
 
 from logistics_contracts.planning import RouteStopDTO, TransportPlanDTO
 from logistics_contracts.transport import TransportProblemDTO
+from logistics_contracts.warehouse import WarehouseProblemDTO, WarehouseSolutionDTO
 
 
 class TransportValidationRequest(BaseModel):
@@ -16,3 +17,10 @@ class TransportValidationRequest(BaseModel):
     problem: TransportProblemDTO
     plan: TransportPlanDTO
     stops: tuple[RouteStopDTO, ...]
+
+
+class WarehouseValidationRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    problem: WarehouseProblemDTO
+    solution: WarehouseSolutionDTO

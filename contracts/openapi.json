@@ -615,6 +615,35 @@
         "title": "DemandIncreasePayloadDTO",
         "type": "object"
       },
+      "DiagnosticDTO-Input": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "severity": {
+            "default": "error",
+            "enum": [
+              "error",
+              "warning",
+              "info"
+            ],
+            "title": "Severity",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "DiagnosticDTO",
+        "type": "object"
+      },
       "DiagnosticSeverity": {
         "enum": [
           "info",
@@ -6163,6 +6192,35 @@
         "title": "WarehousePage",
         "type": "object"
       },
+      "WarehouseProblemDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "budget": {
+            "$ref": "#/components/schemas/SolveBudgetDTO"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/ObjectivePolicyDTO"
+          },
+          "snapshot": {
+            "$ref": "#/components/schemas/PlanningSnapshotDTO"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/WarehouseTaskDTO"
+            },
+            "title": "Tasks",
+            "type": "array"
+          }
+        },
+        "required": [
+          "snapshot",
+          "tasks",
+          "policy",
+          "budget"
+        ],
+        "title": "WarehouseProblemDTO",
+        "type": "object"
+      },
       "WarehouseRequestDTO": {
         "additionalProperties": false,
         "properties": {
@@ -6249,7 +6307,7 @@
             "type": "string"
           },
           "value": {
-            "$ref": "#/components/schemas/WarehouseSolutionDTO"
+            "$ref": "#/components/schemas/WarehouseSolutionDTO-Output"
           }
         },
         "required": [
@@ -6259,7 +6317,86 @@
         "title": "WarehouseResultView",
         "type": "object"
       },
-      "WarehouseSolutionDTO": {
+      "WarehouseSolutionDTO-Input": {
+        "additionalProperties": false,
+        "properties": {
+          "assignments": {
+            "items": {
+              "$ref": "#/components/schemas/OperationAssignmentDTO"
+            },
+            "title": "Assignments",
+            "type": "array"
+          },
+          "diagnostics": {
+            "items": {
+              "$ref": "#/components/schemas/DiagnosticDTO-Input"
+            },
+            "title": "Diagnostics",
+            "type": "array"
+          },
+          "engine_metadata": {
+            "$ref": "#/components/schemas/EngineMetadataDTO"
+          },
+          "objective": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ObjectiveBreakdownDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "setup_operations": {
+            "items": {
+              "$ref": "#/components/schemas/SetupOperationDTO"
+            },
+            "title": "Setup Operations",
+            "type": "array"
+          },
+          "solver_evidence": {
+            "items": {
+              "$ref": "#/components/schemas/SolverEvidenceDTO"
+            },
+            "title": "Solver Evidence",
+            "type": "array"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SolveStatus"
+          },
+          "storage_allocations": {
+            "items": {
+              "$ref": "#/components/schemas/StorageIntervalDTO"
+            },
+            "title": "Storage Allocations",
+            "type": "array"
+          },
+          "validation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ValidationReportDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "engine_metadata",
+          "assignments",
+          "storage_allocations",
+          "setup_operations",
+          "objective",
+          "validation",
+          "diagnostics",
+          "solver_evidence"
+        ],
+        "title": "WarehouseSolutionDTO",
+        "type": "object"
+      },
+      "WarehouseSolutionDTO-Output": {
         "additionalProperties": false,
         "properties": {
           "assignments": {
@@ -6508,6 +6645,29 @@
           "schema_version"
         ],
         "title": "WarehouseUpdate",
+        "type": "object"
+      },
+      "WarehouseValidationRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "problem": {
+            "$ref": "#/components/schemas/WarehouseProblemDTO"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "solution": {
+            "$ref": "#/components/schemas/WarehouseSolutionDTO-Input"
+          }
+        },
+        "required": [
+          "problem",
+          "solution"
+        ],
+        "title": "WarehouseValidationRequest",
         "type": "object"
       },
       "WeatherChangePayloadDTO": {
@@ -9063,6 +9223,65 @@
           }
         },
         "summary": "Validate Transport Plan",
+        "tags": [
+          "validation"
+        ]
+      }
+    },
+    "/api/v1/validations/warehouse": {
+      "post": {
+        "operationId": "validate_warehouse_solution",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WarehouseValidationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationReportDTO"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Validate Warehouse Solution",
         "tags": [
           "validation"
         ]
