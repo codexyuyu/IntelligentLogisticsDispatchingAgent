@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logistics Workbench (dev shell)</title>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, sans-serif; margin: 2rem; max-width: 1100px; color: #1d232b; }
+    h1 { font-size: 1.3rem; }
+    section { border: 1px solid #dbe1e8; border-radius: 10px; padding: 1rem; margin: 1rem 0; }
+    input, textarea, button { font: inherit; }
+    input[type=text], textarea { width: 100%; box-sizing: border-box; padding: .5rem; margin: .35rem 0; }
+    textarea { min-height: 180px; font-family: ui-monospace, monospace; font-size: .8rem; }
+    button { padding: .45rem .8rem; margin-right: .5rem; cursor: pointer; }
+    pre { background: #f6f8fa; padding: .8rem; overflow: auto; max-height: 360px; }
+    .row { display: flex; gap: .5rem; align-items: center; }
+    .hint { color: #57606a; font-size: .85rem; }
+  </style>
+</head>
+<body>
+  <h1>Logistics Workbench <span class="hint">(development shell, no build step)</span></h1>
+  <div class="row">
+    <input id="token" type="text" placeholder="Bearer token (dev credential)" style="flex:1">
+    <button id="save">保存 token</button>
+  </div>
+  <p class="hint">token 只保存在本页 localStorage，不写入仓库。</p>
+
+  <section>
+    <h2>Health</h2>
+    <button data-path="/api/v1/health">GET /health</button>
+    <button data-path="/api/v1/ready">GET /ready</button>
+  </section>
+
+  <section>
+    <h2>Master data</h2>
+    <button data-path="/api/v1/orders?limit=20">GET /orders</button>
+    <button data-path="/api/v1/vehicles?limit=20">GET /vehicles</button>
+    <button data-path="/api/v1/warehouses?limit=20">GET /warehouses</button>
+  </section>
+
+  <section>
+    <h2>Transport optimization</h2>
+    <p class="hint">Body 使用 TransportRequestDTO；Idempotency-Key 自动生成。</p>
+    <textarea id="transport">{
+  "schema_version": "2.0.0",
+  "scope": {
+    "order_ids": [],
+    "warehouse_ids": [],
+    "vehicle_ids": [],
+    "epoch_utc": "2026-01-01T00:00:00Z",
+    "horizon_s": 86400
+  },
+  "order_ids": [],
+  "vehicle_ids": [],
+  "matrix_ref": {"matrix_id": "00000000-0000-4000-8000-000000000000", "version": 1, "hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},
+  "budget": {"wall_time_ms": 3000, "deadline_utc": "2026-01-01T00:10:00Z", "max_candidates": 1, "seed": 0},
+  "objective_policy": {"version": "1.0.0", "optional_unserved_penalty_cents": 0, "soft_late_cents_per_s": 0, "makespan_cents_per_s": 0, "disturbance_weights": {"assignment_change": 0, "time_shift": 0, "order_change": 0, "membership_change": 0}}
+}</textarea>
+    <button id="submitTransport">POST /optimizations/transport</button>
+    <div class="row"><input id="jobId" type="text" placeholder="job id" style="flex:1"><button id="getResult">GET /jobs/{id}/result</button></div>
+  </section>
+
+  <section>
+    <h2>Response</h2>
+    <pre id="out">—</pre>
+  </section>
+
+  <script>
+    const out = document.getElementById('out');
+    const token = document.getElementById('token');
+    token.value = localStorage.getItem('dsh_token') || '';
+    document.getElementById('save').onclick = () => localStorage.setItem('dsh_token', token.value);
+
+    async function call(path, options = {}) {
+      const headers = Object.assign({'Accept': 'application/json'}, options.headers || {});
+      if (token.value) headers['Authorization'] = 'Bearer ' + token.value;
+      if (options.body) headers['Content-Type'] = 'application/json';
+      out.textContent = 'loading…';
+      try {
+        const response = await fetch(path, Object.assign({}, options, {headers}));
+        const text = await response.text();
+        let body;
+        try { body = JSON.parse(text); } catch { body = text; }
+        out.textContent = response.status + ' ' + response.statusText + '\n' + JSON.stringify(body, null, 2);
+      } catch (error) {
+        out.textContent = 'request failed: ' + error;
+      }
+    }
+
+    document.querySelectorAll('[data-path]').forEach(button => {
+      button.onclick = () => call(button.dataset.path);
+    });
+    document.getElementById('submitTransport').onclick = () => call(
+      '/api/v1/optimizations/transport',
+      {method: 'POST', headers: {'Idempotency-Key': crypto.randomUUID()}, body: document.getElementById('transport').value}
+    );
+    document.getElementById('getResult').onclick = () => {
+      const id = document.getElementById('jobId').value.trim();
+      if (id) call('/api/v1/jobs/' + encodeURIComponent(id) + '/result');
+    };
+  </script>
+</body>
+</html>
