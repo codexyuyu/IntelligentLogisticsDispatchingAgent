@@ -47,6 +47,7 @@ from logistics_backend.application.simulation import (
 from logistics_agents.llm import DeepSeekProvider, LLMSettings
 from logistics_agents.service import AgentChatService
 from logistics_backend.application.agent import AgentRunService
+from logistics_backend.application.tools import ToolService
 from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
@@ -100,6 +101,7 @@ class Services:
     simulations: SimulationService
     simulation_results: SimulationResultStore
     agents: AgentRunService
+    tools: ToolService
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -116,6 +118,8 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         registry.register(JobKind.SIMULATION, SimulationJobHandler())
     jobs = JobService(repository, registry)
     snapshots = PlanningSnapshotStore(factory, settings.scope_id)
+    agents = AgentRunService(factory,
+        AgentChatService(DeepSeekProvider(LLMSettings.from_env())), settings.scope_id)
     services = Services(
         master_data=MasterDataService(factory, TABLES),
         jobs=jobs,
@@ -129,8 +133,8 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         exceptions=ExceptionService(factory, settings.scope_id),
         simulations=SimulationService(jobs),
         simulation_results=SimulationResultStore(),
-        agents=AgentRunService(factory,
-            AgentChatService(DeepSeekProvider(LLMSettings.from_env())), settings.scope_id),
+        agents=agents,
+        tools=ToolService(jobs, agents),
     )
     return engine, services
 
@@ -160,6 +164,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.simulations = services.simulations
     app.state.simulation_results = services.simulation_results
     app.state.agents = services.agents
+    app.state.tools = services.tools
     install_handlers(app)
 
     @app.middleware("http")

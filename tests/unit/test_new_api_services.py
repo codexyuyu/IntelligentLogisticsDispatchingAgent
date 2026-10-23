@@ -12,6 +12,7 @@ from uuid import uuid4
 
 from logistics_backend.application.impact import ImpactService
 from logistics_backend.application.reschedule import RescheduleService
+from logistics_backend.application.tools import ToolService
 from logistics_contracts.events import EventEnvelopeDTO
 from logistics_contracts.impact import ImpactRequestDTO
 from logistics_contracts.mapping import plan_dto, route_stop_dto
@@ -24,13 +25,14 @@ from logistics_domain.planning import (
     TransportPlan,
 )
 from logistics_domain.primitives import Load
+from logistics_domain.runtime import ActorContext
 from logistics_domain.simulation import (
     SimulationEvent,
     SimulationEventKind,
     SimulationResult,
     SimulationStatus,
 )
-from logistics_domain.states import EntityState
+from logistics_domain.states import ActorRole, EntityState
 from logistics_evaluation.metrics import (
     compare_metrics,
     simulation_metrics,
@@ -105,6 +107,26 @@ def test_transport_metrics_keep_missing_values_explicit():
     assert values["total_distance_m"].value == 5000
     assert values["changed_tasks"].value is None
     assert values["changed_tasks"].reason.value == "not_applicable"
+
+
+def test_tool_registry_rejects_unknown_and_invalid_arguments():
+    class Job:
+        def model_dump(self, mode="json"):
+            return {"job_id": "j1", "status": "queued"}
+
+    class Jobs:
+        def get(self, job_id, actor):
+            return Job()
+
+    class Agents:
+        def list(self, actor, limit):
+            return None
+
+    service = ToolService(Jobs(), Agents())
+    actor = ActorContext(actor_id=uuid4(), role=ActorRole.OPERATOR, scope_id=uuid4())
+    assert service.invoke("missing", actor, {}).error_code == "tool_not_found"
+    assert service.invoke("job_status", actor, {}).error_code == "invalid_arguments"
+    assert service.invoke("job_status", actor, {"job_id": str(uuid4())}).ok is True
 
 
 def test_simulation_comparison_returns_signed_deltas():

@@ -11,7 +11,7 @@ provider abstraction and P19-P23 the four roles, orchestration and session API.
 
 from __future__ import annotations
 
-from . import llm, service
+from . import llm, service, tools
 
 SCHEMA_VERSION = "1.0.0"
 PACKAGE_NAME = "logistics-agents"
@@ -21,7 +21,7 @@ AGENT_ROLES = ("coordinator", "transport", "warehouse", "exception")
 LLM_DECISION_SCOPE = "extract|decompose|call_tools|explain"
 
 __all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "AGENT_ROLES", "LLM_DECISION_SCOPE",
-           "llm", "service"]
+           "llm", "service", "tools"]
 
 _PENDING_APIS: dict[str, str] = {
     "tools": "P17-01/P17-02: whitelisted typed tools bound to application services",

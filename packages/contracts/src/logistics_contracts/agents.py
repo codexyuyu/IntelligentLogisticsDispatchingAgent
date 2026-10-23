@@ -40,3 +40,32 @@ class AgentRunPage(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal["2.0.0"] = "2.0.0"
     items: tuple[AgentRunView, ...]
+
+
+class AgentToolSpecView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    name: str
+    description: str
+    allowed_roles: tuple[str, ...]
+
+
+class AgentToolPage(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    items: tuple[AgentToolSpecView, ...]
+
+
+class AgentToolCallRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    arguments: dict[str, object] = Field(default_factory=dict)
+
+
+class AgentToolResultView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    name: str
+    ok: bool
+    content: dict[str, object]
+    error_code: str | None
