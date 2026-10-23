@@ -30,6 +30,8 @@ services:
         condition: service_healthy
     ports:
       - "8000:8000"
+    volumes:
+      - results:/app/artifacts
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health')"]
       interval: 5s
@@ -45,6 +47,8 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+    volumes:
+      - results:/app/artifacts
 
   frontend:
     build:
@@ -69,3 +73,4 @@ services:
 
 volumes:
   pgdata:
+  results:

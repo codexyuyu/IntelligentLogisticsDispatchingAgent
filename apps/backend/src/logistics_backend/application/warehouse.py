@@ -65,7 +65,7 @@ class WarehouseJobHandler:
 def problem_budget(problem: WarehouseProblem, deadline):
     from logistics_domain.planning import SolveBudget
 
-    remaining = max(1, min(60_000, int((deadline.expires_at_utc - _now()).total_seconds() * 1000)))
+    remaining = max(1, min(5_000, int((deadline.expires_at_utc - _now()).total_seconds() * 1000)))
     return SolveBudget(wall_time_ms=remaining, deadline_utc=deadline.expires_at_utc,
         max_candidates=1, seed=problem.budget.seed, worker_count=1,
         deterministic_test_mode=False)

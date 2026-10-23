@@ -144,8 +144,8 @@ class TransportJobHandler:
 
 
 def problem_budget(problem: TransportProblem, deadline) -> SolveBudget:
-    """Use the stored problem policy and the worker deadline without trusting the child clock."""
-    remaining = max(1, min(60_000, int((deadline.expires_at_utc - _now()).total_seconds() * 1000)))
+    """Cap every worker solve at the server limit; request-level budget is not persisted here."""
+    remaining = max(1, min(5_000, int((deadline.expires_at_utc - _now()).total_seconds() * 1000)))
     return SolveBudget(wall_time_ms=remaining, deadline_utc=deadline.expires_at_utc,
         max_candidates=1, seed=0, worker_count=1, deterministic_test_mode=False)
 

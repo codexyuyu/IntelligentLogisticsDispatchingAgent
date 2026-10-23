@@ -81,11 +81,12 @@ Open <http://localhost:8080>.
 
 Known environment note: Docker Hub token exchange timed out over IPv6, but base images were pulled
 from a registry mirror and tagged locally; backend/frontend/seed built successfully, the stack
-started, and `/api/v1/health` plus authenticated `/orders` returned 200.
+started, and `/api/v1/health`, authenticated `/orders`, and a transport Job
+(submit → worker → completed → result) all returned successfully.
 
-Known issue: a transport optimization Job submitted through the Docker worker did not return
-within its 1s/3s solver budget and was failed at the 55s deadline. The same seed problem solves
-locally; container solver time-limit behavior still needs investigation.
+The worker caps solver wall time at 5 seconds per job and backend/worker share a `results` volume
+for immutable artifacts. This is a product-level cap; the request-level budget is not persisted
+in the current job payload, so a requested 1s/3s budget is not yet enforced.
 
 ## Known product gaps
 
