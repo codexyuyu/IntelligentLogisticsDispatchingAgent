@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { request } from "../api";
+import { CandidateCommitPanel } from "./CandidateCommitPanel";
 
 type Schedule = {
   schedule_id: string;
@@ -150,6 +151,14 @@ export function SchedulePanel() {
         <textarea value={scope} onChange={(event) => setScope(event.target.value)} />
         <button onClick={createSchedule}>create</button>
       </section>
+
+      {selected ? (
+        <CandidateCommitPanel
+          scheduleId={selected}
+          activeVersionId={schedules.find((item) => item.schedule_id === selected)?.active_version_id ?? null}
+          onCommitted={() => void loadVersions(selected)}
+        />
+      ) : null}
 
       {selected ? (
         <section>

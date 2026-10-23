@@ -226,7 +226,7 @@ class ScheduleService:
                 snapshot_hash=snapshot.hash, content_hash=digest, created_at=now,
                 payload=json.loads(dto.model_dump_json())))
         return CandidateView(candidate_id=candidate.id, schedule_id=schedule_id,
-            snapshot_id=snapshot.id, content_hash=digest,
+            snapshot_id=snapshot.id, snapshot_hash=snapshot.hash, content_hash=digest,
             validation_report_id=report.id, valid=report.valid)
 
     def _persist_snapshot(self, snapshot, actor) -> None:

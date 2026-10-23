@@ -44746,6 +44746,10 @@
           "title": "Schema Version",
           "type": "string"
         },
+        "snapshot_hash": {
+          "title": "Snapshot Hash",
+          "type": "string"
+        },
         "snapshot_id": {
           "format": "uuid",
           "title": "Snapshot Id",
@@ -44765,6 +44769,7 @@
         "candidate_id",
         "schedule_id",
         "snapshot_id",
+        "snapshot_hash",
         "content_hash",
         "validation_report_id",
         "valid"

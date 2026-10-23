@@ -60,6 +60,7 @@ class CandidateView(BaseModel):
     candidate_id: UUID
     schedule_id: UUID
     snapshot_id: UUID
+    snapshot_hash: str
     content_hash: str
     validation_report_id: UUID
     valid: bool
