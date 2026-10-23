@@ -2135,6 +2135,145 @@
         "title": "HealthResponse",
         "type": "object"
       },
+      "ImpactAnalysisDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "boundary": {
+            "$ref": "#/components/schemas/RescheduleBoundaryDTO"
+          },
+          "report": {
+            "$ref": "#/components/schemas/ImpactReportDTO"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "report",
+          "boundary"
+        ],
+        "title": "ImpactAnalysisDTO",
+        "type": "object"
+      },
+      "ImpactReasonPathDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "entity_refs": {
+            "items": {
+              "$ref": "#/components/schemas/EntityRefDTO"
+            },
+            "title": "Entity Refs",
+            "type": "array"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "entity_refs",
+          "message"
+        ],
+        "title": "ImpactReasonPathDTO",
+        "type": "object"
+      },
+      "ImpactReportDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "affected_orders": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Affected Orders",
+            "type": "array"
+          },
+          "affected_resources": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Affected Resources",
+            "type": "array"
+          },
+          "affected_tasks": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Affected Tasks",
+            "type": "array"
+          },
+          "event_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Event Ids",
+            "type": "array"
+          },
+          "reason_paths": {
+            "items": {
+              "$ref": "#/components/schemas/ImpactReasonPathDTO"
+            },
+            "title": "Reason Paths",
+            "type": "array"
+          }
+        },
+        "required": [
+          "event_ids",
+          "affected_orders",
+          "affected_tasks",
+          "affected_resources",
+          "reason_paths"
+        ],
+        "title": "ImpactReportDTO",
+        "type": "object"
+      },
+      "ImpactRequestDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "event": {
+            "$ref": "#/components/schemas/EventEnvelopeDTO"
+          },
+          "event_time_s": {
+            "title": "Event Time S",
+            "type": "integer"
+          },
+          "plan": {
+            "$ref": "#/components/schemas/TransportPlanDTO"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "stops": {
+            "items": {
+              "$ref": "#/components/schemas/RouteStopDTO"
+            },
+            "title": "Stops",
+            "type": "array"
+          }
+        },
+        "required": [
+          "event",
+          "plan",
+          "stops",
+          "event_time_s"
+        ],
+        "title": "ImpactRequestDTO",
+        "type": "object"
+      },
       "JobKind": {
         "description": "Kind of a durable job; the serialized value is the lowercase word.",
         "enum": [
@@ -3358,6 +3497,126 @@
           "node_ids"
         ],
         "title": "RegionRefDTO",
+        "type": "object"
+      },
+      "RescheduleBoundaryDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "event_time_s": {
+            "title": "Event Time S",
+            "type": "integer"
+          },
+          "frozen_task_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Frozen Task Ids",
+            "type": "array"
+          },
+          "immutable_hash": {
+            "title": "Immutable Hash",
+            "type": "string"
+          },
+          "interrupted_task_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Interrupted Task Ids",
+            "type": "array"
+          },
+          "mutable_task_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Mutable Task Ids",
+            "type": "array"
+          },
+          "residual_loads": {
+            "items": {
+              "$ref": "#/components/schemas/ResidualLoadDTO"
+            },
+            "title": "Residual Loads",
+            "type": "array"
+          },
+          "resource_blocks": {
+            "items": {
+              "$ref": "#/components/schemas/ResourceBlockDTO"
+            },
+            "title": "Resource Blocks",
+            "type": "array"
+          },
+          "virtual_starts": {
+            "items": {
+              "$ref": "#/components/schemas/VirtualStartDTO"
+            },
+            "title": "Virtual Starts",
+            "type": "array"
+          }
+        },
+        "required": [
+          "event_time_s",
+          "frozen_task_ids",
+          "interrupted_task_ids",
+          "virtual_starts",
+          "residual_loads",
+          "resource_blocks",
+          "mutable_task_ids",
+          "immutable_hash"
+        ],
+        "title": "RescheduleBoundaryDTO",
+        "type": "object"
+      },
+      "ResidualLoadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cargo_id": {
+            "format": "uuid",
+            "title": "Cargo Id",
+            "type": "string"
+          },
+          "volume_cm3": {
+            "title": "Volume Cm3",
+            "type": "integer"
+          },
+          "weight_g": {
+            "title": "Weight G",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cargo_id",
+          "weight_g",
+          "volume_cm3"
+        ],
+        "title": "ResidualLoadDTO",
+        "type": "object"
+      },
+      "ResourceBlockDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "end_s": {
+            "title": "End S",
+            "type": "integer"
+          },
+          "resource_id": {
+            "format": "uuid",
+            "title": "Resource Id",
+            "type": "string"
+          },
+          "start_s": {
+            "title": "Start S",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "resource_id",
+          "start_s",
+          "end_s"
+        ],
+        "title": "ResourceBlockDTO",
         "type": "object"
       },
       "ResourceKind": {
@@ -5020,6 +5279,45 @@
           "message"
         ],
         "title": "ViolationDTO",
+        "type": "object"
+      },
+      "VirtualStartDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "location": {
+            "discriminator": {
+              "mapping": {
+                "at_node": "#/components/schemas/AtNodeLocationDTO",
+                "on_arc": "#/components/schemas/OnArcLocationDTO"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AtNodeLocationDTO"
+              },
+              {
+                "$ref": "#/components/schemas/OnArcLocationDTO"
+              }
+            ],
+            "title": "Location"
+          },
+          "start_s": {
+            "title": "Start S",
+            "type": "integer"
+          },
+          "task_id": {
+            "format": "uuid",
+            "title": "Task Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id",
+          "location",
+          "start_s"
+        ],
+        "title": "VirtualStartDTO",
         "type": "object"
       },
       "WarehouseCreate": {
@@ -6797,6 +7095,65 @@
           }
         },
         "summary": "Record Exception",
+        "tags": [
+          "exceptions"
+        ]
+      }
+    },
+    "/api/v1/exceptions/impact": {
+      "post": {
+        "operationId": "analyse_exception_impact",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImpactRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImpactAnalysisDTO"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Analyse Impact",
         "tags": [
           "exceptions"
         ]

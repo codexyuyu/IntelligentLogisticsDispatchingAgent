@@ -15385,6 +15385,2395 @@
       "title": "ZoneUpdateBranch",
       "type": "object"
     },
+    "logistics_contracts.impact.ImpactAnalysisDTO": {
+      "$defs": {
+        "AtNodeLocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "at_node",
+              "title": "Kind",
+              "type": "string"
+            },
+            "node_id": {
+              "format": "uuid",
+              "title": "Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "node_id"
+          ],
+          "title": "AtNodeLocationDTO",
+          "type": "object"
+        },
+        "EntityKind": {
+          "description": "Addressable kinds used by ``EntityRef.kind``.\n\nThe 45 members are the 32 required catalog entities, the required auxiliary entities and\nthe matrix / inline-region address kinds. Enum metadata only *names* lookup targets; this\nmodule imports no future entity model.",
+          "enum": [
+            "order",
+            "cargo",
+            "vehicle",
+            "driver",
+            "warehouse",
+            "zone",
+            "location",
+            "dock",
+            "worker",
+            "equipment",
+            "transport_task",
+            "warehouse_task",
+            "route",
+            "route_stop",
+            "schedule",
+            "schedule_task",
+            "schedule_version",
+            "constraint",
+            "optimization_request",
+            "optimization_result",
+            "simulation",
+            "simulation_snapshot",
+            "event",
+            "exception_event",
+            "reschedule_request",
+            "reschedule_result",
+            "agent_run",
+            "tool_call",
+            "decision_record",
+            "experiment",
+            "metric",
+            "experiment_result",
+            "planning_snapshot",
+            "job",
+            "job_attempt",
+            "idempotency",
+            "reservation",
+            "inventory_ledger",
+            "outbox",
+            "audit_entry",
+            "lifecycle_event",
+            "execution_snapshot",
+            "confirmation_token",
+            "travel_matrix",
+            "region"
+          ],
+          "title": "EntityKind",
+          "type": "string"
+        },
+        "EntityRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/EntityKind"
+            },
+            "revision": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Revision"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "revision"
+          ],
+          "title": "EntityRefDTO",
+          "type": "object"
+        },
+        "ImpactReasonPathDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "entity_refs": {
+              "items": {
+                "$ref": "#/$defs/EntityRefDTO"
+              },
+              "title": "Entity Refs",
+              "type": "array"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "entity_refs",
+            "message"
+          ],
+          "title": "ImpactReasonPathDTO",
+          "type": "object"
+        },
+        "ImpactReportDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "affected_orders": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Affected Orders",
+              "type": "array"
+            },
+            "affected_resources": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Affected Resources",
+              "type": "array"
+            },
+            "affected_tasks": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Affected Tasks",
+              "type": "array"
+            },
+            "event_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Event Ids",
+              "type": "array"
+            },
+            "reason_paths": {
+              "items": {
+                "$ref": "#/$defs/ImpactReasonPathDTO"
+              },
+              "title": "Reason Paths",
+              "type": "array"
+            }
+          },
+          "required": [
+            "event_ids",
+            "affected_orders",
+            "affected_tasks",
+            "affected_resources",
+            "reason_paths"
+          ],
+          "title": "ImpactReportDTO",
+          "type": "object"
+        },
+        "OnArcLocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "departed_at_s": {
+              "title": "Departed At S",
+              "type": "integer"
+            },
+            "expected_arrival_s": {
+              "title": "Expected Arrival S",
+              "type": "integer"
+            },
+            "from_node_id": {
+              "format": "uuid",
+              "title": "From Node Id",
+              "type": "string"
+            },
+            "kind": {
+              "const": "on_arc",
+              "title": "Kind",
+              "type": "string"
+            },
+            "progress_denominator": {
+              "title": "Progress Denominator",
+              "type": "integer"
+            },
+            "progress_numerator": {
+              "title": "Progress Numerator",
+              "type": "integer"
+            },
+            "to_node_id": {
+              "format": "uuid",
+              "title": "To Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "from_node_id",
+            "to_node_id",
+            "departed_at_s",
+            "expected_arrival_s",
+            "progress_numerator",
+            "progress_denominator"
+          ],
+          "title": "OnArcLocationDTO",
+          "type": "object"
+        },
+        "RescheduleBoundaryDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "event_time_s": {
+              "title": "Event Time S",
+              "type": "integer"
+            },
+            "frozen_task_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Frozen Task Ids",
+              "type": "array"
+            },
+            "immutable_hash": {
+              "title": "Immutable Hash",
+              "type": "string"
+            },
+            "interrupted_task_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Interrupted Task Ids",
+              "type": "array"
+            },
+            "mutable_task_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Mutable Task Ids",
+              "type": "array"
+            },
+            "residual_loads": {
+              "items": {
+                "$ref": "#/$defs/ResidualLoadDTO"
+              },
+              "title": "Residual Loads",
+              "type": "array"
+            },
+            "resource_blocks": {
+              "items": {
+                "$ref": "#/$defs/ResourceBlockDTO"
+              },
+              "title": "Resource Blocks",
+              "type": "array"
+            },
+            "virtual_starts": {
+              "items": {
+                "$ref": "#/$defs/VirtualStartDTO"
+              },
+              "title": "Virtual Starts",
+              "type": "array"
+            }
+          },
+          "required": [
+            "event_time_s",
+            "frozen_task_ids",
+            "interrupted_task_ids",
+            "virtual_starts",
+            "residual_loads",
+            "resource_blocks",
+            "mutable_task_ids",
+            "immutable_hash"
+          ],
+          "title": "RescheduleBoundaryDTO",
+          "type": "object"
+        },
+        "ResidualLoadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cargo_id": {
+              "format": "uuid",
+              "title": "Cargo Id",
+              "type": "string"
+            },
+            "volume_cm3": {
+              "title": "Volume Cm3",
+              "type": "integer"
+            },
+            "weight_g": {
+              "title": "Weight G",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "cargo_id",
+            "weight_g",
+            "volume_cm3"
+          ],
+          "title": "ResidualLoadDTO",
+          "type": "object"
+        },
+        "ResourceBlockDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_id",
+            "start_s",
+            "end_s"
+          ],
+          "title": "ResourceBlockDTO",
+          "type": "object"
+        },
+        "VirtualStartDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location": {
+              "discriminator": {
+                "mapping": {
+                  "at_node": "#/$defs/AtNodeLocationDTO",
+                  "on_arc": "#/$defs/OnArcLocationDTO"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/AtNodeLocationDTO"
+                },
+                {
+                  "$ref": "#/$defs/OnArcLocationDTO"
+                }
+              ],
+              "title": "Location"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            },
+            "task_id": {
+              "format": "uuid",
+              "title": "Task Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "task_id",
+            "location",
+            "start_s"
+          ],
+          "title": "VirtualStartDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "boundary": {
+          "$ref": "#/$defs/RescheduleBoundaryDTO"
+        },
+        "report": {
+          "$ref": "#/$defs/ImpactReportDTO"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "report",
+        "boundary"
+      ],
+      "title": "ImpactAnalysisDTO",
+      "type": "object"
+    },
+    "logistics_contracts.impact.ImpactReasonPathDTO": {
+      "$defs": {
+        "EntityKind": {
+          "description": "Addressable kinds used by ``EntityRef.kind``.\n\nThe 45 members are the 32 required catalog entities, the required auxiliary entities and\nthe matrix / inline-region address kinds. Enum metadata only *names* lookup targets; this\nmodule imports no future entity model.",
+          "enum": [
+            "order",
+            "cargo",
+            "vehicle",
+            "driver",
+            "warehouse",
+            "zone",
+            "location",
+            "dock",
+            "worker",
+            "equipment",
+            "transport_task",
+            "warehouse_task",
+            "route",
+            "route_stop",
+            "schedule",
+            "schedule_task",
+            "schedule_version",
+            "constraint",
+            "optimization_request",
+            "optimization_result",
+            "simulation",
+            "simulation_snapshot",
+            "event",
+            "exception_event",
+            "reschedule_request",
+            "reschedule_result",
+            "agent_run",
+            "tool_call",
+            "decision_record",
+            "experiment",
+            "metric",
+            "experiment_result",
+            "planning_snapshot",
+            "job",
+            "job_attempt",
+            "idempotency",
+            "reservation",
+            "inventory_ledger",
+            "outbox",
+            "audit_entry",
+            "lifecycle_event",
+            "execution_snapshot",
+            "confirmation_token",
+            "travel_matrix",
+            "region"
+          ],
+          "title": "EntityKind",
+          "type": "string"
+        },
+        "EntityRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/EntityKind"
+            },
+            "revision": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Revision"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "revision"
+          ],
+          "title": "EntityRefDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "entity_refs": {
+          "items": {
+            "$ref": "#/$defs/EntityRefDTO"
+          },
+          "title": "Entity Refs",
+          "type": "array"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "entity_refs",
+        "message"
+      ],
+      "title": "ImpactReasonPathDTO",
+      "type": "object"
+    },
+    "logistics_contracts.impact.ImpactReportDTO": {
+      "$defs": {
+        "EntityKind": {
+          "description": "Addressable kinds used by ``EntityRef.kind``.\n\nThe 45 members are the 32 required catalog entities, the required auxiliary entities and\nthe matrix / inline-region address kinds. Enum metadata only *names* lookup targets; this\nmodule imports no future entity model.",
+          "enum": [
+            "order",
+            "cargo",
+            "vehicle",
+            "driver",
+            "warehouse",
+            "zone",
+            "location",
+            "dock",
+            "worker",
+            "equipment",
+            "transport_task",
+            "warehouse_task",
+            "route",
+            "route_stop",
+            "schedule",
+            "schedule_task",
+            "schedule_version",
+            "constraint",
+            "optimization_request",
+            "optimization_result",
+            "simulation",
+            "simulation_snapshot",
+            "event",
+            "exception_event",
+            "reschedule_request",
+            "reschedule_result",
+            "agent_run",
+            "tool_call",
+            "decision_record",
+            "experiment",
+            "metric",
+            "experiment_result",
+            "planning_snapshot",
+            "job",
+            "job_attempt",
+            "idempotency",
+            "reservation",
+            "inventory_ledger",
+            "outbox",
+            "audit_entry",
+            "lifecycle_event",
+            "execution_snapshot",
+            "confirmation_token",
+            "travel_matrix",
+            "region"
+          ],
+          "title": "EntityKind",
+          "type": "string"
+        },
+        "EntityRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/EntityKind"
+            },
+            "revision": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Revision"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "revision"
+          ],
+          "title": "EntityRefDTO",
+          "type": "object"
+        },
+        "ImpactReasonPathDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "entity_refs": {
+              "items": {
+                "$ref": "#/$defs/EntityRefDTO"
+              },
+              "title": "Entity Refs",
+              "type": "array"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "entity_refs",
+            "message"
+          ],
+          "title": "ImpactReasonPathDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "affected_orders": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Affected Orders",
+          "type": "array"
+        },
+        "affected_resources": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Affected Resources",
+          "type": "array"
+        },
+        "affected_tasks": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Affected Tasks",
+          "type": "array"
+        },
+        "event_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Event Ids",
+          "type": "array"
+        },
+        "reason_paths": {
+          "items": {
+            "$ref": "#/$defs/ImpactReasonPathDTO"
+          },
+          "title": "Reason Paths",
+          "type": "array"
+        }
+      },
+      "required": [
+        "event_ids",
+        "affected_orders",
+        "affected_tasks",
+        "affected_resources",
+        "reason_paths"
+      ],
+      "title": "ImpactReportDTO",
+      "type": "object"
+    },
+    "logistics_contracts.impact.ImpactRequestDTO": {
+      "$defs": {
+        "ArcRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "from_node_id": {
+              "format": "uuid",
+              "title": "From Node Id",
+              "type": "string"
+            },
+            "to_node_id": {
+              "format": "uuid",
+              "title": "To Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "from_node_id",
+            "to_node_id"
+          ],
+          "title": "ArcRefDTO",
+          "type": "object"
+        },
+        "AtNodeLocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "at_node",
+              "title": "Kind",
+              "type": "string"
+            },
+            "node_id": {
+              "format": "uuid",
+              "title": "Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "node_id"
+          ],
+          "title": "AtNodeLocationDTO",
+          "type": "object"
+        },
+        "CargoAnomalyPayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cargo_id": {
+              "format": "uuid",
+              "title": "Cargo Id",
+              "type": "string"
+            },
+            "condition": {
+              "$ref": "#/$defs/CargoCondition"
+            },
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "kind": {
+              "const": "cargo_anomaly",
+              "title": "Kind",
+              "type": "string"
+            },
+            "measured_temp_decic": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Measured Temp Decic"
+            },
+            "quantity_units": {
+              "title": "Quantity Units",
+              "type": "integer"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "cargo_id",
+            "condition",
+            "quantity_units",
+            "measured_temp_decic"
+          ],
+          "title": "CargoAnomalyPayloadDTO",
+          "type": "object"
+        },
+        "CargoCondition": {
+          "enum": [
+            "intact",
+            "temperature_excursion",
+            "damaged",
+            "missing"
+          ],
+          "title": "CargoCondition",
+          "type": "string"
+        },
+        "CostBreakdownDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "distance_cents": {
+              "title": "Distance Cents",
+              "type": "integer"
+            },
+            "fixed_vehicle_cents": {
+              "title": "Fixed Vehicle Cents",
+              "type": "integer"
+            },
+            "overtime_cents": {
+              "title": "Overtime Cents",
+              "type": "integer"
+            },
+            "service_cents": {
+              "title": "Service Cents",
+              "type": "integer"
+            },
+            "setup_cents": {
+              "title": "Setup Cents",
+              "type": "integer"
+            },
+            "total_cents": {
+              "title": "Total Cents",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "distance_cents",
+            "fixed_vehicle_cents",
+            "service_cents",
+            "overtime_cents",
+            "setup_cents",
+            "total_cents"
+          ],
+          "title": "CostBreakdownDTO",
+          "type": "object"
+        },
+        "DemandDecreasePayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "delta_quantity": {
+              "title": "Delta Quantity",
+              "type": "integer"
+            },
+            "delta_volume_cm3": {
+              "title": "Delta Volume Cm3",
+              "type": "integer"
+            },
+            "delta_weight_g": {
+              "title": "Delta Weight G",
+              "type": "integer"
+            },
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "kind": {
+              "const": "demand_decrease",
+              "title": "Kind",
+              "type": "string"
+            },
+            "order_id": {
+              "format": "uuid",
+              "title": "Order Id",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "order_id",
+            "delta_quantity",
+            "delta_weight_g",
+            "delta_volume_cm3"
+          ],
+          "title": "DemandDecreasePayloadDTO",
+          "type": "object"
+        },
+        "DemandIncreasePayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "delta_quantity": {
+              "title": "Delta Quantity",
+              "type": "integer"
+            },
+            "delta_volume_cm3": {
+              "title": "Delta Volume Cm3",
+              "type": "integer"
+            },
+            "delta_weight_g": {
+              "title": "Delta Weight G",
+              "type": "integer"
+            },
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "kind": {
+              "const": "demand_increase",
+              "title": "Kind",
+              "type": "string"
+            },
+            "order_id": {
+              "format": "uuid",
+              "title": "Order Id",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "order_id",
+            "delta_quantity",
+            "delta_weight_g",
+            "delta_volume_cm3"
+          ],
+          "title": "DemandIncreasePayloadDTO",
+          "type": "object"
+        },
+        "EntityKind": {
+          "description": "Addressable kinds used by ``EntityRef.kind``.\n\nThe 45 members are the 32 required catalog entities, the required auxiliary entities and\nthe matrix / inline-region address kinds. Enum metadata only *names* lookup targets; this\nmodule imports no future entity model.",
+          "enum": [
+            "order",
+            "cargo",
+            "vehicle",
+            "driver",
+            "warehouse",
+            "zone",
+            "location",
+            "dock",
+            "worker",
+            "equipment",
+            "transport_task",
+            "warehouse_task",
+            "route",
+            "route_stop",
+            "schedule",
+            "schedule_task",
+            "schedule_version",
+            "constraint",
+            "optimization_request",
+            "optimization_result",
+            "simulation",
+            "simulation_snapshot",
+            "event",
+            "exception_event",
+            "reschedule_request",
+            "reschedule_result",
+            "agent_run",
+            "tool_call",
+            "decision_record",
+            "experiment",
+            "metric",
+            "experiment_result",
+            "planning_snapshot",
+            "job",
+            "job_attempt",
+            "idempotency",
+            "reservation",
+            "inventory_ledger",
+            "outbox",
+            "audit_entry",
+            "lifecycle_event",
+            "execution_snapshot",
+            "confirmation_token",
+            "travel_matrix",
+            "region"
+          ],
+          "title": "EntityKind",
+          "type": "string"
+        },
+        "EntityRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/EntityKind"
+            },
+            "revision": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Revision"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "revision"
+          ],
+          "title": "EntityRefDTO",
+          "type": "object"
+        },
+        "EntityState": {
+          "description": "Union of the lifecycle state words documented in ``DOMAIN_CATALOG.md``.\n\n``EntityState`` is deliberately the *union* over all catalog lifecycles: this task owns\nthe shared vocabulary, while per-entity precision comes from each entity's own status\nenum (P02-02/P02-03) and from :data:`LIFECYCLE_TRANSITIONS`. The lifecycle columns of\n``DOMAIN_CATALOG.md`` are the only source of members; a test asserts this enum covers\nexactly the states that appear in the graph.",
+          "enum": [
+            "draft",
+            "accepted",
+            "scheduled",
+            "in_execution",
+            "delivered",
+            "cancelled",
+            "cancel_requested",
+            "cancelled_after_return",
+            "registered",
+            "stored",
+            "loaded",
+            "in_transit",
+            "quarantined",
+            "returned",
+            "available",
+            "reserved",
+            "in_service",
+            "unavailable",
+            "retired",
+            "active",
+            "occupied",
+            "busy",
+            "failed",
+            "repairing",
+            "pending",
+            "ready",
+            "running",
+            "completed",
+            "interrupted",
+            "candidate",
+            "validated",
+            "published",
+            "superseded",
+            "planned",
+            "reached",
+            "servicing",
+            "dispatched",
+            "committed",
+            "released",
+            "rejected",
+            "expired",
+            "queued",
+            "recorded",
+            "suspended",
+            "deprecated",
+            "invalidated",
+            "created",
+            "paused",
+            "received",
+            "applied",
+            "duplicate",
+            "manual_required",
+            "unresolved",
+            "detected",
+            "analyzed",
+            "proposed",
+            "resolved",
+            "planning",
+            "executing",
+            "explaining",
+            "await_confirmation",
+            "waiting_input",
+            "requested",
+            "authorized",
+            "succeeded",
+            "denied",
+            "held",
+            "delivering",
+            "dead_letter",
+            "consumed"
+          ],
+          "title": "EntityState",
+          "type": "string"
+        },
+        "EquipmentFailurePayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "equipment_id": {
+              "format": "uuid",
+              "title": "Equipment Id",
+              "type": "string"
+            },
+            "kind": {
+              "const": "equipment_failure",
+              "title": "Kind",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "remaining_capacity_units": {
+              "title": "Remaining Capacity Units",
+              "type": "integer"
+            },
+            "unavailable_until_s": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Unavailable Until S"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "equipment_id",
+            "unavailable_until_s",
+            "remaining_capacity_units"
+          ],
+          "title": "EquipmentFailurePayloadDTO",
+          "type": "object"
+        },
+        "EventEnvelopeDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "expected_revision": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Expected Revision"
+            },
+            "kind": {
+              "$ref": "#/$defs/EventKind"
+            },
+            "occurred_at_utc": {
+              "format": "date-time",
+              "title": "Occurred At Utc",
+              "type": "string"
+            },
+            "payload": {
+              "discriminator": {
+                "mapping": {
+                  "cargo_anomaly": "#/$defs/CargoAnomalyPayloadDTO",
+                  "demand_decrease": "#/$defs/DemandDecreasePayloadDTO",
+                  "demand_increase": "#/$defs/DemandIncreasePayloadDTO",
+                  "equipment_failure": "#/$defs/EquipmentFailurePayloadDTO",
+                  "order_cancellation": "#/$defs/OrderCancellationPayloadDTO",
+                  "traffic_disruption": "#/$defs/TrafficDisruptionPayloadDTO",
+                  "transport_delay": "#/$defs/TransportDelayPayloadDTO",
+                  "vehicle_failure": "#/$defs/VehicleFailurePayloadDTO",
+                  "warehouse_resource_unavailable": "#/$defs/WarehouseResourceUnavailablePayloadDTO",
+                  "weather_change": "#/$defs/WeatherChangePayloadDTO"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/VehicleFailurePayloadDTO"
+                },
+                {
+                  "$ref": "#/$defs/TransportDelayPayloadDTO"
+                },
+                {
+                  "$ref": "#/$defs/TrafficDisruptionPayloadDTO"
+                },
+                {
+                  "$ref": "#/$defs/WeatherChangePayloadDTO"
+                },
+                {
+                  "$ref": "#/$defs/CargoAnomalyPayloadDTO"
+                },
+                {
+                  "$ref": "#/$defs/OrderCancellationPayloadDTO"
+                },
+                {
+                  "$ref": "#/$defs/DemandIncreasePayloadDTO"
+                },
+                {
+                  "$ref": "#/$defs/DemandDecreasePayloadDTO"
+                },
+                {
+                  "$ref": "#/$defs/EquipmentFailurePayloadDTO"
+                },
+                {
+                  "$ref": "#/$defs/WarehouseResourceUnavailablePayloadDTO"
+                }
+              ],
+              "title": "Payload"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "simulation_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Simulation Id"
+            },
+            "source": {
+              "title": "Source",
+              "type": "string"
+            },
+            "source_event_id": {
+              "title": "Source Event Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "schema_version",
+            "source",
+            "source_event_id",
+            "kind",
+            "occurred_at_utc",
+            "simulation_id",
+            "payload"
+          ],
+          "title": "EventEnvelopeDTO",
+          "type": "object"
+        },
+        "EventKind": {
+          "description": "The ten closed execution-event kinds; the value is the payload discriminator.",
+          "enum": [
+            "vehicle_failure",
+            "transport_delay",
+            "traffic_disruption",
+            "weather_change",
+            "cargo_anomaly",
+            "order_cancellation",
+            "demand_increase",
+            "demand_decrease",
+            "equipment_failure",
+            "warehouse_resource_unavailable"
+          ],
+          "title": "EventKind",
+          "type": "string"
+        },
+        "LoadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "volume_cm3": {
+              "title": "Volume Cm3",
+              "type": "integer"
+            },
+            "weight_g": {
+              "title": "Weight G",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "weight_g",
+            "volume_cm3"
+          ],
+          "title": "LoadDTO",
+          "type": "object"
+        },
+        "MatrixRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "title": "Hash",
+              "type": "string"
+            },
+            "matrix_id": {
+              "format": "uuid",
+              "title": "Matrix Id",
+              "type": "string"
+            },
+            "version": {
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "matrix_id",
+            "version",
+            "hash"
+          ],
+          "title": "MatrixRefDTO",
+          "type": "object"
+        },
+        "OnArcLocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "departed_at_s": {
+              "title": "Departed At S",
+              "type": "integer"
+            },
+            "expected_arrival_s": {
+              "title": "Expected Arrival S",
+              "type": "integer"
+            },
+            "from_node_id": {
+              "format": "uuid",
+              "title": "From Node Id",
+              "type": "string"
+            },
+            "kind": {
+              "const": "on_arc",
+              "title": "Kind",
+              "type": "string"
+            },
+            "progress_denominator": {
+              "title": "Progress Denominator",
+              "type": "integer"
+            },
+            "progress_numerator": {
+              "title": "Progress Numerator",
+              "type": "integer"
+            },
+            "to_node_id": {
+              "format": "uuid",
+              "title": "To Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "from_node_id",
+            "to_node_id",
+            "departed_at_s",
+            "expected_arrival_s",
+            "progress_numerator",
+            "progress_denominator"
+          ],
+          "title": "OnArcLocationDTO",
+          "type": "object"
+        },
+        "OrderCancellationPayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "disposition_policy": {
+              "$ref": "#/$defs/ReturnPolicy"
+            },
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "kind": {
+              "const": "order_cancellation",
+              "title": "Kind",
+              "type": "string"
+            },
+            "order_id": {
+              "format": "uuid",
+              "title": "Order Id",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "order_id",
+            "disposition_policy"
+          ],
+          "title": "OrderCancellationPayloadDTO",
+          "type": "object"
+        },
+        "RationalDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "denominator": {
+              "title": "Denominator",
+              "type": "integer"
+            },
+            "numerator": {
+              "title": "Numerator",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "numerator",
+            "denominator"
+          ],
+          "title": "RationalDTO",
+          "type": "object"
+        },
+        "RegionRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "node_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Node Ids",
+              "type": "array"
+            },
+            "region_id": {
+              "format": "uuid",
+              "title": "Region Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "region_id",
+            "node_ids"
+          ],
+          "title": "RegionRefDTO",
+          "type": "object"
+        },
+        "ReturnPolicy": {
+          "enum": [
+            "return_to_origin",
+            "quarantine"
+          ],
+          "title": "ReturnPolicy",
+          "type": "string"
+        },
+        "RouteDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost": {
+              "$ref": "#/$defs/CostBreakdownDTO"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "driver_id": {
+              "format": "uuid",
+              "title": "Driver Id",
+              "type": "string"
+            },
+            "end_node_id": {
+              "format": "uuid",
+              "title": "End Node Id",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "matrix_ref": {
+              "$ref": "#/$defs/MatrixRefDTO"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "start_node_id": {
+              "format": "uuid",
+              "title": "Start Node Id",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "total_distance_m": {
+              "title": "Total Distance M",
+              "type": "integer"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "vehicle_id": {
+              "format": "uuid",
+              "title": "Vehicle Id",
+              "type": "string"
+            },
+            "version_id": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "version_id",
+            "vehicle_id",
+            "driver_id",
+            "start_node_id",
+            "end_node_id",
+            "total_distance_m",
+            "cost",
+            "matrix_ref"
+          ],
+          "title": "RouteDTO",
+          "type": "object"
+        },
+        "RouteStopDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "arrival_s": {
+              "title": "Arrival S",
+              "type": "integer"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "departure_s": {
+              "title": "Departure S",
+              "type": "integer"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "load_after": {
+              "$ref": "#/$defs/LoadDTO"
+            },
+            "load_before": {
+              "$ref": "#/$defs/LoadDTO"
+            },
+            "node_id": {
+              "format": "uuid",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "route_id": {
+              "format": "uuid",
+              "title": "Route Id",
+              "type": "string"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "sequence": {
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "service_start_s": {
+              "title": "Service Start S",
+              "type": "integer"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "task_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Task Ids",
+              "type": "array"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "route_id",
+            "sequence",
+            "node_id",
+            "task_ids",
+            "arrival_s",
+            "service_start_s",
+            "departure_s",
+            "load_before",
+            "load_after"
+          ],
+          "title": "RouteStopDTO",
+          "type": "object"
+        },
+        "TimeWindowDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "earliest_s": {
+              "title": "Earliest S",
+              "type": "integer"
+            },
+            "latest_s": {
+              "title": "Latest S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "earliest_s",
+            "latest_s"
+          ],
+          "title": "TimeWindowDTO",
+          "type": "object"
+        },
+        "TrafficDisruptionPayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "arc_refs": {
+              "items": {
+                "$ref": "#/$defs/ArcRefDTO"
+              },
+              "title": "Arc Refs",
+              "type": "array"
+            },
+            "closure": {
+              "title": "Closure",
+              "type": "boolean"
+            },
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "kind": {
+              "const": "traffic_disruption",
+              "title": "Kind",
+              "type": "string"
+            },
+            "new_matrix_version": {
+              "title": "New Matrix Version",
+              "type": "integer"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "travel_multiplier": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/RationalDTO"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "arc_refs",
+            "closure",
+            "travel_multiplier",
+            "new_matrix_version"
+          ],
+          "title": "TrafficDisruptionPayloadDTO",
+          "type": "object"
+        },
+        "TransportDelayPayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "additional_seconds": {
+              "title": "Additional Seconds",
+              "type": "integer"
+            },
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "kind": {
+              "const": "transport_delay",
+              "title": "Kind",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "transport_task_id": {
+              "format": "uuid",
+              "title": "Transport Task Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "transport_task_id",
+            "additional_seconds"
+          ],
+          "title": "TransportDelayPayloadDTO",
+          "type": "object"
+        },
+        "TransportPlanDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost": {
+              "$ref": "#/$defs/CostBreakdownDTO"
+            },
+            "routes": {
+              "items": {
+                "$ref": "#/$defs/RouteDTO"
+              },
+              "title": "Routes",
+              "type": "array"
+            },
+            "unserved_order_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Unserved Order Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "routes",
+            "unserved_order_ids",
+            "cost"
+          ],
+          "title": "TransportPlanDTO",
+          "type": "object"
+        },
+        "VehicleFailurePayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cargo_condition": {
+              "$ref": "#/$defs/CargoCondition"
+            },
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "kind": {
+              "const": "vehicle_failure",
+              "title": "Kind",
+              "type": "string"
+            },
+            "location": {
+              "discriminator": {
+                "mapping": {
+                  "at_node": "#/$defs/AtNodeLocationDTO",
+                  "on_arc": "#/$defs/OnArcLocationDTO"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/AtNodeLocationDTO"
+                },
+                {
+                  "$ref": "#/$defs/OnArcLocationDTO"
+                }
+              ],
+              "title": "Location"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "unavailable_until_s": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Unavailable Until S"
+            },
+            "vehicle_id": {
+              "format": "uuid",
+              "title": "Vehicle Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "vehicle_id",
+            "location",
+            "unavailable_until_s",
+            "cargo_condition"
+          ],
+          "title": "VehicleFailurePayloadDTO",
+          "type": "object"
+        },
+        "WarehouseResourceUnavailablePayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "kind": {
+              "const": "warehouse_resource_unavailable",
+              "title": "Kind",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "remaining_capacity_units": {
+              "title": "Remaining Capacity Units",
+              "type": "integer"
+            },
+            "resource_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "unavailable_window": {
+              "$ref": "#/$defs/TimeWindowDTO"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "resource_ref",
+            "unavailable_window",
+            "remaining_capacity_units"
+          ],
+          "title": "WarehouseResourceUnavailablePayloadDTO",
+          "type": "object"
+        },
+        "WeatherChangePayloadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "effective_at_s": {
+              "title": "Effective At S",
+              "type": "integer"
+            },
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "kind": {
+              "const": "weather_change",
+              "title": "Kind",
+              "type": "string"
+            },
+            "new_matrix_version": {
+              "title": "New Matrix Version",
+              "type": "integer"
+            },
+            "profile": {
+              "$ref": "#/$defs/WeatherProfile"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "region_ref": {
+              "$ref": "#/$defs/RegionRefDTO"
+            },
+            "travel_multiplier": {
+              "$ref": "#/$defs/RationalDTO"
+            }
+          },
+          "required": [
+            "kind",
+            "entity_ref",
+            "effective_at_s",
+            "reason",
+            "region_ref",
+            "profile",
+            "travel_multiplier",
+            "new_matrix_version"
+          ],
+          "title": "WeatherChangePayloadDTO",
+          "type": "object"
+        },
+        "WeatherProfile": {
+          "enum": [
+            "clear",
+            "rain",
+            "snow",
+            "storm"
+          ],
+          "title": "WeatherProfile",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "event": {
+          "$ref": "#/$defs/EventEnvelopeDTO"
+        },
+        "event_time_s": {
+          "title": "Event Time S",
+          "type": "integer"
+        },
+        "plan": {
+          "$ref": "#/$defs/TransportPlanDTO"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stops": {
+          "items": {
+            "$ref": "#/$defs/RouteStopDTO"
+          },
+          "title": "Stops",
+          "type": "array"
+        }
+      },
+      "required": [
+        "event",
+        "plan",
+        "stops",
+        "event_time_s"
+      ],
+      "title": "ImpactRequestDTO",
+      "type": "object"
+    },
+    "logistics_contracts.impact.RescheduleBoundaryDTO": {
+      "$defs": {
+        "AtNodeLocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "at_node",
+              "title": "Kind",
+              "type": "string"
+            },
+            "node_id": {
+              "format": "uuid",
+              "title": "Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "node_id"
+          ],
+          "title": "AtNodeLocationDTO",
+          "type": "object"
+        },
+        "OnArcLocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "departed_at_s": {
+              "title": "Departed At S",
+              "type": "integer"
+            },
+            "expected_arrival_s": {
+              "title": "Expected Arrival S",
+              "type": "integer"
+            },
+            "from_node_id": {
+              "format": "uuid",
+              "title": "From Node Id",
+              "type": "string"
+            },
+            "kind": {
+              "const": "on_arc",
+              "title": "Kind",
+              "type": "string"
+            },
+            "progress_denominator": {
+              "title": "Progress Denominator",
+              "type": "integer"
+            },
+            "progress_numerator": {
+              "title": "Progress Numerator",
+              "type": "integer"
+            },
+            "to_node_id": {
+              "format": "uuid",
+              "title": "To Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "from_node_id",
+            "to_node_id",
+            "departed_at_s",
+            "expected_arrival_s",
+            "progress_numerator",
+            "progress_denominator"
+          ],
+          "title": "OnArcLocationDTO",
+          "type": "object"
+        },
+        "ResidualLoadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cargo_id": {
+              "format": "uuid",
+              "title": "Cargo Id",
+              "type": "string"
+            },
+            "volume_cm3": {
+              "title": "Volume Cm3",
+              "type": "integer"
+            },
+            "weight_g": {
+              "title": "Weight G",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "cargo_id",
+            "weight_g",
+            "volume_cm3"
+          ],
+          "title": "ResidualLoadDTO",
+          "type": "object"
+        },
+        "ResourceBlockDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_id",
+            "start_s",
+            "end_s"
+          ],
+          "title": "ResourceBlockDTO",
+          "type": "object"
+        },
+        "VirtualStartDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location": {
+              "discriminator": {
+                "mapping": {
+                  "at_node": "#/$defs/AtNodeLocationDTO",
+                  "on_arc": "#/$defs/OnArcLocationDTO"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/AtNodeLocationDTO"
+                },
+                {
+                  "$ref": "#/$defs/OnArcLocationDTO"
+                }
+              ],
+              "title": "Location"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            },
+            "task_id": {
+              "format": "uuid",
+              "title": "Task Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "task_id",
+            "location",
+            "start_s"
+          ],
+          "title": "VirtualStartDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "event_time_s": {
+          "title": "Event Time S",
+          "type": "integer"
+        },
+        "frozen_task_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Frozen Task Ids",
+          "type": "array"
+        },
+        "immutable_hash": {
+          "title": "Immutable Hash",
+          "type": "string"
+        },
+        "interrupted_task_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Interrupted Task Ids",
+          "type": "array"
+        },
+        "mutable_task_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Mutable Task Ids",
+          "type": "array"
+        },
+        "residual_loads": {
+          "items": {
+            "$ref": "#/$defs/ResidualLoadDTO"
+          },
+          "title": "Residual Loads",
+          "type": "array"
+        },
+        "resource_blocks": {
+          "items": {
+            "$ref": "#/$defs/ResourceBlockDTO"
+          },
+          "title": "Resource Blocks",
+          "type": "array"
+        },
+        "virtual_starts": {
+          "items": {
+            "$ref": "#/$defs/VirtualStartDTO"
+          },
+          "title": "Virtual Starts",
+          "type": "array"
+        }
+      },
+      "required": [
+        "event_time_s",
+        "frozen_task_ids",
+        "interrupted_task_ids",
+        "virtual_starts",
+        "residual_loads",
+        "resource_blocks",
+        "mutable_task_ids",
+        "immutable_hash"
+      ],
+      "title": "RescheduleBoundaryDTO",
+      "type": "object"
+    },
+    "logistics_contracts.impact.ResidualLoadDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "cargo_id": {
+          "format": "uuid",
+          "title": "Cargo Id",
+          "type": "string"
+        },
+        "volume_cm3": {
+          "title": "Volume Cm3",
+          "type": "integer"
+        },
+        "weight_g": {
+          "title": "Weight G",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "cargo_id",
+        "weight_g",
+        "volume_cm3"
+      ],
+      "title": "ResidualLoadDTO",
+      "type": "object"
+    },
+    "logistics_contracts.impact.ResourceBlockDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "end_s": {
+          "title": "End S",
+          "type": "integer"
+        },
+        "resource_id": {
+          "format": "uuid",
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "start_s": {
+          "title": "Start S",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "resource_id",
+        "start_s",
+        "end_s"
+      ],
+      "title": "ResourceBlockDTO",
+      "type": "object"
+    },
+    "logistics_contracts.impact.VirtualStartDTO": {
+      "$defs": {
+        "AtNodeLocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "at_node",
+              "title": "Kind",
+              "type": "string"
+            },
+            "node_id": {
+              "format": "uuid",
+              "title": "Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "node_id"
+          ],
+          "title": "AtNodeLocationDTO",
+          "type": "object"
+        },
+        "OnArcLocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "departed_at_s": {
+              "title": "Departed At S",
+              "type": "integer"
+            },
+            "expected_arrival_s": {
+              "title": "Expected Arrival S",
+              "type": "integer"
+            },
+            "from_node_id": {
+              "format": "uuid",
+              "title": "From Node Id",
+              "type": "string"
+            },
+            "kind": {
+              "const": "on_arc",
+              "title": "Kind",
+              "type": "string"
+            },
+            "progress_denominator": {
+              "title": "Progress Denominator",
+              "type": "integer"
+            },
+            "progress_numerator": {
+              "title": "Progress Numerator",
+              "type": "integer"
+            },
+            "to_node_id": {
+              "format": "uuid",
+              "title": "To Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "from_node_id",
+            "to_node_id",
+            "departed_at_s",
+            "expected_arrival_s",
+            "progress_numerator",
+            "progress_denominator"
+          ],
+          "title": "OnArcLocationDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "location": {
+          "discriminator": {
+            "mapping": {
+              "at_node": "#/$defs/AtNodeLocationDTO",
+              "on_arc": "#/$defs/OnArcLocationDTO"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/AtNodeLocationDTO"
+            },
+            {
+              "$ref": "#/$defs/OnArcLocationDTO"
+            }
+          ],
+          "title": "Location"
+        },
+        "start_s": {
+          "title": "Start S",
+          "type": "integer"
+        },
+        "task_id": {
+          "format": "uuid",
+          "title": "Task Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "location",
+        "start_s"
+      ],
+      "title": "VirtualStartDTO",
+      "type": "object"
+    },
     "logistics_contracts.metrics.MetricPage": {
       "$defs": {
         "MetricSource": {

@@ -38,6 +38,14 @@ from logistics_contracts.planning import (
     ViolationDTO,
     WarehouseTaskDTO,
 )
+from logistics_contracts.impact import (
+    ImpactReasonPathDTO,
+    ImpactReportDTO,
+    ResidualLoadDTO,
+    RescheduleBoundaryDTO,
+    ResourceBlockDTO,
+    VirtualStartDTO,
+)
 from logistics_contracts.metrics import MetricValueDTO
 from logistics_contracts.simulation import (
     SimulationEventDTO,
@@ -57,6 +65,7 @@ from logistics_contracts.transport import (
     TransportSolutionDTO,
     VehicleStateDTO,
 )
+from logistics_domain import impact as impact_domain
 from logistics_domain import planning as domain
 from logistics_domain import simulation as simulation_domain
 from logistics_domain import transport as transport_domain
@@ -319,6 +328,44 @@ def warehouse_solution_dto(
         solver_evidence=tuple(evidence_dto(v) for v in value.solver_evidence))
 
 
+def location_dto(value):
+    from logistics_contracts.runtime import AtNodeLocationDTO, OnArcLocationDTO
+
+    if hasattr(value, "node_id"):
+        return AtNodeLocationDTO(kind="at_node", node_id=value.node_id)
+    return OnArcLocationDTO(kind="on_arc", from_node_id=value.from_node_id,
+        to_node_id=value.to_node_id, departed_at_s=value.departed_at_s,
+        expected_arrival_s=value.expected_arrival_s,
+        progress_numerator=value.progress_numerator,
+        progress_denominator=value.progress_denominator)
+
+
+def impact_report_dto(value: impact_domain.ImpactReport) -> ImpactReportDTO:
+    from logistics_contracts.common import EntityRefDTO
+
+    return ImpactReportDTO(event_ids=value.event_ids,
+        affected_orders=value.affected_orders, affected_tasks=value.affected_tasks,
+        affected_resources=value.affected_resources,
+        reason_paths=tuple(ImpactReasonPathDTO(code=path.code,
+            entity_refs=tuple(EntityRefDTO.from_domain(ref) for ref in path.entity_refs),
+            message=path.message) for path in value.reason_paths))
+
+
+def boundary_dto(value: impact_domain.RescheduleBoundary) -> RescheduleBoundaryDTO:
+    return RescheduleBoundaryDTO(event_time_s=value.event_time_s,
+        frozen_task_ids=value.frozen_task_ids,
+        interrupted_task_ids=value.interrupted_task_ids,
+        virtual_starts=tuple(VirtualStartDTO(task_id=item.task_id,
+            location=location_dto(item.location), start_s=item.start_s)
+            for item in value.virtual_starts),
+        residual_loads=tuple(ResidualLoadDTO(cargo_id=item.cargo_id,
+            weight_g=item.weight_g, volume_cm3=item.volume_cm3)
+            for item in value.residual_loads),
+        resource_blocks=tuple(ResourceBlockDTO(resource_id=item.resource_id,
+            start_s=item.start_s, end_s=item.end_s) for item in value.resource_blocks),
+        mutable_task_ids=value.mutable_task_ids, immutable_hash=value.immutable_hash)
+
+
 def metric_dto(value) -> MetricValueDTO:
     return MetricValueDTO(code=value.code, definition_version=value.definition_version,
         source=value.source, unit=value.unit, value=value.value,
@@ -352,4 +399,5 @@ __all__ = [
     "scope_dto", "snapshot_dto", "solution_dto", "validation_dto", "vehicle_state_dto",
     "violation_dto", "warehouse_problem_dto", "warehouse_solution_dto",
     "warehouse_task_dto", "simulation_request_dto", "simulation_result_dto", "metric_dto",
+    "impact_report_dto", "boundary_dto",
 ]
