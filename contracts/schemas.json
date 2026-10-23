@@ -44213,6 +44213,403 @@
       "title": "SchedulePage",
       "type": "object"
     },
+    "logistics_contracts.schedules.ScheduleTaskView": {
+      "additionalProperties": false,
+      "properties": {
+        "assigned_resource_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Assigned Resource Ids",
+          "type": "array"
+        },
+        "planned_end_s": {
+          "title": "Planned End S",
+          "type": "integer"
+        },
+        "planned_start_s": {
+          "title": "Planned Start S",
+          "type": "integer"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sequence": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Sequence"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "task_id": {
+          "format": "uuid",
+          "title": "Task Id",
+          "type": "string"
+        },
+        "task_kind": {
+          "title": "Task Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "task_kind",
+        "assigned_resource_ids",
+        "planned_start_s",
+        "planned_end_s",
+        "sequence",
+        "status"
+      ],
+      "title": "ScheduleTaskView",
+      "type": "object"
+    },
+    "logistics_contracts.schedules.ScheduleVersionDetailView": {
+      "$defs": {
+        "ScheduleTaskView": {
+          "additionalProperties": false,
+          "properties": {
+            "assigned_resource_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Assigned Resource Ids",
+              "type": "array"
+            },
+            "planned_end_s": {
+              "title": "Planned End S",
+              "type": "integer"
+            },
+            "planned_start_s": {
+              "title": "Planned Start S",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "default": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "sequence": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sequence"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            },
+            "task_id": {
+              "format": "uuid",
+              "title": "Task Id",
+              "type": "string"
+            },
+            "task_kind": {
+              "title": "Task Kind",
+              "type": "string"
+            }
+          },
+          "required": [
+            "task_id",
+            "task_kind",
+            "assigned_resource_ids",
+            "planned_start_s",
+            "planned_end_s",
+            "sequence",
+            "status"
+          ],
+          "title": "ScheduleTaskView",
+          "type": "object"
+        },
+        "ScheduleVersionView": {
+          "additionalProperties": false,
+          "properties": {
+            "committed_at": {
+              "format": "date-time",
+              "title": "Committed At",
+              "type": "string"
+            },
+            "content_hash": {
+              "title": "Content Hash",
+              "type": "string"
+            },
+            "parent_version_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Parent Version Id"
+            },
+            "schedule_id": {
+              "format": "uuid",
+              "title": "Schedule Id",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "default": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "snapshot_id": {
+              "format": "uuid",
+              "title": "Snapshot Id",
+              "type": "string"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            },
+            "validation_report_ref": {
+              "format": "uuid",
+              "title": "Validation Report Ref",
+              "type": "string"
+            },
+            "version_id": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            },
+            "version_no": {
+              "title": "Version No",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "version_id",
+            "schedule_id",
+            "version_no",
+            "status",
+            "content_hash",
+            "parent_version_id",
+            "snapshot_id",
+            "validation_report_ref",
+            "committed_at"
+          ],
+          "title": "ScheduleVersionView",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "tasks": {
+          "items": {
+            "$ref": "#/$defs/ScheduleTaskView"
+          },
+          "title": "Tasks",
+          "type": "array"
+        },
+        "version": {
+          "$ref": "#/$defs/ScheduleVersionView"
+        }
+      },
+      "required": [
+        "version",
+        "tasks"
+      ],
+      "title": "ScheduleVersionDetailView",
+      "type": "object"
+    },
+    "logistics_contracts.schedules.ScheduleVersionPage": {
+      "$defs": {
+        "ScheduleVersionView": {
+          "additionalProperties": false,
+          "properties": {
+            "committed_at": {
+              "format": "date-time",
+              "title": "Committed At",
+              "type": "string"
+            },
+            "content_hash": {
+              "title": "Content Hash",
+              "type": "string"
+            },
+            "parent_version_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Parent Version Id"
+            },
+            "schedule_id": {
+              "format": "uuid",
+              "title": "Schedule Id",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "default": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "snapshot_id": {
+              "format": "uuid",
+              "title": "Snapshot Id",
+              "type": "string"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            },
+            "validation_report_ref": {
+              "format": "uuid",
+              "title": "Validation Report Ref",
+              "type": "string"
+            },
+            "version_id": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            },
+            "version_no": {
+              "title": "Version No",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "version_id",
+            "schedule_id",
+            "version_no",
+            "status",
+            "content_hash",
+            "parent_version_id",
+            "snapshot_id",
+            "validation_report_ref",
+            "committed_at"
+          ],
+          "title": "ScheduleVersionView",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ScheduleVersionView"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "ScheduleVersionPage",
+      "type": "object"
+    },
+    "logistics_contracts.schedules.ScheduleVersionView": {
+      "additionalProperties": false,
+      "properties": {
+        "committed_at": {
+          "format": "date-time",
+          "title": "Committed At",
+          "type": "string"
+        },
+        "content_hash": {
+          "title": "Content Hash",
+          "type": "string"
+        },
+        "parent_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Version Id"
+        },
+        "schedule_id": {
+          "format": "uuid",
+          "title": "Schedule Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "snapshot_id": {
+          "format": "uuid",
+          "title": "Snapshot Id",
+          "type": "string"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "validation_report_ref": {
+          "format": "uuid",
+          "title": "Validation Report Ref",
+          "type": "string"
+        },
+        "version_id": {
+          "format": "uuid",
+          "title": "Version Id",
+          "type": "string"
+        },
+        "version_no": {
+          "title": "Version No",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "version_id",
+        "schedule_id",
+        "version_no",
+        "status",
+        "content_hash",
+        "parent_version_id",
+        "snapshot_id",
+        "validation_report_ref",
+        "committed_at"
+      ],
+      "title": "ScheduleVersionView",
+      "type": "object"
+    },
     "logistics_contracts.schedules.ScheduleView": {
       "additionalProperties": false,
       "properties": {

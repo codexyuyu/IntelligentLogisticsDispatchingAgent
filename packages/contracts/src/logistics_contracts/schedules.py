@@ -66,3 +66,42 @@ class CommitRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal["2.0.0"] = "2.0.0"
     command: CommitCommandDTO
+
+
+class ScheduleVersionView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    version_id: UUID
+    schedule_id: UUID
+    version_no: int
+    status: str
+    content_hash: str
+    parent_version_id: UUID | None
+    snapshot_id: UUID
+    validation_report_ref: UUID
+    committed_at: datetime
+
+
+class ScheduleVersionPage(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    items: tuple[ScheduleVersionView, ...]
+
+
+class ScheduleTaskView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    task_id: UUID
+    task_kind: str
+    assigned_resource_ids: tuple[UUID, ...]
+    planned_start_s: int
+    planned_end_s: int
+    sequence: int | None
+    status: str
+
+
+class ScheduleVersionDetailView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    version: ScheduleVersionView
+    tasks: tuple[ScheduleTaskView, ...]

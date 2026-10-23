@@ -15,6 +15,8 @@ from logistics_contracts.schedules import (
     CommitRequest,
     ScheduleCreate,
     SchedulePage,
+    ScheduleVersionDetailView,
+    ScheduleVersionPage,
     ScheduleView,
 )
 from logistics_domain.runtime import ActorContext
@@ -38,6 +40,31 @@ def list_schedules(current: ActorContext = Depends(actor),
                    service: ScheduleService = Depends(schedule_service),
                    limit: int = Query(default=50, ge=1, le=200)):
     return service.list(current, limit)
+
+
+@router.get("/schedules/{schedule_id}/versions", response_model=ScheduleVersionPage,
+            operation_id="list_schedule_versions")
+def list_schedule_versions(schedule_id: UUID, current: ActorContext = Depends(actor),
+                           service: ScheduleService = Depends(schedule_service),
+                           limit: int = Query(default=50, ge=1, le=200)):
+    return service.versions(schedule_id, current, limit)
+
+
+@router.get("/schedules/{schedule_id}/versions/current",
+            response_model=ScheduleVersionDetailView,
+            operation_id="get_current_schedule_version")
+def get_current_schedule_version(schedule_id: UUID, current: ActorContext = Depends(actor),
+                                 service: ScheduleService = Depends(schedule_service)):
+    return service.current_version(schedule_id, current)
+
+
+@router.get("/schedules/{schedule_id}/versions/{version_id}",
+            response_model=ScheduleVersionDetailView,
+            operation_id="get_schedule_version")
+def get_schedule_version(schedule_id: UUID, version_id: UUID,
+                         current: ActorContext = Depends(actor),
+                         service: ScheduleService = Depends(schedule_service)):
+    return service.version_detail(schedule_id, version_id, current)
 
 
 @router.post("/schedules/{schedule_id}/candidates", response_model=CandidateView,

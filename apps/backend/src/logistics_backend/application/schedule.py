@@ -14,6 +14,8 @@ from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.planning_models import (
     candidate_plans,
     planning_snapshots,
+    schedule_tasks,
+    schedule_versions,
     schedules,
 )
 from logistics_backend.persistence.validation_models import validation_reports
@@ -36,6 +38,10 @@ from logistics_contracts.schedules import (
     CommitRequest,
     ScheduleCreate,
     SchedulePage,
+    ScheduleTaskView,
+    ScheduleVersionDetailView,
+    ScheduleVersionPage,
+    ScheduleVersionView,
     ScheduleView,
 )
 from logistics_domain.planning import (
@@ -211,6 +217,62 @@ class ScheduleService:
             ).mappings().all()
         return SchedulePage(items=tuple(self._view(row["id"], row["name"], row["status"],
             row["epoch_utc"], row["horizon_s"], row["active_version_id"]) for row in rows))
+
+    def versions(self, schedule_id: UUID, actor, limit: int = 50) -> ScheduleVersionPage:
+        self._require_schedule(schedule_id, actor)
+        with self.uow_factory() as uow:
+            rows = uow.connection.execute(select(schedule_versions).where(
+                schedule_versions.c.schedule_id == schedule_id,
+                schedule_versions.c.scope_id == actor.scope_id)
+                .order_by(schedule_versions.c.version_no.desc())
+                .limit(min(max(limit, 1), 200))).mappings().all()
+        return ScheduleVersionPage(items=tuple(self._version_view(row) for row in rows))
+
+    def current_version(self, schedule_id: UUID, actor) -> ScheduleVersionDetailView:
+        schedule = self._require_schedule(schedule_id, actor)
+        if schedule["active_version_id"] is None:
+            raise ServiceError(ErrorCode.NOT_FOUND, "schedule has no committed version")
+        return self.version_detail(schedule_id, schedule["active_version_id"], actor)
+
+    def version_detail(self, schedule_id: UUID, version_id: UUID,
+                       actor) -> ScheduleVersionDetailView:
+        self._require_schedule(schedule_id, actor)
+        with self.uow_factory() as uow:
+            row = uow.connection.execute(select(schedule_versions).where(
+                schedule_versions.c.id == version_id,
+                schedule_versions.c.schedule_id == schedule_id,
+                schedule_versions.c.scope_id == actor.scope_id)).mappings().first()
+            if row is None:
+                raise ServiceError(ErrorCode.NOT_FOUND, "schedule version not found")
+            task_rows = uow.connection.execute(select(schedule_tasks).where(
+                schedule_tasks.c.version_id == version_id,
+                schedule_tasks.c.scope_id == actor.scope_id)
+                .order_by(schedule_tasks.c.sequence, schedule_tasks.c.id)).mappings().all()
+        tasks = tuple(ScheduleTaskView(task_id=task["task_id"],
+            task_kind=task["task_kind"],
+            assigned_resource_ids=tuple(UUID(value) for value in
+                task["payload"].get("assigned_resource_ids", ())),
+            planned_start_s=task["planned_start_s"], planned_end_s=task["planned_end_s"],
+            sequence=task["sequence"], status=task["status"]) for task in task_rows)
+        return ScheduleVersionDetailView(version=self._version_view(row), tasks=tasks)
+
+    def _require_schedule(self, schedule_id: UUID, actor):
+        with self.uow_factory() as uow:
+            row = uow.connection.execute(select(schedules).where(
+                schedules.c.id == schedule_id,
+                schedules.c.scope_id == actor.scope_id)).mappings().first()
+        if row is None:
+            raise ServiceError(ErrorCode.NOT_FOUND, "schedule not found")
+        return row
+
+    @staticmethod
+    def _version_view(row) -> ScheduleVersionView:
+        return ScheduleVersionView(version_id=row["id"], schedule_id=row["schedule_id"],
+            version_no=row["version_no"], status=row["status"],
+            content_hash=row["content_hash"], parent_version_id=row["parent_version_id"],
+            snapshot_id=row["snapshot_id"],
+            validation_report_ref=row["validation_report_ref"],
+            committed_at=row["created_at"])
 
     @staticmethod
     def _view(schedule_id, name, status, epoch_utc, horizon_s, active_version_id):
