@@ -28,6 +28,7 @@ tools/bin/
 /.workbuddy/
 /.workbuddy-ai/
 /.uv-cache/
+/.claude/
 /merged/
 
 # 历史只读资产与大体积第三方数据（另行归档，不进代码仓库）

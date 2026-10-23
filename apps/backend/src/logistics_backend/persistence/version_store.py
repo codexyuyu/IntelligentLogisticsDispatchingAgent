@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from dataclasses import replace
+from dataclasses import asdict, fields, replace
 from datetime import datetime, timedelta, timezone
 from uuid import UUID, uuid4
 
@@ -38,6 +38,7 @@ from logistics_backend.persistence.planning_models import (
 from logistics_backend.persistence.reservations import ReservationStore
 from logistics_contracts.planning import (
     CandidatePlanDTO,
+    CommitReceiptDTO,
     ScheduleTaskDTO,
     ScheduleVersionDTO,
 )
@@ -106,7 +107,7 @@ class PlanCommitStore:
                 if prior_receipt["request_hash"] != request_hash:
                     raise ServiceError(ErrorCode.IDEMPOTENCY_CONFLICT,
                                        "idempotency key was used with a different commit")
-                return CommitReceipt.model_validate(prior_receipt["receipt"])
+                return CommitReceiptDTO.model_validate(prior_receipt["receipt"]).to_domain()
             if schedule["active_version_id"] != cmd.expected_active_version_id:
                 raise ServiceError(ErrorCode.STALE_SNAPSHOT,
                                    "active version changed since the candidate was read")
@@ -226,22 +227,24 @@ class PlanCommitStore:
                 version_no=version.version_no, parent_version_id=version.parent_version_id,
                 content_hash=candidate.content_hash, audit_id=audit_id, trace_id=trace,
                 committed_at=now)
+            receipt_payload = json.loads(CommitReceiptDTO.model_validate(
+                asdict(receipt)).model_dump_json())
             self.idempotency.register(connection, scope_id=self.workspace_id,
                 actor_id=actor_id, operation="commit_schedule", key=cmd.idempotency_key,
-                request_hash=request_hash, receipt=receipt.model_dump(mode="json"),
+                request_hash=request_hash, receipt=receipt_payload,
                 expires_at=now + timedelta(days=1))
             return receipt
 
 
 def _version_payload(version: ScheduleVersion) -> dict:
     return json.loads(ScheduleVersionDTO.model_validate({
-        field: getattr(version, field) for field in ScheduleVersion.__dataclass_fields__
+        item.name: getattr(version, item.name) for item in fields(version)
     }).model_dump_json())
 
 
 def _task_payload(task: ScheduleTask) -> dict:
     return json.loads(ScheduleTaskDTO.model_validate({
-        field: getattr(task, field) for field in ScheduleTask.__dataclass_fields__
+        item.name: getattr(task, item.name) for item in fields(task)
     }).model_dump_json())
 
 

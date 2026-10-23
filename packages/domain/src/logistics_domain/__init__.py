@@ -23,12 +23,13 @@ from __future__ import annotations
 from . import errors, execution, planning, ports, primitives, resources, runtime, states
 from . import orders
 
-SCHEMA_VERSION = "2.0.0"
+# Gate evidence schema stays 1.0.0; the business/data contract is 2.0.0.
+SCHEMA_VERSION = "1.0.0"
+CONTRACT_VERSION = "2.0.0"
 PACKAGE_NAME = "logistics-domain"
 DOMAIN_LAYER = "domain"
 
-# Frozen contract version and legacy version this package must migrate from.
-CONTRACT_VERSION = SCHEMA_VERSION
+# Legacy version this package must migrate from.
 LEGACY_CONTRACT_VERSION = "0.1.0"
 
 __all__ = [

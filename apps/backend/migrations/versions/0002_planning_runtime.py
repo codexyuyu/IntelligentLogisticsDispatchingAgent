@@ -556,6 +556,8 @@ def downgrade():
     for function in ("reject_schedule_version_delete", "protect_schedule_version_content",
                      "reject_immutable_change"):
         op.execute(f"DROP FUNCTION IF EXISTS {function}()")
+    op.execute("ALTER TABLE schedules DROP CONSTRAINT IF EXISTS "
+               "fk_schedules_active_version_id_schedule_versions")
     op.execute("DROP SEQUENCE IF EXISTS outbox_sequence")
     for table in ("lifecycle_events", "outbox", "audit_entries", "reservations",
                   "inventory_ledger", "travel_matrices", "candidate_plans",

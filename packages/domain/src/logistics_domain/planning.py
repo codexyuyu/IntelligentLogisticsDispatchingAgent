@@ -321,7 +321,7 @@ class TransportTask(Entity):
     service_s: int
 
     def __post_init__(self) -> None:
-        super().__post_init__()
+        Entity.__post_init__(self)
         require_uuid(self.order_id, field="TransportTask.order_id")
         require_uuid(self.pickup_node_id, field="TransportTask.pickup_node_id")
         require_uuid(self.delivery_node_id, field="TransportTask.delivery_node_id")
@@ -349,7 +349,7 @@ class WarehouseTask(Entity):
     setup_class: str
 
     def __post_init__(self) -> None:
-        super().__post_init__()
+        Entity.__post_init__(self)
         _require_optional_uuid(self.order_id, field="WarehouseTask.order_id")
         require_uuid(self.warehouse_id, field="WarehouseTask.warehouse_id")
         if not isinstance(self.kind, OperationKind):
@@ -758,7 +758,7 @@ class Route(Entity):
     matrix_ref: MatrixRef
 
     def __post_init__(self) -> None:
-        super().__post_init__()
+        Entity.__post_init__(self)
         for name in ("version_id", "vehicle_id", "driver_id", "start_node_id", "end_node_id"):
             require_uuid(getattr(self, name), field=f"Route.{name}")
         require_non_negative_int(self.total_distance_m, field="Route.total_distance_m")
@@ -785,7 +785,7 @@ class RouteStop(Entity):
     load_after: Load
 
     def __post_init__(self) -> None:
-        super().__post_init__()
+        Entity.__post_init__(self)
         require_uuid(self.route_id, field="RouteStop.route_id")
         require_uuid(self.node_id, field="RouteStop.node_id")
         require_non_negative_int(self.sequence, field="RouteStop.sequence")
@@ -811,7 +811,7 @@ class Schedule(Entity):
     horizon_s: int
 
     def __post_init__(self) -> None:
-        super().__post_init__()
+        Entity.__post_init__(self)
         _require_safe_code(self.name, field="Schedule.name")
         if not isinstance(self.scope, PlanningScope):
             raise InvalidInputError("Schedule.scope must be a PlanningScope")
@@ -837,7 +837,7 @@ class ScheduleTask(Entity):
     sequence: int | None
 
     def __post_init__(self) -> None:
-        super().__post_init__()
+        Entity.__post_init__(self)
         require_uuid(self.version_id, field="ScheduleTask.version_id")
         require_uuid(self.task_id, field="ScheduleTask.task_id")
         if not isinstance(self.task_kind, TaskKind):
@@ -868,7 +868,7 @@ class ScheduleVersion(Entity):
     validation_report_ref: UUID
 
     def __post_init__(self) -> None:
-        super().__post_init__()
+        Entity.__post_init__(self)
         require_uuid(self.schedule_id, field="ScheduleVersion.schedule_id")
         require_positive_int(self.version_no, field="ScheduleVersion.version_no")
         _require_optional_uuid(self.parent_version_id, field="ScheduleVersion.parent_version_id")
@@ -898,7 +898,7 @@ class OptimizationRequest(Entity):
     job_id: UUID
 
     def __post_init__(self) -> None:
-        super().__post_init__()
+        Entity.__post_init__(self)
         if not isinstance(self.kind, OptimizationKind):
             raise InvalidInputError("OptimizationRequest.kind must be an OptimizationKind")
         require_uuid(self.snapshot_id, field="OptimizationRequest.snapshot_id")
@@ -925,7 +925,7 @@ class OptimizationResult(Entity):
     engine_metadata: EngineMetadata
 
     def __post_init__(self) -> None:
-        super().__post_init__()
+        Entity.__post_init__(self)
         require_uuid(self.request_id, field="OptimizationResult.request_id")
         if not isinstance(self.solve_status, SolveStatus):
             raise InvalidInputError("OptimizationResult.solve_status must be a SolveStatus")

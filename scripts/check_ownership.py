@@ -56,8 +56,10 @@ LEGACY_NAMESPACES = ("app", "demo", "demos")
 # Directory names never scanned when auditing path coverage.
 AUDIT_SKIP_DIRECTORIES = {
     ".venv", "node_modules", "__pycache__", ".git", ".pytest_cache", ".ruff_cache", ".mypy_cache",
-    # harness/runtime scratch state, not a project artifact
-    ".mimosa",
+    # harness/runtime scratch state, not project artifacts
+    ".mimosa", ".uv-cache", ".workbuddy", ".workbuddy-ai", ".claude",
+    # local independent clone of the R30-E baseline, not part of this workspace's code
+    "merged",
 }
 
 

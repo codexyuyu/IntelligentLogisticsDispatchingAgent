@@ -9,8 +9,20 @@
     "B": "B 及其 Codex：运输、矩阵、仿真及本域验证"
   },
   "scopes": {
-    "A": ["apps/**", "packages/{domain,contracts,agents,evaluation}/**", "scripts/**", "tests/{unit,integration,e2e}/**"],
-    "B": ["packages/{optimization,simulation}/**", "tests/{solver,simulation}/**", "tests/**/matrix/**", "tests/**/transport/**", "data/{transport,simulation}/**", "benchmarks/{transport,simulation}/**"]
+    "A": [
+      "apps/**",
+      "packages/{domain,contracts,agents,evaluation}/**",
+      "scripts/**",
+      "tests/{unit,integration,e2e}/**"
+    ],
+    "B": [
+      "packages/{optimization,simulation}/**",
+      "tests/{solver,simulation}/**",
+      "tests/**/matrix/**",
+      "tests/**/transport/**",
+      "data/{transport,simulation}/**",
+      "benchmarks/{transport,simulation}/**"
+    ]
   },
   "paths": {
     "packages/optimization/": "B",
@@ -63,7 +75,6 @@
     "frontend/": "A",
     "deploy/": "A",
     "platform/": "A",
-    "benchmarks/": "A",
     "data/": "A",
     "docs/implementation/": "A",
     "docs/handoffs/": "A",
@@ -74,7 +85,20 @@
     "docs/algorithms/": "A",
     "docs/prompts/": "A",
     "packages/": "A",
-    "tests/": "A"
+    "tests/": "A",
+    "alembic.ini": "A",
+    "CLAUDE_TO_CODEX_DIAGNOSTIC.md": "A",
+    "CODEX_AUTO_DISPATCHER_PROMPT.md": "A",
+    "CODEX_ORCHESTRATOR_PROMPT.md": "A",
+    "COLLABORATION_SPLIT_20261021.md": "A",
+    "EXECUTIVE_SUMMARY.md": "A",
+    "MEMORY.md": "A",
+    "PROGRESS_AND_ADAPTATION_REPORT.md": "A",
+    "QUICK_START_WORKFLOW.txt": "A",
+    "REPORTS_INDEX.md": "A",
+    "START_CODEX_WORKFLOW.md": "A",
+    "WORKFLOW_PARALLEL_EXECUTION.md": "A",
+    "赛题.zip": "A"
   },
   "notes": [
     "旧 demo/OWNERSHIP.json 的相对路径（backend/...、frontend/...、contracts/...）只对旧基线有效，不能直接套用到新根级工程；对应关系见 docs/architecture/LEGACY_ADAPTATION.md。",

@@ -22,8 +22,8 @@
   "artifacts": {
     "uv_lock": {
       "path": "uv.lock",
-      "bytes": 47815,
-      "sha256": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5"
+      "bytes": 63778,
+      "sha256": "feb4552eb4767057943e1464bf7aee78fc84ad20b29803d54e0b3981d90e5123"
     },
     "package_lock": {
       "path": "package-lock.json",
@@ -111,10 +111,10 @@
   },
   "dependencies_lock": {
     "uv_lock_path": "uv.lock",
-    "uv_lock_sha256": "89f78a20a840955fcfe5a13435b6aad9c5ebb09420123812c4728b9413fe86c5",
+    "uv_lock_sha256": "feb4552eb4767057943e1464bf7aee78fc84ad20b29803d54e0b3981d90e5123",
     "package_lock_path": "package-lock.json",
     "package_lock_sha256": "fae1a02cb4ed64be91e1af371021762bb5e5183c0312c39c0575ee91b0f01458",
-    "locked_package_count": 40,
+    "locked_package_count": 46,
     "npm_lockfile_version": 3,
     "frozen_install_command": "uv sync --frozen",
     "npm_install_command": "npm ci"
@@ -693,5 +693,6 @@
     ],
     "no_new_test_evidence": "this round produced no new test results; the N03-R02 runs remain the evidence, and a confirmation run on the corrected bytes is recorded in the seal only",
     "prior_bytes_archive": "artifacts/handoffs/P01-01/dsh/archive-prior-rounds/n03-r02-f01/"
-  }
+  },
+  "lock_refresh_reason": "P02/P03 backend now directly declares pydantic and starlette (already transitive dependencies of fastapi); uv lock was regenerated with `uv lock --offline`. This is a bookkeeping refresh, not a new Gate claim."
 }
