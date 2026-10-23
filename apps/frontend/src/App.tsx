@@ -160,6 +160,7 @@ const RESCHEDULE = `{
 
 export default function App() {
   const [token, setTokenState] = useState(getToken());
+  const [loggedIn, setLoggedIn] = useState(Boolean(getToken()));
   const [health, setHealth] = useState("unknown");
   const [orders, setOrders] = useState<OrderView[]>([]);
   const [job, setJob] = useState<JobRef | null>(null);
@@ -199,6 +200,18 @@ export default function App() {
     }
   }
 
+  if (!loggedIn) {
+    return (
+      <LoginPage
+        onLogin={(value) => {
+          setToken(value);
+          setTokenState(value);
+          setLoggedIn(true);
+        }}
+      />
+    );
+  }
+
   return (
     <div className="shell">
       <aside className="sidebar">
@@ -221,16 +234,23 @@ export default function App() {
             <h1>{TITLES[tab]}</h1>
             <p className="muted">Real HTTP contract, no duplicated business rules.</p>
           </div>
-          <input
-            type="text"
-            className="token"
-            value={token}
-            placeholder="Bearer token"
-            onChange={(event) => {
-              setTokenState(event.target.value);
-              setToken(event.target.value);
-            }}
-          />
+          <div className="row">
+            <input
+              type="text"
+              className="token"
+              value={token}
+              placeholder="Bearer token"
+              onChange={(event) => {
+                setTokenState(event.target.value);
+                setToken(event.target.value);
+              }}
+            />
+            <button className="secondary" onClick={() => {
+              setToken("");
+              setTokenState("");
+              setLoggedIn(false);
+            }}>sign out</button>
+          </div>
         </header>
 
         {error ? <p className="error">{error}</p> : null}
@@ -288,6 +308,49 @@ export default function App() {
         {result ? <pre>{JSON.stringify(result, null, 2)}</pre> : null}
       </main>
     </div>
+  );
+}
+
+function LoginPage({ onLogin }: { onLogin: (token: string) => void }) {
+  const [value, setValue] = useState("");
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  async function submit() {
+    if (!value.trim()) {
+      setError("token is required");
+      return;
+    }
+    setBusy(true);
+    setError("");
+    setToken(value.trim());
+    try {
+      await request<Page<OrderView>>("/orders?limit=1");
+      onLogin(value.trim());
+    } catch (reason) {
+      setToken("");
+      setError(String(reason));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <main className="login">
+      <h1>Logistics Workbench</h1>
+      <p className="muted">Sign in with the development operator token.</p>
+      <input
+        type="text"
+        value={value}
+        placeholder="Bearer token"
+        onChange={(event) => setValue(event.target.value)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") void submit();
+        }}
+      />
+      <button onClick={submit} disabled={busy}>{busy ? "signing in…" : "sign in"}</button>
+      {error ? <p className="error">{error}</p> : null}
+    </main>
   );
 }
 

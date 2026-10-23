@@ -1,0 +1,71 @@
+x-backend-env: &backend-env
+  DATABASE_URL: postgresql+psycopg://logistics:logistics@db:5432/logistics
+  LOGISTICS_DATABASE_URL: postgresql+psycopg://logistics:logistics@db:5432/logistics
+  # Development-only credential: token is `dev-operator-token`; replace in a real deployment.
+  LOGISTICS_SETTINGS_JSON: '{"mode":"production","database_url":"postgresql+psycopg://logistics:logistics@db:5432/logistics","scope_id":"11111111-1111-4111-8111-111111111111","credentials":[{"actor_id":"22222222-2222-4222-8222-222222222222","role":"operator","token_sha256":"277e6a75a6980887d1bc5c738e59a2504e3e2696d8f9fbf675b7fc49dabd2cf8"}],"bind_host":"0.0.0.0","bind_port":8000}'
+
+services:
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: logistics
+      POSTGRES_PASSWORD: logistics
+      POSTGRES_DB: logistics
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U logistics -d logistics"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment: *backend-env
+    command: ["sh", "-c", "alembic upgrade head && uvicorn logistics_backend.main:create_app --factory --host 0.0.0.0 --port 8000"]
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health')"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment: *backend-env
+    command: ["python", "-m", "logistics_backend.worker"]
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: apps/frontend
+      dockerfile: Dockerfile
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+
+  seed:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment: *backend-env
+    command: ["python", "-m", "logistics_backend.cli.seed", "--scenario", "tiny_master"]
+    depends_on:
+      backend:
+        condition: service_healthy
+    profiles: ["tools"]
+
+volumes:
+  pgdata:

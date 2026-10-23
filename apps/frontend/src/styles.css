@@ -186,3 +186,23 @@ pre {
     flex-direction: column;
   }
 }
+
+.login {
+  max-width: 420px;
+  margin: 12vh auto 0;
+  background: #fff;
+  border: 1px solid #dbe1e8;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.login input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem;
+  margin: 0.75rem 0;
+  border: 1px solid #c9d1da;
+  border-radius: 6px;
+}
+.login button {
+  width: 100%;
+}

@@ -1,0 +1,17 @@
+node_modules
+**/node_modules
+.venv
+**/.venv
+.git
+.github
+artifacts
+tmp
+demo
+demos
+merged
+dist
+**/dist
+*.log
+.env
+.env.*
+!.env.example
