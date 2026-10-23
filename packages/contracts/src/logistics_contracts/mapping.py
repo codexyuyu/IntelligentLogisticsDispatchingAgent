@@ -38,6 +38,7 @@ from logistics_contracts.planning import (
     ViolationDTO,
     WarehouseTaskDTO,
 )
+from logistics_contracts.metrics import MetricValueDTO
 from logistics_contracts.simulation import (
     SimulationEventDTO,
     SimulationRequestDTO,
@@ -318,6 +319,13 @@ def warehouse_solution_dto(
         solver_evidence=tuple(evidence_dto(v) for v in value.solver_evidence))
 
 
+def metric_dto(value) -> MetricValueDTO:
+    return MetricValueDTO(code=value.code, definition_version=value.definition_version,
+        source=value.source, unit=value.unit, value=value.value,
+        numerator=value.numerator, denominator=value.denominator,
+        reason=value.reason, sample_count=value.sample_count)
+
+
 def simulation_event_dto(value: simulation_domain.SimulationEvent) -> SimulationEventDTO:
     return SimulationEventDTO(event_id=value.event_id, time_s=value.time_s, kind=value.kind,
         vehicle_id=value.vehicle_id, order_id=value.order_id, stop_id=value.stop_id)
@@ -343,5 +351,5 @@ __all__ = [
     "plan_dto", "policy_dto", "problem_dto", "revision_dto", "route_dto", "route_stop_dto",
     "scope_dto", "snapshot_dto", "solution_dto", "validation_dto", "vehicle_state_dto",
     "violation_dto", "warehouse_problem_dto", "warehouse_solution_dto",
-    "warehouse_task_dto", "simulation_request_dto", "simulation_result_dto",
+    "warehouse_task_dto", "simulation_request_dto", "simulation_result_dto", "metric_dto",
 ]

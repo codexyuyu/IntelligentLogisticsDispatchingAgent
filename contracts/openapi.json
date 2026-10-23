@@ -2407,6 +2407,127 @@
         "title": "MatrixRefDTO",
         "type": "object"
       },
+      "MetricPage": {
+        "additionalProperties": false,
+        "properties": {
+          "metrics": {
+            "items": {
+              "$ref": "#/components/schemas/MetricValueDTO"
+            },
+            "title": "Metrics",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "metrics"
+        ],
+        "title": "MetricPage",
+        "type": "object"
+      },
+      "MetricSource": {
+        "enum": [
+          "planned",
+          "simulation",
+          "actual"
+        ],
+        "title": "MetricSource",
+        "type": "string"
+      },
+      "MetricValueDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "definition_version": {
+            "title": "Definition Version",
+            "type": "string"
+          },
+          "denominator": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Denominator"
+          },
+          "numerator": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Numerator"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MissingReason"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sample_count": {
+            "title": "Sample Count",
+            "type": "integer"
+          },
+          "source": {
+            "$ref": "#/components/schemas/MetricSource"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "code",
+          "definition_version",
+          "source",
+          "unit",
+          "value",
+          "numerator",
+          "denominator",
+          "reason",
+          "sample_count"
+        ],
+        "title": "MetricValueDTO",
+        "type": "object"
+      },
+      "MissingReason": {
+        "enum": [
+          "not_applicable",
+          "missing_data",
+          "division_by_zero"
+        ],
+        "title": "MissingReason",
+        "type": "string"
+      },
       "ObjectiveBreakdownDTO": {
         "additionalProperties": false,
         "properties": {
@@ -3437,6 +3558,30 @@
         "title": "SimulationEventKind",
         "type": "string"
       },
+      "SimulationMetricsRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "orders_total": {
+            "title": "Orders Total",
+            "type": "integer"
+          },
+          "result": {
+            "$ref": "#/components/schemas/SimulationResultDTO"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result",
+          "orders_total"
+        ],
+        "title": "SimulationMetricsRequest",
+        "type": "object"
+      },
       "SimulationRequestDTO": {
         "additionalProperties": false,
         "properties": {
@@ -3886,6 +4031,35 @@
           "additional_seconds"
         ],
         "title": "TransportDelayPayloadDTO",
+        "type": "object"
+      },
+      "TransportMetricsRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "orders_total": {
+            "title": "Orders Total",
+            "type": "integer"
+          },
+          "plan": {
+            "$ref": "#/components/schemas/TransportPlanDTO"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "vehicle_count": {
+            "title": "Vehicle Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "plan",
+          "orders_total",
+          "vehicle_count"
+        ],
+        "title": "TransportMetricsRequest",
         "type": "object"
       },
       "TransportPlanDTO": {
@@ -6572,6 +6746,124 @@
         "summary": "Get Job Result",
         "tags": [
           "jobs"
+        ]
+      }
+    },
+    "/api/v1/metrics/simulation": {
+      "post": {
+        "operationId": "simulation_metrics",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulationMetricsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricPage"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Simulation Metric Values",
+        "tags": [
+          "metrics"
+        ]
+      }
+    },
+    "/api/v1/metrics/transport": {
+      "post": {
+        "operationId": "transport_metrics",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransportMetricsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricPage"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Transport Metrics",
+        "tags": [
+          "metrics"
         ]
       }
     },

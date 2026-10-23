@@ -14941,6 +14941,670 @@
       "title": "ZoneUpdateBranch",
       "type": "object"
     },
+    "logistics_contracts.metrics.MetricPage": {
+      "$defs": {
+        "MetricSource": {
+          "enum": [
+            "planned",
+            "simulation",
+            "actual"
+          ],
+          "title": "MetricSource",
+          "type": "string"
+        },
+        "MetricValueDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "definition_version": {
+              "title": "Definition Version",
+              "type": "string"
+            },
+            "denominator": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Denominator"
+            },
+            "numerator": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Numerator"
+            },
+            "reason": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/MissingReason"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "sample_count": {
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "source": {
+              "$ref": "#/$defs/MetricSource"
+            },
+            "unit": {
+              "title": "Unit",
+              "type": "string"
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Value"
+            }
+          },
+          "required": [
+            "code",
+            "definition_version",
+            "source",
+            "unit",
+            "value",
+            "numerator",
+            "denominator",
+            "reason",
+            "sample_count"
+          ],
+          "title": "MetricValueDTO",
+          "type": "object"
+        },
+        "MissingReason": {
+          "enum": [
+            "not_applicable",
+            "missing_data",
+            "division_by_zero"
+          ],
+          "title": "MissingReason",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "metrics": {
+          "items": {
+            "$ref": "#/$defs/MetricValueDTO"
+          },
+          "title": "Metrics",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "metrics"
+      ],
+      "title": "MetricPage",
+      "type": "object"
+    },
+    "logistics_contracts.metrics.MetricValueDTO": {
+      "$defs": {
+        "MetricSource": {
+          "enum": [
+            "planned",
+            "simulation",
+            "actual"
+          ],
+          "title": "MetricSource",
+          "type": "string"
+        },
+        "MissingReason": {
+          "enum": [
+            "not_applicable",
+            "missing_data",
+            "division_by_zero"
+          ],
+          "title": "MissingReason",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "definition_version": {
+          "title": "Definition Version",
+          "type": "string"
+        },
+        "denominator": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator"
+        },
+        "numerator": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Numerator"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sample_count": {
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "source": {
+          "$ref": "#/$defs/MetricSource"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "code",
+        "definition_version",
+        "source",
+        "unit",
+        "value",
+        "numerator",
+        "denominator",
+        "reason",
+        "sample_count"
+      ],
+      "title": "MetricValueDTO",
+      "type": "object"
+    },
+    "logistics_contracts.metrics.SimulationMetricsRequest": {
+      "$defs": {
+        "SimulationEventDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "event_id": {
+              "format": "uuid",
+              "title": "Event Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/SimulationEventKind"
+            },
+            "order_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Order Id"
+            },
+            "stop_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Stop Id"
+            },
+            "time_s": {
+              "title": "Time S",
+              "type": "integer"
+            },
+            "vehicle_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Vehicle Id"
+            }
+          },
+          "required": [
+            "event_id",
+            "time_s",
+            "kind",
+            "vehicle_id",
+            "order_id",
+            "stop_id"
+          ],
+          "title": "SimulationEventDTO",
+          "type": "object"
+        },
+        "SimulationEventKind": {
+          "enum": [
+            "arrival",
+            "service_start",
+            "departure",
+            "delivered"
+          ],
+          "title": "SimulationEventKind",
+          "type": "string"
+        },
+        "SimulationResultDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "delivered_order_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Delivered Order Ids",
+              "type": "array"
+            },
+            "events": {
+              "items": {
+                "$ref": "#/$defs/SimulationEventDTO"
+              },
+              "title": "Events",
+              "type": "array"
+            },
+            "final_time_s": {
+              "title": "Final Time S",
+              "type": "integer"
+            },
+            "seed": {
+              "title": "Seed",
+              "type": "integer"
+            },
+            "status": {
+              "$ref": "#/$defs/SimulationStatus"
+            }
+          },
+          "required": [
+            "status",
+            "final_time_s",
+            "events",
+            "delivered_order_ids",
+            "seed"
+          ],
+          "title": "SimulationResultDTO",
+          "type": "object"
+        },
+        "SimulationStatus": {
+          "enum": [
+            "completed",
+            "cancelled",
+            "failed"
+          ],
+          "title": "SimulationStatus",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "orders_total": {
+          "title": "Orders Total",
+          "type": "integer"
+        },
+        "result": {
+          "$ref": "#/$defs/SimulationResultDTO"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "result",
+        "orders_total"
+      ],
+      "title": "SimulationMetricsRequest",
+      "type": "object"
+    },
+    "logistics_contracts.metrics.TransportMetricsRequest": {
+      "$defs": {
+        "CostBreakdownDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "distance_cents": {
+              "title": "Distance Cents",
+              "type": "integer"
+            },
+            "fixed_vehicle_cents": {
+              "title": "Fixed Vehicle Cents",
+              "type": "integer"
+            },
+            "overtime_cents": {
+              "title": "Overtime Cents",
+              "type": "integer"
+            },
+            "service_cents": {
+              "title": "Service Cents",
+              "type": "integer"
+            },
+            "setup_cents": {
+              "title": "Setup Cents",
+              "type": "integer"
+            },
+            "total_cents": {
+              "title": "Total Cents",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "distance_cents",
+            "fixed_vehicle_cents",
+            "service_cents",
+            "overtime_cents",
+            "setup_cents",
+            "total_cents"
+          ],
+          "title": "CostBreakdownDTO",
+          "type": "object"
+        },
+        "EntityState": {
+          "description": "Union of the lifecycle state words documented in ``DOMAIN_CATALOG.md``.\n\n``EntityState`` is deliberately the *union* over all catalog lifecycles: this task owns\nthe shared vocabulary, while per-entity precision comes from each entity's own status\nenum (P02-02/P02-03) and from :data:`LIFECYCLE_TRANSITIONS`. The lifecycle columns of\n``DOMAIN_CATALOG.md`` are the only source of members; a test asserts this enum covers\nexactly the states that appear in the graph.",
+          "enum": [
+            "draft",
+            "accepted",
+            "scheduled",
+            "in_execution",
+            "delivered",
+            "cancelled",
+            "cancel_requested",
+            "cancelled_after_return",
+            "registered",
+            "stored",
+            "loaded",
+            "in_transit",
+            "quarantined",
+            "returned",
+            "available",
+            "reserved",
+            "in_service",
+            "unavailable",
+            "retired",
+            "active",
+            "occupied",
+            "busy",
+            "failed",
+            "repairing",
+            "pending",
+            "ready",
+            "running",
+            "completed",
+            "interrupted",
+            "candidate",
+            "validated",
+            "published",
+            "superseded",
+            "planned",
+            "reached",
+            "servicing",
+            "dispatched",
+            "committed",
+            "released",
+            "rejected",
+            "expired",
+            "queued",
+            "recorded",
+            "suspended",
+            "deprecated",
+            "invalidated",
+            "created",
+            "paused",
+            "received",
+            "applied",
+            "duplicate",
+            "manual_required",
+            "unresolved",
+            "detected",
+            "analyzed",
+            "proposed",
+            "resolved",
+            "planning",
+            "executing",
+            "explaining",
+            "await_confirmation",
+            "waiting_input",
+            "requested",
+            "authorized",
+            "succeeded",
+            "denied",
+            "held",
+            "delivering",
+            "dead_letter",
+            "consumed"
+          ],
+          "title": "EntityState",
+          "type": "string"
+        },
+        "MatrixRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "title": "Hash",
+              "type": "string"
+            },
+            "matrix_id": {
+              "format": "uuid",
+              "title": "Matrix Id",
+              "type": "string"
+            },
+            "version": {
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "matrix_id",
+            "version",
+            "hash"
+          ],
+          "title": "MatrixRefDTO",
+          "type": "object"
+        },
+        "RouteDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost": {
+              "$ref": "#/$defs/CostBreakdownDTO"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "driver_id": {
+              "format": "uuid",
+              "title": "Driver Id",
+              "type": "string"
+            },
+            "end_node_id": {
+              "format": "uuid",
+              "title": "End Node Id",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "matrix_ref": {
+              "$ref": "#/$defs/MatrixRefDTO"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "start_node_id": {
+              "format": "uuid",
+              "title": "Start Node Id",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "total_distance_m": {
+              "title": "Total Distance M",
+              "type": "integer"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "vehicle_id": {
+              "format": "uuid",
+              "title": "Vehicle Id",
+              "type": "string"
+            },
+            "version_id": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "version_id",
+            "vehicle_id",
+            "driver_id",
+            "start_node_id",
+            "end_node_id",
+            "total_distance_m",
+            "cost",
+            "matrix_ref"
+          ],
+          "title": "RouteDTO",
+          "type": "object"
+        },
+        "TransportPlanDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost": {
+              "$ref": "#/$defs/CostBreakdownDTO"
+            },
+            "routes": {
+              "items": {
+                "$ref": "#/$defs/RouteDTO"
+              },
+              "title": "Routes",
+              "type": "array"
+            },
+            "unserved_order_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Unserved Order Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "routes",
+            "unserved_order_ids",
+            "cost"
+          ],
+          "title": "TransportPlanDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "orders_total": {
+          "title": "Orders Total",
+          "type": "integer"
+        },
+        "plan": {
+          "$ref": "#/$defs/TransportPlanDTO"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "vehicle_count": {
+          "title": "Vehicle Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "plan",
+        "orders_total",
+        "vehicle_count"
+      ],
+      "title": "TransportMetricsRequest",
+      "type": "object"
+    },
     "logistics_contracts.planning.CandidatePlanDTO": {
       "$defs": {
         "CostBreakdownDTO": {

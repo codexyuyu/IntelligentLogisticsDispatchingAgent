@@ -10,16 +10,17 @@ P33 the paired-seed experiment framework.
 
 from __future__ import annotations
 
+from . import metrics
+
 SCHEMA_VERSION = "1.0.0"
 PACKAGE_NAME = "logistics-evaluation"
 LAYER = "evaluation"
 
 METRIC_COUNT = 14
 
-__all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "METRIC_COUNT"]
+__all__ = ["SCHEMA_VERSION", "PACKAGE_NAME", "LAYER", "METRIC_COUNT", "metrics"]
 
 _PENDING_APIS: dict[str, str] = {
-    "metrics": "P32-01: 14 metric calculators with explicit definition_version and source",
     "persistence": "P32-02: metric persistence and version comparison",
     "experiments": "P33-01: paired-seed experiments with retained failed samples",
 }
