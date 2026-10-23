@@ -2,11 +2,21 @@
 
 from __future__ import annotations
 
+from uuid import UUID
+
 from fastapi import APIRouter, Depends, Query, Request
 
 from logistics_backend.api.dependencies import actor, operator
 from logistics_backend.application.schedule import ScheduleService
-from logistics_contracts.schedules import ScheduleCreate, SchedulePage, ScheduleView
+from logistics_contracts.planning import CommitReceiptDTO
+from logistics_contracts.schedules import (
+    CandidateCreate,
+    CandidateView,
+    CommitRequest,
+    ScheduleCreate,
+    SchedulePage,
+    ScheduleView,
+)
 from logistics_domain.runtime import ActorContext
 
 router = APIRouter(tags=["schedules"])
@@ -28,3 +38,19 @@ def list_schedules(current: ActorContext = Depends(actor),
                    service: ScheduleService = Depends(schedule_service),
                    limit: int = Query(default=50, ge=1, le=200)):
     return service.list(current, limit)
+
+
+@router.post("/schedules/{schedule_id}/candidates", response_model=CandidateView,
+             status_code=201, operation_id="create_candidate")
+def create_candidate(schedule_id: UUID, command: CandidateCreate,
+                     current: ActorContext = Depends(operator),
+                     service: ScheduleService = Depends(schedule_service)):
+    return service.create_candidate(schedule_id, command, current)
+
+
+@router.post("/schedules/{schedule_id}/versions/commit",
+             response_model=CommitReceiptDTO, operation_id="commit_schedule_version")
+def commit_schedule_version(schedule_id: UUID, request: Request, command: CommitRequest,
+                            current: ActorContext = Depends(operator),
+                            service: ScheduleService = Depends(schedule_service)):
+    return service.commit(schedule_id, command, current, request.state.trace_id)

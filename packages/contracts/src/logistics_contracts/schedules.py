@@ -8,7 +8,13 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from logistics_contracts.planning import PlanningScopeDTO
+from logistics_contracts.planning import (
+    CommitCommandDTO,
+    PlanningScopeDTO,
+    RouteStopDTO,
+    TransportPlanDTO,
+    ValidationReportDTO,
+)
 
 
 class ScheduleCreate(BaseModel):
@@ -33,3 +39,29 @@ class SchedulePage(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal["2.0.0"] = "2.0.0"
     items: tuple[ScheduleView, ...]
+
+
+class CandidateCreate(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    scope: PlanningScopeDTO
+    plan: TransportPlanDTO
+    stops: tuple[RouteStopDTO, ...]
+    solver_evidence_refs: tuple[UUID, ...]
+    base_version_id: UUID | None = None
+
+
+class CandidateView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    candidate_id: UUID
+    schedule_id: UUID
+    snapshot_id: UUID
+    content_hash: str
+
+
+class CommitRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    command: CommitCommandDTO
+    report: ValidationReportDTO

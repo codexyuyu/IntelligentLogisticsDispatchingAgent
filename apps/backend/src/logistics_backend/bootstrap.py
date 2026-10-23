@@ -126,13 +126,14 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         registry.register(JobKind.SIMULATION, SimulationJobHandler())
     jobs = JobService(repository, registry)
     snapshots = PlanningSnapshotStore(factory, settings.scope_id)
+    commits = PlanCommitStore(factory, settings.scope_id)
     agents = AgentRunService(factory,
         AgentChatService(DeepSeekProvider(LLMSettings.from_env())), settings.scope_id)
     services = Services(
         master_data=MasterDataService(factory, TABLES),
         jobs=jobs,
         snapshots=snapshots,
-        commits=PlanCommitStore(factory, settings.scope_id),
+        commits=commits,
         transport=TransportOptimizationService(snapshots, jobs),
         results=TransportResultStore(),
         warehouse=WarehouseOptimizationService(snapshots, jobs),
@@ -146,7 +147,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         decisions=DecisionService(factory, settings.scope_id),
         experiments=ExperimentService(factory, settings.scope_id),
         metrics=MetricsService(factory, settings.scope_id),
-        schedules=ScheduleService(factory, settings.scope_id),
+        schedules=ScheduleService(factory, settings.scope_id, snapshots, commits),
     )
     return engine, services
 
