@@ -1,3 +1,13 @@
+## 2026-10-23 · PARTNER · R05 第二轮：CP-SAT 冷链约束接入
+
+在契约 0.2.0 上接入真实求解约束（契约源与生成物**未改动**）：时变容量用 `(location, unit)` 分组 `AddCumulative`（半开区间、同秒先释放后占用）；多资源需求各自 `ExactlyOne` 并共用同一执行区间与资源日历；换批按方向性 setup 互斥，未登记类别对不按 0 处理；预冷限制可执行资源并强制早于装载；暴露只约束求解器可决定的仓内停留，其余交给独立校验按并集核算。
+
+新增 `adapters/warehouse/coldchain_model.py`、`coldchain_timeline.py`、`coldchain_checks.py`，修改 `cp_sat_scheduler.py` 与 `validator.py`（`warehouse-validator-0.1 → 0.2`，新增 8 条 `r05.*` 规则与 `not_checked_rule_ids`）。校验状态在“无违规但存在未校验 R05 规则”时为 `not_checked`，不再冒充 passed。
+
+验证：backend **293 passed**（新增 17：4 条真实 CP-SAT 端到端 + 13 条独立校验负例）；`export_contracts --check` 通过；`verify_delivery` 除既有 7 条 `application→adapters` 外全通过。
+
+限制：甲方域层 `domain/coldchain_capacity.py`、`domain/joint_validation.py` 与 `tests/coldchain/` 未实现；准备包未回填、`prep_import_report.json` 未清零；`transport` 暴露段未产出；`explicit_operation` 换批只校验不生成。详见[本轮增量日志](docs/devlog/entries/20261023-2205-partner-r05-cpsat-coldchain.md)。
+
 ## 2026-10-23 · PARTNER · R05 冷链公共契约冻结（0.1.0 → 0.2.0）
 
 契约版本升到 **0.2.0**：新增 `backend/app/contracts/coldchain.py`（容量维度、存储位置/占用、多资源需求与分配、换批策略、预冷、曝光、批次相容）与 `backend/app/ports/coldchain.py` 三个端口签名；`PlanningSnapshot.coldchain` 与 `WarehouseScheduleResult.coldchain` 均可空，`None` 表示不做 R05 声明，R05 规则须记为未校验。`ValidationReport` 增加 `not_checked_rule_ids` 并收紧两处：`passed` 不得携带未校验规则、`failed` 必须有违规项。生成物（VERSION/schemas/openapi/generated.ts/contractVersion.ts）全部由脚本重生成。

@@ -56,6 +56,9 @@
 | [backend/app/adapters/simulation/state_projection.py](backend/app/adapters/simulation/state_projection.py) | PARTNER |
 | [backend/app/adapters/warehouse/MIGRATION.md](backend/app/adapters/warehouse/MIGRATION.md) | PARTNER |
 | [backend/app/adapters/warehouse/__init__.py](backend/app/adapters/warehouse/__init__.py) | PARTNER |
+| [backend/app/adapters/warehouse/coldchain_checks.py](backend/app/adapters/warehouse/coldchain_checks.py) | PARTNER |
+| [backend/app/adapters/warehouse/coldchain_model.py](backend/app/adapters/warehouse/coldchain_model.py) | PARTNER |
+| [backend/app/adapters/warehouse/coldchain_timeline.py](backend/app/adapters/warehouse/coldchain_timeline.py) | PARTNER |
 | [backend/app/adapters/warehouse/cp_sat_scheduler.py](backend/app/adapters/warehouse/cp_sat_scheduler.py) | PARTNER |
 | [backend/app/adapters/warehouse/resource_calendar.py](backend/app/adapters/warehouse/resource_calendar.py) | PARTNER |
 | [backend/app/adapters/warehouse/validator.py](backend/app/adapters/warehouse/validator.py) | PARTNER |
@@ -183,6 +186,7 @@
 | [backend/tests/transport/test_waiting_cost_objective.py](backend/tests/transport/test_waiting_cost_objective.py) | PARTNER |
 | [backend/tests/warehouse/README.md](backend/tests/warehouse/README.md) | PARTNER |
 | [backend/tests/warehouse/test_cp_sat_migration.py](backend/tests/warehouse/test_cp_sat_migration.py) | PARTNER |
+| [backend/tests/warehouse/test_r05_coldchain_scheduling.py](backend/tests/warehouse/test_r05_coldchain_scheduling.py) | PARTNER |
 | [backend/tools/__init__.py](backend/tools/__init__.py) | PARTNER |
 | [backend/tools/b04_event_probe.py](backend/tools/b04_event_probe.py) | PARTNER |
 | [backend/tools/b05_event_stream_probe.py](backend/tools/b05_event_stream_probe.py) | PARTNER |
@@ -400,6 +404,7 @@
 | [docs/devlog/entries/20261022-dsh-integration.md](docs/devlog/entries/20261022-dsh-integration.md) | SHARED |
 | [docs/devlog/entries/20261022-dsh-r05-blocked.md](docs/devlog/entries/20261022-dsh-r05-blocked.md) | SHARED |
 | [docs/devlog/entries/20261023-2135-partner-r05-contract-freeze.md](docs/devlog/entries/20261023-2135-partner-r05-contract-freeze.md) | SHARED |
+| [docs/devlog/entries/20261023-2205-partner-r05-cpsat-coldchain.md](docs/devlog/entries/20261023-2205-partner-r05-cpsat-coldchain.md) | SHARED |
 | [docs/devlog/entries/README.md](docs/devlog/entries/README.md) | SHARED |
 | [docs/handoff/AC_CODEX.md](docs/handoff/AC_CODEX.md) | SHARED |
 | [docs/handoff/B_CODEX.md](docs/handoff/B_CODEX.md) | SHARED |

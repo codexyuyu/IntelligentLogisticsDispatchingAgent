@@ -9,7 +9,7 @@ from __future__ import annotations
 from app.contracts.common import ValidationReport, Violation
 from app.contracts.planning import WarehouseScheduleRequest, WarehouseScheduleResult
 
-VALIDATOR_VERSION = "warehouse-validator-0.1"
+VALIDATOR_VERSION = "warehouse-validator-0.2"
 
 
 class WarehouseScheduleValidator:
@@ -217,9 +217,31 @@ class WarehouseScheduleValidator:
             violations.append(Violation(rule_id=issue["rule_id"],
                 object_ids=tuple(issue["object_ids"]), message=issue["message"]))
 
+        # R05 cold-chain rules (contract 0.2.0).  They are evaluated only when the
+        # snapshot declares cold-chain data; scenarios without it keep the previous
+        # verdict so old evidence is not silently reinterpreted.
+        from app.adapters.warehouse.coldchain_checks import RULES as R05_RULES
+        from app.adapters.warehouse.coldchain_checks import check_coldchain
+        checked = list(rules)
+        not_checked: tuple[str, ...] = ()
+        r05 = check_coldchain(request, result)
+        if r05 is not None:
+            checked.extend(R05_RULES)
+            violations.extend(r05.violations)
+            not_checked = tuple(r05.not_checked)
+        if violations:
+            status = "failed"
+        elif not_checked:
+            # Missing evidence is not a pass: the plan is structurally valid but
+            # R05 rules could not all be evaluated.
+            status = "not_checked"
+        else:
+            status = "passed"
+
         return ValidationReport(
-            status="passed" if not violations else "failed",
+            status=status,
             validator_version=VALIDATOR_VERSION,
-            checked_rule_ids=rules,
+            checked_rule_ids=tuple(checked),
             violations=tuple(violations),
+            not_checked_rule_ids=not_checked,
         )

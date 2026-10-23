@@ -6,6 +6,12 @@ pattern from the legacy algorithm-service while obeying the new contract
 semantics: release/deadline windows, precedence, resource availability,
 frozen facts and non-overlap. Temperature/quantity-specific rules that are not
 represented by the shared contract are intentionally not guessed here.
+
+R05 (contract 0.2.0) is modelled as hard constraints whenever the snapshot
+carries ``coldchain`` data: time-varying storage capacity, simultaneous
+multi-resource requirements, sequence-dependent changeover, pre-cooling and
+conservative exposure caps.  Snapshots without R05 data keep the previous
+single-resource model unchanged.
 """
 from __future__ import annotations
 
@@ -21,8 +27,20 @@ except ImportError as exc:  # pragma: no cover
 from app.contracts.planning import WarehouseScheduleRequest, WarehouseScheduleResult, WarehouseHandoff, VehicleArrival
 from app.contracts.common import SolveMetadata, TimeWindow
 from app.contracts.entities import ScheduledOperation
+from app.contracts.coldchain import ResourceAssignment
 from app.domain.states import SolveStatus
 from app.adapters.warehouse.validator import WarehouseScheduleValidator
+from app.adapters.warehouse.coldchain_model import (
+    ColdChainModelError,
+    add_compatibility_constraints,
+    add_exposure_constraints,
+    add_precool_constraints,
+    add_setup_constraints,
+    add_storage_constraints,
+    build_context,
+    filter_candidates,
+)
+from app.adapters.warehouse.coldchain_timeline import ColdChainTimelineBuilder
 
 
 def _ortools_version() -> str:
@@ -66,6 +84,13 @@ class CpSatWarehouseScheduler:
             if not op.order_ids or any(order_id in selected_orders for order_id in op.order_ids)
         ]
         resources = list(snapshot.resources)
+
+        try:
+            coldchain = build_context(snapshot)
+        except ColdChainModelError as error:
+            # Declared R05 input that cannot be modelled is infeasible, never a
+            # silently relaxed schedule.
+            return self._infeasible(request, started, error.code)
 
         if not operations:
             return WarehouseScheduleResult(
@@ -125,6 +150,8 @@ class CpSatWarehouseScheduler:
         start_vars: dict[str, object] = {}
         end_vars: dict[str, object] = {}
         assignments: dict[str, dict[str, object]] = {}
+        # R05 secondary requirements: op -> requirement -> [(resource_id, literal)]
+        secondary_assignments: dict[str, dict[str, list[tuple[str, object]]]] = {}
         intervals_by_resource: dict[str, list[object]] = {r.resource_id: [] for r in resources}
         op_duration: dict[str, int] = {}
 
@@ -155,6 +182,15 @@ class CpSatWarehouseScheduler:
             # Earlier synthetic snapshots intentionally retain flexible assignment.
             if snapshot.rule_version == 'pg-r27-verified':
                 candidate_resources = [r for r in candidate_resources if r.resource_id == op.resource_id]
+            # R05 narrows the candidates to the primary requirement and to the
+            # resources eligible for pre-cooling work.
+            if coldchain is not None:
+                try:
+                    candidate_resources = filter_candidates(
+                        coldchain, op, candidate_resources
+                    )
+                except ColdChainModelError as error:
+                    return self._infeasible(request, started, error.code)
             if not candidate_resources:
                 return self._infeasible(request, started, f"NO_CAPABLE_RESOURCE:{op.operation_id}")
 
@@ -176,37 +212,56 @@ class CpSatWarehouseScheduler:
 
                 # Assignment implies the operation is fully contained in at least one
                 # available resource window.
-                if len(resource.available_windows) > 1:
-                    window_literals = []
-                    for window_idx, window in enumerate(resource.available_windows):
-                        lit = model.NewBoolVar(
-                            f"{op.operation_id}_{resource.resource_id}_window_{window_idx}"
-                        )
-                        model.Add(start >= window.start_s).OnlyEnforceIf(lit)
-                        model.Add(end <= window.end_s).OnlyEnforceIf(lit)
-                        model.AddImplication(lit, present)
-                        window_literals.append(lit)
-                    model.AddBoolOr(window_literals).OnlyEnforceIf(present)
-                elif len(resource.available_windows) == 1:
-                    window = resource.available_windows[0]
-                    model.Add(start >= window.start_s).OnlyEnforceIf(present)
-                    model.Add(end <= window.end_s).OnlyEnforceIf(present)
-                else:
-                    model.Add(present == 0)
-
-                for unavailable in resource.unavailable_windows:
-                    before = model.NewBoolVar(
-                        f"{op.operation_id}_{resource.resource_id}_before_unavail_{unavailable.start_s}"
-                    )
-                    after = model.NewBoolVar(
-                        f"{op.operation_id}_{resource.resource_id}_after_unavail_{unavailable.end_s}"
-                    )
-                    model.Add(end <= unavailable.start_s).OnlyEnforceIf(before)
-                    model.Add(start >= unavailable.end_s).OnlyEnforceIf(after)
-                    model.AddBoolOr([before, after]).OnlyEnforceIf(present)
+                self._apply_resource_windows(
+                    model, start, end, present, resource,
+                    f"{op.operation_id}_{resource.resource_id}",
+                )
 
             model.AddExactlyOne(present_vars.values())
             assignments[op.operation_id] = present_vars
+
+            # R05 secondary requirements: every additional named resource is held
+            # for exactly the same interval as the operation.
+            if coldchain is not None and op.requirements:
+                for requirement in op.requirements:
+                    if requirement.requirement_id == op.primary_requirement_id:
+                        continue
+                    secondary_literals = []
+                    for resource_id in requirement.eligible_resource_ids:
+                        resource = resource_by_id.get(resource_id)
+                        if resource is None or resource.warehouse_id != op.warehouse_id:
+                            return self._infeasible(
+                                request, started,
+                                f"UNKNOWN_REQUIREMENT_RESOURCE:{op.operation_id}:{requirement.requirement_id}:{resource_id}",
+                            )
+                        secondary = model.NewBoolVar(
+                            f"assign_req_{op.operation_id}_{requirement.requirement_id}_{resource_id}"
+                        )
+                        intervals_by_resource[resource_id].append(
+                            model.NewOptionalIntervalVar(
+                                start, duration, end, secondary,
+                                f"interval_req_{op.operation_id}_{requirement.requirement_id}_{resource_id}",
+                            )
+                        )
+                        self._apply_resource_windows(
+                            model, start, end, secondary, resource,
+                            f"req_{op.operation_id}_{requirement.requirement_id}_{resource_id}",
+                        )
+                        secondary_literals.append(secondary)
+                    if not secondary_literals:
+                        return self._infeasible(
+                            request, started,
+                            f"NO_ELIGIBLE_REQUIREMENT_RESOURCE:{op.operation_id}:{requirement.requirement_id}",
+                        )
+                    model.AddExactlyOne(secondary_literals)
+                    secondary_assignments.setdefault(op.operation_id, {})[
+                        requirement.requirement_id
+                    ] = [
+                        (resource_id, literal)
+                        for resource_id, literal in zip(
+                            requirement.eligible_resource_ids, secondary_literals
+                        )
+                    ]
 
         # Non-overlap for both planned and frozen operations on each resource.
         for resource_id, intervals in intervals_by_resource.items():
@@ -253,6 +308,26 @@ class CpSatWarehouseScheduler:
                         model.Add(current_start >= end_vars[predecessor_id])
                     else:
                         return self._infeasible(request, started, f"UNKNOWN_PREDECESSOR:{op.operation_id}:{predecessor_id}")
+
+        # R05 hard constraints.  They are added only when the snapshot declares
+        # cold-chain data, so existing scenarios keep the previous model exactly.
+        if coldchain is not None:
+            def resolve_start(operation_id: str):
+                value = start_vars.get(operation_id)
+                return frozen_by_op[operation_id].start_s if value is None else value
+
+            def resolve_end(operation_id: str):
+                value = end_vars.get(operation_id)
+                return frozen_by_op[operation_id].end_s if value is None else value
+
+            try:
+                add_storage_constraints(coldchain, model, resolve_start, resolve_end)
+                add_compatibility_constraints(coldchain, model, resolve_start, resolve_end)
+                add_exposure_constraints(coldchain, model, resolve_start, resolve_end)
+                add_setup_constraints(coldchain, model, assignments, start_vars, end_vars)
+                add_precool_constraints(coldchain, model, start_vars, end_vars, assignments)
+            except ColdChainModelError as error:
+                return self._infeasible(request, started, error.code)
 
         # R17 feedback round: actual transport departure times are soft targets,
         # NEVER substitute vehicle return arrivals (different contract semantics).
@@ -346,12 +421,38 @@ class CpSatWarehouseScheduler:
             selected_resource = next(
                 rid for rid, lit in assignments[op.operation_id].items() if solver.Value(lit) == 1
             )
+            assignments_out = []
+            if op.requirements:
+                primary = next(
+                    requirement for requirement in op.requirements
+                    if requirement.requirement_id == op.primary_requirement_id
+                )
+                assignments_out.append(ResourceAssignment(
+                    requirement_id=primary.requirement_id,
+                    resource_id=selected_resource,
+                    quantity_units=primary.quantity_units,
+                ))
+                for requirement_id, options in secondary_assignments.get(op.operation_id, {}).items():
+                    chosen = next(
+                        resource_id for resource_id, literal in options
+                        if solver.Value(literal) == 1
+                    )
+                    requirement = next(
+                        item for item in op.requirements
+                        if item.requirement_id == requirement_id
+                    )
+                    assignments_out.append(ResourceAssignment(
+                        requirement_id=requirement_id,
+                        resource_id=chosen,
+                        quantity_units=requirement.quantity_units,
+                    ))
             scheduled.append(
                 ScheduledOperation(
                     operation_id=op.operation_id,
                     resource_id=selected_resource,
                     start_s=int(solver.Value(start_vars[op.operation_id])),
                     end_s=int(solver.Value(end_vars[op.operation_id])),
+                    resource_assignments=tuple(assignments_out),
                 )
             )
 
@@ -372,6 +473,9 @@ class CpSatWarehouseScheduler:
             operations=scheduled_tuple,
             warehouse_handoffs=handoffs,
         )
+        if coldchain is not None:
+            plan = ColdChainTimelineBuilder().plan(request, candidate)
+            candidate = candidate.model_copy(update={'coldchain': plan})
         report = WarehouseScheduleValidator().validate(request, candidate)
         if report.status == "failed":
             raise RuntimeError(
@@ -379,6 +483,34 @@ class CpSatWarehouseScheduler:
                 + ";".join(v.rule_id + ":" + v.message for v in report.violations)
             )
         return candidate
+
+    @staticmethod
+    def _apply_resource_windows(model, start, end, present, resource, tag: str) -> None:
+        """An assignment is only valid inside one availability window and must
+        avoid every unavailable window.  Shared by primary and R05 secondary
+        resource bindings."""
+        if len(resource.available_windows) > 1:
+            window_literals = []
+            for window_idx, window in enumerate(resource.available_windows):
+                lit = model.NewBoolVar(f"{tag}_window_{window_idx}")
+                model.Add(start >= window.start_s).OnlyEnforceIf(lit)
+                model.Add(end <= window.end_s).OnlyEnforceIf(lit)
+                model.AddImplication(lit, present)
+                window_literals.append(lit)
+            model.AddBoolOr(window_literals).OnlyEnforceIf(present)
+        elif len(resource.available_windows) == 1:
+            window = resource.available_windows[0]
+            model.Add(start >= window.start_s).OnlyEnforceIf(present)
+            model.Add(end <= window.end_s).OnlyEnforceIf(present)
+        else:
+            model.Add(present == 0)
+
+        for unavailable in resource.unavailable_windows:
+            before = model.NewBoolVar(f"{tag}_before_unavail_{unavailable.start_s}")
+            after = model.NewBoolVar(f"{tag}_after_unavail_{unavailable.end_s}")
+            model.Add(end <= unavailable.start_s).OnlyEnforceIf(before)
+            model.Add(start >= unavailable.end_s).OnlyEnforceIf(after)
+            model.AddBoolOr([before, after]).OnlyEnforceIf(present)
 
     def _validate_request(self, request: WarehouseScheduleRequest) -> None:
         order_ids = set(request.order_ids)
