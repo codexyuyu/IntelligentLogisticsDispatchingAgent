@@ -5963,6 +5963,363 @@
       "title": "ExceptionPage",
       "type": "object"
     },
+    "logistics_contracts.experiment.ExperimentCompareRequest": {
+      "$defs": {
+        "SimulationEventDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "event_id": {
+              "format": "uuid",
+              "title": "Event Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/SimulationEventKind"
+            },
+            "order_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Order Id"
+            },
+            "stop_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Stop Id"
+            },
+            "time_s": {
+              "title": "Time S",
+              "type": "integer"
+            },
+            "vehicle_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Vehicle Id"
+            }
+          },
+          "required": [
+            "event_id",
+            "time_s",
+            "kind",
+            "vehicle_id",
+            "order_id",
+            "stop_id"
+          ],
+          "title": "SimulationEventDTO",
+          "type": "object"
+        },
+        "SimulationEventKind": {
+          "enum": [
+            "arrival",
+            "service_start",
+            "departure",
+            "delivered"
+          ],
+          "title": "SimulationEventKind",
+          "type": "string"
+        },
+        "SimulationResultDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "delivered_order_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Delivered Order Ids",
+              "type": "array"
+            },
+            "events": {
+              "items": {
+                "$ref": "#/$defs/SimulationEventDTO"
+              },
+              "title": "Events",
+              "type": "array"
+            },
+            "final_time_s": {
+              "title": "Final Time S",
+              "type": "integer"
+            },
+            "seed": {
+              "title": "Seed",
+              "type": "integer"
+            },
+            "status": {
+              "$ref": "#/$defs/SimulationStatus"
+            }
+          },
+          "required": [
+            "status",
+            "final_time_s",
+            "events",
+            "delivered_order_ids",
+            "seed"
+          ],
+          "title": "SimulationResultDTO",
+          "type": "object"
+        },
+        "SimulationStatus": {
+          "enum": [
+            "completed",
+            "cancelled",
+            "failed"
+          ],
+          "title": "SimulationStatus",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "base": {
+          "$ref": "#/$defs/SimulationResultDTO"
+        },
+        "base_label": {
+          "default": "base",
+          "title": "Base Label",
+          "type": "string"
+        },
+        "candidate": {
+          "$ref": "#/$defs/SimulationResultDTO"
+        },
+        "candidate_label": {
+          "default": "candidate",
+          "title": "Candidate Label",
+          "type": "string"
+        },
+        "orders_total": {
+          "title": "Orders Total",
+          "type": "integer"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "base",
+        "candidate",
+        "orders_total"
+      ],
+      "title": "ExperimentCompareRequest",
+      "type": "object"
+    },
+    "logistics_contracts.experiment.ExperimentComparisonDTO": {
+      "$defs": {
+        "MetricDeltaDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "base": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Base"
+            },
+            "candidate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Candidate"
+            },
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "delta": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Delta"
+            },
+            "reason": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/MissingReason"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "relative_change": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Relative Change"
+            }
+          },
+          "required": [
+            "code",
+            "base",
+            "candidate",
+            "delta",
+            "relative_change",
+            "reason"
+          ],
+          "title": "MetricDeltaDTO",
+          "type": "object"
+        },
+        "MissingReason": {
+          "enum": [
+            "not_applicable",
+            "missing_data",
+            "division_by_zero"
+          ],
+          "title": "MissingReason",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "base_label": {
+          "title": "Base Label",
+          "type": "string"
+        },
+        "candidate_label": {
+          "title": "Candidate Label",
+          "type": "string"
+        },
+        "deltas": {
+          "items": {
+            "$ref": "#/$defs/MetricDeltaDTO"
+          },
+          "title": "Deltas",
+          "type": "array"
+        }
+      },
+      "required": [
+        "base_label",
+        "candidate_label",
+        "deltas"
+      ],
+      "title": "ExperimentComparisonDTO",
+      "type": "object"
+    },
+    "logistics_contracts.experiment.MetricDeltaDTO": {
+      "$defs": {
+        "MissingReason": {
+          "enum": [
+            "not_applicable",
+            "missing_data",
+            "division_by_zero"
+          ],
+          "title": "MissingReason",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "base": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Base"
+        },
+        "candidate": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Candidate"
+        },
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "delta": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Delta"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "relative_change": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Relative Change"
+        }
+      },
+      "required": [
+        "code",
+        "base",
+        "candidate",
+        "delta",
+        "relative_change",
+        "reason"
+      ],
+      "title": "MetricDeltaDTO",
+      "type": "object"
+    },
     "logistics_contracts.http.CargoCreate": {
       "$defs": {
         "CargoType": {

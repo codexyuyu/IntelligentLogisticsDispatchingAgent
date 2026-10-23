@@ -2252,6 +2252,71 @@
         "title": "ExceptionSeverity",
         "type": "string"
       },
+      "ExperimentCompareRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "base": {
+            "$ref": "#/components/schemas/SimulationResultDTO"
+          },
+          "base_label": {
+            "default": "base",
+            "title": "Base Label",
+            "type": "string"
+          },
+          "candidate": {
+            "$ref": "#/components/schemas/SimulationResultDTO"
+          },
+          "candidate_label": {
+            "default": "candidate",
+            "title": "Candidate Label",
+            "type": "string"
+          },
+          "orders_total": {
+            "title": "Orders Total",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "base",
+          "candidate",
+          "orders_total"
+        ],
+        "title": "ExperimentCompareRequest",
+        "type": "object"
+      },
+      "ExperimentComparisonDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "base_label": {
+            "title": "Base Label",
+            "type": "string"
+          },
+          "candidate_label": {
+            "title": "Candidate Label",
+            "type": "string"
+          },
+          "deltas": {
+            "items": {
+              "$ref": "#/components/schemas/MetricDeltaDTO"
+            },
+            "title": "Deltas",
+            "type": "array"
+          }
+        },
+        "required": [
+          "base_label",
+          "candidate_label",
+          "deltas"
+        ],
+        "title": "ExperimentComparisonDTO",
+        "type": "object"
+      },
       "FieldError": {
         "additionalProperties": false,
         "properties": {
@@ -2925,6 +2990,79 @@
           "hash"
         ],
         "title": "MatrixRefDTO",
+        "type": "object"
+      },
+      "MetricDeltaDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "base": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base"
+          },
+          "candidate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Candidate"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "delta": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delta"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MissingReason"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "relative_change": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relative Change"
+          }
+        },
+        "required": [
+          "code",
+          "base",
+          "candidate",
+          "delta",
+          "relative_change",
+          "reason"
+        ],
+        "title": "MetricDeltaDTO",
         "type": "object"
       },
       "MetricPage": {
@@ -8139,6 +8277,65 @@
         "summary": "Analyse Impact",
         "tags": [
           "exceptions"
+        ]
+      }
+    },
+    "/api/v1/experiments/compare": {
+      "post": {
+        "operationId": "compare_experiment_results",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExperimentCompareRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExperimentComparisonDTO"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Compare Experiment Results",
+        "tags": [
+          "experiments"
         ]
       }
     },

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from logistics_domain.experiment import ExperimentComparison, MetricDelta
 from logistics_domain.metrics import MetricSource, MetricValue, MissingReason
 from logistics_domain.planning import TransportPlan
 from logistics_domain.simulation import SimulationResult
@@ -79,4 +80,31 @@ def simulation_metrics(result: SimulationResult, orders_total: int) -> tuple[Met
     return tuple(metrics)
 
 
-__all__ = ["transport_plan_metrics", "simulation_metrics"]
+def compare_metrics(base_label: str, candidate_label: str,
+                    base: tuple[MetricValue, ...],
+                    candidate: tuple[MetricValue, ...]) -> ExperimentComparison:
+    base_by_code = {metric.code: metric for metric in base}
+    candidate_by_code = {metric.code: metric for metric in candidate}
+    deltas = []
+    for code in sorted(set(base_by_code) | set(candidate_by_code)):
+        left = base_by_code.get(code)
+        right = candidate_by_code.get(code)
+        if left is None or right is None or left.value is None or right.value is None:
+            deltas.append(MetricDelta(code=code, base=left.value if left else None,
+                candidate=right.value if right else None, delta=None, relative_change=None,
+                reason=MissingReason.MISSING_DATA))
+            continue
+        delta = right.value - left.value
+        if left.value == 0:
+            relative = 0.0 if delta == 0 else None
+            reason = None if relative is not None else MissingReason.DIVISION_BY_ZERO
+        else:
+            relative = delta / abs(left.value)
+            reason = None
+        deltas.append(MetricDelta(code=code, base=left.value, candidate=right.value,
+            delta=delta, relative_change=relative, reason=reason))
+    return ExperimentComparison(base_label=base_label, candidate_label=candidate_label,
+        deltas=tuple(deltas))
+
+
+__all__ = ["transport_plan_metrics", "simulation_metrics", "compare_metrics"]

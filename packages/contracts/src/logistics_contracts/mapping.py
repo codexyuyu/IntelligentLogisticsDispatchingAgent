@@ -38,6 +38,7 @@ from logistics_contracts.planning import (
     ViolationDTO,
     WarehouseTaskDTO,
 )
+from logistics_contracts.experiment import ExperimentComparisonDTO, MetricDeltaDTO
 from logistics_contracts.impact import (
     ImpactReasonPathDTO,
     ImpactReportDTO,
@@ -66,6 +67,7 @@ from logistics_contracts.transport import (
     TransportSolutionDTO,
     VehicleStateDTO,
 )
+from logistics_domain import experiment as experiment_domain
 from logistics_domain import impact as impact_domain
 from logistics_domain import reschedule as reschedule_domain
 from logistics_domain import planning as domain
@@ -381,6 +383,18 @@ def reschedule_proposal_dto(
         requires_manual_review=value.requires_manual_review, rationale=value.rationale)
 
 
+def metric_delta_dto(value: experiment_domain.MetricDelta) -> MetricDeltaDTO:
+    return MetricDeltaDTO(code=value.code, base=value.base, candidate=value.candidate,
+        delta=value.delta, relative_change=value.relative_change, reason=value.reason)
+
+
+def experiment_comparison_dto(
+        value: experiment_domain.ExperimentComparison) -> ExperimentComparisonDTO:
+    return ExperimentComparisonDTO(base_label=value.base_label,
+        candidate_label=value.candidate_label,
+        deltas=tuple(metric_delta_dto(item) for item in value.deltas))
+
+
 def metric_dto(value) -> MetricValueDTO:
     return MetricValueDTO(code=value.code, definition_version=value.definition_version,
         source=value.source, unit=value.unit, value=value.value,
@@ -415,4 +429,5 @@ __all__ = [
     "violation_dto", "warehouse_problem_dto", "warehouse_solution_dto",
     "warehouse_task_dto", "simulation_request_dto", "simulation_result_dto", "metric_dto",
     "impact_report_dto", "boundary_dto", "reschedule_proposal_dto",
+    "experiment_comparison_dto",
 ]
