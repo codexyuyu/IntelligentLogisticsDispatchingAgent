@@ -62,6 +62,13 @@ class WarehouseRequestDTO(BaseModel):
     objective_policy: ObjectivePolicyDTO
 
 
+class WarehouseJobContent(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    problem: WarehouseProblemDTO
+    budget: SolveBudgetDTO
+
+
 from logistics_contracts.planning import PlanningScopeDTO  # noqa: E402
 
 WarehouseRequestDTO.model_rebuild()

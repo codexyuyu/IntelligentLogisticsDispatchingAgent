@@ -13,7 +13,12 @@ from logistics_contracts.runtime import (
     OptimizationJobPayload,
     RequestRef as RequestRefDTO,
 )
-from logistics_contracts.warehouse import WarehouseProblemDTO, WarehouseRequestDTO, WarehouseSolutionDTO
+from logistics_contracts.warehouse import (
+    WarehouseJobContent,
+    WarehouseProblemDTO,
+    WarehouseRequestDTO,
+    WarehouseSolutionDTO,
+)
 from logistics_domain.errors import InvalidInputError
 from logistics_domain.runtime import RequestRef
 from logistics_domain.states import JobKind, JobOptimizationMode
@@ -46,15 +51,25 @@ class WarehouseJobHandler:
 
     def validate(self, content: bytes) -> None:
         try:
-            WarehouseProblemDTO.model_validate_json(content).to_domain()
+            try:
+                WarehouseJobContent.model_validate_json(content).problem.to_domain()
+            except Exception:
+                WarehouseProblemDTO.model_validate_json(content).to_domain()
         except Exception as exc:
             raise InvalidInputError("warehouse job content is not a valid pinned problem") from exc
 
     def execute(self, content: bytes, deadline):
         from logistics_contracts.runtime import JobResultRef
 
-        problem = WarehouseProblemDTO.model_validate_json(content).to_domain()
-        solution = CpSatWarehouseScheduler().solve(problem, problem_budget(problem, deadline))
+        try:
+            payload = WarehouseJobContent.model_validate_json(content)
+            problem = payload.problem.to_domain()
+            requested = payload.budget.to_domain()
+        except Exception:
+            problem = WarehouseProblemDTO.model_validate_json(content).to_domain()
+            requested = None
+        solution = CpSatWarehouseScheduler().solve(problem,
+            problem_budget(problem, deadline, requested))
         result_id = uuid4()
         digest = self.result_store.write(result_id, json.loads(
             warehouse_solution_dto(solution).model_dump_json()))
@@ -62,13 +77,15 @@ class WarehouseJobHandler:
                             hash=digest, family=JobKind.OPTIMIZATION)
 
 
-def problem_budget(problem: WarehouseProblem, deadline):
+def problem_budget(problem: WarehouseProblem, deadline, requested=None):
     from logistics_domain.planning import SolveBudget
 
+    cap = requested.wall_time_ms if requested is not None else problem.budget.wall_time_ms
     remaining = max(1, min(5_000, int((deadline.expires_at_utc - _now()).total_seconds() * 1000)))
-    return SolveBudget(wall_time_ms=remaining, deadline_utc=deadline.expires_at_utc,
-        max_candidates=1, seed=problem.budget.seed, worker_count=1,
-        deterministic_test_mode=False)
+    wall_time_ms = max(1, min(cap, remaining, 5_000))
+    return SolveBudget(wall_time_ms=wall_time_ms, deadline_utc=deadline.expires_at_utc,
+        max_candidates=1, seed=requested.seed if requested is not None else problem.budget.seed,
+        worker_count=1, deterministic_test_mode=False)
 
 
 class WarehouseResultStore:
@@ -93,7 +110,8 @@ class WarehouseOptimizationService:
     def submit(self, request: WarehouseRequestDTO, actor, key: str, trace_id: UUID):
         snapshot = self.snapshot_store.capture(request.scope.to_domain())
         problem = build_warehouse_problem(snapshot, request)
-        content = canonical_bytes(json.loads(warehouse_problem_dto(problem).model_dump_json()))
+        content = canonical_bytes(json.loads(WarehouseJobContent(
+            problem=warehouse_problem_dto(problem), budget=request.budget).model_dump_json()))
         request_id, version = uuid4(), 1
         digest = hashlib.sha256(content).hexdigest()
         reference = RequestRef(request_id=request_id, version=version, schema_version="2.0.0",

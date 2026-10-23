@@ -85,8 +85,8 @@ started, and `/api/v1/health`, authenticated `/orders`, and a transport Job
 (submit → worker → completed → result) all returned successfully.
 
 The worker caps solver wall time at 5 seconds per job and backend/worker share a `results` volume
-for immutable artifacts. This is a product-level cap; the request-level budget is not persisted
-in the current job payload, so a requested 1s/3s budget is not yet enforced.
+for immutable artifacts. The submitted `SolveBudgetDTO` is now pinned inside the job content, so a
+1s/3s request budget is honored up to the 5s server cap.
 
 ## Known product gaps
 

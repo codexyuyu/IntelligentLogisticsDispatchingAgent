@@ -23,7 +23,12 @@ from logistics_contracts.runtime import (
     OptimizationJobPayload,
     RequestRef as RequestRefDTO,
 )
-from logistics_contracts.transport import TransportProblemDTO, TransportRequestDTO, TransportSolutionDTO
+from logistics_contracts.transport import (
+    TransportJobContent,
+    TransportProblemDTO,
+    TransportRequestDTO,
+    TransportSolutionDTO,
+)
 from logistics_domain.errors import InvalidInputError
 from logistics_domain.planning import MatrixRef, SolveBudget
 from logistics_domain.primitives import Load, TimeWindow
@@ -127,15 +132,25 @@ class TransportJobHandler:
 
     def validate(self, content: bytes) -> None:
         try:
-            TransportProblemDTO.model_validate_json(content).to_domain()
+            try:
+                TransportJobContent.model_validate_json(content).problem.to_domain()
+            except Exception:
+                TransportProblemDTO.model_validate_json(content).to_domain()
         except Exception as exc:  # boundary converts every parse failure to a typed input error
             raise InvalidInputError("transport job content is not a valid pinned problem") from exc
 
     def execute(self, content: bytes, deadline):
         from logistics_contracts.runtime import JobResultRef
 
-        problem = TransportProblemDTO.model_validate_json(content).to_domain()
-        solution = OrToolsTransportSolver().solve(problem, problem_budget(problem, deadline))
+        try:
+            payload = TransportJobContent.model_validate_json(content)
+            problem = payload.problem.to_domain()
+            requested = payload.budget.to_domain()
+        except Exception:
+            problem = TransportProblemDTO.model_validate_json(content).to_domain()
+            requested = None
+        solution = OrToolsTransportSolver().solve(problem,
+            problem_budget(problem, deadline, requested))
         result_id = uuid4()
         digest = self.result_store.write(result_id, json.loads(
             solution_dto(solution).model_dump_json()))
@@ -143,11 +158,14 @@ class TransportJobHandler:
                             hash=digest, family=JobKind.OPTIMIZATION)
 
 
-def problem_budget(problem: TransportProblem, deadline) -> SolveBudget:
-    """Cap every worker solve at the server limit; request-level budget is not persisted here."""
+def problem_budget(problem: TransportProblem, deadline, requested=None) -> SolveBudget:
+    """Use the request budget, capped by the deadline and a 5s server limit."""
+    cap = requested.wall_time_ms if requested is not None else 5_000
     remaining = max(1, min(5_000, int((deadline.expires_at_utc - _now()).total_seconds() * 1000)))
-    return SolveBudget(wall_time_ms=remaining, deadline_utc=deadline.expires_at_utc,
-        max_candidates=1, seed=0, worker_count=1, deterministic_test_mode=False)
+    wall_time_ms = max(1, min(cap, remaining, 5_000))
+    return SolveBudget(wall_time_ms=wall_time_ms, deadline_utc=deadline.expires_at_utc,
+        max_candidates=1, seed=requested.seed if requested is not None else 0,
+        worker_count=1, deterministic_test_mode=False)
 
 
 class TransportResultStore:
@@ -174,7 +192,8 @@ class TransportOptimizationService:
     def submit(self, request: TransportRequestDTO, actor, key: str, trace_id: UUID):
         snapshot = self.snapshot_store.capture(request.scope.to_domain())
         problem = build_transport_problem(snapshot, request)
-        content = canonical_bytes(json.loads(problem_dto(problem).model_dump_json()))
+        content = canonical_bytes(json.loads(TransportJobContent(
+            problem=problem_dto(problem), budget=request.budget).model_dump_json()))
         request_id, version = uuid4(), 1
         digest = hashlib.sha256(content).hexdigest()
         reference = RequestRef(request_id=request_id, version=version, schema_version="2.0.0",

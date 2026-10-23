@@ -117,6 +117,15 @@ class TransportResultView(BaseModel):
     solution: TransportSolutionDTO
 
 
+class TransportJobContent(BaseModel):
+    """Pinned problem plus the caller's solve budget, never trusted from the child clock."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    problem: TransportProblemDTO
+    budget: SolveBudgetDTO
+
+
 from logistics_contracts.common import EntityRefDTO  # noqa: E402
 from logistics_contracts.entities import TimeWindowDTO  # noqa: E402
 from logistics_contracts.planning import (  # noqa: E402
