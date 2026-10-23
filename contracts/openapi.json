@@ -569,6 +569,26 @@
             },
             "title": "Stops",
             "type": "array"
+          },
+          "warehouse_problem": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WarehouseProblemDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "warehouse_solution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WarehouseSolutionDTO-Input"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [

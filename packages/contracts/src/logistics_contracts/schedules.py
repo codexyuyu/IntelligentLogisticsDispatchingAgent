@@ -15,6 +15,7 @@ from logistics_contracts.planning import (
     TransportPlanDTO,
 )
 from logistics_contracts.transport import TransportProblemDTO
+from logistics_contracts.warehouse import WarehouseProblemDTO, WarehouseSolutionDTO
 
 
 class ScheduleCreate(BaseModel):
@@ -49,6 +50,8 @@ class CandidateCreate(BaseModel):
     stops: tuple[RouteStopDTO, ...]
     solver_evidence_refs: tuple[UUID, ...]
     base_version_id: UUID | None = None
+    warehouse_problem: WarehouseProblemDTO | None = None
+    warehouse_solution: WarehouseSolutionDTO | None = None
 
 
 class CandidateView(BaseModel):
