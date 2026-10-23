@@ -1,0 +1,427 @@
+{
+  "cargo": [
+    {
+      "batch_ref": "B1",
+      "cargo_type": "GENERAL",
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "id": "53fd4f29-976d-5d6d-a58c-da2320867fbd",
+      "max_exposure_s": 3600,
+      "max_temp_decic": 80,
+      "min_temp_decic": 0,
+      "order_id": "cfa10006-0100-5eea-84ad-a559923540c2",
+      "quantity_units": 1,
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "status": "registered",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "volume_cm3": 8000,
+      "weight_g": 12000
+    },
+    {
+      "batch_ref": "B2",
+      "cargo_type": "GENERAL",
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "id": "2631a6c6-b90a-50b4-b953-dcbb4fdcd02e",
+      "max_exposure_s": 3600,
+      "max_temp_decic": 80,
+      "min_temp_decic": 0,
+      "order_id": "71371ebf-1c95-5437-b939-c753d13b3685",
+      "quantity_units": 1,
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "status": "registered",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "volume_cm3": 5000,
+      "weight_g": 8000
+    }
+  ],
+  "created_by": "00000000-0000-0000-0000-000000000001",
+  "docks": [
+    {
+      "allowed_zone_ids": [
+        "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+      ],
+      "calendar": {
+        "epoch_utc": "2026-01-01T00:00:00Z",
+        "intervals": [
+          {
+            "available_units": 1,
+            "end_s": 86400,
+            "start_s": 0
+          }
+        ],
+        "schema_version": "2.0.0",
+        "version": 0
+      },
+      "code": "D1",
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "id": "df766c7b-970f-59a7-8292-3dc8a365b928",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "status": "available",
+      "supported_operations": [
+        "receive",
+        "load"
+      ],
+      "updated_at": "2026-01-01T00:00:00Z",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272"
+    }
+  ],
+  "drivers": [
+    {
+      "code": "DR1",
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "id": "3bd3b598-f66d-5a27-a254-68fb0082889b",
+      "max_drive_s": 28800,
+      "max_work_s": 36000,
+      "qualifications": [
+        "general"
+      ],
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "shift": {
+        "earliest_s": 0,
+        "latest_s": 86400
+      },
+      "status": "active",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "equipment": [
+    {
+      "allowed_zone_ids": [
+        "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+      ],
+      "calendar": {
+        "epoch_utc": "2026-01-01T00:00:00Z",
+        "intervals": [
+          {
+            "available_units": 2,
+            "end_s": 86400,
+            "start_s": 0
+          }
+        ],
+        "schema_version": "2.0.0",
+        "version": 0
+      },
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "id": "36b8203d-d7de-58e7-8ef7-4609216185d5",
+      "kind": "handling",
+      "quantity_capacity": 2,
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "status": "available",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272"
+    }
+  ],
+  "locations": [
+    {
+      "calendar": {
+        "epoch_utc": "2026-01-01T00:00:00Z",
+        "intervals": [
+          {
+            "available_units": 1,
+            "end_s": 86400,
+            "start_s": 0
+          }
+        ],
+        "schema_version": "2.0.0",
+        "version": 0
+      },
+      "capacity_volume_cm3": 500000,
+      "capacity_weight_g": 500000,
+      "code": "L1",
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "id": "dd3498fd-54e4-585f-a4e2-f3f53309ecf5",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "status": "available",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+    }
+  ],
+  "matrices": [
+    {
+      "created_at": "2026-01-01T00:00:00Z",
+      "hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "id": "31600f98-77d8-5164-bd20-a817876cfd2d",
+      "payload": {
+        "distance_m": [
+          [
+            0,
+            5000,
+            9000,
+            7000,
+            12000
+          ],
+          [
+            5000,
+            0,
+            4000,
+            3000,
+            8000
+          ],
+          [
+            9000,
+            4000,
+            0,
+            6000,
+            3000
+          ],
+          [
+            7000,
+            3000,
+            6000,
+            0,
+            5000
+          ],
+          [
+            12000,
+            8000,
+            3000,
+            5000,
+            0
+          ]
+        ],
+        "hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "id": "31600f98-77d8-5164-bd20-a817876cfd2d",
+        "node_ids": [
+          "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+          "70fd19ad-68b9-5ed2-be9f-44ac431fb557",
+          "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+          "dff2c260-6c2b-55ef-b801-1ee0cf0370c5",
+          "dd6e5ffa-d613-5797-92ff-f2665b30761c"
+        ],
+        "observed_at": "2026-01-01T00:00:00Z",
+        "source": "fixture",
+        "travel_s": [
+          [
+            0,
+            500,
+            900,
+            700,
+            1200
+          ],
+          [
+            500,
+            0,
+            400,
+            300,
+            800
+          ],
+          [
+            900,
+            400,
+            0,
+            600,
+            300
+          ],
+          [
+            700,
+            300,
+            600,
+            0,
+            500
+          ],
+          [
+            1200,
+            800,
+            300,
+            500,
+            0
+          ]
+        ],
+        "version": 1
+      },
+      "scope_id": "11111111-1111-4111-8111-111111111111",
+      "version": 1
+    }
+  ],
+  "order_ids": [
+    "cfa10006-0100-5eea-84ad-a559923540c2",
+    "71371ebf-1c95-5437-b939-c753d13b3685"
+  ],
+  "orders": [
+    {
+      "cargo_ids": [
+        "53fd4f29-976d-5d6d-a58c-da2320867fbd"
+      ],
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "delivery_node_id": "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+      "delivery_window": {
+        "earliest_s": 0,
+        "latest_s": 7200
+      },
+      "external_ref": "T1-O1",
+      "id": "cfa10006-0100-5eea-84ad-a559923540c2",
+      "must_serve": true,
+      "pickup_node_id": "70fd19ad-68b9-5ed2-be9f-44ac431fb557",
+      "pickup_window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "priority": 1,
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "service_s": 300,
+      "soft_due_at_s": null,
+      "status": "draft",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "cargo_ids": [
+        "2631a6c6-b90a-50b4-b953-dcbb4fdcd02e"
+      ],
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "delivery_node_id": "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+      "delivery_window": {
+        "earliest_s": 0,
+        "latest_s": 7200
+      },
+      "external_ref": "T1-O2",
+      "id": "71371ebf-1c95-5437-b939-c753d13b3685",
+      "must_serve": true,
+      "pickup_node_id": "dff2c260-6c2b-55ef-b801-1ee0cf0370c5",
+      "pickup_window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "priority": 1,
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "service_s": 300,
+      "soft_due_at_s": null,
+      "status": "draft",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "schema_version": "2.0.0",
+  "scope_id": "11111111-1111-4111-8111-111111111111",
+  "vehicle_ids": [
+    "3ad447e7-5161-50df-8b00-4f5fbd3f8a2a"
+  ],
+  "vehicles": [
+    {
+      "allowed_cargo_types": [
+        "GENERAL"
+      ],
+      "calendar": {
+        "epoch_utc": "2026-01-01T00:00:00Z",
+        "intervals": [
+          {
+            "available_units": 1,
+            "end_s": 86400,
+            "start_s": 0
+          }
+        ],
+        "schema_version": "2.0.0",
+        "version": 0
+      },
+      "capacity_volume_cm3": 40000,
+      "capacity_weight_g": 50000,
+      "code": "V1",
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "driver_id": "3bd3b598-f66d-5a27-a254-68fb0082889b",
+      "end_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+      "fixed_cost_cents": 5000,
+      "id": "3ad447e7-5161-50df-8b00-4f5fbd3f8a2a",
+      "rate_cents_per_km": 220,
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "setpoint_decic": 40,
+      "start_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+      "status": "available",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "warehouse_ids": [
+    "3095eda4-48b4-5601-8934-a3f5d2e60272"
+  ],
+  "warehouses": [
+    {
+      "calendar": {
+        "epoch_utc": "2026-01-01T00:00:00Z",
+        "intervals": [
+          {
+            "available_units": 1,
+            "end_s": 86400,
+            "start_s": 0
+          }
+        ],
+        "schema_version": "2.0.0",
+        "version": 0
+      },
+      "code": "WH1",
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "name": "Tiny Warehouse",
+      "node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "status": "active",
+      "timezone": "UTC",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "workers": [
+    {
+      "allowed_zone_ids": [
+        "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+      ],
+      "calendar": {
+        "epoch_utc": "2026-01-01T00:00:00Z",
+        "intervals": [
+          {
+            "available_units": 1,
+            "end_s": 86400,
+            "start_s": 0
+          }
+        ],
+        "schema_version": "2.0.0",
+        "version": 0
+      },
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "id": "aa955849-2466-5651-8d83-727ed08e60e4",
+      "pool_id": null,
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "skills": [
+        "picking"
+      ],
+      "status": "available",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272"
+    }
+  ],
+  "zones": [
+    {
+      "allowed_cargo_types": [
+        "GENERAL"
+      ],
+      "capacity_volume_cm3": 1000000,
+      "capacity_weight_g": 1000000,
+      "code": "Z1",
+      "created_at": "2026-01-01T00:00:00Z",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "setpoint_decic": 40,
+      "status": "active",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272"
+    }
+  ]
+}
