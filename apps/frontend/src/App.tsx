@@ -4,7 +4,25 @@ import { JsonPanel } from "./components/JsonPanel";
 
 type OrderView = { id: string; external_ref: string; status: string };
 type ChatReply = { reply: string; model: string; provider_configured: boolean; trace_id: string };
-type Tab = "transport" | "warehouse" | "simulation" | "events" | "metrics" | "reschedule" | "agent";
+type Tab = "overview" | "transport" | "warehouse" | "simulation" | "events" | "metrics" | "reschedule" | "agent";
+
+const TABS: readonly Tab[] = ["overview", "transport", "warehouse", "simulation", "events", "metrics", "reschedule", "agent"];
+
+const TITLES: Record<Tab, string> = {
+  overview: "Overview",
+  transport: "Transport optimization",
+  warehouse: "Warehouse scheduling",
+  simulation: "Simulation",
+  events: "Event ingestion",
+  metrics: "Metrics",
+  reschedule: "Reschedule proposal",
+  agent: "Agent chat",
+};
+
+function tabFromHash(): Tab {
+  const value = window.location.hash.replace(/^#\/?/, "");
+  return (TABS as readonly string[]).includes(value) ? (value as Tab) : "overview";
+}
 
 const TRANSPORT = `{
   "schema_version": "2.0.0",
@@ -147,7 +165,13 @@ export default function App() {
   const [job, setJob] = useState<JobRef | null>(null);
   const [result, setResult] = useState<JobResult | null>(null);
   const [error, setError] = useState("");
-  const [tab, setTab] = useState<Tab>("transport");
+  const [tab, setTab] = useState<Tab>(tabFromHash());
+
+  useEffect(() => {
+    const onHashChange = () => setTab(tabFromHash());
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   useEffect(() => {
     if (!token) return;
@@ -176,20 +200,30 @@ export default function App() {
   }
 
   return (
-    <main>
-      <header>
-        <div>
-          <h1>Logistics Workbench</h1>
-          <p className="muted">React shell for the real HTTP contract. No business rule is duplicated here.</p>
+    <div className="shell">
+      <aside className="sidebar">
+        <div className="brand">
+          <strong>Logistics</strong>
+          <span>Dispatch Workbench</span>
         </div>
-        <span className="muted">health: {health}</span>
-      </header>
-
-      <section>
-        <h2>Credential</h2>
-        <div className="row">
+        <nav className="nav">
+          {TABS.map((item) => (
+            <a key={item} href={`#/${item}`} className={tab === item ? "nav-item active" : "nav-item"}>
+              {TITLES[item]}
+            </a>
+          ))}
+        </nav>
+        <div className="sidebar-footer">health: {health}</div>
+      </aside>
+      <main className="content">
+        <header className="page-header">
+          <div>
+            <h1>{TITLES[tab]}</h1>
+            <p className="muted">Real HTTP contract, no duplicated business rules.</p>
+          </div>
           <input
             type="text"
+            className="token"
             value={token}
             placeholder="Bearer token"
             onChange={(event) => {
@@ -197,67 +231,63 @@ export default function App() {
               setToken(event.target.value);
             }}
           />
-          <button className="secondary" onClick={loadOrders}>load orders</button>
-        </div>
-        <p className="muted">Token stays in localStorage and is sent only to the configured API.</p>
-        <ul>
-          {orders.map((order) => (
-            <li key={order.id}>{order.external_ref} · {order.status} · <code>{order.id}</code></li>
-          ))}
-        </ul>
-      </section>
+        </header>
 
-      <nav className="tabs">
-        {(["transport", "warehouse", "simulation", "events", "metrics", "reschedule", "agent"] as Tab[]).map((item) => (
-          <button key={item} className={tab === item ? "" : "secondary"} onClick={() => setTab(item)}>
-            {item}
-          </button>
-        ))}
-      </nav>
+        {error ? <p className="error">{error}</p> : null}
 
-      {tab === "transport" ? (
-        <JsonPanel title="Transport optimization" path="/optimizations/transport" initialBody={TRANSPORT}
-          idempotent description="POST body is TransportRequestDTO. The panel shows the returned JobRef." />
-      ) : null}
-      {tab === "warehouse" ? (
-        <JsonPanel title="Warehouse scheduling" path="/optimizations/warehouse" initialBody={WAREHOUSE}
-          idempotent description="Paste a WarehouseRequestDTO; the returned JobRef is queued." />
-      ) : null}
-      {tab === "simulation" ? (
-        <JsonPanel title="Simulation" path="/simulations" initialBody={SIMULATION}
-          idempotent description="SimulationRequestDTO with an explicit plan and stop rows." />
-      ) : null}
-      {tab === "events" ? (
-        <JsonPanel title="Event ingestion" path="/events" initialBody={EVENT}
-          description="EventEnvelopeDTO; duplicate source/source_event_id returns a duplicate receipt." />
-      ) : null}
-      {tab === "metrics" ? (
-        <JsonPanel title="Transport metrics" path="/metrics/transport" initialBody={METRICS}
-          description="Pure read; missing values return null plus a reason." />
-      ) : null}
-      {tab === "reschedule" ? (
-        <JsonPanel title="Reschedule proposal" path="/reschedules/proposals" initialBody={RESCHEDULE}
-          description="Typed adjustments only; solver + validator must still run before commit." />
-      ) : null}
-      {tab === "agent" ? <AgentPanel /> : null}
+        {tab === "overview" ? (
+          <section>
+            <h2>Operational snapshot</h2>
+            <p className="muted">Token stays in localStorage and is sent only to the configured API.</p>
+            <button className="secondary" onClick={loadOrders}>load orders</button>
+            <ul>
+              {orders.map((order) => (
+                <li key={order.id}>{order.external_ref} · {order.status} · <code>{order.id}</code></li>
+              ))}
+            </ul>
+            <h2 style={{ marginTop: "1.25rem" }}>Job result</h2>
+            <div className="row">
+              <input
+                type="text"
+                value={job?.job_id ?? ""}
+                placeholder="job id from a submitted transport/simulation request"
+                onChange={(event) => setJob({ ...(job as JobRef), job_id: event.target.value })}
+              />
+              <button className="secondary" onClick={loadResult} disabled={!job?.job_id}>load</button>
+            </div>
+            {job ? <p className="muted">{job.status}</p> : null}
+          </section>
+        ) : null}
 
-      <section>
-        <h2>Job result</h2>
-        <div className="row">
-          <input
-            type="text"
-            value={job?.job_id ?? ""}
-            placeholder="job id from a submitted transport/simulation request"
-            onChange={(event) => setJob({ ...(job as JobRef), job_id: event.target.value })}
-          />
-          <button className="secondary" onClick={loadResult} disabled={!job?.job_id}>load</button>
-        </div>
-        {job ? <p className="muted">{job.status}</p> : null}
-      </section>
+        {tab === "transport" ? (
+          <JsonPanel title="Transport optimization" path="/optimizations/transport" initialBody={TRANSPORT}
+            idempotent description="POST body is TransportRequestDTO. The panel shows the returned JobRef." />
+        ) : null}
+        {tab === "warehouse" ? (
+          <JsonPanel title="Warehouse scheduling" path="/optimizations/warehouse" initialBody={WAREHOUSE}
+            idempotent description="Paste a WarehouseRequestDTO; the returned JobRef is queued." />
+        ) : null}
+        {tab === "simulation" ? (
+          <JsonPanel title="Simulation" path="/simulations" initialBody={SIMULATION}
+            idempotent description="SimulationRequestDTO with an explicit plan and stop rows." />
+        ) : null}
+        {tab === "events" ? (
+          <JsonPanel title="Event ingestion" path="/events" initialBody={EVENT}
+            description="EventEnvelopeDTO; duplicate source/source_event_id returns a duplicate receipt." />
+        ) : null}
+        {tab === "metrics" ? (
+          <JsonPanel title="Transport metrics" path="/metrics/transport" initialBody={METRICS}
+            description="Pure read; missing values return null plus a reason." />
+        ) : null}
+        {tab === "reschedule" ? (
+          <JsonPanel title="Reschedule proposal" path="/reschedules/proposals" initialBody={RESCHEDULE}
+            description="Typed adjustments only; solver + validator must still run before commit." />
+        ) : null}
+        {tab === "agent" ? <AgentPanel /> : null}
 
-      {error ? <p className="error">{error}</p> : null}
-      {result ? <pre>{JSON.stringify(result, null, 2)}</pre> : null}
-    </main>
+        {result ? <pre>{JSON.stringify(result, null, 2)}</pre> : null}
+      </main>
+    </div>
   );
 }
 
