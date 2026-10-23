@@ -21,7 +21,7 @@ implementation can never be mistaken for a delivered one.
 from __future__ import annotations
 
 from . import errors, execution, planning, ports, primitives, resources, runtime, states
-from . import orders
+from . import orders, transport, warehouse
 
 # Gate evidence schema stays 1.0.0; the business/data contract is 2.0.0.
 SCHEMA_VERSION = "1.0.0"
@@ -47,6 +47,8 @@ __all__ = [
     "resources",
     "runtime",
     "states",
+    "transport",
+    "warehouse",
 ]
 
 # Public API surface owned by later tasks. Declared here so that an accidental

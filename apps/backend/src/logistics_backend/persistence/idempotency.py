@@ -14,7 +14,7 @@ from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
-from logistics_backend.application.master_data import ServiceError
+from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.runtime_models import idempotency
 from logistics_contracts.runtime import JobRef
 from logistics_domain.states import ErrorCode

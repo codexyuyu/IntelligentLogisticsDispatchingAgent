@@ -177,6 +177,83 @@
         "title": "ConflictDetail",
         "type": "object"
       },
+      "CostBreakdownDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "distance_cents": {
+            "title": "Distance Cents",
+            "type": "integer"
+          },
+          "fixed_vehicle_cents": {
+            "title": "Fixed Vehicle Cents",
+            "type": "integer"
+          },
+          "overtime_cents": {
+            "title": "Overtime Cents",
+            "type": "integer"
+          },
+          "service_cents": {
+            "title": "Service Cents",
+            "type": "integer"
+          },
+          "setup_cents": {
+            "title": "Setup Cents",
+            "type": "integer"
+          },
+          "total_cents": {
+            "title": "Total Cents",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "distance_cents",
+          "fixed_vehicle_cents",
+          "service_cents",
+          "overtime_cents",
+          "setup_cents",
+          "total_cents"
+        ],
+        "title": "CostBreakdownDTO",
+        "type": "object"
+      },
+      "DiagnosticSeverity": {
+        "enum": [
+          "info",
+          "warning",
+          "error"
+        ],
+        "title": "DiagnosticSeverity",
+        "type": "string"
+      },
+      "DisturbanceWeightsDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "assignment_change": {
+            "title": "Assignment Change",
+            "type": "integer"
+          },
+          "membership_change": {
+            "title": "Membership Change",
+            "type": "integer"
+          },
+          "order_change": {
+            "title": "Order Change",
+            "type": "integer"
+          },
+          "time_shift": {
+            "title": "Time Shift",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "assignment_change",
+          "time_shift",
+          "order_change",
+          "membership_change"
+        ],
+        "title": "DisturbanceWeightsDTO",
+        "type": "object"
+      },
       "DockCreate": {
         "additionalProperties": false,
         "properties": {
@@ -664,6 +741,89 @@
           "schema_version"
         ],
         "title": "DriverUpdate",
+        "type": "object"
+      },
+      "EngineMetadataDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "best_bound": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Best Bound"
+          },
+          "build_ms": {
+            "title": "Build Ms",
+            "type": "integer"
+          },
+          "configuration_hash": {
+            "title": "Configuration Hash",
+            "type": "string"
+          },
+          "engine_status": {
+            "title": "Engine Status",
+            "type": "string"
+          },
+          "incumbent_exists": {
+            "title": "Incumbent Exists",
+            "type": "boolean"
+          },
+          "input_hash": {
+            "title": "Input Hash",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "optimality_gap": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Optimality Gap"
+          },
+          "seed": {
+            "title": "Seed",
+            "type": "integer"
+          },
+          "solve_ms": {
+            "title": "Solve Ms",
+            "type": "integer"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          },
+          "workers": {
+            "title": "Workers",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "version",
+          "configuration_hash",
+          "seed",
+          "workers",
+          "input_hash",
+          "solve_ms",
+          "build_ms",
+          "engine_status",
+          "incumbent_exists",
+          "best_bound",
+          "optimality_gap"
+        ],
+        "title": "EngineMetadataDTO",
         "type": "object"
       },
       "EntityKind": {
@@ -1249,6 +1409,47 @@
         "title": "JobKind",
         "type": "string"
       },
+      "JobRef": {
+        "additionalProperties": false,
+        "properties": {
+          "job_id": {
+            "format": "uuid",
+            "title": "Job Id",
+            "type": "string"
+          },
+          "result_url": {
+            "title": "Result Url",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/JobStatus"
+          },
+          "status_url": {
+            "title": "Status Url",
+            "type": "string"
+          },
+          "trace_id": {
+            "format": "uuid",
+            "title": "Trace Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "job_id",
+          "status",
+          "status_url",
+          "result_url",
+          "trace_id"
+        ],
+        "title": "JobRef",
+        "type": "object"
+      },
       "JobResultRef": {
         "additionalProperties": false,
         "properties": {
@@ -1581,6 +1782,139 @@
           "schema_version"
         ],
         "title": "LocationUpdate",
+        "type": "object"
+      },
+      "MatrixRefDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "hash": {
+            "title": "Hash",
+            "type": "string"
+          },
+          "matrix_id": {
+            "format": "uuid",
+            "title": "Matrix Id",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "matrix_id",
+          "version",
+          "hash"
+        ],
+        "title": "MatrixRefDTO",
+        "type": "object"
+      },
+      "ObjectiveBreakdownDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "business_cost_cents": {
+            "title": "Business Cost Cents",
+            "type": "integer"
+          },
+          "disturbance_penalty": {
+            "title": "Disturbance Penalty",
+            "type": "integer"
+          },
+          "makespan_penalty": {
+            "title": "Makespan Penalty",
+            "type": "integer"
+          },
+          "objective_total": {
+            "title": "Objective Total",
+            "type": "integer"
+          },
+          "optional_unserved_penalty": {
+            "title": "Optional Unserved Penalty",
+            "type": "integer"
+          },
+          "soft_late_penalty": {
+            "title": "Soft Late Penalty",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "business_cost_cents",
+          "optional_unserved_penalty",
+          "soft_late_penalty",
+          "disturbance_penalty",
+          "makespan_penalty",
+          "objective_total"
+        ],
+        "title": "ObjectiveBreakdownDTO",
+        "type": "object"
+      },
+      "ObjectivePolicyDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "disturbance_weights": {
+            "$ref": "#/components/schemas/DisturbanceWeightsDTO"
+          },
+          "makespan_cents_per_s": {
+            "title": "Makespan Cents Per S",
+            "type": "integer"
+          },
+          "optional_unserved_penalty_cents": {
+            "title": "Optional Unserved Penalty Cents",
+            "type": "integer"
+          },
+          "soft_late_cents_per_s": {
+            "title": "Soft Late Cents Per S",
+            "type": "integer"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "optional_unserved_penalty_cents",
+          "soft_late_cents_per_s",
+          "makespan_cents_per_s",
+          "disturbance_weights"
+        ],
+        "title": "ObjectivePolicyDTO",
+        "type": "object"
+      },
+      "OperationAssignmentDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "end_s": {
+            "title": "End S",
+            "type": "integer"
+          },
+          "resource_id": {
+            "format": "uuid",
+            "title": "Resource Id",
+            "type": "string"
+          },
+          "start_s": {
+            "title": "Start S",
+            "type": "integer"
+          },
+          "task_id": {
+            "format": "uuid",
+            "title": "Task Id",
+            "type": "string"
+          },
+          "units": {
+            "title": "Units",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "task_id",
+          "resource_id",
+          "start_s",
+          "end_s",
+          "units"
+        ],
+        "title": "OperationAssignmentDTO",
         "type": "object"
       },
       "OperationKind": {
@@ -1933,6 +2267,53 @@
         "title": "OrderUpdate",
         "type": "object"
       },
+      "PlanningScopeDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "epoch_utc": {
+            "format": "date-time",
+            "title": "Epoch Utc",
+            "type": "string"
+          },
+          "horizon_s": {
+            "title": "Horizon S",
+            "type": "integer"
+          },
+          "order_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Order Ids",
+            "type": "array"
+          },
+          "vehicle_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Vehicle Ids",
+            "type": "array"
+          },
+          "warehouse_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Warehouse Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "order_ids",
+          "warehouse_ids",
+          "vehicle_ids",
+          "epoch_utc",
+          "horizon_s"
+        ],
+        "title": "PlanningScopeDTO",
+        "type": "object"
+      },
       "ReadinessResponse": {
         "additionalProperties": false,
         "properties": {
@@ -1970,6 +2351,347 @@
           "trace_id"
         ],
         "title": "ReadinessResponse",
+        "type": "object"
+      },
+      "ResourceKind": {
+        "description": "The five warehouse resource classes addressable by a requirement.",
+        "enum": [
+          "zone",
+          "location",
+          "dock",
+          "worker",
+          "equipment"
+        ],
+        "title": "ResourceKind",
+        "type": "string"
+      },
+      "ResourceRequirementDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "eligible_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Eligible Ids",
+            "type": "array"
+          },
+          "resource_kind": {
+            "$ref": "#/components/schemas/ResourceKind"
+          },
+          "units": {
+            "title": "Units",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "resource_kind",
+          "eligible_ids",
+          "units"
+        ],
+        "title": "ResourceRequirementDTO",
+        "type": "object"
+      },
+      "RouteDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cost": {
+            "$ref": "#/components/schemas/CostBreakdownDTO"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "created_by": {
+            "format": "uuid",
+            "title": "Created By",
+            "type": "string"
+          },
+          "driver_id": {
+            "format": "uuid",
+            "title": "Driver Id",
+            "type": "string"
+          },
+          "end_node_id": {
+            "format": "uuid",
+            "title": "End Node Id",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "matrix_ref": {
+            "$ref": "#/components/schemas/MatrixRefDTO"
+          },
+          "row_version": {
+            "title": "Row Version",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "start_node_id": {
+            "format": "uuid",
+            "title": "Start Node Id",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EntityState"
+          },
+          "total_distance_m": {
+            "title": "Total Distance M",
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "vehicle_id": {
+            "format": "uuid",
+            "title": "Vehicle Id",
+            "type": "string"
+          },
+          "version_id": {
+            "format": "uuid",
+            "title": "Version Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "created_at",
+          "updated_at",
+          "row_version",
+          "schema_version",
+          "created_by",
+          "version_id",
+          "vehicle_id",
+          "driver_id",
+          "start_node_id",
+          "end_node_id",
+          "total_distance_m",
+          "cost",
+          "matrix_ref"
+        ],
+        "title": "RouteDTO",
+        "type": "object"
+      },
+      "SetupOperationDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cost_cents": {
+            "title": "Cost Cents",
+            "type": "integer"
+          },
+          "end_s": {
+            "title": "End S",
+            "type": "integer"
+          },
+          "from_class": {
+            "title": "From Class",
+            "type": "string"
+          },
+          "resource_id": {
+            "format": "uuid",
+            "title": "Resource Id",
+            "type": "string"
+          },
+          "start_s": {
+            "title": "Start S",
+            "type": "integer"
+          },
+          "to_class": {
+            "title": "To Class",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource_id",
+          "from_class",
+          "to_class",
+          "start_s",
+          "end_s",
+          "cost_cents"
+        ],
+        "title": "SetupOperationDTO",
+        "type": "object"
+      },
+      "Severity": {
+        "description": "Constraint / violation severity; hard violations invalidate a candidate.",
+        "enum": [
+          "hard",
+          "soft"
+        ],
+        "title": "Severity",
+        "type": "string"
+      },
+      "SolveBudgetDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "deadline_utc": {
+            "format": "date-time",
+            "title": "Deadline Utc",
+            "type": "string"
+          },
+          "deterministic_test_mode": {
+            "default": false,
+            "title": "Deterministic Test Mode",
+            "type": "boolean"
+          },
+          "max_candidates": {
+            "title": "Max Candidates",
+            "type": "integer"
+          },
+          "seed": {
+            "title": "Seed",
+            "type": "integer"
+          },
+          "wall_time_ms": {
+            "title": "Wall Time Ms",
+            "type": "integer"
+          },
+          "worker_count": {
+            "default": 1,
+            "title": "Worker Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "wall_time_ms",
+          "deadline_utc",
+          "max_candidates",
+          "seed"
+        ],
+        "title": "SolveBudgetDTO",
+        "type": "object"
+      },
+      "SolveStatus": {
+        "description": "Typed solver completion; INFEASIBLE/TIMEOUT are results, not HTTP 500 errors.",
+        "enum": [
+          "optimal",
+          "feasible",
+          "infeasible",
+          "timeout",
+          "unknown",
+          "invalid_input",
+          "error",
+          "cancelled"
+        ],
+        "title": "SolveStatus",
+        "type": "string"
+      },
+      "SolverEvidenceDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "assignment_hash": {
+            "title": "Assignment Hash",
+            "type": "string"
+          },
+          "configuration_hash": {
+            "title": "Configuration Hash",
+            "type": "string"
+          },
+          "engine_name": {
+            "enum": [
+              "routing",
+              "cp_sat"
+            ],
+            "title": "Engine Name",
+            "type": "string"
+          },
+          "engine_version": {
+            "title": "Engine Version",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "input_hash": {
+            "title": "Input Hash",
+            "type": "string"
+          },
+          "solve_status": {
+            "$ref": "#/components/schemas/SolveStatus"
+          },
+          "trusted_job_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trusted Job Id"
+          }
+        },
+        "required": [
+          "id",
+          "engine_name",
+          "engine_version",
+          "input_hash",
+          "assignment_hash",
+          "configuration_hash",
+          "solve_status",
+          "trusted_job_id"
+        ],
+        "title": "SolverEvidenceDTO",
+        "type": "object"
+      },
+      "StorageIntervalDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cargo_id": {
+            "format": "uuid",
+            "title": "Cargo Id",
+            "type": "string"
+          },
+          "end_s": {
+            "title": "End S",
+            "type": "integer"
+          },
+          "location_id": {
+            "format": "uuid",
+            "title": "Location Id",
+            "type": "string"
+          },
+          "quantity_units": {
+            "title": "Quantity Units",
+            "type": "integer"
+          },
+          "start_s": {
+            "title": "Start S",
+            "type": "integer"
+          },
+          "volume_cm3": {
+            "title": "Volume Cm3",
+            "type": "integer"
+          },
+          "weight_g": {
+            "title": "Weight G",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cargo_id",
+          "location_id",
+          "start_s",
+          "end_s",
+          "quantity_units",
+          "weight_g",
+          "volume_cm3"
+        ],
+        "title": "StorageIntervalDTO",
         "type": "object"
       },
       "StorageLocationDTO": {
@@ -2064,6 +2786,180 @@
         "title": "TimeWindowDTO",
         "type": "object"
       },
+      "TransportPlanDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cost": {
+            "$ref": "#/components/schemas/CostBreakdownDTO"
+          },
+          "routes": {
+            "items": {
+              "$ref": "#/components/schemas/RouteDTO"
+            },
+            "title": "Routes",
+            "type": "array"
+          },
+          "unserved_order_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Unserved Order Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "routes",
+          "unserved_order_ids",
+          "cost"
+        ],
+        "title": "TransportPlanDTO",
+        "type": "object"
+      },
+      "TransportRequestDTO": {
+        "additionalProperties": false,
+        "description": "API request: selects a snapshot scope, vehicles, matrix and solver policy.",
+        "properties": {
+          "budget": {
+            "$ref": "#/components/schemas/SolveBudgetDTO"
+          },
+          "matrix_ref": {
+            "$ref": "#/components/schemas/MatrixRefDTO"
+          },
+          "objective_policy": {
+            "$ref": "#/components/schemas/ObjectivePolicyDTO"
+          },
+          "order_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Order Ids",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/PlanningScopeDTO"
+          },
+          "vehicle_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Vehicle Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "scope",
+          "order_ids",
+          "vehicle_ids",
+          "matrix_ref",
+          "budget",
+          "objective_policy"
+        ],
+        "title": "TransportRequestDTO",
+        "type": "object"
+      },
+      "TransportResultView": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "const": "transport",
+            "title": "Kind",
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/TransportSolutionDTO"
+          }
+        },
+        "required": [
+          "kind",
+          "value"
+        ],
+        "title": "TransportResultView",
+        "type": "object"
+      },
+      "TransportSolutionDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "candidate": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TransportPlanDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "diagnostics": {
+            "items": {
+              "$ref": "#/components/schemas/logistics_contracts__transport__DiagnosticDTO"
+            },
+            "title": "Diagnostics",
+            "type": "array"
+          },
+          "engine_metadata": {
+            "$ref": "#/components/schemas/EngineMetadataDTO"
+          },
+          "objective": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ObjectiveBreakdownDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "optional_unserved_order_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Optional Unserved Order Ids",
+            "type": "array"
+          },
+          "solver_evidence": {
+            "items": {
+              "$ref": "#/components/schemas/SolverEvidenceDTO"
+            },
+            "title": "Solver Evidence",
+            "type": "array"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SolveStatus"
+          },
+          "validation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ValidationReportDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "engine_metadata",
+          "candidate",
+          "optional_unserved_order_ids",
+          "objective",
+          "validation",
+          "diagnostics",
+          "solver_evidence"
+        ],
+        "title": "TransportSolutionDTO",
+        "type": "object"
+      },
       "UnsupportedDetail": {
         "additionalProperties": false,
         "properties": {
@@ -2122,6 +3018,79 @@
           "type"
         ],
         "title": "ValidationError",
+        "type": "object"
+      },
+      "ValidationReportDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "candidate_hash": {
+            "title": "Candidate Hash",
+            "type": "string"
+          },
+          "checked_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Checked Codes",
+            "type": "array"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "required_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Required Codes",
+            "type": "array"
+          },
+          "rules_version": {
+            "title": "Rules Version",
+            "type": "string"
+          },
+          "snapshot_hash": {
+            "title": "Snapshot Hash",
+            "type": "string"
+          },
+          "unsupported_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unsupported Codes",
+            "type": "array"
+          },
+          "valid": {
+            "title": "Valid",
+            "type": "boolean"
+          },
+          "validated_at": {
+            "format": "date-time",
+            "title": "Validated At",
+            "type": "string"
+          },
+          "violations": {
+            "items": {
+              "$ref": "#/components/schemas/ViolationDTO"
+            },
+            "title": "Violations",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "candidate_hash",
+          "snapshot_hash",
+          "rules_version",
+          "valid",
+          "required_codes",
+          "checked_codes",
+          "unsupported_codes",
+          "violations",
+          "validated_at"
+        ],
+        "title": "ValidationReportDTO",
         "type": "object"
       },
       "VehicleCreate": {
@@ -2502,6 +3471,52 @@
         "title": "VehicleUpdate",
         "type": "object"
       },
+      "ViolationDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "actual": {
+            "title": "Actual",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "entity_refs": {
+            "items": {
+              "$ref": "#/components/schemas/EntityRefDTO"
+            },
+            "title": "Entity Refs",
+            "type": "array"
+          },
+          "expected": {
+            "title": "Expected",
+            "type": "string"
+          },
+          "field_path": {
+            "title": "Field Path",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "severity": {
+            "$ref": "#/components/schemas/Severity"
+          }
+        },
+        "required": [
+          "code",
+          "severity",
+          "entity_refs",
+          "field_path",
+          "actual",
+          "expected",
+          "message"
+        ],
+        "title": "ViolationDTO",
+        "type": "object"
+      },
       "WarehouseCreate": {
         "additionalProperties": false,
         "properties": {
@@ -2653,6 +3668,241 @@
           "has_more"
         ],
         "title": "WarehousePage",
+        "type": "object"
+      },
+      "WarehouseRequestDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "budget": {
+            "$ref": "#/components/schemas/SolveBudgetDTO"
+          },
+          "objective_policy": {
+            "$ref": "#/components/schemas/ObjectivePolicyDTO"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/PlanningScopeDTO"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/WarehouseTaskDTO"
+            },
+            "title": "Tasks",
+            "type": "array"
+          }
+        },
+        "required": [
+          "scope",
+          "tasks",
+          "budget",
+          "objective_policy"
+        ],
+        "title": "WarehouseRequestDTO",
+        "type": "object"
+      },
+      "WarehouseResultView": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "const": "warehouse",
+            "title": "Kind",
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/WarehouseSolutionDTO"
+          }
+        },
+        "required": [
+          "kind",
+          "value"
+        ],
+        "title": "WarehouseResultView",
+        "type": "object"
+      },
+      "WarehouseSolutionDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "assignments": {
+            "items": {
+              "$ref": "#/components/schemas/OperationAssignmentDTO"
+            },
+            "title": "Assignments",
+            "type": "array"
+          },
+          "diagnostics": {
+            "items": {
+              "$ref": "#/components/schemas/logistics_contracts__warehouse__DiagnosticDTO"
+            },
+            "title": "Diagnostics",
+            "type": "array"
+          },
+          "engine_metadata": {
+            "$ref": "#/components/schemas/EngineMetadataDTO"
+          },
+          "objective": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ObjectiveBreakdownDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "setup_operations": {
+            "items": {
+              "$ref": "#/components/schemas/SetupOperationDTO"
+            },
+            "title": "Setup Operations",
+            "type": "array"
+          },
+          "solver_evidence": {
+            "items": {
+              "$ref": "#/components/schemas/SolverEvidenceDTO"
+            },
+            "title": "Solver Evidence",
+            "type": "array"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SolveStatus"
+          },
+          "storage_allocations": {
+            "items": {
+              "$ref": "#/components/schemas/StorageIntervalDTO"
+            },
+            "title": "Storage Allocations",
+            "type": "array"
+          },
+          "validation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ValidationReportDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "engine_metadata",
+          "assignments",
+          "storage_allocations",
+          "setup_operations",
+          "objective",
+          "validation",
+          "diagnostics",
+          "solver_evidence"
+        ],
+        "title": "WarehouseSolutionDTO",
+        "type": "object"
+      },
+      "WarehouseTaskDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "created_by": {
+            "format": "uuid",
+            "title": "Created By",
+            "type": "string"
+          },
+          "duration_s": {
+            "title": "Duration S",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/OperationKind"
+          },
+          "order_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Order Id"
+          },
+          "predecessor_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Predecessor Ids",
+            "type": "array"
+          },
+          "requirements": {
+            "items": {
+              "$ref": "#/components/schemas/ResourceRequirementDTO"
+            },
+            "title": "Requirements",
+            "type": "array"
+          },
+          "row_version": {
+            "title": "Row Version",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "setup_class": {
+            "title": "Setup Class",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EntityState"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "warehouse_id": {
+            "format": "uuid",
+            "title": "Warehouse Id",
+            "type": "string"
+          },
+          "window": {
+            "$ref": "#/components/schemas/TimeWindowDTO"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "created_at",
+          "updated_at",
+          "row_version",
+          "schema_version",
+          "created_by",
+          "order_id",
+          "warehouse_id",
+          "kind",
+          "duration_s",
+          "window",
+          "predecessor_ids",
+          "requirements",
+          "setup_class"
+        ],
+        "title": "WarehouseTaskDTO",
         "type": "object"
       },
       "WarehouseUpdate": {
@@ -3283,6 +4533,66 @@
         ],
         "title": "ZoneUpdate",
         "type": "object"
+      },
+      "logistics_contracts__transport__DiagnosticDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "entity_refs": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/EntityRefDTO"
+            },
+            "title": "Entity Refs",
+            "type": "array"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "severity": {
+            "$ref": "#/components/schemas/DiagnosticSeverity"
+          }
+        },
+        "required": [
+          "code",
+          "severity",
+          "message"
+        ],
+        "title": "DiagnosticDTO",
+        "type": "object"
+      },
+      "logistics_contracts__warehouse__DiagnosticDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "severity": {
+            "default": "error",
+            "enum": [
+              "error",
+              "warning",
+              "info"
+            ],
+            "title": "Severity",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "DiagnosticDTO",
+        "type": "object"
       }
     }
   },
@@ -3737,6 +5047,216 @@
         "summary": "Cancel Job",
         "tags": [
           "jobs"
+        ]
+      }
+    },
+    "/api/v1/jobs/{job_id}/result": {
+      "get": {
+        "operationId": "get_job_result",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Job Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "discriminator": {
+                    "mapping": {
+                      "transport": "#/components/schemas/TransportResultView",
+                      "warehouse": "#/components/schemas/WarehouseResultView"
+                    },
+                    "propertyName": "kind"
+                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/TransportResultView"
+                    },
+                    {
+                      "$ref": "#/components/schemas/WarehouseResultView"
+                    }
+                  ],
+                  "title": "Response Get Job Result"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Job Result",
+        "tags": [
+          "jobs"
+        ]
+      }
+    },
+    "/api/v1/optimizations/transport": {
+      "post": {
+        "operationId": "submit_transport_optimization",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "title": "Idempotency-Key",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransportRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobRef"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Submit Transport",
+        "tags": [
+          "optimization"
+        ]
+      }
+    },
+    "/api/v1/optimizations/warehouse": {
+      "post": {
+        "operationId": "submit_warehouse_optimization",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "title": "Idempotency-Key",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WarehouseRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobRef"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Submit Warehouse",
+        "tags": [
+          "optimization"
         ]
       }
     },

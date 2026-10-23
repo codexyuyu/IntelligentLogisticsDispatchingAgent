@@ -225,6 +225,18 @@ class EngineMetadataDTO(Record):
     optimality_gap: float | None
 
 
+class SolverEvidenceDTO(Record):
+    domain_type = domain.SolverEvidence
+    id: UUID
+    engine_name: Literal["routing", "cp_sat"]
+    engine_version: str
+    input_hash: str
+    assignment_hash: str
+    configuration_hash: str
+    solve_status: domain.SolveStatus
+    trusted_job_id: UUID | None
+
+
 class OperationAssignmentDTO(Record):
     domain_type = domain.OperationAssignment
     task_id: UUID

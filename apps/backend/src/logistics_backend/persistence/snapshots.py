@@ -15,7 +15,7 @@ from uuid import UUID, uuid5
 
 from sqlalchemy import select
 
-from logistics_backend.application.master_data import ServiceError
+from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.planning_models import inventory_ledger, travel_matrices
 from logistics_backend.persistence.resource_models import TABLES
 from logistics_contracts import entities

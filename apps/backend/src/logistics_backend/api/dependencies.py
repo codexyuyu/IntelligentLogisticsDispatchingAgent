@@ -2,7 +2,7 @@ import hashlib
 import hmac
 from uuid import UUID
 from fastapi import Depends, Header, Request
-from logistics_backend.application.master_data import ServiceError
+from logistics_backend.errors import ServiceError
 from logistics_domain.runtime import ActorContext
 from logistics_domain.states import ActorRole, ErrorCode
 

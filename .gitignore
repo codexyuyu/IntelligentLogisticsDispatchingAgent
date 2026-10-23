@@ -19,6 +19,7 @@ build/
 htmlcov/
 .ruff_cache/
 artifacts/e2e/
+artifacts/results/
 
 # 本任务临时引导工具（uv 应改为官方安装，不随仓库交付）
 tools/bin/

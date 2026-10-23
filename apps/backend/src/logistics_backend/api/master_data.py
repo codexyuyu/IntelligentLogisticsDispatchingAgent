@@ -3,7 +3,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends
 from logistics_contracts import http, entities
 from logistics_backend.api.dependencies import actor, operator, revision, master_service
-from logistics_backend.application.master_data import ServiceError
+from logistics_backend.errors import ServiceError
 from logistics_domain.states import ErrorCode
 
 router = APIRouter(tags=["master-data"])

@@ -8,7 +8,7 @@ from sqlalchemy import select, insert, update, or_, func
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from logistics_backend.persistence.runtime_models import jobs, attempts, requests, idempotency
 from logistics_backend.application.jobs import LeaseToken, WorkLeaseLost, WorkRetryScheduled, WorkTerminal
-from logistics_backend.application.master_data import ServiceError
+from logistics_backend.errors import ServiceError
 from logistics_contracts.runtime import JobRequest, JobRef, JobView, JobResultRef
 from logistics_contracts.common import ErrorEnvelope
 from logistics_domain.states import ErrorCode

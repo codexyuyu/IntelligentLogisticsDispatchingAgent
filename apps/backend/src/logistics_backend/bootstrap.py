@@ -12,7 +12,13 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 from starlette.concurrency import run_in_threadpool
 
-from logistics_domain.states import ActorRole, RuntimeMode, ErrorCode
+from logistics_domain.states import (
+    ActorRole,
+    ErrorCode,
+    JobKind,
+    JobOptimizationMode,
+    RuntimeMode,
+)
 from logistics_contracts.http import HealthResponse, ReadinessResponse
 from logistics_backend.persistence.resource_models import TABLES
 from logistics_backend.persistence.uow import UnitOfWork
@@ -21,6 +27,16 @@ from logistics_backend.persistence.snapshots import PlanningSnapshotStore
 from logistics_backend.persistence.version_store import PlanCommitStore
 from logistics_backend.application.master_data import MasterDataService
 from logistics_backend.application.jobs import HandlerRegistry, JobService
+from logistics_backend.application.optimization import (
+    TransportJobHandler,
+    TransportOptimizationService,
+    TransportResultStore,
+)
+from logistics_backend.application.warehouse import (
+    WarehouseJobHandler,
+    WarehouseOptimizationService,
+    WarehouseResultStore,
+)
 from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
@@ -65,6 +81,10 @@ class Services:
     jobs: JobService
     snapshots: PlanningSnapshotStore
     commits: PlanCommitStore
+    transport: TransportOptimizationService
+    results: TransportResultStore
+    warehouse: WarehouseOptimizationService
+    warehouse_results: WarehouseResultStore
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -72,12 +92,23 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         connect_args={"connect_timeout": 3, "options": "-c statement_timeout=9000"})
     factory = lambda **options: UnitOfWork(engine, **options)
     repository = JobRepository(factory)
-    registry = registry if registry is not None else HandlerRegistry()
+    if registry is None:
+        registry = HandlerRegistry()
+        registry.register(JobKind.OPTIMIZATION, TransportJobHandler(),
+                          mode=JobOptimizationMode.TRANSPORT)
+        registry.register(JobKind.OPTIMIZATION, WarehouseJobHandler(),
+                          mode=JobOptimizationMode.WAREHOUSE)
+    jobs = JobService(repository, registry)
+    snapshots = PlanningSnapshotStore(factory, settings.scope_id)
     services = Services(
         master_data=MasterDataService(factory, TABLES),
-        jobs=JobService(repository, registry),
-        snapshots=PlanningSnapshotStore(factory, settings.scope_id),
+        jobs=jobs,
+        snapshots=snapshots,
         commits=PlanCommitStore(factory, settings.scope_id),
+        transport=TransportOptimizationService(snapshots, jobs),
+        results=TransportResultStore(),
+        warehouse=WarehouseOptimizationService(snapshots, jobs),
+        warehouse_results=WarehouseResultStore(),
     )
     return engine, services
 
@@ -98,6 +129,10 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.jobs = services.jobs
     app.state.snapshots = services.snapshots
     app.state.commits = services.commits
+    app.state.transport = services.transport
+    app.state.results = services.results
+    app.state.warehouse = services.warehouse
+    app.state.warehouse_results = services.warehouse_results
     install_handlers(app)
 
     @app.middleware("http")

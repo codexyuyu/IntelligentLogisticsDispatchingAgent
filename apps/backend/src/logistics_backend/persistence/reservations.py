@@ -13,7 +13,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy import select, insert
 
-from logistics_backend.application.master_data import ServiceError
+from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.planning_models import reservations
 from logistics_backend.persistence.resource_models import TABLES
 from logistics_contracts.entities import CalendarDTO

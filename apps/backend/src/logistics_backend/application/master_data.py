@@ -7,17 +7,9 @@ from uuid import uuid4
 
 from sqlalchemy import select, insert, update, tuple_
 from pydantic import BaseModel
+from logistics_backend.errors import ServiceError
 from logistics_contracts import entities, http
-from logistics_domain.errors import DomainError
 from logistics_domain.states import ErrorCode
-
-
-class ServiceError(DomainError):
-    def __init__(self, code: ErrorCode, message: str, status: int | None = None):
-        super().__init__(message)
-        self.code = code
-        self.status = status
-
 
 PagePosition = http.PagePosition
 

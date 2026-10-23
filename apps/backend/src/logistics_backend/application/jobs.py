@@ -6,7 +6,7 @@ from uuid import UUID
 
 from logistics_contracts.runtime import JobRequest, JobResultRef
 from logistics_domain.states import JobKind, JobOptimizationMode, ErrorCode
-from logistics_backend.application.master_data import ServiceError
+from logistics_backend.errors import ServiceError
 
 
 @dataclass(frozen=True)
@@ -71,6 +71,10 @@ class JobService:
     def __init__(self, repository, registry: HandlerRegistry):
         self.repository = repository
         self.registry = registry
+
+    def store_request(self, reference, content: bytes, actor) -> None:
+        """Persist immutable job input; callers never reach the repository directly."""
+        self.repository.store_request(reference, actor.scope_id, content)
 
     def submit(self, command: JobRequest, actor, key: str, trace_id: UUID):
         handler = self.registry.require(command)

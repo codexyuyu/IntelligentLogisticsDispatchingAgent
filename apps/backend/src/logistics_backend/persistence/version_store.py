@@ -24,7 +24,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy import func, insert, select, update
 
-from logistics_backend.application.master_data import ServiceError
+from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.idempotency import IdempotencyStore
 from logistics_backend.persistence.planning_models import (
     audit_entries,

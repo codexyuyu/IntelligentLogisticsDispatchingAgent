@@ -88,6 +88,7 @@ __all__ = [
     "SetupOperation",
     "SolveBudget",
     "SolveStatus",
+    "SolverEvidence",
     "StorageInterval",
     "TaskKind",
     "TransportPlan",
@@ -558,6 +559,32 @@ class EngineMetadata:
             gap = self.optimality_gap
             if not isinstance(gap, float) or gap != gap or gap in (float("inf"), float("-inf")) or gap < 0:
                 raise InvalidInputError("EngineMetadata.optimality_gap must be a finite non-negative float")
+
+
+@dataclass(frozen=True, slots=True)
+class SolverEvidence:
+    """Typed evidence that a real engine produced an assignment for a trusted job."""
+
+    id: UUID
+    engine_name: str
+    engine_version: str
+    input_hash: str
+    assignment_hash: str
+    configuration_hash: str
+    solve_status: SolveStatus
+    trusted_job_id: UUID | None
+
+    def __post_init__(self) -> None:
+        require_uuid(self.id, field="SolverEvidence.id")
+        if self.engine_name not in ("routing", "cp_sat"):
+            raise InvalidInputError("SolverEvidence.engine_name must be routing or cp_sat")
+        _require_safe_code(self.engine_version, field="SolverEvidence.engine_version", maximum=64)
+        for name in ("input_hash", "assignment_hash", "configuration_hash"):
+            require_sha256(getattr(self, name), field=f"SolverEvidence.{name}")
+        if not isinstance(self.solve_status, SolveStatus):
+            raise InvalidInputError("SolverEvidence.solve_status must be SolveStatus")
+        if self.trusted_job_id is not None:
+            require_uuid(self.trusted_job_id, field="SolverEvidence.trusted_job_id")
 
 
 @dataclass(frozen=True, slots=True)
