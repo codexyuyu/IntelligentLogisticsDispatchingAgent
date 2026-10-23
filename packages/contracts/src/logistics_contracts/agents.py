@@ -69,3 +69,21 @@ class AgentToolResultView(BaseModel):
     ok: bool
     content: dict[str, object]
     error_code: str | None
+    call_id: UUID | None = None
+
+
+class AgentToolCallView(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    call_id: UUID
+    tool_name: str
+    status: str
+    error_code: str | None
+    duration_ms: StrictInt
+    trace_id: UUID
+
+
+class AgentToolCallPage(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    items: tuple[AgentToolCallView, ...]

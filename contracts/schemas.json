@@ -231,6 +231,85 @@
       "title": "AgentRunView",
       "type": "object"
     },
+    "logistics_contracts.agents.AgentToolCallPage": {
+      "$defs": {
+        "AgentToolCallView": {
+          "additionalProperties": false,
+          "properties": {
+            "call_id": {
+              "format": "uuid",
+              "title": "Call Id",
+              "type": "string"
+            },
+            "duration_ms": {
+              "title": "Duration Ms",
+              "type": "integer"
+            },
+            "error_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Error Code"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "default": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            },
+            "tool_name": {
+              "title": "Tool Name",
+              "type": "string"
+            },
+            "trace_id": {
+              "format": "uuid",
+              "title": "Trace Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "call_id",
+            "tool_name",
+            "status",
+            "error_code",
+            "duration_ms",
+            "trace_id"
+          ],
+          "title": "AgentToolCallView",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/AgentToolCallView"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "AgentToolCallPage",
+      "type": "object"
+    },
     "logistics_contracts.agents.AgentToolCallRequest": {
       "additionalProperties": false,
       "properties": {
@@ -247,6 +326,60 @@
         }
       },
       "title": "AgentToolCallRequest",
+      "type": "object"
+    },
+    "logistics_contracts.agents.AgentToolCallView": {
+      "additionalProperties": false,
+      "properties": {
+        "call_id": {
+          "format": "uuid",
+          "title": "Call Id",
+          "type": "string"
+        },
+        "duration_ms": {
+          "title": "Duration Ms",
+          "type": "integer"
+        },
+        "error_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Error Code"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "tool_name": {
+          "title": "Tool Name",
+          "type": "string"
+        },
+        "trace_id": {
+          "format": "uuid",
+          "title": "Trace Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "call_id",
+        "tool_name",
+        "status",
+        "error_code",
+        "duration_ms",
+        "trace_id"
+      ],
+      "title": "AgentToolCallView",
       "type": "object"
     },
     "logistics_contracts.agents.AgentToolPage": {
@@ -310,6 +443,19 @@
     "logistics_contracts.agents.AgentToolResultView": {
       "additionalProperties": false,
       "properties": {
+        "call_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Call Id"
+        },
         "content": {
           "additionalProperties": true,
           "title": "Content",

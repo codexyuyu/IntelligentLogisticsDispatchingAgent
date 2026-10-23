@@ -134,7 +134,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         simulations=SimulationService(jobs),
         simulation_results=SimulationResultStore(),
         agents=agents,
-        tools=ToolService(jobs, agents),
+        tools=ToolService(jobs, agents, factory, settings.scope_id),
     )
     return engine, services
 

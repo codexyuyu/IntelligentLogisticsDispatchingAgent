@@ -197,6 +197,29 @@
         "title": "AgentRunView",
         "type": "object"
       },
+      "AgentToolCallPage": {
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AgentToolCallView"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "title": "AgentToolCallPage",
+        "type": "object"
+      },
       "AgentToolCallRequest": {
         "additionalProperties": false,
         "properties": {
@@ -213,6 +236,60 @@
           }
         },
         "title": "AgentToolCallRequest",
+        "type": "object"
+      },
+      "AgentToolCallView": {
+        "additionalProperties": false,
+        "properties": {
+          "call_id": {
+            "format": "uuid",
+            "title": "Call Id",
+            "type": "string"
+          },
+          "duration_ms": {
+            "title": "Duration Ms",
+            "type": "integer"
+          },
+          "error_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Code"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "tool_name": {
+            "title": "Tool Name",
+            "type": "string"
+          },
+          "trace_id": {
+            "format": "uuid",
+            "title": "Trace Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "call_id",
+          "tool_name",
+          "status",
+          "error_code",
+          "duration_ms",
+          "trace_id"
+        ],
+        "title": "AgentToolCallView",
         "type": "object"
       },
       "AgentToolPage": {
@@ -241,6 +318,18 @@
       "AgentToolResultView": {
         "additionalProperties": false,
         "properties": {
+          "call_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Call Id"
+          },
           "content": {
             "additionalProperties": true,
             "title": "Content",
@@ -7990,6 +8079,67 @@
           }
         },
         "summary": "List Agent Tools",
+        "tags": [
+          "agents"
+        ]
+      }
+    },
+    "/api/v1/agents/tools/calls": {
+      "get": {
+        "operationId": "list_agent_tool_calls",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentToolCallPage"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Agent Tool Calls",
         "tags": [
           "agents"
         ]

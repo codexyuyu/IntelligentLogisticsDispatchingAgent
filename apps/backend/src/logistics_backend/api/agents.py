@@ -10,6 +10,7 @@ from logistics_contracts.agents import (
     AgentChatRequest,
     AgentChatResponse,
     AgentRunPage,
+    AgentToolCallPage,
     AgentToolCallRequest,
     AgentToolPage,
     AgentToolResultView,
@@ -50,11 +51,19 @@ def list_agent_tools(service: ToolService = Depends(tool_service)):
         for spec in service.specs()))
 
 
+@router.get("/agents/tools/calls", response_model=AgentToolCallPage,
+            operation_id="list_agent_tool_calls")
+def list_agent_tool_calls(current: ActorContext = Depends(actor),
+                          service: ToolService = Depends(tool_service),
+                          limit: int = Query(default=50, ge=1, le=200)):
+    return service.calls(current, limit)
+
+
 @router.post("/agents/tools/{name}", response_model=AgentToolResultView,
              operation_id="invoke_agent_tool")
-def invoke_agent_tool(name: str, command: AgentToolCallRequest,
+def invoke_agent_tool(name: str, command: AgentToolCallRequest, request: Request,
                       current: ActorContext = Depends(operator),
                       service: ToolService = Depends(tool_service)):
-    result = service.invoke(name, current, command.arguments)
+    result = service.invoke(name, current, command.arguments, request.state.trace_id)
     return AgentToolResultView(name=result.name, ok=result.ok, content=result.content,
         error_code=result.error_code)
