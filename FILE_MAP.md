@@ -85,6 +85,7 @@
 | [backend/app/common/__init__.py](backend/app/common/__init__.py) | SHARED |
 | [backend/app/common/errors.py](backend/app/common/errors.py) | SHARED |
 | [backend/app/contracts/__init__.py](backend/app/contracts/__init__.py) | SHARED |
+| [backend/app/contracts/coldchain.py](backend/app/contracts/coldchain.py) | SHARED |
 | [backend/app/contracts/common.py](backend/app/contracts/common.py) | SHARED |
 | [backend/app/contracts/entities.py](backend/app/contracts/entities.py) | SHARED |
 | [backend/app/contracts/events.py](backend/app/contracts/events.py) | SHARED |
@@ -105,6 +106,7 @@
 | [backend/app/evaluation/run_comparison.py](backend/app/evaluation/run_comparison.py) | DSH |
 | [backend/app/main.py](backend/app/main.py) | SHARED |
 | [backend/app/ports/__init__.py](backend/app/ports/__init__.py) | SHARED |
+| [backend/app/ports/coldchain.py](backend/app/ports/coldchain.py) | SHARED |
 | [backend/app/ports/language_model.py](backend/app/ports/language_model.py) | SHARED |
 | [backend/app/ports/matrix.py](backend/app/ports/matrix.py) | SHARED |
 | [backend/app/ports/routing.py](backend/app/ports/routing.py) | SHARED |
@@ -157,6 +159,7 @@
 | [backend/tests/test_pg_simulation_archive.py](backend/tests/test_pg_simulation_archive.py) | PARTNER |
 | [backend/tests/test_planning_routing_integration.py](backend/tests/test_planning_routing_integration.py) | PARTNER |
 | [backend/tests/test_preparation_bundle.py](backend/tests/test_preparation_bundle.py) | DSH |
+| [backend/tests/test_r05_coldchain_contracts.py](backend/tests/test_r05_coldchain_contracts.py) | PARTNER |
 | [backend/tests/test_r17_deep_coordination.py](backend/tests/test_r17_deep_coordination.py) | PARTNER |
 | [backend/tests/test_r18_multiscene_evidence.py](backend/tests/test_r18_multiscene_evidence.py) | PARTNER |
 | [backend/tests/test_r19_reschedule_strategies.py](backend/tests/test_r19_reschedule_strategies.py) | PARTNER |
@@ -266,9 +269,12 @@
 | [contracts/VERSION](contracts/VERSION) | SHARED |
 | [contracts/changes/20261022-dsh-confirmation.md](contracts/changes/20261022-dsh-confirmation.md) | SHARED |
 | [contracts/changes/20261022-dsh-r05.md](contracts/changes/20261022-dsh-r05.md) | SHARED |
+| [contracts/changes/20261023-partner-r05-freeze.md](contracts/changes/20261023-partner-r05-freeze.md) | SHARED |
 | [contracts/changes/TEMPLATE.md](contracts/changes/TEMPLATE.md) | SHARED |
 | [contracts/examples/dispatch_request.json](contracts/examples/dispatch_request.json) | SHARED |
 | [contracts/examples/event_departure_delayed.json](contracts/examples/event_departure_delayed.json) | SHARED |
+| [contracts/examples/r05_coldchain_plan.json](contracts/examples/r05_coldchain_plan.json) | SHARED |
+| [contracts/examples/r05_coldchain_snapshot.json](contracts/examples/r05_coldchain_snapshot.json) | SHARED |
 | [contracts/examples/routing_request.json](contracts/examples/routing_request.json) | SHARED |
 | [contracts/examples/routing_result_not_implemented.json](contracts/examples/routing_result_not_implemented.json) | SHARED |
 | [contracts/examples/scenario_import_request.json](contracts/examples/scenario_import_request.json) | SHARED |
@@ -393,6 +399,7 @@
 | [docs/devlog/entries/20261022-dsh-git-guide.md](docs/devlog/entries/20261022-dsh-git-guide.md) | SHARED |
 | [docs/devlog/entries/20261022-dsh-integration.md](docs/devlog/entries/20261022-dsh-integration.md) | SHARED |
 | [docs/devlog/entries/20261022-dsh-r05-blocked.md](docs/devlog/entries/20261022-dsh-r05-blocked.md) | SHARED |
+| [docs/devlog/entries/20261023-2135-partner-r05-contract-freeze.md](docs/devlog/entries/20261023-2135-partner-r05-contract-freeze.md) | SHARED |
 | [docs/devlog/entries/README.md](docs/devlog/entries/README.md) | SHARED |
 | [docs/handoff/AC_CODEX.md](docs/handoff/AC_CODEX.md) | SHARED |
 | [docs/handoff/B_CODEX.md](docs/handoff/B_CODEX.md) | SHARED |

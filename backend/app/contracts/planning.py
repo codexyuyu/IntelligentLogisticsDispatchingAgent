@@ -1,7 +1,8 @@
 """SHARED: B and AC must import these types rather than defining aliases."""
 from typing import Literal
 from pydantic import StrictStr
-from app.contracts.common import ContractModel, Id, NonNegativeInt, PositiveInt, SolveBudget, SolveMetadata, ValidationReport, Hash, TimeWindow
+from app.contracts.common import ContractModel, Id, NonNegativeInt, PositiveInt, SolveBudget, SolveMetadata, ValidationReport, Hash, TimeWindow, Source
+from app.contracts.coldchain import ColdChainPlan
 from app.contracts.entities import PlanningSnapshot, ScheduledOperation
 
 class WarehouseHandoff(ContractModel):
@@ -71,6 +72,25 @@ class WarehouseScheduleResult(ContractModel):
     metadata: SolveMetadata
     operations: tuple[ScheduledOperation, ...]
     warehouse_handoffs: tuple[WarehouseHandoff, ...]
+    #: R05 scheduling evidence; None means the schedule makes no R05 claim.
+    coldchain: ColdChainPlan | None = None
+
+class ColdChainValidationRequest(ContractModel):
+    """Frozen input of an independent R05 check.
+
+    The validator must see the request, the complete candidate result, the rule
+    version and the data source; it must never infer any of them.
+    """
+
+    request: WarehouseScheduleRequest
+    result: WarehouseScheduleResult
+    rule_version: StrictStr
+    source: Source
+
+    def horizon_s(self) -> int:
+        """Effective planning horizon of the underlying snapshot."""
+        coldchain = self.request.snapshot.coldchain
+        return coldchain.horizon_s if coldchain is not None else self.request.snapshot.simulation_time_s
 
 class CoordinationRound(ContractModel):
     round_number: PositiveInt

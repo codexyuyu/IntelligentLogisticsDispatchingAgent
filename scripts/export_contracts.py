@@ -14,7 +14,7 @@ from app.contracts.common import CONTRACT_VERSION, ContractModel
 
 def outputs():
     models = {}
-    for name in ('common', 'entities', 'planning', 'events', 'http'):
+    for name in ('common', 'entities', 'coldchain', 'planning', 'events', 'http'):
         module = importlib.import_module('app.contracts.' + name)
         for key, value in vars(module).items():
             if inspect.isclass(value) and issubclass(value, ContractModel) and value is not ContractModel and value.__module__ == module.__name__:

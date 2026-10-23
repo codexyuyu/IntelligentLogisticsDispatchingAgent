@@ -1,3 +1,11 @@
+## 2026-10-23 · PARTNER · R05 冷链公共契约冻结（0.1.0 → 0.2.0）
+
+契约版本升到 **0.2.0**：新增 `backend/app/contracts/coldchain.py`（容量维度、存储位置/占用、多资源需求与分配、换批策略、预冷、曝光、批次相容）与 `backend/app/ports/coldchain.py` 三个端口签名；`PlanningSnapshot.coldchain` 与 `WarehouseScheduleResult.coldchain` 均可空，`None` 表示不做 R05 声明，R05 规则须记为未校验。`ValidationReport` 增加 `not_checked_rule_ids` 并收紧两处：`passed` 不得携带未校验规则、`failed` 必须有违规项。生成物（VERSION/schemas/openapi/generated.ts/contractVersion.ts）全部由脚本重生成。
+
+验证：`export_contracts --check` 通过、`contracts:check` 通过、`typecheck` exit 0、前端 10 组专项全 PASS、`npm run build` 2.17s、backend **277 passed**（基线 229 + 新增 48）、`build_file_map` 499 源文件。
+
+范围限制：CP-SAT 接入、`import_preparation_bundle.py` 回填、`prep_import_report.json` 清零、域规则与 `tests/coldchain/` 均未做；R05 尚不可称为已支持。详见[本轮增量日志](docs/devlog/entries/20261023-2135-partner-r05-contract-freeze.md)与[契约冻结提案](contracts/changes/20261023-partner-r05-freeze.md)。
+
 ## 2026-10-22 · Git协作复制命令
 
 新增 [Git协作手册](docs/GIT_COLLABORATION.md)，验证范围见 [增量日志](docs/devlog/entries/20261022-dsh-git-guide.md)。真实工程仍未初始化Git或推送。
