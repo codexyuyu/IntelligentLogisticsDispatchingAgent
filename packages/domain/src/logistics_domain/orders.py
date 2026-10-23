@@ -40,8 +40,12 @@ class Entity:
             raise InvalidInputError("updated_at precedes created_at")
         if not isinstance(self.status, EntityState) or self.status not in LIFECYCLE_TRANSITIONS[self.lifecycle]:
             raise InvalidInputError(f"invalid {self.lifecycle} status")
+        # ``source_event_id`` is the foreign system's opaque string identity, not a UUID.
+        text_ids = {"source_event_id"}
         for field in fields(self):
             value = getattr(self, field.name)
+            if field.name in text_ids:
+                continue
             if field.name in ("id", "created_by") or field.name.endswith("_id"):
                 if value is not None and not isinstance(value, UUID):
                     raise InvalidInputError(f"{field.name} must be UUID")

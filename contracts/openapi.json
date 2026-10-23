@@ -1,6 +1,48 @@
 {
   "components": {
     "schemas": {
+      "ArcRefDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "from_node_id": {
+            "format": "uuid",
+            "title": "From Node Id",
+            "type": "string"
+          },
+          "to_node_id": {
+            "format": "uuid",
+            "title": "To Node Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "from_node_id",
+          "to_node_id"
+        ],
+        "title": "ArcRefDTO",
+        "type": "object"
+      },
+      "AtNodeLocationDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "const": "at_node",
+            "title": "Kind",
+            "type": "string"
+          },
+          "node_id": {
+            "format": "uuid",
+            "title": "Node Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "node_id"
+        ],
+        "title": "AtNodeLocationDTO",
+        "type": "object"
+      },
       "CalendarDTO": {
         "additionalProperties": false,
         "properties": {
@@ -83,6 +125,72 @@
         ],
         "title": "CancelCommand",
         "type": "object"
+      },
+      "CargoAnomalyPayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cargo_id": {
+            "format": "uuid",
+            "title": "Cargo Id",
+            "type": "string"
+          },
+          "condition": {
+            "$ref": "#/components/schemas/CargoCondition"
+          },
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "kind": {
+            "const": "cargo_anomaly",
+            "title": "Kind",
+            "type": "string"
+          },
+          "measured_temp_decic": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Measured Temp Decic"
+          },
+          "quantity_units": {
+            "title": "Quantity Units",
+            "type": "integer"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "cargo_id",
+          "condition",
+          "quantity_units",
+          "measured_temp_decic"
+        ],
+        "title": "CargoAnomalyPayloadDTO",
+        "type": "object"
+      },
+      "CargoCondition": {
+        "enum": [
+          "intact",
+          "temperature_excursion",
+          "damaged",
+          "missing"
+        ],
+        "title": "CargoCondition",
+        "type": "string"
       },
       "CargoCreate": {
         "additionalProperties": false,
@@ -214,6 +322,106 @@
           "total_cents"
         ],
         "title": "CostBreakdownDTO",
+        "type": "object"
+      },
+      "DemandDecreasePayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "delta_quantity": {
+            "title": "Delta Quantity",
+            "type": "integer"
+          },
+          "delta_volume_cm3": {
+            "title": "Delta Volume Cm3",
+            "type": "integer"
+          },
+          "delta_weight_g": {
+            "title": "Delta Weight G",
+            "type": "integer"
+          },
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "kind": {
+            "const": "demand_decrease",
+            "title": "Kind",
+            "type": "string"
+          },
+          "order_id": {
+            "format": "uuid",
+            "title": "Order Id",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "order_id",
+          "delta_quantity",
+          "delta_weight_g",
+          "delta_volume_cm3"
+        ],
+        "title": "DemandDecreasePayloadDTO",
+        "type": "object"
+      },
+      "DemandIncreasePayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "delta_quantity": {
+            "title": "Delta Quantity",
+            "type": "integer"
+          },
+          "delta_volume_cm3": {
+            "title": "Delta Volume Cm3",
+            "type": "integer"
+          },
+          "delta_weight_g": {
+            "title": "Delta Weight G",
+            "type": "integer"
+          },
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "kind": {
+            "const": "demand_increase",
+            "title": "Kind",
+            "type": "string"
+          },
+          "order_id": {
+            "format": "uuid",
+            "title": "Order Id",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "order_id",
+          "delta_quantity",
+          "delta_weight_g",
+          "delta_volume_cm3"
+        ],
+        "title": "DemandIncreasePayloadDTO",
         "type": "object"
       },
       "DiagnosticSeverity": {
@@ -1099,6 +1307,58 @@
         "title": "EquipmentDTO",
         "type": "object"
       },
+      "EquipmentFailurePayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "equipment_id": {
+            "format": "uuid",
+            "title": "Equipment Id",
+            "type": "string"
+          },
+          "kind": {
+            "const": "equipment_failure",
+            "title": "Kind",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "remaining_capacity_units": {
+            "title": "Remaining Capacity Units",
+            "type": "integer"
+          },
+          "unavailable_until_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unavailable Until S"
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "equipment_id",
+          "unavailable_until_s",
+          "remaining_capacity_units"
+        ],
+        "title": "EquipmentFailurePayloadDTO",
+        "type": "object"
+      },
       "EquipmentKind": {
         "enum": [
           "sorting",
@@ -1326,6 +1586,255 @@
           "retryable"
         ],
         "title": "ErrorEnvelope",
+        "type": "object"
+      },
+      "EventEnvelopeDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "expected_revision": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Revision"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/EventKind"
+          },
+          "occurred_at_utc": {
+            "format": "date-time",
+            "title": "Occurred At Utc",
+            "type": "string"
+          },
+          "payload": {
+            "discriminator": {
+              "mapping": {
+                "cargo_anomaly": "#/components/schemas/CargoAnomalyPayloadDTO",
+                "demand_decrease": "#/components/schemas/DemandDecreasePayloadDTO",
+                "demand_increase": "#/components/schemas/DemandIncreasePayloadDTO",
+                "equipment_failure": "#/components/schemas/EquipmentFailurePayloadDTO",
+                "order_cancellation": "#/components/schemas/OrderCancellationPayloadDTO",
+                "traffic_disruption": "#/components/schemas/TrafficDisruptionPayloadDTO",
+                "transport_delay": "#/components/schemas/TransportDelayPayloadDTO",
+                "vehicle_failure": "#/components/schemas/VehicleFailurePayloadDTO",
+                "warehouse_resource_unavailable": "#/components/schemas/WarehouseResourceUnavailablePayloadDTO",
+                "weather_change": "#/components/schemas/WeatherChangePayloadDTO"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/VehicleFailurePayloadDTO"
+              },
+              {
+                "$ref": "#/components/schemas/TransportDelayPayloadDTO"
+              },
+              {
+                "$ref": "#/components/schemas/TrafficDisruptionPayloadDTO"
+              },
+              {
+                "$ref": "#/components/schemas/WeatherChangePayloadDTO"
+              },
+              {
+                "$ref": "#/components/schemas/CargoAnomalyPayloadDTO"
+              },
+              {
+                "$ref": "#/components/schemas/OrderCancellationPayloadDTO"
+              },
+              {
+                "$ref": "#/components/schemas/DemandIncreasePayloadDTO"
+              },
+              {
+                "$ref": "#/components/schemas/DemandDecreasePayloadDTO"
+              },
+              {
+                "$ref": "#/components/schemas/EquipmentFailurePayloadDTO"
+              },
+              {
+                "$ref": "#/components/schemas/WarehouseResourceUnavailablePayloadDTO"
+              }
+            ],
+            "title": "Payload"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "simulation_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Simulation Id"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "source_event_id": {
+            "title": "Source Event Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "source",
+          "source_event_id",
+          "kind",
+          "occurred_at_utc",
+          "simulation_id",
+          "payload"
+        ],
+        "title": "EventEnvelopeDTO",
+        "type": "object"
+      },
+      "EventKind": {
+        "description": "The ten closed execution-event kinds; the value is the payload discriminator.",
+        "enum": [
+          "vehicle_failure",
+          "transport_delay",
+          "traffic_disruption",
+          "weather_change",
+          "cargo_anomaly",
+          "order_cancellation",
+          "demand_increase",
+          "demand_decrease",
+          "equipment_failure",
+          "warehouse_resource_unavailable"
+        ],
+        "title": "EventKind",
+        "type": "string"
+      },
+      "EventReceiptDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "duplicate": {
+            "title": "Duplicate",
+            "type": "boolean"
+          },
+          "event_id": {
+            "format": "uuid",
+            "title": "Event Id",
+            "type": "string"
+          },
+          "sequence": {
+            "title": "Sequence",
+            "type": "integer"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EventStatus"
+          },
+          "trace_id": {
+            "format": "uuid",
+            "title": "Trace Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_id",
+          "sequence",
+          "status",
+          "duplicate",
+          "trace_id"
+        ],
+        "title": "EventReceiptDTO",
+        "type": "object"
+      },
+      "EventStatus": {
+        "enum": [
+          "received",
+          "validated",
+          "applied",
+          "duplicate",
+          "rejected",
+          "quarantined"
+        ],
+        "title": "EventStatus",
+        "type": "string"
+      },
+      "EventViewDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "format": "uuid",
+            "title": "Event Id",
+            "type": "string"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/EventKind"
+          },
+          "occurred_at_utc": {
+            "format": "date-time",
+            "title": "Occurred At Utc",
+            "type": "string"
+          },
+          "received_at_utc": {
+            "format": "date-time",
+            "title": "Received At Utc",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sequence": {
+            "title": "Sequence",
+            "type": "integer"
+          },
+          "simulation_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Simulation Id"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "source_event_id": {
+            "title": "Source Event Id",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EntityState"
+          },
+          "trace_id": {
+            "format": "uuid",
+            "title": "Trace Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_id",
+          "source",
+          "source_event_id",
+          "kind",
+          "status",
+          "occurred_at_utc",
+          "received_at_utc",
+          "sequence",
+          "simulation_id",
+          "trace_id"
+        ],
+        "title": "EventViewDTO",
         "type": "object"
       },
       "FieldError": {
@@ -1881,6 +2390,53 @@
         "title": "ObjectivePolicyDTO",
         "type": "object"
       },
+      "OnArcLocationDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "departed_at_s": {
+            "title": "Departed At S",
+            "type": "integer"
+          },
+          "expected_arrival_s": {
+            "title": "Expected Arrival S",
+            "type": "integer"
+          },
+          "from_node_id": {
+            "format": "uuid",
+            "title": "From Node Id",
+            "type": "string"
+          },
+          "kind": {
+            "const": "on_arc",
+            "title": "Kind",
+            "type": "string"
+          },
+          "progress_denominator": {
+            "title": "Progress Denominator",
+            "type": "integer"
+          },
+          "progress_numerator": {
+            "title": "Progress Numerator",
+            "type": "integer"
+          },
+          "to_node_id": {
+            "format": "uuid",
+            "title": "To Node Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "from_node_id",
+          "to_node_id",
+          "departed_at_s",
+          "expected_arrival_s",
+          "progress_numerator",
+          "progress_denominator"
+        ],
+        "title": "OnArcLocationDTO",
+        "type": "object"
+      },
       "OperationAssignmentDTO": {
         "additionalProperties": false,
         "properties": {
@@ -1928,6 +2484,45 @@
         ],
         "title": "OperationKind",
         "type": "string"
+      },
+      "OrderCancellationPayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "disposition_policy": {
+            "$ref": "#/components/schemas/ReturnPolicy"
+          },
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "kind": {
+            "const": "order_cancellation",
+            "title": "Kind",
+            "type": "string"
+          },
+          "order_id": {
+            "format": "uuid",
+            "title": "Order Id",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "order_id",
+          "disposition_policy"
+        ],
+        "title": "OrderCancellationPayloadDTO",
+        "type": "object"
       },
       "OrderCreate": {
         "additionalProperties": false,
@@ -2314,6 +2909,25 @@
         "title": "PlanningScopeDTO",
         "type": "object"
       },
+      "RationalDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "denominator": {
+            "title": "Denominator",
+            "type": "integer"
+          },
+          "numerator": {
+            "title": "Numerator",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "numerator",
+          "denominator"
+        ],
+        "title": "RationalDTO",
+        "type": "object"
+      },
       "ReadinessResponse": {
         "additionalProperties": false,
         "properties": {
@@ -2351,6 +2965,30 @@
           "trace_id"
         ],
         "title": "ReadinessResponse",
+        "type": "object"
+      },
+      "RegionRefDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "node_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Node Ids",
+            "type": "array"
+          },
+          "region_id": {
+            "format": "uuid",
+            "title": "Region Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "region_id",
+          "node_ids"
+        ],
+        "title": "RegionRefDTO",
         "type": "object"
       },
       "ResourceKind": {
@@ -2391,6 +3029,14 @@
         ],
         "title": "ResourceRequirementDTO",
         "type": "object"
+      },
+      "ReturnPolicy": {
+        "enum": [
+          "return_to_origin",
+          "quarantine"
+        ],
+        "title": "ReturnPolicy",
+        "type": "string"
       },
       "RouteDTO": {
         "additionalProperties": false,
@@ -2784,6 +3430,104 @@
           "latest_s"
         ],
         "title": "TimeWindowDTO",
+        "type": "object"
+      },
+      "TrafficDisruptionPayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "arc_refs": {
+            "items": {
+              "$ref": "#/components/schemas/ArcRefDTO"
+            },
+            "title": "Arc Refs",
+            "type": "array"
+          },
+          "closure": {
+            "title": "Closure",
+            "type": "boolean"
+          },
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "kind": {
+            "const": "traffic_disruption",
+            "title": "Kind",
+            "type": "string"
+          },
+          "new_matrix_version": {
+            "title": "New Matrix Version",
+            "type": "integer"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "travel_multiplier": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RationalDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "arc_refs",
+          "closure",
+          "travel_multiplier",
+          "new_matrix_version"
+        ],
+        "title": "TrafficDisruptionPayloadDTO",
+        "type": "object"
+      },
+      "TransportDelayPayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "additional_seconds": {
+            "title": "Additional Seconds",
+            "type": "integer"
+          },
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "kind": {
+            "const": "transport_delay",
+            "title": "Kind",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "transport_task_id": {
+            "format": "uuid",
+            "title": "Transport Task Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "transport_task_id",
+          "additional_seconds"
+        ],
+        "title": "TransportDelayPayloadDTO",
         "type": "object"
       },
       "TransportPlanDTO": {
@@ -3290,6 +4034,76 @@
         "title": "VehicleDTO",
         "type": "object"
       },
+      "VehicleFailurePayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cargo_condition": {
+            "$ref": "#/components/schemas/CargoCondition"
+          },
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "kind": {
+            "const": "vehicle_failure",
+            "title": "Kind",
+            "type": "string"
+          },
+          "location": {
+            "discriminator": {
+              "mapping": {
+                "at_node": "#/components/schemas/AtNodeLocationDTO",
+                "on_arc": "#/components/schemas/OnArcLocationDTO"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AtNodeLocationDTO"
+              },
+              {
+                "$ref": "#/components/schemas/OnArcLocationDTO"
+              }
+            ],
+            "title": "Location"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "unavailable_until_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unavailable Until S"
+          },
+          "vehicle_id": {
+            "format": "uuid",
+            "title": "Vehicle Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "vehicle_id",
+          "location",
+          "unavailable_until_s",
+          "cargo_condition"
+        ],
+        "title": "VehicleFailurePayloadDTO",
+        "type": "object"
+      },
       "VehiclePage": {
         "additionalProperties": false,
         "properties": {
@@ -3705,6 +4519,48 @@
         "title": "WarehouseRequestDTO",
         "type": "object"
       },
+      "WarehouseResourceUnavailablePayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "kind": {
+            "const": "warehouse_resource_unavailable",
+            "title": "Kind",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "remaining_capacity_units": {
+            "title": "Remaining Capacity Units",
+            "type": "integer"
+          },
+          "resource_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "unavailable_window": {
+            "$ref": "#/components/schemas/TimeWindowDTO"
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "resource_ref",
+          "unavailable_window",
+          "remaining_capacity_units"
+        ],
+        "title": "WarehouseResourceUnavailablePayloadDTO",
+        "type": "object"
+      },
       "WarehouseResultView": {
         "additionalProperties": false,
         "properties": {
@@ -3974,6 +4830,62 @@
         ],
         "title": "WarehouseUpdate",
         "type": "object"
+      },
+      "WeatherChangePayloadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "effective_at_s": {
+            "title": "Effective At S",
+            "type": "integer"
+          },
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "kind": {
+            "const": "weather_change",
+            "title": "Kind",
+            "type": "string"
+          },
+          "new_matrix_version": {
+            "title": "New Matrix Version",
+            "type": "integer"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/WeatherProfile"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "region_ref": {
+            "$ref": "#/components/schemas/RegionRefDTO"
+          },
+          "travel_multiplier": {
+            "$ref": "#/components/schemas/RationalDTO"
+          }
+        },
+        "required": [
+          "kind",
+          "entity_ref",
+          "effective_at_s",
+          "reason",
+          "region_ref",
+          "profile",
+          "travel_multiplier",
+          "new_matrix_version"
+        ],
+        "title": "WeatherChangePayloadDTO",
+        "type": "object"
+      },
+      "WeatherProfile": {
+        "enum": [
+          "clear",
+          "rain",
+          "snow",
+          "storm"
+        ],
+        "title": "WeatherProfile",
+        "type": "string"
       },
       "WorkerCreate": {
         "additionalProperties": false,
@@ -4901,6 +5813,124 @@
         "summary": "Update Driver",
         "tags": [
           "master-data"
+        ]
+      }
+    },
+    "/api/v1/events": {
+      "post": {
+        "operationId": "ingest_event",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventEnvelopeDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventReceiptDTO"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Ingest Event",
+        "tags": [
+          "events"
+        ]
+      }
+    },
+    "/api/v1/events/{event_id}": {
+      "get": {
+        "operationId": "get_event",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "event_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Event Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventViewDTO"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Event",
+        "tags": [
+          "events"
         ]
       }
     },

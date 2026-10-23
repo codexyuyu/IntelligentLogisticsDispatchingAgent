@@ -37,6 +37,7 @@ from logistics_backend.application.warehouse import (
     WarehouseOptimizationService,
     WarehouseResultStore,
 )
+from logistics_backend.application.events import EventService
 from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
@@ -85,6 +86,7 @@ class Services:
     results: TransportResultStore
     warehouse: WarehouseOptimizationService
     warehouse_results: WarehouseResultStore
+    events: EventService
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -109,6 +111,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         results=TransportResultStore(),
         warehouse=WarehouseOptimizationService(snapshots, jobs),
         warehouse_results=WarehouseResultStore(),
+        events=EventService(factory, settings.scope_id),
     )
     return engine, services
 
@@ -133,6 +136,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.results = services.results
     app.state.warehouse = services.warehouse
     app.state.warehouse_results = services.warehouse_results
+    app.state.events = services.events
     install_handlers(app)
 
     @app.middleware("http")
