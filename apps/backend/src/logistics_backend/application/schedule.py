@@ -7,7 +7,7 @@ import json
 from datetime import datetime, timezone
 from uuid import UUID, uuid4
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from logistics_backend.errors import ServiceError
@@ -309,6 +309,21 @@ class ScheduleService:
     def diff(self, schedule_id: UUID, base_version_id: UUID, candidate_version_id: UUID,
              actor) -> ScheduleDiffView:
         schedule = self._require_schedule(schedule_id, actor)
+        if base_version_id == candidate_version_id:
+            with self.uow_factory() as uow:
+                row = uow.connection.execute(select(schedule_versions).where(
+                    schedule_versions.c.id == base_version_id,
+                    schedule_versions.c.schedule_id == schedule_id,
+                    schedule_versions.c.scope_id == actor.scope_id)).mappings().first()
+                if row is None:
+                    raise ServiceError(ErrorCode.NOT_FOUND, "schedule version not found")
+                unchanged = int(uow.connection.execute(select(func.count()).select_from(schedule_tasks)
+                    .where(schedule_tasks.c.version_id == base_version_id,
+                           schedule_tasks.c.scope_id == actor.scope_id)).scalar_one())
+            return ScheduleDiffView(schedule_id=schedule_id, base_version_id=base_version_id,
+                candidate_version_id=candidate_version_id, base_hash=row["content_hash"],
+                candidate_hash=row["content_hash"], added_task_ids=(), removed_task_ids=(),
+                changed_tasks=(), unchanged_count=unchanged)
         with self.uow_factory() as uow:
             versions = uow.connection.execute(select(schedule_versions).where(
                 schedule_versions.c.id.in_((base_version_id, candidate_version_id)),
