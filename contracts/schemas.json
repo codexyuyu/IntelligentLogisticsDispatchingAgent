@@ -41765,6 +41765,216 @@
       "title": "WeatherChangePayloadDTO",
       "type": "object"
     },
+    "logistics_contracts.schedules.ScheduleCreate": {
+      "$defs": {
+        "PlanningScopeDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "epoch_utc": {
+              "format": "date-time",
+              "title": "Epoch Utc",
+              "type": "string"
+            },
+            "horizon_s": {
+              "title": "Horizon S",
+              "type": "integer"
+            },
+            "order_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Order Ids",
+              "type": "array"
+            },
+            "vehicle_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Vehicle Ids",
+              "type": "array"
+            },
+            "warehouse_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Warehouse Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "order_ids",
+            "warehouse_ids",
+            "vehicle_ids",
+            "epoch_utc",
+            "horizon_s"
+          ],
+          "title": "PlanningScopeDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/$defs/PlanningScopeDTO"
+        }
+      },
+      "required": [
+        "name",
+        "scope"
+      ],
+      "title": "ScheduleCreate",
+      "type": "object"
+    },
+    "logistics_contracts.schedules.SchedulePage": {
+      "$defs": {
+        "ScheduleView": {
+          "additionalProperties": false,
+          "properties": {
+            "active_version_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Active Version Id"
+            },
+            "epoch_utc": {
+              "format": "date-time",
+              "title": "Epoch Utc",
+              "type": "string"
+            },
+            "horizon_s": {
+              "title": "Horizon S",
+              "type": "integer"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "schedule_id": {
+              "format": "uuid",
+              "title": "Schedule Id",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "default": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "schedule_id",
+            "name",
+            "status",
+            "epoch_utc",
+            "horizon_s",
+            "active_version_id"
+          ],
+          "title": "ScheduleView",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ScheduleView"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "SchedulePage",
+      "type": "object"
+    },
+    "logistics_contracts.schedules.ScheduleView": {
+      "additionalProperties": false,
+      "properties": {
+        "active_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Active Version Id"
+        },
+        "epoch_utc": {
+          "format": "date-time",
+          "title": "Epoch Utc",
+          "type": "string"
+        },
+        "horizon_s": {
+          "title": "Horizon S",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "schedule_id": {
+          "format": "uuid",
+          "title": "Schedule Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schedule_id",
+        "name",
+        "status",
+        "epoch_utc",
+        "horizon_s",
+        "active_version_id"
+      ],
+      "title": "ScheduleView",
+      "type": "object"
+    },
     "logistics_contracts.simulation.SimulationEventDTO": {
       "$defs": {
         "SimulationEventKind": {
