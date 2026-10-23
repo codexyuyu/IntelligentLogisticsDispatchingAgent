@@ -1,6 +1,77 @@
 {
   "schema_version": "2.0.0",
   "schemas": {
+    "logistics_contracts.agents.AgentChatRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "message": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Session Id"
+        }
+      },
+      "required": [
+        "message"
+      ],
+      "title": "AgentChatRequest",
+      "type": "object"
+    },
+    "logistics_contracts.agents.AgentChatResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "provider_configured": {
+          "title": "Provider Configured",
+          "type": "boolean"
+        },
+        "reply": {
+          "title": "Reply",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "trace_id": {
+          "format": "uuid",
+          "title": "Trace Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "reply",
+        "model",
+        "provider_configured",
+        "trace_id"
+      ],
+      "title": "AgentChatResponse",
+      "type": "object"
+    },
     "logistics_contracts.common.ConflictDetail": {
       "$defs": {
         "EntityKind": {

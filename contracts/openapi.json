@@ -1,6 +1,76 @@
 {
   "components": {
     "schemas": {
+      "AgentChatRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Message",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Session Id"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "title": "AgentChatRequest",
+        "type": "object"
+      },
+      "AgentChatResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "provider_configured": {
+            "title": "Provider Configured",
+            "type": "boolean"
+          },
+          "reply": {
+            "title": "Reply",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "trace_id": {
+            "format": "uuid",
+            "title": "Trace Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reply",
+          "model",
+          "provider_configured",
+          "trace_id"
+        ],
+        "title": "AgentChatResponse",
+        "type": "object"
+      },
       "ArcRefDTO": {
         "additionalProperties": false,
         "properties": {
@@ -5802,6 +5872,65 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/v1/agents/chat": {
+      "post": {
+        "operationId": "agent_chat",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentChatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentChatResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Agent Chat",
+        "tags": [
+          "agents"
+        ]
+      }
+    },
     "/api/v1/drivers": {
       "get": {
         "operationId": "list_drivers",

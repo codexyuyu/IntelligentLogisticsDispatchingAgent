@@ -43,6 +43,8 @@ from logistics_backend.application.simulation import (
     SimulationResultStore,
     SimulationService,
 )
+from logistics_agents.llm import DeepSeekProvider, LLMSettings
+from logistics_agents.service import AgentChatService
 from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
@@ -94,6 +96,7 @@ class Services:
     events: EventService
     simulations: SimulationService
     simulation_results: SimulationResultStore
+    agents: AgentChatService
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -122,6 +125,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         events=EventService(factory, settings.scope_id),
         simulations=SimulationService(jobs),
         simulation_results=SimulationResultStore(),
+        agents=AgentChatService(DeepSeekProvider(LLMSettings.from_env())),
     )
     return engine, services
 
@@ -149,6 +153,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.events = services.events
     app.state.simulations = services.simulations
     app.state.simulation_results = services.simulation_results
+    app.state.agents = services.agents
     install_handlers(app)
 
     @app.middleware("http")
