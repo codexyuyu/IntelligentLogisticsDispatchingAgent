@@ -1,9 +1,8 @@
-"""Independent transport validation subset (P10-01).
+"""Independent transport validation (P10-01 subset).
 
-The frozen ``TransportPlan`` carries routes and cost but not the route-stop rows; stop-level
-time/capacity validation is performed by the joint validator (P10-02) once route stops are
-bound to the plan. This module never trusts the solver's own status and checks the parts the
-plan actually exposes.
+The frozen ``TransportPlan`` carries routes and cost; optional route-stop rows add
+service-window, sequence and order-coverage checks. The validator never trusts the solver's
+own status and never mutates the plan.
 """
 
 from __future__ import annotations
@@ -11,11 +10,19 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from uuid import uuid4
 
-from logistics_domain.planning import Severity, TransportPlan, ValidationReport, Violation, content_hash
+from logistics_domain.planning import (
+    RouteStop,
+    Severity,
+    TransportPlan,
+    ValidationReport,
+    Violation,
+    content_hash,
+)
 from logistics_domain.transport import TransportProblem
 
 
-def validate_transport(plan: TransportPlan, problem: TransportProblem) -> ValidationReport:
+def validate_transport(plan: TransportPlan, problem: TransportProblem,
+                       stops: tuple[RouteStop, ...] = ()) -> ValidationReport:
     violations: list[Violation] = []
     vehicles = {vehicle.vehicle_id for vehicle in problem.vehicles}
     route_ids = set()
@@ -47,8 +54,51 @@ def validate_transport(plan: TransportPlan, problem: TransportProblem) -> Valida
             entity_refs=(), field_path="plan.cost.total_cents",
             actual=str(plan.cost.total_cents), expected=str(cost_sum),
             message="plan cost total does not equal its components"))
+    node_windows = {node.id: node.hard_window for node in problem.nodes}
+    visited_orders = set()
+    seen_stops = set()
+    sequences: dict = {}
+    if stops:
+        for stop in stops:
+            if stop.id in seen_stops:
+                violations.append(Violation(code="duplicate_stop", severity=Severity.HARD,
+                    entity_refs=(), field_path="stop.id", actual=str(stop.id),
+                    expected="unique stop id", message="plan repeats a route stop"))
+            seen_stops.add(stop.id)
+            if stop.route_id not in route_ids:
+                violations.append(Violation(code="stop_route", severity=Severity.HARD,
+                    entity_refs=(), field_path="stop.route_id", actual=str(stop.route_id),
+                    expected="route in plan", message="stop references a route outside the plan"))
+            previous = sequences.get(stop.route_id)
+            if previous is not None and stop.sequence <= previous:
+                violations.append(Violation(code="stop_sequence", severity=Severity.HARD,
+                    entity_refs=(), field_path="stop.sequence", actual=str(stop.sequence),
+                    expected=f"> {previous}", message="route stops are not strictly ordered"))
+            sequences[stop.route_id] = stop.sequence
+            if not stop.arrival_s <= stop.service_start_s <= stop.departure_s:
+                violations.append(Violation(code="stop_times", severity=Severity.HARD,
+                    entity_refs=(), field_path="stop.service_start_s",
+                    actual=str(stop.service_start_s), expected="arrival<=start<=departure",
+                    message="route stop times are inconsistent"))
+            window = node_windows.get(stop.node_id)
+            if window is not None and not window.contains_start(stop.service_start_s):
+                violations.append(Violation(code="time_window", severity=Severity.HARD,
+                    entity_refs=(), field_path="stop.service_start_s",
+                    actual=str(stop.service_start_s),
+                    expected=f"[{window.earliest_s},{window.latest_s}]",
+                    message="service start is outside the hard window"))
+            visited_orders.update(stop.task_ids)
+        required = {node.order_id for node in problem.nodes
+                    if node.order_id is not None and node.kind.value == "pickup"}
+        missing = required - visited_orders
+        if missing:
+            violations.append(Violation(code="order_coverage", severity=Severity.HARD,
+                entity_refs=(), field_path="stops.task_ids",
+                actual=str(len(missing)) + " missing", expected="every required order",
+                message="not every required order appears in the route stops"))
     valid = not any(violation.severity == Severity.HARD for violation in violations)
-    return ValidationReport(id=uuid4(), candidate_hash=content_hash(plan),
+    content = {"plan": plan, "stops": stops}
+    return ValidationReport(id=uuid4(), candidate_hash=content_hash(content),
         snapshot_hash=problem.snapshot.hash, rules_version="1.0.0", valid=valid,
         required_codes=(), checked_codes=(), unsupported_codes=(),
         violations=tuple(violations),

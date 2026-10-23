@@ -316,6 +316,99 @@
         "title": "CargoCreate",
         "type": "object"
       },
+      "CargoDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "batch_ref": {
+            "title": "Batch Ref",
+            "type": "string"
+          },
+          "cargo_type": {
+            "$ref": "#/components/schemas/CargoType"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "created_by": {
+            "format": "uuid",
+            "title": "Created By",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "max_exposure_s": {
+            "title": "Max Exposure S",
+            "type": "integer"
+          },
+          "max_temp_decic": {
+            "title": "Max Temp Decic",
+            "type": "integer"
+          },
+          "min_temp_decic": {
+            "title": "Min Temp Decic",
+            "type": "integer"
+          },
+          "order_id": {
+            "format": "uuid",
+            "title": "Order Id",
+            "type": "string"
+          },
+          "quantity_units": {
+            "title": "Quantity Units",
+            "type": "integer"
+          },
+          "row_version": {
+            "title": "Row Version",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EntityState"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "volume_cm3": {
+            "title": "Volume Cm3",
+            "type": "integer"
+          },
+          "weight_g": {
+            "title": "Weight G",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "created_at",
+          "updated_at",
+          "row_version",
+          "schema_version",
+          "created_by",
+          "order_id",
+          "cargo_type",
+          "quantity_units",
+          "weight_g",
+          "volume_cm3",
+          "min_temp_decic",
+          "max_temp_decic",
+          "max_exposure_s",
+          "batch_ref"
+        ],
+        "title": "CargoDTO",
+        "type": "object"
+      },
       "CargoType": {
         "description": "Cargo classification shared with prepared datasets; temperature is separate.",
         "enum": [
@@ -353,6 +446,34 @@
           "actual_revision"
         ],
         "title": "ConflictDetail",
+        "type": "object"
+      },
+      "ConstraintSpecDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "enabled": {
+            "default": true,
+            "title": "Enabled",
+            "type": "boolean"
+          },
+          "severity": {
+            "default": "hard",
+            "enum": [
+              "hard",
+              "soft"
+            ],
+            "title": "Severity",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "title": "ConstraintSpecDTO",
         "type": "object"
       },
       "CostBreakdownDTO": {
@@ -2274,6 +2395,42 @@
         "title": "ImpactRequestDTO",
         "type": "object"
       },
+      "InventoryEntryDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cargo_id": {
+            "format": "uuid",
+            "title": "Cargo Id",
+            "type": "string"
+          },
+          "location_id": {
+            "format": "uuid",
+            "title": "Location Id",
+            "type": "string"
+          },
+          "quantity_units": {
+            "title": "Quantity Units",
+            "type": "integer"
+          },
+          "volume_cm3": {
+            "title": "Volume Cm3",
+            "type": "integer"
+          },
+          "weight_g": {
+            "title": "Weight G",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cargo_id",
+          "location_id",
+          "quantity_units",
+          "weight_g",
+          "volume_cm3"
+        ],
+        "title": "InventoryEntryDTO",
+        "type": "object"
+      },
       "JobKind": {
         "description": "Kind of a durable job; the serialized value is the lowercase word.",
         "enum": [
@@ -3417,6 +3574,90 @@
         "title": "PlanningScopeDTO",
         "type": "object"
       },
+      "PlanningSnapshotDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cargo": {
+            "items": {
+              "$ref": "#/components/schemas/CargoDTO"
+            },
+            "title": "Cargo",
+            "type": "array"
+          },
+          "drivers": {
+            "items": {
+              "$ref": "#/components/schemas/DriverDTO"
+            },
+            "title": "Drivers",
+            "type": "array"
+          },
+          "hash": {
+            "title": "Hash",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "inventory": {
+            "items": {
+              "$ref": "#/components/schemas/InventoryEntryDTO"
+            },
+            "title": "Inventory",
+            "type": "array"
+          },
+          "matrices": {
+            "items": {
+              "$ref": "#/components/schemas/TravelMatrixDTO"
+            },
+            "title": "Matrices",
+            "type": "array"
+          },
+          "orders": {
+            "items": {
+              "$ref": "#/components/schemas/OrderDTO"
+            },
+            "title": "Orders",
+            "type": "array"
+          },
+          "resources": {
+            "$ref": "#/components/schemas/ResourceBundleDTO"
+          },
+          "revisions": {
+            "items": {
+              "$ref": "#/components/schemas/ResourceRevisionDTO"
+            },
+            "title": "Revisions",
+            "type": "array"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/PlanningScopeDTO"
+          },
+          "vehicles": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleDTO"
+            },
+            "title": "Vehicles",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "scope",
+          "orders",
+          "cargo",
+          "vehicles",
+          "drivers",
+          "resources",
+          "inventory",
+          "revisions",
+          "matrices",
+          "hash"
+        ],
+        "title": "PlanningSnapshotDTO",
+        "type": "object"
+      },
       "RationalDTO": {
         "additionalProperties": false,
         "properties": {
@@ -3619,6 +3860,99 @@
         "title": "ResourceBlockDTO",
         "type": "object"
       },
+      "ResourceBundleDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "calendars": {
+            "items": {
+              "$ref": "#/components/schemas/ResourceCalendarBindingDTO"
+            },
+            "title": "Calendars",
+            "type": "array"
+          },
+          "docks": {
+            "items": {
+              "$ref": "#/components/schemas/DockDTO"
+            },
+            "title": "Docks",
+            "type": "array"
+          },
+          "equipment": {
+            "items": {
+              "$ref": "#/components/schemas/EquipmentDTO"
+            },
+            "title": "Equipment",
+            "type": "array"
+          },
+          "locations": {
+            "items": {
+              "$ref": "#/components/schemas/StorageLocationDTO"
+            },
+            "title": "Locations",
+            "type": "array"
+          },
+          "warehouses": {
+            "items": {
+              "$ref": "#/components/schemas/WarehouseDTO"
+            },
+            "title": "Warehouses",
+            "type": "array"
+          },
+          "workers": {
+            "items": {
+              "$ref": "#/components/schemas/WorkerDTO"
+            },
+            "title": "Workers",
+            "type": "array"
+          },
+          "zones": {
+            "items": {
+              "$ref": "#/components/schemas/ZoneDTO"
+            },
+            "title": "Zones",
+            "type": "array"
+          }
+        },
+        "required": [
+          "warehouses",
+          "zones",
+          "locations",
+          "docks",
+          "workers",
+          "equipment",
+          "calendars"
+        ],
+        "title": "ResourceBundleDTO",
+        "type": "object"
+      },
+      "ResourceCalendarBindingDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "calendar": {
+            "$ref": "#/components/schemas/CalendarDTO"
+          },
+          "resource_id": {
+            "format": "uuid",
+            "title": "Resource Id",
+            "type": "string"
+          },
+          "source_calendar": {
+            "$ref": "#/components/schemas/CalendarDTO"
+          },
+          "source_hash": {
+            "title": "Source Hash",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource_id",
+          "source_calendar",
+          "source_hash",
+          "calendar"
+        ],
+        "title": "ResourceCalendarBindingDTO",
+        "type": "object"
+      },
       "ResourceKind": {
         "description": "The five warehouse resource classes addressable by a requirement.",
         "enum": [
@@ -3656,6 +3990,24 @@
           "units"
         ],
         "title": "ResourceRequirementDTO",
+        "type": "object"
+      },
+      "ResourceRevisionDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "entity_ref": {
+            "$ref": "#/components/schemas/EntityRefDTO"
+          },
+          "row_version": {
+            "title": "Row Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "entity_ref",
+          "row_version"
+        ],
+        "title": "ResourceRevisionDTO",
         "type": "object"
       },
       "ReturnPolicy": {
@@ -3854,6 +4206,92 @@
         "title": "RouteStopDTO",
         "type": "object"
       },
+      "RoutingNodeDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "hard_window": {
+            "$ref": "#/components/schemas/TimeWindowDTO"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/RoutingNodeKind"
+          },
+          "load_delta": {
+            "$ref": "#/components/schemas/SignedLoadDTO"
+          },
+          "location_id": {
+            "format": "uuid",
+            "title": "Location Id",
+            "type": "string"
+          },
+          "order_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Order Id"
+          },
+          "pair_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pair Id"
+          },
+          "service_s": {
+            "title": "Service S",
+            "type": "integer"
+          },
+          "soft_due_at_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Soft Due At S"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "order_id",
+          "location_id",
+          "service_s",
+          "hard_window",
+          "soft_due_at_s",
+          "load_delta",
+          "pair_id"
+        ],
+        "title": "RoutingNodeDTO",
+        "type": "object"
+      },
+      "RoutingNodeKind": {
+        "enum": [
+          "depot",
+          "pickup",
+          "delivery",
+          "virtual_start"
+        ],
+        "title": "RoutingNodeKind",
+        "type": "string"
+      },
       "SetupOperationDTO": {
         "additionalProperties": false,
         "properties": {
@@ -3902,6 +4340,25 @@
         ],
         "title": "Severity",
         "type": "string"
+      },
+      "SignedLoadDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "volume_cm3": {
+            "title": "Volume Cm3",
+            "type": "integer"
+          },
+          "weight_g": {
+            "title": "Weight G",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "weight_g",
+          "volume_cm3"
+        ],
+        "title": "SignedLoadDTO",
+        "type": "object"
       },
       "SimulationEventDTO": {
         "additionalProperties": false,
@@ -4510,6 +4967,51 @@
         "title": "TransportPlanDTO",
         "type": "object"
       },
+      "TransportProblemDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "constraints": {
+            "items": {
+              "$ref": "#/components/schemas/ConstraintSpecDTO"
+            },
+            "title": "Constraints",
+            "type": "array"
+          },
+          "matrix": {
+            "$ref": "#/components/schemas/TravelMatrixDTO"
+          },
+          "nodes": {
+            "items": {
+              "$ref": "#/components/schemas/RoutingNodeDTO"
+            },
+            "title": "Nodes",
+            "type": "array"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/ObjectivePolicyDTO"
+          },
+          "snapshot": {
+            "$ref": "#/components/schemas/PlanningSnapshotDTO"
+          },
+          "vehicles": {
+            "items": {
+              "$ref": "#/components/schemas/VehicleStateDTO"
+            },
+            "title": "Vehicles",
+            "type": "array"
+          }
+        },
+        "required": [
+          "snapshot",
+          "nodes",
+          "vehicles",
+          "matrix",
+          "constraints",
+          "policy"
+        ],
+        "title": "TransportProblemDTO",
+        "type": "object"
+      },
       "TransportRequestDTO": {
         "additionalProperties": false,
         "description": "API request: selects a snapshot scope, vehicles, matrix and solver policy.",
@@ -4652,6 +5154,118 @@
           "solver_evidence"
         ],
         "title": "TransportSolutionDTO",
+        "type": "object"
+      },
+      "TransportValidationRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "plan": {
+            "$ref": "#/components/schemas/TransportPlanDTO"
+          },
+          "problem": {
+            "$ref": "#/components/schemas/TransportProblemDTO"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "stops": {
+            "items": {
+              "$ref": "#/components/schemas/RouteStopDTO"
+            },
+            "title": "Stops",
+            "type": "array"
+          }
+        },
+        "required": [
+          "problem",
+          "plan",
+          "stops"
+        ],
+        "title": "TransportValidationRequest",
+        "type": "object"
+      },
+      "TravelMatrixDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "distance_m": {
+            "items": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            "title": "Distance M",
+            "type": "array"
+          },
+          "hash": {
+            "title": "Hash",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "node_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Node Ids",
+            "type": "array"
+          },
+          "observed_at": {
+            "format": "date-time",
+            "title": "Observed At",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "travel_s": {
+            "items": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            "title": "Travel S",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "node_ids",
+          "distance_m",
+          "travel_s",
+          "source",
+          "observed_at",
+          "hash"
+        ],
+        "title": "TravelMatrixDTO",
         "type": "object"
       },
       "UnsupportedDetail": {
@@ -5092,6 +5706,82 @@
           "has_more"
         ],
         "title": "VehiclePage",
+        "type": "object"
+      },
+      "VehicleStateDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "allowed_cargo_types": {
+            "items": {
+              "$ref": "#/components/schemas/CargoType"
+            },
+            "title": "Allowed Cargo Types",
+            "type": "array"
+          },
+          "available_window": {
+            "$ref": "#/components/schemas/TimeWindowDTO"
+          },
+          "capacity_volume_cm3": {
+            "title": "Capacity Volume Cm3",
+            "type": "integer"
+          },
+          "capacity_weight_g": {
+            "title": "Capacity Weight G",
+            "type": "integer"
+          },
+          "driver_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Driver Id"
+          },
+          "end_node_id": {
+            "format": "uuid",
+            "title": "End Node Id",
+            "type": "string"
+          },
+          "max_drive_s": {
+            "title": "Max Drive S",
+            "type": "integer"
+          },
+          "setpoint_decic": {
+            "title": "Setpoint Decic",
+            "type": "integer"
+          },
+          "start_load": {
+            "$ref": "#/components/schemas/LoadDTO"
+          },
+          "start_node_id": {
+            "format": "uuid",
+            "title": "Start Node Id",
+            "type": "string"
+          },
+          "vehicle_id": {
+            "format": "uuid",
+            "title": "Vehicle Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "vehicle_id",
+          "driver_id",
+          "start_node_id",
+          "end_node_id",
+          "start_load",
+          "capacity_weight_g",
+          "capacity_volume_cm3",
+          "setpoint_decic",
+          "available_window",
+          "max_drive_s",
+          "allowed_cargo_types"
+        ],
+        "title": "VehicleStateDTO",
         "type": "object"
       },
       "VehicleUpdate": {
@@ -8316,6 +9006,65 @@
         "summary": "Submit Simulation",
         "tags": [
           "simulations"
+        ]
+      }
+    },
+    "/api/v1/validations/transport": {
+      "post": {
+        "operationId": "validate_transport_plan",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransportValidationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationReportDTO"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Validate Transport Plan",
+        "tags": [
+          "validation"
         ]
       }
     },

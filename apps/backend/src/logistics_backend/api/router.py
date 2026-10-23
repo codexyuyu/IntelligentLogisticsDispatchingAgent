@@ -9,6 +9,7 @@ from logistics_backend.api.jobs import router as jobs_router
 from logistics_backend.api.optimization import router as optimization_router
 from logistics_backend.api.results import router as results_router
 from logistics_backend.api.simulations import router as simulations_router
+from logistics_backend.api.validation import router as validation_router
 from logistics_backend.api.warehouse import router as warehouse_router
 from logistics_backend.api.workbench import router as workbench_router
 
@@ -24,4 +25,5 @@ router.include_router(optimization_router)
 router.include_router(warehouse_router)
 router.include_router(simulations_router)
 router.include_router(results_router)
+router.include_router(validation_router)
 router.include_router(workbench_router)

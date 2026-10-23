@@ -43164,6 +43164,2146 @@
       "title": "VehicleStateDTO",
       "type": "object"
     },
+    "logistics_contracts.validation.TransportValidationRequest": {
+      "$defs": {
+        "CalendarDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "epoch_utc": {
+              "format": "date-time",
+              "title": "Epoch Utc",
+              "type": "string"
+            },
+            "intervals": {
+              "items": {
+                "$ref": "#/$defs/CalendarIntervalDTO"
+              },
+              "title": "Intervals",
+              "type": "array"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "version": {
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "schema_version",
+            "epoch_utc",
+            "version",
+            "intervals"
+          ],
+          "title": "CalendarDTO",
+          "type": "object"
+        },
+        "CalendarIntervalDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "available_units": {
+              "title": "Available Units",
+              "type": "integer"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "available_units"
+          ],
+          "title": "CalendarIntervalDTO",
+          "type": "object"
+        },
+        "CargoDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "batch_ref": {
+              "title": "Batch Ref",
+              "type": "string"
+            },
+            "cargo_type": {
+              "$ref": "#/$defs/CargoType"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "max_exposure_s": {
+              "title": "Max Exposure S",
+              "type": "integer"
+            },
+            "max_temp_decic": {
+              "title": "Max Temp Decic",
+              "type": "integer"
+            },
+            "min_temp_decic": {
+              "title": "Min Temp Decic",
+              "type": "integer"
+            },
+            "order_id": {
+              "format": "uuid",
+              "title": "Order Id",
+              "type": "string"
+            },
+            "quantity_units": {
+              "title": "Quantity Units",
+              "type": "integer"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "volume_cm3": {
+              "title": "Volume Cm3",
+              "type": "integer"
+            },
+            "weight_g": {
+              "title": "Weight G",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "order_id",
+            "cargo_type",
+            "quantity_units",
+            "weight_g",
+            "volume_cm3",
+            "min_temp_decic",
+            "max_temp_decic",
+            "max_exposure_s",
+            "batch_ref"
+          ],
+          "title": "CargoDTO",
+          "type": "object"
+        },
+        "CargoType": {
+          "description": "Cargo classification shared with prepared datasets; temperature is separate.",
+          "enum": [
+            "GENERAL",
+            "FROZEN",
+            "CHILLED"
+          ],
+          "title": "CargoType",
+          "type": "string"
+        },
+        "ConstraintSpecDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "enabled": {
+              "default": true,
+              "title": "Enabled",
+              "type": "boolean"
+            },
+            "severity": {
+              "default": "hard",
+              "enum": [
+                "hard",
+                "soft"
+              ],
+              "title": "Severity",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code"
+          ],
+          "title": "ConstraintSpecDTO",
+          "type": "object"
+        },
+        "CostBreakdownDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "distance_cents": {
+              "title": "Distance Cents",
+              "type": "integer"
+            },
+            "fixed_vehicle_cents": {
+              "title": "Fixed Vehicle Cents",
+              "type": "integer"
+            },
+            "overtime_cents": {
+              "title": "Overtime Cents",
+              "type": "integer"
+            },
+            "service_cents": {
+              "title": "Service Cents",
+              "type": "integer"
+            },
+            "setup_cents": {
+              "title": "Setup Cents",
+              "type": "integer"
+            },
+            "total_cents": {
+              "title": "Total Cents",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "distance_cents",
+            "fixed_vehicle_cents",
+            "service_cents",
+            "overtime_cents",
+            "setup_cents",
+            "total_cents"
+          ],
+          "title": "CostBreakdownDTO",
+          "type": "object"
+        },
+        "DisturbanceWeightsDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "assignment_change": {
+              "title": "Assignment Change",
+              "type": "integer"
+            },
+            "membership_change": {
+              "title": "Membership Change",
+              "type": "integer"
+            },
+            "order_change": {
+              "title": "Order Change",
+              "type": "integer"
+            },
+            "time_shift": {
+              "title": "Time Shift",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "assignment_change",
+            "time_shift",
+            "order_change",
+            "membership_change"
+          ],
+          "title": "DisturbanceWeightsDTO",
+          "type": "object"
+        },
+        "DockDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_zone_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Allowed Zone Ids",
+              "type": "array"
+            },
+            "calendar": {
+              "$ref": "#/$defs/CalendarDTO"
+            },
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "supported_operations": {
+              "items": {
+                "$ref": "#/$defs/OperationKind"
+              },
+              "title": "Supported Operations",
+              "type": "array"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "warehouse_id": {
+              "format": "uuid",
+              "title": "Warehouse Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "warehouse_id",
+            "code",
+            "supported_operations",
+            "allowed_zone_ids",
+            "calendar"
+          ],
+          "title": "DockDTO",
+          "type": "object"
+        },
+        "DriverDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "max_drive_s": {
+              "title": "Max Drive S",
+              "type": "integer"
+            },
+            "max_work_s": {
+              "title": "Max Work S",
+              "type": "integer"
+            },
+            "qualifications": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Qualifications",
+              "type": "array"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "shift": {
+              "$ref": "#/$defs/TimeWindowDTO"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "code",
+            "qualifications",
+            "shift",
+            "max_drive_s",
+            "max_work_s"
+          ],
+          "title": "DriverDTO",
+          "type": "object"
+        },
+        "EntityKind": {
+          "description": "Addressable kinds used by ``EntityRef.kind``.\n\nThe 45 members are the 32 required catalog entities, the required auxiliary entities and\nthe matrix / inline-region address kinds. Enum metadata only *names* lookup targets; this\nmodule imports no future entity model.",
+          "enum": [
+            "order",
+            "cargo",
+            "vehicle",
+            "driver",
+            "warehouse",
+            "zone",
+            "location",
+            "dock",
+            "worker",
+            "equipment",
+            "transport_task",
+            "warehouse_task",
+            "route",
+            "route_stop",
+            "schedule",
+            "schedule_task",
+            "schedule_version",
+            "constraint",
+            "optimization_request",
+            "optimization_result",
+            "simulation",
+            "simulation_snapshot",
+            "event",
+            "exception_event",
+            "reschedule_request",
+            "reschedule_result",
+            "agent_run",
+            "tool_call",
+            "decision_record",
+            "experiment",
+            "metric",
+            "experiment_result",
+            "planning_snapshot",
+            "job",
+            "job_attempt",
+            "idempotency",
+            "reservation",
+            "inventory_ledger",
+            "outbox",
+            "audit_entry",
+            "lifecycle_event",
+            "execution_snapshot",
+            "confirmation_token",
+            "travel_matrix",
+            "region"
+          ],
+          "title": "EntityKind",
+          "type": "string"
+        },
+        "EntityRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/EntityKind"
+            },
+            "revision": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Revision"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "revision"
+          ],
+          "title": "EntityRefDTO",
+          "type": "object"
+        },
+        "EntityState": {
+          "description": "Union of the lifecycle state words documented in ``DOMAIN_CATALOG.md``.\n\n``EntityState`` is deliberately the *union* over all catalog lifecycles: this task owns\nthe shared vocabulary, while per-entity precision comes from each entity's own status\nenum (P02-02/P02-03) and from :data:`LIFECYCLE_TRANSITIONS`. The lifecycle columns of\n``DOMAIN_CATALOG.md`` are the only source of members; a test asserts this enum covers\nexactly the states that appear in the graph.",
+          "enum": [
+            "draft",
+            "accepted",
+            "scheduled",
+            "in_execution",
+            "delivered",
+            "cancelled",
+            "cancel_requested",
+            "cancelled_after_return",
+            "registered",
+            "stored",
+            "loaded",
+            "in_transit",
+            "quarantined",
+            "returned",
+            "available",
+            "reserved",
+            "in_service",
+            "unavailable",
+            "retired",
+            "active",
+            "occupied",
+            "busy",
+            "failed",
+            "repairing",
+            "pending",
+            "ready",
+            "running",
+            "completed",
+            "interrupted",
+            "candidate",
+            "validated",
+            "published",
+            "superseded",
+            "planned",
+            "reached",
+            "servicing",
+            "dispatched",
+            "committed",
+            "released",
+            "rejected",
+            "expired",
+            "queued",
+            "recorded",
+            "suspended",
+            "deprecated",
+            "invalidated",
+            "created",
+            "paused",
+            "received",
+            "applied",
+            "duplicate",
+            "manual_required",
+            "unresolved",
+            "detected",
+            "analyzed",
+            "proposed",
+            "resolved",
+            "planning",
+            "executing",
+            "explaining",
+            "await_confirmation",
+            "waiting_input",
+            "requested",
+            "authorized",
+            "succeeded",
+            "denied",
+            "held",
+            "delivering",
+            "dead_letter",
+            "consumed"
+          ],
+          "title": "EntityState",
+          "type": "string"
+        },
+        "EquipmentDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_zone_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Allowed Zone Ids",
+              "type": "array"
+            },
+            "calendar": {
+              "$ref": "#/$defs/CalendarDTO"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/EquipmentKind"
+            },
+            "quantity_capacity": {
+              "title": "Quantity Capacity",
+              "type": "integer"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "warehouse_id": {
+              "format": "uuid",
+              "title": "Warehouse Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "warehouse_id",
+            "kind",
+            "quantity_capacity",
+            "allowed_zone_ids",
+            "calendar"
+          ],
+          "title": "EquipmentDTO",
+          "type": "object"
+        },
+        "EquipmentKind": {
+          "enum": [
+            "sorting",
+            "handling"
+          ],
+          "title": "EquipmentKind",
+          "type": "string"
+        },
+        "InventoryEntryDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cargo_id": {
+              "format": "uuid",
+              "title": "Cargo Id",
+              "type": "string"
+            },
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "quantity_units": {
+              "title": "Quantity Units",
+              "type": "integer"
+            },
+            "volume_cm3": {
+              "title": "Volume Cm3",
+              "type": "integer"
+            },
+            "weight_g": {
+              "title": "Weight G",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "cargo_id",
+            "location_id",
+            "quantity_units",
+            "weight_g",
+            "volume_cm3"
+          ],
+          "title": "InventoryEntryDTO",
+          "type": "object"
+        },
+        "LoadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "volume_cm3": {
+              "title": "Volume Cm3",
+              "type": "integer"
+            },
+            "weight_g": {
+              "title": "Weight G",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "weight_g",
+            "volume_cm3"
+          ],
+          "title": "LoadDTO",
+          "type": "object"
+        },
+        "MatrixRefDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "title": "Hash",
+              "type": "string"
+            },
+            "matrix_id": {
+              "format": "uuid",
+              "title": "Matrix Id",
+              "type": "string"
+            },
+            "version": {
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "matrix_id",
+            "version",
+            "hash"
+          ],
+          "title": "MatrixRefDTO",
+          "type": "object"
+        },
+        "ObjectivePolicyDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "disturbance_weights": {
+              "$ref": "#/$defs/DisturbanceWeightsDTO"
+            },
+            "makespan_cents_per_s": {
+              "title": "Makespan Cents Per S",
+              "type": "integer"
+            },
+            "optional_unserved_penalty_cents": {
+              "title": "Optional Unserved Penalty Cents",
+              "type": "integer"
+            },
+            "soft_late_cents_per_s": {
+              "title": "Soft Late Cents Per S",
+              "type": "integer"
+            },
+            "version": {
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "version",
+            "optional_unserved_penalty_cents",
+            "soft_late_cents_per_s",
+            "makespan_cents_per_s",
+            "disturbance_weights"
+          ],
+          "title": "ObjectivePolicyDTO",
+          "type": "object"
+        },
+        "OperationKind": {
+          "enum": [
+            "receive",
+            "dispatch",
+            "sort",
+            "load",
+            "unload",
+            "setup"
+          ],
+          "title": "OperationKind",
+          "type": "string"
+        },
+        "OrderDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cargo_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Cargo Ids",
+              "type": "array"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "delivery_node_id": {
+              "format": "uuid",
+              "title": "Delivery Node Id",
+              "type": "string"
+            },
+            "delivery_window": {
+              "$ref": "#/$defs/TimeWindowDTO"
+            },
+            "external_ref": {
+              "title": "External Ref",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "must_serve": {
+              "title": "Must Serve",
+              "type": "boolean"
+            },
+            "pickup_node_id": {
+              "format": "uuid",
+              "title": "Pickup Node Id",
+              "type": "string"
+            },
+            "pickup_window": {
+              "$ref": "#/$defs/TimeWindowDTO"
+            },
+            "priority": {
+              "title": "Priority",
+              "type": "integer"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "service_s": {
+              "title": "Service S",
+              "type": "integer"
+            },
+            "soft_due_at_s": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Soft Due At S"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "external_ref",
+            "pickup_node_id",
+            "delivery_node_id",
+            "cargo_ids",
+            "pickup_window",
+            "delivery_window",
+            "service_s",
+            "soft_due_at_s",
+            "must_serve",
+            "priority"
+          ],
+          "title": "OrderDTO",
+          "type": "object"
+        },
+        "PlanningScopeDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "epoch_utc": {
+              "format": "date-time",
+              "title": "Epoch Utc",
+              "type": "string"
+            },
+            "horizon_s": {
+              "title": "Horizon S",
+              "type": "integer"
+            },
+            "order_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Order Ids",
+              "type": "array"
+            },
+            "vehicle_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Vehicle Ids",
+              "type": "array"
+            },
+            "warehouse_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Warehouse Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "order_ids",
+            "warehouse_ids",
+            "vehicle_ids",
+            "epoch_utc",
+            "horizon_s"
+          ],
+          "title": "PlanningScopeDTO",
+          "type": "object"
+        },
+        "PlanningSnapshotDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cargo": {
+              "items": {
+                "$ref": "#/$defs/CargoDTO"
+              },
+              "title": "Cargo",
+              "type": "array"
+            },
+            "drivers": {
+              "items": {
+                "$ref": "#/$defs/DriverDTO"
+              },
+              "title": "Drivers",
+              "type": "array"
+            },
+            "hash": {
+              "title": "Hash",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "inventory": {
+              "items": {
+                "$ref": "#/$defs/InventoryEntryDTO"
+              },
+              "title": "Inventory",
+              "type": "array"
+            },
+            "matrices": {
+              "items": {
+                "$ref": "#/$defs/TravelMatrixDTO"
+              },
+              "title": "Matrices",
+              "type": "array"
+            },
+            "orders": {
+              "items": {
+                "$ref": "#/$defs/OrderDTO"
+              },
+              "title": "Orders",
+              "type": "array"
+            },
+            "resources": {
+              "$ref": "#/$defs/ResourceBundleDTO"
+            },
+            "revisions": {
+              "items": {
+                "$ref": "#/$defs/ResourceRevisionDTO"
+              },
+              "title": "Revisions",
+              "type": "array"
+            },
+            "scope": {
+              "$ref": "#/$defs/PlanningScopeDTO"
+            },
+            "vehicles": {
+              "items": {
+                "$ref": "#/$defs/VehicleDTO"
+              },
+              "title": "Vehicles",
+              "type": "array"
+            }
+          },
+          "required": [
+            "id",
+            "scope",
+            "orders",
+            "cargo",
+            "vehicles",
+            "drivers",
+            "resources",
+            "inventory",
+            "revisions",
+            "matrices",
+            "hash"
+          ],
+          "title": "PlanningSnapshotDTO",
+          "type": "object"
+        },
+        "ResourceBundleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "calendars": {
+              "items": {
+                "$ref": "#/$defs/ResourceCalendarBindingDTO"
+              },
+              "title": "Calendars",
+              "type": "array"
+            },
+            "docks": {
+              "items": {
+                "$ref": "#/$defs/DockDTO"
+              },
+              "title": "Docks",
+              "type": "array"
+            },
+            "equipment": {
+              "items": {
+                "$ref": "#/$defs/EquipmentDTO"
+              },
+              "title": "Equipment",
+              "type": "array"
+            },
+            "locations": {
+              "items": {
+                "$ref": "#/$defs/StorageLocationDTO"
+              },
+              "title": "Locations",
+              "type": "array"
+            },
+            "warehouses": {
+              "items": {
+                "$ref": "#/$defs/WarehouseDTO"
+              },
+              "title": "Warehouses",
+              "type": "array"
+            },
+            "workers": {
+              "items": {
+                "$ref": "#/$defs/WorkerDTO"
+              },
+              "title": "Workers",
+              "type": "array"
+            },
+            "zones": {
+              "items": {
+                "$ref": "#/$defs/ZoneDTO"
+              },
+              "title": "Zones",
+              "type": "array"
+            }
+          },
+          "required": [
+            "warehouses",
+            "zones",
+            "locations",
+            "docks",
+            "workers",
+            "equipment",
+            "calendars"
+          ],
+          "title": "ResourceBundleDTO",
+          "type": "object"
+        },
+        "ResourceCalendarBindingDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "calendar": {
+              "$ref": "#/$defs/CalendarDTO"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "source_calendar": {
+              "$ref": "#/$defs/CalendarDTO"
+            },
+            "source_hash": {
+              "title": "Source Hash",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "source_calendar",
+            "source_hash",
+            "calendar"
+          ],
+          "title": "ResourceCalendarBindingDTO",
+          "type": "object"
+        },
+        "ResourceRevisionDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "entity_ref": {
+              "$ref": "#/$defs/EntityRefDTO"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "entity_ref",
+            "row_version"
+          ],
+          "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "RouteDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost": {
+              "$ref": "#/$defs/CostBreakdownDTO"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "driver_id": {
+              "format": "uuid",
+              "title": "Driver Id",
+              "type": "string"
+            },
+            "end_node_id": {
+              "format": "uuid",
+              "title": "End Node Id",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "matrix_ref": {
+              "$ref": "#/$defs/MatrixRefDTO"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "start_node_id": {
+              "format": "uuid",
+              "title": "Start Node Id",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "total_distance_m": {
+              "title": "Total Distance M",
+              "type": "integer"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "vehicle_id": {
+              "format": "uuid",
+              "title": "Vehicle Id",
+              "type": "string"
+            },
+            "version_id": {
+              "format": "uuid",
+              "title": "Version Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "version_id",
+            "vehicle_id",
+            "driver_id",
+            "start_node_id",
+            "end_node_id",
+            "total_distance_m",
+            "cost",
+            "matrix_ref"
+          ],
+          "title": "RouteDTO",
+          "type": "object"
+        },
+        "RouteStopDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "arrival_s": {
+              "title": "Arrival S",
+              "type": "integer"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "departure_s": {
+              "title": "Departure S",
+              "type": "integer"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "load_after": {
+              "$ref": "#/$defs/LoadDTO"
+            },
+            "load_before": {
+              "$ref": "#/$defs/LoadDTO"
+            },
+            "node_id": {
+              "format": "uuid",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "route_id": {
+              "format": "uuid",
+              "title": "Route Id",
+              "type": "string"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "sequence": {
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "service_start_s": {
+              "title": "Service Start S",
+              "type": "integer"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "task_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Task Ids",
+              "type": "array"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "route_id",
+            "sequence",
+            "node_id",
+            "task_ids",
+            "arrival_s",
+            "service_start_s",
+            "departure_s",
+            "load_before",
+            "load_after"
+          ],
+          "title": "RouteStopDTO",
+          "type": "object"
+        },
+        "RoutingNodeDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "hard_window": {
+              "$ref": "#/$defs/TimeWindowDTO"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/RoutingNodeKind"
+            },
+            "load_delta": {
+              "$ref": "#/$defs/SignedLoadDTO"
+            },
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "order_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Order Id"
+            },
+            "pair_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Pair Id"
+            },
+            "service_s": {
+              "title": "Service S",
+              "type": "integer"
+            },
+            "soft_due_at_s": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Soft Due At S"
+            }
+          },
+          "required": [
+            "id",
+            "kind",
+            "order_id",
+            "location_id",
+            "service_s",
+            "hard_window",
+            "soft_due_at_s",
+            "load_delta",
+            "pair_id"
+          ],
+          "title": "RoutingNodeDTO",
+          "type": "object"
+        },
+        "RoutingNodeKind": {
+          "enum": [
+            "depot",
+            "pickup",
+            "delivery",
+            "virtual_start"
+          ],
+          "title": "RoutingNodeKind",
+          "type": "string"
+        },
+        "SignedLoadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "volume_cm3": {
+              "title": "Volume Cm3",
+              "type": "integer"
+            },
+            "weight_g": {
+              "title": "Weight G",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "weight_g",
+            "volume_cm3"
+          ],
+          "title": "SignedLoadDTO",
+          "type": "object"
+        },
+        "StorageLocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "calendar": {
+              "$ref": "#/$defs/CalendarDTO"
+            },
+            "capacity_volume_cm3": {
+              "title": "Capacity Volume Cm3",
+              "type": "integer"
+            },
+            "capacity_weight_g": {
+              "title": "Capacity Weight G",
+              "type": "integer"
+            },
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "zone_id": {
+              "format": "uuid",
+              "title": "Zone Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "zone_id",
+            "code",
+            "capacity_weight_g",
+            "capacity_volume_cm3",
+            "calendar"
+          ],
+          "title": "StorageLocationDTO",
+          "type": "object"
+        },
+        "TimeWindowDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "earliest_s": {
+              "title": "Earliest S",
+              "type": "integer"
+            },
+            "latest_s": {
+              "title": "Latest S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "earliest_s",
+            "latest_s"
+          ],
+          "title": "TimeWindowDTO",
+          "type": "object"
+        },
+        "TransportPlanDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost": {
+              "$ref": "#/$defs/CostBreakdownDTO"
+            },
+            "routes": {
+              "items": {
+                "$ref": "#/$defs/RouteDTO"
+              },
+              "title": "Routes",
+              "type": "array"
+            },
+            "unserved_order_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Unserved Order Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "routes",
+            "unserved_order_ids",
+            "cost"
+          ],
+          "title": "TransportPlanDTO",
+          "type": "object"
+        },
+        "TransportProblemDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "constraints": {
+              "items": {
+                "$ref": "#/$defs/ConstraintSpecDTO"
+              },
+              "title": "Constraints",
+              "type": "array"
+            },
+            "matrix": {
+              "$ref": "#/$defs/TravelMatrixDTO"
+            },
+            "nodes": {
+              "items": {
+                "$ref": "#/$defs/RoutingNodeDTO"
+              },
+              "title": "Nodes",
+              "type": "array"
+            },
+            "policy": {
+              "$ref": "#/$defs/ObjectivePolicyDTO"
+            },
+            "snapshot": {
+              "$ref": "#/$defs/PlanningSnapshotDTO"
+            },
+            "vehicles": {
+              "items": {
+                "$ref": "#/$defs/VehicleStateDTO"
+              },
+              "title": "Vehicles",
+              "type": "array"
+            }
+          },
+          "required": [
+            "snapshot",
+            "nodes",
+            "vehicles",
+            "matrix",
+            "constraints",
+            "policy"
+          ],
+          "title": "TransportProblemDTO",
+          "type": "object"
+        },
+        "TravelMatrixDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "distance_m": {
+              "items": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              "title": "Distance M",
+              "type": "array"
+            },
+            "hash": {
+              "title": "Hash",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "node_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Node Ids",
+              "type": "array"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "source": {
+              "title": "Source",
+              "type": "string"
+            },
+            "travel_s": {
+              "items": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              "title": "Travel S",
+              "type": "array"
+            },
+            "version": {
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "node_ids",
+            "distance_m",
+            "travel_s",
+            "source",
+            "observed_at",
+            "hash"
+          ],
+          "title": "TravelMatrixDTO",
+          "type": "object"
+        },
+        "VehicleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_cargo_types": {
+              "items": {
+                "$ref": "#/$defs/CargoType"
+              },
+              "title": "Allowed Cargo Types",
+              "type": "array"
+            },
+            "calendar": {
+              "$ref": "#/$defs/CalendarDTO"
+            },
+            "capacity_volume_cm3": {
+              "title": "Capacity Volume Cm3",
+              "type": "integer"
+            },
+            "capacity_weight_g": {
+              "title": "Capacity Weight G",
+              "type": "integer"
+            },
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "driver_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Driver Id"
+            },
+            "end_node_id": {
+              "format": "uuid",
+              "title": "End Node Id",
+              "type": "string"
+            },
+            "fixed_cost_cents": {
+              "title": "Fixed Cost Cents",
+              "type": "integer"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "rate_cents_per_km": {
+              "title": "Rate Cents Per Km",
+              "type": "integer"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "setpoint_decic": {
+              "title": "Setpoint Decic",
+              "type": "integer"
+            },
+            "start_node_id": {
+              "format": "uuid",
+              "title": "Start Node Id",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "code",
+            "capacity_weight_g",
+            "capacity_volume_cm3",
+            "setpoint_decic",
+            "allowed_cargo_types",
+            "start_node_id",
+            "end_node_id",
+            "calendar",
+            "driver_id",
+            "fixed_cost_cents",
+            "rate_cents_per_km"
+          ],
+          "title": "VehicleDTO",
+          "type": "object"
+        },
+        "VehicleStateDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_cargo_types": {
+              "items": {
+                "$ref": "#/$defs/CargoType"
+              },
+              "title": "Allowed Cargo Types",
+              "type": "array"
+            },
+            "available_window": {
+              "$ref": "#/$defs/TimeWindowDTO"
+            },
+            "capacity_volume_cm3": {
+              "title": "Capacity Volume Cm3",
+              "type": "integer"
+            },
+            "capacity_weight_g": {
+              "title": "Capacity Weight G",
+              "type": "integer"
+            },
+            "driver_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Driver Id"
+            },
+            "end_node_id": {
+              "format": "uuid",
+              "title": "End Node Id",
+              "type": "string"
+            },
+            "max_drive_s": {
+              "title": "Max Drive S",
+              "type": "integer"
+            },
+            "setpoint_decic": {
+              "title": "Setpoint Decic",
+              "type": "integer"
+            },
+            "start_load": {
+              "$ref": "#/$defs/LoadDTO"
+            },
+            "start_node_id": {
+              "format": "uuid",
+              "title": "Start Node Id",
+              "type": "string"
+            },
+            "vehicle_id": {
+              "format": "uuid",
+              "title": "Vehicle Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "vehicle_id",
+            "driver_id",
+            "start_node_id",
+            "end_node_id",
+            "start_load",
+            "capacity_weight_g",
+            "capacity_volume_cm3",
+            "setpoint_decic",
+            "available_window",
+            "max_drive_s",
+            "allowed_cargo_types"
+          ],
+          "title": "VehicleStateDTO",
+          "type": "object"
+        },
+        "WarehouseDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "calendar": {
+              "$ref": "#/$defs/CalendarDTO"
+            },
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "node_id": {
+              "format": "uuid",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "timezone": {
+              "title": "Timezone",
+              "type": "string"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "code",
+            "name",
+            "node_id",
+            "timezone",
+            "calendar"
+          ],
+          "title": "WarehouseDTO",
+          "type": "object"
+        },
+        "WorkerDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_zone_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Allowed Zone Ids",
+              "type": "array"
+            },
+            "calendar": {
+              "$ref": "#/$defs/CalendarDTO"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "pool_id": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Pool Id"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "skills": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Skills",
+              "type": "array"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "warehouse_id": {
+              "format": "uuid",
+              "title": "Warehouse Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "warehouse_id",
+            "skills",
+            "allowed_zone_ids",
+            "calendar",
+            "pool_id"
+          ],
+          "title": "WorkerDTO",
+          "type": "object"
+        },
+        "ZoneDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_cargo_types": {
+              "items": {
+                "$ref": "#/$defs/CargoType"
+              },
+              "title": "Allowed Cargo Types",
+              "type": "array"
+            },
+            "capacity_volume_cm3": {
+              "title": "Capacity Volume Cm3",
+              "type": "integer"
+            },
+            "capacity_weight_g": {
+              "title": "Capacity Weight G",
+              "type": "integer"
+            },
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "setpoint_decic": {
+              "title": "Setpoint Decic",
+              "type": "integer"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "warehouse_id": {
+              "format": "uuid",
+              "title": "Warehouse Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "warehouse_id",
+            "code",
+            "setpoint_decic",
+            "capacity_weight_g",
+            "capacity_volume_cm3",
+            "allowed_cargo_types"
+          ],
+          "title": "ZoneDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "plan": {
+          "$ref": "#/$defs/TransportPlanDTO"
+        },
+        "problem": {
+          "$ref": "#/$defs/TransportProblemDTO"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "stops": {
+          "items": {
+            "$ref": "#/$defs/RouteStopDTO"
+          },
+          "title": "Stops",
+          "type": "array"
+        }
+      },
+      "required": [
+        "problem",
+        "plan",
+        "stops"
+      ],
+      "title": "TransportValidationRequest",
+      "type": "object"
+    },
     "logistics_contracts.warehouse.DiagnosticDTO": {
       "additionalProperties": false,
       "properties": {
