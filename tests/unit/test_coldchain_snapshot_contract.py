@@ -9,6 +9,7 @@ from logistics_contracts.mapping import snapshot_dto
 from logistics_domain.coldchain import (
     BatchCompatibility,
     CapacityAmount,
+    CapacityPeriod,
     CapacityUnit,
     ChangeoverRule,
     ColdChainSetupPolicy,

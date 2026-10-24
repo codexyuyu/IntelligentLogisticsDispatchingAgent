@@ -605,6 +605,62 @@
       "title": "CapacityAmountDTO",
       "type": "object"
     },
+    "logistics_contracts.coldchain.CapacityPeriodDTO": {
+      "$defs": {
+        "CapacityAmountDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "title": "Amount",
+              "type": "integer"
+            },
+            "unit": {
+              "$ref": "#/$defs/CapacityUnit"
+            }
+          },
+          "required": [
+            "unit",
+            "amount"
+          ],
+          "title": "CapacityAmountDTO",
+          "type": "object"
+        },
+        "CapacityUnit": {
+          "enum": [
+            "weight_g",
+            "volume_cm3",
+            "quantity_units"
+          ],
+          "title": "CapacityUnit",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "capacities": {
+          "items": {
+            "$ref": "#/$defs/CapacityAmountDTO"
+          },
+          "title": "Capacities",
+          "type": "array"
+        },
+        "end_s": {
+          "title": "End S",
+          "type": "integer"
+        },
+        "start_s": {
+          "title": "Start S",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "start_s",
+        "end_s",
+        "capacities"
+      ],
+      "title": "CapacityPeriodDTO",
+      "type": "object"
+    },
     "logistics_contracts.coldchain.ChangeoverRuleDTO": {
       "additionalProperties": false,
       "properties": {
@@ -772,6 +828,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -871,6 +954,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -1300,6 +1391,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -1344,6 +1462,14 @@
             "$ref": "#/$defs/CapacityAmountDTO"
           },
           "title": "Capacities",
+          "type": "array"
+        },
+        "capacity_periods": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CapacityPeriodDTO"
+          },
+          "title": "Capacity Periods",
           "type": "array"
         },
         "location_id": {
@@ -23591,6 +23717,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -23879,6 +24032,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -35717,6 +35878,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -36071,6 +36259,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -39791,6 +39987,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -40079,6 +40302,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -44921,6 +45152,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -45209,6 +45467,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -50481,6 +50747,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -50769,6 +51062,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -52937,6 +53238,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -53225,6 +53553,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -57524,6 +57860,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -57812,6 +58175,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -61176,6 +61547,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -61464,6 +61862,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -63881,6 +64287,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -64169,6 +64602,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -67189,6 +67630,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -67477,6 +67945,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {
@@ -69648,6 +70124,33 @@
           "title": "CapacityAmountDTO",
           "type": "object"
         },
+        "CapacityPeriodDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "capacities": {
+              "items": {
+                "$ref": "#/$defs/CapacityAmountDTO"
+              },
+              "title": "Capacities",
+              "type": "array"
+            },
+            "end_s": {
+              "title": "End S",
+              "type": "integer"
+            },
+            "start_s": {
+              "title": "Start S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start_s",
+            "end_s",
+            "capacities"
+          ],
+          "title": "CapacityPeriodDTO",
+          "type": "object"
+        },
         "CapacityUnit": {
           "enum": [
             "weight_g",
@@ -69936,6 +70439,14 @@
                 "$ref": "#/$defs/CapacityAmountDTO"
               },
               "title": "Capacities",
+              "type": "array"
+            },
+            "capacity_periods": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/CapacityPeriodDTO"
+              },
+              "title": "Capacity Periods",
               "type": "array"
             },
             "location_id": {

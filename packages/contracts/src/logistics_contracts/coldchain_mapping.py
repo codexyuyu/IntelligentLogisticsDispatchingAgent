@@ -25,7 +25,11 @@ def coldchain_dto(value: domain.ColdChainSnapshot | None) -> dto.ColdChainSnapsh
             available_windows=tuple(
                 __import__("logistics_contracts.entities", fromlist=["TimeWindowDTO"]).TimeWindowDTO(
                     earliest_s=window.earliest_s, latest_s=window.latest_s)
-                for window in item.available_windows)) for item in value.storage_locations),
+                for window in item.available_windows),
+            capacity_periods=tuple(dto.CapacityPeriodDTO(
+                start_s=period.start_s, end_s=period.end_s,
+                capacities=tuple(_capacity(capacity) for capacity in period.capacities))
+                for period in item.capacity_periods)) for item in value.storage_locations),
         occupancies=tuple(dto.StorageOccupancyDTO(
             occupancy_id=item.occupancy_id, batch_id=item.batch_id, location_id=item.location_id,
             capacity_use=tuple(_capacity(c) for c in item.capacity_use), origin=item.origin,

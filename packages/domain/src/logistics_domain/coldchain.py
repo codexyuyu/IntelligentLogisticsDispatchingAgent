@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import StrEnum
+from itertools import pairwise
 from uuid import UUID
 
 from logistics_domain.errors import InvalidInputError
@@ -48,6 +49,22 @@ def _capacities(values: tuple[CapacityAmount, ...]) -> None:
 
 
 @dataclass(frozen=True, slots=True)
+class CapacityPeriod:
+    """Time-phased effective capacity for one storage location."""
+
+    start_s: int
+    end_s: int
+    capacities: tuple[CapacityAmount, ...]
+
+    def __post_init__(self) -> None:
+        require_non_negative_int(self.start_s, field="capacity_period.start_s")
+        require_non_negative_int(self.end_s, field="capacity_period.end_s")
+        if self.end_s <= self.start_s:
+            raise InvalidInputError("capacity period requires start_s < end_s")
+        _capacities(self.capacities)
+
+
+@dataclass(frozen=True, slots=True)
 class ColdChainZone:
     zone_id: UUID
     warehouse_id: UUID
@@ -70,6 +87,7 @@ class ColdChainStorageLocation:
     version: int
     capacities: tuple[CapacityAmount, ...]
     available_windows: tuple[TimeWindow, ...] = ()
+    capacity_periods: tuple[CapacityPeriod, ...] = ()
 
     def __post_init__(self) -> None:
         for value, field in ((self.location_id, "location_id"), (self.warehouse_id, "warehouse_id"),
@@ -79,6 +97,13 @@ class ColdChainStorageLocation:
         _capacities(self.capacities)
         if not isinstance(self.available_windows, tuple):
             raise InvalidInputError("available_windows must be a tuple")
+        if not isinstance(self.capacity_periods, tuple) or any(
+                not isinstance(item, CapacityPeriod) for item in self.capacity_periods):
+            raise InvalidInputError("capacity_periods must be typed")
+        ordered = sorted(self.capacity_periods, key=lambda item: item.start_s)
+        for left, right in pairwise(ordered):
+            if left.end_s > right.start_s:
+                raise InvalidInputError("capacity periods must not overlap")
 
 
 @dataclass(frozen=True, slots=True)
@@ -287,7 +312,7 @@ class ColdChainSnapshot:
 
 
 __all__ = [
-    "BatchCompatibility", "CapacityAmount", "CapacityUnit", "ChangeoverRule",
+    "BatchCompatibility", "CapacityAmount", "CapacityPeriod", "CapacityUnit", "ChangeoverRule",
     "ColdChainSetupPolicy", "ColdChainSnapshot", "ColdChainStorageLocation",
     "ColdChainZone", "CompatibilityPolicy", "ExposureLimit", "ExposureScope",
     "ExposureSegment", "PrecoolRequirement", "StorageOccupancy",

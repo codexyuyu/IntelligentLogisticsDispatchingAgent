@@ -751,6 +751,33 @@
         "title": "CapacityAmountDTO",
         "type": "object"
       },
+      "CapacityPeriodDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "capacities": {
+            "items": {
+              "$ref": "#/components/schemas/CapacityAmountDTO"
+            },
+            "title": "Capacities",
+            "type": "array"
+          },
+          "end_s": {
+            "title": "End S",
+            "type": "integer"
+          },
+          "start_s": {
+            "title": "Start S",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "start_s",
+          "end_s",
+          "capacities"
+        ],
+        "title": "CapacityPeriodDTO",
+        "type": "object"
+      },
       "CapacityUnit": {
         "enum": [
           "weight_g",
@@ -1157,6 +1184,14 @@
               "$ref": "#/components/schemas/CapacityAmountDTO"
             },
             "title": "Capacities",
+            "type": "array"
+          },
+          "capacity_periods": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/CapacityPeriodDTO"
+            },
+            "title": "Capacity Periods",
             "type": "array"
           },
           "location_id": {

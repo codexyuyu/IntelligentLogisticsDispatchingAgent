@@ -25,6 +25,7 @@ from logistics_contracts.planning import ObjectivePolicyDTO, PlanningScopeDTO, S
 from logistics_contracts.warehouse import WarehouseJobContent, WarehouseSolutionDTO
 from logistics_domain.coldchain import (
     CapacityAmount,
+    CapacityPeriod,
     CapacityUnit,
     ColdChainSnapshot,
     ColdChainStorageLocation,
@@ -267,6 +268,8 @@ def test_coldchain_precool_precedence_and_exposure_are_validated(warehouse_api):
         storage_locations=(ColdChainStorageLocation(location_id=UUID(location["id"]),
             warehouse_id=UUID(zone["warehouse_id"]), zone_id=UUID(location["zone_id"]),
             version=1, capacities=(CapacityAmount(CapacityUnit.WEIGHT_G, 10000),),
+            capacity_periods=(CapacityPeriod(0, 3600,
+                (CapacityAmount(CapacityUnit.WEIGHT_G, 10000),)),),
             available_windows=(TimeWindow(0, 8),)),),
         occupancies=(StorageOccupancy(occupancy_id=uuid4(), batch_id="batch-1",
             location_id=UUID(location["id"]),

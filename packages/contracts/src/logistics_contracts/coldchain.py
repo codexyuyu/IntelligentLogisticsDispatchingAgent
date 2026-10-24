@@ -16,6 +16,13 @@ class CapacityAmountDTO(Record):
     amount: StrictInt
 
 
+class CapacityPeriodDTO(Record):
+    domain_type = domain.CapacityPeriod
+    start_s: StrictInt
+    end_s: StrictInt
+    capacities: tuple[CapacityAmountDTO, ...]
+
+
 class ColdChainZoneDTO(Record):
     domain_type = domain.ColdChainZone
     zone_id: UUID
@@ -33,6 +40,7 @@ class ColdChainStorageLocationDTO(Record):
     version: StrictInt
     capacities: tuple[CapacityAmountDTO, ...]
     available_windows: tuple[TimeWindowDTO, ...] = ()
+    capacity_periods: tuple[CapacityPeriodDTO, ...] = ()
 
 
 class StorageOccupancyDTO(Record):

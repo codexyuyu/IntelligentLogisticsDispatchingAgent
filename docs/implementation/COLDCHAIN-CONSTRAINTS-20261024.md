@@ -15,12 +15,17 @@
   - 按 batch 合并仓储暴露区间，检查 `ExposureScope.IN_WAREHOUSE` 上限；
   - 缺失预冷/装卸操作/暴露段时进入 `unsupported/not_checked`，不当作 0。
 - `validate_warehouse` 合并 coldchain 违规与 checked/unsupported codes。
+- 新增 `CapacityPeriod`：
+  - 库位可声明分时段有效容量；
+  - DTO/mapping 已接通；
+  - validator 按 period 切分占用并检查峰值；
+  - 占用落在所有 period 之外时产生 `coldchain_capacity_uncovered`。
 
 ## 验证
 
 ```text
 tests/integration/test_warehouse_job_pipeline.py：6 passed in 7.94s
-全量：309 passed in 117.15s，exit 0
+全量：309 passed in 120.85s，exit 0
 architecture：122 modules，0 violations
 schema --check：exit 0
 ```
@@ -34,7 +39,7 @@ schema --check：exit 0
 
 ## 未完成
 
-- 时变有效库容尚未进入 CP-SAT；当前只在 validator 检查声明容量与可用窗口；
+- 时变有效库容的**契约与 validator**已接入，但尚未进入 CP-SAT；求解器仍只按静态容量/窗口建模；
 - 7 天跨批次复用规则尚未建模；
 - 装载/运输暴露未纳入（只检查 `in_warehouse`）；
 - 冷链 `ColdChainPlan` 输出/持久化未实现；
