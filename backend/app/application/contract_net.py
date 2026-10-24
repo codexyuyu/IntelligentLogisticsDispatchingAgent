@@ -521,14 +521,20 @@ class TransportWindowRole:
 
 @dataclass
 class ExceptionRecoveryRole:
-    """Bids a recovery window after a disruption; refuses when recovery overruns."""
+    """Bids a recovery window after a disruption; refuses when recovery overruns.
 
-    disruption_at_s: int
+    ``disruption_at_s is None`` means no disruption was declared, so the role has
+    nothing to offer and returns no bid instead of inventing a free slot.
+    """
+
+    disruption_at_s: int | None
     recovery_s: int
     resource_id: str
     role: BiddingRole = field(default='exception', init=False)
 
     def bid(self, cfp: CallForProposals) -> Bid | None:
+        if self.disruption_at_s is None:
+            return None
         task = cfp.task
         start = max(task.window_start_s, self.disruption_at_s)
         end = start + self.recovery_s

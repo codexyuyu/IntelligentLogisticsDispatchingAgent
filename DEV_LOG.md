@@ -1,3 +1,13 @@
+## 2026-10-24 · PARTNER · R09 乙方侧集成：业务观测 + R08 组合根装配
+
+新增 `backend/app/application/plan_observations.py`：`observe_plan(plan, requested_order_ids, negotiation=None)` 输出 R09 可用的**业务事实**——订单覆盖（请求/已服务/未服务含 reason）、逐单 `handoff_wait_s`（发车−ready_at）、仓库 makespan、总里程/时长、按 `(location, unit)` 的容量峰值（半开区间扫描）、按批次的暴露**并集**、换批次数与总时长、三段求解状态、协商状态/授标数/冲突数/digest。无冷链证据时 `coldchain_evidence=False` 且峰值/暴露为空元组，**不填 0**；指标公式仍留在甲方 `app/evaluation/`。
+
+`bootstrap.build_negotiator(snapshot, ...)`：按快照真实对象装配 R08 三角色（仓储绑定所选资源日历、运输绑定所选车辆班次、异常未声明扰动时不报价）；`ExceptionRecoveryRole.disruption_at_s` 改为可空以支持"不报价"。契约 0.2.0 未变。
+
+验证：`tests/test_r09_observations.py` **12 passed**；backend 全量 **340 passed**（基线 328 + 12）；`check_project` PASS；`verify_delivery` 12/12 exit 0。
+
+遗留：14 项指标与对照实验、冷链域独立校验、持久化实现均属甲方，未触碰；`agent_demo` 工具调用链路未接观测器。详见[本轮增量日志](docs/devlog/entries/20261024-1530-partner-r09-observations-integration.md)。
+
 ## 2026-10-24 · PARTNER · bootstrap 组合根与依赖装配（架构告警清零）
 
 `backend/app/bootstrap.py` 由脚手架改为唯一组合根：`Services`（routing / warehouse_scheduler / warehouse_validator / simulator）+ `build_services()`（lru_cache 单例，只装真实 adapter）+ `describe_services()`。`application` 三个模块删除全部 adapter 导入，改为参数注入；`api/dependencies.py` 提供 `get_services` / `ServicesDep`，planning、events、simulations 三条路由透传。adapter 导入放在 `build_services()` 函数体内，因为 `simpy_simulator` 反向 import `coordinator`/`handle_event`，模块级会成环。
