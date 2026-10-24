@@ -11,6 +11,7 @@ from logistics_backend.application.schedule import ScheduleService
 from logistics_contracts.planning import CommitReceiptDTO
 from logistics_contracts.schedules import (
     CandidateCreate,
+    CandidateFromJob,
     CandidateView,
     CommitRequest,
     ScheduleCreate,
@@ -75,6 +76,15 @@ def diff_schedule_versions(schedule_id: UUID, base_version_id: UUID,
                            current: ActorContext = Depends(actor),
                            service: ScheduleService = Depends(schedule_service)):
     return service.diff(schedule_id, base_version_id, candidate_version_id, current)
+
+
+@router.post("/schedules/{schedule_id}/candidates/from-job",
+             response_model=CandidateView, status_code=201,
+             operation_id="create_candidate_from_job")
+def create_candidate_from_job(schedule_id: UUID, command: CandidateFromJob,
+                              current: ActorContext = Depends(operator),
+                              service: ScheduleService = Depends(schedule_service)):
+    return service.create_candidate_from_job(schedule_id, command, current)
 
 
 @router.post("/schedules/{schedule_id}/candidates", response_model=CandidateView,

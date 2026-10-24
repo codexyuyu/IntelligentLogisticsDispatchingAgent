@@ -85,5 +85,8 @@ class JobService:
     def get(self, job_id, actor):
         return self.repository.get(job_id, actor.scope_id)
 
+    def load_request(self, job_id, actor) -> bytes:
+        return self.repository.load_job_request(job_id, actor.scope_id)
+
     def cancel(self, job_id, command, actor):
         return self.repository.cancel(job_id, command.expected_revision, actor.scope_id)

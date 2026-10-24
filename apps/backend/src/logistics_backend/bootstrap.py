@@ -147,7 +147,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         decisions=DecisionService(factory, settings.scope_id),
         experiments=ExperimentService(factory, settings.scope_id),
         metrics=MetricsService(factory, settings.scope_id),
-        schedules=ScheduleService(factory, settings.scope_id, snapshots, commits),
+        schedules=ScheduleService(factory, settings.scope_id, snapshots, commits, jobs),
     )
     return engine, services
 

@@ -27,6 +27,8 @@ from logistics_contracts.mapping import (
     storage_interval_dto,
 )
 from logistics_domain.planning import ValidationReport
+from logistics_backend.application.optimization import TransportResultStore
+from logistics_contracts.transport import TransportJobContent, TransportProblemDTO
 from logistics_contracts.planning import (
     CandidatePlanDTO,
     CommitCommandDTO,
@@ -40,6 +42,7 @@ from logistics_contracts.planning import (
 )
 from logistics_contracts.schedules import (
     CandidateCreate,
+    CandidateFromJob,
     CandidateView,
     CommitRequest,
     ScheduleCreate,
@@ -68,11 +71,14 @@ from logistics_optimization.validation.warehouse import validate_warehouse
 
 
 class ScheduleService:
-    def __init__(self, uow_factory, workspace_id: UUID, snapshots=None, commits=None):
+    def __init__(self, uow_factory, workspace_id: UUID, snapshots=None, commits=None,
+                 jobs=None):
         self.uow_factory = uow_factory
         self.workspace_id = workspace_id
         self.snapshots = snapshots
         self.commits = commits
+        self.jobs = jobs
+        self.transport_results = TransportResultStore()
 
     def create(self, command: ScheduleCreate, actor) -> ScheduleView:
         now = datetime.now(timezone.utc).replace(microsecond=0)
@@ -119,11 +125,15 @@ class ScheduleService:
         candidate_id = uuid4()
         now = datetime.now(timezone.utc).replace(microsecond=0)
         tasks = []
+        seen_tasks = set()
         for stop in stops:
             route = routes.get(stop.route_id)
             if route is None:
                 raise ServiceError(ErrorCode.INVALID_INPUT, "stop route is not in the plan")
             for task_id in stop.task_ids:
+                if task_id in seen_tasks:
+                    continue
+                seen_tasks.add(task_id)
                 tasks.append(ScheduleTask(id=uuid4(), status=EntityState.PLANNED,
                     created_at=now, updated_at=now, row_version=0, schema_version="2.0.0",
                     created_by=actor.actor_id, version_id=candidate_id, task_id=task_id,
@@ -240,6 +250,29 @@ class ScheduleService:
                 status="recorded", created_at=now, updated_at=now,
                 created_by=actor.actor_id, row_version=0, schema_version="2.0.0",
                 payload=payload).on_conflict_do_nothing())
+
+    def create_candidate_from_job(self, schedule_id: UUID, command: CandidateFromJob,
+                                  actor) -> CandidateView:
+        if self.jobs is None:
+            raise ServiceError(ErrorCode.DEPENDENCY_UNAVAILABLE, "job service unavailable")
+        job = self.jobs.get(command.job_id, actor)
+        content = self.jobs.load_request(command.job_id, actor)
+        try:
+            payload = TransportJobContent.model_validate_json(content)
+            problem = payload.problem
+        except Exception:
+            problem = TransportProblemDTO.model_validate_json(content)
+        solution = self.transport_results.read(job)
+        if solution.candidate is None or not solution.stops:
+            raise ServiceError(ErrorCode.UNVERIFIED_SOLVER_RESULT,
+                "completed job has no candidate stops")
+        refs = tuple(evidence.id for evidence in solution.solver_evidence)
+        if not refs:
+            raise ServiceError(ErrorCode.UNVERIFIED_SOLVER_RESULT,
+                "completed job has no solver evidence")
+        return self.create_candidate(schedule_id, CandidateCreate(
+            problem=problem, plan=solution.candidate, stops=solution.stops,
+            solver_evidence_refs=refs, base_version_id=command.base_version_id), actor)
 
     def commit(self, schedule_id: UUID, request: CommitRequest, actor,
                trace_id: UUID) -> CommitReceiptDTO:

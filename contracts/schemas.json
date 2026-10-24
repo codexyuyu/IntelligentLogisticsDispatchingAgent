@@ -44723,6 +44723,40 @@
       "title": "CandidateCreate",
       "type": "object"
     },
+    "logistics_contracts.schedules.CandidateFromJob": {
+      "additionalProperties": false,
+      "properties": {
+        "base_version_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base Version Id"
+        },
+        "job_id": {
+          "format": "uuid",
+          "title": "Job Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "2.0.0",
+          "default": "2.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "job_id"
+      ],
+      "title": "CandidateFromJob",
+      "type": "object"
+    },
     "logistics_contracts.schedules.CandidateView": {
       "additionalProperties": false,
       "properties": {

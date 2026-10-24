@@ -54,6 +54,13 @@ class CandidateCreate(BaseModel):
     warehouse_solution: WarehouseSolutionDTO | None = None
 
 
+class CandidateFromJob(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    job_id: UUID
+    base_version_id: UUID | None = None
+
+
 class CandidateView(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal["2.0.0"] = "2.0.0"

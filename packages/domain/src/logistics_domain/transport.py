@@ -12,6 +12,7 @@ from logistics_domain.planning import (
     ObjectiveBreakdown,
     ObjectivePolicy,
     PlanningSnapshot,
+    RouteStop,
     SolveStatus,
     SolverEvidence,
     TransportPlan,

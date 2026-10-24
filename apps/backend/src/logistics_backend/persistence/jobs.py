@@ -53,6 +53,16 @@ class JobRepository:
             raise ServiceError(ErrorCode.INVALID_INPUT, "request reference mismatch")
         return row["content"]
 
+    def load_job_request(self, job_id, scope_id):
+        """Load the immutable request pinned to a job, after checking job visibility."""
+        with self.uow_factory() as uow:
+            row = uow.connection.execute(select(jobs.c.command).where(
+                jobs.c.id == job_id, jobs.c.scope_id == scope_id)).first()
+        if row is None:
+            raise ServiceError(ErrorCode.NOT_FOUND, "job not found")
+        command = JobRequest.model_validate(row[0])
+        return self.load_request(command.payload.request_ref, scope_id)
+
     def enqueue(self, command, actor, key, trace_id):
         now = utcnow()
         if not key or len(key) > 256:
