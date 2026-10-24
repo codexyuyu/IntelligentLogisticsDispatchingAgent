@@ -17,8 +17,6 @@ import ExperimentsPage from './features/experiments/Page';
 import PostgresPage from './features/postgres/Page';
 import ClosedLoopPage from './features/closedLoop/Page';
 import AgentPage from './features/agent/Page';
-import DataQualityPage from './features/dataQuality/Page';
-import ExperimentResultsPage from './features/experimentResults/Page';
 
 type NavItem = { key: string; title: string; icon: string };
 const groups: { label: string; items: NavItem[] }[] = [
@@ -26,12 +24,10 @@ const groups: { label: string; items: NavItem[] }[] = [
   { label: '业务数据', items: [{ key: 'orders', title: '订单与库存', icon: 'package' }, { key: 'vehicles', title: '运输计划', icon: 'truck' }, { key: 'postgres', title: '本机数据库调度', icon: 'database' }] },
   { label: '仓储管理', items: [{ key: 'warehouseTwin', title: '单仓三维视图', icon: 'warehouse' }, { key: 'warehouseOps', title: '仓储运营', icon: 'warehouse' }, { key: 'warehouses', title: '仓储排程', icon: 'clock' }] },
   { label: '调度', items: [{ key: 'agent', title: '调度助手', icon: 'bot' }, { key: 'closedLoop', title: '仓运闭环', icon: 'route' }, { key: 'plans', title: '联合调度', icon: 'route' }, { key: 'events', title: '异常处置', icon: 'alert' }, { key: 'simulations', title: '仿真回放', icon: 'play' }] },
-  { label: '评测', items: [{ key: 'experiments', title: '对照实验', icon: 'chart' }, { key: 'experimentResults', title: '实验结果', icon: 'chart' }, { key: 'dataQuality', title: '数据导入质量', icon: 'database' }] },
+  { label: '评测', items: [{ key: 'experiments', title: '对照实验', icon: 'chart' }] },
 ];
 
 const pageMap: Record<string, ComponentType> = {
-  experimentResults: ExperimentResultsPage,
-  dataQuality: DataQualityPage,
   dashboard: DashboardPage, orders: OrdersPage, warehouseTwin: WarehouseTwinPage, warehouseOps: WarehouseManagementPage, warehouses: WarehousesPage, vehicles: VehiclesPage,
   plans: PlansPage, closedLoop: ClosedLoopPage, agent: AgentPage, postgres: PostgresPage, events: EventsPage, simulations: SimulationsPage, experiments: ExperimentsPage,
 };

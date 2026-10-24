@@ -21,8 +21,7 @@
     "test:r30a": "node scripts/test-r30a-pg.cjs",
     "test:r30c": "node scripts/test-r30c-agent.cjs",
     "typecheck": "tsc --noEmit",
-    "test:data-quality": "node scripts/test-data-quality.mjs",
-    "test": "node scripts/test-data-quality.mjs && node scripts/test-r15-evidence.cjs && node scripts/test-r16-speed.cjs && node scripts/test-r23-pg-ui.cjs && node scripts/test-r25-replay.cjs && node scripts/test-r26-warehouse.cjs && node scripts/test-r27-flow.cjs && node scripts/test-r28-reconciliation.cjs && node scripts/test-r29-active.cjs && node scripts/test-r30a-pg.cjs && node scripts/test-r30c-agent.cjs"
+    "test": "node scripts/test-r15-evidence.cjs && node scripts/test-r16-speed.cjs && node scripts/test-r23-pg-ui.cjs && node scripts/test-r25-replay.cjs && node scripts/test-r26-warehouse.cjs && node scripts/test-r27-flow.cjs && node scripts/test-r28-reconciliation.cjs && node scripts/test-r29-active.cjs && node scripts/test-r30a-pg.cjs && node scripts/test-r30c-agent.cjs"
   },
   "dependencies": {
     "openapi-fetch": "^0.14.0",
@@ -41,4 +40,3 @@
     "vite": "^7.1.0"
   }
 }
-

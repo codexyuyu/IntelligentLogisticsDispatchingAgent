@@ -191,6 +191,27 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /**
+         * BatchCompatibility
+         * @description Batch facts needed to check temperature and mixed-load compatibility.
+         */
+        BatchCompatibility: {
+            /** Batch Id */
+            batch_id: string;
+            /** Compatibility Class */
+            compatibility_class?: string | null;
+            /** Max Temperature Decic */
+            max_temperature_decic: number;
+            /** Min Temperature Decic */
+            min_temperature_decic: number;
+            /**
+             * Temperature Zone
+             * @enum {string}
+             */
+            temperature_zone: "chilled" | "frozen";
+            /** Warehouse Id */
+            warehouse_id: string;
+        };
         /** CandidatePlan */
         CandidatePlan: {
             coordination?: components["schemas"]["CoordinationReport"] | null;
@@ -207,6 +228,123 @@ export interface components {
             /** Version */
             version: number;
             warehouse: components["schemas"]["WarehouseScheduleResult"];
+        };
+        /**
+         * CapacityAmount
+         * @description One integer capacity amount in exactly one dimension.
+         */
+        CapacityAmount: {
+            /** Amount */
+            amount: number;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "weight_g" | "volume_cm3" | "quantity_units";
+        };
+        /**
+         * ChangeoverRule
+         * @description Clean/quarantine changeover duration between two setup classes.
+         */
+        ChangeoverRule: {
+            /** Duration S */
+            duration_s: number;
+            /** From Class */
+            from_class: string;
+            /** To Class */
+            to_class: string;
+        };
+        /**
+         * ColdChainPlan
+         * @description R05 output of one warehouse schedule (evidence, not a certificate).
+         */
+        ColdChainPlan: {
+            /**
+             * Changeovers
+             * @default []
+             */
+            changeovers: components["schemas"]["ScheduledChangeover"][];
+            /**
+             * Exposure Segments
+             * @default []
+             */
+            exposure_segments: components["schemas"]["ExposureSegment"][];
+            /**
+             * Occupancies
+             * @default []
+             */
+            occupancies: components["schemas"]["ScheduledOccupancy"][];
+            /** Rule Version */
+            rule_version: string;
+        };
+        /**
+         * ColdChainSnapshot
+         * @description All R05 inputs of one planning snapshot.
+         *
+         *     Attached as ``PlanningSnapshot.coldchain``; ``None`` there means the scenario
+         *     makes no R05 claim and every R05 rule is not_checked.
+         */
+        ColdChainSnapshot: {
+            /**
+             * Batch Compatibility
+             * @default []
+             */
+            batch_compatibility: components["schemas"]["BatchCompatibility"][];
+            compatibility_policy?: components["schemas"]["CompatibilityPolicy"] | null;
+            /**
+             * Exposure Limits
+             * @default []
+             */
+            exposure_limits: components["schemas"]["ExposureLimit"][];
+            /** Horizon S */
+            horizon_s: number;
+            /**
+             * Occupancies
+             * @default []
+             */
+            occupancies: components["schemas"]["StorageOccupancy"][];
+            /**
+             * Precool Requirements
+             * @default []
+             */
+            precool_requirements: components["schemas"]["PrecoolRequirement"][];
+            /** Rule Version */
+            rule_version: string;
+            /**
+             * Setup Policies
+             * @default []
+             */
+            setup_policies: components["schemas"]["SetupPolicy"][];
+            /**
+             * Storage Locations
+             * @default []
+             */
+            storage_locations: components["schemas"]["StorageLocation"][];
+            /**
+             * Zones
+             * @default []
+             */
+            zones: components["schemas"]["WarehouseZone"][];
+        };
+        /**
+         * CompatibilityPolicy
+         * @description Versioned rule for batches that must never overlap in one location.
+         */
+        CompatibilityPolicy: {
+            /**
+             * Incompatible Class Pairs
+             * @default []
+             */
+            incompatible_class_pairs: [
+                string,
+                string
+            ][];
+            /** Policy Id */
+            policy_id: string;
+            /** Rule Version */
+            rule_version: string;
+            /** Version */
+            version: string;
         };
         /** ConfirmPlanRequest */
         ConfirmPlanRequest: {
@@ -389,6 +527,51 @@ export interface components {
             trace_ids: string[];
             validation: components["schemas"]["ValidationReport"];
         };
+        /**
+         * ExposureLimit
+         * @description Maximum cumulative exposure time allowed for one batch.
+         */
+        ExposureLimit: {
+            /** Batch Id */
+            batch_id: string;
+            /** Limit Id */
+            limit_id: string;
+            /** Max Exposure S */
+            max_exposure_s: number;
+            /** Rule Version */
+            rule_version: string;
+            /** Scopes */
+            scopes: ("in_warehouse" | "waiting" | "loading" | "transport")[];
+            source: components["schemas"]["Source"];
+        };
+        /**
+         * ExposureSegment
+         * @description One observed/planned exposure interval ``[start_s, end_s)`` of a batch.
+         *
+         *     Segments of the same batch and scope are merged as a union before
+         *     comparison: overlapping observations are never double counted.  Coverage
+         *     that the producer cannot evidence must be reported as ``not_checked``.
+         */
+        ExposureSegment: {
+            /** Batch Id */
+            batch_id: string;
+            /** End S */
+            end_s: number;
+            /**
+             * Scope
+             * @enum {string}
+             */
+            scope: "in_warehouse" | "waiting" | "loading" | "transport";
+            /** Segment Id */
+            segment_id: string;
+            /**
+             * Source Kind
+             * @enum {string}
+             */
+            source_kind: "declared" | "planned" | "observed";
+            /** Start S */
+            start_s: number;
+        };
         /** FieldError */
         FieldError: {
             /** Field */
@@ -400,7 +583,7 @@ export interface components {
         HealthResponse: {
             /**
              * Contract Version
-             * @default 0.1.0
+             * @default 0.2.0
              */
             contract_version: string;
             /**
@@ -484,10 +667,19 @@ export interface components {
              * @default []
              */
             predecessor_ids: string[];
+            /** Primary Requirement Id */
+            primary_requirement_id?: string | null;
             /** Release At S */
             release_at_s: number;
+            /**
+             * Requirements
+             * @default []
+             */
+            requirements: components["schemas"]["ResourceRequirement"][];
             /** Resource Id */
             resource_id: string;
+            /** Setup Class */
+            setup_class?: string | null;
             /**
              * Status
              * @default pending
@@ -505,6 +697,8 @@ export interface components {
             delivery_node_id: string;
             /** Freshness Deadline S */
             freshness_deadline_s: number;
+            /** Max Exposure S */
+            max_exposure_s?: number | null;
             /** Order Id */
             order_id: string;
             /** Quantity Units */
@@ -591,6 +785,7 @@ export interface components {
         };
         /** PlanningSnapshot */
         PlanningSnapshot: {
+            coldchain?: components["schemas"]["ColdChainSnapshot"] | null;
             /**
              * Frozen Operations
              * @default []
@@ -622,6 +817,76 @@ export interface components {
             version: number;
             /** Warehouses */
             warehouses: components["schemas"]["Warehouse"][];
+        };
+        /**
+         * PrecoolRequirement
+         * @description Pre-cooling step that must finish before the batch may be loaded.
+         */
+        PrecoolRequirement: {
+            /** Batch Id */
+            batch_id: string;
+            /** Eligible Resource Ids */
+            eligible_resource_ids: string[];
+            /**
+             * Loading Operation Ids
+             * @default []
+             */
+            loading_operation_ids: string[];
+            /** Min Duration S */
+            min_duration_s: number;
+            /** Precool Operation Id */
+            precool_operation_id: string;
+            /** Requirement Id */
+            requirement_id: string;
+            /**
+             * Target Temperature Zone
+             * @enum {string}
+             */
+            target_temperature_zone: "chilled" | "frozen";
+            /** Warehouse Id */
+            warehouse_id: string;
+        };
+        /**
+         * ResourceAssignment
+         * @description Actual resource chosen for one ``ResourceRequirement``.
+         */
+        ResourceAssignment: {
+            /**
+             * Quantity Units
+             * @default 1
+             */
+            quantity_units: number;
+            /** Requirement Id */
+            requirement_id: string;
+            /** Resource Id */
+            resource_id: string;
+        };
+        /**
+         * ResourceRequirement
+         * @description One named resource need of an operation.
+         *
+         *     ``fixed`` requires exactly one eligible resource.  ``choose_one`` lets the
+         *     solver pick any eligible resource.  ``quantity_units`` is how many units of
+         *     that resource the operation holds for its whole interval.
+         */
+        ResourceRequirement: {
+            /** Eligible Resource Ids */
+            eligible_resource_ids: string[];
+            /**
+             * Quantity Units
+             * @default 1
+             */
+            quantity_units: number;
+            /** Requirement Id */
+            requirement_id: string;
+            /** Requirement Kind */
+            requirement_kind: string;
+            /**
+             * Selection
+             * @default fixed
+             * @enum {string}
+             */
+            selection: "fixed" | "choose_one";
         };
         /** RouteStop */
         RouteStop: {
@@ -659,6 +924,31 @@ export interface components {
             /** Warehouse Arrivals */
             warehouse_arrivals: components["schemas"]["VehicleArrival"][];
         };
+        /**
+         * RuleEvidence
+         * @description Structured R05 evidence attached to a violation.
+         *
+         *     ``interval_*`` is the half-open window the rule examined; ``observed_value``
+         *     and ``limit_value`` are in ``capacity_unit`` when the rule is a capacity
+         *     rule.  Evidence never replaces the message: both are mandatory context for
+         *     reproducing a failed cold-chain check.
+         */
+        RuleEvidence: {
+            /** Capacity Unit */
+            capacity_unit?: string | null;
+            /** Detail */
+            detail?: string | null;
+            /** Interval End S */
+            interval_end_s?: number | null;
+            /** Interval Start S */
+            interval_start_s?: number | null;
+            /** Limit Value */
+            limit_value?: number | null;
+            /** Observed Value */
+            observed_value?: number | null;
+            /** Rule Version */
+            rule_version: string;
+        };
         /** ScenarioImportRequest */
         ScenarioImportRequest: {
             /** Scenario Id */
@@ -675,16 +965,100 @@ export interface components {
             /** Version */
             version: number;
         };
+        /**
+         * ScheduledChangeover
+         * @description Resolved changeover between two adjacent operations of one resource.
+         */
+        ScheduledChangeover: {
+            /** After Operation Id */
+            after_operation_id: string;
+            /** Before Operation Id */
+            before_operation_id: string;
+            /** Changeover Id */
+            changeover_id: string;
+            /** Duration S */
+            duration_s: number;
+            /** From Class */
+            from_class: string;
+            /** Resource Id */
+            resource_id: string;
+            /** Setup Operation Id */
+            setup_operation_id?: string | null;
+            /** To Class */
+            to_class: string;
+        };
+        /**
+         * ScheduledOccupancy
+         * @description Resolved storage occupancy for one planned interval ``[start_s, end_s)``.
+         */
+        ScheduledOccupancy: {
+            /** Batch Id */
+            batch_id: string;
+            /** Capacity Use */
+            capacity_use: components["schemas"]["CapacityAmount"][];
+            /** End S */
+            end_s: number;
+            /** Location Id */
+            location_id: string;
+            /** Occupancy Id */
+            occupancy_id: string;
+            /** Start S */
+            start_s: number;
+        };
         /** ScheduledOperation */
         ScheduledOperation: {
             /** End S */
             end_s: number;
             /** Operation Id */
             operation_id: string;
+            /**
+             * Resource Assignments
+             * @default []
+             */
+            resource_assignments: components["schemas"]["ResourceAssignment"][];
             /** Resource Id */
             resource_id: string;
+            /**
+             * Scheduled Kind
+             * @default task
+             * @enum {string}
+             */
+            scheduled_kind: "task" | "setup";
+            /** Setup For Operation Id */
+            setup_for_operation_id?: string | null;
             /** Start S */
             start_s: number;
+        };
+        /**
+         * SetupPolicy
+         * @description Sequence-dependent changeover policy bound to resources by id.
+         *
+         *     ``rendering`` fixes how a changeover appears in solver output:
+         *
+         *     * ``gap``: the gap between the two adjacent operations on the same resource
+         *       must be at least the rule duration; accepting a shorter gap is a failure.
+         *     * ``explicit_operation``: a setup operation occupying the resource (and any
+         *       personnel/equipment it needs) must be emitted between the two operations.
+         *
+         *     ``default_duration_s is None`` means an unlisted class pair is unknown, so
+         *     the changeover cannot be zero: it is infeasible or unvalidated, never free.
+         */
+        SetupPolicy: {
+            /** Default Duration S */
+            default_duration_s?: number | null;
+            /** Policy Id */
+            policy_id: string;
+            /**
+             * Rendering
+             * @enum {string}
+             */
+            rendering: "gap" | "explicit_operation";
+            /** Rule Version */
+            rule_version: string;
+            /** Rules */
+            rules: components["schemas"]["ChangeoverRule"][];
+            /** Version */
+            version: string;
         };
         /** SimulationAccepted */
         SimulationAccepted: {
@@ -788,6 +1162,64 @@ export interface components {
             /** Warehouse Id */
             warehouse_id: string;
         };
+        /**
+         * StorageLocation
+         * @description A physical storage location (cold room / rack slot) inside one zone.
+         *
+         *     ``available_windows`` empty means "no calendar restriction declared"; it is
+         *     not a claim that the location is available at all times.
+         */
+        StorageLocation: {
+            /**
+             * Available Windows
+             * @default []
+             */
+            available_windows: components["schemas"]["TimeWindow"][];
+            /** Capacities */
+            capacities: components["schemas"]["CapacityAmount"][];
+            /** Location Id */
+            location_id: string;
+            /** Version */
+            version: number;
+            /** Warehouse Id */
+            warehouse_id: string;
+            /** Zone Id */
+            zone_id: string;
+        };
+        /**
+         * StorageOccupancy
+         * @description Declared claim of one batch on one location.
+         *
+         *     The planned interval is derived, not stored:
+         *
+         *     * it starts at ``outbound``-independent ``declared_start_s`` (``0`` for
+         *       initial stock) or at the end of ``inbound_operation_id``;
+         *     * it ends at the start of ``outbound_operation_id`` or at ``horizon_s`` when
+         *       the batch is still stored at the end of the planning horizon.
+         *
+         *     Solver output resolves this into :class:`ScheduledOccupancy`.
+         */
+        StorageOccupancy: {
+            /** Batch Id */
+            batch_id: string;
+            /** Capacity Use */
+            capacity_use: components["schemas"]["CapacityAmount"][];
+            /** Declared Start S */
+            declared_start_s?: number | null;
+            /** Inbound Operation Id */
+            inbound_operation_id?: string | null;
+            /** Location Id */
+            location_id: string;
+            /** Occupancy Id */
+            occupancy_id: string;
+            /**
+             * Origin
+             * @enum {string}
+             */
+            origin: "initial_stock" | "planned_inbound";
+            /** Outbound Operation Id */
+            outbound_operation_id?: string | null;
+        };
         /** TimeWindow */
         TimeWindow: {
             /** End S */
@@ -820,6 +1252,11 @@ export interface components {
         ValidationReport: {
             /** Checked Rule Ids */
             checked_rule_ids: string[];
+            /**
+             * Not Checked Rule Ids
+             * @default []
+             */
+            not_checked_rule_ids: string[];
             /**
              * Status
              * @enum {string}
@@ -886,6 +1323,7 @@ export interface components {
         };
         /** Violation */
         Violation: {
+            evidence?: components["schemas"]["RuleEvidence"] | null;
             /** Message */
             message: string;
             /** Object Ids */
@@ -925,10 +1363,14 @@ export interface components {
             available_windows: components["schemas"]["TimeWindow"][];
             /** Capacity Units */
             capacity_units: number;
+            /** Initial Setup Class */
+            initial_setup_class?: string | null;
             /** Resource Id */
             resource_id: string;
             /** Resource Kind */
             resource_kind: string;
+            /** Setup Policy Id */
+            setup_policy_id?: string | null;
             /**
              * Unavailable Windows
              * @default []
@@ -941,6 +1383,7 @@ export interface components {
         };
         /** WarehouseScheduleResult */
         WarehouseScheduleResult: {
+            coldchain?: components["schemas"]["ColdChainPlan"] | null;
             metadata: components["schemas"]["SolveMetadata"];
             /** Operations */
             operations: components["schemas"]["ScheduledOperation"][];
@@ -950,6 +1393,27 @@ export interface components {
             snapshot_version: number;
             /** Warehouse Handoffs */
             warehouse_handoffs: components["schemas"]["WarehouseHandoff"][];
+        };
+        /**
+         * WarehouseZone
+         * @description A cold zone: temperature class plus its set point and nominal capacity.
+         */
+        WarehouseZone: {
+            /** Capacities */
+            capacities: components["schemas"]["CapacityAmount"][];
+            /** Setpoint Decic */
+            setpoint_decic: number;
+            /**
+             * Temperature Zone
+             * @enum {string}
+             */
+            temperature_zone: "chilled" | "frozen";
+            /** Version */
+            version: number;
+            /** Warehouse Id */
+            warehouse_id: string;
+            /** Zone Id */
+            zone_id: string;
         };
     };
     responses: never;

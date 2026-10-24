@@ -18,7 +18,7 @@ docker compose up -d db backend worker frontend frontend-legacy
 docker compose run --rm seed
 ```
 
-- <http://localhost:8080>：恢复的第一版界面（`apps/frontend-legacy`，归档 dist 静态托管；视觉恢复，但旧 `/api/auth/*` 等接口与新后端不兼容）。
+- <http://localhost:8080>：PR #1 第一版界面（含“单仓三维视图”，`apps/frontend-legacy` 静态托管；视觉恢复，旧 `/api/auth/*` 等接口与新后端不兼容）。
 - <http://localhost:8081>：本轮 React 产品工作台。
 
 开发 token 为 `dev-operator-token`（hash 在 compose 的 `LOGISTICS_SETTINGS_JSON`，仅限本地）。

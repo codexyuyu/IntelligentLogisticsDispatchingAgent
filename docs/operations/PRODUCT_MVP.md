@@ -77,9 +77,9 @@ docker compose up -d db backend worker frontend frontend-legacy
 docker compose run --rm seed
 ```
 
-Open <http://localhost:8081> for the React product workbench. The restored first-version UI is
-served at <http://localhost:8080> from `apps/frontend-legacy`; it is a visual restore of the
-archived build and its legacy `/api/auth/*` calls are not wired to the current backend.
+Open <http://localhost:8081> for the React product workbench. The PR #1 interface (including the
+single-warehouse 3D view) is served at <http://localhost:8080> from `apps/frontend-legacy`; it is
+the PR #1 static build and its legacy `/api/auth/*` calls are not wired to the current backend.
 
 Known environment note: Docker Hub token exchange timed out over IPv6, but base images were pulled
 from a registry mirror and tagged locally; backend/frontend/seed built successfully, the stack
