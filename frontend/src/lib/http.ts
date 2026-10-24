@@ -18,7 +18,9 @@ export async function getErrorMessage(error: unknown) {
 }
 
 export async function getJson<T = unknown>(url: string): Promise<T> {
-  const response = await fetch(url);
+  const { getToken } = await import('../auth');
+  const token = getToken();
+  const response = await fetch(url, token ? { headers: { Authorization: `Bearer ${token}` } } : undefined);
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);
   }

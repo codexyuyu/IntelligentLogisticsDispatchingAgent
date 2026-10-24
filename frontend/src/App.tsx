@@ -4,6 +4,8 @@ import { CONTRACT_VERSION } from './client/contractVersion';
 import { useEffect, useMemo, useState } from 'react';
 import { AppProvider, useApp } from './appContext';
 import Icon from './components/Icons';
+import { LoginGate } from './components/LoginGate';
+import { clearToken, getToken } from './auth';
 import DashboardPage from './features/dashboard/Page';
 import OrdersPage from './features/orders/Page';
 import WarehousesPage from './features/warehouses/Page';
@@ -32,7 +34,7 @@ const pageMap: Record<string, ComponentType> = {
   plans: PlansPage, closedLoop: ClosedLoopPage, agent: AgentPage, postgres: PostgresPage, events: EventsPage, simulations: SimulationsPage, experiments: ExperimentsPage,
 };
 
-function Shell() {
+function Shell({ onSignOut }: { onSignOut: () => void }) {
   const [active, setActive] = useState('dashboard');
   const [collapsed, setCollapsed] = useState(false);
   const { connection, bootPhase, snapshotVersion, scenarioId, anomaly } = useApp();
@@ -67,6 +69,7 @@ function Shell() {
           <div className="top-actions">
             <span className="env-badge">{scenarioId ? `场景 ${scenarioId}` : '本地'}</span>
             <span className={`env-badge ${connection === 'ok' ? 'badge-ok' : connection === 'bad' ? 'badge-bad' : ''}`}>{connection === 'ok' ? '后端在线' : connection === 'bad' ? '后端离线' : '正在连接'}</span>
+            <button className="btn btn-ghost btn-sm" onClick={onSignOut}>退出</button>
           </div>
         </header>
         <div className="content-wrap"><Page /></div>
@@ -77,5 +80,7 @@ function Shell() {
 }
 
 export default function App() {
-  return <AppProvider><Shell /></AppProvider>;
+  const [authed, setAuthed] = useState(Boolean(getToken()));
+  if (!authed) return <LoginGate onSuccess={() => setAuthed(true)} />;
+  return <AppProvider><Shell onSignOut={() => { clearToken(); setAuthed(false); }} /></AppProvider>;
 }

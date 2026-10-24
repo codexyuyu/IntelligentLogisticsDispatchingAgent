@@ -163,9 +163,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     try {
       const { api } = await import('./client/api');
       const { data } = await api.GET('/api/v1/health');
-      setConnection(data?.status === 'ok' ? 'ok' : 'bad');
-      setBootPhase('importing');
-      await importScenario();
+      setConnection(data?.status === 'ok' || data?.status === 'alive' ? 'ok' : 'bad');
+      // The PR #1 pages keep their local demo/twin data. Do not call the retired legacy
+      // scenario import endpoint; authenticated master data is fetched by the pages.
       setBootPhase('ready');
       bootDoneRef.current = true;
     } catch (e) {
