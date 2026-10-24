@@ -21,8 +21,24 @@ import uvicorn
 from logistics_backend.bootstrap import Settings, create_app
 from logistics_backend.cli.seed import seed
 from logistics_backend.worker import Worker
+from logistics_contracts.planning import ObjectivePolicyDTO, PlanningScopeDTO, SolveBudgetDTO, WarehouseTaskDTO
 from logistics_contracts.warehouse import WarehouseJobContent, WarehouseSolutionDTO
-from logistics_domain.planning import content_hash
+from logistics_domain.coldchain import (
+    CapacityAmount,
+    CapacityUnit,
+    ColdChainSnapshot,
+    ColdChainStorageLocation,
+    ColdChainZone,
+    ExposureLimit,
+    ExposureScope,
+    PrecoolRequirement,
+    StorageOccupancy,
+)
+from logistics_domain.planning import PlanningSnapshot, content_hash
+from logistics_domain.primitives import TimeWindow
+from logistics_domain.warehouse import WarehouseProblem
+from logistics_optimization.validation.warehouse import validate_warehouse
+from logistics_optimization.warehouse.solver import CpSatWarehouseScheduler
 
 pytestmark = pytest.mark.requires_postgres
 ROOT = Path(__file__).resolve().parents[2]
@@ -151,7 +167,7 @@ def run_job(client, app, body):
 
 
 def test_real_warehouse_job_has_independent_validation_and_hash(warehouse_api):
-    client, app, scenario, directory = warehouse_api
+    client, app, scenario, _ = warehouse_api
     body = request_body(scenario)
     job, result, artifact = run_job(client, app, body)
     assert result["status"] in ("optimal", "feasible")
@@ -215,7 +231,7 @@ def test_task_outside_snapshot_is_rejected_before_queue(warehouse_api):
 
 
 def test_warehouse_setup_gap_between_changeover_classes(warehouse_api):
-    client, app, scenario, directory = warehouse_api
+    client, app, scenario, _ = warehouse_api
     body = request_body(scenario, with_setup=True)
     _, result, _ = run_job(client, app, body)
     by_task = {}
@@ -232,3 +248,61 @@ def test_warehouse_setup_gap_between_changeover_classes(warehouse_api):
     assert setup["cost_cents"] == 250
     assert result["objective"]["business_cost_cents"] == 450
     assert result["validation"]["valid"] is True
+
+
+def test_coldchain_precool_precedence_and_exposure_are_validated(warehouse_api):
+    _, app, scenario, _ = warehouse_api
+    body = request_body(scenario)
+    body["tasks"][1]["predecessor_ids"] = []
+    scope = PlanningScopeDTO.model_validate(body["scope"]).to_domain()
+    raw = app.state.snapshots.capture(scope)
+    dock = scenario["docks"][0]
+    zone = scenario["zones"][0]
+    location = scenario["locations"][0]
+    coldchain = ColdChainSnapshot(
+        rule_version="r05-demo-1.0", horizon_s=3600,
+        zones=(ColdChainZone(zone_id=UUID(zone["id"]), warehouse_id=UUID(zone["warehouse_id"]),
+            version=1, setpoint_decic=zone["setpoint_decic"],
+            capacities=(CapacityAmount(CapacityUnit.WEIGHT_G, 10000),)),),
+        storage_locations=(ColdChainStorageLocation(location_id=UUID(location["id"]),
+            warehouse_id=UUID(zone["warehouse_id"]), zone_id=UUID(location["zone_id"]),
+            version=1, capacities=(CapacityAmount(CapacityUnit.WEIGHT_G, 10000),),
+            available_windows=(TimeWindow(0, 8),)),),
+        occupancies=(StorageOccupancy(occupancy_id=uuid4(), batch_id="batch-1",
+            location_id=UUID(location["id"]),
+            capacity_use=(CapacityAmount(CapacityUnit.WEIGHT_G, 100),),
+            origin="initial_stock", declared_start_s=0,
+            outbound_operation_id=UUID(body["tasks"][1]["id"])),),
+        precool_requirements=(PrecoolRequirement(requirement_id=uuid4(), batch_id="batch-1",
+            warehouse_id=UUID(dock["warehouse_id"]),
+            precool_operation_id=UUID(body["tasks"][0]["id"]),
+            loading_operation_ids=(UUID(body["tasks"][1]["id"]),), min_duration_s=5,
+            target_zone="chilled", eligible_resource_ids=(UUID(dock["id"]),)),),
+        exposure_limits=(ExposureLimit(limit_id=uuid4(), batch_id="batch-1",
+            max_exposure_s=5, scopes=(ExposureScope.IN_WAREHOUSE,),
+            rule_version="r05-demo-1.0", source="declared"),),
+    )
+    snapshot = PlanningSnapshot.create(
+        id=raw.id, scope=raw.scope, orders=raw.orders, cargo=raw.cargo,
+        vehicles=raw.vehicles, drivers=raw.drivers, resources=raw.resources,
+        inventory=raw.inventory, revisions=raw.revisions, matrices=raw.matrices,
+        coldchain=coldchain)
+    problem = WarehouseProblem(snapshot=snapshot,
+        tasks=tuple(WarehouseTaskDTO.model_validate(task).to_domain() for task in body["tasks"]),
+        policy=ObjectivePolicyDTO.model_validate(body["objective_policy"]).to_domain(),
+        budget=SolveBudgetDTO.model_validate(body["budget"]).to_domain())
+    solution = CpSatWarehouseScheduler().solve(problem, problem.budget)
+    report = validate_warehouse(problem, solution)
+    assert solution.status.value in ("optimal", "feasible")
+    assert report.valid is False
+    codes = {violation.code for violation in report.violations}
+    assert "coldchain_exposure" in codes
+    assert "coldchain_storage_window" in codes
+    assert "r05.precool" in report.checked_codes
+    assert "r05.storage_capacity" in report.checked_codes
+    by_task = {}
+    for assignment in solution.assignments:
+        by_task.setdefault(assignment.task_id, []).append(assignment)
+    first = by_task[UUID(body["tasks"][0]["id"])]
+    second = by_task[UUID(body["tasks"][1]["id"])]
+    assert min(item.start_s for item in second) >= max(item.end_s for item in first)

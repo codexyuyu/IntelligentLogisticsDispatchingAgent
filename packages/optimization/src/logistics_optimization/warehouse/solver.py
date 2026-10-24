@@ -104,6 +104,22 @@ class CpSatWarehouseScheduler:
                 if predecessor_id in task_ids:
                     model.Add(starts[task.id] >= ends[predecessor_id])
 
+        coldchain = problem.snapshot.coldchain
+        if coldchain is not None:
+            task_by_id = {task.id: task for task in problem.tasks}
+            for requirement in coldchain.precool_requirements:
+                precool = task_by_id.get(requirement.precool_operation_id)
+                if precool is None:
+                    # The operation is outside this request scope; do not invent a time.
+                    continue
+                if precool.duration_s < requirement.min_duration_s:
+                    return self._failed(problem, SolveStatus.INFEASIBLE,
+                        "pre-cooling task is shorter than its declared minimum",
+                        int((time.monotonic() - started) * 1000))
+                for loading_id in requirement.loading_operation_ids:
+                    if loading_id in task_ids:
+                        model.Add(starts[loading_id] >= ends[requirement.precool_operation_id])
+
         # Sequence-dependent setup on the primary requirement. The gap is enforced only
         # when both tasks actually choose the same primary resource.
         for left_index, left in enumerate(problem.tasks):

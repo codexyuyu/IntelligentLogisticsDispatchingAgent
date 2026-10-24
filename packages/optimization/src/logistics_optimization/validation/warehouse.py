@@ -289,6 +289,10 @@ def validate_warehouse(problem: WarehouseProblem,
                     entity_refs=(), field_path="setup.resource_id",
                     actual=str(resource_id), expected="no setup overlap",
                     message="two setup operations overlap on the same resource"))
+    from logistics_optimization.validation.coldchain import validate_coldchain
+
+    coldchain = validate_coldchain(problem, solution)
+    violations.extend(coldchain.violations)
     cost = solution.objective.business_cost_cents if solution.objective is not None else None
     if cost is not None and cost < 0:
         violations.append(Violation(code="negative_cost", severity=Severity.HARD,
@@ -299,7 +303,8 @@ def validate_warehouse(problem: WarehouseProblem,
         candidate_hash=content_hash({"assignments": solution.assignments,
             "storage": solution.storage_allocations, "setup": solution.setup_operations}),
         snapshot_hash=problem.snapshot.hash, rules_version="1.0.0", valid=valid,
-        required_codes=(), checked_codes=(), unsupported_codes=(),
+        required_codes=(), checked_codes=tuple(coldchain.checked),
+        unsupported_codes=tuple(coldchain.unsupported),
         violations=tuple(violations),
         validated_at=datetime.now(UTC).replace(microsecond=0))
 
