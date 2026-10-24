@@ -74,6 +74,15 @@ class PlanningSnapshotStore:
                                f"planning scope references unknown {label}: "
                                f"{sorted(map(str, missing))}")
 
+    def list_matrices(self) -> tuple[planning_dto.TravelMatrixDTO, ...]:
+        """Return the deterministic travel matrices visible to this scope."""
+        with self.uow_factory() as active:
+            rows = active.connection.execute(
+                select(travel_matrices).where(travel_matrices.c.scope_id == self.workspace_id)
+                .order_by(travel_matrices.c.id, travel_matrices.c.version)).mappings().all()
+        return tuple(planning_dto.TravelMatrixDTO.model_validate_json(
+            json.dumps(row["payload"])) for row in rows)
+
     def capture(self, scope: planning.PlanningScope) -> planning.PlanningSnapshot:
         if not isinstance(scope, planning.PlanningScope):
             raise ServiceError(ErrorCode.INVALID_INPUT, "capture expects a PlanningScope")

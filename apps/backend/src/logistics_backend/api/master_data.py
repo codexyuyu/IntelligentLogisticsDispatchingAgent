@@ -1,12 +1,17 @@
 """Master-data HTTP routes; business writes are delegated to the service."""
 from uuid import UUID
-from fastapi import APIRouter, Depends
-from logistics_contracts import http, entities
+from fastapi import APIRouter, Depends, Request
+from logistics_contracts import http, entities, planning
 from logistics_backend.api.dependencies import actor, operator, revision, master_service
 from logistics_backend.errors import ServiceError
 from logistics_domain.states import ErrorCode
 
 router = APIRouter(tags=["master-data"])
+
+@router.get("/matrices", response_model=tuple[planning.TravelMatrixDTO, ...],
+            operation_id="list_travel_matrices")
+def list_travel_matrices(request: Request, current=Depends(actor)):
+    return request.app.state.snapshots.list_matrices()
 
 @router.get("/orders", response_model=http.OrderPage, operation_id="list_orders")
 def list_orders(query: http.OrderFilter = Depends(), current=Depends(actor), service=Depends(master_service)):

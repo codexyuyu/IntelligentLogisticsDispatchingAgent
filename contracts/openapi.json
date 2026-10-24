@@ -10566,6 +10566,59 @@
         ]
       }
     },
+    "/api/v1/matrices": {
+      "get": {
+        "operationId": "list_travel_matrices",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TravelMatrixDTO"
+                  },
+                  "title": "Response List Travel Matrices",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Travel Matrices",
+        "tags": [
+          "master-data"
+        ]
+      }
+    },
     "/api/v1/metrics/history": {
       "get": {
         "operationId": "metric_history",

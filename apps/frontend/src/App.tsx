@@ -3,6 +3,7 @@ import { getToken, request, setToken, type JobRef, type JobResult, type Page } f
 import { JsonPanel } from "./components/JsonPanel";
 import { SchedulePanel } from "./components/SchedulePanel";
 import { ExceptionPanel } from "./components/ExceptionPanel";
+import { TransportWorkflow } from "./components/TransportWorkflow";
 
 type OrderView = { id: string; external_ref: string; status: string };
 type ChatReply = { reply: string; model: string; provider_configured: boolean; trace_id: string };
@@ -27,42 +28,6 @@ function tabFromHash(): Tab {
   const value = window.location.hash.replace(/^#\/?/, "");
   return (TABS as readonly string[]).includes(value) ? (value as Tab) : "overview";
 }
-
-const TRANSPORT = `{
-  "schema_version": "2.0.0",
-  "scope": {
-    "order_ids": [],
-    "warehouse_ids": [],
-    "vehicle_ids": [],
-    "epoch_utc": "2026-01-01T00:00:00Z",
-    "horizon_s": 86400
-  },
-  "order_ids": [],
-  "vehicle_ids": [],
-  "matrix_ref": {
-    "matrix_id": "00000000-0000-4000-8000-000000000000",
-    "version": 1,
-    "hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
-  },
-  "budget": {
-    "wall_time_ms": 3000,
-    "deadline_utc": "2026-01-01T00:10:00Z",
-    "max_candidates": 1,
-    "seed": 0
-  },
-  "objective_policy": {
-    "version": "1.0.0",
-    "optional_unserved_penalty_cents": 0,
-    "soft_late_cents_per_s": 0,
-    "makespan_cents_per_s": 0,
-    "disturbance_weights": {
-      "assignment_change": 0,
-      "time_shift": 0,
-      "order_change": 0,
-      "membership_change": 0
-    }
-  }
-}`;
 
 const WAREHOUSE = `{
   "schema_version": "2.0.0",
@@ -285,10 +250,7 @@ export default function App() {
 
         {tab === "schedules" ? <SchedulePanel /> : null}
 
-        {tab === "transport" ? (
-          <JsonPanel title="Transport optimization" path="/optimizations/transport" initialBody={TRANSPORT}
-            idempotent description="POST body is TransportRequestDTO. The panel shows the returned JobRef." />
-        ) : null}
+        {tab === "transport" ? <TransportWorkflow /> : null}
         {tab === "warehouse" ? (
           <JsonPanel title="Warehouse scheduling" path="/optimizations/warehouse" initialBody={WAREHOUSE}
             idempotent description="Paste a WarehouseRequestDTO; the returned JobRef is queued." />

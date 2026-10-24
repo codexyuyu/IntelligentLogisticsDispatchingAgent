@@ -206,3 +206,21 @@ pre {
 .login button {
   width: 100%;
 }
+
+/* transport browser workflow */
+.workflow{display:grid;gap:.85rem}
+.steps{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;padding:0;margin:0}
+.steps li{border:1px solid #c9c9c9;border-radius:999px;padding:.2rem .65rem;font-size:.78rem;color:#666;background:#fff}
+.steps li.done{background:#123524;border-color:#123524;color:#fff}
+.grid-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.8rem}
+.grid-two label{display:grid;gap:.3rem;font-size:.8rem;color:#555}
+.grid-two select{width:100%;padding:.5rem;border:1px solid #bbb;background:#fff;border-radius:4px}
+.panel{border:1px solid #ddd;background:#fff;border-radius:6px;padding:.85rem 1rem}
+.panel h3{margin:.1rem 0 .5rem}
+.panel.success{border-color:#2f7d4f;background:#f4fbf6}
+.panel table{width:100%;border-collapse:collapse;font-size:.82rem}
+.panel th,.panel td{text-align:left;border-bottom:1px solid #eee;padding:.3rem .25rem}
+.ok{color:#17633a}.bad,.error{color:#a1261b}
+.check{display:flex;gap:.5rem;align-items:center;margin:.7rem 0;font-size:.85rem}
+details{margin-top:.5rem}
+details pre{max-height:260px}
