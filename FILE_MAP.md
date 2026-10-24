@@ -148,6 +148,7 @@
 | [backend/tests/fakes/README.md](backend/tests/fakes/README.md) | PARTNER |
 | [backend/tests/integration/README.md](backend/tests/integration/README.md) | PARTNER |
 | [backend/tests/llm/README.md](backend/tests/llm/README.md) | PARTNER |
+| [backend/tests/negotiation/test_contract_net.py](backend/tests/negotiation/test_contract_net.py) | PARTNER |
 | [backend/tests/persistence/pg_acceptance.py](backend/tests/persistence/pg_acceptance.py) | DSH |
 | [backend/tests/simulation/README.md](backend/tests/simulation/README.md) | PARTNER |
 | [backend/tests/test_b03_coordination.py](backend/tests/test_b03_coordination.py) | PARTNER |
@@ -405,6 +406,7 @@
 | [docs/devlog/entries/20261022-dsh-r05-blocked.md](docs/devlog/entries/20261022-dsh-r05-blocked.md) | SHARED |
 | [docs/devlog/entries/20261023-2135-partner-r05-contract-freeze.md](docs/devlog/entries/20261023-2135-partner-r05-contract-freeze.md) | SHARED |
 | [docs/devlog/entries/20261023-2205-partner-r05-cpsat-coldchain.md](docs/devlog/entries/20261023-2205-partner-r05-cpsat-coldchain.md) | SHARED |
+| [docs/devlog/entries/20261024-1440-partner-r08-negotiation.md](docs/devlog/entries/20261024-1440-partner-r08-negotiation.md) | SHARED |
 | [docs/devlog/entries/README.md](docs/devlog/entries/README.md) | SHARED |
 | [docs/handoff/AC_CODEX.md](docs/handoff/AC_CODEX.md) | SHARED |
 | [docs/handoff/B_CODEX.md](docs/handoff/B_CODEX.md) | SHARED |

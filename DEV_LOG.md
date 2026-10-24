@@ -1,3 +1,11 @@
+## 2026-10-24 · PARTNER · R08 四角色合同网协商
+
+`backend/app/application/contract_net.py` 由脚手架改为实现：协调者 + 仓储/运输/异常三个有界角色，CFP → 报价 → 冲突消解 → 授标 → 确认/撤销 → 关闭。报价须落在任务窗内且未过期；跨任务共享互斥资源的重叠报价记 `Conflict` 并通知落选方；全部确认 `confirmed`、达上限 `exhausted`、超时 `expired`、零可用报价 `infeasible`；外部可 `revoke` 释放授标；同 idempotency key 重放返回完全相同结果且不追加报文。transcript 带单调 `seq` 与 SHA-256 `digest`，全部时间由调用方传入模拟秒，模块不读系统时钟。**契约 0.2.0 未变**（协商报文不跨层、未上 HTTP）。
+
+验证：`tests/negotiation` **25 passed**；backend **318 passed**（基线 293 + 25）；`export_contracts --check` 通过；`verify_delivery` 除既有 7 条 `application→adapters` 外全通过。
+
+限制：未接 HTTP/前端与持久化；三个业务角色的报价来自资源日历/班次/恢复时长的解析式，未调用 CP-SAT/Routing；冲突消解为单轮贪心，无跨轮竞价。详见[本轮增量日志](docs/devlog/entries/20261024-1440-partner-r08-negotiation.md)。
+
 ## 2026-10-23 · PARTNER · R05 第二轮：CP-SAT 冷链约束接入
 
 在契约 0.2.0 上接入真实求解约束（契约源与生成物**未改动**）：时变容量用 `(location, unit)` 分组 `AddCumulative`（半开区间、同秒先释放后占用）；多资源需求各自 `ExactlyOne` 并共用同一执行区间与资源日历；换批按方向性 setup 互斥，未登记类别对不按 0 处理；预冷限制可执行资源并强制早于装载；暴露只约束求解器可决定的仓内停留，其余交给独立校验按并集核算。
