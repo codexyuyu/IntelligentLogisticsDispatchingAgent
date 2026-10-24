@@ -1,3 +1,11 @@
+## 2026-10-24 · PARTNER · bootstrap 组合根与依赖装配（架构告警清零）
+
+`backend/app/bootstrap.py` 由脚手架改为唯一组合根：`Services`（routing / warehouse_scheduler / warehouse_validator / simulator）+ `build_services()`（lru_cache 单例，只装真实 adapter）+ `describe_services()`。`application` 三个模块删除全部 adapter 导入，改为参数注入；`api/dependencies.py` 提供 `get_services` / `ServicesDep`，planning、events、simulations 三条路由透传。adapter 导入放在 `build_services()` 函数体内，因为 `simpy_simulator` 反向 import `coordinator`/`handle_event`，模块级会成环。
+
+**`scripts/check_project.py` 从 exit 1（7 条 `application → adapters`）变为 PASS**；`verify_delivery.py` 首次 **12/12 全通过（exit 0）**。测试：`tests/test_bootstrap.py` 10 条；backend 全量 **328 passed**（基线 318 + 10）。契约 0.2.0 未变。
+
+遗留：`api/routes/agent_demo.py`、`postgres_demo.py` 仍直连 adapters（本地 PG/Agent 演示子应用，已在测试中钉住名单）；持久化端口与 R08 协商未纳入组合根。详见[本轮增量日志](docs/devlog/entries/20261024-1500-partner-bootstrap-composition-root.md)。
+
 ## 2026-10-24 · PARTNER · R08 四角色合同网协商
 
 `backend/app/application/contract_net.py` 由脚手架改为实现：协调者 + 仓储/运输/异常三个有界角色，CFP → 报价 → 冲突消解 → 授标 → 确认/撤销 → 关闭。报价须落在任务窗内且未过期；跨任务共享互斥资源的重叠报价记 `Conflict` 并通知落选方；全部确认 `confirmed`、达上限 `exhausted`、超时 `expired`、零可用报价 `infeasible`；外部可 `revoke` 释放授标；同 idempotency key 重放返回完全相同结果且不追加报文。transcript 带单调 `seq` 与 SHA-256 `digest`，全部时间由调用方传入模拟秒，模块不读系统时钟。**契约 0.2.0 未变**（协商报文不跨层、未上 HTTP）。

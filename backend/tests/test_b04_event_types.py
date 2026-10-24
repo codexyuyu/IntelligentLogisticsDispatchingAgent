@@ -203,8 +203,8 @@ def test_dock_unavailable_shifts_the_loading_window_and_replans_the_affected_veh
         return _routing(first_start=2000, first_order="ord_001", second_start=2400,
                         second_order="ord_002", version=request.snapshot.version)
 
-    monkeypatch.setattr("app.application.handle_event.OrToolsRoutingSolver.solve", fake_solve)
-    result = handle_event(event=_dock_event(2000), previous_plan=baseline, budget_ms=10000)
+    result = handle_event(event=_dock_event(2000), previous_plan=baseline, budget_ms=10000,
+                          services=_stub_services(fake_solve))
 
     request = seen["request"]
     scoped = {h.order_id: h for h in request.warehouse_handoffs}
@@ -232,8 +232,8 @@ def test_dock_unavailable_records_orders_it_cannot_load(monkeypatch):
         return _routing(first_start=0, first_order=None, second_start=3500,
                         second_order="ord_002", version=request.snapshot.version)
 
-    monkeypatch.setattr("app.application.handle_event.OrToolsRoutingSolver.solve", fake_solve)
-    result = handle_event(event=_dock_event(3500), previous_plan=baseline, budget_ms=10000)
+    result = handle_event(event=_dock_event(3500), previous_plan=baseline, budget_ms=10000,
+                          services=_stub_services(fake_solve))
 
     assert seen["request"].order_ids == ("ord_002",)      # ord_001 cannot be loaded any more
     unserved = {u.order_id: u.reason_code for u in result.replanned_plan.routing.unserved_orders}
@@ -252,9 +252,8 @@ def test_cargo_quarantined_drops_the_orders_and_records_them(monkeypatch):
         return _routing(first_start=0, first_order=None, second_start=2400,
                         second_order="ord_002", version=request.snapshot.version)
 
-    monkeypatch.setattr("app.application.handle_event.OrToolsRoutingSolver.solve", fake_solve)
     result = handle_event(event=_quarantine_event(("ord_001",)), previous_plan=baseline,
-                          budget_ms=10000)
+                          budget_ms=10000, services=_stub_services(fake_solve))
 
     assert seen["request"].order_ids == ("ord_002",)
     unserved = {u.order_id: u.reason_code for u in result.replanned_plan.routing.unserved_orders}
@@ -262,3 +261,21 @@ def test_cargo_quarantined_drops_the_orders_and_records_them(monkeypatch):
     assert result.impact.affected_order_ids == ("ord_001",)
     assert "b04.quarantine.orders_removed_and_recorded" in result.validation.checked_rule_ids
     assert result.replanned_plan.version == baseline.version + 1
+
+class _Services:
+    """Minimal services graph for a routing stub; other ports stay unused."""
+
+    def __init__(self, solve):
+        import types
+        router = type("Router", (), {})()
+        router.solve = types.MethodType(solve, router)
+        self.routing = router
+        self.warehouse_scheduler = None
+        self.warehouse_validator = None
+        self.simulator = None
+
+
+def _stub_services(solve):
+    return _Services(solve)
+
+

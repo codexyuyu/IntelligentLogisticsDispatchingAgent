@@ -101,13 +101,13 @@ def test_b04_vehicle_delay_moves_only_affected_order(monkeypatch):
         assert request.frozen_routes[0].vehicle_id == "veh_002"
         return _routing(moved_to_second=True)
 
-    monkeypatch.setattr("app.application.handle_event.OrToolsRoutingSolver.solve", fake_solve)
     event = DispatchEvent(
         event_id="evt_001", event_type="departure_delayed", snapshot_id="snap_b04", expected_snapshot_version=1,
         object_id="veh_001", occurred_at_s=0, received_at=datetime.now(timezone.utc), source=_source(),
         payload=EventPayload(delay_s=600),
     )
-    result = handle_event(event=event, previous_plan=old_plan, budget_ms=10000)
+    result = handle_event(event=event, previous_plan=old_plan, budget_ms=10000,
+                          services=_stub_services(fake_solve))
     assert result.validation.status == "passed"
     assert result.impact.affected_order_ids == ("ord_001",)
     assert result.diff.changed_order_ids == ("ord_001",)
@@ -143,11 +143,28 @@ def test_b04_keeps_request_local_order_scope(monkeypatch):
         assert request.warehouse_handoffs and request.warehouse_handoffs[0].order_id == "ord_001"
         return _routing(moved_to_second=True)
 
-    monkeypatch.setattr("app.application.handle_event.OrToolsRoutingSolver.solve", fake_solve)
     event = DispatchEvent(
         event_id="evt_local_scope_001", event_type="departure_delayed", snapshot_id="snap_b04", expected_snapshot_version=1,
         object_id="veh_001", occurred_at_s=0, received_at=datetime.now(timezone.utc), source=_source(),
         payload=EventPayload(delay_s=600, affected_order_ids=("ord_001",)),
     )
-    result = handle_event(event=event, previous_plan=old_plan, budget_ms=10000)
+    result = handle_event(event=event, previous_plan=old_plan, budget_ms=10000,
+                          services=_stub_services(fake_solve))
     assert result.validation.status == "passed"
+
+class _Services:
+    """Minimal services graph for a routing stub; other ports stay unused."""
+
+    def __init__(self, solve):
+        import types
+        router = type("Router", (), {})()
+        router.solve = types.MethodType(solve, router)
+        self.routing = router
+        self.warehouse_scheduler = None
+        self.warehouse_validator = None
+        self.simulator = None
+
+
+def _stub_services(solve):
+    return _Services(solve)
+

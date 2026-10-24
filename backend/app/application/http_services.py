@@ -1,9 +1,8 @@
 from __future__ import annotations
 import hashlib, json
 from uuid import uuid4
-from app.adapters.routing.ortools_solver import OrToolsRoutingSolver
-from app.adapters.warehouse.cp_sat_scheduler import CpSatWarehouseScheduler
 from app.application.runtime import JobRecord, runtime
+from app.bootstrap import Services, build_services
 from app.contracts.common import SolveMetadata, ValidationReport
 from app.contracts.http import *
 from app.contracts.planning import CandidatePlan, DispatchRequest, RoutingRequest, WarehouseScheduleRequest
@@ -20,13 +19,14 @@ def import_scenario(body: ScenarioImportRequest, idempotency_key: str):
 
 def parse_request(body: ParseRequest): raise FeatureNotImplemented("parse_request", "AC")
 
-def submit_planning_job(body: DispatchRequest, idempotency_key: str):
+def submit_planning_job(body: DispatchRequest, idempotency_key: str,
+                        services: Services | None = None):
     key=f"planning:{idempotency_key}"
     if key in runtime.idempotency: return JobAccepted.model_validate(runtime.idempotency[key]["response"])
     snapshot=runtime.get_snapshot(body.snapshot_id, body.expected_snapshot_version)
     job=JobRecord(job_id=f"job_{uuid4().hex[:20]}", status="running"); runtime.put_job(job)
     try:
-        plan=_build_candidate_plan(snapshot, body)
+        plan=_build_candidate_plan(snapshot, body, services)
         runtime.put_plan(plan); job.status="succeeded"; job.plan_id=plan.plan_id
         response=JobAccepted(job_id=job.job_id,status="succeeded")
     except Exception as exc:
@@ -43,7 +43,8 @@ def get_plan(plan_id: str):
     return PlanResponse(plan=p,status="validated")
 
 def confirm_plan(plan_id, body, idempotency_key): raise FeatureNotImplemented("confirm_plan", "AC")
-def submit_event(body: DispatchEvent, idempotency_key: str):
+def submit_event(body: DispatchEvent, idempotency_key: str,
+                 services: Services | None = None):
     key = f"event:{idempotency_key}"
     if key in runtime.idempotency:
         return EventAccepted.model_validate(runtime.idempotency[key]["response"])
@@ -52,7 +53,8 @@ def submit_event(body: DispatchEvent, idempotency_key: str):
     runtime.put_job(job)
     try:
         from app.application.handle_event import handle_event
-        result = handle_event(event=body, previous_plan=previous_plan, budget_ms=60000)
+        result = handle_event(event=body, previous_plan=previous_plan, budget_ms=60000,
+                               services=services)
         runtime.put_snapshot(_snapshot_from_result(result))
         runtime.put_plan(result.replanned_plan)
         runtime.put_reschedule(result)
@@ -66,15 +68,16 @@ def submit_event(body: DispatchEvent, idempotency_key: str):
         response = EventAccepted(event_id=body.event_id, duplicate=False, replanning_job_id=job.job_id, result=None)
     runtime.idempotency[key] = {"response": response.model_dump(mode="json")}
     return response
-def submit_simulation(body: SimulationRequest, idempotency_key: str):
+def submit_simulation(body: SimulationRequest, idempotency_key: str,
+                      services: Services | None = None):
     key = f"simulation:{idempotency_key}"
     if key in runtime.idempotency:
         return SimulationAccepted.model_validate(runtime.idempotency[key]["response"])
     job = JobRecord(job_id=f"job_{uuid4().hex[:20]}", status="running")
     runtime.put_job(job)
     try:
-        from app.adapters.simulation.simpy_simulator import SimPySimulator
-        result = SimPySimulator().simulate(body)
+        services = services or build_services()
+        result = services.simulator.simulate(body)
         runtime.put_simulation(result)
         final_plans = [p for p in runtime.plans.values() if p.snapshot_id == result.final_snapshot.snapshot_id]
         if final_plans:
@@ -99,7 +102,7 @@ def _snapshot_from_result(result):
     return runtime.get_snapshot(result.replanned_plan.snapshot_id, result.replanned_plan.snapshot_version)
 
 
-def _build_candidate_plan(snapshot, body):
+def _build_candidate_plan(snapshot, body, services: Services | None = None):
     from app.application.coordinator import coordinate
     return coordinate(
         snapshot=snapshot,
@@ -107,4 +110,6 @@ def _build_candidate_plan(snapshot, body):
         budget_ms=int(body.budget_ms),
         max_coordination_rounds=int(body.max_coordination_rounds),
         coordination_mode=body.coordination_mode,
+        services=services,
     )
+

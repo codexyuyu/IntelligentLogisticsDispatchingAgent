@@ -61,7 +61,7 @@ def test_planning_job_is_wired_to_build_candidate_plan(monkeypatch):
         plan_id="plan_test_1", snapshot_id="snap_initial", snapshot_version=1, version=1,
         plan_hash="0" * 64, routing=routing, warehouse=warehouse, validation=empty_validation
     )
-    monkeypatch.setattr("app.application.http_services._build_candidate_plan", lambda snapshot, body: plan)
+    monkeypatch.setattr("app.application.http_services._build_candidate_plan", lambda snapshot, body, services=None: plan)
 
     response = client.post(
         "/api/v1/planning-jobs",
@@ -103,3 +103,4 @@ def test_planning_job_missing_snapshot_returns_controlled_error():
     )
     assert response.status_code == 404
     assert response.json()["code"] == "not_found"
+

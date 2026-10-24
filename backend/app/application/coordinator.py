@@ -13,9 +13,7 @@ import json
 from time import perf_counter
 from uuid import uuid4
 
-from app.adapters.routing.ortools_solver import OrToolsRoutingSolver
-from app.adapters.warehouse.cp_sat_scheduler import CpSatWarehouseScheduler
-from app.adapters.warehouse.validator import WarehouseScheduleValidator
+from app.bootstrap import Services, build_services
 from app.contracts.common import SolveMetadata, ValidationReport
 from app.contracts.planning import (
     CandidatePlan, CoordinationReport, CoordinationRound, RoutingRequest,
@@ -43,13 +41,15 @@ def _warehouse_budget(total_ms: int, order_count: int) -> int:
     return max(1, total_ms - routing_reserve)
 
 
-def _solve_pair(*, snapshot, order_ids, budget_ms, targets=(), seed=17):
+def _solve_pair(*, snapshot, order_ids, budget_ms, targets=(), seed=17,
+                services: Services | None = None):
     """CP-SAT -> Routing, both independently checked; rejects partial successes.
 
     ``seed`` reaches both engines so one coordination round can explore a genuinely
     different candidate: CP-SAT runs single-worker, where the seed changes the search
     trajectory (hence the handoff ready times) deterministically.
     """
+    services = services or build_services()
     from app.domain.cold_chain_rules import validate_cold_chain
     audit = validate_cold_chain(snapshot.model_dump(mode="python"), order_ids)
     if audit["violations"]:
@@ -68,10 +68,10 @@ def _solve_pair(*, snapshot, order_ids, budget_ms, targets=(), seed=17):
         budget={"remaining_ms": _warehouse_budget(budget_ms, len(order_ids)), "max_workers": 1,
                 "random_seed": seed},
     )
-    warehouse = CpSatWarehouseScheduler().schedule(warehouse_request)
+    warehouse = services.warehouse_scheduler.schedule(warehouse_request)
     if not warehouse.metadata.has_solution:
         raise RuntimeError(f"warehouse_solver_failed:{warehouse.metadata.raw_status}")
-    wr = WarehouseScheduleValidator().validate(warehouse_request, warehouse)
+    wr = services.warehouse_validator.validate(warehouse_request, warehouse)
     if wr.status != "passed":
         raise RuntimeError("warehouse_validation_failed:" + ",".join(v.rule_id for v in wr.violations[:8]))
 
@@ -87,7 +87,7 @@ def _solve_pair(*, snapshot, order_ids, budget_ms, targets=(), seed=17):
             warehouse_handoffs=tuple(handoffs[oid] for oid in ids), frozen_routes=(),
             budget={"remaining_ms": per_group, "max_workers": 1, "random_seed": seed},
         )
-        routing = OrToolsRoutingSolver().solve(request)
+        routing = services.routing.solve(request)
         if not routing.metadata.has_solution:
             raise RuntimeError(f"routing_solver_failed:{warehouse_id}:{routing.metadata.raw_status}")
         checked = validate_transport(request=request.model_dump(mode="python"), result=routing.model_dump(mode="python"))
@@ -155,13 +155,15 @@ def _round(number: int, stage: str, accepted: bool, reason: str, warehouse=None,
 
 
 def coordinate(*, snapshot, order_ids: tuple[str, ...], budget_ms: int,
-               max_coordination_rounds: int = 1, coordination_mode: str = "sequential") -> CandidatePlan:
+               max_coordination_rounds: int = 1, coordination_mode: str = "sequential",
+               services: Services | None = None) -> CandidatePlan:
     """Generate a fully valid candidate plan. Deep mode is explicit and opt-in.
 
     Initial pair and every feedback pair must pass warehouse, transport and
     cross-domain validation. Feedback failures NEVER discard the initial plan.
     The time budget is shared across rounds, not applied afresh to every solve.
     """
+    services = services or build_services()
     if not order_ids:
         raise ValueError("order_ids_must_not_be_empty")
     if len(set(order_ids)) != len(order_ids):
@@ -187,6 +189,7 @@ def coordinate(*, snapshot, order_ids: tuple[str, ...], budget_ms: int,
     first_budget = min(first_budget, budget_ms)
     incumbent_wh, incumbent_rt = _solve_pair(
         snapshot=snapshot, order_ids=order_ids, budget_ms=first_budget,
+        services=services,
     )
     initial_quality = _quality(incumbent_wh, incumbent_rt)
     rounds = [_round(1, "initial", True, "validated_initial_incumbent", incumbent_wh, incumbent_rt)]
@@ -214,6 +217,7 @@ def coordinate(*, snapshot, order_ids: tuple[str, ...], budget_ms: int,
                 candidate_wh, candidate_rt = _solve_pair(
                     snapshot=snapshot, order_ids=order_ids,
                     budget_ms=next_budget, targets=targets, seed=17 + round_number,
+                    services=services,
                 )
                 new_quality = _quality(candidate_wh, candidate_rt)
                 better = new_quality < _quality(incumbent_wh, incumbent_rt)
@@ -280,3 +284,5 @@ def _aggregate_routing(results):
             solve_ms=sum(r.metadata.solve_ms for r in results),
         ),
     })
+
+

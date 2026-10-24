@@ -5,7 +5,7 @@ import hashlib
 import json
 from uuid import uuid4
 
-from app.adapters.routing.ortools_solver import OrToolsRoutingSolver
+from app.bootstrap import Services, build_services
 from app.application.impact_analysis import find_affected_work
 from app.application.runtime import runtime
 from app.contracts.common import SolveMetadata, ValidationReport
@@ -17,7 +17,9 @@ from app.domain.plan_rules import validate_plan
 from app.domain.transport_rules import validate_transport
 
 
-def handle_event(*, event: DispatchEvent, previous_plan: CandidatePlan, budget_ms: int) -> LocalRescheduleResult:
+def handle_event(*, event: DispatchEvent, previous_plan: CandidatePlan, budget_ms: int,
+                 services: Services | None = None) -> LocalRescheduleResult:
+    services = services or build_services()
     if budget_ms <= 0:
         raise ValueError("budget_ms_must_be_positive")
     if event.snapshot_id != previous_plan.snapshot_id:
@@ -77,7 +79,7 @@ def handle_event(*, event: DispatchEvent, previous_plan: CandidatePlan, budget_m
     handoffs_by_order = {h.order_id: h for h in effective_handoffs}
     routing_results = []
     remaining_ms = budget_ms
-    solver = OrToolsRoutingSolver()
+    solver = services.routing
     warehouse_items = sorted(grouped_order_ids.items())
     for index, (warehouse_id, ids) in enumerate(warehouse_items):
         if remaining_ms <= 0:
@@ -299,3 +301,4 @@ def _diff_plans(old: CandidatePlan, new: CandidatePlan, affected_order_ids: tupl
         new_route_duration_s=new_duration,
         route_duration_delta_s=new_duration - old_duration,
     )
+

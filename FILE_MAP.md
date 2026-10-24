@@ -156,6 +156,7 @@
 | [backend/tests/test_b04_reschedule.py](backend/tests/test_b04_reschedule.py) | PARTNER |
 | [backend/tests/test_b05_simulation_contract.py](backend/tests/test_b05_simulation_contract.py) | PARTNER |
 | [backend/tests/test_b06_budget_policy.py](backend/tests/test_b06_budget_policy.py) | PARTNER |
+| [backend/tests/test_bootstrap.py](backend/tests/test_bootstrap.py) | PARTNER |
 | [backend/tests/test_contracts.py](backend/tests/test_contracts.py) | SHARED |
 | [backend/tests/test_pg_r24.py](backend/tests/test_pg_r24.py) | PARTNER |
 | [backend/tests/test_pg_r25_replay.py](backend/tests/test_pg_r25_replay.py) | PARTNER |
@@ -407,6 +408,7 @@
 | [docs/devlog/entries/20261023-2135-partner-r05-contract-freeze.md](docs/devlog/entries/20261023-2135-partner-r05-contract-freeze.md) | SHARED |
 | [docs/devlog/entries/20261023-2205-partner-r05-cpsat-coldchain.md](docs/devlog/entries/20261023-2205-partner-r05-cpsat-coldchain.md) | SHARED |
 | [docs/devlog/entries/20261024-1440-partner-r08-negotiation.md](docs/devlog/entries/20261024-1440-partner-r08-negotiation.md) | SHARED |
+| [docs/devlog/entries/20261024-1500-partner-bootstrap-composition-root.md](docs/devlog/entries/20261024-1500-partner-bootstrap-composition-root.md) | SHARED |
 | [docs/devlog/entries/README.md](docs/devlog/entries/README.md) | SHARED |
 | [docs/handoff/AC_CODEX.md](docs/handoff/AC_CODEX.md) | SHARED |
 | [docs/handoff/B_CODEX.md](docs/handoff/B_CODEX.md) | SHARED |
