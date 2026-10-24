@@ -50867,6 +50867,25 @@
           "title": "EntityState",
           "type": "string"
         },
+        "LoadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "volume_cm3": {
+              "title": "Volume Cm3",
+              "type": "integer"
+            },
+            "weight_g": {
+              "title": "Weight G",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "weight_g",
+            "volume_cm3"
+          ],
+          "title": "LoadDTO",
+          "type": "object"
+        },
         "MatrixRefDTO": {
           "additionalProperties": false,
           "properties": {
@@ -51020,6 +51039,103 @@
             "matrix_ref"
           ],
           "title": "RouteDTO",
+          "type": "object"
+        },
+        "RouteStopDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "arrival_s": {
+              "title": "Arrival S",
+              "type": "integer"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "departure_s": {
+              "title": "Departure S",
+              "type": "integer"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "load_after": {
+              "$ref": "#/$defs/LoadDTO"
+            },
+            "load_before": {
+              "$ref": "#/$defs/LoadDTO"
+            },
+            "node_id": {
+              "format": "uuid",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "route_id": {
+              "format": "uuid",
+              "title": "Route Id",
+              "type": "string"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "sequence": {
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "service_start_s": {
+              "title": "Service Start S",
+              "type": "integer"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "task_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Task Ids",
+              "type": "array"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "route_id",
+            "sequence",
+            "node_id",
+            "task_ids",
+            "arrival_s",
+            "service_start_s",
+            "departure_s",
+            "load_before",
+            "load_after"
+          ],
+          "title": "RouteStopDTO",
           "type": "object"
         },
         "Severity": {
@@ -51187,6 +51303,14 @@
             },
             "status": {
               "$ref": "#/$defs/SolveStatus"
+            },
+            "stops": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/RouteStopDTO"
+              },
+              "title": "Stops",
+              "type": "array"
             },
             "validation": {
               "anyOf": [
@@ -51674,6 +51798,25 @@
           "title": "EntityState",
           "type": "string"
         },
+        "LoadDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "volume_cm3": {
+              "title": "Volume Cm3",
+              "type": "integer"
+            },
+            "weight_g": {
+              "title": "Weight G",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "weight_g",
+            "volume_cm3"
+          ],
+          "title": "LoadDTO",
+          "type": "object"
+        },
         "MatrixRefDTO": {
           "additionalProperties": false,
           "properties": {
@@ -51827,6 +51970,103 @@
             "matrix_ref"
           ],
           "title": "RouteDTO",
+          "type": "object"
+        },
+        "RouteStopDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "arrival_s": {
+              "title": "Arrival S",
+              "type": "integer"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "created_by": {
+              "format": "uuid",
+              "title": "Created By",
+              "type": "string"
+            },
+            "departure_s": {
+              "title": "Departure S",
+              "type": "integer"
+            },
+            "id": {
+              "format": "uuid",
+              "title": "Id",
+              "type": "string"
+            },
+            "load_after": {
+              "$ref": "#/$defs/LoadDTO"
+            },
+            "load_before": {
+              "$ref": "#/$defs/LoadDTO"
+            },
+            "node_id": {
+              "format": "uuid",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "route_id": {
+              "format": "uuid",
+              "title": "Route Id",
+              "type": "string"
+            },
+            "row_version": {
+              "title": "Row Version",
+              "type": "integer"
+            },
+            "schema_version": {
+              "const": "2.0.0",
+              "title": "Schema Version",
+              "type": "string"
+            },
+            "sequence": {
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "service_start_s": {
+              "title": "Service Start S",
+              "type": "integer"
+            },
+            "status": {
+              "$ref": "#/$defs/EntityState"
+            },
+            "task_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Task Ids",
+              "type": "array"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "status",
+            "created_at",
+            "updated_at",
+            "row_version",
+            "schema_version",
+            "created_by",
+            "route_id",
+            "sequence",
+            "node_id",
+            "task_ids",
+            "arrival_s",
+            "service_start_s",
+            "departure_s",
+            "load_before",
+            "load_after"
+          ],
+          "title": "RouteStopDTO",
           "type": "object"
         },
         "Severity": {
@@ -52113,6 +52353,14 @@
         },
         "status": {
           "$ref": "#/$defs/SolveStatus"
+        },
+        "stops": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/RouteStopDTO"
+          },
+          "title": "Stops",
+          "type": "array"
         },
         "validation": {
           "anyOf": [

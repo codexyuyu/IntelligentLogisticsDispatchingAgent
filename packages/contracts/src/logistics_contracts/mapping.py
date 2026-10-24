@@ -274,7 +274,8 @@ def solution_dto(value: transport_domain.TransportSolution) -> TransportSolution
         validation=validation_dto(value.validation) if value.validation is not None else None,
         diagnostics=tuple(DiagnosticDTO(code=v.code, severity=v.severity, message=v.message)
                           for v in value.diagnostics),
-        solver_evidence=tuple(evidence_dto(v) for v in value.solver_evidence))
+        solver_evidence=tuple(evidence_dto(v) for v in value.solver_evidence),
+        stops=tuple(route_stop_dto(v) for v in value.stops))
 
 
 def warehouse_task_dto(task: domain.WarehouseTask) -> WarehouseTaskDTO:

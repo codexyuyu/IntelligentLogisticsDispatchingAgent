@@ -14,6 +14,7 @@ from logistics_contracts.planning import (
     ObjectivePolicyDTO,
     PlanningSnapshotDTO,
     Record,
+    RouteStopDTO,
     SolveBudgetDTO,
     SolverEvidenceDTO,
     TransportPlanDTO,
@@ -95,6 +96,7 @@ class TransportSolutionDTO(Record):
     validation: ValidationReportDTO | None
     diagnostics: tuple[DiagnosticDTO, ...]
     solver_evidence: tuple[SolverEvidenceDTO, ...]
+    stops: tuple[RouteStopDTO, ...] = ()
 
 
 class TransportRequestDTO(BaseModel):

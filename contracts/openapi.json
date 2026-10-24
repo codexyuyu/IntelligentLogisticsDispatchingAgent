@@ -6819,6 +6819,14 @@
           "status": {
             "$ref": "#/components/schemas/SolveStatus"
           },
+          "stops": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/RouteStopDTO"
+            },
+            "title": "Stops",
+            "type": "array"
+          },
           "validation": {
             "anyOf": [
               {

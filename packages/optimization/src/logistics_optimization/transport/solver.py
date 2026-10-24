@@ -82,18 +82,18 @@ class OrToolsTransportSolver:
                 diagnostics=(Diagnostic("transport_infeasible", DiagnosticSeverity.ERROR,
                                         "no feasible vehicle assignment was found"),),
                 solver_evidence=(self._evidence(problem, status, ()),))
-        routes, cost, unserved = self._extract(problem, manager, routing, assignment, data)
+        routes, cost, unserved, all_stops = self._extract(problem, manager, routing, assignment, data)
         plan = TransportPlan(routes=tuple(routes), unserved_order_ids=tuple(unserved), cost=cost)
         status = (SolveStatus.OPTIMAL
                   if routing.status() == routing_enums_pb2.RoutingSearchStatus.ROUTING_OPTIMAL
                   else SolveStatus.FEASIBLE)
         objective = self._objective(problem, cost, len(unserved), 0)
-        validation = self._validate(problem, plan)
+        validation = self._validate(problem, plan, all_stops)
         metadata = self._metadata(problem, status, solve_ms, build_ms, True)
         return TransportSolution(status=status, engine_metadata=metadata, candidate=plan,
             optional_unserved_order_ids=tuple(unserved), objective=objective,
             validation=validation, diagnostics=(),
-            solver_evidence=(self._evidence(problem, status, routes),))
+            solver_evidence=(self._evidence(problem, status, routes),), stops=all_stops)
 
     # ------------------------------------------------------------------ model
 
@@ -186,6 +186,7 @@ class OrToolsTransportSolver:
         vehicles = {vehicle.vehicle_id: vehicle for vehicle in problem.vehicles}
         snapshot_vehicles = {vehicle.id: vehicle for vehicle in problem.snapshot.vehicles}
         routes: list[Route] = []
+        all_stops: list[RouteStop] = []
         visited_orders: set[UUID] = set()
         now = _now()
         candidate_id = uuid4()
@@ -216,6 +217,7 @@ class OrToolsTransportSolver:
                 index = next_index
             if not stops:
                 continue
+            all_stops.extend(stops)
             commercial = snapshot_vehicles.get(vehicle.vehicle_id)
             rate = commercial.rate_cents_per_km if commercial is not None else 0
             fixed = commercial.fixed_cost_cents if commercial is not None else 0
@@ -243,7 +245,7 @@ class OrToolsTransportSolver:
             service_cents=sum(route.cost.service_cents for route in routes),
             overtime_cents=0, setup_cents=0,
             total_cents=sum(route.cost.total_cents for route in routes))
-        return routes, cost, unserved
+        return routes, cost, unserved, tuple(all_stops)
 
     def _objective(self, problem, cost, unserved, soft_late):
         penalty = unserved * problem.policy.optional_unserved_penalty_cents
@@ -252,10 +254,10 @@ class OrToolsTransportSolver:
             optional_unserved_penalty=penalty, soft_late_penalty=soft_late,
             disturbance_penalty=0, makespan_penalty=0, objective_total=total)
 
-    def _validate(self, problem, plan):
+    def _validate(self, problem, plan, stops=()):
         from logistics_optimization.validation.transport import validate_transport
 
-        return validate_transport(plan, problem)
+        return validate_transport(plan, problem, tuple(stops))
 
     def _metadata(self, problem, status, solve_ms, build_ms, incumbent):
         return EngineMetadata(name="ortools_routing", version="9",

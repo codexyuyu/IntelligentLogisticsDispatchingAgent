@@ -209,6 +209,7 @@ class TransportSolution:
     validation: ValidationReport | None
     diagnostics: tuple[Diagnostic, ...]
     solver_evidence: tuple[SolverEvidence, ...]
+    stops: tuple[RouteStop, ...] = ()
 
     def __post_init__(self) -> None:
         if not isinstance(self.status, SolveStatus):
@@ -223,3 +224,8 @@ class TransportSolution:
             raise InvalidInputError("feasible/optimal status requires a candidate")
         if not isinstance(self.solver_evidence, tuple):
             raise InvalidInputError("solver_evidence must be a tuple")
+        if not isinstance(self.stops, tuple):
+            raise InvalidInputError("TransportSolution.stops must be a tuple")
+        for index, stop in enumerate(self.stops):
+            if not isinstance(stop, RouteStop):
+                raise InvalidInputError(f"TransportSolution.stops[{index}] must be RouteStop")
