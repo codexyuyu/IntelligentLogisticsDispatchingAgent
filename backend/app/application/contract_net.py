@@ -440,6 +440,23 @@ class ContractNet:
 
 
 # --------------------------------------------------------------------------- #
+def format_transcript(result: NegotiationResult) -> tuple[str, ...]:
+    """Human-readable transcript lines for the demo screen / handoff notes.
+
+    Deterministic and dependency-free: one line per message, in sequence order.
+    """
+    lines = []
+    for message in result.transcript:
+        bid = f' {message.bid_id}' if message.bid_id else ''
+        lines.append(
+            f'{message.seq:>3} r{message.round_no} t={message.at_s:<5} '
+            f'{message.kind:<8} {message.role:<11} {message.task_id}{bid}  {message.detail}'
+        )
+    lines.append(f'status={result.status} rounds={result.rounds_used} '
+                 f'awards={len(result.awards)} conflicts={len(result.conflicts)} '
+                 f'digest={result.digest[:12]}')
+    return tuple(lines)
+
 # Bounded roles built on the shared contracts
 # --------------------------------------------------------------------------- #
 
@@ -551,6 +568,7 @@ class ExceptionRecoveryRole:
 
     def confirm(self, award: Award) -> bool:
         return True
+
 
 
 

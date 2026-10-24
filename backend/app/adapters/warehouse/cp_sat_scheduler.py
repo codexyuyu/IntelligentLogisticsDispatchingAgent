@@ -320,10 +320,11 @@ class CpSatWarehouseScheduler:
                 value = end_vars.get(operation_id)
                 return frozen_by_op[operation_id].end_s if value is None else value
 
+            request_scope = set(start_vars) | set(frozen_by_op)
             try:
-                add_storage_constraints(coldchain, model, resolve_start, resolve_end)
-                add_compatibility_constraints(coldchain, model, resolve_start, resolve_end)
-                add_exposure_constraints(coldchain, model, resolve_start, resolve_end)
+                add_storage_constraints(coldchain, model, resolve_start, resolve_end, request_scope)
+                add_compatibility_constraints(coldchain, model, resolve_start, resolve_end, request_scope)
+                add_exposure_constraints(coldchain, model, resolve_start, resolve_end, request_scope)
                 add_setup_constraints(coldchain, model, assignments, start_vars, end_vars)
                 add_precool_constraints(coldchain, model, start_vars, end_vars, assignments)
             except ColdChainModelError as error:
@@ -565,3 +566,4 @@ class CpSatWarehouseScheduler:
 
 def _elapsed_ms(started: float) -> int:
     return int((time.perf_counter() - started) * 1000)
+

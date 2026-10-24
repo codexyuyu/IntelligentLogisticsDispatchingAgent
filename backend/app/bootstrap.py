@@ -60,7 +60,7 @@ def describe_services(services: Services | None = None) -> dict[str, str]:
 
 def build_negotiator(snapshot, *, policy=None, warehouse_resource_id: str | None = None,
                      vehicle_id: str | None = None, disruption_at_s: int | None = None,
-                     recovery_s: int = 0):
+                     recovery_s: int = 0, handoffs: tuple = ()):
     """Compose the R08 four-role contract net for one snapshot.
 
     Roles are bound to real snapshot objects: the warehouse role uses the chosen
@@ -96,7 +96,8 @@ def build_negotiator(snapshot, *, policy=None, warehouse_resource_id: str | None
                                           resource_id=resource.resource_id)
     return ContractNet([
         WarehouseWindowRole(snapshot, resource.resource_id),
-        TransportWindowRole(vehicle),
+        TransportWindowRole(vehicle, handoffs=handoffs),
         exception,
     ], policy)
+
 

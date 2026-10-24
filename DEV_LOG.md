@@ -1,3 +1,13 @@
+## 2026-10-24 · PARTNER · 演示收尾：R05→R08→R09 闭环
+
+新增 `application/negotiation_link.py`：把 R08 绑到**已求解**的计划上（任务 = CP-SAT 排出的装载工序，窗口 = 该工序 release/deadline，仓储角色绑 CP-SAT 指派资源，运输角色绑实际承运车辆与该单 handoff）。新增 `backend/tools/r09_demo_loop.py`：场景 → 确定性 R05 合成层（含预冷工序与多资源需求）→ `coordinate` 真跑 CP-SAT+Routing → 协商 → 观测 → 打印并落 JSON。`contract_net.format_transcript()` 提供演示用 transcript。
+
+`plan_observations.handoff_wait_s` 改为 `int | None` 并新增 `measured_handoff_wait_s` / `unmeasured_handoff_orders`——**未知等待不再报 0**。
+
+同时修掉闭环暴露的真实缺陷：R05 建模与校验**作用域越界**（按订单子集求解时，越界占用区间 KeyError、越界工序/批次被误报）。`coldchain_model._occupancy_bounds` 增加 `scope`，timeline 与 `r05.*` 四个检查按请求范围跳过。
+
+验证：`tests/test_r09_demo_loop_unit.py` **5 passed**（含 4 次真求解）；backend **345 passed**（基线 340）；`check_project` PASS；`verify_delivery` 12/12 exit 0。演示命令：`python backend/tools/r09_demo_loop.py --max-orders 3 --budget-ms 12000`。详见[本轮增量日志](docs/devlog/entries/20261024-1600-partner-demo-loop-final.md)。
+
 ## 2026-10-24 · PARTNER · R09 乙方侧集成：业务观测 + R08 组合根装配
 
 新增 `backend/app/application/plan_observations.py`：`observe_plan(plan, requested_order_ids, negotiation=None)` 输出 R09 可用的**业务事实**——订单覆盖（请求/已服务/未服务含 reason）、逐单 `handoff_wait_s`（发车−ready_at）、仓库 makespan、总里程/时长、按 `(location, unit)` 的容量峰值（半开区间扫描）、按批次的暴露**并集**、换批次数与总时长、三段求解状态、协商状态/授标数/冲突数/digest。无冷链证据时 `coldchain_evidence=False` 且峰值/暴露为空元组，**不填 0**；指标公式仍留在甲方 `app/evaluation/`。

@@ -40,6 +40,12 @@ class ColdChainTimelineBuilder:
         scheduled = _by_operation(result)
         resolved: list[ScheduledOccupancy] = []
         for declared in coldchain.occupancies:
+            if ((declared.inbound_operation_id is not None
+                 and declared.inbound_operation_id not in scheduled)
+                    or (declared.outbound_operation_id is not None
+                        and declared.outbound_operation_id not in scheduled)):
+                # Bounded by work outside this request: not part of this plan.
+                continue
             start = self._occupancy_start(declared, scheduled)
             end = self._occupancy_end(declared, scheduled, coldchain)
             if end <= start:

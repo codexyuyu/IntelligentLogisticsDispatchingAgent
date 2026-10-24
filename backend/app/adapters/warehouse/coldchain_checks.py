@@ -104,6 +104,12 @@ def derived_occupancies(request: WarehouseScheduleRequest,
     horizon = coldchain.horizon_s
     derived: list[ScheduledOccupancy] = []
     for declared in coldchain.occupancies:
+        if ((declared.inbound_operation_id is not None
+             and declared.inbound_operation_id not in scheduled)
+                or (declared.outbound_operation_id is not None
+                    and declared.outbound_operation_id not in scheduled)):
+            # Bounded by work outside this request: not part of this plan.
+            continue
         if declared.origin == 'initial_stock':
             start = 0
         elif declared.inbound_operation_id is not None:
@@ -252,12 +258,16 @@ def check_resource_requirements(
     result: WarehouseScheduleResult,
     outcome: CheckOutcome,
 ) -> None:
+    requested = set(request.order_ids)
     operations = {op.operation_id: op for op in request.snapshot.operations}
     resources = {res.resource_id: res for res in request.snapshot.resources}
     scheduled = {item.operation_id: item for item in result.operations}
     requirements_present = False
     for operation_id, operation in sorted(operations.items()):
         if not operation.requirements:
+            continue
+        if operation.order_ids and not any(oid in requested for oid in operation.order_ids):
+            # Outside this request's order scope: not part of this schedule.
             continue
         requirements_present = True
         item = scheduled.get(operation_id)
@@ -463,14 +473,22 @@ def check_changeovers(
 
 def check_precool(
     coldchain: ColdChainSnapshot,
+    request: WarehouseScheduleRequest,
     result: WarehouseScheduleResult,
     outcome: CheckOutcome,
 ) -> None:
     if not coldchain.precool_requirements:
         outcome.not_checked.append('r05.precool:no_precool_requirement')
         return
+    requested = set(request.order_ids)
+    operations = {op.operation_id: op for op in request.snapshot.operations}
     scheduled = {item.operation_id: item for item in result.operations}
     for requirement in coldchain.precool_requirements:
+        source = operations.get(requirement.precool_operation_id)
+        if source is not None and source.order_ids and not any(
+                oid in requested for oid in source.order_ids):
+            # Pre-cooling for an order outside this request: not part of this plan.
+            continue
         precool = scheduled.get(requirement.precool_operation_id)
         if precool is None:
             outcome.violations.append(Violation(
@@ -521,6 +539,7 @@ def check_precool(
 
 def check_exposure(
     coldchain: ColdChainSnapshot,
+    request: WarehouseScheduleRequest,
     result: WarehouseScheduleResult,
     outcome: CheckOutcome,
 ) -> None:
@@ -534,7 +553,13 @@ def check_exposure(
     for segment in result.coldchain.exposure_segments:
         segments_by_batch.setdefault(segment.batch_id, []).append(segment)
 
+    requested = set(request.order_ids)
+    in_scope_batches = {order.batch_id for order in request.snapshot.orders
+                        if order.order_id in requested}
     for limit in coldchain.exposure_limits:
+        if in_scope_batches and limit.batch_id not in in_scope_batches:
+            # The batch is not part of this request, so it has no plan evidence.
+            continue
         segments = segments_by_batch.get(limit.batch_id, [])
         covered = {segment.scope for segment in segments}
         missing = [scope for scope in limit.scopes if scope not in covered]
@@ -650,8 +675,8 @@ def check_coldchain(request: WarehouseScheduleRequest,
     check_resource_requirements(request, result, outcome)
     check_resource_capacity(request, result, outcome)
     check_changeovers(coldchain, request, result, outcome)
-    check_precool(coldchain, result, outcome)
-    check_exposure(coldchain, result, outcome)
+    check_precool(coldchain, request, result, outcome)
+    check_exposure(coldchain, request, result, outcome)
     check_batch_compatibility(coldchain, result, outcome)
     return outcome
 

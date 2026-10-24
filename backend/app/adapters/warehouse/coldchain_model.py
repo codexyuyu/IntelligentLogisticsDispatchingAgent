@@ -194,10 +194,20 @@ def add_setup_constraints(
                 ).OnlyEnforceIf([left_first.Not(), *guard])
 
 
-def _occupancy_bounds(context: ColdChainContext, resolve_start, resolve_end):
-    """Yield ``(occupancy_id, start_expr, end_expr)`` for declared occupancies."""
+def _occupancy_bounds(context: ColdChainContext, resolve_start, resolve_end,
+                      scope: set[str] | None = None):
+    """Yield ``(occupancy, start_expr, end_expr)`` for declared occupancies.
+
+    ``scope`` is the set of operations this request actually plans.  An
+    occupancy bounded by an operation outside that scope is not part of this
+    schedule, so it is skipped instead of being pinned to a fabricated time.
+    """
     coldchain = context.snapshot.coldchain
     for occupancy in coldchain.occupancies:
+        if scope is not None:
+            bounded = {occupancy.inbound_operation_id, occupancy.outbound_operation_id}
+            if any(op_id is not None and op_id not in scope for op_id in bounded):
+                continue
         if occupancy.origin == 'initial_stock':
             start = 0
         elif occupancy.inbound_operation_id is not None:
@@ -211,7 +221,8 @@ def _occupancy_bounds(context: ColdChainContext, resolve_start, resolve_end):
         yield occupancy, start, end
 
 
-def add_storage_constraints(context: ColdChainContext, model, resolve_start, resolve_end) -> None:
+def add_storage_constraints(context: ColdChainContext, model, resolve_start, resolve_end,
+                            scope: set[str] | None = None) -> None:
     """Time-varying storage capacity, checked per location and dimension."""
     coldchain = context.snapshot.coldchain
     locations = {item.location_id: item for item in coldchain.storage_locations}
@@ -219,7 +230,7 @@ def add_storage_constraints(context: ColdChainContext, model, resolve_start, res
         return
     intervals_by_location: dict[str, list] = {}
     usage: dict[tuple[str, str], list[tuple[object, int]]] = {}
-    for occupancy, start, end in _occupancy_bounds(context, resolve_start, resolve_end):
+    for occupancy, start, end in _occupancy_bounds(context, resolve_start, resolve_end, scope):
         location = locations.get(occupancy.location_id)
         if location is None:
             raise ColdChainModelError(f'UNKNOWN_STORAGE_LOCATION:{occupancy.location_id}')
@@ -252,7 +263,8 @@ def add_storage_constraints(context: ColdChainContext, model, resolve_start, res
         )
 
 
-def add_compatibility_constraints(context: ColdChainContext, model, resolve_start, resolve_end) -> None:
+def add_compatibility_constraints(context: ColdChainContext, model, resolve_start, resolve_end,
+                                  scope: set[str] | None = None) -> None:
     """Batches whose classes may not mix must not overlap in the same location."""
     coldchain = context.snapshot.coldchain
     policy = coldchain.compatibility_policy
@@ -260,7 +272,7 @@ def add_compatibility_constraints(context: ColdChainContext, model, resolve_star
         return
     classes = {profile.batch_id: profile.compatibility_class
                for profile in coldchain.batch_compatibility}
-    bounds = list(_occupancy_bounds(context, resolve_start, resolve_end))
+    bounds = list(_occupancy_bounds(context, resolve_start, resolve_end, scope))
     for index, (left, left_start, left_end) in enumerate(bounds):
         for right, right_start, right_end in bounds[index + 1:]:
             if left.location_id != right.location_id or left.batch_id == right.batch_id:
@@ -276,7 +288,8 @@ def add_compatibility_constraints(context: ColdChainContext, model, resolve_star
             model.Add(right_end <= left_start).OnlyEnforceIf(ordered.Not())
 
 
-def add_exposure_constraints(context: ColdChainContext, model, resolve_start, resolve_end) -> None:
+def add_exposure_constraints(context: ColdChainContext, model, resolve_start, resolve_end,
+                             scope: set[str] | None = None) -> None:
     """Conservative exposure caps.
 
     The solver can only bound the warehouse dwell it decides itself; waiting and
@@ -300,7 +313,7 @@ def add_exposure_constraints(context: ColdChainContext, model, resolve_start, re
             durations_by_batch[batch_id] = durations_by_batch.get(batch_id, 0) + operation.duration_s
 
     sizes_by_batch: dict[str, list] = {}
-    for occupancy, start, end in _occupancy_bounds(context, resolve_start, resolve_end):
+    for occupancy, start, end in _occupancy_bounds(context, resolve_start, resolve_end, scope):
         limit = limits.get(occupancy.batch_id)
         if limit is None or 'in_warehouse' not in limit.scopes:
             continue
@@ -339,3 +352,5 @@ def add_precool_constraints(
             if loading_start is None:
                 continue
             model.Add(loading_start >= precool_end)
+
+

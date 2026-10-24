@@ -73,8 +73,8 @@ def _solve_pair(*, snapshot, order_ids, budget_ms, targets=(), seed=17,
         raise RuntimeError(f"warehouse_solver_failed:{warehouse.metadata.raw_status}")
     wr = services.warehouse_validator.validate(warehouse_request, warehouse)
     if wr.status != "passed":
-        raise RuntimeError("warehouse_validation_failed:" + ",".join(v.rule_id for v in wr.violations[:8]))
-
+        reasons = ",".join(v.rule_id for v in wr.violations[:8]) or ("unchecked:" + ",".join(wr.not_checked_rule_ids[:8]))
+        raise RuntimeError(f"warehouse_validation_failed:{wr.status}:{reasons}")
     handoffs = {h.order_id: h for h in warehouse.warehouse_handoffs}
     route_results = []
     for idx, (warehouse_id, ids) in enumerate(sorted(groups.items())):

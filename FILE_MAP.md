@@ -82,6 +82,7 @@
 | [backend/app/application/handle_event.py](backend/app/application/handle_event.py) | PARTNER |
 | [backend/app/application/http_services.py](backend/app/application/http_services.py) | PARTNER |
 | [backend/app/application/impact_analysis.py](backend/app/application/impact_analysis.py) | PARTNER |
+| [backend/app/application/negotiation_link.py](backend/app/application/negotiation_link.py) | PARTNER |
 | [backend/app/application/plan_observations.py](backend/app/application/plan_observations.py) | PARTNER |
 | [backend/app/application/runtime.py](backend/app/application/runtime.py) | PARTNER |
 | [backend/app/application/warehouse_selection.py](backend/app/application/warehouse_selection.py) | PARTNER |
@@ -166,6 +167,7 @@
 | [backend/tests/test_planning_routing_integration.py](backend/tests/test_planning_routing_integration.py) | PARTNER |
 | [backend/tests/test_preparation_bundle.py](backend/tests/test_preparation_bundle.py) | DSH |
 | [backend/tests/test_r05_coldchain_contracts.py](backend/tests/test_r05_coldchain_contracts.py) | PARTNER |
+| [backend/tests/test_r09_demo_loop_unit.py](backend/tests/test_r09_demo_loop_unit.py) | PARTNER |
 | [backend/tests/test_r09_observations.py](backend/tests/test_r09_observations.py) | PARTNER |
 | [backend/tests/test_r17_deep_coordination.py](backend/tests/test_r17_deep_coordination.py) | PARTNER |
 | [backend/tests/test_r18_multiscene_evidence.py](backend/tests/test_r18_multiscene_evidence.py) | PARTNER |
@@ -199,6 +201,7 @@
 | [backend/tools/pg_r28_prepare.py](backend/tools/pg_r28_prepare.py) | PARTNER |
 | [backend/tools/pg_r29_active_warehouse.py](backend/tools/pg_r29_active_warehouse.py) | PARTNER |
 | [backend/tools/pg_r30a_bundle.py](backend/tools/pg_r30a_bundle.py) | PARTNER |
+| [backend/tools/r09_demo_loop.py](backend/tools/r09_demo_loop.py) | PARTNER |
 | [backend/tools/r17_joint_ablation.py](backend/tools/r17_joint_ablation.py) | PARTNER |
 | [backend/tools/r18_acceptance_freeze.py](backend/tools/r18_acceptance_freeze.py) | PARTNER |
 | [backend/tools/r18_evidence_audit.py](backend/tools/r18_evidence_audit.py) | PARTNER |
@@ -412,6 +415,7 @@
 | [docs/devlog/entries/20261024-1440-partner-r08-negotiation.md](docs/devlog/entries/20261024-1440-partner-r08-negotiation.md) | SHARED |
 | [docs/devlog/entries/20261024-1500-partner-bootstrap-composition-root.md](docs/devlog/entries/20261024-1500-partner-bootstrap-composition-root.md) | SHARED |
 | [docs/devlog/entries/20261024-1530-partner-r09-observations-integration.md](docs/devlog/entries/20261024-1530-partner-r09-observations-integration.md) | SHARED |
+| [docs/devlog/entries/20261024-1600-partner-demo-loop-final.md](docs/devlog/entries/20261024-1600-partner-demo-loop-final.md) | SHARED |
 | [docs/devlog/entries/README.md](docs/devlog/entries/README.md) | SHARED |
 | [docs/handoff/AC_CODEX.md](docs/handoff/AC_CODEX.md) | SHARED |
 | [docs/handoff/B_CODEX.md](docs/handoff/B_CODEX.md) | SHARED |

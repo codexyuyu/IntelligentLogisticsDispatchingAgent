@@ -52,7 +52,9 @@ class PlanObservations:
     requested_order_ids: tuple[str, ...]
     served_order_ids: tuple[str, ...]
     unserved: tuple[tuple[str, str], ...]
-    handoff_wait_s: tuple[tuple[str, int], ...]
+    #: order_id -> wait in seconds, or ``None`` when the order has no route at
+    #: all.  None means "not measurable", never "waited zero seconds".
+    handoff_wait_s: tuple[tuple[str, int | None], ...]
     warehouse_makespan_s: int
     total_distance_m: int
     total_duration_s: int
@@ -76,6 +78,16 @@ class PlanObservations:
     @property
     def served_count(self) -> int:
         return len(self.served_order_ids)
+
+    @property
+    def measured_handoff_wait_s(self) -> tuple[tuple[str, int], ...]:
+        """Only the orders whose departure is actually known."""
+        return tuple((order_id, wait) for order_id, wait in self.handoff_wait_s
+                     if wait is not None)
+
+    @property
+    def unmeasured_handoff_orders(self) -> tuple[str, ...]:
+        return tuple(order_id for order_id, wait in self.handoff_wait_s if wait is None)
 
 
 def _union_length(intervals: list[tuple[int, int]]) -> int:
@@ -136,7 +148,9 @@ def observe_plan(plan: CandidatePlan, requested_order_ids: tuple[str, ...],
         for order_id in (order for stop in route.stops for order in stop.order_ids):
             departures.setdefault(order_id, departure)
     waits = tuple(sorted(
-        (handoff.order_id, departures.get(handoff.order_id, handoff.ready_at_s) - handoff.ready_at_s)
+        (handoff.order_id,
+         None if handoff.order_id not in departures
+         else departures[handoff.order_id] - handoff.ready_at_s)
         for handoff in plan.warehouse.warehouse_handoffs
     ))
 
