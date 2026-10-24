@@ -55,6 +55,11 @@ def validate_transport(plan: TransportPlan, problem: TransportProblem,
             actual=str(plan.cost.total_cents), expected=str(cost_sum),
             message="plan cost total does not equal its components"))
     node_windows = {node.id: node.hard_window for node in problem.nodes}
+    vehicle_by_id = {vehicle.vehicle_id: vehicle for vehicle in problem.vehicles}
+    cargo_by_order = {}
+    for cargo in problem.snapshot.cargo:
+        cargo_by_order.setdefault(cargo.order_id, []).append(cargo)
+    orders_by_route = {}
     visited_orders = set()
     seen_stops = set()
     sequences: dict = {}
@@ -88,6 +93,40 @@ def validate_transport(plan: TransportPlan, problem: TransportProblem,
                     expected=f"[{window.earliest_s},{window.latest_s}]",
                     message="service start is outside the hard window"))
             visited_orders.update(stop.task_ids)
+            orders_by_route.setdefault(stop.route_id, set()).update(stop.task_ids)
+        for route_id, order_ids in orders_by_route.items():
+            vehicle = vehicle_by_id.get(next(
+                (route.vehicle_id for route in plan.routes if route.id == route_id), None))
+            route_stops = sorted((stop for stop in stops if stop.route_id == route_id),
+                                 key=lambda stop: stop.sequence)
+            if vehicle is None:
+                continue
+            previous_load = None
+            for stop in route_stops:
+                if (stop.load_before.weight_g > vehicle.capacity_weight_g
+                        or stop.load_before.volume_cm3 > vehicle.capacity_volume_cm3
+                        or stop.load_after.weight_g > vehicle.capacity_weight_g
+                        or stop.load_after.volume_cm3 > vehicle.capacity_volume_cm3):
+                    violations.append(Violation(code="vehicle_capacity", severity=Severity.HARD,
+                        entity_refs=(), field_path="stop.load_after",
+                        actual=f"{stop.load_after.weight_g}/{stop.load_after.volume_cm3}",
+                        expected=f"<={vehicle.capacity_weight_g}/{vehicle.capacity_volume_cm3}",
+                        message="route stop load exceeds vehicle capacity"))
+                if previous_load is not None and stop.load_before != previous_load:
+                    violations.append(Violation(code="load_continuity", severity=Severity.HARD,
+                        entity_refs=(), field_path="stop.load_before",
+                        actual=str(stop.load_before), expected=str(previous_load),
+                        message="load before a stop differs from the previous stop load after"))
+                previous_load = stop.load_after
+            for order_id in order_ids:
+                for cargo in cargo_by_order.get(order_id, ()):
+                    if not (cargo.min_temp_decic <= vehicle.setpoint_decic
+                            <= cargo.max_temp_decic):
+                        violations.append(Violation(code="temperature",
+                            severity=Severity.HARD, entity_refs=(),
+                            field_path="route.vehicle_id", actual=str(vehicle.setpoint_decic),
+                            expected=f"[{cargo.min_temp_decic},{cargo.max_temp_decic}]",
+                            message="vehicle setpoint is outside the cargo temperature range"))
         required = {node.order_id for node in problem.nodes
                     if node.order_id is not None and node.kind.value == "pickup"}
         missing = required - visited_orders

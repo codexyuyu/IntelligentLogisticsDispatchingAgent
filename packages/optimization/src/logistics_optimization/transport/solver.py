@@ -195,6 +195,8 @@ class OrToolsTransportSolver:
             index = routing.Start(vehicle_index)
             stops: list[RouteStop] = []
             route_distance = 0
+            current_weight = vehicle.start_load.weight_g
+            current_volume = vehicle.start_load.volume_cm3
             while not routing.IsEnd(index):
                 node_index = manager.IndexToNode(index)
                 next_index = assignment.Value(routing.NextVar(index))
@@ -202,18 +204,19 @@ class OrToolsTransportSolver:
                 if node_index < len(nodes):
                     node = nodes[node_index]
                     arrival = assignment.Value(time_dimension.CumulVar(index))
-                    weight = assignment.Value(weight_dimension.CumulVar(index))
                     if node.order_id is not None and node.kind == RoutingNodeKind.DELIVERY:
                         visited_orders.add(node.order_id)
+                    load_before = Load(current_weight, current_volume)
+                    current_weight = max(0, current_weight + node.load_delta.weight_g)
+                    current_volume = max(0, current_volume + node.load_delta.volume_cm3)
                     stops.append(RouteStop(
                         id=uuid4(), status=EntityState.PLANNED, created_at=now, updated_at=now,
                         row_version=0, schema_version="2.0.0", created_by=SYSTEM_ACTOR,
                         route_id=route_id, sequence=len(stops), node_id=node.id,
                         task_ids=(node.order_id or node.id,), arrival_s=arrival,
                         service_start_s=arrival, departure_s=arrival + node.service_s,
-                        load_before=Load(max(0, weight - node.load_delta.weight_g),
-                                         max(0, -node.load_delta.volume_cm3)),
-                        load_after=Load(max(0, weight), 0)))
+                        load_before=load_before,
+                        load_after=Load(current_weight, current_volume)))
                 index = next_index
             if not stops:
                 continue
