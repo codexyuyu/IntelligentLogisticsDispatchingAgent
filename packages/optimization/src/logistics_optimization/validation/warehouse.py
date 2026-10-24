@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+from itertools import pairwise
 from uuid import uuid4
 
 from logistics_domain.planning import Severity, ValidationReport, Violation, content_hash
@@ -24,7 +25,8 @@ def validate_warehouse(problem: WarehouseProblem,
     locations = {item.id: item for item in resources.locations}
     zones = {item.id: item for item in resources.zones}
     cargo = {item.id: item for item in problem.snapshot.cargo}
-    assigned: dict = {}
+    assigned_by_task: dict = {}
+    covered_requirements: set = set()
     by_resource: dict = {}
     for assignment in solution.assignments:
         task = tasks.get(assignment.task_id)
@@ -34,12 +36,13 @@ def validate_warehouse(problem: WarehouseProblem,
                 actual=str(assignment.task_id), expected="task in problem",
                 message="assignment references an unknown warehouse task"))
             continue
-        if assignment.task_id in assigned:
-            violations.append(Violation(code="task_twice", severity=Severity.HARD,
+        assigned_by_task.setdefault(assignment.task_id, []).append(assignment)
+        if len(assigned_by_task[assignment.task_id]) > len(task.requirements):
+            violations.append(Violation(code="too_many_assignments", severity=Severity.HARD,
                 entity_refs=(), field_path="assignment.task_id",
-                actual=str(assignment.task_id), expected="one assignment per task",
-                message="a warehouse task is assigned more than once"))
-        assigned[assignment.task_id] = assignment
+                actual=str(len(assigned_by_task[assignment.task_id])),
+                expected=f"<= {len(task.requirements)}",
+                message="task has more assignments than resource requirements"))
         eligible = {resource_id for requirement in task.requirements
                     for resource_id in requirement.eligible_ids}
         if eligible and assignment.resource_id not in eligible:
@@ -93,7 +96,21 @@ def validate_warehouse(problem: WarehouseProblem,
                             message="worker lacks a required skill"))
             matching = [requirement for requirement in task.requirements
                         if assignment.resource_id in requirement.eligible_ids]
+            if not matching:
+                violations.append(Violation(code="ineligible_resource", severity=Severity.HARD,
+                    entity_refs=(), field_path="assignment.resource_id",
+                    actual=str(assignment.resource_id), expected="resource in a task requirement",
+                    message="assignment resource satisfies no task requirement"))
             for requirement in matching:
+                requirement_index = task.requirements.index(requirement)
+                key = (assignment.task_id, requirement_index)
+                if key in covered_requirements:
+                    violations.append(Violation(code="duplicate_requirement_assignment",
+                        severity=Severity.HARD, entity_refs=(),
+                        field_path="assignment.resource_id", actual=str(assignment.resource_id),
+                        expected="one assignment per requirement",
+                        message="task requirement has more than one assignment"))
+                covered_requirements.add(key)
                 if assignment.units < requirement.units:
                     violations.append(Violation(code="insufficient_units", severity=Severity.HARD,
                         entity_refs=(), field_path="assignment.units",
@@ -111,12 +128,17 @@ def validate_warehouse(problem: WarehouseProblem,
                 actual=str(assignment.end_s - assignment.start_s),
                 expected=str(task.duration_s), message="assignment duration differs from task"))
         by_resource.setdefault(assignment.resource_id, []).append(assignment)
-    missing = set(tasks) - set(assigned)
+    missing = []
+    for task in problem.tasks:
+        for index, _ in enumerate(task.requirements):
+            if (task.id, index) not in covered_requirements:
+                missing.append((task.id, index))
     if solution.assignments and missing:
         violations.append(Violation(code="task_coverage", severity=Severity.HARD,
             entity_refs=(), field_path="solution.assignments",
-            actual=str(len(missing)) + " missing", expected="every task assigned",
-            message="not every warehouse task has an assignment"))
+            actual=str(len(missing)) + " missing requirements",
+            expected="every task requirement assigned",
+            message="not every warehouse task requirement has an assignment"))
     for resource_id, assignments in by_resource.items():
         assignments.sort(key=lambda item: item.start_s)
         equipment_item = equipment.get(resource_id)
@@ -136,23 +158,26 @@ def validate_warehouse(problem: WarehouseProblem,
                     expected=f"<= {equipment_item.quantity_capacity}",
                     message="concurrent equipment demand exceeds capacity"))
             continue
-        for left, right in zip(assignments, assignments[1:]):
+        for left, right in pairwise(assignments):
             if left.end_s > right.start_s:
                 violations.append(Violation(code="resource_overlap", severity=Severity.HARD,
                     entity_refs=(), field_path="assignment.resource_id",
                     actual=str(resource_id), expected="no overlap",
                     message="two warehouse assignments overlap on the same resource"))
     for task in problem.tasks:
-        assignment = assigned.get(task.id)
-        if assignment is None:
+        task_assignments = assigned_by_task.get(task.id, ())
+        if not task_assignments:
             continue
+        task_start = min(item.start_s for item in task_assignments)
         for predecessor_id in task.predecessor_ids:
-            predecessor = assigned.get(predecessor_id)
-            if predecessor is not None and predecessor.end_s > assignment.start_s:
-                violations.append(Violation(code="precedence", severity=Severity.HARD,
-                    entity_refs=(), field_path="assignment.start_s",
-                    actual=str(assignment.start_s), expected=f">= {predecessor.end_s}",
-                    message="task starts before its predecessor finishes"))
+            predecessor_assignments = assigned_by_task.get(predecessor_id, ())
+            if predecessor_assignments:
+                predecessor_end = max(item.end_s for item in predecessor_assignments)
+                if predecessor_end > task_start:
+                    violations.append(Violation(code="precedence", severity=Severity.HARD,
+                        entity_refs=(), field_path="assignment.start_s",
+                        actual=str(task_start), expected=f">= {predecessor_end}",
+                        message="task starts before its predecessor finishes"))
     location_intervals = defaultdict(list)
     zone_intervals = defaultdict(list)
     for interval in solution.storage_allocations:
@@ -212,12 +237,19 @@ def validate_warehouse(problem: WarehouseProblem,
                 message="storage allocation exceeds zone capacity"))
     for resource_id, assignments in by_resource.items():
         ordered = sorted(assignments, key=lambda item: item.start_s)
-        for left, right in zip(ordered, ordered[1:]):
+        for left, right in pairwise(ordered):
             left_task = tasks.get(left.task_id)
             right_task = tasks.get(right.task_id)
             if left_task is None or right_task is None:
                 continue
             if left_task.setup_class == right_task.setup_class:
+                continue
+            policy_transition = next((transition
+                for transition in problem.setup_policy.transitions
+                if transition.resource_id == resource_id
+                and transition.from_class == left_task.setup_class
+                and transition.to_class == right_task.setup_class), None)
+            if policy_transition is None or policy_transition.duration_s <= 0:
                 continue
             matched = any(setup.resource_id == resource_id
                 and setup.from_class == left_task.setup_class
@@ -251,7 +283,7 @@ def validate_warehouse(problem: WarehouseProblem,
         setup_by_resource[setup.resource_id].append(setup)
     for resource_id, setups in setup_by_resource.items():
         setups.sort(key=lambda item: item.start_s)
-        for left, right in zip(setups, setups[1:]):
+        for left, right in pairwise(setups):
             if left.end_s > right.start_s:
                 violations.append(Violation(code="setup_overlap", severity=Severity.HARD,
                     entity_refs=(), field_path="setup.resource_id",
@@ -269,7 +301,7 @@ def validate_warehouse(problem: WarehouseProblem,
         snapshot_hash=problem.snapshot.hash, rules_version="1.0.0", valid=valid,
         required_codes=(), checked_codes=(), unsupported_codes=(),
         violations=tuple(violations),
-        validated_at=datetime.now(timezone.utc).replace(microsecond=0))
+        validated_at=datetime.now(UTC).replace(microsecond=0))
 
 
 def _peak(intervals, attribute: str) -> int:

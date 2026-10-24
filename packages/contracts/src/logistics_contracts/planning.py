@@ -257,6 +257,12 @@ class StorageIntervalDTO(Record):
     volume_cm3: StrictInt
 
 
+class ResourceAllocationDTO(Record):
+    domain_type = domain.ResourceAllocation
+    resource_id: UUID
+    units: StrictInt
+
+
 class SetupOperationDTO(Record):
     domain_type = domain.SetupOperation
     resource_id: UUID
@@ -265,6 +271,7 @@ class SetupOperationDTO(Record):
     start_s: StrictInt
     end_s: StrictInt
     cost_cents: StrictInt
+    support_allocations: tuple[ResourceAllocationDTO, ...] = ()
 
 
 class TransportTaskDTO(PlanningEntityDTO):

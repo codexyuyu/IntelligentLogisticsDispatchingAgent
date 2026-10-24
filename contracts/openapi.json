@@ -3364,6 +3364,26 @@
         "title": "ImpactRequestDTO",
         "type": "object"
       },
+      "InitialSetupStateDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "resource_id": {
+            "format": "uuid",
+            "title": "Resource Id",
+            "type": "string"
+          },
+          "setup_class": {
+            "title": "Setup Class",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource_id",
+          "setup_class"
+        ],
+        "title": "InitialSetupStateDTO",
+        "type": "object"
+      },
       "InventoryEntryDTO": {
         "additionalProperties": false,
         "properties": {
@@ -5123,6 +5143,26 @@
         "title": "ResidualLoadDTO",
         "type": "object"
       },
+      "ResourceAllocationDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "resource_id": {
+            "format": "uuid",
+            "title": "Resource Id",
+            "type": "string"
+          },
+          "units": {
+            "title": "Units",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "resource_id",
+          "units"
+        ],
+        "title": "ResourceAllocationDTO",
+        "type": "object"
+      },
       "ResourceBlockDTO": {
         "additionalProperties": false,
         "properties": {
@@ -6026,6 +6066,14 @@
             "title": "Start S",
             "type": "integer"
           },
+          "support_allocations": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ResourceAllocationDTO"
+            },
+            "title": "Support Allocations",
+            "type": "array"
+          },
           "to_class": {
             "title": "To Class",
             "type": "string"
@@ -6040,6 +6088,77 @@
           "cost_cents"
         ],
         "title": "SetupOperationDTO",
+        "type": "object"
+      },
+      "SetupPolicyDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "initial_states": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/InitialSetupStateDTO"
+            },
+            "title": "Initial States",
+            "type": "array"
+          },
+          "transitions": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/SetupTransitionDTO"
+            },
+            "title": "Transitions",
+            "type": "array"
+          },
+          "version": {
+            "default": "1.0.0",
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "title": "SetupPolicyDTO",
+        "type": "object"
+      },
+      "SetupTransitionDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "cost_cents": {
+            "default": 0,
+            "title": "Cost Cents",
+            "type": "integer"
+          },
+          "duration_s": {
+            "title": "Duration S",
+            "type": "integer"
+          },
+          "from_class": {
+            "title": "From Class",
+            "type": "string"
+          },
+          "requirements": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ResourceRequirementDTO"
+            },
+            "title": "Requirements",
+            "type": "array"
+          },
+          "resource_id": {
+            "format": "uuid",
+            "title": "Resource Id",
+            "type": "string"
+          },
+          "to_class": {
+            "title": "To Class",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource_id",
+          "from_class",
+          "to_class",
+          "duration_s"
+        ],
+        "title": "SetupTransitionDTO",
         "type": "object"
       },
       "Severity": {
@@ -7900,6 +8019,14 @@
           "policy": {
             "$ref": "#/components/schemas/ObjectivePolicyDTO"
           },
+          "setup_policy": {
+            "$ref": "#/components/schemas/SetupPolicyDTO",
+            "default": {
+              "initial_states": [],
+              "transitions": [],
+              "version": "1.0.0"
+            }
+          },
           "snapshot": {
             "$ref": "#/components/schemas/PlanningSnapshotDTO"
           },
@@ -7937,6 +8064,14 @@
           },
           "scope": {
             "$ref": "#/components/schemas/PlanningScopeDTO"
+          },
+          "setup_policy": {
+            "$ref": "#/components/schemas/SetupPolicyDTO",
+            "default": {
+              "initial_states": [],
+              "transitions": [],
+              "version": "1.0.0"
+            }
           },
           "tasks": {
             "items": {

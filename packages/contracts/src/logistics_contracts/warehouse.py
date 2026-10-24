@@ -14,6 +14,7 @@ from logistics_contracts.planning import (
     OperationAssignmentDTO,
     PlanningSnapshotDTO,
     Record,
+    ResourceRequirementDTO,
     SetupOperationDTO,
     SolveBudgetDTO,
     SolverEvidenceDTO,
@@ -32,12 +33,36 @@ class DiagnosticDTO(Record):
     severity: Literal["error", "warning", "info"] = "error"
 
 
+class SetupTransitionDTO(Record):
+    domain_type = domain.SetupTransition
+    resource_id: UUID
+    from_class: str
+    to_class: str
+    duration_s: StrictInt
+    cost_cents: StrictInt = 0
+    requirements: tuple[ResourceRequirementDTO, ...] = ()
+
+
+class InitialSetupStateDTO(Record):
+    domain_type = domain.InitialSetupState
+    resource_id: UUID
+    setup_class: str
+
+
+class SetupPolicyDTO(Record):
+    domain_type = domain.SetupPolicy
+    version: str = "1.0.0"
+    transitions: tuple[SetupTransitionDTO, ...] = ()
+    initial_states: tuple[InitialSetupStateDTO, ...] = ()
+
+
 class WarehouseProblemDTO(Record):
     domain_type = domain.WarehouseProblem
     snapshot: PlanningSnapshotDTO
     tasks: tuple[WarehouseTaskDTO, ...]
     policy: ObjectivePolicyDTO
     budget: SolveBudgetDTO
+    setup_policy: SetupPolicyDTO = SetupPolicyDTO()
 
 
 class WarehouseSolutionDTO(Record):
@@ -60,6 +85,7 @@ class WarehouseRequestDTO(BaseModel):
     tasks: tuple[WarehouseTaskDTO, ...]
     budget: SolveBudgetDTO
     objective_policy: ObjectivePolicyDTO
+    setup_policy: SetupPolicyDTO = SetupPolicyDTO()
 
 
 class WarehouseJobContent(BaseModel):

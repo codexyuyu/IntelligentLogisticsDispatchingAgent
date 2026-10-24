@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import dataclasses
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from uuid import UUID, uuid4
 
 from sqlalchemy import func, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
+from logistics_backend.application.optimization import TransportResultStore
 from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.planning_models import (
     candidate_plans,
@@ -21,17 +22,12 @@ from logistics_backend.persistence.planning_models import (
 from logistics_backend.persistence.validation_models import validation_reports
 from logistics_contracts.mapping import (
     operation_assignment_dto,
-    plan_dto,
     setup_operation_dto,
     snapshot_dto,
     storage_interval_dto,
 )
-from logistics_domain.planning import ValidationReport
-from logistics_backend.application.optimization import TransportResultStore
-from logistics_contracts.transport import TransportJobContent, TransportProblemDTO
 from logistics_contracts.planning import (
     CandidatePlanDTO,
-    CommitCommandDTO,
     CommitReceiptDTO,
     CostBreakdownDTO,
     ObjectiveBreakdownDTO,
@@ -55,6 +51,7 @@ from logistics_contracts.schedules import (
     ScheduleVersionView,
     ScheduleView,
 )
+from logistics_contracts.transport import TransportJobContent, TransportProblemDTO
 from logistics_domain.planning import (
     CandidatePlan,
     CostBreakdown,
@@ -81,7 +78,7 @@ class ScheduleService:
         self.transport_results = TransportResultStore()
 
     def create(self, command: ScheduleCreate, actor) -> ScheduleView:
-        now = datetime.now(timezone.utc).replace(microsecond=0)
+        now = datetime.now(UTC).replace(microsecond=0)
         scope = command.scope.to_domain()
         schedule = Schedule(id=uuid4(), status=EntityState.DRAFT, created_at=now,
             updated_at=now, row_version=0, schema_version="2.0.0",
@@ -123,7 +120,7 @@ class ScheduleService:
         stops = tuple(stop.to_domain() for stop in command.stops)
         routes = {route.id: route for route in plan.routes}
         candidate_id = uuid4()
-        now = datetime.now(timezone.utc).replace(microsecond=0)
+        now = datetime.now(UTC).replace(microsecond=0)
         tasks = []
         seen_tasks = set()
         for stop in stops:
@@ -160,16 +157,21 @@ class ScheduleService:
             warehouse_plan = WarehousePlan(warehouse_solution.assignments,
                 warehouse_solution.storage_allocations, warehouse_solution.setup_operations,
                 warehouse_cost)
+            grouped = {}
             for assignment in warehouse_solution.assignments:
-                if any(task.task_id == assignment.task_id for task in tasks):
+                grouped.setdefault(assignment.task_id, []).append(assignment)
+            for task_id, values in grouped.items():
+                if any(task.task_id == task_id for task in tasks):
                     raise ServiceError(ErrorCode.INVALID_INPUT,
                         "warehouse task id collides with a transport task")
                 tasks.append(ScheduleTask(id=uuid4(), status=EntityState.PLANNED,
                     created_at=now, updated_at=now, row_version=0, schema_version="2.0.0",
                     created_by=actor.actor_id, version_id=candidate_id,
-                    task_id=assignment.task_id, task_kind=TaskKind.WAREHOUSE,
-                    assigned_resource_ids=(assignment.resource_id,),
-                    planned_start_s=assignment.start_s, planned_end_s=assignment.end_s,
+                    task_id=task_id, task_kind=TaskKind.WAREHOUSE,
+                    assigned_resource_ids=tuple(sorted(
+                        {value.resource_id for value in values}, key=str)),
+                    planned_start_s=min(value.start_s for value in values),
+                    planned_end_s=max(value.end_s for value in values),
                     sequence=None))
         total_business = plan.cost.total_cents + warehouse_plan.cost.total_cents
         objective = ObjectiveBreakdown(business_cost_cents=total_business,
@@ -240,7 +242,7 @@ class ScheduleService:
             validation_report_id=report.id, valid=report.valid)
 
     def _persist_snapshot(self, snapshot, actor) -> None:
-        now = datetime.now(timezone.utc).replace(microsecond=0)
+        now = datetime.now(UTC).replace(microsecond=0)
         dto = snapshot_dto(snapshot)
         payload = json.loads(dto.model_dump_json())
         with self.uow_factory() as uow:
@@ -341,7 +343,7 @@ class ScheduleService:
 
     def diff(self, schedule_id: UUID, base_version_id: UUID, candidate_version_id: UUID,
              actor) -> ScheduleDiffView:
-        schedule = self._require_schedule(schedule_id, actor)
+        self._require_schedule(schedule_id, actor)
         if base_version_id == candidate_version_id:
             with self.uow_factory() as uow:
                 row = uow.connection.execute(select(schedule_versions).where(

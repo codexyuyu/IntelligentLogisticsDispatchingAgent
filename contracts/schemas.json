@@ -20433,6 +20433,26 @@
           "title": "OperationAssignmentDTO",
           "type": "object"
         },
+        "ResourceAllocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "units": {
+              "title": "Units",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_id",
+            "units"
+          ],
+          "title": "ResourceAllocationDTO",
+          "type": "object"
+        },
         "RouteDTO": {
           "additionalProperties": false,
           "properties": {
@@ -20642,6 +20662,14 @@
             "start_s": {
               "title": "Start S",
               "type": "integer"
+            },
+            "support_allocations": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceAllocationDTO"
+              },
+              "title": "Support Allocations",
+              "type": "array"
             },
             "to_class": {
               "title": "To Class",
@@ -23700,6 +23728,26 @@
       "title": "PlanningSnapshotDTO",
       "type": "object"
     },
+    "logistics_contracts.planning.ResourceAllocationDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_id": {
+          "format": "uuid",
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "units": {
+          "title": "Units",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "resource_id",
+        "units"
+      ],
+      "title": "ResourceAllocationDTO",
+      "type": "object"
+    },
     "logistics_contracts.planning.ResourceBundleDTO": {
       "$defs": {
         "CalendarDTO": {
@@ -25679,6 +25727,28 @@
       "type": "object"
     },
     "logistics_contracts.planning.SetupOperationDTO": {
+      "$defs": {
+        "ResourceAllocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "units": {
+              "title": "Units",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_id",
+            "units"
+          ],
+          "title": "ResourceAllocationDTO",
+          "type": "object"
+        }
+      },
       "additionalProperties": false,
       "properties": {
         "cost_cents": {
@@ -25701,6 +25771,14 @@
         "start_s": {
           "title": "Start S",
           "type": "integer"
+        },
+        "support_allocations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ResourceAllocationDTO"
+          },
+          "title": "Support Allocations",
+          "type": "array"
         },
         "to_class": {
           "title": "To Class",
@@ -26830,6 +26908,26 @@
           "title": "OperationAssignmentDTO",
           "type": "object"
         },
+        "ResourceAllocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "units": {
+              "title": "Units",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_id",
+            "units"
+          ],
+          "title": "ResourceAllocationDTO",
+          "type": "object"
+        },
         "SetupOperationDTO": {
           "additionalProperties": false,
           "properties": {
@@ -26853,6 +26951,14 @@
             "start_s": {
               "title": "Start S",
               "type": "integer"
+            },
+            "support_allocations": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceAllocationDTO"
+              },
+              "title": "Support Allocations",
+              "type": "array"
             },
             "to_class": {
               "title": "To Class",
@@ -42535,6 +42641,26 @@
           "title": "EquipmentKind",
           "type": "string"
         },
+        "InitialSetupStateDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "setup_class": {
+              "title": "Setup Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "setup_class"
+          ],
+          "title": "InitialSetupStateDTO",
+          "type": "object"
+        },
         "InventoryEntryDTO": {
           "additionalProperties": false,
           "properties": {
@@ -42973,6 +43099,26 @@
             "hash"
           ],
           "title": "PlanningSnapshotDTO",
+          "type": "object"
+        },
+        "ResourceAllocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "units": {
+              "title": "Units",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_id",
+            "units"
+          ],
+          "title": "ResourceAllocationDTO",
           "type": "object"
         },
         "ResourceBundleDTO": {
@@ -43423,6 +43569,14 @@
               "title": "Start S",
               "type": "integer"
             },
+            "support_allocations": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceAllocationDTO"
+              },
+              "title": "Support Allocations",
+              "type": "array"
+            },
             "to_class": {
               "title": "To Class",
               "type": "string"
@@ -43437,6 +43591,77 @@
             "cost_cents"
           ],
           "title": "SetupOperationDTO",
+          "type": "object"
+        },
+        "SetupPolicyDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "initial_states": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/InitialSetupStateDTO"
+              },
+              "title": "Initial States",
+              "type": "array"
+            },
+            "transitions": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/SetupTransitionDTO"
+              },
+              "title": "Transitions",
+              "type": "array"
+            },
+            "version": {
+              "default": "1.0.0",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "title": "SetupPolicyDTO",
+          "type": "object"
+        },
+        "SetupTransitionDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost_cents": {
+              "default": 0,
+              "title": "Cost Cents",
+              "type": "integer"
+            },
+            "duration_s": {
+              "title": "Duration S",
+              "type": "integer"
+            },
+            "from_class": {
+              "title": "From Class",
+              "type": "string"
+            },
+            "requirements": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceRequirementDTO"
+              },
+              "title": "Requirements",
+              "type": "array"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "to_class": {
+              "title": "To Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "from_class",
+            "to_class",
+            "duration_s"
+          ],
+          "title": "SetupTransitionDTO",
           "type": "object"
         },
         "Severity": {
@@ -44268,6 +44493,14 @@
             },
             "policy": {
               "$ref": "#/$defs/ObjectivePolicyDTO"
+            },
+            "setup_policy": {
+              "$ref": "#/$defs/SetupPolicyDTO",
+              "default": {
+                "initial_states": [],
+                "transitions": [],
+                "version": "1.0.0"
+              }
             },
             "snapshot": {
               "$ref": "#/$defs/PlanningSnapshotDTO"
@@ -53316,6 +53549,26 @@
           "title": "EquipmentKind",
           "type": "string"
         },
+        "InitialSetupStateDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "setup_class": {
+              "title": "Setup Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "setup_class"
+          ],
+          "title": "InitialSetupStateDTO",
+          "type": "object"
+        },
         "InventoryEntryDTO": {
           "additionalProperties": false,
           "properties": {
@@ -53754,6 +54007,26 @@
             "hash"
           ],
           "title": "PlanningSnapshotDTO",
+          "type": "object"
+        },
+        "ResourceAllocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "units": {
+              "title": "Units",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_id",
+            "units"
+          ],
+          "title": "ResourceAllocationDTO",
           "type": "object"
         },
         "ResourceBundleDTO": {
@@ -54204,6 +54477,14 @@
               "title": "Start S",
               "type": "integer"
             },
+            "support_allocations": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceAllocationDTO"
+              },
+              "title": "Support Allocations",
+              "type": "array"
+            },
             "to_class": {
               "title": "To Class",
               "type": "string"
@@ -54218,6 +54499,77 @@
             "cost_cents"
           ],
           "title": "SetupOperationDTO",
+          "type": "object"
+        },
+        "SetupPolicyDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "initial_states": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/InitialSetupStateDTO"
+              },
+              "title": "Initial States",
+              "type": "array"
+            },
+            "transitions": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/SetupTransitionDTO"
+              },
+              "title": "Transitions",
+              "type": "array"
+            },
+            "version": {
+              "default": "1.0.0",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "title": "SetupPolicyDTO",
+          "type": "object"
+        },
+        "SetupTransitionDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost_cents": {
+              "default": 0,
+              "title": "Cost Cents",
+              "type": "integer"
+            },
+            "duration_s": {
+              "title": "Duration S",
+              "type": "integer"
+            },
+            "from_class": {
+              "title": "From Class",
+              "type": "string"
+            },
+            "requirements": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceRequirementDTO"
+              },
+              "title": "Requirements",
+              "type": "array"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "to_class": {
+              "title": "To Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "from_class",
+            "to_class",
+            "duration_s"
+          ],
+          "title": "SetupTransitionDTO",
           "type": "object"
         },
         "Severity": {
@@ -55080,6 +55432,14 @@
             },
             "policy": {
               "$ref": "#/$defs/ObjectivePolicyDTO"
+            },
+            "setup_policy": {
+              "$ref": "#/$defs/SetupPolicyDTO",
+              "default": {
+                "initial_states": [],
+                "transitions": [],
+                "version": "1.0.0"
+              }
             },
             "snapshot": {
               "$ref": "#/$defs/PlanningSnapshotDTO"
@@ -58349,6 +58709,26 @@
           "title": "EquipmentKind",
           "type": "string"
         },
+        "InitialSetupStateDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "setup_class": {
+              "title": "Setup Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "setup_class"
+          ],
+          "title": "InitialSetupStateDTO",
+          "type": "object"
+        },
         "InventoryEntryDTO": {
           "additionalProperties": false,
           "properties": {
@@ -58745,6 +59125,26 @@
           "title": "PlanningSnapshotDTO",
           "type": "object"
         },
+        "ResourceAllocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "units": {
+              "title": "Units",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_id",
+            "units"
+          ],
+          "title": "ResourceAllocationDTO",
+          "type": "object"
+        },
         "ResourceBundleDTO": {
           "additionalProperties": false,
           "properties": {
@@ -58919,6 +59319,14 @@
               "title": "Start S",
               "type": "integer"
             },
+            "support_allocations": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceAllocationDTO"
+              },
+              "title": "Support Allocations",
+              "type": "array"
+            },
             "to_class": {
               "title": "To Class",
               "type": "string"
@@ -58933,6 +59341,77 @@
             "cost_cents"
           ],
           "title": "SetupOperationDTO",
+          "type": "object"
+        },
+        "SetupPolicyDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "initial_states": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/InitialSetupStateDTO"
+              },
+              "title": "Initial States",
+              "type": "array"
+            },
+            "transitions": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/SetupTransitionDTO"
+              },
+              "title": "Transitions",
+              "type": "array"
+            },
+            "version": {
+              "default": "1.0.0",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "title": "SetupPolicyDTO",
+          "type": "object"
+        },
+        "SetupTransitionDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost_cents": {
+              "default": 0,
+              "title": "Cost Cents",
+              "type": "integer"
+            },
+            "duration_s": {
+              "title": "Duration S",
+              "type": "integer"
+            },
+            "from_class": {
+              "title": "From Class",
+              "type": "string"
+            },
+            "requirements": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceRequirementDTO"
+              },
+              "title": "Requirements",
+              "type": "array"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "to_class": {
+              "title": "To Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "from_class",
+            "to_class",
+            "duration_s"
+          ],
+          "title": "SetupTransitionDTO",
           "type": "object"
         },
         "Severity": {
@@ -59595,6 +60074,14 @@
             "policy": {
               "$ref": "#/$defs/ObjectivePolicyDTO"
             },
+            "setup_policy": {
+              "$ref": "#/$defs/SetupPolicyDTO",
+              "default": {
+                "initial_states": [],
+                "transitions": [],
+                "version": "1.0.0"
+              }
+            },
             "snapshot": {
               "$ref": "#/$defs/PlanningSnapshotDTO"
             },
@@ -60024,6 +60511,242 @@
         "message"
       ],
       "title": "DiagnosticDTO",
+      "type": "object"
+    },
+    "logistics_contracts.warehouse.InitialSetupStateDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_id": {
+          "format": "uuid",
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "setup_class": {
+          "title": "Setup Class",
+          "type": "string"
+        }
+      },
+      "required": [
+        "resource_id",
+        "setup_class"
+      ],
+      "title": "InitialSetupStateDTO",
+      "type": "object"
+    },
+    "logistics_contracts.warehouse.SetupPolicyDTO": {
+      "$defs": {
+        "InitialSetupStateDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "setup_class": {
+              "title": "Setup Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "setup_class"
+          ],
+          "title": "InitialSetupStateDTO",
+          "type": "object"
+        },
+        "ResourceKind": {
+          "description": "The five warehouse resource classes addressable by a requirement.",
+          "enum": [
+            "zone",
+            "location",
+            "dock",
+            "worker",
+            "equipment"
+          ],
+          "title": "ResourceKind",
+          "type": "string"
+        },
+        "ResourceRequirementDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "eligible_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Eligible Ids",
+              "type": "array"
+            },
+            "resource_kind": {
+              "$ref": "#/$defs/ResourceKind"
+            },
+            "units": {
+              "title": "Units",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_kind",
+            "eligible_ids",
+            "units"
+          ],
+          "title": "ResourceRequirementDTO",
+          "type": "object"
+        },
+        "SetupTransitionDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost_cents": {
+              "default": 0,
+              "title": "Cost Cents",
+              "type": "integer"
+            },
+            "duration_s": {
+              "title": "Duration S",
+              "type": "integer"
+            },
+            "from_class": {
+              "title": "From Class",
+              "type": "string"
+            },
+            "requirements": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceRequirementDTO"
+              },
+              "title": "Requirements",
+              "type": "array"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "to_class": {
+              "title": "To Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "from_class",
+            "to_class",
+            "duration_s"
+          ],
+          "title": "SetupTransitionDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "initial_states": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/InitialSetupStateDTO"
+          },
+          "title": "Initial States",
+          "type": "array"
+        },
+        "transitions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/SetupTransitionDTO"
+          },
+          "title": "Transitions",
+          "type": "array"
+        },
+        "version": {
+          "default": "1.0.0",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "title": "SetupPolicyDTO",
+      "type": "object"
+    },
+    "logistics_contracts.warehouse.SetupTransitionDTO": {
+      "$defs": {
+        "ResourceKind": {
+          "description": "The five warehouse resource classes addressable by a requirement.",
+          "enum": [
+            "zone",
+            "location",
+            "dock",
+            "worker",
+            "equipment"
+          ],
+          "title": "ResourceKind",
+          "type": "string"
+        },
+        "ResourceRequirementDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "eligible_ids": {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "title": "Eligible Ids",
+              "type": "array"
+            },
+            "resource_kind": {
+              "$ref": "#/$defs/ResourceKind"
+            },
+            "units": {
+              "title": "Units",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_kind",
+            "eligible_ids",
+            "units"
+          ],
+          "title": "ResourceRequirementDTO",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "cost_cents": {
+          "default": 0,
+          "title": "Cost Cents",
+          "type": "integer"
+        },
+        "duration_s": {
+          "title": "Duration S",
+          "type": "integer"
+        },
+        "from_class": {
+          "title": "From Class",
+          "type": "string"
+        },
+        "requirements": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ResourceRequirementDTO"
+          },
+          "title": "Requirements",
+          "type": "array"
+        },
+        "resource_id": {
+          "format": "uuid",
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "to_class": {
+          "title": "To Class",
+          "type": "string"
+        }
+      },
+      "required": [
+        "resource_id",
+        "from_class",
+        "to_class",
+        "duration_s"
+      ],
+      "title": "SetupTransitionDTO",
       "type": "object"
     },
     "logistics_contracts.warehouse.WarehouseJobContent": {
@@ -60617,6 +61340,26 @@
           "title": "EquipmentKind",
           "type": "string"
         },
+        "InitialSetupStateDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "setup_class": {
+              "title": "Setup Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "setup_class"
+          ],
+          "title": "InitialSetupStateDTO",
+          "type": "object"
+        },
         "InventoryEntryDTO": {
           "additionalProperties": false,
           "properties": {
@@ -61088,6 +61831,77 @@
           "title": "ResourceRevisionDTO",
           "type": "object"
         },
+        "SetupPolicyDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "initial_states": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/InitialSetupStateDTO"
+              },
+              "title": "Initial States",
+              "type": "array"
+            },
+            "transitions": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/SetupTransitionDTO"
+              },
+              "title": "Transitions",
+              "type": "array"
+            },
+            "version": {
+              "default": "1.0.0",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "title": "SetupPolicyDTO",
+          "type": "object"
+        },
+        "SetupTransitionDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost_cents": {
+              "default": 0,
+              "title": "Cost Cents",
+              "type": "integer"
+            },
+            "duration_s": {
+              "title": "Duration S",
+              "type": "integer"
+            },
+            "from_class": {
+              "title": "From Class",
+              "type": "string"
+            },
+            "requirements": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceRequirementDTO"
+              },
+              "title": "Requirements",
+              "type": "array"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "to_class": {
+              "title": "To Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "from_class",
+            "to_class",
+            "duration_s"
+          ],
+          "title": "SetupTransitionDTO",
+          "type": "object"
+        },
         "SolveBudgetDTO": {
           "additionalProperties": false,
           "properties": {
@@ -61497,6 +62311,14 @@
             },
             "policy": {
               "$ref": "#/$defs/ObjectivePolicyDTO"
+            },
+            "setup_policy": {
+              "$ref": "#/$defs/SetupPolicyDTO",
+              "default": {
+                "initial_states": [],
+                "transitions": [],
+                "version": "1.0.0"
+              }
             },
             "snapshot": {
               "$ref": "#/$defs/PlanningSnapshotDTO"
@@ -62412,6 +63234,26 @@
           "title": "EquipmentKind",
           "type": "string"
         },
+        "InitialSetupStateDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "setup_class": {
+              "title": "Setup Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "setup_class"
+          ],
+          "title": "InitialSetupStateDTO",
+          "type": "object"
+        },
         "InventoryEntryDTO": {
           "additionalProperties": false,
           "properties": {
@@ -62881,6 +63723,77 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "SetupPolicyDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "initial_states": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/InitialSetupStateDTO"
+              },
+              "title": "Initial States",
+              "type": "array"
+            },
+            "transitions": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/SetupTransitionDTO"
+              },
+              "title": "Transitions",
+              "type": "array"
+            },
+            "version": {
+              "default": "1.0.0",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "title": "SetupPolicyDTO",
+          "type": "object"
+        },
+        "SetupTransitionDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost_cents": {
+              "default": 0,
+              "title": "Cost Cents",
+              "type": "integer"
+            },
+            "duration_s": {
+              "title": "Duration S",
+              "type": "integer"
+            },
+            "from_class": {
+              "title": "From Class",
+              "type": "string"
+            },
+            "requirements": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceRequirementDTO"
+              },
+              "title": "Requirements",
+              "type": "array"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "to_class": {
+              "title": "To Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "from_class",
+            "to_class",
+            "duration_s"
+          ],
+          "title": "SetupTransitionDTO",
           "type": "object"
         },
         "SolveBudgetDTO": {
@@ -63573,6 +64486,14 @@
         "policy": {
           "$ref": "#/$defs/ObjectivePolicyDTO"
         },
+        "setup_policy": {
+          "$ref": "#/$defs/SetupPolicyDTO",
+          "default": {
+            "initial_states": [],
+            "transitions": [],
+            "version": "1.0.0"
+          }
+        },
         "snapshot": {
           "$ref": "#/$defs/PlanningSnapshotDTO"
         },
@@ -63700,6 +64621,26 @@
           ],
           "title": "EntityState",
           "type": "string"
+        },
+        "InitialSetupStateDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "setup_class": {
+              "title": "Setup Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "setup_class"
+          ],
+          "title": "InitialSetupStateDTO",
+          "type": "object"
         },
         "ObjectivePolicyDTO": {
           "additionalProperties": false,
@@ -63830,6 +64771,77 @@
             "units"
           ],
           "title": "ResourceRequirementDTO",
+          "type": "object"
+        },
+        "SetupPolicyDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "initial_states": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/InitialSetupStateDTO"
+              },
+              "title": "Initial States",
+              "type": "array"
+            },
+            "transitions": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/SetupTransitionDTO"
+              },
+              "title": "Transitions",
+              "type": "array"
+            },
+            "version": {
+              "default": "1.0.0",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "title": "SetupPolicyDTO",
+          "type": "object"
+        },
+        "SetupTransitionDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "cost_cents": {
+              "default": 0,
+              "title": "Cost Cents",
+              "type": "integer"
+            },
+            "duration_s": {
+              "title": "Duration S",
+              "type": "integer"
+            },
+            "from_class": {
+              "title": "From Class",
+              "type": "string"
+            },
+            "requirements": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceRequirementDTO"
+              },
+              "title": "Requirements",
+              "type": "array"
+            },
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "to_class": {
+              "title": "To Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "resource_id",
+            "from_class",
+            "to_class",
+            "duration_s"
+          ],
+          "title": "SetupTransitionDTO",
           "type": "object"
         },
         "SolveBudgetDTO": {
@@ -64018,6 +65030,14 @@
         },
         "scope": {
           "$ref": "#/$defs/PlanningScopeDTO"
+        },
+        "setup_policy": {
+          "$ref": "#/$defs/SetupPolicyDTO",
+          "default": {
+            "initial_states": [],
+            "transitions": [],
+            "version": "1.0.0"
+          }
         },
         "tasks": {
           "items": {
@@ -64308,6 +65328,26 @@
           "title": "OperationAssignmentDTO",
           "type": "object"
         },
+        "ResourceAllocationDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {
+              "format": "uuid",
+              "title": "Resource Id",
+              "type": "string"
+            },
+            "units": {
+              "title": "Units",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "resource_id",
+            "units"
+          ],
+          "title": "ResourceAllocationDTO",
+          "type": "object"
+        },
         "SetupOperationDTO": {
           "additionalProperties": false,
           "properties": {
@@ -64331,6 +65371,14 @@
             "start_s": {
               "title": "Start S",
               "type": "integer"
+            },
+            "support_allocations": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ResourceAllocationDTO"
+              },
+              "title": "Support Allocations",
+              "type": "array"
             },
             "to_class": {
               "title": "To Class",

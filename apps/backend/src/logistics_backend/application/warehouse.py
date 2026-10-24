@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 from uuid import UUID, uuid4
 
@@ -20,10 +22,12 @@ from logistics_contracts.warehouse import (
     WarehouseSolutionDTO,
 )
 from logistics_domain.errors import InvalidInputError
+from logistics_domain.planning import SolveStatus
 from logistics_domain.runtime import RequestRef
 from logistics_domain.states import JobKind, JobOptimizationMode
 from logistics_domain.warehouse import WarehouseProblem
 from logistics_optimization.warehouse.solver import CpSatWarehouseScheduler
+from logistics_optimization.validation.warehouse import validate_warehouse
 
 
 def _now() -> datetime:
@@ -39,7 +43,8 @@ def build_warehouse_problem(snapshot, request: WarehouseRequestDTO) -> Warehouse
     if any(task.warehouse_id not in warehouse_ids for task in tasks):
         raise InvalidInputError("warehouse task references a warehouse outside the snapshot")
     return WarehouseProblem(snapshot=snapshot, tasks=tasks,
-        policy=request.objective_policy.to_domain(), budget=request.budget.to_domain())
+        policy=request.objective_policy.to_domain(), budget=request.budget.to_domain(),
+        setup_policy=request.setup_policy.to_domain())
 
 
 class WarehouseJobHandler:
@@ -70,6 +75,10 @@ class WarehouseJobHandler:
             requested = None
         solution = CpSatWarehouseScheduler().solve(problem,
             problem_budget(problem, deadline, requested))
+        if solution.status in (SolveStatus.OPTIMAL, SolveStatus.FEASIBLE):
+            # Solver feasibility is not proof that the current business rules hold.
+            # Keep the engine status, but publish only the independent validation.
+            solution = replace(solution, validation=validate_warehouse(problem, solution))
         result_id = uuid4()
         digest = self.result_store.write(result_id, json.loads(
             warehouse_solution_dto(solution).model_dump_json()))

@@ -713,6 +713,16 @@ class StorageInterval:
 
 
 @dataclass(frozen=True, slots=True)
+class ResourceAllocation:
+    resource_id: UUID
+    units: int
+
+    def __post_init__(self) -> None:
+        require_uuid(self.resource_id, field="ResourceAllocation.resource_id")
+        require_positive_int(self.units, field="ResourceAllocation.units")
+
+
+@dataclass(frozen=True, slots=True)
 class SetupOperation:
     """Explicit setup transition between two setup classes."""
 
@@ -722,6 +732,7 @@ class SetupOperation:
     start_s: int
     end_s: int
     cost_cents: int
+    support_allocations: tuple[ResourceAllocation, ...] = ()
 
     def __post_init__(self) -> None:
         require_uuid(self.resource_id, field="SetupOperation.resource_id")
@@ -734,6 +745,12 @@ class SetupOperation:
         if self.start_s >= self.end_s:
             raise InvalidInputError("SetupOperation requires start_s < end_s")
         _require_int64(self.cost_cents, field="SetupOperation.cost_cents")
+        if not isinstance(self.support_allocations, tuple) or any(
+                not isinstance(a, ResourceAllocation) for a in self.support_allocations):
+            raise InvalidInputError("setup support allocations must be typed")
+        ids = [a.resource_id for a in self.support_allocations]
+        if self.resource_id in ids or len(set(ids)) != len(ids):
+            raise InvalidInputError("setup repeats a primary/support resource")
 
 
 @dataclass(frozen=True, slots=True)

@@ -7,6 +7,8 @@ they never read the database and never mutate a domain value.
 
 from __future__ import annotations
 
+from dataclasses import asdict
+
 from logistics_contracts import entities
 from logistics_contracts.planning import (
     CostBreakdownDTO,
@@ -22,6 +24,7 @@ from logistics_contracts.planning import (
     PlanningSnapshotDTO,
     ResourceCalendarBindingDTO,
     ResourceRequirementDTO,
+    ResourceAllocationDTO,
     ResourceBundleDTO,
     ResourceRevisionDTO,
     RouteDTO,
@@ -58,6 +61,7 @@ from logistics_contracts.warehouse import (
     DiagnosticDTO as WarehouseDiagnosticDTO,
     WarehouseProblemDTO,
     WarehouseSolutionDTO,
+    SetupPolicyDTO,
 )
 from logistics_contracts.transport import (
     DiagnosticDTO,
@@ -306,13 +310,16 @@ def storage_interval_dto(value: domain.StorageInterval) -> StorageIntervalDTO:
 def setup_operation_dto(value: domain.SetupOperation) -> SetupOperationDTO:
     return SetupOperationDTO(resource_id=value.resource_id, from_class=value.from_class,
         to_class=value.to_class, start_s=value.start_s, end_s=value.end_s,
-        cost_cents=value.cost_cents)
+        cost_cents=value.cost_cents,
+        support_allocations=tuple(ResourceAllocationDTO(resource_id=a.resource_id, units=a.units)
+                                  for a in value.support_allocations))
 
 
 def warehouse_problem_dto(problem: warehouse_domain.WarehouseProblem) -> WarehouseProblemDTO:
     return WarehouseProblemDTO(snapshot=snapshot_dto(problem.snapshot),
         tasks=tuple(warehouse_task_dto(value) for value in problem.tasks),
-        policy=policy_dto(problem.policy), budget=budget_dto(problem.budget))
+        policy=policy_dto(problem.policy), budget=budget_dto(problem.budget),
+        setup_policy=SetupPolicyDTO.model_validate(asdict(problem.setup_policy)))
 
 
 def warehouse_diagnostic_dto(value: warehouse_domain.Diagnostic) -> WarehouseDiagnosticDTO:
