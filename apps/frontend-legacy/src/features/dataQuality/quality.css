@@ -1,0 +1,10 @@
+.quality-page{max-width:1100px;color:var(--text);line-height:1.65}
+.quality-toolbar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:20px 0}
+.quality-toolbar label{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.quality-toolbar input,.quality-toolbar select,.quality-toolbar button{max-width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;background:#fff;color:#222}
+.quality-note,.quality-scene{padding:18px;margin:16px 0;border:1px solid #ddd;background:#fff}
+.quality-source{color:#555;overflow-wrap:anywhere}
+.quality-scene h2{margin:0;font-size:18px}
+.quality-scene li{padding:7px 0;border-bottom:1px solid #eee;overflow-wrap:anywhere}
+.quality-page [role=alert]{border-left:3px solid #a33;padding:12px}
+@media(max-width:600px){.quality-toolbar{display:block}.quality-toolbar label{margin:12px 0}.quality-scene{padding:12px}.quality-scene ol{padding-left:22px}}

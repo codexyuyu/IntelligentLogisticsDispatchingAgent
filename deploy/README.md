@@ -14,12 +14,15 @@ Windows 开发可选原生 Python 与容器数据库，或团队统一 WSL2/Dock
 
 ```bash
 docker compose build
-docker compose up -d db backend worker frontend
+docker compose up -d db backend worker frontend frontend-legacy
 docker compose run --rm seed
 ```
 
-打开 <http://localhost:8080>，开发 token 为 `dev-operator-token`（hash 在 compose 的
-`LOGISTICS_SETTINGS_JSON`，仅限本地）。API 直连 <http://localhost:8000/api/v1/health>。
+- <http://localhost:8080>：恢复的第一版界面（`apps/frontend-legacy`，归档 dist 静态托管；视觉恢复，但旧 `/api/auth/*` 等接口与新后端不兼容）。
+- <http://localhost:8081>：本轮 React 产品工作台。
+
+开发 token 为 `dev-operator-token`（hash 在 compose 的 `LOGISTICS_SETTINGS_JSON`，仅限本地）。
+API 直连 <http://localhost:8000/api/v1/health>。
 
 - 本环境通过镜像站拉取基础镜像后已成功构建 backend/frontend/seed，并启动 db/backend/worker/frontend；health 与登录订单查询返回 200。
 - 运输 Job 已通过 Docker 栈完成：worker 在约 6s 内返回，结果查询返回 1 条 route（solver 使用 5s 服务端上限）。

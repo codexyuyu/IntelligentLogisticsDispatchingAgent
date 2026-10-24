@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { parseReport } from '../src/features/dataQuality/report.ts';
+const report = JSON.parse(readFileSync(new URL('../../data/scenarios/prep_import_report.json', import.meta.url), 'utf8'));
+const rows = parseReport(report);
+assert.deepEqual(rows.map(r => r.scenario), ['T1', 'A8', 'B20']);
+assert.equal(rows.find(r => r.scenario === 'B20').operations, 100);
+for (const row of rows) assert.deepEqual(row.losses, report[row.scenario].losses);
+for (const bad of [null, [], {T1:{}}, {T1:{...report.T1,orders:-1}}, {T1:{...report.T1,orders:1.5}}, {T1:{...report.T1,losses:[null]}}]) assert.throws(() => parseReport(bad));
+assert.deepEqual(parseReport({}), []);
+assert.deepEqual(parseReport({T1:{...report.T1,losses:[]}})[0].losses, []);
+console.log('PASS: source fidelity, counts, malformed records, empty report, empty losses');
