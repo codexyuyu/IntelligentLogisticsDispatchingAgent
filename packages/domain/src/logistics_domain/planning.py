@@ -29,6 +29,7 @@ from enum import Enum, StrEnum
 from typing import Final, NewType, TypeAlias
 from uuid import UUID
 
+from logistics_domain.coldchain import ColdChainSnapshot
 from logistics_domain.errors import InvalidInputError
 from logistics_domain.orders import Cargo, Entity, Order
 from logistics_domain.primitives import (
@@ -54,9 +55,9 @@ from logistics_domain.resources import (
     Vehicle,
 )
 from logistics_domain.states import (
+    LIFECYCLE_TRANSITIONS,
     ConstraintCode,
     EntityKind,
-    LIFECYCLE_TRANSITIONS,
     ResourceKind,
 )
 
@@ -1061,6 +1062,7 @@ class PlanningSnapshot:
     revisions: tuple[ResourceRevision, ...]
     matrices: tuple[TravelMatrix, ...]
     hash: str
+    coldchain: ColdChainSnapshot | None = None
 
     def __post_init__(self) -> None:
         require_uuid(self.id, field="PlanningSnapshot.id")
@@ -1082,10 +1084,14 @@ class PlanningSnapshot:
             raise InvalidInputError("PlanningSnapshot.revisions must be a tuple")
         if not isinstance(self.matrices, tuple):
             raise InvalidInputError("PlanningSnapshot.matrices must be a tuple")
+        if self.coldchain is not None and not isinstance(self.coldchain, ColdChainSnapshot):
+            raise InvalidInputError("PlanningSnapshot.coldchain must be ColdChainSnapshot or None")
         require_sha256(self.hash, field="PlanningSnapshot.hash")
         self._validate_graph()
         expected = content_hash({field.name: getattr(self, field.name)
-                                 for field in fields(self) if field.name != "hash"})
+                                 for field in fields(self)
+                                 if field.name != "hash"
+                                 and not (field.name == "coldchain" and self.coldchain is None)})
         if expected != self.hash:
             raise InvalidInputError("PlanningSnapshot.hash does not match its canonical content")
 
@@ -1165,11 +1171,14 @@ class PlanningSnapshot:
         inventory: tuple[InventoryEntry, ...],
         revisions: tuple[ResourceRevision, ...],
         matrices: tuple[TravelMatrix, ...],
+        coldchain: ColdChainSnapshot | None = None,
     ) -> "PlanningSnapshot":
         """Build a snapshot whose hash is recomputed from its canonical content."""
         body = dict(id=id, scope=scope, orders=orders, cargo=cargo, vehicles=vehicles,
                     drivers=drivers, resources=resources, inventory=inventory,
                     revisions=revisions, matrices=matrices)
+        if coldchain is not None:
+            body["coldchain"] = coldchain
         return cls(hash=content_hash(body), **body)
 
 

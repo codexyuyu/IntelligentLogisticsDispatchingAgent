@@ -21,9 +21,9 @@ from logistics_contracts.common import EntityRefDTO
 from logistics_contracts.entities import (
     CalendarDTO,
     CargoDTO,
+    DockDTO,
     DriverDTO,
     EquipmentDTO,
-    DockDTO,
     OrderDTO,
     StorageLocationDTO,
     TimeWindowDTO,
@@ -449,6 +449,7 @@ class PlanningSnapshotDTO(Record):
     revisions: tuple[ResourceRevisionDTO, ...]
     matrices: tuple[TravelMatrixDTO, ...]
     hash: str
+    coldchain: "ColdChainSnapshotDTO | None" = None  # noqa: F821
 
 
 class CommitCommandDTO(Record):
@@ -472,3 +473,5 @@ class CommitReceiptDTO(Record):
     audit_id: UUID
     trace_id: UUID
     committed_at: datetime
+
+from logistics_contracts import coldchain as _coldchain  # noqa: E402,F401

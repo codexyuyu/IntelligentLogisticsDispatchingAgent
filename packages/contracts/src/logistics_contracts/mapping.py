@@ -138,7 +138,9 @@ def snapshot_dto(snapshot: domain.PlanningSnapshot) -> PlanningSnapshotDTO:
         resources=bundle_dto(snapshot.resources),
         inventory=tuple(inventory_dto(v) for v in snapshot.inventory),
         revisions=tuple(revision_dto(v) for v in snapshot.revisions),
-        matrices=tuple(matrix_dto(v) for v in snapshot.matrices), hash=snapshot.hash)
+        matrices=tuple(matrix_dto(v) for v in snapshot.matrices), hash=snapshot.hash,
+        coldchain=__import__("logistics_contracts.coldchain_mapping",
+                             fromlist=["coldchain_dto"]).coldchain_dto(snapshot.coldchain))
 
 
 def policy_dto(policy: domain.ObjectivePolicy) -> ObjectivePolicyDTO:

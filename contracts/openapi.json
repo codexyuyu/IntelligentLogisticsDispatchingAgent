@@ -445,6 +445,52 @@
         "title": "AtNodeLocationDTO",
         "type": "object"
       },
+      "BatchCompatibilityDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "batch_id": {
+            "title": "Batch Id",
+            "type": "string"
+          },
+          "compatibility_class": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Compatibility Class"
+          },
+          "max_temperature_decic": {
+            "title": "Max Temperature Decic",
+            "type": "integer"
+          },
+          "min_temperature_decic": {
+            "title": "Min Temperature Decic",
+            "type": "integer"
+          },
+          "temperature_zone": {
+            "title": "Temperature Zone",
+            "type": "string"
+          },
+          "warehouse_id": {
+            "format": "uuid",
+            "title": "Warehouse Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "batch_id",
+          "warehouse_id",
+          "temperature_zone",
+          "min_temperature_decic",
+          "max_temperature_decic"
+        ],
+        "title": "BatchCompatibilityDTO",
+        "type": "object"
+      },
       "CalendarDTO": {
         "additionalProperties": false,
         "properties": {
@@ -687,6 +733,33 @@
         "title": "CandidateView",
         "type": "object"
       },
+      "CapacityAmountDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "title": "Amount",
+            "type": "integer"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/CapacityUnit"
+          }
+        },
+        "required": [
+          "unit",
+          "amount"
+        ],
+        "title": "CapacityAmountDTO",
+        "type": "object"
+      },
+      "CapacityUnit": {
+        "enum": [
+          "weight_g",
+          "volume_cm3",
+          "quantity_units"
+        ],
+        "title": "CapacityUnit",
+        "type": "string"
+      },
       "CargoAnomalyPayloadDTO": {
         "additionalProperties": false,
         "properties": {
@@ -910,6 +983,251 @@
         "title": "CargoType",
         "type": "string"
       },
+      "ChangeoverRuleDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "duration_s": {
+            "title": "Duration S",
+            "type": "integer"
+          },
+          "from_class": {
+            "title": "From Class",
+            "type": "string"
+          },
+          "to_class": {
+            "title": "To Class",
+            "type": "string"
+          }
+        },
+        "required": [
+          "from_class",
+          "to_class",
+          "duration_s"
+        ],
+        "title": "ChangeoverRuleDTO",
+        "type": "object"
+      },
+      "ColdChainSetupPolicyDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "default_duration_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Default Duration S"
+          },
+          "policy_id": {
+            "format": "uuid",
+            "title": "Policy Id",
+            "type": "string"
+          },
+          "rendering": {
+            "title": "Rendering",
+            "type": "string"
+          },
+          "rule_version": {
+            "title": "Rule Version",
+            "type": "string"
+          },
+          "rules": {
+            "items": {
+              "$ref": "#/components/schemas/ChangeoverRuleDTO"
+            },
+            "title": "Rules",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "policy_id",
+          "version",
+          "rule_version",
+          "rendering",
+          "rules"
+        ],
+        "title": "ColdChainSetupPolicyDTO",
+        "type": "object"
+      },
+      "ColdChainSnapshotDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "batch_compatibility": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/BatchCompatibilityDTO"
+            },
+            "title": "Batch Compatibility",
+            "type": "array"
+          },
+          "compatibility_policy": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompatibilityPolicyDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "exposure_limits": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ExposureLimitDTO"
+            },
+            "title": "Exposure Limits",
+            "type": "array"
+          },
+          "horizon_s": {
+            "title": "Horizon S",
+            "type": "integer"
+          },
+          "occupancies": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/StorageOccupancyDTO"
+            },
+            "title": "Occupancies",
+            "type": "array"
+          },
+          "precool_requirements": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/PrecoolRequirementDTO"
+            },
+            "title": "Precool Requirements",
+            "type": "array"
+          },
+          "rule_version": {
+            "title": "Rule Version",
+            "type": "string"
+          },
+          "setup_policies": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ColdChainSetupPolicyDTO"
+            },
+            "title": "Setup Policies",
+            "type": "array"
+          },
+          "storage_locations": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ColdChainStorageLocationDTO"
+            },
+            "title": "Storage Locations",
+            "type": "array"
+          },
+          "zones": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ColdChainZoneDTO"
+            },
+            "title": "Zones",
+            "type": "array"
+          }
+        },
+        "required": [
+          "rule_version",
+          "horizon_s"
+        ],
+        "title": "ColdChainSnapshotDTO",
+        "type": "object"
+      },
+      "ColdChainStorageLocationDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "available_windows": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/TimeWindowDTO"
+            },
+            "title": "Available Windows",
+            "type": "array"
+          },
+          "capacities": {
+            "items": {
+              "$ref": "#/components/schemas/CapacityAmountDTO"
+            },
+            "title": "Capacities",
+            "type": "array"
+          },
+          "location_id": {
+            "format": "uuid",
+            "title": "Location Id",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "warehouse_id": {
+            "format": "uuid",
+            "title": "Warehouse Id",
+            "type": "string"
+          },
+          "zone_id": {
+            "format": "uuid",
+            "title": "Zone Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "location_id",
+          "warehouse_id",
+          "zone_id",
+          "version",
+          "capacities"
+        ],
+        "title": "ColdChainStorageLocationDTO",
+        "type": "object"
+      },
+      "ColdChainZoneDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "capacities": {
+            "items": {
+              "$ref": "#/components/schemas/CapacityAmountDTO"
+            },
+            "title": "Capacities",
+            "type": "array"
+          },
+          "setpoint_decic": {
+            "title": "Setpoint Decic",
+            "type": "integer"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "warehouse_id": {
+            "format": "uuid",
+            "title": "Warehouse Id",
+            "type": "string"
+          },
+          "zone_id": {
+            "format": "uuid",
+            "title": "Zone Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "zone_id",
+          "warehouse_id",
+          "version",
+          "setpoint_decic",
+          "capacities"
+        ],
+        "title": "ColdChainZoneDTO",
+        "type": "object"
+      },
       "CommitCommandDTO": {
         "additionalProperties": false,
         "properties": {
@@ -1050,6 +1368,49 @@
           "command"
         ],
         "title": "CommitRequest",
+        "type": "object"
+      },
+      "CompatibilityPolicyDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "incompatible_class_pairs": {
+            "default": [],
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "type": "array"
+            },
+            "title": "Incompatible Class Pairs",
+            "type": "array"
+          },
+          "policy_id": {
+            "format": "uuid",
+            "title": "Policy Id",
+            "type": "string"
+          },
+          "rule_version": {
+            "title": "Rule Version",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "policy_id",
+          "version",
+          "rule_version"
+        ],
+        "title": "CompatibilityPolicyDTO",
         "type": "object"
       },
       "ConflictDetail": {
@@ -3156,6 +3517,59 @@
         "title": "ExperimentView",
         "type": "object"
       },
+      "ExposureLimitDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "batch_id": {
+            "title": "Batch Id",
+            "type": "string"
+          },
+          "limit_id": {
+            "format": "uuid",
+            "title": "Limit Id",
+            "type": "string"
+          },
+          "max_exposure_s": {
+            "title": "Max Exposure S",
+            "type": "integer"
+          },
+          "rule_version": {
+            "title": "Rule Version",
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "$ref": "#/components/schemas/ExposureScope"
+            },
+            "title": "Scopes",
+            "type": "array"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "limit_id",
+          "batch_id",
+          "max_exposure_s",
+          "scopes",
+          "rule_version",
+          "source"
+        ],
+        "title": "ExposureLimitDTO",
+        "type": "object"
+      },
+      "ExposureScope": {
+        "enum": [
+          "in_warehouse",
+          "waiting",
+          "loading",
+          "transport"
+        ],
+        "title": "ExposureScope",
+        "type": "string"
+      },
       "FieldError": {
         "additionalProperties": false,
         "properties": {
@@ -4795,6 +5209,16 @@
             "title": "Cargo",
             "type": "array"
           },
+          "coldchain": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ColdChainSnapshotDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "drivers": {
             "items": {
               "$ref": "#/components/schemas/DriverDTO"
@@ -4867,6 +5291,66 @@
           "hash"
         ],
         "title": "PlanningSnapshotDTO",
+        "type": "object"
+      },
+      "PrecoolRequirementDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "batch_id": {
+            "title": "Batch Id",
+            "type": "string"
+          },
+          "eligible_resource_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Eligible Resource Ids",
+            "type": "array"
+          },
+          "loading_operation_ids": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "title": "Loading Operation Ids",
+            "type": "array"
+          },
+          "min_duration_s": {
+            "title": "Min Duration S",
+            "type": "integer"
+          },
+          "precool_operation_id": {
+            "format": "uuid",
+            "title": "Precool Operation Id",
+            "type": "string"
+          },
+          "requirement_id": {
+            "format": "uuid",
+            "title": "Requirement Id",
+            "type": "string"
+          },
+          "target_zone": {
+            "title": "Target Zone",
+            "type": "string"
+          },
+          "warehouse_id": {
+            "format": "uuid",
+            "title": "Warehouse Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "requirement_id",
+          "batch_id",
+          "warehouse_id",
+          "precool_operation_id",
+          "loading_operation_ids",
+          "min_duration_s",
+          "target_zone",
+          "eligible_resource_ids"
+        ],
+        "title": "PrecoolRequirementDTO",
         "type": "object"
       },
       "RationalDTO": {
@@ -6623,6 +7107,80 @@
           "calendar"
         ],
         "title": "StorageLocationDTO",
+        "type": "object"
+      },
+      "StorageOccupancyDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "batch_id": {
+            "title": "Batch Id",
+            "type": "string"
+          },
+          "capacity_use": {
+            "items": {
+              "$ref": "#/components/schemas/CapacityAmountDTO"
+            },
+            "title": "Capacity Use",
+            "type": "array"
+          },
+          "declared_start_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Declared Start S"
+          },
+          "inbound_operation_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Inbound Operation Id"
+          },
+          "location_id": {
+            "format": "uuid",
+            "title": "Location Id",
+            "type": "string"
+          },
+          "occupancy_id": {
+            "format": "uuid",
+            "title": "Occupancy Id",
+            "type": "string"
+          },
+          "origin": {
+            "title": "Origin",
+            "type": "string"
+          },
+          "outbound_operation_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Outbound Operation Id"
+          }
+        },
+        "required": [
+          "occupancy_id",
+          "batch_id",
+          "location_id",
+          "capacity_use",
+          "origin"
+        ],
+        "title": "StorageOccupancyDTO",
         "type": "object"
       },
       "TimeWindowDTO": {
