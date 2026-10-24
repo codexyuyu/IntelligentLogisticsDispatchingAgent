@@ -1,9 +1,13 @@
-# 工作台设计
+# R23 React 本机 PostgreSQL 调度入口
 
-2026-09-09 分工：前端整体由 Codex 承担，不计入三名成员的开发量。三人分别提供仓储、运输、协调接口与样例，并验收本方向的业务展示；页面、交互、样式、客户端生成和前端问题由 Codex 实现。今日三个 demo 是无界面的计算探针，完整工作台尚未实现。
+安装依赖：`npm ci`。保持 `backend/start_pg_r22_local.ps1` 所启动的服务运行，在 frontend 目录执行 `npm run dev`，浏览器访问 `http://127.0.0.1:5173` → 左侧 `PostgreSQL 实库调度`。
 
-拟用 React + TypeScript + Vite。复用官方模板的 OpenAPI 客户端生成和基础组件组织；界面围绕订单、仓储、车辆、计划、异常与实验六个场景。
+`/local-pg` 仅代理本机测试子应用；模拟路线非正式配送路线。Windows 构建：`npm run build`。最小接线检测：`npm run test:pg-ui`。详见 `../docs/R23_POSTGRESQL_REACT_INTEGRATION.md`。
 
-计划页同步呈现路线、仓储甘特图、未服务订单、来源、有效版本与确认状态。用户查看并修正自然语言抽取，不必接触求解参数或日志内部细节。地图不能遮盖仓运衔接和不可行原因。
+---
 
-只选一套 UI 组件体系，不叠加多套大型框架。离线演示使用节点示意和时间轴；真实路网绘制需标明提供方和数据来源。
+# Owner CODEX_FRONTEND
+
+7 个模块页面都是清楚标注的占位页。健康检查通过生成类型客户端调用真实后端；没有订单/路线假数据。页面类型从 OpenAPI 生成，B 不编辑前端。
+
+Node 22.12+；`npm ci` 后 `npm run dev`。Vite 将 /api 转发到本机 8000，不需放宽 CORS。`npm run contracts:check` 和 `npm run build` 是最小交付检查。生产部署由 AC 后续配置同源代理；当前 preview 只预览静态骨架。

@@ -1,0 +1,13 @@
+const fs = require('node:fs');
+const assert = require('node:assert/strict');
+const pg = fs.readFileSync('src/features/postgres/Page.tsx', 'utf8');
+const flow = fs.readFileSync('src/features/closedLoop/Page.tsx', 'utf8');
+const adapter = fs.readFileSync('src/features/postgres/api.ts', 'utf8');
+assert.match(pg, /R30-A PostgreSQL 合成演示资料/);
+assert.match(pg, /r30a_explicit_synthetic_demo/);
+assert.match(flow, /PostgreSQL 合成演示资料/);
+assert.match(flow, /postgres_synthetic_demo/);
+assert.match(flow, /readiness\.provenance/);
+assert.match(adapter, /business_fact_origin/);
+assert.match(adapter, /provenance/);
+console.log('R30-A frontend provenance and PostgreSQL stage-A wiring: PASS');
