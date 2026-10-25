@@ -1,0 +1,28 @@
+{
+  "format": "r30a_explicit_synthetic_demo_v1",
+  "warehouse": "WH001",
+  "source_kind": "explicit_synthetic_demo",
+  "base_sha256": "4a94491eba1fbde5fd6708d074cf84c2cfac95fb35373ce3e2b4a5cc394ccd0d",
+  "bundle_sha256": "b13d22c98f9e59146893bddf5e672f944aff85edc58194c904942b0645990cab",
+  "counts": {
+    "zones": 1,
+    "lots": 20,
+    "orders": 20,
+    "vehicles": 4,
+    "resources": 2,
+    "handoffs": 20,
+    "work_operations": 40
+  },
+  "snapshot_adapters_validated": [
+    {
+      "zone": "chilled",
+      "orders": 20,
+      "vehicles": 4,
+      "warehouse_operations": 40,
+      "distance_type": "PostGIS_straight_line_not_driving_distance",
+      "validated_structure": true
+    }
+  ],
+  "strict_warning": "SYNTHETIC VOLUME, LOTS, SHIFTS, RESOURCES, READY-AT AND DURATIONS. NOT OBSERVED BUSINESS FACTS.",
+  "base_fact_fields": "order and vehicle codes, original weight/time windows/temperature limits, geographic matrix"
+}

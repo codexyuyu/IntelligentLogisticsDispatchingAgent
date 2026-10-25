@@ -1,0 +1,2707 @@
+{
+  "created_at": "2026-10-19T13:13:37.694604+00:00",
+  "contract_version": "0.1.0",
+  "top_level": "R30_STAGE_A_PG_BUSINESS_INTEGRATION",
+  "files": [
+    {
+      "path": ".editorconfig",
+      "owner": "AC",
+      "sha256": "87aa196f57c7ac4beae5d2b8bdde0fc771b72ebf8cb4535736f62a2cee3b28b6"
+    },
+    {
+      "path": ".env.example",
+      "owner": "AC",
+      "sha256": "28b1631e8b71b668025f8b5de56f5e85f3cf0c76126a827394c59a0934ea19fc"
+    },
+    {
+      "path": ".gitignore",
+      "owner": "AC",
+      "sha256": "31c7aaf03bc99c747530a2712558ae89384daf51f737fee755ea1362db54913d"
+    },
+    {
+      "path": "AGENTS.md",
+      "owner": "SHARED",
+      "sha256": "2c46a03c5ceba0f5efbf5aee92c8e3f955d09a65a574078f5644bb27bee4ce47"
+    },
+    {
+      "path": "DEV_LOG.md",
+      "owner": "SHARED",
+      "sha256": "4181a0b5bb1703cda20a8e5e25c976b59a5b34003601207c1ee3aba374eb995b"
+    },
+    {
+      "path": "FILE_MAP.md",
+      "owner": "SHARED",
+      "sha256": "d39ac0ea7b123d79bdea7e13a9831fc5c8f9cf99b8a454cd6d8b7f52f7dfbd1e"
+    },
+    {
+      "path": "OWNERSHIP.json",
+      "owner": "SHARED",
+      "sha256": "5c7096e80d80c6b7904321df8dd973a1e41865990c8dba67db821f8381343f71"
+    },
+    {
+      "path": "README.md",
+      "owner": "AC",
+      "sha256": "ed7e6a5d1aafce90dc45648855a00a27c510c0b5b0f4abb011b76ca19a62cfff"
+    },
+    {
+      "path": "archive/legacy/algorithm-service/Dockerfile",
+      "owner": "AC",
+      "sha256": "cbbee0dc40e3ef3bb6fa0d16d2e9776326d4cba8b8e7815f40a1b19cca3e7882"
+    },
+    {
+      "path": "archive/legacy/algorithm-service/README.md",
+      "owner": "AC",
+      "sha256": "d0faa130730312ece3ce4c16bcbaa9b59995a8e8c363f947246fa26529d7a744"
+    },
+    {
+      "path": "archive/legacy/algorithm-service/README_CN_DOCS.md",
+      "owner": "AC",
+      "sha256": "ed43f8b284056236acf0da5b85bc044378e549ee7d3c81348171ab51dea0012c"
+    },
+    {
+      "path": "archive/legacy/algorithm-service/README_MERGED.md",
+      "owner": "AC",
+      "sha256": "6ea2f83e243d6fc84ce5e5f8b384a136d58644d85fdfe0fad692cedb2155e254"
+    },
+    {
+      "path": "archive/legacy/algorithm-service/app/main.py",
+      "owner": "AC",
+      "sha256": "a3bae8a1d505de538fafec5376bd153da758e8de1b78b66acca681fc81f20a32"
+    },
+    {
+      "path": "archive/legacy/algorithm-service/app/swagger_cn.js",
+      "owner": "AC",
+      "sha256": "267af2543412a2ec8d2ba518c64629aac7656d69a700cee6882ea2794a2a009c"
+    },
+    {
+      "path": "archive/legacy/algorithm-service/requirements.txt",
+      "owner": "AC",
+      "sha256": "ffc396429f7ba20160475fadda7331e89704ca9f550c2669674082ba2c925a38"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/.dockerignore",
+      "owner": "AC",
+      "sha256": "4859bd65cc83357d94a8258c68503e8fbafd42634f0dd012e2d9a0bf69326aef"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/Dockerfile",
+      "owner": "AC",
+      "sha256": "3a48da136af984ca4e56ba6f59736a4cd4fe3853cd221fdb5e5808514908eab2"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/pom.xml",
+      "owner": "AC",
+      "sha256": "7744d2d945e9762d41226affd85992b997b13a2d778ba0658c2a8928ab6fe50f"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/SmartWarehouseApplication.java",
+      "owner": "AC",
+      "sha256": "4b749e46780febebc8bb2a0b1fc9515824f7bda99215847e7940018ac553a650"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/config/PasswordConfig.java",
+      "owner": "AC",
+      "sha256": "e2c8b518b3640734a82dcc0a7a5a8adfd85c50aa878a0b5108505fe32b517095"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/config/WebConfig.java",
+      "owner": "AC",
+      "sha256": "dcbcb1022495d6809bbb39d286186237ee8b4ef05b387da82f113e7f2e64cf36"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/config/WebSocketConfig.java",
+      "owner": "AC",
+      "sha256": "6e2779786f5e267907174ec47395f46b228c2602bc33df8a7fbb2374f6c2a1a6"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/AiController.java",
+      "owner": "AC",
+      "sha256": "f6f28f5445bc8dd4aa436e85559e43cc2b9fd4bb3b5dc59625ca5a2634c7f61c"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/AuthController.java",
+      "owner": "AC",
+      "sha256": "122522385b8442eca7d222e3ee6ebc60fcf74ddeeb44fa9732f33ccd82159a2d"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/ColdChainController.java",
+      "owner": "AC",
+      "sha256": "3f3384f821eeabc848c73e6e5489abe80293b422537850483b4c140710fd987e"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/DashboardController.java",
+      "owner": "AC",
+      "sha256": "e864c6b39ad44d2bfafca2aa49df5bebcaa9101a0d00dc026521a99a4288212c"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/DataPlatformController.java",
+      "owner": "AC",
+      "sha256": "20d2844026665c8f1fd32d6495438b4e14e6ba763f7390ddd330a649b8b4395b"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/FreshController.java",
+      "owner": "AC",
+      "sha256": "171921d4b02a93b322fac5e23926f8d4a7a71b20ec55e520262d6600b66185a5"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/GlobalExceptionHandler.java",
+      "owner": "AC",
+      "sha256": "e0f41e49f0cf42165d9ea6af6b00bbc14de8cfe19036c5f8fe5cf1c881ff836e"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/HealthController.java",
+      "owner": "AC",
+      "sha256": "2fabfcd961931076e3690d0d8376881800e40c432ad5cacf56c5eb00cc36e157"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/InboundController.java",
+      "owner": "AC",
+      "sha256": "d5facfdb4985c3f56f0a27084656c9facde6268a9cda3760a09886c6d4405f42"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/OutboundController.java",
+      "owner": "AC",
+      "sha256": "b6beb513bf22fd2a163231c4a2065cc04e5aaa56804b627bb14defc84e3ed809"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/ProductController.java",
+      "owner": "AC",
+      "sha256": "e39e3d4d1b2dcca02acfaa6460a32507f7b1d394535c945f98f26f8e5147dc78"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/PurchaseAdviceController.java",
+      "owner": "AC",
+      "sha256": "c1bb0994b024fb7afa8c3309d6884fe113e5535a6183cea196410c8cd1b96698"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/SchedulingController.java",
+      "owner": "AC",
+      "sha256": "52368c4f18f05f895241a3edfc961e3d029eb5187e41827efbb4c1b0f552379c"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/WarehouseController.java",
+      "owner": "AC",
+      "sha256": "c30d9d6a58b283016d8bb809a26b7bd1e43bdd0eace8573b21334cde0486dbd2"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/controller/WarningController.java",
+      "owner": "AC",
+      "sha256": "8ccc21ee1d79f6c7de302a97de2ef1802294f761c6f4544880c701a42bb658ed"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/dto/AiChatRequest.java",
+      "owner": "AC",
+      "sha256": "1449d73d7248fb1a977c813258ba29ec1be5eb1db2535e5cff6a52a00acea8e3"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/dto/FreshReceiveRequest.java",
+      "owner": "AC",
+      "sha256": "d4f4fbcb043d6f2cf8ce30e07a69d1336b667e5826ef6b230c8415f8a0485363"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/dto/InboundRequest.java",
+      "owner": "AC",
+      "sha256": "6596bcd482e4aa3d920ce2b46d2c2a2d5ef3cfe46525ab13c0133fa2f1fa316e"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/dto/LoginRequest.java",
+      "owner": "AC",
+      "sha256": "1a5949a67cf3fc993f6a6ac9eabccc87d261382c4301e0962a13dcf313f3454e"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/dto/OutboundRequest.java",
+      "owner": "AC",
+      "sha256": "573481910a95e3b30d4a4a1880641ae7c1c0c673f7b6fa53e068578e4c5df38f"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/dto/Point.java",
+      "owner": "AC",
+      "sha256": "a56dba24a54fc320bb443eab6d6625bb91bf93ef0d71e5f1a369afbd5f3fb89d"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/dto/RegisterRequest.java",
+      "owner": "AC",
+      "sha256": "fd48dccfe6856059e22362ce1173048088b8fd05dd73fe782985114eacf49255"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/dto/WarehouseStorageTypeRequest.java",
+      "owner": "AC",
+      "sha256": "42199fd09543a8120fc569b917e3e5cd0044116dc4a669045f7b69363a29cfc7"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/AppUser.java",
+      "owner": "AC",
+      "sha256": "f2c1223e1c62869d77214a6d9acbfc9ffdf5b00c34c9e9fa6a4529402ad80d17"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/FreshBatch.java",
+      "owner": "AC",
+      "sha256": "cb75ac6eeebe187aac2442f896e8996c0957ba15a19ea12fa4f60c09623c5c47"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/InboundTask.java",
+      "owner": "AC",
+      "sha256": "f3afcc252f46f785691e2bee8c20596962d27c967e5de43baca4b6f8d1c0927c"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/Inventory.java",
+      "owner": "AC",
+      "sha256": "887b9ec6667b7130f1246f29c9bc73606ae0531a6f505a293002a339ab77e4f6"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/OutboundOrder.java",
+      "owner": "AC",
+      "sha256": "89b17804b56dd663196d0ae2b0ff925c58ca7170c63ac2a9b3778555422ac33c"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/Product.java",
+      "owner": "AC",
+      "sha256": "a08c53a4d021561409df63c0c025a95e48638aa34073d806b033f425276f57c9"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/PurchaseAdvice.java",
+      "owner": "AC",
+      "sha256": "68729ba48f7d0c5ec63ea7a90a32fdfa8021a7e592358bfb12975ddde7dd4b38"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/ReplenishmentTask.java",
+      "owner": "AC",
+      "sha256": "9562f0c0ecd160adbffecde046846ae4a0a12af073da276cb1dccb92134cfc8b"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/Shelf.java",
+      "owner": "AC",
+      "sha256": "4fa43676eda7c1f192616d14a422294083b682256a4d7f4d35eabdf45bc8abe6"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/TransportRoute.java",
+      "owner": "AC",
+      "sha256": "85de0e54f10b34de6da5ba144a2ce231612bbae4b9e5c7d88d4035ffb4f780c9"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/Vehicle.java",
+      "owner": "AC",
+      "sha256": "40e30a05c8ba73545f875a7be2c90364382de2cde7678642959ce7bbfcf63fb6"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/Warehouse.java",
+      "owner": "AC",
+      "sha256": "0012195c812951fc6dd473cd5cb3a8655b1b747850c88791da2febe6d5d6fc82"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/entity/WarningRecord.java",
+      "owner": "AC",
+      "sha256": "b8785ab9c2b60f6b59e8399a52e02ace9422177d8e97e44a7aa35b9bf050a663"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/mapper/FreshBatchMapper.java",
+      "owner": "AC",
+      "sha256": "8253ec6a3051a8c29ab246e64bd72cbb7bfb36f5b2012840781909a73fd554ef"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/mapper/InventoryMapper.java",
+      "owner": "AC",
+      "sha256": "b2a2a63474fc4d009aaa80aaeb4f3ee666ff1a2f7aa6f65453b6e390939b4c07"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/mapper/ProductMapper.java",
+      "owner": "AC",
+      "sha256": "f0b8856a37251734e4eb6a8bc459730a0c19432cc0c216bc1bb9196dead9a407"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/mapper/PurchaseAdviceMapper.java",
+      "owner": "AC",
+      "sha256": "6cbf9c28eeab2e56860ca37160794aec5cf19d5ef179883dcb078872c16b09bc"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/mapper/ShelfMapper.java",
+      "owner": "AC",
+      "sha256": "7e092ab06b65d3b3e7802fb40d94ddc37f58ca6bde458758c98e834d9dac67a7"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/mapper/TaskMapper.java",
+      "owner": "AC",
+      "sha256": "a5a5fb685db1771383d8727f278a4c554f80df06f39a9a8f6bdff53af76ebfd2"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/mapper/UserMapper.java",
+      "owner": "AC",
+      "sha256": "5982d7590e4c8e771dd992d4d9e3ccfc3101fa8250cea9fc90208510b88f3d5e"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/mapper/WarehouseMapper.java",
+      "owner": "AC",
+      "sha256": "e7a3433bbacc9e9bdd47db7e5565ff6369c43893a85b005c2b8f0dd0c6094559"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/mapper/WarningMapper.java",
+      "owner": "AC",
+      "sha256": "29764524d12a6d4a6dc0598ef4626b64c4199d661d6fbca1c1aebf5638707346"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/AiAgentService.java",
+      "owner": "AC",
+      "sha256": "3d5caafb16ea00b96c5cfe7246b82a567588b0fa879174f0721fd1c817c0f9ef"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/AuthService.java",
+      "owner": "AC",
+      "sha256": "ae63a1a55fb7bbe168c40999a8503d3bb224ca8bf38ce5e7f24312d55b1991a4"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/DashboardService.java",
+      "owner": "AC",
+      "sha256": "93bb61ecfd918691407eb264dee9445fb7a7808c369e2503144df87c1890686f"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/DeepSeekClient.java",
+      "owner": "AC",
+      "sha256": "e98419519cbceecb97b6b195b4e37537c1fe9bd1117e6350af46b3a3b74107cd"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/FreshReceivingService.java",
+      "owner": "AC",
+      "sha256": "58f02def411021f8637288f024284b61fd6e7ba02ac7c8073a0edf13fbfe78d7"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/InboundService.java",
+      "owner": "AC",
+      "sha256": "8d068db6415272d401af77af16613228cc08da2eda971c1d2666b856f035b4b6"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/OutboundService.java",
+      "owner": "AC",
+      "sha256": "84e7017cb4037baa3f1e9f877433f1e8ab20bdd1f6e1dcdcfc1a2834ca8d8f2c"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/ProductService.java",
+      "owner": "AC",
+      "sha256": "6ca759904396a8939bc4a2ad7178f68cb5c2a15e6688bc25deb5d5522efa270b"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/SchedulingService.java",
+      "owner": "AC",
+      "sha256": "c03b44a58edb7f9bd1143ffaf6ec28f3c2b74e68189e2929e083408e6b20b484"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/ShelfLifeService.java",
+      "owner": "AC",
+      "sha256": "2b6374af5bbf70d5d7355d52062c39e636fa669e5e85882baaafd321c55c9ef6"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/WarehouseEventPublisher.java",
+      "owner": "AC",
+      "sha256": "0c0ba63a21ae2d61a8c63bdd781d8f576192efde370184658d429e79e791da53"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/WarehouseService.java",
+      "owner": "AC",
+      "sha256": "27e3aacab81ecb9c96a4511965e4170050dd680fa3d41af64e91ac5d6e4a2700"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/service/WarningService.java",
+      "owner": "AC",
+      "sha256": "79a9833e56ff74b5d58c9b2f98a60486b586ff414ade4ccfddf9abbabef40117"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/java/com/example/warehouse/util/PathPlanner.java",
+      "owner": "AC",
+      "sha256": "41d8bc7447029c0f85dca450ccd8591be04a40ed392f14869fcc4e68ef1c89b5"
+    },
+    {
+      "path": "archive/legacy/backend-legacy-springboot/src/main/resources/application.yml",
+      "owner": "AC",
+      "sha256": "6796b25a36d68015db3cf0d30cbc40487a1e2a55c05ecc3911742e806529b5ea"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/.dockerignore",
+      "owner": "AC",
+      "sha256": "d74f926956a0c2927e1b842997003a4eea65076a0011909ce6ae7d6d8e75a180"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/.env.example",
+      "owner": "AC",
+      "sha256": "88c12e81644a087a156f7b40e3d2cbf4d7283bab30deff1893f890c48eeb509a"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/Dockerfile",
+      "owner": "AC",
+      "sha256": "f3a523bcf593c8bed42fff9f0c82d9d0cd68491de4781c5b97b4dd5b955287ae"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/index.html",
+      "owner": "AC",
+      "sha256": "c9c9f615604df7edb9f6579886dd7e44c3612436c87322d3bfb3ad2a8e53924d"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/nginx.conf",
+      "owner": "AC",
+      "sha256": "a294b92be0b5ea1d6dcdd1f20bd900a43c0af4442cd6284d75b851a9f19ec611"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/package-lock.json",
+      "owner": "AC",
+      "sha256": "80750338879c21f82ead4f4eef928910274cca81ebcfe47fc6c9c10ad1d9ae08"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/package.json",
+      "owner": "AC",
+      "sha256": "cf9eda46ff89bdba83f231c6ab62f1bff174d517cc22d39e5ae4cfacb1850b27"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/App.vue",
+      "owner": "AC",
+      "sha256": "60443b83149a3cab306ce44893d4cfcf5d9c0ceb9dd76612c02bc7d0dba41776"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/api/http.js",
+      "owner": "AC",
+      "sha256": "1ef078930e40fc766307f97204cee3b149f1b5e8052e6e31dee50bc1cc9cb25b"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/components/DashboardChart.vue",
+      "owner": "AC",
+      "sha256": "6c6ceb17caff4e28be639d8f73d8a36cfe36cab79688f497dae25dcba1c4dbbd"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/components/MetricCards.vue",
+      "owner": "AC",
+      "sha256": "ff6e289bd7102d63c1ff2f9d7ad87edb831e8f898663a2420022d6e6ac5b0bb6"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/components/Warehouse3D.vue",
+      "owner": "AC",
+      "sha256": "30f058a89d24a90a772660b4be4b7512df25df16a02307fa9a488a06b52c10d0"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/data/schedulingDemo.js",
+      "owner": "AC",
+      "sha256": "d0c116be4d9b4825de5b60cd7cb2c74f58f910afb7e3a73011c7e4c6c21d7a31"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/main.js",
+      "owner": "AC",
+      "sha256": "59656fe3df5da89232362db2c7828a0aeb29df93cee9a3e8be2e65042bee12b7"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/style.css",
+      "owner": "AC",
+      "sha256": "87c733ad9878bfbb4209d922aa771c6c2710e441e071380f049971c01f95b08e"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/AbnormalEvent.vue",
+      "owner": "AC",
+      "sha256": "6bd6d2c667011f9d184ea177e8178e8683eaa27346a295ea2a55488d65a6a5c4"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/AiAssistant.vue",
+      "owner": "AC",
+      "sha256": "eacf5f7c751bb474744e119ee9db6cc2cf6898e6edfbbec9ec29c2b08c00141c"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/BatchCompose.vue",
+      "owner": "AC",
+      "sha256": "921a8cc15248ddd6bb161e312b3034ecaa9ad6c840b0a1a2e22c820310a6fbc9"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/ColdChainTransport.vue",
+      "owner": "AC",
+      "sha256": "3eaa2e9598524df2c3029a213b5c93dddfb95936fae452d3a1af3197d6d8649d"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/ColdRoomManagement.vue",
+      "owner": "AC",
+      "sha256": "959873c8054cbd0cde855362b4a3cd98fea4c7c7b7f42c63190882461f887111"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/ColdRoomResource.vue",
+      "owner": "AC",
+      "sha256": "3bfa52be9e051b04356a8470249760d2fd32e26632a9bbb57032ceb02b44e30b"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/ColdRoomTimeline.vue",
+      "owner": "AC",
+      "sha256": "a75881ee6f8a308d7001b78e36aca2ed08a7e8656d386dab65f4c6c8fe19a843"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/CustomerOrder.vue",
+      "owner": "AC",
+      "sha256": "3fddefe9f483b4972550da15ae292430545515a13fdc83c48a2811c2ed174bad"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/Dashboard.vue",
+      "owner": "AC",
+      "sha256": "455e9a5a0255f94eff548d8a589c593f35346a664b0e3842286108cbaf6e7e19"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/DataPlatform.vue",
+      "owner": "AC",
+      "sha256": "df6d59a7f63b58a8aa5af77b71f0f05c0f6fdfb1896f1dffd0c375543fbaeb39"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/DispatchCenter.vue",
+      "owner": "AC",
+      "sha256": "a6a85678f4b42d2291b206fd29f1925c389f75086741cfe7086be25b4df95f1d"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/Inbound.vue",
+      "owner": "AC",
+      "sha256": "c34ea13bdd0fca41c1eb9da2350a6ca4599fb3bfb5200bae7b9cb46b96f5fc97"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/InboundOperation.vue",
+      "owner": "AC",
+      "sha256": "a8945f56fac974a0f3fab9189493ac888e834394b1999630bd154b3913ba659f"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/InventoryBatch.vue",
+      "owner": "AC",
+      "sha256": "5697e9fd537a4b8cef9c4d541ed1ae3cef410198c36619a0182af7417e6baa44"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/InventoryOutbound.vue",
+      "owner": "AC",
+      "sha256": "3e5ee71c4c0df5330a18bab394340a512f426882f2ecb7589bba477cd3d8215d"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/Login.vue",
+      "owner": "AC",
+      "sha256": "7c5e67c468bea9b43f6f1a370a3dd2254e540ed1f575f98b305c99de4ee2c810"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/Outbound.vue",
+      "owner": "AC",
+      "sha256": "781207ec47d47586e156a0a224077418b685d615e5f0d6c4563a182caba9f779"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/QualityRisk.vue",
+      "owner": "AC",
+      "sha256": "8ea2a38080c96a0f6bc3776499c20bedd04a3edc26619904a0c5958feac89d95"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/ReceivingRisk.vue",
+      "owner": "AC",
+      "sha256": "16bda081516305a9c2d3fccbd08073f3b19d61798963a2cb1d9c52c6b1f0d509"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/ReschedulePlan.vue",
+      "owner": "AC",
+      "sha256": "6690112c566cd367d30df241e4672c356f5d3d6d8ab661882bd0a6ee6c3d524d"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/RiskCenter.vue",
+      "owner": "AC",
+      "sha256": "5a4b3ef08ea1906d80c68ee093bc2bf14805eec807a496d4deb7bb3774f7f890"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/ScheduleCenter.vue",
+      "owner": "AC",
+      "sha256": "2b9afc8dd5dbe3100f29fe11c88e121d73b28474cc65c5dd8869604641e7c4a5"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/ScheduleComparison.vue",
+      "owner": "AC",
+      "sha256": "e3a848cab128b48392390b534546619ed63d36d2fc8adb0cd4a3885342718d9f"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/SchedulingDashboard.vue",
+      "owner": "AC",
+      "sha256": "ea7614ee91c7939b8b7795856b85b36a8eb21ee98469747929f595fc83505452"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/SupplyBatch.vue",
+      "owner": "AC",
+      "sha256": "0eddfddca5f53c312dbc9dce602d7e0ed07f6390b432180f4775339107d1d391"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/SupplyPlan.vue",
+      "owner": "AC",
+      "sha256": "dacc7b061226441fdd3d431b3611d2ec745d971a1dd4ca482deeb8221ddb9437"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/TwinCockpit.vue",
+      "owner": "AC",
+      "sha256": "f6143e03b5e7c527faabcf4c29828f1836abbeaee462db34ae391ef3572b7f4a"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/src/views/Warning.vue",
+      "owner": "AC",
+      "sha256": "bec26a764dfef09abe9b7c842d7aa072f00138369b3652ee2c7e73cb917aca60"
+    },
+    {
+      "path": "archive/legacy/frontend-legacy-vue3/vite.config.js",
+      "owner": "AC",
+      "sha256": "e91bd5437461f911ee2cd36bfcc8b000b1627b019fb3fdbbdd7eea5e9b335a71"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/README.md",
+      "owner": "AC",
+      "sha256": "96359f7dae3675c45ebcf9ef5bd26eb372adb46bbde1027e3bf515582838fcff"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/README_SCHEDULING_MVP.md",
+      "owner": "AC",
+      "sha256": "8844fc4568861db13135b2e8b8e374c45e710ad4acfcad793f0aa452d301233f"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/START_HERE.md",
+      "owner": "AC",
+      "sha256": "5e3e50a44c6085305fa39d4ea2919360bc5b29d547986e3e6b49f651147fe040"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/db/encoding-check.sql",
+      "owner": "AC",
+      "sha256": "b8fb2c7114739899eb3e652ae15333e7835f8d7ef36bacfa624b64696068c689"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/db/init.sql",
+      "owner": "AC",
+      "sha256": "d0feb8ded6596272960baff64fa7205f6652699c387495253a32c70e8686e53e"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/db/reset-demo.sql",
+      "owner": "AC",
+      "sha256": "687244dc4f6dec4741d91ad3e5db0738a8f779b25547d2d4676a37bbf4ef626f"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/db/scheduling-mvp.sql",
+      "owner": "AC",
+      "sha256": "6ff73829e516edd8c4dc781cadcce9d1cdcbe39711fd5992752d4284ed0ee41e"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/db/upgrade-realistic-demo-data.sql",
+      "owner": "AC",
+      "sha256": "a824024982eebd9e01bc3dc37a7cf9183eedee19673246ca4aa3a3174fbb784f"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/db/upgrade-transport-scheduling.sql",
+      "owner": "AC",
+      "sha256": "9de0e0f8cf108aba6c6b5e56eb7b59bd0582959a294ecd273ddba234ae855440"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/api-test.http",
+      "owner": "AC",
+      "sha256": "13564f5c24432d701ead15166922022f82c098d0f5a63a3e93c74c3f510bca05"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/config-audit-report.md",
+      "owner": "AC",
+      "sha256": "98bc99478ea40eb76f170b7415d981e3ba72fe554fb4c1bd6422374dec34f35c"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/feature-mapping.md",
+      "owner": "AC",
+      "sha256": "896ee2149c37d2528b679588341482779274e646f1fa60d6a45454eeb0667e55"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/frontend-module-simplification.md",
+      "owner": "AC",
+      "sha256": "744cea95a8a168e4cacf67c60003eae9d0118cfd3d7a407b6c46e09adfdc1a79"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/java21-database-notes.md",
+      "owner": "AC",
+      "sha256": "4ae09f7ed5664f769fe5a18c185e0aced667b641e38fe04fff21f6d1d4976ebf"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/model-sources.md",
+      "owner": "AC",
+      "sha256": "5040b3e18af2c4013b347e512c3bf86177b26e3f08913650be2769b009035e59"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/module-merge-regenerated.md",
+      "owner": "AC",
+      "sha256": "bbca16705db3229b574cf6d2ff1ded82252ef1b756c5ccb9c0c11b8bb75431ff"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/optimized-for-vscode-docker.md",
+      "owner": "AC",
+      "sha256": "1d75edd98e7044898dab014cebd10e2fb049b158ca95f2254ad4594324bb671b"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/scheduling-frontend-refactor.md",
+      "owner": "AC",
+      "sha256": "1098fdbb41f527b2006b91230c099879a691ce5dc034b53e878288d75195fdf3"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/spring-ai-and-embedding-upgrade.md",
+      "owner": "AC",
+      "sha256": "122b69535fad0491eb46073f1a9a2d95753eaebab8f9d7fd023d2ec0ff8dbc2f"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/sql-table-change-report.md",
+      "owner": "AC",
+      "sha256": "fe633d04926f862ff238148dd84bb896c536d2a89a34bab8bcd944495e94bb8b"
+    },
+    {
+      "path": "archive/legacy/legacy-reference/docs/step-by-step-guide.md",
+      "owner": "AC",
+      "sha256": "062b0bd170a06fea6e3682081410323b5b54fa939bdbf33b41b8c2a1c0e1801f"
+    },
+    {
+      "path": "archive/reference_demos/README.md",
+      "owner": "SHARED",
+      "sha256": "e93f8ee08312f2ceed19ac0aa1be3838eb4694e47126a997feb4cfdfa15ad87f"
+    },
+    {
+      "path": "archive/reference_demos/exception_replan.py",
+      "owner": "SHARED",
+      "sha256": "240539cda8a955f82856bc5e368fad09259e8900b1b24e8303296557f7eca18d"
+    },
+    {
+      "path": "archive/reference_demos/requirements-lock.txt",
+      "owner": "SHARED",
+      "sha256": "d203903de2313be3b7cb4900be4b00ed71227bcfecbebafce970d064b27204cf"
+    },
+    {
+      "path": "archive/reference_demos/requirements.txt",
+      "owner": "SHARED",
+      "sha256": "92857eeff2e29f0bbb846e88105c1068dad1f65a652c76cea8a639f30a0552d3"
+    },
+    {
+      "path": "archive/reference_demos/run.py",
+      "owner": "SHARED",
+      "sha256": "cc7eafc6ae3c69ccbace2fea94939a12b86bba804acf4ebd8d22ed4741ad47c6"
+    },
+    {
+      "path": "archive/reference_demos/test_demos.py",
+      "owner": "SHARED",
+      "sha256": "6eb49da3f660647abea09660a540f043452fd841f231d7aab4bf7ccdce00d3fa"
+    },
+    {
+      "path": "archive/reference_demos/transport.py",
+      "owner": "SHARED",
+      "sha256": "c780b34145dfe988cb3bc490bf48ef572f951874850d0b9ee6b5298c6c6a499c"
+    },
+    {
+      "path": "archive/reference_demos/validation.py",
+      "owner": "SHARED",
+      "sha256": "86850ee6c5e6d2c5c36d5b219b81b53040fe1586201095909aea39691f02a721"
+    },
+    {
+      "path": "archive/reference_demos/warehouse.py",
+      "owner": "SHARED",
+      "sha256": "a0457fdd27b81cfc186c076f65f73fcb015cd5d66a850e61870922b14c4a4f96"
+    },
+    {
+      "path": "archive/releases/R18_B06_MULTI_SCENE_EVIDENCE_20261014.zip",
+      "owner": "AC",
+      "sha256": "27f4b6a5f3c3e6747c5b6f98d645f87b4272281524b83ed25bdd9f22af92f75c"
+    },
+    {
+      "path": "archive/releases/R18_B06_MULTI_SCENE_EVIDENCE_20261014.zip.sha256",
+      "owner": "AC",
+      "sha256": "605bbbc4b341806ab98f3863ec5cc1e5269dc868cd3a86a45fee1c98a36010e7"
+    },
+    {
+      "path": "archive/releases/R19_B04_RESCHEDULE_20261015.zip",
+      "owner": "AC",
+      "sha256": "0d7028ca23a333d9d5332e3a400cc9451c7a248b25dfe4153c33e159ca505c2f"
+    },
+    {
+      "path": "archive/releases/R19_B04_RESCHEDULE_20261015.zip.sha256",
+      "owner": "AC",
+      "sha256": "9e2d32035d97dce379c50428ccfa719fb562683e7ed021c4ace35aa2da02b5cc"
+    },
+    {
+      "path": "archive/releases/R19_B04_RESCHEDULE_20261015_v2.zip",
+      "owner": "AC",
+      "sha256": "d856799b56f573f4dd59e08d2e5c70b25d49837758d5d992361f6aee253bb1ba"
+    },
+    {
+      "path": "archive/releases/R19_B04_RESCHEDULE_20261015_v2.zip.sha256",
+      "owner": "AC",
+      "sha256": "4123732aefc5e2f2d06e288bf98392bb428d8dce0518b4bd149383e831e2f5ea"
+    },
+    {
+      "path": "backend/app/__init__.py",
+      "owner": "AC",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/adapters/__init__.py",
+      "owner": "AC",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/adapters/llm/__init__.py",
+      "owner": "AC",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/adapters/llm/gateway.py",
+      "owner": "AC",
+      "sha256": "f2e1607e4cb7fd8239442d9d0cde8138b2fced5dc88a3344ba8c01492ef8ef92"
+    },
+    {
+      "path": "backend/app/adapters/llm/prompts.py",
+      "owner": "AC",
+      "sha256": "04415e2e53692ee03bc1fb628b45fc8e4f68ef57c818ff31e4cd0ca3339eb7e2"
+    },
+    {
+      "path": "backend/app/adapters/matrix/__init__.py",
+      "owner": "B",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/adapters/matrix/fixed.py",
+      "owner": "B",
+      "sha256": "e0cec4136aa940febefb7bd2f0bee0fe5e1c0062fe987ffc7112c8e023e273c8"
+    },
+    {
+      "path": "backend/app/adapters/matrix/osrm.py",
+      "owner": "B",
+      "sha256": "ddd7251702b3eee8d49c713c6dcaccf4e7c0f44bc2e2627379d76bcb88847d58"
+    },
+    {
+      "path": "backend/app/adapters/persistence/__init__.py",
+      "owner": "AC",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/adapters/persistence/jobs.py",
+      "owner": "AC",
+      "sha256": "7fc308bb3cd152316b6c222cad0defeb9c431ef368998b556e5be5b655db5ade"
+    },
+    {
+      "path": "backend/app/adapters/persistence/models.py",
+      "owner": "AC",
+      "sha256": "d5329836d62996796b8548540ca0f709201b01d76f3dbc515a14d3bf5a9358a9"
+    },
+    {
+      "path": "backend/app/adapters/persistence/pg_r24_business.py",
+      "owner": "AC",
+      "sha256": "7ea082c4787f2690de6fbf81a41ec0e9d2034ce64f1e935d07eed89ac090475b"
+    },
+    {
+      "path": "backend/app/adapters/persistence/pg_r27_workflow.py",
+      "owner": "AC",
+      "sha256": "59253d4c123984d6af31d5a09408298d4782b977d13c0a8c79c187f421cbe01e"
+    },
+    {
+      "path": "backend/app/adapters/persistence/pg_r28_diagnostics.py",
+      "owner": "AC",
+      "sha256": "1c793d3c420a9768e3717056a2819930e31f6a1bedea9c69f2c17f3f3536bd80"
+    },
+    {
+      "path": "backend/app/adapters/persistence/pg_r28_reconciliation.py",
+      "owner": "AC",
+      "sha256": "894a97ff4b7371d313a7fc7dd24e3056c482990623f41f905bd1aa155aad6a79"
+    },
+    {
+      "path": "backend/app/adapters/persistence/pg_r30a_provenance.py",
+      "owner": "AC",
+      "sha256": "fb1ac2d13f7cc13e3b65b6b85805c712fcbb8e9e20e52ab384a49593f2f3f9dc"
+    },
+    {
+      "path": "backend/app/adapters/persistence/pg_routing_preview.py",
+      "owner": "AC",
+      "sha256": "abdf4c2304eb3ba51cb67ba105ee5337d22266b00376665189dc39c951ee82e8"
+    },
+    {
+      "path": "backend/app/adapters/persistence/pg_simulation_archive.py",
+      "owner": "AC",
+      "sha256": "e1612f8dfff35b1a217ae69ee9f6828d9475498187c42bbf9bd1e6766466fba3"
+    },
+    {
+      "path": "backend/app/adapters/persistence/plan_commit.py",
+      "owner": "AC",
+      "sha256": "5787601982e273c5dd514b08c0df5dcfc796c736b25e84879808337c87f55306"
+    },
+    {
+      "path": "backend/app/adapters/persistence/snapshots.py",
+      "owner": "AC",
+      "sha256": "390bd593487a301dfafe9faf396be4f11e1d5ffe4ebd9291632a957f165b1d08"
+    },
+    {
+      "path": "backend/app/adapters/routing/__init__.py",
+      "owner": "B",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/adapters/routing/metrics.py",
+      "owner": "B",
+      "sha256": "5ed11cf84ffd834f7ef14719485333b352f6f6345f9506f49dd4db2a4f4b040f"
+    },
+    {
+      "path": "backend/app/adapters/routing/ortools_solver.py",
+      "owner": "B",
+      "sha256": "df9eaf09005795cb97fe8a06588a1845ba45b194150c229f21aa38845bc22bf9"
+    },
+    {
+      "path": "backend/app/adapters/simulation/__init__.py",
+      "owner": "B",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/adapters/simulation/event_sources.py",
+      "owner": "B",
+      "sha256": "bb85427b36e7d517d9310c684b69469a28f9592e50e8b79b4cab122282df368b"
+    },
+    {
+      "path": "backend/app/adapters/simulation/simpy_simulator.py",
+      "owner": "B",
+      "sha256": "4b23f00d6fc68e5ef7208d4bfb2731ba8876deb4ef10bc2b76ecdd487c6b5bf5"
+    },
+    {
+      "path": "backend/app/adapters/simulation/state_projection.py",
+      "owner": "B",
+      "sha256": "34d3d619129c8265491bd8c3256815585ce2a455ea79f16a9a83f665c5f55170"
+    },
+    {
+      "path": "backend/app/adapters/warehouse/MIGRATION.md",
+      "owner": "AC",
+      "sha256": "c06c0de6611a928036fed09df9757f2eeddfd3c5366d62efdbefbca904724016"
+    },
+    {
+      "path": "backend/app/adapters/warehouse/__init__.py",
+      "owner": "AC",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/adapters/warehouse/cp_sat_scheduler.py",
+      "owner": "AC",
+      "sha256": "f695739abba3486a034154307de5149879f7ed28be4c3f14c1b79c50c39b8109"
+    },
+    {
+      "path": "backend/app/adapters/warehouse/resource_calendar.py",
+      "owner": "AC",
+      "sha256": "5f5891d08bfb7e5366d02287fad6d0e618387057f611435567de16f38e38412c"
+    },
+    {
+      "path": "backend/app/adapters/warehouse/validator.py",
+      "owner": "AC",
+      "sha256": "26ddf29cdacd534ae8c603714d7f2dad16777ac62999c7ca6bcd25c3e34c8944"
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "owner": "AC",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/api/dependencies.py",
+      "owner": "SHARED",
+      "sha256": "2d4345ee0ac34998da8f67fc99fa535692c5abb1e2a09575ba86659205f9bc6c"
+    },
+    {
+      "path": "backend/app/api/routes/__init__.py",
+      "owner": "AC",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/api/routes/events.py",
+      "owner": "AC",
+      "sha256": "3428b4bc2d93d90f2de5f14172487165b24c74e4f755ddc593374516dc12e291"
+    },
+    {
+      "path": "backend/app/api/routes/evidence.py",
+      "owner": "AC",
+      "sha256": "f91dd6e9bdb98584279c8d2b0b4007cdbc1e46c84b95743938babf788a3795fe"
+    },
+    {
+      "path": "backend/app/api/routes/jobs.py",
+      "owner": "AC",
+      "sha256": "ee0260a56c6d18c529153f9cd443339edf877611c5466208a80816a7dbfbb024"
+    },
+    {
+      "path": "backend/app/api/routes/planning.py",
+      "owner": "AC",
+      "sha256": "896f09e4595b5e76b5a33014cadb734bb6c7a0ce5a2e3d84478a9ee0b5fd8e67"
+    },
+    {
+      "path": "backend/app/api/routes/plans.py",
+      "owner": "AC",
+      "sha256": "73a9c04b37b62aef7c3aa3def9bedfaae986348d892197579b640a2a36846558"
+    },
+    {
+      "path": "backend/app/api/routes/postgres_demo.py",
+      "owner": "AC",
+      "sha256": "ffa70cc8bd12900da4e1dc7ebe5201825bb5e99236cae9a66df3c589b56e2ddf"
+    },
+    {
+      "path": "backend/app/api/routes/requests.py",
+      "owner": "AC",
+      "sha256": "a1c596dff7689e8616aa1488afb67f96b8cf87306db0407a9e990d0ed8184eb6"
+    },
+    {
+      "path": "backend/app/api/routes/scenarios.py",
+      "owner": "AC",
+      "sha256": "345d13b16edaf7b9a7a284759e2f852061cac2ae5f1b9f083d38f2f7a765742c"
+    },
+    {
+      "path": "backend/app/api/routes/simulations.py",
+      "owner": "AC",
+      "sha256": "413b4164270b87c005bf292041dde282057a87ec152940face27e6afa54fedd4"
+    },
+    {
+      "path": "backend/app/application/__init__.py",
+      "owner": "AC",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/application/confirm_plan.py",
+      "owner": "AC",
+      "sha256": "eb6f8d6e36cd7ac9695e85250c97a40b064c1a6c1517033dd79805b1850acff3"
+    },
+    {
+      "path": "backend/app/application/contract_net.py",
+      "owner": "AC",
+      "sha256": "040fe33e75ae1f4701dae5306132d3a63e2f1a6227fc3737551d4d7932d3b236"
+    },
+    {
+      "path": "backend/app/application/coordinator.py",
+      "owner": "AC",
+      "sha256": "ab2a2888d36c09b24885f43c220ae0dd11a4e6f1bc294d1917acda11b1b08ed2"
+    },
+    {
+      "path": "backend/app/application/handle_event.py",
+      "owner": "AC",
+      "sha256": "b7c7c0534e7e6234835a305971f7fd7d3959bfae751cc3526c20aa2893db6414"
+    },
+    {
+      "path": "backend/app/application/http_services.py",
+      "owner": "AC",
+      "sha256": "d84b39d18500e7b7943eb52f2c627e38427026f0779507cf8804b070b6825dcb"
+    },
+    {
+      "path": "backend/app/application/impact_analysis.py",
+      "owner": "AC",
+      "sha256": "a997208cf8e9de92f274367694b8c17deff09a1bffb1fea4262942c94da32f10"
+    },
+    {
+      "path": "backend/app/application/runtime.py",
+      "owner": "AC",
+      "sha256": "9bed28972d1ddcbf0930d35f0278db39e04184e6f99f16c8fee0640408a07ea4"
+    },
+    {
+      "path": "backend/app/application/warehouse_selection.py",
+      "owner": "AC",
+      "sha256": "237aa9b6078cb84e1275da9a0a628a5d86b97a8fdbec2a4ddf87f3be0310ac30"
+    },
+    {
+      "path": "backend/app/bootstrap.py",
+      "owner": "AC",
+      "sha256": "456b817b7e6d106322fd9c3a6af6101a7056072726ba79e3ba6369e7dfb334e5"
+    },
+    {
+      "path": "backend/app/common/__init__.py",
+      "owner": "SHARED",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/common/errors.py",
+      "owner": "SHARED",
+      "sha256": "c5f0f8828f5c8de7dfd9cfc0df21b8acfe2c205578bde52d8c8d1f040dffa0ce"
+    },
+    {
+      "path": "backend/app/contracts/__init__.py",
+      "owner": "SHARED",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/contracts/common.py",
+      "owner": "SHARED",
+      "sha256": "0c42ce0e5b1a6af88b820239b75ed58372b6d99902706e549184c1c4dff5d2fb"
+    },
+    {
+      "path": "backend/app/contracts/entities.py",
+      "owner": "SHARED",
+      "sha256": "705179920f35ef112d0b8b3c716d0cb254116988d65d9a127d30158423a17622"
+    },
+    {
+      "path": "backend/app/contracts/events.py",
+      "owner": "SHARED",
+      "sha256": "5a0a31be502f41b30e5646348aec4f8798e0fa606845fd7063c6f5693d62f6fa"
+    },
+    {
+      "path": "backend/app/contracts/http.py",
+      "owner": "SHARED",
+      "sha256": "772ed34987b4ed970e904e5f69e1c0003e260f5907b4c9a299b93e8a237c70a3"
+    },
+    {
+      "path": "backend/app/contracts/planning.py",
+      "owner": "SHARED",
+      "sha256": "a2b024b40b93e5620a38a935df9ecf1abe04d380dbd25109f8ecab9f2bf9f7b8"
+    },
+    {
+      "path": "backend/app/contracts/reschedule.py",
+      "owner": "SHARED",
+      "sha256": "20f77968ff775e5883967936a4996a089274c031f460058852d632fb20ab0347"
+    },
+    {
+      "path": "backend/app/domain/__init__.py",
+      "owner": "AC",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/domain/cold_chain_rules.py",
+      "owner": "AC",
+      "sha256": "cde30eb2bf5ec852e104d0e610521053608384711f895f3bf3f475cfd7e2d7d8"
+    },
+    {
+      "path": "backend/app/domain/inventory.py",
+      "owner": "AC",
+      "sha256": "cadb1db0422a394377b0a598c702ad735931f532551efea3858d4202753af3d3"
+    },
+    {
+      "path": "backend/app/domain/plan_rules.py",
+      "owner": "AC",
+      "sha256": "5d276093392b941d4192052c9c35fa07f1aebd3b1d3208c8a46647f0000f9d3c"
+    },
+    {
+      "path": "backend/app/domain/state_transitions.py",
+      "owner": "AC",
+      "sha256": "b61a13bdfdb40ea3ef29e4763640a64e2e7cab9b460b22c253557f190ac7ff48"
+    },
+    {
+      "path": "backend/app/domain/states.py",
+      "owner": "SHARED",
+      "sha256": "8daaf542ecefa8de5c7a1f3cecc7928df80356d30c73f6b27e2b4e1f6987620f"
+    },
+    {
+      "path": "backend/app/domain/transport_rules.py",
+      "owner": "B",
+      "sha256": "4128388311ac42334d873e647ff4bddf477e748116db0a9f6ba2a65069cb2af9"
+    },
+    {
+      "path": "backend/app/domain/warehouse_rules.py",
+      "owner": "AC",
+      "sha256": "1903dc8a250ac47823fcf671b1e3b860a19bc79abf8f2e58c2fbe0bab6c248ee"
+    },
+    {
+      "path": "backend/app/main.py",
+      "owner": "SHARED",
+      "sha256": "f94056139df10c42faa114d6f84dab9949c994a712fd92acd5e64e2e4fde9852"
+    },
+    {
+      "path": "backend/app/ports/__init__.py",
+      "owner": "SHARED",
+      "sha256": "caa652e62b1c79fed3c53c36da25b08fc3ac0812b3a91015d75beeb178e2cfec"
+    },
+    {
+      "path": "backend/app/ports/language_model.py",
+      "owner": "SHARED",
+      "sha256": "e671d54c19f05cf3eeb66033518da1b86c073f9cd19d897bf5045df4d13cdfc2"
+    },
+    {
+      "path": "backend/app/ports/matrix.py",
+      "owner": "SHARED",
+      "sha256": "0bc3af80d4727efc41393238feda784e12ebc685b46c58a4dbb3f8baca27743b"
+    },
+    {
+      "path": "backend/app/ports/routing.py",
+      "owner": "SHARED",
+      "sha256": "d887571a9d511e7137dd1c2135d6d5acf48172dc0d12456c4aa77839eb9bb952"
+    },
+    {
+      "path": "backend/app/ports/simulation.py",
+      "owner": "SHARED",
+      "sha256": "034ac3313213a79f4381f466e224dd412e50e895dbb2d23e30b7f4db634237e2"
+    },
+    {
+      "path": "backend/app/ports/storage.py",
+      "owner": "SHARED",
+      "sha256": "bd5605922c40cd27c28396302cffbbf9b403499ad700dde600dddbeb7a05de94"
+    },
+    {
+      "path": "backend/app/ports/warehouse.py",
+      "owner": "SHARED",
+      "sha256": "2daf4d15da05a6ef37fa35f30b08607be3c9a5cb19965165b831889f619851dc"
+    },
+    {
+      "path": "backend/app/worker.py",
+      "owner": "AC",
+      "sha256": "1b679c6cce15099ea3a5e1408b6afdcb1ff7cee7fab323d4a2860801ae76a4cc"
+    },
+    {
+      "path": "backend/backup_pg_r29_local.ps1",
+      "owner": "AC",
+      "sha256": "6b472e5ac6a891a0b0c18403672bda0d5ace004239cf31f5708e73f7b49f685f"
+    },
+    {
+      "path": "backend/backup_pg_r30a_local.ps1",
+      "owner": "AC",
+      "sha256": "657e3e4dbfa07333c059c349c726dbc58bd63039ab173ca3a18f3bfebc7b3148"
+    },
+    {
+      "path": "backend/check_single_warehouse_r26.ps1",
+      "owner": "AC",
+      "sha256": "8aec34e3e1cdc536e70df24317c44a3819ea87fc60c32bdc1b2e1ee9acf53dc8"
+    },
+    {
+      "path": "backend/import_pg_r27_local.ps1",
+      "owner": "AC",
+      "sha256": "8216bc5f5425104baef7440841ebd22e2ad4424f5aff1d93fee6b2d9d47a67ea"
+    },
+    {
+      "path": "backend/migrate_pg_r29_local.ps1",
+      "owner": "AC",
+      "sha256": "0043536b881f2fcdc254879f9d9d7fc909c9e7cff25f201caee31695f15f67ad"
+    },
+    {
+      "path": "backend/migrations/R24_pg_coldchain_additive.sql",
+      "owner": "AC",
+      "sha256": "5632a8910213ac862aa409f639561c8b6ac4fe0b625b933faddea0ab678f00ac"
+    },
+    {
+      "path": "backend/migrations/R27_pg_warehouse_operations_additive.sql",
+      "owner": "AC",
+      "sha256": "1418532d6536cb6884945a55b10cc61b801e0aa68084d41848859a86f1599a22"
+    },
+    {
+      "path": "backend/migrations/README.md",
+      "owner": "AC",
+      "sha256": "abab46a4b3b314caacfa728c54c19f8911052544e3d3e48a72a9c9565016d6ec"
+    },
+    {
+      "path": "backend/prepare_pg_r28_local.ps1",
+      "owner": "AC",
+      "sha256": "aaa3bca876fc9cab1e5b98940ebfff0e349affa02433e8d3b7a5bfa0d38e416a"
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "owner": "AC",
+      "sha256": "f33a053b36f37f2bd568ac108f58cc28a78f1b5e9c4da7c1f1c455650f57d7fa"
+    },
+    {
+      "path": "backend/r30a_data_local.ps1",
+      "owner": "AC",
+      "sha256": "4eb5292564e00768c49397816c81bfc7b7b6a688ed675f2732ed6a92a60810c9"
+    },
+    {
+      "path": "backend/requirements-lock.txt",
+      "owner": "AC",
+      "sha256": "5741847dd3c37ee9304e48fdbca65379d803473a5a82587991a8f5555d0ccc72"
+    },
+    {
+      "path": "backend/requirements-optional.txt",
+      "owner": "AC",
+      "sha256": "b76d93a763f65ae160e9bc31ecf20a0e07808f7e41c34177cff02a128c5dbecf"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "owner": "AC",
+      "sha256": "afab36dd9c95e06c0c63695dc681bb078e73c4f108f8b9ec0d914e653e2c23ce"
+    },
+    {
+      "path": "backend/sql/pg_simulation_previews.sql",
+      "owner": "AC",
+      "sha256": "cdd88063123bb5516d5cf4945ada23cf159d29ada67421eeecd4a7ff64768304"
+    },
+    {
+      "path": "backend/start_pg_local.ps1",
+      "owner": "AC",
+      "sha256": "c78b1eb63c9b3d6c93baa0875e3061c7bf6f0d45708292e01b8d4166864e0e25"
+    },
+    {
+      "path": "backend/start_pg_r22_local.ps1",
+      "owner": "AC",
+      "sha256": "652a30f6605cb19cfa56bceb97f587253878226c45b206386217a8d214292beb"
+    },
+    {
+      "path": "backend/start_pg_r24_local.ps1",
+      "owner": "AC",
+      "sha256": "d9a3cb12c594498fd3b71c1d040e158a19e70730d5a0364e6a74d18db2b4ee2e"
+    },
+    {
+      "path": "backend/start_pg_r25_local.ps1",
+      "owner": "AC",
+      "sha256": "05c27075975245142aa799437de9827f7122d7ed57bb78218b4c08dd1b3a9221"
+    },
+    {
+      "path": "backend/start_pg_r26_local.ps1",
+      "owner": "AC",
+      "sha256": "8bf0273916f03ba82dda66b5cfe8bfd5e42331123d08ee3f8c6e494c3827f7b0"
+    },
+    {
+      "path": "backend/start_pg_r27_local.ps1",
+      "owner": "AC",
+      "sha256": "3ab4c1075f74ec68485f1b2f02325b3f338c76d1670f04665d2e1a9603537cd3"
+    },
+    {
+      "path": "backend/start_pg_r28_local.ps1",
+      "owner": "AC",
+      "sha256": "7cb29835eacb2bcb5da0bfa93ab02ed5cc77fd840f052f3c1b34e759c375bd10"
+    },
+    {
+      "path": "backend/start_pg_r29_local.ps1",
+      "owner": "AC",
+      "sha256": "2ada088d3b444ac0557c3322222a4244e5f03ae0c96347f282d5edfdd5463609"
+    },
+    {
+      "path": "backend/start_pg_r30a_local.ps1",
+      "owner": "AC",
+      "sha256": "af2e615e981e7167ae0c7de837cdee120798e393859041bae1166e938d6a008f"
+    },
+    {
+      "path": "backend/tests/fakes/README.md",
+      "owner": "AC",
+      "sha256": "07e6c16bd4b0a222e1f7615486ac68a051e4d16c77c62a3f60048428004ee862"
+    },
+    {
+      "path": "backend/tests/integration/README.md",
+      "owner": "AC",
+      "sha256": "7eed07638ebe90f0eb44d6e07c918b10025621e78f3974294fef0b2dc21b0b0e"
+    },
+    {
+      "path": "backend/tests/llm/README.md",
+      "owner": "AC",
+      "sha256": "9fc32d98a2d75c213efde41a09b5ba84b2fb2b7cd000ea796848e9a2b824dfce"
+    },
+    {
+      "path": "backend/tests/simulation/README.md",
+      "owner": "B",
+      "sha256": "3ff2e93e7b9955b419896552b9ce4b9d3ed81377c686e16bff66d4587ee298b4"
+    },
+    {
+      "path": "backend/tests/test_b03_coordination.py",
+      "owner": "AC",
+      "sha256": "e11edc2d80997955d808877fac0fb99203db0ca0d441023653332d534f5e5d3e"
+    },
+    {
+      "path": "backend/tests/test_b04_event_types.py",
+      "owner": "AC",
+      "sha256": "2b87c24244bd1f103a2d3bde2616891832300612b443e3ddfffc08845ce7cf77"
+    },
+    {
+      "path": "backend/tests/test_b04_reschedule.py",
+      "owner": "AC",
+      "sha256": "c2775add929fc3bff9d15e0da55693d6cd96814c1bc3d69b745bf23fdf9be968"
+    },
+    {
+      "path": "backend/tests/test_b05_simulation_contract.py",
+      "owner": "AC",
+      "sha256": "a78ef69c54435ee630ca09b43dc834b7ec2622a3134d9dcd1e2cdad9210da7e5"
+    },
+    {
+      "path": "backend/tests/test_b06_budget_policy.py",
+      "owner": "AC",
+      "sha256": "55217550aca3fa608be37d3b535f9493dea6c64e88ab92e01745d14a0163414f"
+    },
+    {
+      "path": "backend/tests/test_contracts.py",
+      "owner": "SHARED",
+      "sha256": "8db0b3fb47a45a715037313f74f6c65d47b75562704acca503d3a3c6854b39b7"
+    },
+    {
+      "path": "backend/tests/test_pg_r24.py",
+      "owner": "AC",
+      "sha256": "34db7fce5574e37ddbe750dfb2bacbfd994205b7310f2ce69613755584eca0a3"
+    },
+    {
+      "path": "backend/tests/test_pg_r25_replay.py",
+      "owner": "AC",
+      "sha256": "cfcdd7f64fa6a82406ea98d85eec8f7c8c5a340c654c420d8abcef99fdb33c05"
+    },
+    {
+      "path": "backend/tests/test_pg_routing_preview.py",
+      "owner": "AC",
+      "sha256": "d890a8b224ca4d1ffdae72a85208fc93b3d530b14f2b64458d6119b760b70d22"
+    },
+    {
+      "path": "backend/tests/test_pg_simulation_archive.py",
+      "owner": "AC",
+      "sha256": "9f0bd905e7e47c74b63791d510b963b57d9116dfc5a17fb432e8a3bc1027b32e"
+    },
+    {
+      "path": "backend/tests/test_planning_routing_integration.py",
+      "owner": "AC",
+      "sha256": "b5dc076338af4c0158e206f15ec58a0c931336b1573906042c373d7bc2a19b23"
+    },
+    {
+      "path": "backend/tests/test_r17_deep_coordination.py",
+      "owner": "AC",
+      "sha256": "f145133fec9057a1f5deb3d753a576f97274cfa4e094fbd3cdea00ac4371f250"
+    },
+    {
+      "path": "backend/tests/test_r18_multiscene_evidence.py",
+      "owner": "AC",
+      "sha256": "62fc28c330bc9fbc62729943328404a165885847a762e164f61912251dcb792e"
+    },
+    {
+      "path": "backend/tests/test_r19_reschedule_strategies.py",
+      "owner": "AC",
+      "sha256": "dd22a1036009b6d1d7dfddc0e78b1386c1c49058e91364b6d519781304c5c9da"
+    },
+    {
+      "path": "backend/tests/test_r26_single_warehouse.py",
+      "owner": "AC",
+      "sha256": "81dcd9c3f3aa928430c0af0f4966d3a48d40cb63b4ea25d033bff9f7ed77743f"
+    },
+    {
+      "path": "backend/tests/test_r27_workflow.py",
+      "owner": "AC",
+      "sha256": "05472eae9aea2433666eaccfa9094ff63241528054abd30b58f9162486392fff"
+    },
+    {
+      "path": "backend/tests/test_r28_reconciliation.py",
+      "owner": "AC",
+      "sha256": "48fdba9245b8b4c6ab3b85b825c018e7c09e48697ec7245c7a2ad3c9aa6ac3fe"
+    },
+    {
+      "path": "backend/tests/test_r29_active_warehouse.py",
+      "owner": "AC",
+      "sha256": "f49040c33b5b3e4f88a92d572d384a82c53f4656586545d5b4ab7fc9580379e7"
+    },
+    {
+      "path": "backend/tests/test_r30a_pg_stage.py",
+      "owner": "AC",
+      "sha256": "ad9e900653d1e9692a2568c8f4d94749654857d33f5080e7dad500f8a4c3c09a"
+    },
+    {
+      "path": "backend/tests/test_scaffold.py",
+      "owner": "SHARED",
+      "sha256": "88e5bc8910d7c4c53d051e871c1ef363d147c6dc329eb8eb6db0fe84def66fe3"
+    },
+    {
+      "path": "backend/tests/transport/README.md",
+      "owner": "B",
+      "sha256": "e18eb6f9cbbdb28341434610ecc1ce4c1dd88f2f288c797a2683f00ed3cd6771"
+    },
+    {
+      "path": "backend/tests/transport/test_frozen_empty_route.py",
+      "owner": "B",
+      "sha256": "bc43d173bf6d12209d687a50088ffe0eb4a7a3db1ff652ca323a8075eb7292d5"
+    },
+    {
+      "path": "backend/tests/transport/test_matrix_provider.py",
+      "owner": "B",
+      "sha256": "cea900e295d5599b462813e7ae7eb56b0977cd3124ce0387b7680e906da263a3"
+    },
+    {
+      "path": "backend/tests/transport/test_r14_duplicate_vehicle_integration.py",
+      "owner": "B",
+      "sha256": "90a208a8aa5ac51dda8380438bd02bf5e2a21c2de7685dae852f9a717fa40a06"
+    },
+    {
+      "path": "backend/tests/transport/test_routing_metrics.py",
+      "owner": "B",
+      "sha256": "cd3b3ed106eb76e07fe8367351b70fbb9af67986cfe7d2852b831bbc1586811d"
+    },
+    {
+      "path": "backend/tests/transport/test_routing_solver_contract.py",
+      "owner": "B",
+      "sha256": "8a86853e02c64c3fb397e2904428477d3d93cbb85451919cf0e51333d334e478"
+    },
+    {
+      "path": "backend/tests/transport/test_transport_rules.py",
+      "owner": "B",
+      "sha256": "115a2464cd8d7c8796429dec4f6e2283121f1168f3b18dfd7482c89504392298"
+    },
+    {
+      "path": "backend/tests/transport/test_waiting_cost_objective.py",
+      "owner": "B",
+      "sha256": "c0b984be6d115b1d9b933d25ab64cb299e04c2b805d47191b859f192b94b5d79"
+    },
+    {
+      "path": "backend/tests/warehouse/README.md",
+      "owner": "AC",
+      "sha256": "4db9e9d2b43f7e804eb4894eb3b2004d5c6af50f79976041574d6dc03be5df55"
+    },
+    {
+      "path": "backend/tests/warehouse/test_cp_sat_migration.py",
+      "owner": "AC",
+      "sha256": "6f222f2e9bd6181a3385bb4049c6ac6d8520b505154dda7cb99bcab5ac24b47c"
+    },
+    {
+      "path": "backend/tools/__init__.py",
+      "owner": "AC",
+      "sha256": "2da5764b72eb18bcc8492a7feccb5090ac431a06d87875d394faca61479616bd"
+    },
+    {
+      "path": "backend/tools/b04_event_probe.py",
+      "owner": "AC",
+      "sha256": "538aa0e2548b1565c2f068c0fb18b8537f94aa744f1adea1c587ecc963e436d3"
+    },
+    {
+      "path": "backend/tools/b05_event_stream_probe.py",
+      "owner": "AC",
+      "sha256": "761eb8281105d9b03984e379c32147770cee9c830ff5d185fd1b384e6bdf1c09"
+    },
+    {
+      "path": "backend/tools/pg_r26_single_warehouse.py",
+      "owner": "AC",
+      "sha256": "a88d86024933c74464a16fefcb8301afb079bcc797303e11364adcd076205386"
+    },
+    {
+      "path": "backend/tools/pg_r27_import.py",
+      "owner": "AC",
+      "sha256": "07aeb01084e0500316676de83c95865031fe19798866977f1eecee1320ad1395"
+    },
+    {
+      "path": "backend/tools/pg_r28_prepare.py",
+      "owner": "AC",
+      "sha256": "36e7c10d354a244f29d041c7c81119e7626cf40d24c682e427cc49a8e7cda483"
+    },
+    {
+      "path": "backend/tools/pg_r29_active_warehouse.py",
+      "owner": "AC",
+      "sha256": "584d71b172f917dbdf9c957ba8e71dc6c0a07a21836fc8d8861f15e9dfc5d892"
+    },
+    {
+      "path": "backend/tools/pg_r30a_bundle.py",
+      "owner": "AC",
+      "sha256": "8bd8aed070f163fb4acf63a0d81bcbb0ac19c9c5e3083b73a3ab95e2f48efb07"
+    },
+    {
+      "path": "backend/tools/r17_joint_ablation.py",
+      "owner": "AC",
+      "sha256": "fc117d045442b3eb713767f07ab1d870a3a233eeb697ad407cd0743363550228"
+    },
+    {
+      "path": "backend/tools/r18_acceptance_freeze.py",
+      "owner": "AC",
+      "sha256": "106469a47f52854026d966e1e076dc7e5a1e091ceb000a78a301f183a9771683"
+    },
+    {
+      "path": "backend/tools/r18_evidence_audit.py",
+      "owner": "AC",
+      "sha256": "4bf9c1d04337e87016e4252c129a30e34d13aef2ef1998f9a339ca6e9c20cd70"
+    },
+    {
+      "path": "backend/tools/r18_multiscene_ablation.py",
+      "owner": "AC",
+      "sha256": "fb4269840fb1ee647dbd1ab97fa97d83ac2e670666441f5041366e08f285c5e5"
+    },
+    {
+      "path": "backend/tools/r19_acceptance_freeze.py",
+      "owner": "AC",
+      "sha256": "b43975802ed7a4fb882b26958fc34a45603e1141baf615545d4961fce52046f9"
+    },
+    {
+      "path": "backend/tools/r19_frozen_spare_diagnostic.py",
+      "owner": "AC",
+      "sha256": "1fd46e4f6144fba4ea4e1f2c5213e3429ab9e8ede0509add59e7b74c0404c5c6"
+    },
+    {
+      "path": "backend/tools/r19_reschedule_ablation.py",
+      "owner": "AC",
+      "sha256": "b0c4c22e81f2f87d808ff2b90134de080d73acf59828d478251c6124d3627d5c"
+    },
+    {
+      "path": "backend/tools/r24_import_csv.py",
+      "owner": "AC",
+      "sha256": "66af78e32aafb55c11ddd3d7724c2cfa263c620fba299c04bfe6296ce3b3bec0"
+    },
+    {
+      "path": "backend/tools/setup_pg_r24.py",
+      "owner": "AC",
+      "sha256": "bd552a3dd1d61ec9677d5669cbba7b0321598842100cb4dff7115ff2831d3eb7"
+    },
+    {
+      "path": "backend/tools/setup_pg_r27.py",
+      "owner": "AC",
+      "sha256": "e197f30541d2b67c523efa726bae7ba830efd2c05fc808dcbac61e7d5190baa0"
+    },
+    {
+      "path": "backend/tools/setup_pg_simulation_archive.py",
+      "owner": "AC",
+      "sha256": "2e72e7c2f913759caedcc69aa9c781559170c00d89d6f721c7ec180e18753fd8"
+    },
+    {
+      "path": "benchmarks/README.md",
+      "owner": "AC",
+      "sha256": "dbc68f1d79251f20516de9747ea91847caaa7ee979d65cbe6da7f4eb7d79a536"
+    },
+    {
+      "path": "benchmarks/b03/r17_accepted/r17_accepted_original.json",
+      "owner": "AC",
+      "sha256": "8341100ea488632843866762de7482cf630d9650826146f166016fd8f64e22cd"
+    },
+    {
+      "path": "benchmarks/b03/r17_accepted/r17_arithmetic_audit.json",
+      "owner": "AC",
+      "sha256": "f70edfc76841b6d9edf8a87eaa9894cec677c3d235978c7d129ad81e12d81ff8"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/README.md",
+      "owner": "AC",
+      "sha256": "9ccdde87e4c7f18b739f4050ecc96ee3ad23a649f43c2391e8ef8d2f1d0f6491"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/manifest.json",
+      "owner": "AC",
+      "sha256": "d7bf1a54d2dcf12b3a74eb9c335b1828fe1039f16b2dd332dfdaf90c191f410b"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/r18_accepted_manifest.json",
+      "owner": "AC",
+      "sha256": "4e74cf183d0de5c9ca4f2900fe1df141517e8a6646057c4c9c8abdafa1a973aa"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/r18_multiscene_audit.json",
+      "owner": "AC",
+      "sha256": "61a262834ae56a281efecbff6890a99e45ecc830ca90854cf656f4395df07eed"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/raw/s12_seed17_paired.json",
+      "owner": "AC",
+      "sha256": "3e172d4b80991edec66d4bed9c51cf341f814f60e6c69db16a2007500ef1fd76"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/raw/s16_seed42_paired.json",
+      "owner": "AC",
+      "sha256": "a77f681b774452048fefab1545a2c892f1f87e48efb83d39ba8ef5a2100d2df0"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/raw/s20_seed101_paired.json",
+      "owner": "AC",
+      "sha256": "e2a1f9725eaa08a5cb091dcdcbeee8f1f7a37aea624306463eb0090b2695098b"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/raw/s20_seed66_paired.json",
+      "owner": "AC",
+      "sha256": "95b1a0a3b0e6e6039bf58b5d809eb6e327ed8aa4ef464a4fb277e993cd856aa5"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/raw/s20_seed88_paired.json",
+      "owner": "AC",
+      "sha256": "0bd5b9b86de8f82c15a0f4089623cbd039b717f29247f9278232b309568a8696"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/scenarios/s12_seed17.json",
+      "owner": "AC",
+      "sha256": "780b663c8ab1ec0de390856a0507163b82710204207faa75a84bfe20b82b57e1"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/scenarios/s16_seed42.json",
+      "owner": "AC",
+      "sha256": "d7f7a295350f40ac449369858e3766af722738d43d5292115609b9cbccfb6a09"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/scenarios/s20_seed101.json",
+      "owner": "AC",
+      "sha256": "e0836e7fe97b2c4a4a36360412338376e2db0bcb0ec75f2e7ea82c2fdcc45287"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/scenarios/s20_seed66.json",
+      "owner": "AC",
+      "sha256": "958dc32f82dcfb35b8783d39e0e6f7196272292a4d2560910236ae4a44accab6"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/scenarios/s20_seed88.json",
+      "owner": "AC",
+      "sha256": "85984ef8c0095dca8e625cd975247c60469dd30bc727af925cc502db9dc6ecf8"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/summary.csv",
+      "owner": "AC",
+      "sha256": "34bea57595b9221c3aa8a4b96a7155efb5502cc4d6b387a0a6de60a3ad0c7cc7"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/summary.json",
+      "owner": "AC",
+      "sha256": "feab5fbdf0dca97183846d095374e78e685b567d77437e2227707d6ab9089ee7"
+    },
+    {
+      "path": "benchmarks/b03/r18_accepted/summary.md",
+      "owner": "AC",
+      "sha256": "91f2a92c098ddb158518c6c7962b7f216c1f961d9640a9b5949472414fb2dd9e"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/README.md",
+      "owner": "AC",
+      "sha256": "bd04409854a0e96a7061a9c0b40a8490834413b320636043a364c6d93241e061"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/manifest.json",
+      "owner": "AC",
+      "sha256": "558a09a1ac73ce5bde329a115017ddbd80a253d755afbfbd23c55e3976419d6a"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/r19_accepted_manifest.json",
+      "owner": "AC",
+      "sha256": "f4067c8b7abc01ebdc51673c9e0f1054eefee812ab0fd84d8476226a13ba3052"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/r19_recompute_audit.json",
+      "owner": "AC",
+      "sha256": "2c5fd42ccc0dced992060bc265793a99653e97a8caaa2f48bb0e9843ce78abd1"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/raw/s12_seed17__base_arms.json",
+      "owner": "AC",
+      "sha256": "0d53b5a18d850899677bd0ac373a8d527deb39966d55019a04100e78c1c455bc"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/raw/s12_seed17__stress_arms.json",
+      "owner": "AC",
+      "sha256": "ec0f79e77950d21d7c1f80b7cdc8c4cf0e9ebcc62dbb56cd55c2e75fce49cde0"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/raw/s16_seed42__base_arms.json",
+      "owner": "AC",
+      "sha256": "c87302699395b5d3687112b4d437f191972dbf885cc09ca71d9aff37166aa319"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/raw/s16_seed42__stress_arms.json",
+      "owner": "AC",
+      "sha256": "32f2d62f9dcb4c5839f638c5766ba6fdae4d28d191517bd4a25cb3ec3c87e032"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/raw/s20_seed66__base_arms.json",
+      "owner": "AC",
+      "sha256": "ea3053e178a681d2d2e3f8734e70e600584fe81fccaf94f0e57a23aa9d8883af"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/raw/s20_seed66__stress_arms.json",
+      "owner": "AC",
+      "sha256": "27f6fba2d29e8567eb3782becf90dc285bea9334a796e3034f32fb8682c521e9"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/scenarios/s12_seed17__base.json",
+      "owner": "AC",
+      "sha256": "6b658ac469570ac1cd6c6f4178f2e7abbcada3d4e48114ed22e733647e3de9a9"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/scenarios/s12_seed17__stress.json",
+      "owner": "AC",
+      "sha256": "17822c945af7ff1a2d2f948bc3b69eb144134bc279d5add2b320668511f9d70b"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/scenarios/s16_seed42__base.json",
+      "owner": "AC",
+      "sha256": "f1375a9910b1644f32bb12d4f0f0478c882dc189e4e136ed44c4989ce83366ad"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/scenarios/s16_seed42__stress.json",
+      "owner": "AC",
+      "sha256": "bb9174362afeac69e716305579f7c871e0f471428a3d7fdb2db8fe186e10b9e1"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/scenarios/s20_seed66__base.json",
+      "owner": "AC",
+      "sha256": "929624a3ebc18a97b7cd854086159a9fef8f960eee8a141f2629b63f7060e148"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/scenarios/s20_seed66__stress.json",
+      "owner": "AC",
+      "sha256": "4fe078759c4d9d7bc4a8e42fd7736e4d9588ee0a4ad14444cc6f7ce4b9d5cc89"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/summary.csv",
+      "owner": "AC",
+      "sha256": "1ff4c0fd15f1aead55c7c7afa31a4a291573800a1f8acee1051e911b540fd756"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/summary.json",
+      "owner": "AC",
+      "sha256": "5e69206a4193c0bc05463adfdeb93a5c787cd7b0dd17cc2ec762e497f033086c"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted/summary.md",
+      "owner": "AC",
+      "sha256": "98f73c864ed73762eb12b386e6ddfcdb6134d8d46bcb558a58fca06f2a79e16d"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/README.md",
+      "owner": "AC",
+      "sha256": "e6ac1eeb16bc1c944cec22c66fabcd4629c6f860c7af21f400c400434e7d22fa"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/manifest.json",
+      "owner": "AC",
+      "sha256": "509ad9aa03b226e5bd54f45738c0d2a9a5605be162f8ebca21b227dc5338dd4c"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/r19_accepted_manifest.json",
+      "owner": "AC",
+      "sha256": "6c5ee4b92dc94f165ff389f7c36cbc2475515e8bea4ed95f54494724ddb7bf5a"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/r19_recompute_audit.json",
+      "owner": "AC",
+      "sha256": "2c5fd42ccc0dced992060bc265793a99653e97a8caaa2f48bb0e9843ce78abd1"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/raw/s12_seed17__base_arms.json",
+      "owner": "AC",
+      "sha256": "cd4240947226aa244fd5bb4b6584622fcf23c486297720e4e02df315b8ac09b7"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/raw/s12_seed17__stress_arms.json",
+      "owner": "AC",
+      "sha256": "1b88c8766eb5b5f81a7844d674bbc4501459baebdeea3c4fe18ad842ec2dc164"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/raw/s16_seed42__base_arms.json",
+      "owner": "AC",
+      "sha256": "2ce6194a83057c243aa7ed1e77e82fd9e2a06a70dfda7226279b3e2225b33dd1"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/raw/s16_seed42__stress_arms.json",
+      "owner": "AC",
+      "sha256": "363b58c9005664757a1691ce6c33f510a541ef3bcd27f4ea5b63eff8c2414ea3"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/raw/s20_seed66__base_arms.json",
+      "owner": "AC",
+      "sha256": "0d59d2b69b1f86b17bdc56602974da3393bfec25ea842288d8d3a349ae54af4d"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/raw/s20_seed66__stress_arms.json",
+      "owner": "AC",
+      "sha256": "9edbb0eb97654a6f35ff8c25bb6a73681abb4b3ad36d96032cf192c32bd9047a"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/scenarios/s12_seed17__base.json",
+      "owner": "AC",
+      "sha256": "6b658ac469570ac1cd6c6f4178f2e7abbcada3d4e48114ed22e733647e3de9a9"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/scenarios/s12_seed17__stress.json",
+      "owner": "AC",
+      "sha256": "17822c945af7ff1a2d2f948bc3b69eb144134bc279d5add2b320668511f9d70b"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/scenarios/s16_seed42__base.json",
+      "owner": "AC",
+      "sha256": "f1375a9910b1644f32bb12d4f0f0478c882dc189e4e136ed44c4989ce83366ad"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/scenarios/s16_seed42__stress.json",
+      "owner": "AC",
+      "sha256": "bb9174362afeac69e716305579f7c871e0f471428a3d7fdb2db8fe186e10b9e1"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/scenarios/s20_seed66__base.json",
+      "owner": "AC",
+      "sha256": "929624a3ebc18a97b7cd854086159a9fef8f960eee8a141f2629b63f7060e148"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/scenarios/s20_seed66__stress.json",
+      "owner": "AC",
+      "sha256": "4fe078759c4d9d7bc4a8e42fd7736e4d9588ee0a4ad14444cc6f7ce4b9d5cc89"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/summary.csv",
+      "owner": "AC",
+      "sha256": "72a5010a0fb653ed5d23459b4d1b6f60170ce9dbabcc35306d4f12446d453830"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/summary.json",
+      "owner": "AC",
+      "sha256": "5ed5ff1f4406c156a4540a1b2996e6b45b148ad9181623c77ab82ee3fd2b71f8"
+    },
+    {
+      "path": "benchmarks/b04/r19_accepted_v2/summary.md",
+      "owner": "AC",
+      "sha256": "949bd945db9620a9d4baee385f68d568fb98bfca8bd845463b92d7ac220a6d76"
+    },
+    {
+      "path": "benchmarks/joint/README.md",
+      "owner": "AC",
+      "sha256": "701580f61d01bfab2a41ec1981b3eb7b2d9d472253ae03144a0ef151ac2dba6d"
+    },
+    {
+      "path": "benchmarks/llm/README.md",
+      "owner": "AC",
+      "sha256": "277e23a514ce6c32a0880c58d76df7085647eacf512ef829cb7ec6f7854c3bbf"
+    },
+    {
+      "path": "benchmarks/simulation/README.md",
+      "owner": "B",
+      "sha256": "e6e9db0b2ab4af6033052e046b8fb564355d8def9dbf291f18ac26a7a5880bb1"
+    },
+    {
+      "path": "benchmarks/transport/README.md",
+      "owner": "B",
+      "sha256": "890c8b84b9b07372c34f979cff9216379e0d6412dc208ff2b12678f51dce80cd"
+    },
+    {
+      "path": "benchmarks/warehouse/README.md",
+      "owner": "AC",
+      "sha256": "61207590285810848bf184cf04051d9d4d0e543a28386e7b5a3e49a7e78fc87e"
+    },
+    {
+      "path": "contracts/README.md",
+      "owner": "SHARED",
+      "sha256": "e1aacdacac8fcc9c4dd58258f24834987e9da8425feb6be64bf4aa0454d02d84"
+    },
+    {
+      "path": "contracts/VERSION",
+      "owner": "SHARED",
+      "sha256": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67"
+    },
+    {
+      "path": "contracts/changes/TEMPLATE.md",
+      "owner": "SHARED",
+      "sha256": "2e72f9b316d80850b7f5c45874ff7a2e470f66c844aa3570f623983d3380575b"
+    },
+    {
+      "path": "contracts/examples/dispatch_request.json",
+      "owner": "SHARED",
+      "sha256": "b88ef3a8e5441b7ad6dd5dc06174e8547dc2a1d9cd08146a5047eae06a59b8ea"
+    },
+    {
+      "path": "contracts/examples/event_departure_delayed.json",
+      "owner": "SHARED",
+      "sha256": "f512feef9e8f583becd8a779c62a89b1bd93be1ee9395ebfb635f4347ab11bd1"
+    },
+    {
+      "path": "contracts/examples/routing_request.json",
+      "owner": "SHARED",
+      "sha256": "2e94d906aca137cd49d513c6718fba943bd18e3f1798c5ce048069c3a63dbd75"
+    },
+    {
+      "path": "contracts/examples/routing_result_not_implemented.json",
+      "owner": "SHARED",
+      "sha256": "d163f45e21b8b83de85220bb9d9be2a34d525aa8f38f4c8f50083c8718de16f5"
+    },
+    {
+      "path": "contracts/examples/scenario_import_request.json",
+      "owner": "SHARED",
+      "sha256": "ff33e8d67349e994244f6e15f85b75cd65c6c27d8e32d49c5f9810047562ddd8"
+    },
+    {
+      "path": "contracts/openapi.json",
+      "owner": "SHARED",
+      "sha256": "99d0ff358ffa6918ec8c89768561c661e768569d34de5e766b0156c7b66ae6da"
+    },
+    {
+      "path": "contracts/schemas.json",
+      "owner": "SHARED",
+      "sha256": "d8ad3e9a0c61271830cf8738dbd7ed0b0e7a299748754c0a3d5d01f677b6195d"
+    },
+    {
+      "path": "data/pg_r27_templates/work_operations.csv",
+      "owner": "AC",
+      "sha256": "20ec1e1bb21a994ad2f49af1f7b90e33e804912b2ca35a3f33e6419128b2e460"
+    },
+    {
+      "path": "data/scenarios/README.md",
+      "owner": "AC",
+      "sha256": "5b205c666e1fd2b62fe9405930f04d56e7b33725b736185a0bf623cdb8b444ba"
+    },
+    {
+      "path": "data/scenarios/single_warehouse_20_orders.json",
+      "owner": "AC",
+      "sha256": "f5224713ffecfa8b41275c65d1984f558edf4bbae2a180468d5613738f5eb208"
+    },
+    {
+      "path": "data/scenarios/two_warehouses_20_orders.json",
+      "owner": "AC",
+      "sha256": "592ece17d7f190cad52cc53b594a2da060586255e16dafa039121866773be2df"
+    },
+    {
+      "path": "data/simulation/README.md",
+      "owner": "B",
+      "sha256": "5574e8d30a7a7c4d5e5c64a34bb570fcc33c862565daf2771e32bd3181d840cc"
+    },
+    {
+      "path": "data/transport/README.md",
+      "owner": "B",
+      "sha256": "189dff11f522e6470ddd1c0534f13573e262692fce0abebf5a8fcfcb48856fca"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "owner": "SHARED",
+      "sha256": "c3118b4d239360f0916137bf8c852eb029957d8b96f9984036386c91eea139d8"
+    },
+    {
+      "path": "docs/B02_PLANNING_JOB_INTEGRATION_COMPLETE.md",
+      "owner": "AC",
+      "sha256": "770d66afb92325136faa8809d1c9783dc53490761210f0bd7eace6b16b99f110"
+    },
+    {
+      "path": "docs/B04_EVENT_TYPES_R20.md",
+      "owner": "AC",
+      "sha256": "08af25d713b31e1314ca6e6e95caf60c35ccbd463df33cb07f3bad1d2872cd01"
+    },
+    {
+      "path": "docs/B04_FRONTEND_RESCHEDULE_FIX_2026-09-21.md",
+      "owner": "AC",
+      "sha256": "b0d20ee7853fd7dee264e1aab508758a45ecb68e7aa471ff8d3578cf118e82f9"
+    },
+    {
+      "path": "docs/B06_FAILURE_DIAGNOSTICS_R11.md",
+      "owner": "AC",
+      "sha256": "2c0c742145cabd5365d30372e69ca5a471f7f07cf0c3c67b646edecbeca3d614"
+    },
+    {
+      "path": "docs/BATCH_BENCHMARK_ADDED_R9.md",
+      "owner": "AC",
+      "sha256": "02a8fb95a35651991339130f2682082b9dd0305671023a08395e0acb5bc11b13"
+    },
+    {
+      "path": "docs/BENCHMARK_BATCH_R10.md",
+      "owner": "AC",
+      "sha256": "3000f84a226bfec4fc10f75bfb0673f3d953862be6180de5d50924affdeb59a3"
+    },
+    {
+      "path": "docs/BENCHMARK_EXPERIMENT_ADDED_R6.md",
+      "owner": "AC",
+      "sha256": "d23dfaa8f472aa996b232b4e38e34cf93e64a0c6c0725c036309e154fc1280fa"
+    },
+    {
+      "path": "docs/BENCHMARK_FAILURE_DIAGNOSTICS_R11.md",
+      "owner": "AC",
+      "sha256": "631258019324288db1c1c5d83cbc94bb2c862cec3215e56061d66ec639c08a4a"
+    },
+    {
+      "path": "docs/BENCHMARK_R7_FIX.md",
+      "owner": "AC",
+      "sha256": "51662c06d24de381a8ec367173a0ba2fbe1f8c8d6f34cae26d9bf325f48c1621"
+    },
+    {
+      "path": "docs/FRONTEND_R8_BLACKSCREEN_FIX.md",
+      "owner": "AC",
+      "sha256": "e9af0e4ec333d901a4a75fc55470136ac768e04ac993f4b3e7b330d63a6c6a2c"
+    },
+    {
+      "path": "docs/NAMING.md",
+      "owner": "SHARED",
+      "sha256": "8d815e24f8c94310c21ece31e03cc960cb64391e25cbef17b8cd279203b4966d"
+    },
+    {
+      "path": "docs/OPEN_SOURCE.md",
+      "owner": "AC",
+      "sha256": "83e1dff452b4ecc82f8d6a3a825f1f3c518c81d6ae48a90c15193fadafaf46e5"
+    },
+    {
+      "path": "docs/PROJECT_LAYOUT_R20.md",
+      "owner": "AC",
+      "sha256": "7e05f6359d6a5f84c14f4abcd2cb55d9e50c68d13d911ead0a0e1a62063f00b7"
+    },
+    {
+      "path": "docs/R14_ROUTING_DUPLICATE_NODE_FIX.md",
+      "owner": "AC",
+      "sha256": "9843bccf21698fb962647ddec2e8f0b51d42b01788351e5b038f3fe67dd5cfb4"
+    },
+    {
+      "path": "docs/R15_EXPERIMENT_EVIDENCE_GUIDE.md",
+      "owner": "AC",
+      "sha256": "e8148e1e5310c6587d99bae4184b13df5167ecc977735d0aa0118e526748bc47"
+    },
+    {
+      "path": "docs/R16_FAST_BENCHMARK_GUIDE.md",
+      "owner": "AC",
+      "sha256": "150a6a5e8fec749895fb4b280c7f2d667e7d31e145bfb838d58e8f4f03eaecfd"
+    },
+    {
+      "path": "docs/R17_B03_DEEP_JOINT_OPTIMIZATION_GUIDE.md",
+      "owner": "AC",
+      "sha256": "ffe328232861dabb178f1eae9e5f4fafb492d485db951d7076454f5ce5e6ea4c"
+    },
+    {
+      "path": "docs/R18_B06_MULTISCENE_GUIDE.md",
+      "owner": "AC",
+      "sha256": "08f1431fe14b7fe1627bd5c94aae43fd95294a1557fc7427e24ca9bb03396323"
+    },
+    {
+      "path": "docs/R18_VERIFICATION_LOG.md",
+      "owner": "AC",
+      "sha256": "4076498c7f1de666ee3b5c2cb2bc6b081eb54d70e1c239ffef761442f65cd8be"
+    },
+    {
+      "path": "docs/R19_B04_RESCHEDULE_GUIDE.md",
+      "owner": "AC",
+      "sha256": "773776206f80680d12495172f75540661083bedcfa103f645fda3953e746a155"
+    },
+    {
+      "path": "docs/R21_POSTGRES_R20_INTEGRATION.md",
+      "owner": "AC",
+      "sha256": "9be204eb5d15eb1523622e023754fc480c10a26b545dbcfab4850d180513538c"
+    },
+    {
+      "path": "docs/R22_PG_SIMULATION_ARCHIVE.md",
+      "owner": "AC",
+      "sha256": "72dad605f5e8b1b5d207fa5b4bb361d72e2a984f31ddab3353b845a980ef6eba"
+    },
+    {
+      "path": "docs/R23_POSTGRESQL_REACT_INTEGRATION.md",
+      "owner": "AC",
+      "sha256": "48ccb80cc995fe572d15a4046188eff2a98f1c93195b4dee790765482c074cc3"
+    },
+    {
+      "path": "docs/R24_POSTGRES_OSRM_COLDCHAIN.md",
+      "owner": "AC",
+      "sha256": "f92ef2f4b2b2617ffb50f13e3396dd4d781c045aadfcf62f224b2a92b00677cf"
+    },
+    {
+      "path": "docs/R25_TWIN_REPLAY_FLEET.md",
+      "owner": "AC",
+      "sha256": "100548c4b81c8dcbf19b6ac36412e5bed5f2a8565956f1c51d729c556ab3f8cf"
+    },
+    {
+      "path": "docs/R26_SINGLE_WAREHOUSE_DIGITAL_TWIN.md",
+      "owner": "AC",
+      "sha256": "dbc409205d399997e81fdfcebd8e22b50a0f0b04a4958b86dc1a3e0613e99a4b"
+    },
+    {
+      "path": "docs/R27_SINGLE_WAREHOUSE_CLOSED_LOOP.md",
+      "owner": "AC",
+      "sha256": "b181f5f98d09d323ee5b0a60cc463a410a244c3706af183000465dd98efa0ffe"
+    },
+    {
+      "path": "docs/R28_DATA_RECONCILIATION.md",
+      "owner": "AC",
+      "sha256": "7e5d230c589aa155e8e4bfb7abefdbf4329796ff96159c99c7d9b538f1147ebb"
+    },
+    {
+      "path": "docs/R29_SINGLE_ACTIVE_WAREHOUSE_MIGRATION.md",
+      "owner": "AC",
+      "sha256": "81027586ad911b7acc93d6ad0444903cba79132343a939f14d661857be85e917"
+    },
+    {
+      "path": "docs/R30_STAGE_A_POSTGRES_BUSINESS_DATA.md",
+      "owner": "AC",
+      "sha256": "f1b1deaba488b0c0163a0df2f3a51a313ab783329d9551d5a3923049624a101f"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "owner": "AC",
+      "sha256": "03bb9a557cf6a64b6cfb616a4b065b7eead48d3aae875871a952d17fef8fca82"
+    },
+    {
+      "path": "docs/ROUTING_SCALE_FIX_R12.md",
+      "owner": "AC",
+      "sha256": "d43021d10dec16dfd5b34987384734d004b713da63ca6f5c95056143d52272e6"
+    },
+    {
+      "path": "docs/VERIFICATION.md",
+      "owner": "AC",
+      "sha256": "7e4783789ff095ebb1c106ee0d6c51b8fb18796fd1e36b7ce975c3d4e5493814"
+    },
+    {
+      "path": "docs/WAREHOUSE_MODULE_ADDED.md",
+      "owner": "AC",
+      "sha256": "e4bb3d9a4541857e72c3dac9148003b706f63af12e969ceb47102bfc15e0bc43"
+    },
+    {
+      "path": "docs/WINDOWS_SETUP.md",
+      "owner": "AC",
+      "sha256": "a10239ffdfb887e04c2e7a6eedef6218a76b520ec2396690ee8b41427ef0c39e"
+    },
+    {
+      "path": "docs/devlog/entries/20260910-0000-ac-scaffold.md",
+      "owner": "SHARED",
+      "sha256": "1607591174a82735a8f6a8459898dade1c6fbd56bea01b4340716a632d7cab3c"
+    },
+    {
+      "path": "docs/devlog/entries/20260910-1300-b-b02-routing-formalization.md",
+      "owner": "SHARED",
+      "sha256": "af371676103c591b2ede3efd8c78004b336d51c619adb9f31349a1168f9054f0"
+    },
+    {
+      "path": "docs/devlog/entries/20261014-2330-b-r18-acceptance-freeze.md",
+      "owner": "SHARED",
+      "sha256": "da959f959623df229fad6f4b28914d4de7af2e2cd9d15d62b021e3ea94cc6296"
+    },
+    {
+      "path": "docs/devlog/entries/20261014-b-r18-b06-evidence.md",
+      "owner": "SHARED",
+      "sha256": "d5862cdc0a51370d0821b9f778692784034d9643f1b4175527210773fd6b28e2"
+    },
+    {
+      "path": "docs/devlog/entries/20261015-0030-b-r19-three-strategy-ablation.md",
+      "owner": "SHARED",
+      "sha256": "2403b5755848d8c3efbf90763b9406ca101964c407d1bfa0eb608de7f72e283f"
+    },
+    {
+      "path": "docs/devlog/entries/20261015-0130-b-r19-b04-fix-and-v2.md",
+      "owner": "SHARED",
+      "sha256": "4825efc60842aabd8b725427e348f9d250b2cf0ffd6969377e2ef3e1bdb4cfeb"
+    },
+    {
+      "path": "docs/devlog/entries/20261015-0230-b-r20-routing-objective-attempt.md",
+      "owner": "SHARED",
+      "sha256": "850d152f74e73e349bae696d710eeb72920675491fcc37522e4c7b7970616aef"
+    },
+    {
+      "path": "docs/devlog/entries/20261015-0330-b-r20-b04-event-types.md",
+      "owner": "SHARED",
+      "sha256": "d34c5ef1d3d7833c47915f1619b31f3a8ca6b4e28e401f11490411903c129e0b"
+    },
+    {
+      "path": "docs/devlog/entries/20261015-0430-b-r20-b05-event-stream.md",
+      "owner": "SHARED",
+      "sha256": "8281b76373b9e1c2aae72eaf9965099faa4b575257af4bfe7b59f8b39dcac16a"
+    },
+    {
+      "path": "docs/devlog/entries/20261015-0530-b-handover-cleanup.md",
+      "owner": "SHARED",
+      "sha256": "c134f99fe29394de5da0e871325984aa4f2b747fd724c5da5e440fc2e85b865b"
+    },
+    {
+      "path": "docs/devlog/entries/20261017-ac-b-c-r24-road-coldchain.md",
+      "owner": "SHARED",
+      "sha256": "825fabb10f86c575d1eee9dd94eb9b8cf9c4585ac67a33a97bdd96ed9ddccbdf"
+    },
+    {
+      "path": "docs/devlog/entries/20261017-ac-r21-pg-route-preview.md",
+      "owner": "SHARED",
+      "sha256": "212ef2d13ae08867d3ae9ddd3326541b36e446f719887d2a89f7b75648038132"
+    },
+    {
+      "path": "docs/devlog/entries/20261017-ac-r22-pg-simulation-archive.md",
+      "owner": "SHARED",
+      "sha256": "ab50a3e0e311efcfd13de9acca7a4ff50abb45ef34642931f267279813e53f9b"
+    },
+    {
+      "path": "docs/devlog/entries/20261017-ac-r23-pg-react-console.md",
+      "owner": "SHARED",
+      "sha256": "2a5253def966c46f5d16a609d47c42148fa58e6b2a6588dc097567aca82422be"
+    },
+    {
+      "path": "docs/devlog/entries/20261018-ac-r25-twin-fleet-replay.md",
+      "owner": "SHARED",
+      "sha256": "cea4954e909d1426eb4a3a4abc139f9345b8cbcc627335df8b5b741d8cd69d98"
+    },
+    {
+      "path": "docs/devlog/entries/README.md",
+      "owner": "SHARED",
+      "sha256": "f68bf5310b7d704e5d89d50e38e962a812eb19ca718303813b32b628047bd391"
+    },
+    {
+      "path": "docs/handoff/AC_CODEX.md",
+      "owner": "SHARED",
+      "sha256": "a23f72cceb48cba534483a1358221e8f3c6315a3766ebfd87f9f1bd59783dc2c"
+    },
+    {
+      "path": "docs/handoff/B_CODEX.md",
+      "owner": "SHARED",
+      "sha256": "fff7cee8829b30c0c5ce33cf2a05c268c7399f6c5ec355e49d80697f0bfc32ee"
+    },
+    {
+      "path": "docs/history/B01_MIGRATION_COMPLETE.md",
+      "owner": "AC",
+      "sha256": "0193b0ee2f8c6502329a26519a7c05a2c7e6b3b2e35286321e4da836731b590a"
+    },
+    {
+      "path": "docs/history/B02_ROUTING_V1.1_COMPLETE.md",
+      "owner": "AC",
+      "sha256": "5bf1796492cd0a3766c478a2fa5fbc7ca2f3e5daa36384ae80fb4ccb7f9dd36b"
+    },
+    {
+      "path": "docs/history/B02_RUNTIME_FIX_2026-09-11.md",
+      "owner": "AC",
+      "sha256": "87f827e32e76583e15bc5cae0d77bd53ea16e8707354c1be236e75e3b650d950"
+    },
+    {
+      "path": "docs/history/B03_WAREHOUSE_TRANSPORT_COORDINATION_COMPLETE.md",
+      "owner": "AC",
+      "sha256": "47f9200f5d3861ef12c4aba9c77cf62e0031e4181628e21db1f0ad51cdbc2d99"
+    },
+    {
+      "path": "docs/history/B04_LOCAL_RESCHEDULE_COMPLETE.md",
+      "owner": "AC",
+      "sha256": "3c67a802ae9e919535b941c7bc7babdb35d1b286d4da38ec2af3a35addbe32aa"
+    },
+    {
+      "path": "docs/history/B05_SIMPY_REAL_RUNTIME_COMPLETE.md",
+      "owner": "AC",
+      "sha256": "e3f5e0998ac7163685fab0119e8cb500b66ca0f2d124a6b16ea84b0d78e04130"
+    },
+    {
+      "path": "docs/history/B06_LATEST_FRAMEWORK_NOTICE.md",
+      "owner": "AC",
+      "sha256": "8ebd6d5d636d5a33c1ddda770155a1643a97959972b48cf6637dcb5110340603"
+    },
+    {
+      "path": "docs/history/B06_R12_ROUTING_DIAGNOSTIC_FIX.md",
+      "owner": "AC",
+      "sha256": "2836fe098558483a9c107762a617c3d005e02c4d33d5f82da510473b11edc6b2"
+    },
+    {
+      "path": "docs/history/B_ALGORITHM_DEMO_GUIDE.md",
+      "owner": "AC",
+      "sha256": "13a0755afe8471f06b62852347d3a3ede772b2f259fd30b28913a98dfe87a7f7"
+    },
+    {
+      "path": "docs/history/CURRENT_BASELINE.md",
+      "owner": "AC",
+      "sha256": "f98385e27404c060fad27e9cc130ebd87c0a95c9f4b7d9b2d807f5b5be152c48"
+    },
+    {
+      "path": "docs/history/MERGED_ARCHITECTURE.md",
+      "owner": "AC",
+      "sha256": "ea5ab1dce813deabaaace435232bcaa753a86d325e619a27af7e8852064efdb1"
+    },
+    {
+      "path": "docs/history/MIGRATION_STATUS.md",
+      "owner": "AC",
+      "sha256": "e3202bd7acb0569c7bbc9c5977eba12b3705a3ca21b303f3c2bf1927c660e827"
+    },
+    {
+      "path": "docs/history/R16_RELEASE_NOTES.md",
+      "owner": "AC",
+      "sha256": "98ab465789786c41e0b1bde22b6f904479f73d0693225002ed3773b9d82ce365"
+    },
+    {
+      "path": "docs/history/README.md",
+      "owner": "AC",
+      "sha256": "b6b5b5181965aece26ae1ad479cf30c1754279ca9ebf23315e0175b191cecc5c"
+    },
+    {
+      "path": "docs/r24_csv_templates/handoffs.csv",
+      "owner": "AC",
+      "sha256": "74f406bea226fba495190c7b4791190d9809fa6260d9f204076f406f132b144e"
+    },
+    {
+      "path": "docs/r24_csv_templates/lots.csv",
+      "owner": "AC",
+      "sha256": "b820a1c989172967eec731b30abf2403203dcb9d09e5a81f7d2187a63b58ebaa"
+    },
+    {
+      "path": "docs/r24_csv_templates/orders.csv",
+      "owner": "AC",
+      "sha256": "312eb2bb0c71b53e5792935469caa87ac2352ba30b8fb0c012cc5428511a42f2"
+    },
+    {
+      "path": "docs/r24_csv_templates/resources.csv",
+      "owner": "AC",
+      "sha256": "a521456007680b8917bba4e4198b76c3f6a50f9af6e533ac7919bd3e96440997"
+    },
+    {
+      "path": "docs/r24_csv_templates/vehicles.csv",
+      "owner": "AC",
+      "sha256": "e987de5f3c0c267b221323fe5021cc2b2f6bbbaab34578b290ecbf044288fae1"
+    },
+    {
+      "path": "docs/r24_csv_templates/zones.csv",
+      "owner": "AC",
+      "sha256": "dd19ea1bd03ec3db6f225fb32ffb5be6ec6cb7c44d3c14879e81d197d8e07b4e"
+    },
+    {
+      "path": "frontend/README.md",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "326939512625a7032248c0160fe8d86fed719554dd03d77e978661cbc1077fbe"
+    },
+    {
+      "path": "frontend/README_TWIN_REFRESH.md",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "ed6c4b05b7a283b0d84a0e4be79c2ae7d79b262fb96409b89f6c2363a646a608"
+    },
+    {
+      "path": "frontend/README_UI_REFRESH.md",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "334cacd3debe5767d2d795b1ecbd8f176af5930d4c90a17d7f6f0083e945d5ad"
+    },
+    {
+      "path": "frontend/index.html",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "37552a917b76dbbaf45e318899ba2a35c2d4cc6f303d0962bbc48e2f349e054c"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "eba4e393a9328193722f47c5200ef1913a926083b9f8c600f0bc4c325d3bfb14"
+    },
+    {
+      "path": "frontend/package.json",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "b190e841f655508d47e7e596b9e3423ec46b6c4fe02fac0e0c3afee51e4ae98c"
+    },
+    {
+      "path": "frontend/public/evidence/r17_accepted_original.json",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "8341100ea488632843866762de7482cf630d9650826146f166016fd8f64e22cd"
+    },
+    {
+      "path": "frontend/public/evidence/r17_arithmetic_audit.json",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "f70edfc76841b6d9edf8a87eaa9894cec677c3d235978c7d129ad81e12d81ff8"
+    },
+    {
+      "path": "frontend/public/scenarios/single_warehouse_20_orders.json",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "f5224713ffecfa8b41275c65d1984f558edf4bbae2a180468d5613738f5eb208"
+    },
+    {
+      "path": "frontend/public/scenarios/two_warehouses_20_orders.json",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "592ece17d7f190cad52cc53b594a2da060586255e16dafa039121866773be2df"
+    },
+    {
+      "path": "frontend/scripts/contracts.mjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "45526397ee013f7ac25a63c37c2183accd827a19d6bfd90391072452c050c493"
+    },
+    {
+      "path": "frontend/scripts/test-r15-evidence.cjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "6486afc0013b80efb962a3dfc2d83abbb70e80e77383dfd8f6d31474f952d77e"
+    },
+    {
+      "path": "frontend/scripts/test-r16-speed.cjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "230b4dc0a1006fd2ef241ca0bf70f7ead0f67194a9847abe39ff2d51f0645e43"
+    },
+    {
+      "path": "frontend/scripts/test-r23-pg-ui.cjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "f0b0071773ea2fc7ba22f0a02f4e4b47f2ad8ca85de76202a49657b2901b0f56"
+    },
+    {
+      "path": "frontend/scripts/test-r25-replay.cjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "70cc89e7cad680c7cae0bea1e9731696c9194fa972801bbd92286998f5988428"
+    },
+    {
+      "path": "frontend/scripts/test-r26-warehouse.cjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "ba2a1647fedd185a053cd20c54f821152e10dd3f4744171636f913c25e7c01fa"
+    },
+    {
+      "path": "frontend/scripts/test-r27-flow.cjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "3adf827f7a4dfccffc460a56c62c30c52d8d8d60b744a36df28e589416299ebe"
+    },
+    {
+      "path": "frontend/scripts/test-r28-reconciliation.cjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "dca3f25dd0b85ce1e4e830ac5c5f75bbbe41d2c9ed896f2db16bb40981576795"
+    },
+    {
+      "path": "frontend/scripts/test-r29-active.cjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "ccf244d5659320c8f05c675135f0d572870eb95586e7483614b0682887e2783c"
+    },
+    {
+      "path": "frontend/scripts/test-r30a-pg.cjs",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "db4bb3f40312c2ff34b3422b9315ace04c7944159bd1b3e808d47e2d7b971fb2"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "ed309642227c8ae373f6a85f68fa803b07044eb19e9ab458d4f418d624b4e096"
+    },
+    {
+      "path": "frontend/src/appContext.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "bf404bb70198a383421d7bee6445447bc8f965a8c2db233ac712835553771df2"
+    },
+    {
+      "path": "frontend/src/appTypes.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "1dd483abd87ca961c240575f9517cbdde38ada466a1a2961ed7cf1dcda574aac"
+    },
+    {
+      "path": "frontend/src/client/api.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "b938cdb0c7b6758bd91d96b527c420a0363d6ca78cb09e72a79dc4f3794a9b6f"
+    },
+    {
+      "path": "frontend/src/client/generated.ts",
+      "owner": "SHARED",
+      "sha256": "70a82f17565a372eefe2f9afa80ffd365dc8dd517482486871fde80935f49334"
+    },
+    {
+      "path": "frontend/src/components/DigitalTwin3D.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "2ab1a83d2e1dbd9b2eb0703d561c56db4a4094d7b371e7c84cf6e10aacf93ab6"
+    },
+    {
+      "path": "frontend/src/components/FlowSteps.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "6489ef00d7788d0b68bcd70e11f71cc18cea487915e4dc48a75c9ec1cea97be4"
+    },
+    {
+      "path": "frontend/src/components/Icons.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "20328bb051ed008e03cb8ff54134805a0ab4878accd7d08865decdde5318a5b0"
+    },
+    {
+      "path": "frontend/src/components/KpiCard.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "74d78383a075b9f32f8accb4d03406dfe33d6286e1b8a1df4bd05c238805a0f7"
+    },
+    {
+      "path": "frontend/src/components/ModulePlaceholder.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "011dc1d1590c69778c4fc01d53f0a815a0d3e152604f740539829984c7d68db4"
+    },
+    {
+      "path": "frontend/src/components/SectionHeader.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "13406421ab7772e136ec8139f76e678cab8fbcbf5f31d8be1385251cfc50208b"
+    },
+    {
+      "path": "frontend/src/components/StatusPill.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "deacba5e89933467dd3224381fc0bbc746ccff8b2d56b99350a16922773efef4"
+    },
+    {
+      "path": "frontend/src/components/WarehouseTwin3D.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "e7745618d34fd23d65724875bc194ec63c7a872a97120df82880bf007adb0ab8"
+    },
+    {
+      "path": "frontend/src/features/closedLoop/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "58ddfd179c0daab85263ca7e1fe19c940c70315d7f5e0beab6787ba578f03e58"
+    },
+    {
+      "path": "frontend/src/features/dashboard/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "c67c39c6192ecf0f1770f3710ded49d9b134ff50c5e8e8066448be4981e7eca6"
+    },
+    {
+      "path": "frontend/src/features/events/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "dea6afd925269e3de315e8c12b9b96900d0e7996dcde53866e6c7987f63b56b3"
+    },
+    {
+      "path": "frontend/src/features/experiments/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "bb74b9301de443193942e9c1fd20c665b9fc6ee18c9b00e3111c2549cb37b028"
+    },
+    {
+      "path": "frontend/src/features/orders/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "bfe07d1a9faa6fb0e4893874c5e2fce3f681c9c8dbc4f3bc52db9ccc53ea55c9"
+    },
+    {
+      "path": "frontend/src/features/plans/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "94f62c1b78675012ab92b42d5083dfe261bd61cff9667b37a5462e1208d865c2"
+    },
+    {
+      "path": "frontend/src/features/postgres/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "e2b33794f33a739486ee919c64895e57cd41f64cf48ee427e50e03a24448f521"
+    },
+    {
+      "path": "frontend/src/features/postgres/ResourcePanel.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "d2d04d21f9c92edd4f3dd396b4cbc745796ca7d898dec80f7c18016acaa81d91"
+    },
+    {
+      "path": "frontend/src/features/postgres/api.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "a726d19a7967c790ab3990c3f024d68bdbf735b1562c38558e37fd4a54287f84"
+    },
+    {
+      "path": "frontend/src/features/simulations/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "6064933230aaf01f9786526e4ea347a2b80b6682b91818853fdc301fbff0955c"
+    },
+    {
+      "path": "frontend/src/features/vehicles/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "97c7d74313ad8e8fb153d82af60617f2014481859cf570a6da753c50a61dd78d"
+    },
+    {
+      "path": "frontend/src/features/warehouse/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "65f85fd84e193c280711334f5145022988a2f332a08785379adc62c0e598e639"
+    },
+    {
+      "path": "frontend/src/features/warehouseTwin/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "7696953c6b6fe4dc6057f3184b099e2c02eca7bd49f308a0620a77ffe4986101"
+    },
+    {
+      "path": "frontend/src/features/warehouses/Page.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "02c67a80a141d2b56c27e3b7ef9ac2d823675e52b1ed23ceac62d3c690cae44c"
+    },
+    {
+      "path": "frontend/src/hooks/useSimClock.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "41cdd12434ee1c6df6ec972f56c494e648b3baf5f589b41dc83f2d44f529160c"
+    },
+    {
+      "path": "frontend/src/lib/batchBenchmark.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "8bd286776c0e180646399faa003a5cef9f6f7b1d842649bd89bd0acdadee1382"
+    },
+    {
+      "path": "frontend/src/lib/benchmark.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "57aa9602f1c3425dcdde6fd03323a1a37d6610cd479113e328afa3715823f581"
+    },
+    {
+      "path": "frontend/src/lib/fleetDemo.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "499720195610715d760fa2d1de83d49768bb782c7827460261f992a6f73718b3"
+    },
+    {
+      "path": "frontend/src/lib/format.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "5a990692fa0f4ffa2746e53f314d157cfed0656f55f8cbe8bb297d17889a484b"
+    },
+    {
+      "path": "frontend/src/lib/http.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "7bedeb9fc91102600f38156e2eb62a78efe07a02081523777109dc57469d9d1b"
+    },
+    {
+      "path": "frontend/src/lib/replayPaths.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "0cc527fdf27951462e255ee50658aaab08a695428246aca98bdb4c443572b225"
+    },
+    {
+      "path": "frontend/src/lib/twin.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "0c12cd5e2810a80a25b04bc978d9d3d915b427f1e77fc5cddfc55ce961deb867"
+    },
+    {
+      "path": "frontend/src/lib/warehouseTwin.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "26aca4e1d9df81374c74eee3b97bc09575d30d261a5f1a4d7b0b97bdda4f03d3"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "7d6c9f5f326240ce86fe54e4f77dbae6ae743ba720fa67bd42262cf672960aee"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "ec19fc31dcb019e427d4c89257ea47e103869372d9ff5badab7dd14015743d93"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "1cc66413b4c36162eb4f510ab18e630d233f90a4bad5aaaf410826e9031fabac"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "owner": "CODEX_FRONTEND",
+      "sha256": "f950976c04cbe3d5ece814f0e318c49788cd2fe9da178f6ff7d466c78e3edf1f"
+    },
+    {
+      "path": "infra/deploy/README.md",
+      "owner": "AC",
+      "sha256": "4f9c33995abde48a310e3d51360dd08701fd5838d77aa5df0ffa40d12ed55fbf"
+    },
+    {
+      "path": "infra/deploy/compose.yaml",
+      "owner": "AC",
+      "sha256": "e1e2fc6ca9eedb2a6d3a8c55daa937afcd08343d570d4da8f2a11d28b002db5b"
+    },
+    {
+      "path": "infra/platform/wanwu/README.md",
+      "owner": "AC",
+      "sha256": "425c1e36390d11f9bf7430694c3af200d60f8cc8a519a1d4188f80a342d71018"
+    },
+    {
+      "path": "scripts/build_file_map.py",
+      "owner": "SHARED",
+      "sha256": "b9c753df851a0ccacc034c5d48043ed682871f5a6f9b14f72cbc9eebaeffd080"
+    },
+    {
+      "path": "scripts/check_project.py",
+      "owner": "SHARED",
+      "sha256": "f98d9c0677981521d0955a556826cfbd737d1080c7ddc34d5335a11ac0d4a2e9"
+    },
+    {
+      "path": "scripts/export_contracts.py",
+      "owner": "SHARED",
+      "sha256": "30f0efde3fe4c4c6d4a344bf73f91dd0f21e1c2199f692623bfa660edb4c2f6c"
+    },
+    {
+      "path": "scripts/package_demo.py",
+      "owner": "AC",
+      "sha256": "07c771544ad5c9b0ec77961721268490d698c06f940018e41736d81864c20942"
+    },
+    {
+      "path": "scripts/project_files.py",
+      "owner": "AC",
+      "sha256": "f9b021139f71e9cced5a9d845a8fb77da58edf078a1d72eaa7043f9b86572ff6"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+const fs = require('node:fs');
+const assert = require('node:assert/strict');
+const page=fs.readFileSync('src/features/agent/Page.tsx','utf8');
+const nav=fs.readFileSync('src/App.tsx','utf8');
+const replay=fs.readFileSync('src/features/closedLoop/Page.tsx','utf8');
+const backend=fs.readFileSync('../backend/app/api/routes/agent_demo.py','utf8');
+assert.match(nav,/AgentPage/);assert.match(nav,/key: 'agent', title: '调度助手'/);
+assert.match(page,/\/r30c\/chat/);assert.match(page,/\/r30c\/quick/);
+assert.match(page,/deepseek_tool_calling/);assert.match(page,/direct_algorithm_fallback_not_ai/);
+assert.match(page,/r30c-replay-transfer/);assert.match(replay,/r30c-replay-transfer/);
+assert.match(backend,/get_business_status/);assert.match(backend,/generate_joint_plan/);
+assert.match(backend,/simulate_exception/);assert.match(backend,/pg\.r27_workflow/);
+assert.doesNotMatch(page,/DEEPSEEK_API_KEY/);
+console.log('R30-C Agent panel, backend tool wiring, safe fallback and 3D replay: PASS');

@@ -1,0 +1,42 @@
+# 20261023-2135 · PARTNER · R05 冷链公共契约冻结（0.1.0 → 0.2.0）
+
+- 角色 / 日期 / 基线提交：PARTNER（乙方）/ 2026-10-23 / 基线 `7434337`（`origin/main`），分支 `partner/r05-contracts-20261023`
+- 对应任务 ID / 状态：R05 契约冻结 → **integrated（契约层）**；域实现、CP-SAT 接入、独立校验均**未开始**
+- 完成及修改文件：
+  - 新增 `backend/app/contracts/coldchain.py`（R05 DTO 源，SHARED）
+  - 新增 `backend/app/ports/coldchain.py`（`OccupancyTimelineBuilder` / `ColdChainValidator` / `JointValidationDomainFunction` 三个端口签名）
+  - 新增 `backend/tests/test_r05_coldchain_contracts.py`（48 条契约正反例）
+  - 新增 `contracts/examples/r05_coldchain_snapshot.json`、`contracts/examples/r05_coldchain_plan.json`
+  - 新增 `contracts/changes/20261023-partner-r05-freeze.md`（冻结提案与字段/语义/兼容/迁移全文）
+  - 修改 `backend/app/contracts/common.py`（`CONTRACT_VERSION` 0.2.0、`RuleEvidence`、`Violation.evidence`、`ValidationReport.not_checked_rule_ids`、两处协议收紧）
+  - 修改 `backend/app/contracts/entities.py`（`Order.max_exposure_s`、`Operation.requirements`/`primary_requirement_id`/`setup_class`、`ScheduledOperation.resource_assignments`/`scheduled_kind`/`setup_for_operation_id`、`WarehouseResource.setup_policy_id`/`initial_setup_class`、`PlanningSnapshot.coldchain`）
+  - 修改 `backend/app/contracts/planning.py`（`WarehouseScheduleResult.coldchain`、新增 `ColdChainValidationRequest`）
+  - 修改 `scripts/export_contracts.py`（导出模块清单加入 `coldchain`）
+  - 重新生成 `contracts/VERSION`、`contracts/schemas.json`、`contracts/openapi.json`、`frontend/src/client/generated.ts`、`frontend/src/client/contractVersion.ts`（脚本生成，未手改）
+  - 重新生成 `FILE_MAP.md`（499 源文件）
+  - 本日志与 `DEV_LOG.md` 顶部条目
+- 契约版本前后 / 变更提案：**0.1.0 → 0.2.0**；提案为 [20261023-partner-r05-freeze.md](../../../contracts/changes/20261023-partner-r05-freeze.md)，响应甲方 [20261022-dsh-r05.md](../../../contracts/changes/20261022-dsh-r05.md)
+- 输入输出、单位、状态、URL 变化：
+  - 输入：`PlanningSnapshot.coldchain`（可空）承载温区、存储位置、占用声明、换批策略、预冷要求、曝光上限、批次相容与禁混政策
+  - 输出：`WarehouseScheduleResult.coldchain`（可空）承载已解析占用区间、曝光分段、换批证据
+  - 校验输入：新增 `ColdChainValidationRequest`（请求 + 完整候选结果 + `rule_version` + `Source`），违规可带 `RuleEvidence`（半开区间 + 观测/上限 + 单位）
+  - 单位：容量按 `weight_g`/`volume_cm3`/`quantity_units` 单一维度，不与车辆 kg/L 混用；时间仍为场景整数秒，占用区间**半开** `[start,end)`
+  - HTTP/URL：无新增或变更 endpoint；OpenAPI 仅因 schema 增加而变
+- 验证命令、通过/失败原始结果：
+  - `scripts/export_contracts.py` → `Exported contracts`，`--check` → `Contracts match source`
+  - `npm run contracts:generate` / `contracts:check` → 生成并匹配
+  - `npm run typecheck` → exit 0；`npm test` → 10 组前端专项全 PASS；`npm run build` → `✓ built in 2.17s`
+  - backend `pytest -q` → **277 passed**（基线 229，新增 48），`PYTHONUTF8=1`
+  - `scripts/build_file_map.py` → 499 源文件
+- 未完成/已知限制/阻塞：
+  - CP-SAT 时变容量、多资源、换批、预冷、暴露约束**未建模未接入**；`cp_sat_scheduler.py` 与 `validator.py` 本轮未改，仍只出单资源结果且 `coldchain=None`
+  - `scripts/import_preparation_bundle.py` 未回填新字段，`data/scenarios/prep_import_report.json` 的 losses **尚未清零**
+  - 域规则（`domain/coldchain_capacity.py`、`domain/joint_validation.py`）与 `backend/tests/coldchain/` 属甲方，未实现
+  - 运输段暴露（`scope=transport`）无数据来源，需 joint validation 从 `VehicleRoute` 推导
+  - `soft_due_at_s`、车辆成本字段仍未契约化（属 R01/R09 口径）
+  - 版本化确认/哈希/替换语义（`20261022-dsh-confirmation.md`）未处理
+  - 协议收紧两处：`passed` + `not_checked_rule_ids` 现在被拒；`failed` 无违规被拒。仓库内无触发点，但属**行为变化**，需甲方确认
+  - 本机默认 GBK：不带 `PYTHONUTF8=1` 时 `tests/test_r30b_reschedule.py`、`tests/test_r30e_exception_evidence.py` 共 13 条因旧测试 `read_text()` 未指定编码而 error（环境问题，未改甲方/既有测试）
+- 交给谁 / 对方下一步：
+  - 甲方（DSH）：复验本冻结；随后实现 `domain/coldchain_capacity.py`、`domain/joint_validation.py` 与 `backend/tests/coldchain/` 的手算正反例（峰值库容、同时释放、初始库存、多资源、换批、初始换批、预冷、累计暴露、暴露重叠、温区相容），缺失数据一律落 `not_checked`；并按 §6 回填 `import_preparation_bundle.py`
+  - 乙方（自己）：下一轮做 CP-SAT R05 约束接入与 `OccupancyTimelineBuilder`/`ColdChainValidator` 适配器实现，再清 `prep_import_report.json`

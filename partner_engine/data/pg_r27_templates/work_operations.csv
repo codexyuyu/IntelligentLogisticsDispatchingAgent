@@ -1,0 +1,1 @@
+operation_code,order_code,warehouse_code,resource_code,operation_kind,duration_s,release_at,deadline_at,predecessor_code,observed_at

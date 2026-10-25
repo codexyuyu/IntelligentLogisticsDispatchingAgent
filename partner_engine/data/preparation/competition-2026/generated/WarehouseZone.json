@@ -1,0 +1,93 @@
+[
+  {
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "cargo_type_mapping": "pending",
+    "code": "H1Z1",
+    "id": "6fd41b3a-dea6-5bb7-b4fd-f517004cc5e8",
+    "kind": "WarehouseZone",
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": 40,
+    "source": "synthetic",
+    "warehouse_id": "7cbb263f-0229-518a-9190-490db79766ea"
+  },
+  {
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "cargo_type_mapping": "pending",
+    "code": "H1Z1",
+    "id": "6085beb2-7da2-5116-96c5-64a8b6a4d405",
+    "kind": "WarehouseZone",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": 40,
+    "source": "synthetic",
+    "warehouse_id": "f6984808-3bf2-5ff2-bc03-3b1b598cd7ae"
+  },
+  {
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "cargo_type_mapping": "pending",
+    "code": "H1Z2",
+    "id": "6e2283e2-4db3-5897-8417-b3a286f89ec6",
+    "kind": "WarehouseZone",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": -200,
+    "source": "synthetic",
+    "warehouse_id": "f6984808-3bf2-5ff2-bc03-3b1b598cd7ae"
+  },
+  {
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "cargo_type_mapping": "pending",
+    "code": "H1Z1",
+    "id": "a8c6546d-5255-5866-958a-58c9c2100275",
+    "kind": "WarehouseZone",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": 40,
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a"
+  },
+  {
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "cargo_type_mapping": "pending",
+    "code": "H1Z2",
+    "id": "a62a34a6-f61c-5b11-b058-384759046401",
+    "kind": "WarehouseZone",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": -200,
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a"
+  },
+  {
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "cargo_type_mapping": "pending",
+    "code": "H2Z1",
+    "id": "94647c53-f3e9-56ec-87f8-612358e5cb79",
+    "kind": "WarehouseZone",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": 40,
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2"
+  },
+  {
+    "capacity_volume_cm3": 20000000,
+    "capacity_weight_g": 2000000,
+    "cargo_type_mapping": "pending",
+    "code": "H2Z2",
+    "id": "ffb1a8c4-13d6-567f-8da8-03f385f8f24b",
+    "kind": "WarehouseZone",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setpoint_decic": -200,
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "event_id": "event_delay001",
+  "event_type": "departure_delayed",
+  "snapshot_id": "snap_initial",
+  "expected_snapshot_version": 1,
+  "object_id": "veh_1",
+  "occurred_at_s": 600,
+  "received_at": "2026-09-10T00:10:00+00:00",
+  "source": {
+    "source_kind": "simulation",
+    "source_ref": "synthetic:two_warehouses_20_orders:v1",
+    "observed_at": "2026-09-10T00:00:00+00:00",
+    "rule_version": "rules-0.1"
+  },
+  "payload": {
+    "delay_s": 600
+  }
+}

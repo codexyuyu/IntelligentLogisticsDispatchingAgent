@@ -1,0 +1,28 @@
+{
+  "snapshot_id": "snap_initial",
+  "expected_snapshot_version": 1,
+  "order_ids": [
+    "ord_001",
+    "ord_002",
+    "ord_003",
+    "ord_004",
+    "ord_005",
+    "ord_006",
+    "ord_007",
+    "ord_008",
+    "ord_009",
+    "ord_010",
+    "ord_011",
+    "ord_012",
+    "ord_013",
+    "ord_014",
+    "ord_015",
+    "ord_016",
+    "ord_017",
+    "ord_018",
+    "ord_019",
+    "ord_020"
+  ],
+  "budget_ms": 10000,
+  "max_coordination_rounds": 3
+}

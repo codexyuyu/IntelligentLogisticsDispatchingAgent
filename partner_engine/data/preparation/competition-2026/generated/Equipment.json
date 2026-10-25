@@ -1,0 +1,178 @@
+[
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          3600
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1sorting",
+    "equipment_kind_mapping": "pending",
+    "id": "390d741d-c9b8-5be8-96e7-352a0a808b07",
+    "kind": "Equipment",
+    "preparation_kind": "sorting",
+    "quantity_capacity": 1,
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "warehouse_id": "7cbb263f-0229-518a-9190-490db79766ea"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          3600
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1handling",
+    "equipment_kind_mapping": "pending",
+    "id": "c2e9b08a-9ecf-55a3-9387-ce9ca7fb3ad4",
+    "kind": "Equipment",
+    "preparation_kind": "handling",
+    "quantity_capacity": 1,
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "warehouse_id": "7cbb263f-0229-518a-9190-490db79766ea"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1sorting",
+    "equipment_kind_mapping": "pending",
+    "id": "973ee410-2340-5d93-822c-dda111717b9b",
+    "kind": "Equipment",
+    "preparation_kind": "sorting",
+    "quantity_capacity": 1,
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "warehouse_id": "f6984808-3bf2-5ff2-bc03-3b1b598cd7ae"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1handling",
+    "equipment_kind_mapping": "pending",
+    "id": "3636c5ea-d738-537a-ad65-aab8b9dc3943",
+    "kind": "Equipment",
+    "preparation_kind": "handling",
+    "quantity_capacity": 1,
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "warehouse_id": "f6984808-3bf2-5ff2-bc03-3b1b598cd7ae"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1sorting",
+    "equipment_kind_mapping": "pending",
+    "id": "a9fbb678-948f-504c-b666-9456d291b722",
+    "kind": "Equipment",
+    "preparation_kind": "sorting",
+    "quantity_capacity": 1,
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H1handling",
+    "equipment_kind_mapping": "pending",
+    "id": "bfa1272a-6ada-5fdb-89a9-1c247fd68228",
+    "kind": "Equipment",
+    "preparation_kind": "handling",
+    "quantity_capacity": 1,
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H2sorting",
+    "equipment_kind_mapping": "pending",
+    "id": "fdd9a23f-80f8-5586-aa59-61908d4010d0",
+    "kind": "Equipment",
+    "preparation_kind": "sorting",
+    "quantity_capacity": 1,
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2"
+  },
+  {
+    "calendar": {
+      "epoch_utc": "2026-09-12T00:00:00Z",
+      "intervals": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "version": 0
+    },
+    "code": "H2handling",
+    "equipment_kind_mapping": "pending",
+    "id": "fe3f54c4-8c8f-5471-805a-c880cfb34212",
+    "kind": "Equipment",
+    "preparation_kind": "handling",
+    "quantity_capacity": 1,
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2"
+  }
+]

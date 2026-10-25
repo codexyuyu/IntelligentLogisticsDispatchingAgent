@@ -1,0 +1,107 @@
+[
+  {
+    "code": "H1S1",
+    "id": "61026380-43b8-5ead-8162-e961bbb0a60a",
+    "kind": "Driver",
+    "max_drive_s": 3600,
+    "max_work_s": 3600,
+    "qualifications_mapping": "pending",
+    "scenario": "T1",
+    "schema_version": "preparation-v1",
+    "shift": [
+      0,
+      3600
+    ],
+    "source": "synthetic"
+  },
+  {
+    "code": "H1S1",
+    "id": "dde09d06-e1df-5381-98ff-c66248e632ab",
+    "kind": "Driver",
+    "max_drive_s": 28800,
+    "max_work_s": 28800,
+    "qualifications_mapping": "pending",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "shift": [
+      0,
+      28800
+    ],
+    "source": "synthetic"
+  },
+  {
+    "code": "H1S2",
+    "id": "fbf04671-a228-5420-aab3-4611aa6a2dc7",
+    "kind": "Driver",
+    "max_drive_s": 28800,
+    "max_work_s": 28800,
+    "qualifications_mapping": "pending",
+    "scenario": "A8",
+    "schema_version": "preparation-v1",
+    "shift": [
+      0,
+      28800
+    ],
+    "source": "synthetic"
+  },
+  {
+    "code": "H1S1",
+    "id": "c1ee1318-a55e-5145-b5c6-cc4bbb86d00a",
+    "kind": "Driver",
+    "max_drive_s": 28800,
+    "max_work_s": 28800,
+    "qualifications_mapping": "pending",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "shift": [
+      0,
+      28800
+    ],
+    "source": "synthetic"
+  },
+  {
+    "code": "H1S2",
+    "id": "35223ee5-f536-5bcb-8f32-e74e75c43ab0",
+    "kind": "Driver",
+    "max_drive_s": 28800,
+    "max_work_s": 28800,
+    "qualifications_mapping": "pending",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "shift": [
+      0,
+      28800
+    ],
+    "source": "synthetic"
+  },
+  {
+    "code": "H2S1",
+    "id": "d3ccd82e-2d28-5408-93cd-1b8fc590e24b",
+    "kind": "Driver",
+    "max_drive_s": 28800,
+    "max_work_s": 28800,
+    "qualifications_mapping": "pending",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "shift": [
+      0,
+      28800
+    ],
+    "source": "synthetic"
+  },
+  {
+    "code": "H2S2",
+    "id": "dabf595a-433c-5dec-a67e-1157c3502e38",
+    "kind": "Driver",
+    "max_drive_s": 28800,
+    "max_work_s": 28800,
+    "qualifications_mapping": "pending",
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "shift": [
+      0,
+      28800
+    ],
+    "source": "synthetic"
+  }
+]

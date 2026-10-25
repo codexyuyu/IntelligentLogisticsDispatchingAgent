@@ -1,0 +1,42 @@
+# 20261024-1500 · PARTNER · bootstrap 组合根与依赖装配（7 条架构告警清零）
+
+- 角色 / 日期 / 基线提交：PARTNER（乙方）/ 2026-10-24 / 基线 `aaf7f36`（R08 head，= PR #3），分支 `partner/bootstrap-composition-root-20261024`
+- 对应任务 ID / 状态：组合根与依赖装配 → **已实现**；`check_project.py` 从 exit 1（7 条告警）变为 **PASS**
+- 完成及修改文件：
+  - 重写 `backend/app/bootstrap.py`（脚手架 8 行 → `Services` + `build_services()` + `describe_services()`）
+  - `backend/app/ports/warehouse.py`：新增 `WarehouseValidator` 协议（`WarehouseScheduler` 保留）
+  - `backend/app/application/coordinator.py`：删除 3 处 adapter 导入，`_solve_pair` / `coordinate` 接受 `services`
+  - `backend/app/application/handle_event.py`：删除 adapter 导入，`handle_event(..., services=...)`
+  - `backend/app/application/http_services.py`：删除 2 处 adapter 导入与 1 处函数内导入，三个入口接受 `services`
+  - `backend/app/api/dependencies.py`：新增 `get_services()` 与 `ServicesDep`（SHARED 文件，端口级注入）
+  - `backend/app/api/routes/planning.py`、`events.py`、`simulations.py`：接收并透传 `ServicesDep`
+  - 新增 `backend/tests/test_bootstrap.py`（10 条）
+  - 调整受签名影响的既有测试：`tests/test_b04_reschedule.py`、`tests/test_b04_event_types.py`（改为注入 routing 替身）、`tests/test_planning_routing_integration.py`（monkeypatch lambda 增加 `services` 形参）
+  - `DEV_LOG.md`、`FILE_MAP.md`（重建）
+- 契约版本前后 / 变更提案：**0.2.0 不变**。`ServicesDep` 是 FastAPI 依赖参数，不进 OpenAPI schema；`export_contracts.py --check` 通过
+- 依赖关系（装配后）：
+  - 唯一 importer of `app.adapters.*`：`bootstrap.py`
+  - `application` 依赖 `ports` / `contracts` / `domain` + `bootstrap`（仅取默认图）
+  - `api/routes` 通过 `ServicesDep` 拿图，不再自行构造
+  - `domain` 仍只依赖标准库与 `app.common`
+- 7 条告警的根因与修法：
+  - `coordinator.py`×3：`CpSatWarehouseScheduler()`、`WarehouseScheduleValidator()`、`OrToolsRoutingSolver()` 直接实例化 → 改为 `services.warehouse_scheduler` / `services.warehouse_validator` / `services.routing`
+  - `handle_event.py`×1：`OrToolsRoutingSolver()` → `services.routing`
+  - `http_services.py`×3：两个模块级导入 + 一个 `submit_simulation` 内的 `SimPySimulator()` → `services.simulator`
+  - 全部替换为参数注入；未注入时由 `build_services()` 提供真实图（`lru_cache` 单例）
+- 为什么 bootstrap 里的 adapter 导入放在函数内：`adapters/simulation/simpy_simulator.py` 反向 import `app.application.coordinator` / `handle_event`，模块级导入会形成 `application → bootstrap → adapter → application` 循环
+- 验证命令、通过/失败原始结果（Windows，Python 3.12.10，`PYTHONUTF8=1`）：
+  - `python scripts/check_project.py` → **`Project source, links, boundaries and generated contracts: PASS`（exit 0）**，此前为 7 条 `application cannot import adapters`
+  - `python -m pytest -q tests/test_bootstrap.py` → **10 passed**
+  - `python -m pytest -q`（backend 全量）→ **328 passed**（基线 318 + 新增 10）
+  - `python scripts/export_contracts.py --check` → `Contracts match source`
+  - `python scripts/build_file_map.py --check` → 通过
+  - `python scripts/verify_delivery.py` → **12/12 exit 0（整体通过）**
+- 未完成/已知限制/阻塞：
+  - `backend/app/api/routes/agent_demo.py`、`postgres_demo.py` 仍直接 import adapters（本地 PG / Agent 演示子应用，16 处，多为函数内导入）。这两份不属本轮范围，已在 `tests/test_bootstrap.py::test_api_route_adapter_debt_is_recorded_not_silently_ignored` 里**钉住名单**，避免债务被悄悄扩大
+  - `build_services()` 不提供测试替身开关（有意）：测试一律向被测函数注入；
+  - 未接入 `PlanningSnapshotStore` / `PlanCommitStore`（持久化端口由甲方实现，尚无实现类可装配）
+  - `contract_net.py`（R08）尚未进入 `Services`；协商角色按需构造，未纳入组合根
+  - `ports/warehouse.py` 的 `WarehouseValidator` 为新增协议（SHARED 文件，我方为共享集成人），不涉及 `contracts/` 与生成物
+- 交给谁 / 对方下一步：
+  - 甲方（DSH）：如需把持久化端口接入组合根，请提供 `PlanningSnapshotStore` / `PlanCommitStore` 实现类，我在下一轮加进 `Services`；`agent_demo.py` / `postgres_demo.py` 的 adapter 直连是否收敛，等你决定是否单列任务

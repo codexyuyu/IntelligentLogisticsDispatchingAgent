@@ -1,0 +1,131 @@
+{
+  "archive": "benchmarks/b04/r19_accepted_v2",
+  "frozen_at_utc": "2026-10-14T17:16:39.845433+00:00",
+  "protocol": "r19-b04-reschedule-strategies-1.0",
+  "source_run": "run_20261015_004322_357508",
+  "source_run_path": "..\\benchmarks\\b04\\r19_runs\\run_20261015_004322_357508",
+  "source_scenario_sha256": "592ece17d7f190cad52cc53b594a2da060586255e16dafa039121866773be2df",
+  "per_arm_total_budget_ms": 60000,
+  "delay_ladder_s": [
+    900,
+    3600,
+    14400,
+    28800
+  ],
+  "families": [
+    "base",
+    "stress"
+  ],
+  "case_count": 3,
+  "comparison_count": 24,
+  "complete_comparisons": 21,
+  "legal_arm_counts": {
+    "no_reschedule": 15,
+    "full_reschedule": 21,
+    "local_reschedule": 21
+  },
+  "file_count": 16,
+  "total_bytes": 5470200,
+  "files": [
+    {
+      "path": "manifest.json",
+      "bytes": 5315,
+      "sha256": "509ad9aa03b226e5bd54f45738c0d2a9a5605be162f8ebca21b227dc5338dd4c"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 2745889,
+      "sha256": "5ed5ff1f4406c156a4540a1b2996e6b45b148ad9181623c77ab82ee3fd2b71f8"
+    },
+    {
+      "path": "summary.csv",
+      "bytes": 8782,
+      "sha256": "72a5010a0fb653ed5d23459b4d1b6f60170ce9dbabcc35306d4f12446d453830"
+    },
+    {
+      "path": "summary.md",
+      "bytes": 10501,
+      "sha256": "949bd945db9620a9d4baee385f68d568fb98bfca8bd845463b92d7ac220a6d76"
+    },
+    {
+      "path": "scenarios/s12_seed17__base.json",
+      "bytes": 34097,
+      "sha256": "6b658ac469570ac1cd6c6f4178f2e7abbcada3d4e48114ed22e733647e3de9a9"
+    },
+    {
+      "path": "scenarios/s12_seed17__stress.json",
+      "bytes": 36835,
+      "sha256": "17822c945af7ff1a2d2f948bc3b69eb144134bc279d5add2b320668511f9d70b"
+    },
+    {
+      "path": "scenarios/s16_seed42__base.json",
+      "bytes": 39044,
+      "sha256": "f1375a9910b1644f32bb12d4f0f0478c882dc189e4e136ed44c4989ce83366ad"
+    },
+    {
+      "path": "scenarios/s16_seed42__stress.json",
+      "bytes": 41782,
+      "sha256": "bb9174362afeac69e716305579f7c871e0f471428a3d7fdb2db8fe186e10b9e1"
+    },
+    {
+      "path": "scenarios/s20_seed66__base.json",
+      "bytes": 43991,
+      "sha256": "929624a3ebc18a97b7cd854086159a9fef8f960eee8a141f2629b63f7060e148"
+    },
+    {
+      "path": "scenarios/s20_seed66__stress.json",
+      "bytes": 46729,
+      "sha256": "4fe078759c4d9d7bc4a8e42fd7736e4d9588ee0a4ad14444cc6f7ce4b9d5cc89"
+    },
+    {
+      "path": "raw/s12_seed17__base_arms.json",
+      "bytes": 285952,
+      "sha256": "cd4240947226aa244fd5bb4b6584622fcf23c486297720e4e02df315b8ac09b7"
+    },
+    {
+      "path": "raw/s12_seed17__stress_arms.json",
+      "bytes": 401457,
+      "sha256": "1b88c8766eb5b5f81a7844d674bbc4501459baebdeea3c4fe18ad842ec2dc164"
+    },
+    {
+      "path": "raw/s16_seed42__base_arms.json",
+      "bytes": 345877,
+      "sha256": "2ce6194a83057c243aa7ed1e77e82fd9e2a06a70dfda7226279b3e2225b33dd1"
+    },
+    {
+      "path": "raw/s16_seed42__stress_arms.json",
+      "bytes": 473240,
+      "sha256": "363b58c9005664757a1691ce6c33f510a541ef3bcd27f4ea5b63eff8c2414ea3"
+    },
+    {
+      "path": "raw/s20_seed66__base_arms.json",
+      "bytes": 405752,
+      "sha256": "0d59d2b69b1f86b17bdc56602974da3393bfec25ea842288d8d3a349ae54af4d"
+    },
+    {
+      "path": "raw/s20_seed66__stress_arms.json",
+      "bytes": 544957,
+      "sha256": "9edbb0eb97654a6f35ff8c25bb6a73681abb4b3ad36d96032cf192c32bd9047a"
+    }
+  ],
+  "tool_sha256": {
+    "tools/r19_reschedule_ablation.py": "b0c4c22e81f2f87d808ff2b90134de080d73acf59828d478251c6124d3627d5c",
+    "tools/r19_acceptance_freeze.py": "b43975802ed7a4fb882b26958fc34a45603e1141baf615545d4961fce52046f9",
+    "tools/r18_multiscene_ablation.py": "fb4269840fb1ee647dbd1ab97fa97d83ac2e670666441f5041366e08f285c5e5",
+    "tools/r17_joint_ablation.py": "fc117d045442b3eb713767f07ab1d870a3a233eeb697ad407cd0743363550228",
+    "app/adapters/routing/ortools_solver.py": "a061a0d2636781c2a293544726f9c9a734382c6be1c6b658a27e5155a8a2c493",
+    "app/application/handle_event.py": "478de934d57adccd9434d96e62423675549db271afbb6c1b390557e28bfa4953"
+  },
+  "reproduction_command": "cd backend; python -m tools.r19_reschedule_ablation --case-count 3 --budget-ms 60000",
+  "freeze_command": "cd backend; python -m tools.r19_acceptance_freeze --run-dir ../benchmarks/b04/r19_runs/run_20261015_004322_357508",
+  "environment": {
+    "python": "3.14.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "verdict": {
+    "cases_recomputed": 6,
+    "comparisons_recomputed": 24,
+    "mismatches": 0
+  },
+  "scope": "synthetic equal-budget strategy comparison; not empirical performance, not a significance test, not an R17/R18 replacement"
+}

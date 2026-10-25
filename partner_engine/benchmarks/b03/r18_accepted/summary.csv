@@ -1,0 +1,6 @@
+﻿case,size,seed,scenario_sha256,status,distance_priority,distance_sequential_m,distance_deep_m,sequential_wait_s,deep_wait_s,wait_saved_s,wait_reduction_pct,deep_extra_wall_ms,error
+s12_seed17,12,17,780b663c8ab1ec0de390856a0507163b82710204207faa75a84bfe20b82b57e1,complete_validated_pair,equal_distance,50000,50000,1260,900,360,28.57,10507,
+s16_seed42,16,42,d7f7a295350f40ac449369858e3766af722738d43d5292115609b9cbccfb6a09,complete_validated_pair,equal_distance,54000,54000,2880,1680,1200,41.67,10568,
+s20_seed66,20,66,958dc32f82dcfb35b8783d39e0e6f7196272292a4d2560910236ae4a44accab6,complete_validated_pair,equal_distance,56000,56000,4500,2400,2100,46.67,11674,
+s20_seed88,20,88,85984ef8c0095dca8e625cd975247c60469dd30bc727af925cc502db9dc6ecf8,complete_validated_pair,equal_distance,56000,56000,4500,2700,1800,40.0,11674,
+s20_seed101,20,101,e0836e7fe97b2c4a4a36360412338376e2db0bcb0ec75f2e7ea82c2fdcc45287,complete_validated_pair,equal_distance,56000,56000,4800,2700,2100,43.75,11674,

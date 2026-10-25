@@ -1,0 +1,47 @@
+### Health
+GET http://localhost:8080/api/health
+
+### 仪表盘
+GET http://localhost:8080/api/dashboard
+
+### 数字孪生数据
+GET http://localhost:8080/api/warehouse/twin
+
+### 商品列表
+GET http://localhost:8080/api/products
+
+### 入库推荐
+POST http://localhost:8080/api/inbound/recommend
+Content-Type: application/json
+
+{"productId":1,"quantity":20}
+
+### 入库确认
+POST http://localhost:8080/api/inbound/confirm
+Content-Type: application/json
+
+{"productId":1,"quantity":20,"shelfId":2}
+
+### 创建出库订单
+POST http://localhost:8080/api/outbound/orders
+Content-Type: application/json
+
+{"productId":1,"quantity":5}
+
+### 扫描预警
+POST http://localhost:8080/api/warnings/scan
+
+### AI 问答
+POST http://localhost:8080/api/ai/chat
+Content-Type: application/json
+
+{"question":"哪些商品需要补货？"}
+
+### 修改仓库存储类型：只有仓库主管 user_permission=0 可以修改
+PATCH http://localhost:8080/api/warehouse/1/storage-type
+Content-Type: application/json
+
+{
+  "storageType": "贵重物品",
+  "operatorUserId": 1
+}

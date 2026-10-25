@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node / frontend build
+node_modules/
+frontend/dist/
+
+# Packaging and coverage output
+archive/releases/
+coverage/
+
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+
+# Transient evidence runs and raw logs.
+# Frozen, hash-registered archives (benchmarks/b03/r17_accepted, benchmarks/b03/r18_accepted,
+# benchmarks/b04/r19_accepted) are deliverables and stay tracked.
+benchmarks/b03/r18_runs/
+benchmarks/b04/r19_runs/
+*.log
+*.err
+*.zip
+
+# Editor and OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+/r30a_backups/

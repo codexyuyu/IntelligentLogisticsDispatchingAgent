@@ -1,0 +1,51 @@
+{
+  "rule_version": "r05-freeze-0.2.0",
+  "occupancies": [
+    {
+      "occupancy_id": "occ_init1",
+      "batch_id": "bat_1",
+      "location_id": "loc_zh1a",
+      "capacity_use": [{ "unit": "weight_g", "amount": 4000000 }],
+      "start_s": 0,
+      "end_s": 1200
+    },
+    {
+      "occupancy_id": "occ_in2",
+      "batch_id": "bat_2",
+      "location_id": "loc_zh1a",
+      "capacity_use": [{ "unit": "weight_g", "amount": 6000000 }],
+      "start_s": 1200,
+      "end_s": 5400
+    }
+  ],
+  "exposure_segments": [
+    {
+      "segment_id": "seg_1",
+      "batch_id": "bat_2",
+      "scope": "in_warehouse",
+      "start_s": 1200,
+      "end_s": 5400,
+      "source_kind": "planned"
+    },
+    {
+      "segment_id": "seg_2",
+      "batch_id": "bat_2",
+      "scope": "loading",
+      "start_s": 5400,
+      "end_s": 5600,
+      "source_kind": "planned"
+    }
+  ],
+  "changeovers": [
+    {
+      "changeover_id": "chg_1",
+      "resource_id": "res_dock1",
+      "from_class": "class_a",
+      "to_class": "class_b",
+      "duration_s": 1800,
+      "after_operation_id": "op_1-load",
+      "before_operation_id": "op_2-unload",
+      "setup_operation_id": null
+    }
+  ]
+}

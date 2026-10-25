@@ -1,0 +1,142 @@
+{
+  "protocol": "r19-b04-reschedule-strategies-1.0",
+  "source_scenario_sha256": "592ece17d7f190cad52cc53b594a2da060586255e16dafa039121866773be2df",
+  "source_scenario_filename": "two_warehouses_20_orders.json",
+  "case_designs": [
+    {
+      "case": "s12_seed17",
+      "size": 12,
+      "seed": 17
+    },
+    {
+      "case": "s16_seed42",
+      "size": 16,
+      "seed": 42
+    },
+    {
+      "case": "s20_seed66",
+      "size": 20,
+      "seed": 66
+    }
+  ],
+  "generated_at_utc": "2026-10-14T16:43:22.359768+00:00",
+  "arms": [
+    "no_reschedule",
+    "full_reschedule",
+    "local_reschedule"
+  ],
+  "per_arm_total_budget_ms": 60000,
+  "delay_ladder_s": [
+    900,
+    3600,
+    14400,
+    28800
+  ],
+  "families": [
+    "base",
+    "stress"
+  ],
+  "window_compression_factor": 2,
+  "occurred_at_s": 0,
+  "horizon_s": 1800,
+  "vehicle_rule": "受影响车辆 = 基线方案中服务订单最多的车辆；并列时取 vehicle_id 字典序最小者（规则先于运行确定，不看结果）。",
+  "delay_rule": "有效延误 = max(0, 事件后车辆可用时刻 − 基线计划发车时刻)：若车辆本就晚于该时刻发车，延误被班次表吸收，不重调度臂不发生任何位移。原始延误与有效延误同时记录。",
+  "family_rule": "base = R18 生成器原样快照；stress = 同订单同路网，服务时间窗与保鲜期限压缩 1/2，并为每个（仓库×温区）增加一辆同型备用车。两族全部结果都报告，不挑选有利族。",
+  "rules": "统一基线：同一场景、同一族内的全部延误档共享同一基线方案；两个求解臂在每一档使用相同总预算；不重调度臂不消耗求解预算（其定义就是不重算），其代价体现在违约与延误上。",
+  "generation": "R18 stratified generator reused unchanged (warehouse x temperature, fixed seed)",
+  "scope": "synthetic equal-budget strategy comparison; not empirical county-level performance, not a significance test, and not a replacement for the accepted R17/R18 evidence",
+  "cases": [
+    {
+      "case": "s12_seed17",
+      "family": "base",
+      "size": 12,
+      "seed": 17,
+      "scenario_file": "scenarios/s12_seed17__base.json",
+      "scenario_sha256": "6b658ac469570ac1cd6c6f4178f2e7abbcada3d4e48114ed22e733647e3de9a9",
+      "scenario_bytes": 34097,
+      "order_count": 12,
+      "vehicle_count": 4
+    },
+    {
+      "case": "s12_seed17",
+      "family": "stress",
+      "size": 12,
+      "seed": 17,
+      "scenario_file": "scenarios/s12_seed17__stress.json",
+      "scenario_sha256": "17822c945af7ff1a2d2f948bc3b69eb144134bc279d5add2b320668511f9d70b",
+      "scenario_bytes": 36835,
+      "order_count": 12,
+      "vehicle_count": 8
+    },
+    {
+      "case": "s16_seed42",
+      "family": "base",
+      "size": 16,
+      "seed": 42,
+      "scenario_file": "scenarios/s16_seed42__base.json",
+      "scenario_sha256": "f1375a9910b1644f32bb12d4f0f0478c882dc189e4e136ed44c4989ce83366ad",
+      "scenario_bytes": 39044,
+      "order_count": 16,
+      "vehicle_count": 4
+    },
+    {
+      "case": "s16_seed42",
+      "family": "stress",
+      "size": 16,
+      "seed": 42,
+      "scenario_file": "scenarios/s16_seed42__stress.json",
+      "scenario_sha256": "bb9174362afeac69e716305579f7c871e0f471428a3d7fdb2db8fe186e10b9e1",
+      "scenario_bytes": 41782,
+      "order_count": 16,
+      "vehicle_count": 8
+    },
+    {
+      "case": "s20_seed66",
+      "family": "base",
+      "size": 20,
+      "seed": 66,
+      "scenario_file": "scenarios/s20_seed66__base.json",
+      "scenario_sha256": "929624a3ebc18a97b7cd854086159a9fef8f960eee8a141f2629b63f7060e148",
+      "scenario_bytes": 43991,
+      "order_count": 20,
+      "vehicle_count": 4
+    },
+    {
+      "case": "s20_seed66",
+      "family": "stress",
+      "size": 20,
+      "seed": 66,
+      "scenario_file": "scenarios/s20_seed66__stress.json",
+      "scenario_sha256": "4fe078759c4d9d7bc4a8e42fd7736e4d9588ee0a4ad14444cc6f7ce4b9d5cc89",
+      "scenario_bytes": 46729,
+      "order_count": 20,
+      "vehicle_count": 8
+    }
+  ],
+  "rung_status": {
+    "s12_seed17@base@900": "complete_comparison",
+    "s12_seed17@base@3600": "complete_comparison",
+    "s12_seed17@base@14400": "complete_comparison",
+    "s12_seed17@base@28800": "incomplete",
+    "s12_seed17@stress@900": "complete_comparison",
+    "s12_seed17@stress@3600": "complete_comparison",
+    "s12_seed17@stress@14400": "complete_comparison",
+    "s12_seed17@stress@28800": "complete_comparison",
+    "s16_seed42@base@900": "complete_comparison",
+    "s16_seed42@base@3600": "complete_comparison",
+    "s16_seed42@base@14400": "complete_comparison",
+    "s16_seed42@base@28800": "incomplete",
+    "s16_seed42@stress@900": "complete_comparison",
+    "s16_seed42@stress@3600": "complete_comparison",
+    "s16_seed42@stress@14400": "complete_comparison",
+    "s16_seed42@stress@28800": "complete_comparison",
+    "s20_seed66@base@900": "complete_comparison",
+    "s20_seed66@base@3600": "complete_comparison",
+    "s20_seed66@base@14400": "complete_comparison",
+    "s20_seed66@base@28800": "incomplete",
+    "s20_seed66@stress@900": "complete_comparison",
+    "s20_seed66@stress@3600": "complete_comparison",
+    "s20_seed66@stress@14400": "complete_comparison",
+    "s20_seed66@stress@28800": "complete_comparison"
+  }
+}
