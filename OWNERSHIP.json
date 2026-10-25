@@ -103,7 +103,8 @@
     "START_CODEX_WORKFLOW.md": "A",
     "WORKFLOW_PARALLEL_EXECUTION.md": "A",
     "赛题.zip": "A",
-    "partner_engine/": "A"
+    "partner_engine/": "A",
+    "INTEGRATION.md": "A"
   },
   "notes": [
     "旧 demo/OWNERSHIP.json 的相对路径（backend/...、frontend/...、contracts/...）只对旧基线有效，不能直接套用到新根级工程；对应关系见 docs/architecture/LEGACY_ADAPTATION.md。",
