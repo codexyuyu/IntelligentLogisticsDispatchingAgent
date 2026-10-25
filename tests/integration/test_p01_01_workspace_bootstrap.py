@@ -158,7 +158,9 @@ def test_frozen_workspace_install_is_importable() -> None:
     )
     resolved: dict[str, str] = payload["resolved"]
     assert sorted(resolved) == sorted(REQUIRED_IMPORT_PACKAGES)
-    venv_root = Path(payload["executable"]).resolve().parents[1]
+    # A POSIX venv python is a symlink to its base interpreter by design, so the
+    # executable path must not be resolved before checking the workspace venv.
+    venv_root = Path(payload["executable"]).parents[1]
     assert venv_root.name == ".venv", f"the probe must run inside the workspace .venv, got {venv_root}"
     for module, location in sorted(resolved.items()):
         actual = Path(location).resolve()

@@ -50,8 +50,16 @@ jobs:
           --health-retries 20
     env:
       TEST_DATABASE_URL: postgresql+psycopg://logistics:logistics@127.0.0.1:5432/logistics_test
+      # The bootstrap evidence records the exact interpreter that validated the
+      # locks (3.12.10); pin uv to it so the runtime-baseline test can match.
+      UV_PYTHON: "3.12.10"
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up Node 24.18.0 (evidence-recorded baseline)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.18.0"
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
@@ -60,7 +68,7 @@ jobs:
           enable-cache: true
 
       - name: Set up Python 3.12
-        run: uv python install 3.12
+        run: uv python install 3.12.10
 
       - name: Verify the lock file matches the manifests
         run: uv lock --check
