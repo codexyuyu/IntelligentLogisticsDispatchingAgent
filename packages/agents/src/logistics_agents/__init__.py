@@ -11,7 +11,7 @@ provider abstraction and P19-P23 the four roles, orchestration and session API.
 
 from __future__ import annotations
 
-from . import contract_net, llm, service, tools
+from . import contract_net, contract_net_roles, llm, service, tools
 
 SCHEMA_VERSION = "1.0.0"
 PACKAGE_NAME = "logistics-agents"
@@ -27,6 +27,7 @@ __all__ = [
     "PACKAGE_NAME",
     "SCHEMA_VERSION",
     "contract_net",
+    "contract_net_roles",
     "llm",
     "service",
     "tools",
