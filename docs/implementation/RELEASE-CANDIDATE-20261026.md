@@ -4,7 +4,7 @@
 
 ```text
 branch: dsh/2026-10-23-snapshot
-commit: 4dcbd46
+commit: f9858e7
 contract: 2.0.0
 ```
 
@@ -51,4 +51,4 @@ frontend  built（无 /partner 代理，/partner 返回 404）
 
 ## 交付给独立 reviewer
 
-请以本文件、commit `4dcbd46` 和仓库内测试日志为输入；不要以本文件代替 Gate 记录。
+请以本文件、commit `f9858e7` 和仓库内测试日志为输入；不要以本文件代替 Gate 记录。
