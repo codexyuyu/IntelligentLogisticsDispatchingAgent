@@ -201,6 +201,20 @@ class PrecoolRequirement:
 
 
 @dataclass(frozen=True, slots=True)
+class ReuseRule:
+    """Seven-day cross-batch reuse policy for one storage location."""
+
+    location_id: UUID
+    max_batch_age_s: int = 604800
+    min_gap_s: int = 0
+
+    def __post_init__(self) -> None:
+        require_uuid(self.location_id, field="coldchain.reuse.location_id")
+        require_positive_int(self.max_batch_age_s, field="coldchain.reuse.max_batch_age_s")
+        require_non_negative_int(self.min_gap_s, field="coldchain.reuse.min_gap_s")
+
+
+@dataclass(frozen=True, slots=True)
 class ExposureLimit:
     limit_id: UUID
     batch_id: str
@@ -290,6 +304,7 @@ class ColdChainSnapshot:
     precool_requirements: tuple[PrecoolRequirement, ...] = ()
     exposure_limits: tuple[ExposureLimit, ...] = ()
     batch_compatibility: tuple[BatchCompatibility, ...] = ()
+    reuse_rules: tuple[ReuseRule, ...] = ()
     compatibility_policy: CompatibilityPolicy | None = None
 
     def __post_init__(self) -> None:
@@ -302,6 +317,7 @@ class ColdChainSnapshot:
             ("precool_requirements", self.precool_requirements, "requirement_id"),
             ("exposure_limits", self.exposure_limits, "limit_id"),
             ("batch_compatibility", self.batch_compatibility, "batch_id"),
+            ("reuse_rules", self.reuse_rules, "location_id"),
         )
         for name, values, key in groups:
             if not isinstance(values, tuple):
@@ -315,5 +331,5 @@ __all__ = [
     "BatchCompatibility", "CapacityAmount", "CapacityPeriod", "CapacityUnit", "ChangeoverRule",
     "ColdChainSetupPolicy", "ColdChainSnapshot", "ColdChainStorageLocation",
     "ColdChainZone", "CompatibilityPolicy", "ExposureLimit", "ExposureScope",
-    "ExposureSegment", "PrecoolRequirement", "StorageOccupancy",
+    "ExposureSegment", "PrecoolRequirement", "ReuseRule", "StorageOccupancy",
 ]

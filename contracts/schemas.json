@@ -1189,6 +1189,31 @@
           "title": "PrecoolRequirementDTO",
           "type": "object"
         },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
+          "type": "object"
+        },
         "StorageOccupancyDTO": {
           "additionalProperties": false,
           "properties": {
@@ -1333,6 +1358,14 @@
             "$ref": "#/$defs/PrecoolRequirementDTO"
           },
           "title": "Precool Requirements",
+          "type": "array"
+        },
+        "reuse_rules": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ReuseRuleDTO"
+          },
+          "title": "Reuse Rules",
           "type": "array"
         },
         "rule_version": {
@@ -1777,6 +1810,31 @@
         "eligible_resource_ids"
       ],
       "title": "PrecoolRequirementDTO",
+      "type": "object"
+    },
+    "logistics_contracts.coldchain.ReuseRuleDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "location_id": {
+          "format": "uuid",
+          "title": "Location Id",
+          "type": "string"
+        },
+        "max_batch_age_s": {
+          "default": 604800,
+          "title": "Max Batch Age S",
+          "type": "integer"
+        },
+        "min_gap_s": {
+          "default": 0,
+          "title": "Min Gap S",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "location_id"
+      ],
+      "title": "ReuseRuleDTO",
       "type": "object"
     },
     "logistics_contracts.coldchain.StorageOccupancyDTO": {
@@ -23980,6 +24038,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -24979,6 +25045,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "StorageLocationDTO": {
@@ -36207,6 +36298,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -37649,6 +37748,31 @@
           ],
           "title": "ReturnPolicy",
           "type": "string"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
+          "type": "object"
         },
         "ScenarioEventSpecDTO": {
           "additionalProperties": false,
@@ -40250,6 +40374,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -41383,6 +41515,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "StorageLocationDTO": {
@@ -45415,6 +45572,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -46948,6 +47113,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "RouteDTO": {
@@ -51010,6 +51200,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -52213,6 +52411,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "RoutingNodeDTO": {
@@ -53501,6 +53724,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -54704,6 +54935,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "RoutingNodeDTO": {
@@ -58123,6 +58379,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -59656,6 +59920,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "RouteDTO": {
@@ -61810,6 +62099,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -63077,6 +63374,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "RouteDTO": {
@@ -64550,6 +64872,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -65972,6 +66302,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "SetupOperationDTO": {
@@ -67893,6 +68248,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -69108,6 +69471,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "SetupPolicyDTO": {
@@ -70387,6 +70775,14 @@
               "title": "Precool Requirements",
               "type": "array"
             },
+            "reuse_rules": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/ReuseRuleDTO"
+              },
+              "title": "Reuse Rules",
+              "type": "array"
+            },
             "rule_version": {
               "title": "Rule Version",
               "type": "string"
@@ -71602,6 +71998,31 @@
             "row_version"
           ],
           "title": "ResourceRevisionDTO",
+          "type": "object"
+        },
+        "ReuseRuleDTO": {
+          "additionalProperties": false,
+          "properties": {
+            "location_id": {
+              "format": "uuid",
+              "title": "Location Id",
+              "type": "string"
+            },
+            "max_batch_age_s": {
+              "default": 604800,
+              "title": "Max Batch Age S",
+              "type": "integer"
+            },
+            "min_gap_s": {
+              "default": 0,
+              "title": "Min Gap S",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location_id"
+          ],
+          "title": "ReuseRuleDTO",
           "type": "object"
         },
         "SetupPolicyDTO": {

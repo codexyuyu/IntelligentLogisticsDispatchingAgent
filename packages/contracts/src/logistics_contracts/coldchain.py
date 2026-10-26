@@ -104,6 +104,13 @@ class ExposureSegmentDTO(Record):
     source_kind: StrictStr
 
 
+class ReuseRuleDTO(Record):
+    domain_type = domain.ReuseRule
+    location_id: UUID
+    max_batch_age_s: StrictInt = 604800
+    min_gap_s: StrictInt = 0
+
+
 class BatchCompatibilityDTO(Record):
     domain_type = domain.BatchCompatibility
     batch_id: StrictStr
@@ -133,6 +140,7 @@ class ColdChainSnapshotDTO(Record):
     precool_requirements: tuple[PrecoolRequirementDTO, ...] = ()
     exposure_limits: tuple[ExposureLimitDTO, ...] = ()
     batch_compatibility: tuple[BatchCompatibilityDTO, ...] = ()
+    reuse_rules: tuple[ReuseRuleDTO, ...] = ()
     compatibility_policy: CompatibilityPolicyDTO | None = None
 
 

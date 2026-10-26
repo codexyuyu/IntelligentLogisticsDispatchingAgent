@@ -1132,6 +1132,14 @@
             "title": "Precool Requirements",
             "type": "array"
           },
+          "reuse_rules": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ReuseRuleDTO"
+            },
+            "title": "Reuse Rules",
+            "type": "array"
+          },
           "rule_version": {
             "title": "Rule Version",
             "type": "string"
@@ -5946,6 +5954,31 @@
         ],
         "title": "ReturnPolicy",
         "type": "string"
+      },
+      "ReuseRuleDTO": {
+        "additionalProperties": false,
+        "properties": {
+          "location_id": {
+            "format": "uuid",
+            "title": "Location Id",
+            "type": "string"
+          },
+          "max_batch_age_s": {
+            "default": 604800,
+            "title": "Max Batch Age S",
+            "type": "integer"
+          },
+          "min_gap_s": {
+            "default": 0,
+            "title": "Min Gap S",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "location_id"
+        ],
+        "title": "ReuseRuleDTO",
+        "type": "object"
       },
       "RevokeInput": {
         "additionalProperties": false,

@@ -53,6 +53,9 @@ def coldchain_dto(value: domain.ColdChainSnapshot | None) -> dto.ColdChainSnapsh
             limit_id=item.limit_id, batch_id=item.batch_id, max_exposure_s=item.max_exposure_s,
             scopes=item.scopes, rule_version=item.rule_version, source=item.source)
             for item in value.exposure_limits),
+        reuse_rules=tuple(dto.ReuseRuleDTO(
+            location_id=item.location_id, max_batch_age_s=item.max_batch_age_s,
+            min_gap_s=item.min_gap_s) for item in value.reuse_rules),
         batch_compatibility=tuple(dto.BatchCompatibilityDTO(
             batch_id=item.batch_id, warehouse_id=item.warehouse_id,
             temperature_zone=item.temperature_zone,

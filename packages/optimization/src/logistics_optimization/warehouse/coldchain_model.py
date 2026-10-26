@@ -54,6 +54,7 @@ def add_coldchain(model, problem, starts, ends, use):
     batches = {x.batch_id: x for x in cold.batch_compatibility}
     spans, by_location, by_zone = {}, defaultdict(list), defaultdict(list)
     exposure = defaultdict(list)
+    reuse = {rule.location_id: rule for rule in cold.reuse_rules}
     for item in cold.occupancies:
         if item.location_id not in locations:
             raise ValueError('unknown coldchain storage location')
@@ -71,7 +72,15 @@ def add_coldchain(model, problem, starts, ends, use):
             model.Add(False)
         try:
             start = ends[item.inbound_operation_id] if item.inbound_operation_id else (item.declared_start_s or 0)
-            end = starts[item.outbound_operation_id] if item.outbound_operation_id else horizon
+            if item.outbound_operation_id:
+                end = starts[item.outbound_operation_id]
+            else:
+                end = horizon
+                rule = reuse.get(item.location_id)
+                if rule is not None:
+                    capped = model.NewIntVar(0, horizon, f'storage_reuse_end_{item.occupancy_id}')
+                    model.AddMinEquality(capped, [horizon, start + rule.max_batch_age_s])
+                    end = capped
         except KeyError as exc:
             raise ValueError('occupancy operation outside problem') from exc
         size = model.NewIntVar(0, horizon, f'storage_duration_{item.occupancy_id}')

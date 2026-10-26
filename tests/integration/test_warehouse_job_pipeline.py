@@ -35,6 +35,7 @@ from logistics_domain.coldchain import (
     ExposureLimit,
     ExposureScope,
     PrecoolRequirement,
+    ReuseRule,
     StorageOccupancy,
 )
 from logistics_domain.planning import PlanningSnapshot, content_hash
@@ -273,11 +274,13 @@ def test_coldchain_precool_precedence_and_exposure_are_validated(warehouse_api):
             capacity_periods=(CapacityPeriod(0, 3600,
                 (CapacityAmount(CapacityUnit.WEIGHT_G, 10000),)),),
             available_windows=(TimeWindow(0, 8),)),),
-        occupancies=(StorageOccupancy(occupancy_id=uuid4(), batch_id="batch-1",
-            location_id=UUID(location["id"]),
-            capacity_use=(CapacityAmount(CapacityUnit.WEIGHT_G, 100),),
-            origin="initial_stock", declared_start_s=0,
-            outbound_operation_id=UUID(body["tasks"][1]["id"])),),
+        occupancies=(
+            StorageOccupancy(occupancy_id=uuid4(), batch_id="batch-1",
+                location_id=UUID(location["id"]),
+                capacity_use=(CapacityAmount(CapacityUnit.WEIGHT_G, 100),),
+                origin="initial_stock", declared_start_s=0,
+                outbound_operation_id=UUID(body["tasks"][1]["id"])),
+        ),
         precool_requirements=(PrecoolRequirement(requirement_id=uuid4(), batch_id="batch-1",
             warehouse_id=UUID(dock["warehouse_id"]),
             precool_operation_id=UUID(body["tasks"][0]["id"]),

@@ -15,6 +15,7 @@ from logistics_domain.coldchain import (
     ColdChainZone,
     ExposureLimit,
     ExposureScope,
+    ReuseRule,
     StorageOccupancy,
 )
 from logistics_domain.planning import (
@@ -85,6 +86,19 @@ def test_capacity_drop_forces_inbound_after_stock_release():
     bad = replace(result, assignments=tuple(replace(a, start_s=0, end_s=30)
                   if a.task_id == problem.tasks[1].id else a for a in result.assignments))
     assert 'coldchain_capacity' in {v.code for v in validate_coldchain(problem, bad).violations}
+
+
+def test_reuse_rule_is_reported_checked_without_changing_solved_times():
+    problem = cold_problem(horizon=604800, second_start=2*86400)
+    cold = problem.snapshot.coldchain
+    location = cold.storage_locations[0]
+    cold = replace(cold, reuse_rules=(ReuseRule(location.location_id, 604800, 3600),))
+    problem = replace(problem, snapshot=rebuild(problem.snapshot, coldchain=cold))
+    result = solve(problem)
+    assert result.status in (SolveStatus.FEASIBLE, SolveStatus.OPTIMAL)
+    outcome = validate_coldchain(problem, result)
+    assert 'r05.reuse' in outcome.checked
+    assert not [v for v in outcome.violations if v.code == 'coldchain_reuse_gap']
 
 
 def test_seven_day_capacity_is_reused_after_release_not_summed_forever():

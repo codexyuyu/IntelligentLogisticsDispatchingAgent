@@ -92,6 +92,7 @@ def validate_coldchain(problem: WarehouseProblem, solution: WarehouseSolution) -
 
     occupancy_intervals = []
     exposure: dict[str, list[tuple[int, int]]] = {}
+    reuse = {rule.location_id: rule for rule in coldchain.reuse_rules}
     for occupancy in coldchain.occupancies:
         if occupancy.inbound_operation_id is not None:
             inbound = by_task.get(occupancy.inbound_operation_id)
@@ -114,8 +115,30 @@ def validate_coldchain(problem: WarehouseProblem, solution: WarehouseSolution) -
                       'storage occupancy has reversed or out-of-horizon endpoints')
         if end <= start:
             continue
+        rule = reuse.get(occupancy.location_id)
+        if rule is not None and occupancy.outbound_operation_id is None:
+            end = min(end, start + rule.max_batch_age_s)
         occupancy_intervals.append((occupancy, start, end))
         exposure.setdefault(occupancy.batch_id, []).append((start, end))
+
+    if reuse and occupancy_intervals:
+        by_location: dict[UUID, list[tuple]] = {}
+        for occupancy, start, end in occupancy_intervals:
+            by_location.setdefault(occupancy.location_id, []).append((start, end, occupancy.batch_id))
+        for location_id, entries in by_location.items():
+            if location_id not in reuse:
+                continue
+            entries.sort()
+            for left, right in pairwise(entries):
+                if left[2] == right[2]:
+                    continue
+                if right[0] - left[1] < reuse[location_id].min_gap_s:
+                    outcome.violations.append(Violation(code="coldchain_reuse_gap",
+                        severity=Severity.HARD, entity_refs=(), field_path="reuse.min_gap_s",
+                        actual=str(right[0] - left[1]),
+                        expected=f">= {reuse[location_id].min_gap_s}",
+                        message="cross-batch storage reuse violates the cleaning gap"))
+        outcome.checked.append("r05.reuse")
 
     locations = {item.location_id: item for item in coldchain.storage_locations}
     by_location_unit: dict[tuple[UUID, CapacityUnit, int, int], list[tuple[int, int, int, int]]] = {}

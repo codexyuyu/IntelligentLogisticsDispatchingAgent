@@ -20,6 +20,7 @@ from logistics_domain.coldchain import (
     ExposureLimit,
     ExposureScope,
     PrecoolRequirement,
+    ReuseRule,
     StorageOccupancy,
 )
 from logistics_domain.planning import PlanningScope, PlanningSnapshot, content_hash
@@ -45,6 +46,8 @@ def _coldchain() -> ColdChainSnapshot:
         setup_policies=(ColdChainSetupPolicy(policy_id=uuid4(), version="1.0",
             rule_version="r05-demo-1.0", rendering="gap",
             rules=(ChangeoverRule("receive", "load", 7),)),),
+        reuse_rules=(ReuseRule(location_id=location_id, max_batch_age_s=604800,
+            min_gap_s=60),),
         precool_requirements=(PrecoolRequirement(requirement_id=uuid4(), batch_id="batch-1",
             warehouse_id=warehouse_id, precool_operation_id=precool_id,
             loading_operation_ids=(), min_duration_s=30, target_zone="chilled",
