@@ -115,8 +115,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const importScenario = useCallback(async (): Promise<CandidatePlan | null> => {
     setImporting(true);
     try {
-      const data = await getJson<Snapshot>('/scenarios/single_warehouse_20_orders.json');
+      const source = await getJson<Snapshot>('/scenarios/single_warehouse_20_orders.json');
       const sid = `ui_${Date.now()}`;
+      const data = { ...source, snapshot_id: sid };
       const result = await postApi<{ snapshot_id: string; version: number; scenario_id: string }>('/api/v1/scenarios/import', {
         scenario_id: sid,
         snapshot: data,
