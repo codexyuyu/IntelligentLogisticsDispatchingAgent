@@ -18,8 +18,11 @@
 ```powershell
 docker compose up -d
 docker compose --profile tools run --rm seed   # 导入 tiny_master 演示数据
-# 前端 http://localhost:8081，token: dev-operator-token
+# 前端 http://localhost:8080，token: dev-operator-token（本地中文前端）
 ```
+
+> 合并后以本地 `apps/frontend` 中文界面为唯一前端，端口 8080；
+> 不再使用 8081 旧工作台或 `apps/frontend-legacy`。
 
 ### 乙方引擎（无需 Docker，只需 Python 3.12 + ortools/simpy/fastapi）
 
@@ -36,7 +39,7 @@ python -m pytest tests -q
 
 ## 状态边界（如实声明）
 
-- 本分支是**同仓库共存**，不是深度打通：甲方前端/ API 尚未调用乙方求解与协商引擎（R08 引擎已通过 PR #7 进入 packages/agents，可直接 import，应用接线是下一步）。
-- 两条代码历史无共同祖先，无法 git 自动合并；本分支是人工组装的集成视图。
-- CI 在本分支上仍会红，原因是 4 个既有问题（无 PostgreSQL service、vitest 零用例、`.env.example` 误报、gates P01 哈希过期），与本分支内容无关；最小修复 diff 已单独提供。
+- 本分支保留两条代码线：根目录 2.0.0 产品栈与 `partner_engine/` 乙方 0.2.0 引擎；业务契约尚未统一。
+- 本地中文前端通过后端 `/partner` 兼容命名空间调用乙方求解/协商/观测接口；正式运输调度仍走 2.0.0 `/api/v1`，两套契约没有混用。
 - 乙方引擎的 R05 冷链层为标注 `simulation` 的合成数据，非企业实测。
+- 345 条乙方测试是 `partner_engine` 自身结果，不等同于根目录集成测试或正式验收。
