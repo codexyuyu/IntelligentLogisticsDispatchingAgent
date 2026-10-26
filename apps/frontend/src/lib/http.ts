@@ -18,8 +18,6 @@ export async function getErrorMessage(error: unknown) {
 }
 
 export async function getJson<T = unknown>(url: string, signal?: AbortSignal): Promise<T> {
-  if (url.startsWith('/api/v1/')) url = `/partner${url}`;
-  if (url.startsWith('/scenarios/') || url.startsWith('/evidence/')) url = `/partner/assets${url}`;
   const { getToken } = await import('../auth');
   const token = getToken();
   const response = await fetch(url, { signal, headers: token ? { Authorization: `Bearer ${token}` } : undefined });

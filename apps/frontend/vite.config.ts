@@ -9,7 +9,6 @@ export default defineConfig({
     port: 5173,
     proxy: {
       "/api": env.VITE_API_PROXY ?? "http://127.0.0.1:8000",
-      "/partner": env.VITE_API_PROXY ?? "http://127.0.0.1:8000",
     },
   },
 });

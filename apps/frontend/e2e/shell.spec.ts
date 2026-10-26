@@ -10,7 +10,8 @@ test('offline session keeps the Chinese shell and never reports imported data', 
   await expect(page.getByText('后端未连接', { exact: true })).toBeVisible();
   await expect(page.getByText('Dispatch Workbench', { exact: true })).toHaveCount(0);
   await expect(page.getByText('数据已同步', { exact: true })).toHaveCount(0);
-  await expect(page.getByRole('button', { name: '开始演练', exact: true })).toBeDisabled();
+  await expect(page.getByRole('button', { name: '开始演练', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: '协商记录', exact: true })).toBeVisible();
   await page.screenshot({ path: info.outputPath('chinese-dashboard-offline.png'), fullPage: true });
   await page.getByRole('button', { name: '运输计划', exact: true }).click();
   await expect(page).toHaveURL(/#\/vehicles$/);

@@ -16,19 +16,10 @@ export function navigate(key: string) {
 export default function DashboardPage() {
   const {
     connection, bootPhase, snapshot, snapshotVersion, scenarioId,
-    baselinePlan, anomaly, anomalyResult, simulation, caseDemoPhase, caseDemoError, runBaseline, runCaseDemo,
+    anomaly, anomalyResult, simulation,
   } = useApp();
   const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
   const [showcase, setShowcase] = useState(false);
-  const [baselineBusy, setBaselineBusy] = useState(false);
-  const [baselineError, setBaselineError] = useState('');
-  async function generateBaseline() {
-    setBaselineBusy(true);
-    setBaselineError('');
-    try { await runBaseline(); }
-    catch (error) { setBaselineError(error instanceof Error ? error.message : '生成方案失败'); }
-    finally { setBaselineBusy(false); }
-  }
   const [followVehicle, setFollowVehicle] = useState(false);
   const horizonS = 1800;
   const clock = useSimClock(horizonS, false);
@@ -36,7 +27,7 @@ export default function DashboardPage() {
   const orders = snapshot?.orders ?? [];
   const vehicles = snapshot?.vehicles ?? [];
   const warehouses = snapshot?.warehouses ?? [];
-  const currentPlan = anomalyResult?.replanned_plan ?? baselinePlan;
+  const currentPlan = anomalyResult?.replanned_plan ?? null;
 
   const routes = useMemo(() => routesToTwinRoutes(currentPlan, vehicles), [currentPlan, vehicles]);
   const demoRoutes = useMemo(() => buildFourVehicleShowcase(orders, vehicles, warehouses), [orders, vehicles, warehouses]);
@@ -86,28 +77,8 @@ export default function DashboardPage() {
     };
   }), [routes, affectedVehicles]);
 
-  const demoLabel = {
-    idle: '尚未运行', importing: '① 导入案例', baseline: '② 正在做基线调度', anomaly: '③ 正在注入异常并重排', simulation: '④ 正在运行 SimPy', completed: '案例已完成', failed: '案例失败',
-  }[caseDemoPhase];
-
   return (
     <div>
-      <div className="panel demo-panel">
-        <div className="demo-head">
-          <div><h2>调度演练 · 20 单单仓场景</h2><p>使用合成数据运行合作引擎；演练结果不等同于正式派车，正式提交请使用「运输计划」。</p></div>
-          <div className="demo-actions">
-            <button className="btn btn-primary" disabled={connection !== 'ok' || ['importing', 'baseline', 'anomaly', 'simulation'].includes(caseDemoPhase)} onClick={() => void runCaseDemo().catch(() => undefined)}>开始演练</button>
-            {!baselinePlan && caseDemoPhase === 'idle' && <button className="btn btn-ghost" onClick={() => void generateBaseline()} disabled={!snapshot || baselineBusy}>{baselineBusy ? '正在生成方案…' : '只生成基线'}</button>}
-          </div>
-        </div>
-        {baselineBusy && <p role="status">正在计算仓运方案，请等待求解结果。</p>}
-        {baselineError && <p className="callout callout-error" role="alert">{baselineError}</p>}
-        <div className="demo-steps">
-          {[['importing','1','导入 20 单单仓场景'],['baseline','2','生成仓运方案'],['anomaly','3','车辆延误 1 分钟并重排'],['simulation','4','仿真推演 30 分钟']].map(([key,n,label]) => { const rank=['importing','baseline','anomaly','simulation','completed'].indexOf(caseDemoPhase); const kr=['importing','baseline','anomaly','simulation'].indexOf(key); const state=caseDemoPhase==='completed'||rank>kr?'done':caseDemoPhase===key?'active':'pending'; return <div key={key} className={`demo-step ${state}`}><span>{state==='done'?'✓':n}</span><b>{label}</b></div>; })}
-        </div>
-        <div className="demo-status"><span className={`demo-dot ${caseDemoPhase}`}></span><b>{demoLabel}</b>{caseDemoError && <small> · {caseDemoError}</small>}{baselinePlan && <small> · 当前 Plan v{currentPlan?.version ?? 1}</small>}</div>
-      </div>
-
       <div className="r26-cockpit-entry"><div><small>仓储视图</small><strong>配送中心</strong><span>冷藏 / 冷冻 · 货架库位 · 叉车取放货 · 月台装车回放</span></div><button className="btn btn-primary" onClick={() => navigate('warehouseTwin')}>查看仓库</button></div>
 
       <div className="status-strip">
