@@ -95,7 +95,7 @@ export default function DashboardPage() {
     <div>
       <div className="panel demo-panel">
         <div className="demo-head">
-          <div><h2>调度演练 · 20 单单仓场景</h2><p>导入场景、生成方案，再模拟配送延误并检查重排结果。</p></div>
+          <div><p>导入场景、生成方案，再模拟配送延误并检查重排结果。</p></div>
           <div className="demo-actions">
             <button className="btn btn-primary" disabled={demoRunning || baselineBusy} onClick={() => void runCaseDemo()}>{demoRunning ? '案例运行中…' : caseDemoPhase === 'completed' ? '重新运行' : '开始演练'}</button>
             {!baselinePlan && caseDemoPhase === 'idle' && <button className="btn btn-ghost" onClick={() => void generateBaseline()} disabled={!snapshot || baselineBusy}>{baselineBusy ? '正在生成方案…' : '只生成基线'}</button>}
@@ -167,7 +167,7 @@ export default function DashboardPage() {
 
         <aside className="cockpit-col">
           <div className={`panel alert-panel ${eventActive ? 'alert-live' : ''}`}>
-            <div className="panel-title-row"><div><h3>实时异常告警</h3><p>来自事件通道的真实登记</p></div>
+            <div className="panel-title-row"><div><h3>实时异常告警</h3></div>
               {eventActive ? <StatusPill tone="danger">处置中</StatusPill> : <StatusPill tone="success">无异常</StatusPill>}
             </div>
             {eventActive && anomaly.event ? (
@@ -177,9 +177,7 @@ export default function DashboardPage() {
                 <small>影响订单：{anomaly.event.payload.affected_order_ids.join('、') || '—'}</small>
                 <button className="btn btn-danger btn-sm" onClick={() => navigate('events')}>进入处置</button>
               </div>
-            ) : (
-              <p className="muted-line">系统正常运行，可在「异常处置」页面注入 veh_1 延误 900s 演练。</p>
-            )}
+            ) : null}
           </div>
 
           <div className="panel">

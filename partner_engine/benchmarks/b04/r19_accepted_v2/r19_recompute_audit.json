@@ -1,0 +1,6 @@
+{
+  "cases_recomputed": 6,
+  "comparisons_recomputed": 24,
+  "mismatches": 0,
+  "scope": "independent recomputation of every recorded arm metric, legality flag and derived snapshot version from the archived CandidatePlans and snapshots; not a new solver run and not a second constraint proof"
+}

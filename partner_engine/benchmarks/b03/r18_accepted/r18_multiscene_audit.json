@@ -1,0 +1,118 @@
+{
+  "cases": [
+    {
+      "case": "s12_seed17",
+      "size": 12,
+      "seed": 17,
+      "scenario_sha256": "780b663c8ab1ec0de390856a0507163b82710204207faa75a84bfe20b82b57e1",
+      "scenario_bytes": 35929,
+      "raw_evidence": "raw/s12_seed17_paired.json",
+      "raw_sha256": "3e172d4b80991edec66d4bed9c51cf341f814f60e6c69db16a2007500ef1fd76",
+      "status": "complete_validated_pair",
+      "distance_priority": "equal_distance",
+      "distance_sequential_m": 50000,
+      "distance_deep_m": 50000,
+      "sequential_wait_s": 1260,
+      "deep_wait_s": 900,
+      "wait_saved_s": 360,
+      "wait_reduction_pct": 28.57,
+      "deep_extra_wall_ms": 10507
+    },
+    {
+      "case": "s16_seed42",
+      "size": 16,
+      "seed": 42,
+      "scenario_sha256": "d7f7a295350f40ac449369858e3766af722738d43d5292115609b9cbccfb6a09",
+      "scenario_bytes": 41068,
+      "raw_evidence": "raw/s16_seed42_paired.json",
+      "raw_sha256": "a77f681b774452048fefab1545a2c892f1f87e48efb83d39ba8ef5a2100d2df0",
+      "status": "complete_validated_pair",
+      "distance_priority": "equal_distance",
+      "distance_sequential_m": 54000,
+      "distance_deep_m": 54000,
+      "sequential_wait_s": 2880,
+      "deep_wait_s": 1680,
+      "wait_saved_s": 1200,
+      "wait_reduction_pct": 41.67,
+      "deep_extra_wall_ms": 10568
+    },
+    {
+      "case": "s20_seed101",
+      "size": 20,
+      "seed": 101,
+      "scenario_sha256": "e0836e7fe97b2c4a4a36360412338376e2db0bcb0ec75f2e7ea82c2fdcc45287",
+      "scenario_bytes": 46226,
+      "raw_evidence": "raw/s20_seed101_paired.json",
+      "raw_sha256": "e2a1f9725eaa08a5cb091dcdcbeee8f1f7a37aea624306463eb0090b2695098b",
+      "status": "complete_validated_pair",
+      "distance_priority": "equal_distance",
+      "distance_sequential_m": 56000,
+      "distance_deep_m": 56000,
+      "sequential_wait_s": 4800,
+      "deep_wait_s": 2700,
+      "wait_saved_s": 2100,
+      "wait_reduction_pct": 43.75,
+      "deep_extra_wall_ms": 11674
+    },
+    {
+      "case": "s20_seed66",
+      "size": 20,
+      "seed": 66,
+      "scenario_sha256": "958dc32f82dcfb35b8783d39e0e6f7196272292a4d2560910236ae4a44accab6",
+      "scenario_bytes": 46207,
+      "raw_evidence": "raw/s20_seed66_paired.json",
+      "raw_sha256": "95b1a0a3b0e6e6039bf58b5d809eb6e327ed8aa4ef464a4fb277e993cd856aa5",
+      "status": "complete_validated_pair",
+      "distance_priority": "equal_distance",
+      "distance_sequential_m": 56000,
+      "distance_deep_m": 56000,
+      "sequential_wait_s": 4500,
+      "deep_wait_s": 2400,
+      "wait_saved_s": 2100,
+      "wait_reduction_pct": 46.67,
+      "deep_extra_wall_ms": 11674
+    },
+    {
+      "case": "s20_seed88",
+      "size": 20,
+      "seed": 88,
+      "scenario_sha256": "85984ef8c0095dca8e625cd975247c60469dd30bc727af925cc502db9dc6ecf8",
+      "scenario_bytes": 46203,
+      "raw_evidence": "raw/s20_seed88_paired.json",
+      "raw_sha256": "0bd5b9b86de8f82c15a0f4089623cbd039b717f29247f9278232b309568a8696",
+      "status": "complete_validated_pair",
+      "distance_priority": "equal_distance",
+      "distance_sequential_m": 56000,
+      "distance_deep_m": 56000,
+      "sequential_wait_s": 4500,
+      "deep_wait_s": 2700,
+      "wait_saved_s": 1800,
+      "wait_reduction_pct": 40.0,
+      "deep_extra_wall_ms": 11674
+    }
+  ],
+  "derived": {
+    "valid_equal_distance_pairs": 5,
+    "improved_count": 5,
+    "regressed_count": 0,
+    "unchanged_count": 0,
+    "average_wait_reduction_pct": 40.13
+  },
+  "r17_cross_check": {
+    "status": "match",
+    "case": "s20_seed66",
+    "reference_file": "r17_accepted_original.json",
+    "reference": {
+      "sequential_wait_s": 4500,
+      "deep_wait_s": 2400,
+      "distance_m": 56000
+    },
+    "observed": {
+      "sequential_wait_s": 4500,
+      "deep_wait_s": 2400,
+      "distance_m": 56000
+    },
+    "note": "Coincidence check on shared operational load only; the R18 s20 snapshots are separately perturbed synthetic files and do not replace the R17 evidence."
+  },
+  "scope": "independent per-order recomputation from archived raw CandidatePlans plus summary cross-check; not a new solver run and not a second constraint validation"
+}

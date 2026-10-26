@@ -73,7 +73,6 @@ function Shell({ onSignOut }: { onSignOut: () => void }) {
           </div>
         </header>
         <div className="content-wrap"><Page /></div>
-        <footer className="app-footer"><span>场景快照与本机数据库数据分开展示。路线为模拟结果，不能直接用于派车。</span></footer>
       </main>
     </div>
   );

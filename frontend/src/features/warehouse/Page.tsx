@@ -123,7 +123,7 @@ export default function Page() {
   }
 
   return <div className="warehouse-module">
-    <SectionHeader title="仓储管理" desc="参考原项目的入库、库存、出库与资源管理流程；不改变当前后端算法与接口，仅在前端增加仓储运营层。" actions={<StatusPill tone="success">后端契约冻结</StatusPill>} />
+    <SectionHeader title="仓储管理" />
 
     <div className="seg warehouse-tabs">{tabs.map((item) => <button key={item.key} className={`seg-btn ${tab === item.key ? 'is-active' : ''}`} onClick={() => setTab(item.key)}>{item.label}</button>)}</div>
     {notice && <div className="callout callout-info warehouse-notice"><span>{notice}</span><button className="link-btn" onClick={() => setNotice(null)}>关闭</button></div>}
@@ -136,7 +136,7 @@ export default function Page() {
         <KpiCard label="临期批次" value={`${lowFreshnessLots.length}`} sub="按当前本机时间" icon="alert" tone={lowFreshnessLots.length ? 'orange' : 'green'} />
       </div>
       <div className="card-grid two">
-        <div className="panel"><div className="panel-title-row"><div><h3>仓储作业主线</h3><p>把入库、库存、出库与装车交接串起来。</p></div></div><div className="warehouse-flow">{['到货登记', '收货验收', '预冷处理', '确认入库', '库存管理', '出库拣选', '装车交接'].map((x, i) => <div key={x} className="warehouse-flow-node"><span>{i + 1}</span><b>{x}</b></div>)}</div></div>
+        <div className="panel"><div className="panel-title-row"><div><h3>仓储作业主线</h3></div></div><div className="warehouse-flow">{['到货登记', '收货验收', '预冷处理', '确认入库', '库存管理', '出库拣选', '装车交接'].map((x, i) => <div key={x} className="warehouse-flow-node"><span>{i + 1}</span><b>{x}</b></div>)}</div></div>
         <div className="panel"><div className="panel-title-row"><div><h3>与当前调度方案连接</h3><p>仓储运营结果继续交给已有 CP-SAT / Routing 链路。</p></div><StatusPill tone={baselinePlan ? 'success' : 'warning'}>{baselinePlan ? `Plan v${baselinePlan.version}` : '等待调度方案'}</StatusPill></div><div className="chain-mini"><div><b>{scheduledOps.length}</b><span>已排程作业</span></div><div><b>{baselinePlan?.warehouse.warehouse_handoffs.length ?? 0}</b><span>装车交接</span></div><div><b>{snapshot?.warehouses.length ?? 0}</b><span>仓库节点</span></div></div><button className="btn btn-primary btn-sm" onClick={() => setTab('inbound')}>从入库开始</button></div>
       </div>
     </>}

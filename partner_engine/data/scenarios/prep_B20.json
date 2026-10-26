@@ -1,0 +1,3608 @@
+{
+  "snapshot_id": "snap_prep_B20",
+  "version": 1,
+  "origin_at": "2026-09-12T00:00:00+00:00",
+  "simulation_time_s": 0,
+  "rule_version": "prep-v1",
+  "orders": [
+    {
+      "order_id": "ord_B20_O1",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C1",
+      "delivery_node_id": "node_B20_C1",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O2",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C2",
+      "delivery_node_id": "node_B20_C2",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O3",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C3",
+      "delivery_node_id": "node_B20_C3",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O4",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C4",
+      "delivery_node_id": "node_B20_C4",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O5",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C5",
+      "delivery_node_id": "node_B20_C5",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O6",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C6",
+      "delivery_node_id": "node_B20_C6",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O7",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C7",
+      "delivery_node_id": "node_B20_C7",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O8",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C8",
+      "delivery_node_id": "node_B20_C8",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O9",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C9",
+      "delivery_node_id": "node_B20_C9",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O10",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "batch_id": "batch_B20_C10",
+      "delivery_node_id": "node_B20_C10",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O11",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C11",
+      "delivery_node_id": "node_B20_C11",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O12",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C12",
+      "delivery_node_id": "node_B20_C12",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O13",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C13",
+      "delivery_node_id": "node_B20_C13",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O14",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C14",
+      "delivery_node_id": "node_B20_C14",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O15",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C15",
+      "delivery_node_id": "node_B20_C15",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "chilled",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O16",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C16",
+      "delivery_node_id": "node_B20_C16",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O17",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C17",
+      "delivery_node_id": "node_B20_C17",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O18",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C18",
+      "delivery_node_id": "node_B20_C18",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O19",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C19",
+      "delivery_node_id": "node_B20_C19",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "order_id": "ord_B20_O20",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "batch_id": "batch_B20_C20",
+      "delivery_node_id": "node_B20_C20",
+      "quantity_units": 1,
+      "weight_kg": 100,
+      "volume_l": 1000,
+      "temperature_zone": "frozen",
+      "service_window": {
+        "start_s": 0,
+        "end_s": 24000
+      },
+      "service_duration_s": 60,
+      "freshness_deadline_s": 24000,
+      "required": true,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    }
+  ],
+  "vehicles": [
+    {
+      "vehicle_id": "veh_B20_H1V1",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "start_node_id": "node_B20_D1",
+      "end_node_id": "node_B20_D1",
+      "current_node_id": "node_B20_D1",
+      "capacity_weight_kg": 1000,
+      "capacity_volume_l": 10000,
+      "remaining_weight_kg": 1000,
+      "remaining_volume_l": 10000,
+      "temperature_zone": "chilled",
+      "shift_window": {
+        "start_s": 0,
+        "end_s": 28800
+      },
+      "available_at_s": 0,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "vehicle_id": "veh_B20_H1V2",
+      "version": 1,
+      "warehouse_id": "wh_B20_H1",
+      "start_node_id": "node_B20_D1",
+      "end_node_id": "node_B20_D1",
+      "current_node_id": "node_B20_D1",
+      "capacity_weight_kg": 1000,
+      "capacity_volume_l": 10000,
+      "remaining_weight_kg": 1000,
+      "remaining_volume_l": 10000,
+      "temperature_zone": "frozen",
+      "shift_window": {
+        "start_s": 0,
+        "end_s": 28800
+      },
+      "available_at_s": 0,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "vehicle_id": "veh_B20_H2V1",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "start_node_id": "node_B20_D2",
+      "end_node_id": "node_B20_D2",
+      "current_node_id": "node_B20_D2",
+      "capacity_weight_kg": 1000,
+      "capacity_volume_l": 10000,
+      "remaining_weight_kg": 1000,
+      "remaining_volume_l": 10000,
+      "temperature_zone": "chilled",
+      "shift_window": {
+        "start_s": 0,
+        "end_s": 28800
+      },
+      "available_at_s": 0,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    },
+    {
+      "vehicle_id": "veh_B20_H2V2",
+      "version": 1,
+      "warehouse_id": "wh_B20_H2",
+      "start_node_id": "node_B20_D2",
+      "end_node_id": "node_B20_D2",
+      "current_node_id": "node_B20_D2",
+      "capacity_weight_kg": 1000,
+      "capacity_volume_l": 10000,
+      "remaining_weight_kg": 1000,
+      "remaining_volume_l": 10000,
+      "temperature_zone": "frozen",
+      "shift_window": {
+        "start_s": 0,
+        "end_s": 28800
+      },
+      "available_at_s": 0,
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "preparation-v1:B20:seed42",
+        "observed_at": "2026-09-12T00:00:00+00:00",
+        "rule_version": "prep-v1"
+      }
+    }
+  ],
+  "warehouses": [
+    {
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "node_id": "node_B20_D1",
+      "temperature_zones": [
+        "chilled",
+        "frozen"
+      ]
+    },
+    {
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "node_id": "node_B20_D2",
+      "temperature_zones": [
+        "chilled",
+        "frozen"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "res_B20_H1D",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "resource_kind": "dock",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_B20_H2D",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "resource_kind": "dock",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_B20_H1W1",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "resource_kind": "worker",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_B20_H1W2",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "resource_kind": "worker",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_B20_H2W1",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "resource_kind": "worker",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_B20_H2W2",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "resource_kind": "worker",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_B20_H1sorting",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "resource_kind": "sorting",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_B20_H1handling",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "resource_kind": "handling",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_B20_H2sorting",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "resource_kind": "sorting",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    },
+    {
+      "resource_id": "res_B20_H2handling",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "resource_kind": "handling",
+      "capacity_units": 1,
+      "available_windows": [
+        {
+          "start_s": 0,
+          "end_s": 28800
+        }
+      ],
+      "unavailable_windows": []
+    }
+  ],
+  "stock_lots": [
+    {
+      "batch_id": "batch_B20_C1",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C2",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C3",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C4",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C5",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C6",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C7",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C8",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C9",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C10",
+      "warehouse_id": "wh_B20_H1",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C11",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C12",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C13",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C14",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C15",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C16",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C17",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C18",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C19",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    },
+    {
+      "batch_id": "batch_B20_C20",
+      "warehouse_id": "wh_B20_H2",
+      "version": 1,
+      "temperature_zone": "frozen",
+      "on_hand_units": 1,
+      "reserved_units": 0,
+      "quarantined_units": 0,
+      "expires_at": "2026-09-12T23:59:59+00:00"
+    }
+  ],
+  "operations": [
+    {
+      "operation_id": "op_B20_O1-unload",
+      "order_ids": [
+        "ord_B20_O1"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O1-receive",
+      "order_ids": [
+        "ord_B20_O1"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O1-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O1-sort",
+      "order_ids": [
+        "ord_B20_O1"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O1-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O1-dispatch",
+      "order_ids": [
+        "ord_B20_O1"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O1-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O1-load",
+      "order_ids": [
+        "ord_B20_O1"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O1-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O2-unload",
+      "order_ids": [
+        "ord_B20_O2"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O2-receive",
+      "order_ids": [
+        "ord_B20_O2"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O2-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O2-sort",
+      "order_ids": [
+        "ord_B20_O2"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O2-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O2-dispatch",
+      "order_ids": [
+        "ord_B20_O2"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O2-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O2-load",
+      "order_ids": [
+        "ord_B20_O2"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O2-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O3-unload",
+      "order_ids": [
+        "ord_B20_O3"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O3-receive",
+      "order_ids": [
+        "ord_B20_O3"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O3-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O3-sort",
+      "order_ids": [
+        "ord_B20_O3"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O3-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O3-dispatch",
+      "order_ids": [
+        "ord_B20_O3"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O3-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O3-load",
+      "order_ids": [
+        "ord_B20_O3"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O3-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O4-unload",
+      "order_ids": [
+        "ord_B20_O4"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O4-receive",
+      "order_ids": [
+        "ord_B20_O4"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O4-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O4-sort",
+      "order_ids": [
+        "ord_B20_O4"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O4-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O4-dispatch",
+      "order_ids": [
+        "ord_B20_O4"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O4-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O4-load",
+      "order_ids": [
+        "ord_B20_O4"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O4-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O5-unload",
+      "order_ids": [
+        "ord_B20_O5"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O5-receive",
+      "order_ids": [
+        "ord_B20_O5"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O5-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O5-sort",
+      "order_ids": [
+        "ord_B20_O5"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O5-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O5-dispatch",
+      "order_ids": [
+        "ord_B20_O5"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O5-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O5-load",
+      "order_ids": [
+        "ord_B20_O5"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O5-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O6-unload",
+      "order_ids": [
+        "ord_B20_O6"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O6-receive",
+      "order_ids": [
+        "ord_B20_O6"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O6-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O6-sort",
+      "order_ids": [
+        "ord_B20_O6"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O6-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O6-dispatch",
+      "order_ids": [
+        "ord_B20_O6"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O6-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O6-load",
+      "order_ids": [
+        "ord_B20_O6"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O6-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O7-unload",
+      "order_ids": [
+        "ord_B20_O7"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O7-receive",
+      "order_ids": [
+        "ord_B20_O7"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O7-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O7-sort",
+      "order_ids": [
+        "ord_B20_O7"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O7-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O7-dispatch",
+      "order_ids": [
+        "ord_B20_O7"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O7-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O7-load",
+      "order_ids": [
+        "ord_B20_O7"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O7-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O8-unload",
+      "order_ids": [
+        "ord_B20_O8"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O8-receive",
+      "order_ids": [
+        "ord_B20_O8"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O8-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O8-sort",
+      "order_ids": [
+        "ord_B20_O8"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O8-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O8-dispatch",
+      "order_ids": [
+        "ord_B20_O8"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O8-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O8-load",
+      "order_ids": [
+        "ord_B20_O8"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O8-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O9-unload",
+      "order_ids": [
+        "ord_B20_O9"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O9-receive",
+      "order_ids": [
+        "ord_B20_O9"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O9-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O9-sort",
+      "order_ids": [
+        "ord_B20_O9"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O9-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O9-dispatch",
+      "order_ids": [
+        "ord_B20_O9"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O9-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O9-load",
+      "order_ids": [
+        "ord_B20_O9"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O9-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O10-unload",
+      "order_ids": [
+        "ord_B20_O10"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O10-receive",
+      "order_ids": [
+        "ord_B20_O10"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O10-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O10-sort",
+      "order_ids": [
+        "ord_B20_O10"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O10-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O10-dispatch",
+      "order_ids": [
+        "ord_B20_O10"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O10-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O10-load",
+      "order_ids": [
+        "ord_B20_O10"
+      ],
+      "warehouse_id": "wh_B20_H1",
+      "resource_id": "res_B20_H1W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O10-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O11-unload",
+      "order_ids": [
+        "ord_B20_O11"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O11-receive",
+      "order_ids": [
+        "ord_B20_O11"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O11-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O11-sort",
+      "order_ids": [
+        "ord_B20_O11"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O11-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O11-dispatch",
+      "order_ids": [
+        "ord_B20_O11"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O11-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O11-load",
+      "order_ids": [
+        "ord_B20_O11"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O11-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O12-unload",
+      "order_ids": [
+        "ord_B20_O12"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O12-receive",
+      "order_ids": [
+        "ord_B20_O12"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O12-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O12-sort",
+      "order_ids": [
+        "ord_B20_O12"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O12-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O12-dispatch",
+      "order_ids": [
+        "ord_B20_O12"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O12-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O12-load",
+      "order_ids": [
+        "ord_B20_O12"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O12-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O13-unload",
+      "order_ids": [
+        "ord_B20_O13"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O13-receive",
+      "order_ids": [
+        "ord_B20_O13"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O13-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O13-sort",
+      "order_ids": [
+        "ord_B20_O13"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O13-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O13-dispatch",
+      "order_ids": [
+        "ord_B20_O13"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O13-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O13-load",
+      "order_ids": [
+        "ord_B20_O13"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O13-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O14-unload",
+      "order_ids": [
+        "ord_B20_O14"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O14-receive",
+      "order_ids": [
+        "ord_B20_O14"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O14-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O14-sort",
+      "order_ids": [
+        "ord_B20_O14"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O14-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O14-dispatch",
+      "order_ids": [
+        "ord_B20_O14"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O14-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O14-load",
+      "order_ids": [
+        "ord_B20_O14"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O14-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O15-unload",
+      "order_ids": [
+        "ord_B20_O15"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O15-receive",
+      "order_ids": [
+        "ord_B20_O15"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O15-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O15-sort",
+      "order_ids": [
+        "ord_B20_O15"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O15-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O15-dispatch",
+      "order_ids": [
+        "ord_B20_O15"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O15-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O15-load",
+      "order_ids": [
+        "ord_B20_O15"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O15-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O16-unload",
+      "order_ids": [
+        "ord_B20_O16"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O16-receive",
+      "order_ids": [
+        "ord_B20_O16"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O16-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O16-sort",
+      "order_ids": [
+        "ord_B20_O16"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O16-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O16-dispatch",
+      "order_ids": [
+        "ord_B20_O16"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O16-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O16-load",
+      "order_ids": [
+        "ord_B20_O16"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O16-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O17-unload",
+      "order_ids": [
+        "ord_B20_O17"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O17-receive",
+      "order_ids": [
+        "ord_B20_O17"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O17-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O17-sort",
+      "order_ids": [
+        "ord_B20_O17"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O17-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O17-dispatch",
+      "order_ids": [
+        "ord_B20_O17"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O17-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O17-load",
+      "order_ids": [
+        "ord_B20_O17"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O17-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O18-unload",
+      "order_ids": [
+        "ord_B20_O18"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O18-receive",
+      "order_ids": [
+        "ord_B20_O18"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O18-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O18-sort",
+      "order_ids": [
+        "ord_B20_O18"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O18-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O18-dispatch",
+      "order_ids": [
+        "ord_B20_O18"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O18-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O18-load",
+      "order_ids": [
+        "ord_B20_O18"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O18-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O19-unload",
+      "order_ids": [
+        "ord_B20_O19"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O19-receive",
+      "order_ids": [
+        "ord_B20_O19"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O19-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O19-sort",
+      "order_ids": [
+        "ord_B20_O19"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O19-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O19-dispatch",
+      "order_ids": [
+        "ord_B20_O19"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O19-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O19-load",
+      "order_ids": [
+        "ord_B20_O19"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O19-dispatch"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O20-unload",
+      "order_ids": [
+        "ord_B20_O20"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "unload",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O20-receive",
+      "order_ids": [
+        "ord_B20_O20"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "receive",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O20-unload"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O20-sort",
+      "order_ids": [
+        "ord_B20_O20"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "sort",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O20-receive"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O20-dispatch",
+      "order_ids": [
+        "ord_B20_O20"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "dispatch",
+      "duration_s": 30,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O20-sort"
+      ],
+      "status": "pending"
+    },
+    {
+      "operation_id": "op_B20_O20-load",
+      "order_ids": [
+        "ord_B20_O20"
+      ],
+      "warehouse_id": "wh_B20_H2",
+      "resource_id": "res_B20_H2W1",
+      "operation_kind": "load",
+      "duration_s": 60,
+      "release_at_s": 0,
+      "deadline_at_s": 24000,
+      "predecessor_ids": [
+        "op_B20_O20-dispatch"
+      ],
+      "status": "pending"
+    }
+  ],
+  "frozen_operations": [],
+  "matrix": {
+    "matrix_id": "mtx_prep_B20",
+    "version": 1,
+    "node_ids": [
+      "node_B20_D1",
+      "node_B20_D2",
+      "node_B20_C1",
+      "node_B20_C2",
+      "node_B20_C3",
+      "node_B20_C4",
+      "node_B20_C5",
+      "node_B20_C6",
+      "node_B20_C7",
+      "node_B20_C8",
+      "node_B20_C9",
+      "node_B20_C10",
+      "node_B20_C11",
+      "node_B20_C12",
+      "node_B20_C13",
+      "node_B20_C14",
+      "node_B20_C15",
+      "node_B20_C16",
+      "node_B20_C17",
+      "node_B20_C18",
+      "node_B20_C19",
+      "node_B20_C20"
+    ],
+    "duration_s": [
+      [
+        0,
+        1000,
+        200,
+        300,
+        400,
+        500,
+        600,
+        300,
+        400,
+        500,
+        600,
+        700,
+        400,
+        500,
+        600,
+        700,
+        800,
+        500,
+        600,
+        700,
+        800,
+        900
+      ],
+      [
+        1000,
+        0,
+        1000,
+        900,
+        800,
+        700,
+        600,
+        1100,
+        1000,
+        900,
+        800,
+        700,
+        1200,
+        1100,
+        1000,
+        900,
+        800,
+        1300,
+        1200,
+        1100,
+        1000,
+        900
+      ],
+      [
+        200,
+        1000,
+        0,
+        100,
+        200,
+        300,
+        400,
+        100,
+        200,
+        300,
+        400,
+        500,
+        200,
+        300,
+        400,
+        500,
+        600,
+        300,
+        400,
+        500,
+        600,
+        700
+      ],
+      [
+        300,
+        900,
+        100,
+        0,
+        100,
+        200,
+        300,
+        200,
+        100,
+        200,
+        300,
+        400,
+        300,
+        200,
+        300,
+        400,
+        500,
+        400,
+        300,
+        400,
+        500,
+        600
+      ],
+      [
+        400,
+        800,
+        200,
+        100,
+        0,
+        100,
+        200,
+        300,
+        200,
+        100,
+        200,
+        300,
+        400,
+        300,
+        200,
+        300,
+        400,
+        500,
+        400,
+        300,
+        400,
+        500
+      ],
+      [
+        500,
+        700,
+        300,
+        200,
+        100,
+        0,
+        100,
+        400,
+        300,
+        200,
+        100,
+        200,
+        500,
+        400,
+        300,
+        200,
+        300,
+        600,
+        500,
+        400,
+        300,
+        400
+      ],
+      [
+        600,
+        600,
+        400,
+        300,
+        200,
+        100,
+        0,
+        500,
+        400,
+        300,
+        200,
+        100,
+        600,
+        500,
+        400,
+        300,
+        200,
+        700,
+        600,
+        500,
+        400,
+        300
+      ],
+      [
+        300,
+        1100,
+        100,
+        200,
+        300,
+        400,
+        500,
+        0,
+        100,
+        200,
+        300,
+        400,
+        100,
+        200,
+        300,
+        400,
+        500,
+        200,
+        300,
+        400,
+        500,
+        600
+      ],
+      [
+        400,
+        1000,
+        200,
+        100,
+        200,
+        300,
+        400,
+        100,
+        0,
+        100,
+        200,
+        300,
+        200,
+        100,
+        200,
+        300,
+        400,
+        300,
+        200,
+        300,
+        400,
+        500
+      ],
+      [
+        500,
+        900,
+        300,
+        200,
+        100,
+        200,
+        300,
+        200,
+        100,
+        0,
+        100,
+        200,
+        300,
+        200,
+        100,
+        200,
+        300,
+        400,
+        300,
+        200,
+        300,
+        400
+      ],
+      [
+        600,
+        800,
+        400,
+        300,
+        200,
+        100,
+        200,
+        300,
+        200,
+        100,
+        0,
+        100,
+        400,
+        300,
+        200,
+        100,
+        200,
+        500,
+        400,
+        300,
+        200,
+        300
+      ],
+      [
+        700,
+        700,
+        500,
+        400,
+        300,
+        200,
+        100,
+        400,
+        300,
+        200,
+        100,
+        0,
+        500,
+        400,
+        300,
+        200,
+        100,
+        600,
+        500,
+        400,
+        300,
+        200
+      ],
+      [
+        400,
+        1200,
+        200,
+        300,
+        400,
+        500,
+        600,
+        100,
+        200,
+        300,
+        400,
+        500,
+        0,
+        100,
+        200,
+        300,
+        400,
+        100,
+        200,
+        300,
+        400,
+        500
+      ],
+      [
+        500,
+        1100,
+        300,
+        200,
+        300,
+        400,
+        500,
+        200,
+        100,
+        200,
+        300,
+        400,
+        100,
+        0,
+        100,
+        200,
+        300,
+        200,
+        100,
+        200,
+        300,
+        400
+      ],
+      [
+        600,
+        1000,
+        400,
+        300,
+        200,
+        300,
+        400,
+        300,
+        200,
+        100,
+        200,
+        300,
+        200,
+        100,
+        0,
+        100,
+        200,
+        300,
+        200,
+        100,
+        200,
+        300
+      ],
+      [
+        700,
+        900,
+        500,
+        400,
+        300,
+        200,
+        300,
+        400,
+        300,
+        200,
+        100,
+        200,
+        300,
+        200,
+        100,
+        0,
+        100,
+        400,
+        300,
+        200,
+        100,
+        200
+      ],
+      [
+        800,
+        800,
+        600,
+        500,
+        400,
+        300,
+        200,
+        500,
+        400,
+        300,
+        200,
+        100,
+        400,
+        300,
+        200,
+        100,
+        0,
+        500,
+        400,
+        300,
+        200,
+        100
+      ],
+      [
+        500,
+        1300,
+        300,
+        400,
+        500,
+        600,
+        700,
+        200,
+        300,
+        400,
+        500,
+        600,
+        100,
+        200,
+        300,
+        400,
+        500,
+        0,
+        100,
+        200,
+        300,
+        400
+      ],
+      [
+        600,
+        1200,
+        400,
+        300,
+        400,
+        500,
+        600,
+        300,
+        200,
+        300,
+        400,
+        500,
+        200,
+        100,
+        200,
+        300,
+        400,
+        100,
+        0,
+        100,
+        200,
+        300
+      ],
+      [
+        700,
+        1100,
+        500,
+        400,
+        300,
+        400,
+        500,
+        400,
+        300,
+        200,
+        300,
+        400,
+        300,
+        200,
+        100,
+        200,
+        300,
+        200,
+        100,
+        0,
+        100,
+        200
+      ],
+      [
+        800,
+        1000,
+        600,
+        500,
+        400,
+        300,
+        400,
+        500,
+        400,
+        300,
+        200,
+        300,
+        400,
+        300,
+        200,
+        100,
+        200,
+        300,
+        200,
+        100,
+        0,
+        100
+      ],
+      [
+        900,
+        900,
+        700,
+        600,
+        500,
+        400,
+        300,
+        600,
+        500,
+        400,
+        300,
+        200,
+        500,
+        400,
+        300,
+        200,
+        100,
+        400,
+        300,
+        200,
+        100,
+        0
+      ]
+    ],
+    "distance_m": [
+      [
+        0,
+        10000,
+        2000,
+        3000,
+        4000,
+        5000,
+        6000,
+        3000,
+        4000,
+        5000,
+        6000,
+        7000,
+        4000,
+        5000,
+        6000,
+        7000,
+        8000,
+        5000,
+        6000,
+        7000,
+        8000,
+        9000
+      ],
+      [
+        10000,
+        0,
+        10000,
+        9000,
+        8000,
+        7000,
+        6000,
+        11000,
+        10000,
+        9000,
+        8000,
+        7000,
+        12000,
+        11000,
+        10000,
+        9000,
+        8000,
+        13000,
+        12000,
+        11000,
+        10000,
+        9000
+      ],
+      [
+        2000,
+        10000,
+        0,
+        1000,
+        2000,
+        3000,
+        4000,
+        1000,
+        2000,
+        3000,
+        4000,
+        5000,
+        2000,
+        3000,
+        4000,
+        5000,
+        6000,
+        3000,
+        4000,
+        5000,
+        6000,
+        7000
+      ],
+      [
+        3000,
+        9000,
+        1000,
+        0,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        4000,
+        3000,
+        2000,
+        3000,
+        4000,
+        5000,
+        4000,
+        3000,
+        4000,
+        5000,
+        6000
+      ],
+      [
+        4000,
+        8000,
+        2000,
+        1000,
+        0,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        4000,
+        3000,
+        2000,
+        3000,
+        4000,
+        5000,
+        4000,
+        3000,
+        4000,
+        5000
+      ],
+      [
+        5000,
+        7000,
+        3000,
+        2000,
+        1000,
+        0,
+        1000,
+        4000,
+        3000,
+        2000,
+        1000,
+        2000,
+        5000,
+        4000,
+        3000,
+        2000,
+        3000,
+        6000,
+        5000,
+        4000,
+        3000,
+        4000
+      ],
+      [
+        6000,
+        6000,
+        4000,
+        3000,
+        2000,
+        1000,
+        0,
+        5000,
+        4000,
+        3000,
+        2000,
+        1000,
+        6000,
+        5000,
+        4000,
+        3000,
+        2000,
+        7000,
+        6000,
+        5000,
+        4000,
+        3000
+      ],
+      [
+        3000,
+        11000,
+        1000,
+        2000,
+        3000,
+        4000,
+        5000,
+        0,
+        1000,
+        2000,
+        3000,
+        4000,
+        1000,
+        2000,
+        3000,
+        4000,
+        5000,
+        2000,
+        3000,
+        4000,
+        5000,
+        6000
+      ],
+      [
+        4000,
+        10000,
+        2000,
+        1000,
+        2000,
+        3000,
+        4000,
+        1000,
+        0,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        4000,
+        3000,
+        2000,
+        3000,
+        4000,
+        5000
+      ],
+      [
+        5000,
+        9000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        0,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        4000,
+        3000,
+        2000,
+        3000,
+        4000
+      ],
+      [
+        6000,
+        8000,
+        4000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        0,
+        1000,
+        4000,
+        3000,
+        2000,
+        1000,
+        2000,
+        5000,
+        4000,
+        3000,
+        2000,
+        3000
+      ],
+      [
+        7000,
+        7000,
+        5000,
+        4000,
+        3000,
+        2000,
+        1000,
+        4000,
+        3000,
+        2000,
+        1000,
+        0,
+        5000,
+        4000,
+        3000,
+        2000,
+        1000,
+        6000,
+        5000,
+        4000,
+        3000,
+        2000
+      ],
+      [
+        4000,
+        12000,
+        2000,
+        3000,
+        4000,
+        5000,
+        6000,
+        1000,
+        2000,
+        3000,
+        4000,
+        5000,
+        0,
+        1000,
+        2000,
+        3000,
+        4000,
+        1000,
+        2000,
+        3000,
+        4000,
+        5000
+      ],
+      [
+        5000,
+        11000,
+        3000,
+        2000,
+        3000,
+        4000,
+        5000,
+        2000,
+        1000,
+        2000,
+        3000,
+        4000,
+        1000,
+        0,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        4000
+      ],
+      [
+        6000,
+        10000,
+        4000,
+        3000,
+        2000,
+        3000,
+        4000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        0,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000
+      ],
+      [
+        7000,
+        9000,
+        5000,
+        4000,
+        3000,
+        2000,
+        3000,
+        4000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        0,
+        1000,
+        4000,
+        3000,
+        2000,
+        1000,
+        2000
+      ],
+      [
+        8000,
+        8000,
+        6000,
+        5000,
+        4000,
+        3000,
+        2000,
+        5000,
+        4000,
+        3000,
+        2000,
+        1000,
+        4000,
+        3000,
+        2000,
+        1000,
+        0,
+        5000,
+        4000,
+        3000,
+        2000,
+        1000
+      ],
+      [
+        5000,
+        13000,
+        3000,
+        4000,
+        5000,
+        6000,
+        7000,
+        2000,
+        3000,
+        4000,
+        5000,
+        6000,
+        1000,
+        2000,
+        3000,
+        4000,
+        5000,
+        0,
+        1000,
+        2000,
+        3000,
+        4000
+      ],
+      [
+        6000,
+        12000,
+        4000,
+        3000,
+        4000,
+        5000,
+        6000,
+        3000,
+        2000,
+        3000,
+        4000,
+        5000,
+        2000,
+        1000,
+        2000,
+        3000,
+        4000,
+        1000,
+        0,
+        1000,
+        2000,
+        3000
+      ],
+      [
+        7000,
+        11000,
+        5000,
+        4000,
+        3000,
+        4000,
+        5000,
+        4000,
+        3000,
+        2000,
+        3000,
+        4000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        0,
+        1000,
+        2000
+      ],
+      [
+        8000,
+        10000,
+        6000,
+        5000,
+        4000,
+        3000,
+        4000,
+        5000,
+        4000,
+        3000,
+        2000,
+        3000,
+        4000,
+        3000,
+        2000,
+        1000,
+        2000,
+        3000,
+        2000,
+        1000,
+        0,
+        1000
+      ],
+      [
+        9000,
+        9000,
+        7000,
+        6000,
+        5000,
+        4000,
+        3000,
+        6000,
+        5000,
+        4000,
+        3000,
+        2000,
+        5000,
+        4000,
+        3000,
+        2000,
+        1000,
+        4000,
+        3000,
+        2000,
+        1000,
+        0
+      ]
+    ],
+    "source": {
+      "source_kind": "simulation",
+      "source_ref": "preparation-v1:B20:synthetic_manhattan_10m_per_s",
+      "observed_at": "2026-09-12T00:00:00+00:00",
+      "rule_version": "prep-v1"
+    }
+  }
+}

@@ -11,7 +11,7 @@ import type {
   SimulationResponseWire,
   Snapshot,
 } from './appTypes';
-import { getJson, pollJob, postApi } from './lib/http';
+import { getJson, pollJob, postApi, postPartner } from './lib/http';
 
 export type Conn = 'unknown' | 'ok' | 'bad';
 export type BootPhase = 'idle' | 'checking' | 'importing' | 'planning' | 'ready' | 'failed';
@@ -140,16 +140,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
       snapshot_id: sid,
       expected_snapshot_version: ver,
       order_ids: snap.orders.map((o) => o.order_id),
-      budget_ms: options?.budgetMs ?? 60000,
+      budget_ms: options?.budgetMs ?? 12000,
       max_coordination_rounds: options?.mode === 'deep' ? 3 : 1,
       coordination_mode: options?.mode ?? 'sequential',
     }, `ui-baseline-${Date.now()}`);
     const job = await pollJob(accepted.job_id, undefined, 120);
     if (job.status !== 'succeeded' || !job.plan_id) throw new Error(job.error_code ?? '基线规划失败');
-    const planResp = await fetch(`/api/v1/plans/${encodeURIComponent(job.plan_id)}`).then((r) => {
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      return r.json() as Promise<PlanResponse>;
-    });
+    const planResp = await getJson<PlanResponse>(`/api/v1/plans/${encodeURIComponent(job.plan_id)}`);
     setBaseline(planResp);
     setSelectedPlan(planResp.plan);
     setBootPhase('ready');
@@ -243,7 +240,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         delayS: 900,
       });
       const event = buildEvent({ ...resolved, eventType: resolved.eventType }, sid, ver);
-      const accepted = await postApi<{ job_id: string; simulation_id: string }>('/api/v1/simulations', {
+      const accepted = await postPartner<{ job_id: string; simulation_id: string }>('/api/v1/simulations', {
         snapshot: snap,
         events: [event],
         horizon_s: 1800,
@@ -251,10 +248,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       }, `ui-sim-${Date.now()}`);
       const job = await pollJob(accepted.job_id, undefined, 120);
       if (job.status !== 'succeeded') throw new Error(job.error_code ?? '仿真失败');
-      const body = await fetch(`/api/v1/simulations/${encodeURIComponent(accepted.simulation_id)}`).then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json() as Promise<SimulationResponseWire>;
-      });
+      const body = await getJson<SimulationResponseWire>(`/api/v1/simulations/${encodeURIComponent(accepted.simulation_id)}`);
       setSimulation(body.simulation);
       setSimPhase('completed');
       return body.simulation;
@@ -285,8 +279,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         eventType: 'departure_delayed',
         objectId: 'veh_1',
         orderIds: ['ord_001'],
-        occurredAtS: 900,
-        delayS: 900,
+        occurredAtS: 0,
+        delayS: 60,
       });
       if (!accepted?.result) throw new Error(anomaly.error ?? '局部重调度未生成结果');
 
@@ -295,12 +289,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
         eventType: 'departure_delayed',
         objectId: 'veh_1',
         orderIds: ['ord_001'],
-        occurredAtS: 900,
-        delayS: 900,
+        occurredAtS: 0,
+        delayS: 60,
       });
       if (!sim) throw new Error('SimPy 仿真未完成');
       setCaseDemoPhase('completed');
-      setNotice('案例演示完成：20 单基线 → veh_1 延误 900s → 局部重调度 → SimPy 1800s 推演。');
+      setNotice('案例演示完成：20 单基线 → veh_1 延误 60s → 局部重调度 → SimPy 1800s 推演。');
     } catch (e) {
       const message = e instanceof Error ? e.message : '案例演示失败';
       setCaseDemoError(message);

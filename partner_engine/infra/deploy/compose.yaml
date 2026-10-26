@@ -1,0 +1,19 @@
+# Optional local PostgreSQL only. Application persistence is not implemented yet.
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo_local_only
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - demo_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U demo -d demo"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  demo_pg:

@@ -47,7 +47,7 @@ export default function Page() {
   }
 
   return <div>
-    <SectionHeader title="仓储排程" desc="直接调用联合调度中的 CP-SAT 仓储排程：冷间容量、温区、时间窗、时序、清洁/切换准备时间均来自真实求解结果。"
+    <SectionHeader title="仓储排程"
       actions={<div className="section-actions"><StatusPill tone={activePlan ? 'success' : 'warning'}>{activePlan ? `CP-SAT ${activePlan.warehouse.metadata?.status ?? '—'}` : '尚未求解'}</StatusPill><button className="btn btn-primary btn-sm" disabled={!snapshot || running} onClick={() => void runWarehouseSolve()}>{running ? 'CP-SAT 求解中…' : activePlan ? '重新运行仓储排程' : '运行 CP-SAT 排程'}</button></div>} />
 
     <div className="kpi-grid">
@@ -79,7 +79,7 @@ export default function Page() {
     </div>
 
     <div className="panel" style={{ marginTop: 16 }}>
-      <div className="panel-title-row"><div><h3>作业排程时间轴</h3><p>每行一个资源，色块为 CP-SAT 排定的作业区间</p></div><span className="soft-badge">{scheduled.length ? `窗口 0 – ${fmtClock(domainEnd)}` : '等待方案'}</span></div>
+      <div className="panel-title-row"><div><h3>作业排程时间轴</h3></div><span className="soft-badge">{scheduled.length ? `窗口 0 – ${fmtClock(domainEnd)}` : '等待方案'}</span></div>
       {scheduled.length ? (
         <div className="gantt">
           {[...new Set(scheduled.map((op) => op.resource_id))].map((resourceId) => {
@@ -114,11 +114,11 @@ export default function Page() {
             <span><i className="legend-dot warning" />涉及受影响订单</span>
           </div>
         </div>
-      ) : <p className="muted-line">等待基线方案后展示排程结果。</p>}
+      ) : null}
     </div>
 
     <div className="panel" style={{ marginTop: 16 }}>
-      <div className="panel-title-row"><div><h3>装车交接窗口</h3><p>warehouse_handoffs：备货完成时刻与装车窗口</p></div><span className="soft-badge">{handoffs.length} 项</span></div>
+      <div className="panel-title-row"><div><h3>装车交接窗口</h3></div><span className="soft-badge">{handoffs.length} 项</span></div>
       <div className="table-wrap">
         <table>
           <thead><tr><th>订单</th><th>仓库</th><th>备货完成</th><th>装车窗口</th><th>窗口时长</th></tr></thead>

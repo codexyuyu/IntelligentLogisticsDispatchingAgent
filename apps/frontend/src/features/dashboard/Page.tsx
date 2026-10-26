@@ -16,7 +16,7 @@ export function navigate(key: string) {
 export default function DashboardPage() {
   const {
     connection, bootPhase, snapshot, snapshotVersion, scenarioId,
-    baselinePlan, anomaly, anomalyResult, simulation, caseDemoPhase, caseDemoError, runBaseline,
+    baselinePlan, anomaly, anomalyResult, simulation, caseDemoPhase, caseDemoError, runBaseline, runCaseDemo,
   } = useApp();
   const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
   const [showcase, setShowcase] = useState(false);
@@ -94,16 +94,16 @@ export default function DashboardPage() {
     <div>
       <div className="panel demo-panel">
         <div className="demo-head">
-          <div><h2>调度演练 · 20 单单仓场景</h2><p>演练尚未接入当前后端；现有真实求解入口位于「运输计划」。</p></div>
+          <div><h2>调度演练 · 20 单单仓场景</h2><p>使用合成数据运行合作引擎；演练结果不等同于正式派车，正式提交请使用「运输计划」。</p></div>
           <div className="demo-actions">
-            <button className="btn btn-primary" disabled title="演练接口尚未接入当前后端">开始演练</button>
+            <button className="btn btn-primary" disabled={connection !== 'ok' || ['importing', 'baseline', 'anomaly', 'simulation'].includes(caseDemoPhase)} onClick={() => void runCaseDemo().catch(() => undefined)}>开始演练</button>
             {!baselinePlan && caseDemoPhase === 'idle' && <button className="btn btn-ghost" onClick={() => void generateBaseline()} disabled={!snapshot || baselineBusy}>{baselineBusy ? '正在生成方案…' : '只生成基线'}</button>}
           </div>
         </div>
         {baselineBusy && <p role="status">正在计算仓运方案，请等待求解结果。</p>}
         {baselineError && <p className="callout callout-error" role="alert">{baselineError}</p>}
         <div className="demo-steps">
-          {[['importing','1','导入 20 单单仓场景'],['baseline','2','生成仓运方案'],['anomaly','3','车辆延误 15 分钟并重排'],['simulation','4','仿真推演 30 分钟']].map(([key,n,label]) => { const rank=['importing','baseline','anomaly','simulation','completed'].indexOf(caseDemoPhase); const kr=['importing','baseline','anomaly','simulation'].indexOf(key); const state=caseDemoPhase==='completed'||rank>kr?'done':caseDemoPhase===key?'active':'pending'; return <div key={key} className={`demo-step ${state}`}><span>{state==='done'?'✓':n}</span><b>{label}</b></div>; })}
+          {[['importing','1','导入 20 单单仓场景'],['baseline','2','生成仓运方案'],['anomaly','3','车辆延误 1 分钟并重排'],['simulation','4','仿真推演 30 分钟']].map(([key,n,label]) => { const rank=['importing','baseline','anomaly','simulation','completed'].indexOf(caseDemoPhase); const kr=['importing','baseline','anomaly','simulation'].indexOf(key); const state=caseDemoPhase==='completed'||rank>kr?'done':caseDemoPhase===key?'active':'pending'; return <div key={key} className={`demo-step ${state}`}><span>{state==='done'?'✓':n}</span><b>{label}</b></div>; })}
         </div>
         <div className="demo-status"><span className={`demo-dot ${caseDemoPhase}`}></span><b>{demoLabel}</b>{caseDemoError && <small> · {caseDemoError}</small>}{baselinePlan && <small> · 当前 Plan v{currentPlan?.version ?? 1}</small>}</div>
       </div>

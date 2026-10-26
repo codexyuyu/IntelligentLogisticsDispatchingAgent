@@ -1,0 +1,112 @@
+{
+  "rule_version": "r05-freeze-0.2.0",
+  "horizon_s": 7200,
+  "zones": [
+    {
+      "zone_id": "zone_zh1",
+      "warehouse_id": "wh_1",
+      "version": 1,
+      "temperature_zone": "chilled",
+      "setpoint_decic": 40,
+      "capacities": [
+        { "unit": "weight_g", "amount": 20000000 },
+        { "unit": "volume_cm3", "amount": 80000000 }
+      ]
+    }
+  ],
+  "storage_locations": [
+    {
+      "location_id": "loc_zh1a",
+      "warehouse_id": "wh_1",
+      "zone_id": "zone_zh1",
+      "version": 1,
+      "capacities": [
+        { "unit": "weight_g", "amount": 10000000 },
+        { "unit": "volume_cm3", "amount": 40000000 }
+      ],
+      "available_windows": [{ "start_s": 0, "end_s": 7200 }]
+    }
+  ],
+  "occupancies": [
+    {
+      "occupancy_id": "occ_init1",
+      "batch_id": "bat_1",
+      "location_id": "loc_zh1a",
+      "capacity_use": [{ "unit": "weight_g", "amount": 4000000 }],
+      "origin": "initial_stock",
+      "outbound_operation_id": "op_1-load"
+    },
+    {
+      "occupancy_id": "occ_in2",
+      "batch_id": "bat_2",
+      "location_id": "loc_zh1a",
+      "capacity_use": [{ "unit": "weight_g", "amount": 6000000 }],
+      "origin": "planned_inbound",
+      "inbound_operation_id": "op_2-unload",
+      "outbound_operation_id": "op_2-load"
+    }
+  ],
+  "setup_policies": [
+    {
+      "policy_id": "pol_dock",
+      "version": "1",
+      "rule_version": "r05-freeze-0.2.0",
+      "rendering": "gap",
+      "rules": [
+        { "from_class": "class_a", "to_class": "class_b", "duration_s": 1800 }
+      ],
+      "default_duration_s": null
+    }
+  ],
+  "precool_requirements": [
+    {
+      "requirement_id": "pre_1",
+      "batch_id": "bat_2",
+      "warehouse_id": "wh_1",
+      "precool_operation_id": "op_2-precool",
+      "loading_operation_ids": ["op_2-load"],
+      "min_duration_s": 1800,
+      "target_temperature_zone": "chilled",
+      "eligible_resource_ids": ["res_pre1"]
+    }
+  ],
+  "exposure_limits": [
+    {
+      "limit_id": "exp_1",
+      "batch_id": "bat_2",
+      "max_exposure_s": 7200,
+      "scopes": ["in_warehouse", "waiting", "loading"],
+      "rule_version": "r05-freeze-0.2.0",
+      "source": {
+        "source_kind": "simulation",
+        "source_ref": "contracts/examples/r05_coldchain_snapshot.json",
+        "observed_at": "2026-10-23T00:00:00Z",
+        "rule_version": "r05-freeze-0.2.0"
+      }
+    }
+  ],
+  "batch_compatibility": [
+    {
+      "batch_id": "bat_1",
+      "warehouse_id": "wh_1",
+      "temperature_zone": "chilled",
+      "min_temperature_decic": 20,
+      "max_temperature_decic": 60,
+      "compatibility_class": "class_a"
+    },
+    {
+      "batch_id": "bat_2",
+      "warehouse_id": "wh_1",
+      "temperature_zone": "chilled",
+      "min_temperature_decic": 20,
+      "max_temperature_decic": 60,
+      "compatibility_class": "class_b"
+    }
+  ],
+  "compatibility_policy": {
+    "policy_id": "pol_mix",
+    "version": "1",
+    "rule_version": "r05-freeze-0.2.0",
+    "incompatible_class_pairs": [["class_a", "class_b"]]
+  }
+}

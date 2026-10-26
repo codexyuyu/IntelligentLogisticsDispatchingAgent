@@ -3833,6 +3833,49 @@
         "title": "InitialSetupStateDTO",
         "type": "object"
       },
+      "IntegrationRun": {
+        "additionalProperties": false,
+        "properties": {
+          "budget_ms": {
+            "default": 4000,
+            "maximum": 12000.0,
+            "minimum": 100.0,
+            "title": "Budget Ms",
+            "type": "integer"
+          },
+          "recoveries": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/RecoveryInput"
+            },
+            "title": "Recoveries",
+            "type": "array"
+          },
+          "scenario_id": {
+            "format": "uuid",
+            "title": "Scenario Id",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "seed": {
+            "default": 0,
+            "maximum": 2147483647.0,
+            "minimum": 0.0,
+            "title": "Seed",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "scenario_id"
+        ],
+        "title": "IntegrationRun",
+        "type": "object"
+      },
       "InventoryEntryDTO": {
         "additionalProperties": false,
         "properties": {
@@ -5446,6 +5489,45 @@
         "title": "ReadinessResponse",
         "type": "object"
       },
+      "RecoveryInput": {
+        "additionalProperties": false,
+        "properties": {
+          "disruption_at_s": {
+            "minimum": 0.0,
+            "title": "Disruption At S",
+            "type": "integer"
+          },
+          "recovery_s": {
+            "exclusiveMinimum": 0.0,
+            "title": "Recovery S",
+            "type": "integer"
+          },
+          "resource_id": {
+            "format": "uuid",
+            "title": "Resource Id",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "task_id": {
+            "format": "uuid",
+            "title": "Task Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id",
+          "resource_id",
+          "disruption_at_s",
+          "recovery_s"
+        ],
+        "title": "RecoveryInput",
+        "type": "object"
+      },
       "RegionRefDTO": {
         "additionalProperties": false,
         "properties": {
@@ -5865,6 +5947,39 @@
         "title": "ReturnPolicy",
         "type": "string"
       },
+      "RevokeInput": {
+        "additionalProperties": false,
+        "properties": {
+          "expected_digest": {
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Expected Digest",
+            "type": "string"
+          },
+          "now_s": {
+            "minimum": 0.0,
+            "title": "Now S",
+            "type": "integer"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "task_id": {
+            "format": "uuid",
+            "title": "Task Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id",
+          "now_s",
+          "expected_digest"
+        ],
+        "title": "RevokeInput",
+        "type": "object"
+      },
       "RouteDTO": {
         "additionalProperties": false,
         "properties": {
@@ -6138,6 +6253,85 @@
         ],
         "title": "RoutingNodeKind",
         "type": "string"
+      },
+      "ScenarioImport": {
+        "additionalProperties": false,
+        "properties": {
+          "available_at_s": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "propertyNames": {
+              "format": "uuid"
+            },
+            "title": "Available At S",
+            "type": "object"
+          },
+          "coldchain_fields": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ColdChainSnapshotDTO"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "name": {
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "2.0.0",
+            "default": "2.0.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "setup_policy": {
+            "$ref": "#/components/schemas/SetupPolicyDTO",
+            "default": {
+              "initial_states": [],
+              "transitions": [],
+              "version": "1.0.0"
+            }
+          },
+          "snapshot": {
+            "$ref": "#/components/schemas/PlanningSnapshotDTO"
+          },
+          "source_kind": {
+            "enum": [
+              "synthetic",
+              "enterprise"
+            ],
+            "title": "Source Kind",
+            "type": "string"
+          },
+          "source_ref": {
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Source Ref",
+            "type": "string"
+          },
+          "warehouse_tasks": {
+            "items": {
+              "$ref": "#/components/schemas/WarehouseTaskDTO"
+            },
+            "title": "Warehouse Tasks",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "source_kind",
+          "source_ref",
+          "snapshot",
+          "warehouse_tasks",
+          "available_at_s"
+        ],
+        "title": "ScenarioImport",
+        "type": "object"
       },
       "ScheduleCreate": {
         "additionalProperties": false,
@@ -11086,6 +11280,461 @@
           }
         },
         "summary": "Health"
+      }
+    },
+    "/api/v1/integration/runs": {
+      "post": {
+        "operationId": "run_integration",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "maxLength": 128,
+              "minLength": 1,
+              "title": "Idempotency-Key",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IntegrationRun"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Run",
+        "tags": [
+          "integration"
+        ]
+      }
+    },
+    "/api/v1/integration/runs/{run_id}": {
+      "get": {
+        "operationId": "read_integration_run",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Run",
+        "tags": [
+          "integration"
+        ]
+      }
+    },
+    "/api/v1/integration/runs/{run_id}/observations": {
+      "get": {
+        "operationId": "read_integration_observations",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Observations",
+        "tags": [
+          "integration"
+        ]
+      }
+    },
+    "/api/v1/integration/runs/{run_id}/revoke": {
+      "post": {
+        "operationId": "revoke_integration_award",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Revoke",
+        "tags": [
+          "integration"
+        ]
+      }
+    },
+    "/api/v1/integration/scenarios": {
+      "get": {
+        "operationId": "list_integration_scenarios",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Scenarios",
+        "tags": [
+          "integration"
+        ]
+      },
+      "post": {
+        "operationId": "import_integration_scenario",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScenarioImport"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Import Scenario",
+        "tags": [
+          "integration"
+        ]
+      }
+    },
+    "/api/v1/integration/scenarios/check": {
+      "post": {
+        "operationId": "check_integration_scenario",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScenarioImport"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Check Scenario",
+        "tags": [
+          "integration"
+        ]
+      }
+    },
+    "/api/v1/integration/template": {
+      "get": {
+        "operationId": "get_integration_template",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Template",
+        "tags": [
+          "integration"
+        ]
       }
     },
     "/api/v1/jobs/{job_id}": {

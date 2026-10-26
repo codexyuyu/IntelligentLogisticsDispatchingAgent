@@ -1,0 +1,3762 @@
+[
+  {
+    "cargo_id": "6abe82f4-e6e4-5713-87f7-a17df06ececa",
+    "code": "O1-unload",
+    "duration_s": 60,
+    "id": "372f8c24-ef6f-50b7-bc5c-8d89407bdfd5",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "842598ed-1ae7-5b6c-9103-3733e9e47c73",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "6abe82f4-e6e4-5713-87f7-a17df06ececa",
+    "code": "O1-receive",
+    "duration_s": 30,
+    "id": "b6b58626-49e1-55d4-b10a-badec07b1dac",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "842598ed-1ae7-5b6c-9103-3733e9e47c73",
+    "predecessor_ids": [
+      "372f8c24-ef6f-50b7-bc5c-8d89407bdfd5"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "6abe82f4-e6e4-5713-87f7-a17df06ececa",
+    "code": "O1-sort",
+    "duration_s": 60,
+    "id": "46be092b-96e6-5416-9184-0514734792d1",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "842598ed-1ae7-5b6c-9103-3733e9e47c73",
+    "predecessor_ids": [
+      "b6b58626-49e1-55d4-b10a-badec07b1dac"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "6abe82f4-e6e4-5713-87f7-a17df06ececa",
+    "code": "O1-dispatch",
+    "duration_s": 30,
+    "id": "5a759ee8-8248-5a87-a790-8bd752d39cfb",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "842598ed-1ae7-5b6c-9103-3733e9e47c73",
+    "predecessor_ids": [
+      "46be092b-96e6-5416-9184-0514734792d1"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "6abe82f4-e6e4-5713-87f7-a17df06ececa",
+    "code": "O1-load",
+    "duration_s": 60,
+    "id": "d00b37d7-a007-560a-974f-256dcd6fd060",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "842598ed-1ae7-5b6c-9103-3733e9e47c73",
+    "predecessor_ids": [
+      "5a759ee8-8248-5a87-a790-8bd752d39cfb"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "e18af80f-65fe-5484-8986-cfbc645b05b3",
+    "code": "O2-unload",
+    "duration_s": 60,
+    "id": "1560e7ed-5297-5717-a937-6d317498394e",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "54cbe99e-977a-5237-9c74-9604527581f7",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "e18af80f-65fe-5484-8986-cfbc645b05b3",
+    "code": "O2-receive",
+    "duration_s": 30,
+    "id": "7a3b9f12-c123-5b60-9a70-d057f49b1495",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "54cbe99e-977a-5237-9c74-9604527581f7",
+    "predecessor_ids": [
+      "1560e7ed-5297-5717-a937-6d317498394e"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "e18af80f-65fe-5484-8986-cfbc645b05b3",
+    "code": "O2-sort",
+    "duration_s": 60,
+    "id": "f159073b-1449-5b21-b95e-db1aef185064",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "54cbe99e-977a-5237-9c74-9604527581f7",
+    "predecessor_ids": [
+      "7a3b9f12-c123-5b60-9a70-d057f49b1495"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "e18af80f-65fe-5484-8986-cfbc645b05b3",
+    "code": "O2-dispatch",
+    "duration_s": 30,
+    "id": "9f960d8c-57bc-5e3f-879e-8546036703c3",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "54cbe99e-977a-5237-9c74-9604527581f7",
+    "predecessor_ids": [
+      "f159073b-1449-5b21-b95e-db1aef185064"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "e18af80f-65fe-5484-8986-cfbc645b05b3",
+    "code": "O2-load",
+    "duration_s": 60,
+    "id": "1376a6eb-ffc8-5798-ab28-9a0702331517",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "54cbe99e-977a-5237-9c74-9604527581f7",
+    "predecessor_ids": [
+      "9f960d8c-57bc-5e3f-879e-8546036703c3"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c69095d7-4f39-5ddc-baad-0067d9af250f",
+    "code": "O3-unload",
+    "duration_s": 60,
+    "id": "50c1d889-9c5d-598b-b792-b607f05474da",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "c59d1074-e9fd-57b8-9607-e4c751bc71e5",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c69095d7-4f39-5ddc-baad-0067d9af250f",
+    "code": "O3-receive",
+    "duration_s": 30,
+    "id": "fa3a9134-6c1b-564b-9bb8-8888667912ad",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "c59d1074-e9fd-57b8-9607-e4c751bc71e5",
+    "predecessor_ids": [
+      "50c1d889-9c5d-598b-b792-b607f05474da"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c69095d7-4f39-5ddc-baad-0067d9af250f",
+    "code": "O3-sort",
+    "duration_s": 60,
+    "id": "603e9b8e-a8e3-5610-a45d-8a5d48039e5c",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "c59d1074-e9fd-57b8-9607-e4c751bc71e5",
+    "predecessor_ids": [
+      "fa3a9134-6c1b-564b-9bb8-8888667912ad"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c69095d7-4f39-5ddc-baad-0067d9af250f",
+    "code": "O3-dispatch",
+    "duration_s": 30,
+    "id": "e636c99f-3a81-5c88-9f9e-5bee0f1250fe",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "c59d1074-e9fd-57b8-9607-e4c751bc71e5",
+    "predecessor_ids": [
+      "603e9b8e-a8e3-5610-a45d-8a5d48039e5c"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c69095d7-4f39-5ddc-baad-0067d9af250f",
+    "code": "O3-load",
+    "duration_s": 60,
+    "id": "a3533581-ef17-573b-8405-ba6a6dcd69bb",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "c59d1074-e9fd-57b8-9607-e4c751bc71e5",
+    "predecessor_ids": [
+      "e636c99f-3a81-5c88-9f9e-5bee0f1250fe"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "992541fe-a3af-5af6-9920-092aba8c2635",
+    "code": "O4-unload",
+    "duration_s": 60,
+    "id": "e17cc297-d66f-50b0-a134-41c9f9c74be7",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "f41a26a7-85f3-5507-aa44-6a040145b155",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "992541fe-a3af-5af6-9920-092aba8c2635",
+    "code": "O4-receive",
+    "duration_s": 30,
+    "id": "2a74bcfd-5f58-52c0-97d1-6a1d1df0cff3",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "f41a26a7-85f3-5507-aa44-6a040145b155",
+    "predecessor_ids": [
+      "e17cc297-d66f-50b0-a134-41c9f9c74be7"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "992541fe-a3af-5af6-9920-092aba8c2635",
+    "code": "O4-sort",
+    "duration_s": 60,
+    "id": "3739789c-b7ad-5d69-863e-ab569d341ff9",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "f41a26a7-85f3-5507-aa44-6a040145b155",
+    "predecessor_ids": [
+      "2a74bcfd-5f58-52c0-97d1-6a1d1df0cff3"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "992541fe-a3af-5af6-9920-092aba8c2635",
+    "code": "O4-dispatch",
+    "duration_s": 30,
+    "id": "eb256a35-25da-553f-a1f6-0fa3b356be7f",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "f41a26a7-85f3-5507-aa44-6a040145b155",
+    "predecessor_ids": [
+      "3739789c-b7ad-5d69-863e-ab569d341ff9"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "992541fe-a3af-5af6-9920-092aba8c2635",
+    "code": "O4-load",
+    "duration_s": 60,
+    "id": "dffb266e-a837-578c-9e8e-9c7900f9b57a",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "f41a26a7-85f3-5507-aa44-6a040145b155",
+    "predecessor_ids": [
+      "eb256a35-25da-553f-a1f6-0fa3b356be7f"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "8d31f0a0-4d29-5bfc-abb5-bd7bac4ca27f",
+    "code": "O5-unload",
+    "duration_s": 60,
+    "id": "dcbbe780-3da8-5221-a1db-fa9eddc78fee",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "1a2b3cd4-5ec2-5559-81b3-6a58cfeee008",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "8d31f0a0-4d29-5bfc-abb5-bd7bac4ca27f",
+    "code": "O5-receive",
+    "duration_s": 30,
+    "id": "d5c3f578-619f-5d3a-a8d9-fc36308e18a8",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "1a2b3cd4-5ec2-5559-81b3-6a58cfeee008",
+    "predecessor_ids": [
+      "dcbbe780-3da8-5221-a1db-fa9eddc78fee"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "8d31f0a0-4d29-5bfc-abb5-bd7bac4ca27f",
+    "code": "O5-sort",
+    "duration_s": 60,
+    "id": "dc214033-e817-50f6-a5a6-dd0176bb5e96",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "1a2b3cd4-5ec2-5559-81b3-6a58cfeee008",
+    "predecessor_ids": [
+      "d5c3f578-619f-5d3a-a8d9-fc36308e18a8"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "8d31f0a0-4d29-5bfc-abb5-bd7bac4ca27f",
+    "code": "O5-dispatch",
+    "duration_s": 30,
+    "id": "e0f5f1a6-0fef-5bcb-84cd-5ad670997faa",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "1a2b3cd4-5ec2-5559-81b3-6a58cfeee008",
+    "predecessor_ids": [
+      "dc214033-e817-50f6-a5a6-dd0176bb5e96"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "8d31f0a0-4d29-5bfc-abb5-bd7bac4ca27f",
+    "code": "O5-load",
+    "duration_s": 60,
+    "id": "73450b1a-6aaf-5ec9-b3e4-180cf2a20f87",
+    "inventory_location_id": "ff0ca126-34d8-5706-acbd-fbb46b152408",
+    "kind": "WarehouseTask",
+    "order_id": "1a2b3cd4-5ec2-5559-81b3-6a58cfeee008",
+    "predecessor_ids": [
+      "e0f5f1a6-0fef-5bcb-84cd-5ad670997faa"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "91b3875e-efc5-58c2-820c-2616fd8ded91",
+    "code": "O6-unload",
+    "duration_s": 60,
+    "id": "ef7dd8b5-e3aa-5795-97b9-d34ddc164afe",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "e5d42b14-9e7c-5611-8798-3242bbdf441d",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "91b3875e-efc5-58c2-820c-2616fd8ded91",
+    "code": "O6-receive",
+    "duration_s": 30,
+    "id": "dde34ab4-c2d7-54c6-98d6-2b76b9c37731",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "e5d42b14-9e7c-5611-8798-3242bbdf441d",
+    "predecessor_ids": [
+      "ef7dd8b5-e3aa-5795-97b9-d34ddc164afe"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "91b3875e-efc5-58c2-820c-2616fd8ded91",
+    "code": "O6-sort",
+    "duration_s": 60,
+    "id": "8776013e-1edc-5102-81f4-999060550a7c",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "e5d42b14-9e7c-5611-8798-3242bbdf441d",
+    "predecessor_ids": [
+      "dde34ab4-c2d7-54c6-98d6-2b76b9c37731"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "91b3875e-efc5-58c2-820c-2616fd8ded91",
+    "code": "O6-dispatch",
+    "duration_s": 30,
+    "id": "ccaf16eb-a937-53ef-8321-10f56d695fb9",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "e5d42b14-9e7c-5611-8798-3242bbdf441d",
+    "predecessor_ids": [
+      "8776013e-1edc-5102-81f4-999060550a7c"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "91b3875e-efc5-58c2-820c-2616fd8ded91",
+    "code": "O6-load",
+    "duration_s": 60,
+    "id": "e404436d-f0a4-5bcc-b69b-5bdf6e199f59",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "e5d42b14-9e7c-5611-8798-3242bbdf441d",
+    "predecessor_ids": [
+      "ccaf16eb-a937-53ef-8321-10f56d695fb9"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "264f3fde-c3c8-5c96-9dc0-bcfd1f6fbca3",
+    "code": "O7-unload",
+    "duration_s": 60,
+    "id": "72a017c6-6e6a-52c6-a1db-fd9bb5e53f33",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "833c1cd2-3f47-51bc-b0c9-dda6c809fc90",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "264f3fde-c3c8-5c96-9dc0-bcfd1f6fbca3",
+    "code": "O7-receive",
+    "duration_s": 30,
+    "id": "e43b18cf-e24d-522c-82c4-0cd9fd58669b",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "833c1cd2-3f47-51bc-b0c9-dda6c809fc90",
+    "predecessor_ids": [
+      "72a017c6-6e6a-52c6-a1db-fd9bb5e53f33"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "264f3fde-c3c8-5c96-9dc0-bcfd1f6fbca3",
+    "code": "O7-sort",
+    "duration_s": 60,
+    "id": "12553aa9-e312-5ffd-b5de-3f52ff951b98",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "833c1cd2-3f47-51bc-b0c9-dda6c809fc90",
+    "predecessor_ids": [
+      "e43b18cf-e24d-522c-82c4-0cd9fd58669b"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "264f3fde-c3c8-5c96-9dc0-bcfd1f6fbca3",
+    "code": "O7-dispatch",
+    "duration_s": 30,
+    "id": "5e8fddaf-8c11-521e-badb-b8ad347763a7",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "833c1cd2-3f47-51bc-b0c9-dda6c809fc90",
+    "predecessor_ids": [
+      "12553aa9-e312-5ffd-b5de-3f52ff951b98"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "264f3fde-c3c8-5c96-9dc0-bcfd1f6fbca3",
+    "code": "O7-load",
+    "duration_s": 60,
+    "id": "e4eabe87-0217-5930-b6e0-8d22824bbffd",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "833c1cd2-3f47-51bc-b0c9-dda6c809fc90",
+    "predecessor_ids": [
+      "5e8fddaf-8c11-521e-badb-b8ad347763a7"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f8efa4b7-7967-5970-b178-1c9c8271f0a0",
+    "code": "O8-unload",
+    "duration_s": 60,
+    "id": "04455fa5-e3f9-51ec-9d2c-a1d49bc3c130",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "2acc3187-a792-58e6-8d86-8db13c45a758",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f8efa4b7-7967-5970-b178-1c9c8271f0a0",
+    "code": "O8-receive",
+    "duration_s": 30,
+    "id": "1d5bc24b-ca8f-56e0-abcd-66b0acde507b",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "2acc3187-a792-58e6-8d86-8db13c45a758",
+    "predecessor_ids": [
+      "04455fa5-e3f9-51ec-9d2c-a1d49bc3c130"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f8efa4b7-7967-5970-b178-1c9c8271f0a0",
+    "code": "O8-sort",
+    "duration_s": 60,
+    "id": "999902c7-ce44-5aab-9291-6434603a741c",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "2acc3187-a792-58e6-8d86-8db13c45a758",
+    "predecessor_ids": [
+      "1d5bc24b-ca8f-56e0-abcd-66b0acde507b"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f8efa4b7-7967-5970-b178-1c9c8271f0a0",
+    "code": "O8-dispatch",
+    "duration_s": 30,
+    "id": "e9d2d20e-c288-5dc9-9b2a-fcd748c007d9",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "2acc3187-a792-58e6-8d86-8db13c45a758",
+    "predecessor_ids": [
+      "999902c7-ce44-5aab-9291-6434603a741c"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f8efa4b7-7967-5970-b178-1c9c8271f0a0",
+    "code": "O8-load",
+    "duration_s": 60,
+    "id": "97f78bb0-d5f8-537c-ab63-7fe7be5e52bc",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "2acc3187-a792-58e6-8d86-8db13c45a758",
+    "predecessor_ids": [
+      "e9d2d20e-c288-5dc9-9b2a-fcd748c007d9"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "11500682-bbd1-5044-ab34-89be7c348c93",
+    "code": "O9-unload",
+    "duration_s": 60,
+    "id": "7d21dd1d-0075-527e-8b79-35e5ae505fd9",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "d6cfbcea-4f66-59cc-98ed-686b0d747b90",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "11500682-bbd1-5044-ab34-89be7c348c93",
+    "code": "O9-receive",
+    "duration_s": 30,
+    "id": "3c4829a1-f020-515c-9caa-5720ed05d8b6",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "d6cfbcea-4f66-59cc-98ed-686b0d747b90",
+    "predecessor_ids": [
+      "7d21dd1d-0075-527e-8b79-35e5ae505fd9"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "11500682-bbd1-5044-ab34-89be7c348c93",
+    "code": "O9-sort",
+    "duration_s": 60,
+    "id": "d7aa5ca7-a7e6-51e9-a335-c48f5faf2652",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "d6cfbcea-4f66-59cc-98ed-686b0d747b90",
+    "predecessor_ids": [
+      "3c4829a1-f020-515c-9caa-5720ed05d8b6"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "11500682-bbd1-5044-ab34-89be7c348c93",
+    "code": "O9-dispatch",
+    "duration_s": 30,
+    "id": "f3a0941d-1f31-587c-9b6d-66df2343273a",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "d6cfbcea-4f66-59cc-98ed-686b0d747b90",
+    "predecessor_ids": [
+      "d7aa5ca7-a7e6-51e9-a335-c48f5faf2652"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "11500682-bbd1-5044-ab34-89be7c348c93",
+    "code": "O9-load",
+    "duration_s": 60,
+    "id": "4920d076-40da-5636-918e-59d5d59ccfb0",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "d6cfbcea-4f66-59cc-98ed-686b0d747b90",
+    "predecessor_ids": [
+      "f3a0941d-1f31-587c-9b6d-66df2343273a"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "cd12f0c1-ff84-57b6-a525-bb54859c036b",
+    "code": "O10-unload",
+    "duration_s": 60,
+    "id": "8344fd49-1cf2-5afe-aee3-3ee1e942fae5",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "4afcda84-4a9f-53d4-be5b-fecbf07c99b3",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "cd12f0c1-ff84-57b6-a525-bb54859c036b",
+    "code": "O10-receive",
+    "duration_s": 30,
+    "id": "33810253-ccc3-56e8-83da-85a9cd055163",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "4afcda84-4a9f-53d4-be5b-fecbf07c99b3",
+    "predecessor_ids": [
+      "8344fd49-1cf2-5afe-aee3-3ee1e942fae5"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "cd12f0c1-ff84-57b6-a525-bb54859c036b",
+    "code": "O10-sort",
+    "duration_s": 60,
+    "id": "71f7ae97-d7b6-5cdd-9c6f-96ffd322b2a4",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "4afcda84-4a9f-53d4-be5b-fecbf07c99b3",
+    "predecessor_ids": [
+      "33810253-ccc3-56e8-83da-85a9cd055163"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "a9fbb678-948f-504c-b666-9456d291b722"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "cd12f0c1-ff84-57b6-a525-bb54859c036b",
+    "code": "O10-dispatch",
+    "duration_s": 30,
+    "id": "a85c0139-b5fe-5747-9cd6-91a874ec2425",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "4afcda84-4a9f-53d4-be5b-fecbf07c99b3",
+    "predecessor_ids": [
+      "71f7ae97-d7b6-5cdd-9c6f-96ffd322b2a4"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "cd12f0c1-ff84-57b6-a525-bb54859c036b",
+    "code": "O10-load",
+    "duration_s": 60,
+    "id": "2951fdbe-8700-59f7-97d9-eed3ae48e417",
+    "inventory_location_id": "1ccd19aa-3f89-57b9-bfb3-66e4c6d97d53",
+    "kind": "WarehouseTask",
+    "order_id": "4afcda84-4a9f-53d4-be5b-fecbf07c99b3",
+    "predecessor_ids": [
+      "a85c0139-b5fe-5747-9cd6-91a874ec2425"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fad0a93e-d346-5ffa-904a-47973dc6b293",
+          "76716d9b-e43f-5055-9a39-16b55ceee226"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "cc54d6d1-0b9b-5824-9963-3c6c96bb0e29"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "bfa1272a-6ada-5fdb-89a9-1c247fd68228"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "1f71a937-e606-557f-a81a-db26ec745d5a",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "548139ad-5f1c-5012-bb3f-b89257e9d6c4",
+    "code": "O11-unload",
+    "duration_s": 60,
+    "id": "ec90b3ce-d118-5006-a348-722cb098d4fd",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "82abd3fb-abab-5205-88be-b66dc11320e5",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "548139ad-5f1c-5012-bb3f-b89257e9d6c4",
+    "code": "O11-receive",
+    "duration_s": 30,
+    "id": "6f3a6593-d08d-5b94-b233-efc7c74e2190",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "82abd3fb-abab-5205-88be-b66dc11320e5",
+    "predecessor_ids": [
+      "ec90b3ce-d118-5006-a348-722cb098d4fd"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "548139ad-5f1c-5012-bb3f-b89257e9d6c4",
+    "code": "O11-sort",
+    "duration_s": 60,
+    "id": "59f61f43-d94c-5ba5-95a6-87a9b4c16582",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "82abd3fb-abab-5205-88be-b66dc11320e5",
+    "predecessor_ids": [
+      "6f3a6593-d08d-5b94-b233-efc7c74e2190"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "548139ad-5f1c-5012-bb3f-b89257e9d6c4",
+    "code": "O11-dispatch",
+    "duration_s": 30,
+    "id": "66786404-8b8a-5a94-9c7f-addca3b2ae25",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "82abd3fb-abab-5205-88be-b66dc11320e5",
+    "predecessor_ids": [
+      "59f61f43-d94c-5ba5-95a6-87a9b4c16582"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "548139ad-5f1c-5012-bb3f-b89257e9d6c4",
+    "code": "O11-load",
+    "duration_s": 60,
+    "id": "9ed4e409-595d-54dc-806d-3b799c5fff02",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "82abd3fb-abab-5205-88be-b66dc11320e5",
+    "predecessor_ids": [
+      "66786404-8b8a-5a94-9c7f-addca3b2ae25"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "48f00077-638f-5942-b37b-c2d43ecc145f",
+    "code": "O12-unload",
+    "duration_s": 60,
+    "id": "4de7ec05-ba0d-54a5-9d0a-f6b627a2a05d",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "8e672250-c585-5c81-9dac-c1a75a9e86fe",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "48f00077-638f-5942-b37b-c2d43ecc145f",
+    "code": "O12-receive",
+    "duration_s": 30,
+    "id": "140abc66-2717-544b-9ed6-e13203145a96",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "8e672250-c585-5c81-9dac-c1a75a9e86fe",
+    "predecessor_ids": [
+      "4de7ec05-ba0d-54a5-9d0a-f6b627a2a05d"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "48f00077-638f-5942-b37b-c2d43ecc145f",
+    "code": "O12-sort",
+    "duration_s": 60,
+    "id": "c0c6e294-7e3d-567b-bbd0-f208f856c377",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "8e672250-c585-5c81-9dac-c1a75a9e86fe",
+    "predecessor_ids": [
+      "140abc66-2717-544b-9ed6-e13203145a96"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "48f00077-638f-5942-b37b-c2d43ecc145f",
+    "code": "O12-dispatch",
+    "duration_s": 30,
+    "id": "7530c89c-983e-5424-8c52-9ca4650579de",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "8e672250-c585-5c81-9dac-c1a75a9e86fe",
+    "predecessor_ids": [
+      "c0c6e294-7e3d-567b-bbd0-f208f856c377"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "48f00077-638f-5942-b37b-c2d43ecc145f",
+    "code": "O12-load",
+    "duration_s": 60,
+    "id": "5d9212bc-2fd6-55f8-a453-ef307d2d48e8",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "8e672250-c585-5c81-9dac-c1a75a9e86fe",
+    "predecessor_ids": [
+      "7530c89c-983e-5424-8c52-9ca4650579de"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "36b2b8a9-7411-5a9f-bfcc-990b4ea52c34",
+    "code": "O13-unload",
+    "duration_s": 60,
+    "id": "79b42f1a-4f89-5c0e-8203-a82304a805dd",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "ce4601a8-5cad-5fea-a768-c2320ccbd7b4",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "36b2b8a9-7411-5a9f-bfcc-990b4ea52c34",
+    "code": "O13-receive",
+    "duration_s": 30,
+    "id": "6d5d8851-9ae4-5a5a-9a7f-f6a41e2f1761",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "ce4601a8-5cad-5fea-a768-c2320ccbd7b4",
+    "predecessor_ids": [
+      "79b42f1a-4f89-5c0e-8203-a82304a805dd"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "36b2b8a9-7411-5a9f-bfcc-990b4ea52c34",
+    "code": "O13-sort",
+    "duration_s": 60,
+    "id": "aefa9c50-ed7b-51a5-b0bb-a1aef68662c0",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "ce4601a8-5cad-5fea-a768-c2320ccbd7b4",
+    "predecessor_ids": [
+      "6d5d8851-9ae4-5a5a-9a7f-f6a41e2f1761"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "36b2b8a9-7411-5a9f-bfcc-990b4ea52c34",
+    "code": "O13-dispatch",
+    "duration_s": 30,
+    "id": "0d9ef5df-ebdf-5569-9a96-0592b64ed618",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "ce4601a8-5cad-5fea-a768-c2320ccbd7b4",
+    "predecessor_ids": [
+      "aefa9c50-ed7b-51a5-b0bb-a1aef68662c0"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "36b2b8a9-7411-5a9f-bfcc-990b4ea52c34",
+    "code": "O13-load",
+    "duration_s": 60,
+    "id": "e5803ccc-7c59-596e-bbc3-5c8dd1619815",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "ce4601a8-5cad-5fea-a768-c2320ccbd7b4",
+    "predecessor_ids": [
+      "0d9ef5df-ebdf-5569-9a96-0592b64ed618"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "2cdc7f72-65f1-5052-bb24-7831ac26bea2",
+    "code": "O14-unload",
+    "duration_s": 60,
+    "id": "c3725676-f0be-5548-a193-d218439dca94",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "7947bfd1-3c5f-5a99-b19f-71005549d26b",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "2cdc7f72-65f1-5052-bb24-7831ac26bea2",
+    "code": "O14-receive",
+    "duration_s": 30,
+    "id": "5e19548f-b44d-5354-92cb-0c6e2b5029c6",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "7947bfd1-3c5f-5a99-b19f-71005549d26b",
+    "predecessor_ids": [
+      "c3725676-f0be-5548-a193-d218439dca94"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "2cdc7f72-65f1-5052-bb24-7831ac26bea2",
+    "code": "O14-sort",
+    "duration_s": 60,
+    "id": "8cd55b8e-bd11-59b5-915a-eb98003e347d",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "7947bfd1-3c5f-5a99-b19f-71005549d26b",
+    "predecessor_ids": [
+      "5e19548f-b44d-5354-92cb-0c6e2b5029c6"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "2cdc7f72-65f1-5052-bb24-7831ac26bea2",
+    "code": "O14-dispatch",
+    "duration_s": 30,
+    "id": "561a91c1-b4f5-5c6f-93af-11ea52243804",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "7947bfd1-3c5f-5a99-b19f-71005549d26b",
+    "predecessor_ids": [
+      "8cd55b8e-bd11-59b5-915a-eb98003e347d"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "2cdc7f72-65f1-5052-bb24-7831ac26bea2",
+    "code": "O14-load",
+    "duration_s": 60,
+    "id": "9a2cadd1-7d32-56be-8415-de704bfb00bb",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "7947bfd1-3c5f-5a99-b19f-71005549d26b",
+    "predecessor_ids": [
+      "561a91c1-b4f5-5c6f-93af-11ea52243804"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "9384306f-76a3-5120-a584-e388d41e4965",
+    "code": "O15-unload",
+    "duration_s": 60,
+    "id": "2e8f92fc-7513-5627-be08-8e42cbba56d6",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "2b090747-fa9f-5349-8e3a-4406db556247",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "9384306f-76a3-5120-a584-e388d41e4965",
+    "code": "O15-receive",
+    "duration_s": 30,
+    "id": "6c35b103-14f8-5ccc-b3bd-9eb7a3a66494",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "2b090747-fa9f-5349-8e3a-4406db556247",
+    "predecessor_ids": [
+      "2e8f92fc-7513-5627-be08-8e42cbba56d6"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "9384306f-76a3-5120-a584-e388d41e4965",
+    "code": "O15-sort",
+    "duration_s": 60,
+    "id": "45714d7b-edbf-5183-a3d6-53e4f161bae8",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "2b090747-fa9f-5349-8e3a-4406db556247",
+    "predecessor_ids": [
+      "6c35b103-14f8-5ccc-b3bd-9eb7a3a66494"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "9384306f-76a3-5120-a584-e388d41e4965",
+    "code": "O15-dispatch",
+    "duration_s": 30,
+    "id": "f888ada5-9fa2-592a-83c8-0962d23eb037",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "2b090747-fa9f-5349-8e3a-4406db556247",
+    "predecessor_ids": [
+      "45714d7b-edbf-5183-a3d6-53e4f161bae8"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "9384306f-76a3-5120-a584-e388d41e4965",
+    "code": "O15-load",
+    "duration_s": 60,
+    "id": "c59c2e68-6123-5208-aeee-792ef398627d",
+    "inventory_location_id": "69ac4eb5-ef52-5cd8-9ac4-9245a78eb94b",
+    "kind": "WarehouseTask",
+    "order_id": "2b090747-fa9f-5349-8e3a-4406db556247",
+    "predecessor_ids": [
+      "f888ada5-9fa2-592a-83c8-0962d23eb037"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "40",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "88ac3417-7794-5aa8-b25a-68e9f5ecb814",
+    "code": "O16-unload",
+    "duration_s": 60,
+    "id": "728f2a36-c240-5ae9-809c-27d8f875ea8a",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "731da5d0-b253-5ffb-8ef3-2e64984c810a",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "88ac3417-7794-5aa8-b25a-68e9f5ecb814",
+    "code": "O16-receive",
+    "duration_s": 30,
+    "id": "af33c936-9461-5752-936e-926529a24ccf",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "731da5d0-b253-5ffb-8ef3-2e64984c810a",
+    "predecessor_ids": [
+      "728f2a36-c240-5ae9-809c-27d8f875ea8a"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "88ac3417-7794-5aa8-b25a-68e9f5ecb814",
+    "code": "O16-sort",
+    "duration_s": 60,
+    "id": "a53f14fb-5062-5c7d-b4be-6931ddc6aa07",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "731da5d0-b253-5ffb-8ef3-2e64984c810a",
+    "predecessor_ids": [
+      "af33c936-9461-5752-936e-926529a24ccf"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "88ac3417-7794-5aa8-b25a-68e9f5ecb814",
+    "code": "O16-dispatch",
+    "duration_s": 30,
+    "id": "6a15f1f9-133c-59bf-97e6-199360be874e",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "731da5d0-b253-5ffb-8ef3-2e64984c810a",
+    "predecessor_ids": [
+      "a53f14fb-5062-5c7d-b4be-6931ddc6aa07"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "88ac3417-7794-5aa8-b25a-68e9f5ecb814",
+    "code": "O16-load",
+    "duration_s": 60,
+    "id": "0f18e615-a3ec-5e75-99ee-c1abbcf86db6",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "731da5d0-b253-5ffb-8ef3-2e64984c810a",
+    "predecessor_ids": [
+      "6a15f1f9-133c-59bf-97e6-199360be874e"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "3c26cd7f-1797-5fef-9636-16a2739c8b61",
+    "code": "O17-unload",
+    "duration_s": 60,
+    "id": "7525fccf-d88d-558a-8189-a010cb08c024",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "ed69a8fa-e222-551b-8ff2-0e0f899e938f",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "3c26cd7f-1797-5fef-9636-16a2739c8b61",
+    "code": "O17-receive",
+    "duration_s": 30,
+    "id": "fd19e969-2b64-5772-859f-723136f9f51c",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "ed69a8fa-e222-551b-8ff2-0e0f899e938f",
+    "predecessor_ids": [
+      "7525fccf-d88d-558a-8189-a010cb08c024"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "3c26cd7f-1797-5fef-9636-16a2739c8b61",
+    "code": "O17-sort",
+    "duration_s": 60,
+    "id": "0d455be3-bf04-5aa7-9d66-0229383f0a64",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "ed69a8fa-e222-551b-8ff2-0e0f899e938f",
+    "predecessor_ids": [
+      "fd19e969-2b64-5772-859f-723136f9f51c"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "3c26cd7f-1797-5fef-9636-16a2739c8b61",
+    "code": "O17-dispatch",
+    "duration_s": 30,
+    "id": "0dffeb5f-5f0a-5a19-83a5-d44f6ed4552d",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "ed69a8fa-e222-551b-8ff2-0e0f899e938f",
+    "predecessor_ids": [
+      "0d455be3-bf04-5aa7-9d66-0229383f0a64"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "3c26cd7f-1797-5fef-9636-16a2739c8b61",
+    "code": "O17-load",
+    "duration_s": 60,
+    "id": "ac8174d5-9688-5d88-9eb8-2fc4d2865ae2",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "ed69a8fa-e222-551b-8ff2-0e0f899e938f",
+    "predecessor_ids": [
+      "0dffeb5f-5f0a-5a19-83a5-d44f6ed4552d"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f3a14cc1-3581-53bb-9d77-cd3a2d443844",
+    "code": "O18-unload",
+    "duration_s": 60,
+    "id": "90e31270-cf9d-5562-a474-d28a81233cf2",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "e9403d7a-a9b6-5ad9-a2b9-619f9cc6059c",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f3a14cc1-3581-53bb-9d77-cd3a2d443844",
+    "code": "O18-receive",
+    "duration_s": 30,
+    "id": "fe2b304b-609e-51d7-90a0-35a85af5839a",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "e9403d7a-a9b6-5ad9-a2b9-619f9cc6059c",
+    "predecessor_ids": [
+      "90e31270-cf9d-5562-a474-d28a81233cf2"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f3a14cc1-3581-53bb-9d77-cd3a2d443844",
+    "code": "O18-sort",
+    "duration_s": 60,
+    "id": "606509b4-ae1a-501d-80c8-69a156400b16",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "e9403d7a-a9b6-5ad9-a2b9-619f9cc6059c",
+    "predecessor_ids": [
+      "fe2b304b-609e-51d7-90a0-35a85af5839a"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f3a14cc1-3581-53bb-9d77-cd3a2d443844",
+    "code": "O18-dispatch",
+    "duration_s": 30,
+    "id": "023cbd19-f069-50a6-a427-8f7fbed3db22",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "e9403d7a-a9b6-5ad9-a2b9-619f9cc6059c",
+    "predecessor_ids": [
+      "606509b4-ae1a-501d-80c8-69a156400b16"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "f3a14cc1-3581-53bb-9d77-cd3a2d443844",
+    "code": "O18-load",
+    "duration_s": 60,
+    "id": "7476bc20-26da-5d50-9745-47770503592d",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "e9403d7a-a9b6-5ad9-a2b9-619f9cc6059c",
+    "predecessor_ids": [
+      "023cbd19-f069-50a6-a427-8f7fbed3db22"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c2d046dd-bf4d-5e4d-8cb4-ba75bed41865",
+    "code": "O19-unload",
+    "duration_s": 60,
+    "id": "975985f2-03f8-5577-8e78-d5063b488160",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "8b1653ea-16c5-5864-8e50-17986ea18f85",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c2d046dd-bf4d-5e4d-8cb4-ba75bed41865",
+    "code": "O19-receive",
+    "duration_s": 30,
+    "id": "e7fd8da6-e6fd-5d21-a297-3cf096b3df46",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "8b1653ea-16c5-5864-8e50-17986ea18f85",
+    "predecessor_ids": [
+      "975985f2-03f8-5577-8e78-d5063b488160"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c2d046dd-bf4d-5e4d-8cb4-ba75bed41865",
+    "code": "O19-sort",
+    "duration_s": 60,
+    "id": "44de1506-0825-559d-90ff-570c3a325d14",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "8b1653ea-16c5-5864-8e50-17986ea18f85",
+    "predecessor_ids": [
+      "e7fd8da6-e6fd-5d21-a297-3cf096b3df46"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c2d046dd-bf4d-5e4d-8cb4-ba75bed41865",
+    "code": "O19-dispatch",
+    "duration_s": 30,
+    "id": "dcb9086b-edbb-5563-bf20-9631e612cbc2",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "8b1653ea-16c5-5864-8e50-17986ea18f85",
+    "predecessor_ids": [
+      "44de1506-0825-559d-90ff-570c3a325d14"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c2d046dd-bf4d-5e4d-8cb4-ba75bed41865",
+    "code": "O19-load",
+    "duration_s": 60,
+    "id": "481d6d6e-0828-58a2-97e0-418d3a2c0779",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "8b1653ea-16c5-5864-8e50-17986ea18f85",
+    "predecessor_ids": [
+      "dcb9086b-edbb-5563-bf20-9631e612cbc2"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c19ec106-e89e-5aa4-af26-24af2a76ee18",
+    "code": "O20-unload",
+    "duration_s": 60,
+    "id": "ea60a314-ad91-5611-ab6e-df48b66d9938",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "128ef3b0-9c1c-5300-9b9a-cdfec47c0370",
+    "predecessor_ids": [],
+    "preparation_operation": "unload",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c19ec106-e89e-5aa4-af26-24af2a76ee18",
+    "code": "O20-receive",
+    "duration_s": 30,
+    "id": "a4079ec5-6ccc-57fc-9310-f810c343d32c",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "128ef3b0-9c1c-5300-9b9a-cdfec47c0370",
+    "predecessor_ids": [
+      "ea60a314-ad91-5611-ab6e-df48b66d9938"
+    ],
+    "preparation_operation": "receive",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c19ec106-e89e-5aa4-af26-24af2a76ee18",
+    "code": "O20-sort",
+    "duration_s": 60,
+    "id": "b4532e17-de3b-5f8d-903d-e5ab3c69e300",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "128ef3b0-9c1c-5300-9b9a-cdfec47c0370",
+    "predecessor_ids": [
+      "a4079ec5-6ccc-57fc-9310-f810c343d32c"
+    ],
+    "preparation_operation": "sort",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fdd9a23f-80f8-5586-aa59-61908d4010d0"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c19ec106-e89e-5aa4-af26-24af2a76ee18",
+    "code": "O20-dispatch",
+    "duration_s": 30,
+    "id": "1dd5bd67-b0fa-5b2e-80dd-1b065e56c56d",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "128ef3b0-9c1c-5300-9b9a-cdfec47c0370",
+    "predecessor_ids": [
+      "b4532e17-de3b-5f8d-903d-e5ab3c69e300"
+    ],
+    "preparation_operation": "dispatch",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  },
+  {
+    "cargo_id": "c19ec106-e89e-5aa4-af26-24af2a76ee18",
+    "code": "O20-load",
+    "duration_s": 60,
+    "id": "528a21b7-bbc9-5e02-844a-3bcafb0503ec",
+    "inventory_location_id": "37fbac7f-315b-503c-8d61-54f6f319906f",
+    "kind": "WarehouseTask",
+    "order_id": "128ef3b0-9c1c-5300-9b9a-cdfec47c0370",
+    "predecessor_ids": [
+      "1dd5bd67-b0fa-5b2e-80dd-1b065e56c56d"
+    ],
+    "preparation_operation": "load",
+    "requirements": [
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "4cc81100-c617-5db3-a87c-272768632529",
+          "1c37252f-1a71-594a-b415-0716eadf8f27"
+        ],
+        "selection": "choose_one"
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "d12e7a53-1768-540b-a04f-34ee747d8e38"
+        ]
+      },
+      {
+        "quantity": 1,
+        "resource_ids": [
+          "fe3f54c4-8c8f-5471-805a-c880cfb34212"
+        ]
+      }
+    ],
+    "scenario": "B20",
+    "schema_version": "preparation-v1",
+    "setup_class": "-200",
+    "source": "synthetic",
+    "warehouse_id": "fa270464-a8e6-555b-b5b0-0f7927bad2c2",
+    "window": [
+      0,
+      24000
+    ]
+  }
+]

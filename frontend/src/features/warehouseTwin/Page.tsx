@@ -1,6 +1,4 @@
 import { useMemo, useState } from 'react';
-import SectionHeader from '../../components/SectionHeader';
-import { StatusPill } from '../../components/StatusPill';
 import WarehouseTwin3D, { type WarehouseCamera, type WarehouseSelection } from '../../components/WarehouseTwin3D';
 import { useApp } from '../../appContext';
 import { useSimClock } from '../../hooks/useSimClock';
@@ -39,8 +37,6 @@ export default function WarehouseTwinPage(){
   },[selected,data,clock.t]);
   const canShowPlan=Boolean(plan?.warehouse.operations?.length);
   return <div className="r26-page">
-    <SectionHeader title="单仓冷链数字孪生" desc="一座配送中心 · 冷藏/冷冻分区 · 24 组多层货架 · 三辆叉车 · 动态月台作业；与 R25 配送视图分别渲染，避免场景叠加卡顿。"
-      actions={<StatusPill tone={mode==='showcase'?'warning':'success'}>{mode==='showcase'?'明确标注：仿真演示':'排程时间映射（非实时监控）'}</StatusPill>} />
     {data.warehouseWarning && <div className="callout callout-warning">{data.warehouseWarning}</div>}
     <div className="r26-hero">
       <div><small>当前业务仓库</small><strong>{data.warehouseId}</strong><span>唯一配送中心 · 内部分区不是独立仓库</span></div>
@@ -61,7 +57,6 @@ export default function WarehouseTwinPage(){
     </div>
     <div className="r26-scene-layout">
       <div className="r26-scene-panel">
-        <div className="r26-overlay"><strong>WH · SINGLE WAREHOUSE</strong><span>{mode==='showcase'?'DEMO REPLAY · NOT WMS TELEMETRY':'CP-SAT TIMING · VISUAL PATH ASSUMPTIONS'}</span></div>
         <WarehouseTwin3D data={data} getTime={clock.getTime} cameraPreset={camera} showRoof={showRoof} selected={selected} onSelect={setSelected} height={590} />
         <div className="r26-scene-hint">左键拖动旋转 · 滚轮缩放 · 右键平移 · 点击货架、库区、叉车、月台查看属性</div>
       </div>
@@ -73,7 +68,7 @@ export default function WarehouseTwinPage(){
       </aside>
     </div>
     <div className="panel r26-player">
-      <div className="r26-play-top"><div><b>叉车作业时间轴</b><small>{mode==='showcase'?'合成演示计划，支持任意时刻拖动回放':'作业时刻来自当前 CP-SAT；叉车分配与仓内路径是展示映射'}</small></div>
+      <div className="r26-play-top"><div><b>叉车作业时间轴</b></div>
         <div className="r26-player-buttons"><button className="btn btn-primary btn-sm" onClick={clock.toggle}>{clock.playing?'暂停':'播放'}</button><button className="btn btn-ghost btn-sm" onClick={()=>{clock.pause();clock.seek(0);}}>重置</button>
           {SPEEDS.map(s=><button key={s} className={`btn btn-sm ${clock.speed===s?'btn-primary':'btn-ghost'}`} onClick={()=>clock.setSpeed(s)}>{s}×</button>)}
         </div></div>
@@ -84,7 +79,7 @@ export default function WarehouseTwinPage(){
         return <button key={id} className={`r26-forklift-chip ${selected?.id===id?'selected':''}`} onClick={()=>setSelected({kind:'forklift',id})}><strong>{id}</strong><span>{STAGE_LABELS[pose.stage]}</span><small>{pose.job?.rackId??'待命区'}</small></button>;
       })}<div className="r26-work-counter">运行中 <b>{activeJobs.length}</b> 项 / 已完成 <b>{completedJobs.length}</b> 项</div></div>
     </div>
-    <div className="panel r26-work-log"><div className="panel-title-row"><div><h3>叉车搬运任务</h3><p>{mode==='showcase'?'用于展示的确定性任务，不写入 PostgreSQL，也不构成真实库存变更':'时间来自当前排程；货位、批次映射、叉车行驶路线仅作可视化示意'}</p></div><span className="soft-badge">{data.jobs.length} 条</span></div>
+    <div className="panel r26-work-log"><div className="panel-title-row"><div><h3>叉车搬运任务</h3></div><span className="soft-badge">{data.jobs.length} 条</span></div>
       <div className="table-wrap"><table><thead><tr><th>任务</th><th>叉车</th><th>库位</th><th>批次</th><th>订单</th><th>开始</th><th>结束</th><th>状态</th></tr></thead><tbody>{data.jobs.map(job=><tr key={job.id} onClick={()=>setSelected({kind:'forklift',id:job.forkliftId})} style={{cursor:'pointer'}}><td>{job.id}</td><td>{job.forkliftId}</td><td>{job.rackId}</td><td>{job.batchId}</td><td>{job.orderId}</td><td>{fmtClock(job.startS)}</td><td>{fmtClock(job.endS)}</td><td>{clock.t>=job.endS?'已完成':clock.t>=job.startS?'进行中':'待执行'}</td></tr>)}</tbody></table></div>
     </div>
     <p className="r26-disclaimer">数据边界：本页面仓库布局、货架占用、叉车模型和任务路线为 R26 展示资产；真实规划模式只采用已计算的作业时间，不声称真实库位坐标、叉车遥测、温度传感或库存落账。历史双仓评测数据仍单独保留，PostgreSQL 实库是否统一须通过独立迁移确认。</p>

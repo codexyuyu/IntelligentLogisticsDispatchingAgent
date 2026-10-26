@@ -1,0 +1,103 @@
+{
+  "archive": "benchmarks/b03/r18_accepted",
+  "frozen_at_utc": "2026-10-14T15:23:21.788222+00:00",
+  "protocol": "r18-b06-multiscene-paired-1.0",
+  "source_run": "run_20261014_212550_205783",
+  "source_run_path": "..\\benchmarks\\b03\\r18_runs\\run_20261014_212550_205783",
+  "source_scenario_sha256": "592ece17d7f190cad52cc53b594a2da060586255e16dafa039121866773be2df",
+  "source_scenario_filename": "two_warehouses_20_orders.json",
+  "per_mode_total_budget_ms": 90000,
+  "case_count": 5,
+  "file_count": 14,
+  "total_bytes": 487201,
+  "files": [
+    {
+      "path": "manifest.json",
+      "bytes": 2080,
+      "sha256": "d7bf1a54d2dcf12b3a74eb9c335b1828fe1039f16b2dd332dfdaf90c191f410b"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 3941,
+      "sha256": "feab5fbdf0dca97183846d095374e78e685b567d77437e2227707d6ab9089ee7"
+    },
+    {
+      "path": "summary.csv",
+      "bytes": 994,
+      "sha256": "34bea57595b9221c3aa8a4b96a7155efb5502cc4d6b387a0a6de60a3ad0c7cc7"
+    },
+    {
+      "path": "summary.md",
+      "bytes": 1161,
+      "sha256": "91f2a92c098ddb158518c6c7962b7f216c1f961d9640a9b5949472414fb2dd9e"
+    },
+    {
+      "path": "scenarios/s12_seed17.json",
+      "bytes": 35929,
+      "sha256": "780b663c8ab1ec0de390856a0507163b82710204207faa75a84bfe20b82b57e1"
+    },
+    {
+      "path": "scenarios/s16_seed42.json",
+      "bytes": 41068,
+      "sha256": "d7f7a295350f40ac449369858e3766af722738d43d5292115609b9cbccfb6a09"
+    },
+    {
+      "path": "scenarios/s20_seed101.json",
+      "bytes": 46226,
+      "sha256": "e0836e7fe97b2c4a4a36360412338376e2db0bcb0ec75f2e7ea82c2fdcc45287"
+    },
+    {
+      "path": "scenarios/s20_seed66.json",
+      "bytes": 46207,
+      "sha256": "958dc32f82dcfb35b8783d39e0e6f7196272292a4d2560910236ae4a44accab6"
+    },
+    {
+      "path": "scenarios/s20_seed88.json",
+      "bytes": 46203,
+      "sha256": "85984ef8c0095dca8e625cd975247c60469dd30bc727af925cc502db9dc6ecf8"
+    },
+    {
+      "path": "raw/s12_seed17_paired.json",
+      "bytes": 42568,
+      "sha256": "3e172d4b80991edec66d4bed9c51cf341f814f60e6c69db16a2007500ef1fd76"
+    },
+    {
+      "path": "raw/s16_seed42_paired.json",
+      "bytes": 49787,
+      "sha256": "a77f681b774452048fefab1545a2c892f1f87e48efb83d39ba8ef5a2100d2df0"
+    },
+    {
+      "path": "raw/s20_seed101_paired.json",
+      "bytes": 57017,
+      "sha256": "e2a1f9725eaa08a5cb091dcdcbeee8f1f7a37aea624306463eb0090b2695098b"
+    },
+    {
+      "path": "raw/s20_seed66_paired.json",
+      "bytes": 57010,
+      "sha256": "95b1a0a3b0e6e6039bf58b5d809eb6e327ed8aa4ef464a4fb277e993cd856aa5"
+    },
+    {
+      "path": "raw/s20_seed88_paired.json",
+      "bytes": 57010,
+      "sha256": "0bd5b9b86de8f82c15a0f4089623cbd039b717f29247f9278232b309568a8696"
+    }
+  ],
+  "tool_sha256": {
+    "tools/r18_multiscene_ablation.py": "fb4269840fb1ee647dbd1ab97fa97d83ac2e670666441f5041366e08f285c5e5",
+    "tools/r18_evidence_audit.py": "4bf9c1d04337e87016e4252c129a30e34d13aef2ef1998f9a339ca6e9c20cd70",
+    "tools/r17_joint_ablation.py": "fc117d045442b3eb713767f07ab1d870a3a233eeb697ad407cd0743363550228",
+    "tools/r18_acceptance_freeze.py": "106469a47f52854026d966e1e076dc7e5a1e091ceb000a78a301f183a9771683"
+  },
+  "reproduction_command": "cd backend; python -m tools.r18_multiscene_ablation --case-count 5 --budget-ms 90000",
+  "freeze_command": "cd backend; python -m tools.r18_acceptance_freeze --run-dir ../benchmarks/b03/r18_runs/run_20261014_212550_205783",
+  "line_endings": "archived bytes preserve the CRLF produced by the 2026-10-14 runner; the LF defect is fixed in this revision, so a re-run of the tool writes LF",
+  "environment": {
+    "python": "3.14.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "verdict": {
+    "recomputed_cases": 5,
+    "mismatches": 0
+  },
+  "scope": "synthetic equal-budget paired evidence; not empirical county-level savings, not an R17 replacement, no significance test"
+}

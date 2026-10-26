@@ -17,14 +17,39 @@ export async function getErrorMessage(error: unknown) {
   }
 }
 
-export async function getJson<T = unknown>(url: string): Promise<T> {
+export async function getJson<T = unknown>(url: string, signal?: AbortSignal): Promise<T> {
+  if (url.startsWith('/api/v1/')) url = `/partner${url}`;
+  if (url.startsWith('/scenarios/') || url.startsWith('/evidence/')) url = `/partner/assets${url}`;
   const { getToken } = await import('../auth');
   const token = getToken();
-  const response = await fetch(url, token ? { headers: { Authorization: `Bearer ${token}` } } : undefined);
+  const response = await fetch(url, { signal, headers: token ? { Authorization: `Bearer ${token}` } : undefined });
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);
   }
   return response.json() as Promise<T>;
+}
+
+export async function postPartner<T>(
+  path: string,
+  body: unknown,
+  key: string = idempotency('ui'),
+): Promise<T> {
+  const { getToken } = await import('../auth');
+  const token = getToken();
+  const response = await fetch(`/partner${path}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Idempotency-Key': key,
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(body),
+  });
+  const text = await response.text();
+  const parsed = text ? JSON.parse(text) : null;
+  if (!response.ok) throw new Error(parsed?.message ?? `请求失败 HTTP ${response.status}`);
+  return parsed as T;
 }
 
 export async function postApi<T>(

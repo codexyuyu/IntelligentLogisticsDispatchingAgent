@@ -75,7 +75,7 @@ export default function Page() {
   }
 
   return <div>
-    <SectionHeader title="仿真回放" desc="SimPy 离散事件仿真真实运行结果回放：时间轴推进、异常触发、局部重调度与 3D 场景联动。"
+    <SectionHeader title="仿真回放"
       actions={<button className="btn btn-primary" disabled={simPhase === 'running' || !snapshot} onClick={() => void runReplay()}>{simPhase === 'running' ? '仿真运行中…' : '运行当前异常仿真'}</button>} />
 
     <div className="kpi-grid">
@@ -150,7 +150,7 @@ export default function Page() {
 
     <div className="replay-grid">
       <div className="panel">
-        <div className="panel-title-row"><div><h3>仿真事件流</h3><p>SimPy 引擎真实产出</p></div><StatusPill tone={simPhase === 'completed' ? 'success' : 'info'}>{simPhase === 'completed' ? 'completed' : simPhase}</StatusPill></div>
+        <div className="panel-title-row"><div><h3>仿真事件流</h3></div><StatusPill tone={simPhase === 'completed' ? 'success' : 'info'}>{simPhase === 'completed' ? 'completed' : simPhase}</StatusPill></div>
         {simEvents.length ? (
           <div className="event-stream">
             {simEvents.map((e) => (
@@ -160,11 +160,11 @@ export default function Page() {
               </div>
             ))}
           </div>
-        ) : <p className="muted-line">暂无事件，运行仿真后展示。</p>}
+        ) : null}
       </div>
 
       <div className="panel">
-        <div className="panel-title-row"><div><h3>当前回放阶段</h3><p>随播放进度切换</p></div><StatusPill tone={eventFired ? 'warning' : 'success'}>{phaseLabel}</StatusPill></div>
+        <div className="panel-title-row"><div><h3>当前回放阶段</h3></div><StatusPill tone={eventFired ? 'warning' : 'success'}>{phaseLabel}</StatusPill></div>
         <div className="validation">
           <div><span>仿真时间</span><b>{fmtClock(clock.t)}</b></div>
           <div><span>异常状态</span><b>{!trigger ? '未注入' : eventFired ? `${trigger.object_id} 已延误 +${trigger.payload.delay_s ?? 0}s` : `将于 ${fmtClock(triggerAt)} 触发`}</b></div>
@@ -182,7 +182,7 @@ export default function Page() {
       </div>
 
       <div className="panel">
-        <div className="panel-title-row"><div><h3>推演终态</h3><p>SimulationResponse 真实字段</p></div></div>
+        <div className="panel-title-row"><div><h3>推演终态</h3></div></div>
         <div className="validation">
           <div><span>simulation_id</span><b>{simulation?.simulation_id ?? '—'}</b></div>
           <div><span>base_snapshot</span><b>{simulation?.base_snapshot_id ?? '—'}</b></div>
@@ -190,7 +190,6 @@ export default function Page() {
           <div><span>仿真时长</span><b>{simulation ? `${simulation.final_snapshot.simulation_time_s}s` : '—'}</b></div>
           <div><span>随机种子</span><b>17</b></div>
         </div>
-        <p className="scope-note">「仿真结束时刻 1800s」是推演窗口终点，不代表异常恢复耗时；后端暂未暴露严格 recovery_time 指标。</p>
       </div>
     </div>
   </div>;

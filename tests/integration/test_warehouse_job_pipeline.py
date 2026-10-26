@@ -11,6 +11,7 @@ import threading
 import time
 import urllib.error
 import urllib.request
+from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from uuid import UUID, uuid4
@@ -24,6 +25,7 @@ from logistics_backend.worker import Worker
 from logistics_contracts.planning import ObjectivePolicyDTO, PlanningScopeDTO, SolveBudgetDTO, WarehouseTaskDTO
 from logistics_contracts.warehouse import WarehouseJobContent, WarehouseSolutionDTO
 from logistics_domain.coldchain import (
+    BatchCompatibility,
     CapacityAmount,
     CapacityPeriod,
     CapacityUnit,
@@ -295,6 +297,23 @@ def test_coldchain_precool_precedence_and_exposure_are_validated(warehouse_api):
         policy=ObjectivePolicyDTO.model_validate(body["objective_policy"]).to_domain(),
         budget=SolveBudgetDTO.model_validate(body["budget"]).to_domain())
     solution = CpSatWarehouseScheduler().solve(problem, problem.budget)
+    # Incomplete batch evidence must not be upgraded to a feasible solution.
+    assert solution.status.value == 'unknown'
+    complete_cold = replace(coldchain,
+        batch_compatibility=(BatchCompatibility('batch-1', UUID(zone['warehouse_id']),
+            'chilled', zone['setpoint_decic'], zone['setpoint_decic']),),
+        storage_locations=(replace(coldchain.storage_locations[0], available_windows=(TimeWindow(0, 3600),)),),
+        exposure_limits=(replace(coldchain.exposure_limits[0], max_exposure_s=3600),))
+    complete_snapshot = PlanningSnapshot.create(
+        id=raw.id, scope=raw.scope, orders=raw.orders, cargo=raw.cargo,
+        vehicles=raw.vehicles, drivers=raw.drivers, resources=raw.resources,
+        inventory=raw.inventory, revisions=raw.revisions, matrices=raw.matrices,
+        coldchain=complete_cold)
+    complete_problem = replace(problem, snapshot=complete_snapshot)
+    solution = CpSatWarehouseScheduler().solve(complete_problem, problem.budget)
+    assert validate_warehouse(complete_problem, solution).valid
+    # Independently apply the stricter original window/exposure rules to the
+    # actual solved assignments: both violations must still be detected.
     report = validate_warehouse(problem, solution)
     assert solution.status.value in ("optimal", "feasible")
     assert report.valid is False

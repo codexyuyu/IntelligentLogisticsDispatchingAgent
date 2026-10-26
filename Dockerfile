@@ -16,6 +16,8 @@ WORKDIR /app
 COPY pyproject.toml uv.lock README.md ./
 COPY packages ./packages
 COPY apps/backend ./apps/backend
+COPY partner_engine/backend ./partner_engine/backend
+COPY partner_engine/frontend/public ./partner_engine/frontend/public
 COPY data ./data
 COPY alembic.ini ./
 

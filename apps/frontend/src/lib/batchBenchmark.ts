@@ -1,5 +1,5 @@
 import type { CandidatePlan, Snapshot } from '../appTypes';
-import { pollJob, postApi } from './http';
+import { getJson, pollJob, postApi } from './http';
 import { buildRuleBaseline, fairDistanceReduction, optimizedMetrics, type BenchmarkMetrics } from './benchmark';
 
 /** Quick checks reduce the solver time limit; use standard for publishable comparisons. */
@@ -348,9 +348,7 @@ export async function runBatchBenchmark(
         }
 
         failureStage = 'plan_fetch';
-        const response = await fetch(`/api/v1/plans/${encodeURIComponent(job.plan_id)}`);
-        if (!response.ok) throw new Error(`读取方案失败 HTTP ${response.status}`);
-        const body = await response.json() as { plan: CandidatePlan };
+        const body = await getJson<{ plan: CandidatePlan }>(`/api/v1/plans/${encodeURIComponent(job.plan_id)}`);
 
         failureStage = 'metric_calculation';
         const optimized = optimizedMetrics(body.plan, snap); // independently validates before accepting success

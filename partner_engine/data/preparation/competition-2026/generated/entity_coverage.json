@@ -1,0 +1,194 @@
+[
+  {
+    "entity": "Order",
+    "producer": "preparation generator",
+    "rows": 30,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "Cargo",
+    "producer": "preparation generator",
+    "rows": 30,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "Vehicle",
+    "producer": "preparation generator",
+    "rows": 7,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "Driver",
+    "producer": "preparation generator",
+    "rows": 7,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "Warehouse",
+    "producer": "preparation generator",
+    "rows": 4,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "WarehouseZone",
+    "producer": "preparation generator",
+    "rows": 7,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "StorageLocation",
+    "producer": "preparation generator",
+    "rows": 7,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "Dock",
+    "producer": "preparation generator",
+    "rows": 4,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "Worker",
+    "producer": "preparation generator",
+    "rows": 8,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "Equipment",
+    "producer": "preparation generator",
+    "rows": 8,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "TransportTask",
+    "producer": "preparation generator",
+    "rows": 30,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "WarehouseTask",
+    "producer": "preparation generator",
+    "rows": 100,
+    "state": "input_preparation_mapping_pending"
+  },
+  {
+    "entity": "Route",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "RouteStop",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "Schedule",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "ScheduleTask",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "ScheduleVersion",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "Constraint",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "OptimizationRequest",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "OptimizationResult",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "Simulation",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "SimulationSnapshot",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "Event",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "ExceptionEvent",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "RescheduleRequest",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "RescheduleResult",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "AgentRun",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "ToolCall",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "DecisionRecord",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "Experiment",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "Metric",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  },
+  {
+    "entity": "ExperimentResult",
+    "producer": "future validated application/solver/simulator/agent/evaluation service",
+    "rows": 0,
+    "state": "empty_not_executed"
+  }
+]

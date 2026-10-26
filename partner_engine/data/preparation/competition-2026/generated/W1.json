@@ -1,0 +1,71 @@
+{
+  "dock_capacity": 1,
+  "epoch_utc": "2026-09-12T00:00:00Z",
+  "equipment": [
+    {
+      "capacity": 1,
+      "code": "E1",
+      "kind": "sorting"
+    },
+    {
+      "capacity": 1,
+      "code": "E2",
+      "kind": "handling"
+    }
+  ],
+  "inventory_case": {
+    "capacity_volume_cm3": 10000,
+    "capacity_weight_g": 10000,
+    "initial_interval": [
+      0,
+      20
+    ],
+    "initial_quantity": 8,
+    "invalid_arrival_s": 10,
+    "new_quantity": 3,
+    "unit_volume_cm3": 1000,
+    "unit_weight_g": 1000,
+    "valid_arrival_s": 20
+  },
+  "not_a_solver_result": true,
+  "oracle_only": {
+    "with_setup_makespan_s": 25,
+    "without_setup_makespan_s": 20
+  },
+  "schema_version": "preparation-v1",
+  "setpoint_decic": 40,
+  "setup": {
+    "dock_units": 1,
+    "duration_s": 5,
+    "from_class": "raw",
+    "to_class": "clean",
+    "worker_units": 1
+  },
+  "source": "synthetic",
+  "tasks": [
+    {
+      "code": "A",
+      "dock_units": 1,
+      "duration_s": 10,
+      "predecessors": [],
+      "setup_class": "raw",
+      "worker_units": 1
+    },
+    {
+      "code": "B",
+      "dock_units": 1,
+      "duration_s": 10,
+      "predecessors": [
+        "A"
+      ],
+      "setup_class": "clean",
+      "worker_units": 1
+    }
+  ],
+  "warehouse": "H1",
+  "window": [
+    0,
+    100
+  ],
+  "worker_capacity": 2
+}

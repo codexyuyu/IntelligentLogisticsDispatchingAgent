@@ -28,15 +28,8 @@ export function LoginGate({ onSuccess }: { onSuccess: () => void }) {
   return (
     <div className="auth-screen">
       <section className="auth-hero">
-        <div className="auth-brand">
-          <div className="auth-logo">冷</div>
-          <div>
-            <strong>县域冷链调度</strong>
-            <span>仓储与运输协同</span>
-          </div>
-        </div>
+        <div />
         <div className="auth-copy">
-          <span className="auth-kicker">COLD-CHAIN DISPATCH CONSOLE</span>
           <h1>一仓一链，<br />把每一次调度算清楚。</h1>
           <p>仓储作业、冷间时间窗与运输计划在同一张调度单上对齐。</p>
           <ul>
@@ -45,14 +38,11 @@ export function LoginGate({ onSuccess }: { onSuccess: () => void }) {
             <li>异常处置与重排对比</li>
           </ul>
         </div>
-        <div className="auth-foot">第一版县域冷链调度界面 · API Key 访问</div>
       </section>
 
       <section className="auth-panel">
         <div className="auth-card">
-          <span className="auth-kicker">API KEY ACCESS</span>
           <h2>进入调度台</h2>
-          <p>使用后端分配的 API Key。开发环境示例：<code>dev-operator-token</code>。</p>
           <label htmlFor="api-key">API Key</label>
           <div className="auth-input-row">
             <input

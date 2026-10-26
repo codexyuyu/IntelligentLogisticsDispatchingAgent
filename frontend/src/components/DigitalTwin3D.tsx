@@ -508,7 +508,6 @@ export default function DigitalTwin3D({
         <div>
           
           <h3>冷链物流数字孪生</h3>
-          <p>{hasRoadGeometry ? 'OSRM 道路几何（非实时交通）；动画沿路网估计推进，非实际 GPS 轨迹。' : '示意道路布局（非真实地理路径）；求解结果与四车演示严格区分。'}</p>
         </div>
         <div className="twin-topstats">
           <span><b>{warehouses.length}</b> 仓库</span>

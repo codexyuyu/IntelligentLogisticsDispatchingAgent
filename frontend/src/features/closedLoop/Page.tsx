@@ -121,7 +121,7 @@ export default function ClosedLoopPage(){
     finally{setBusy(false);}
   }
   return <div className="r27-page">
-    <SectionHeader title="仓运闭环与异常重排" desc="同一批订单、同一座仓库、同一条时间线：库存核对 → CP-SAT 仓储作业 → 装车就绪 → OR-Tools 配送 → 回仓；只读预览，不触发实际出库。" />
+    <SectionHeader title="仓运闭环与异常重排" />
     <div className="pg-warning"><strong>业务边界：</strong>“单仓演示”使用合成场景；“PostgreSQL 数据驱动”要求 WH001、R24/R27 资料齐全；R30-A 导入的合成 CSV 将永久标记为演示，不能视为实际经营数据。当前不连接设备遥测、不自动修改库存或派车；道路未配置 OSRM 时仍是示意路线。</div>
     <div className="panel r27-config"><div className="panel-title-row"><div><h3>选择数据来源并生成全流程方案</h3><p>不会从演示模式静默切换成真实业务，也不会在真实资料缺失时补假值。</p></div><span className="soft-badge">CP-SAT + OR-Tools · 独立校验</span></div>
       <div className="r27-source-pills"><button className={`btn ${dataSource==='single_warehouse_demo'?'btn-primary':'btn-ghost'}`} onClick={()=>setDataSource('single_warehouse_demo')}>单仓演示 · 开箱即用</button><button className={`btn ${dataSource==='verified_postgres'?'btn-primary':'btn-ghost'}`} onClick={()=>setDataSource('verified_postgres')}>PostgreSQL 核验 · 数据驱动（来源标识）</button></div>

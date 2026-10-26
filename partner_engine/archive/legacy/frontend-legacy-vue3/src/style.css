@@ -1,0 +1,12 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif; background: #0b1220; color: #e5e7eb; }
+.el-card { border-radius: 14px; }
+.page-title { font-size: 22px; font-weight: 800; margin-bottom: 5px; color:#0f172a; }
+.page-subtitle { color:#64748b; font-size:13px; line-height:1.6; margin-bottom:14px; }
+.hint { color: #64748b; font-size: 13px; line-height: 1.6; }
+.metric-card { background: linear-gradient(135deg, #111827, #1f2937); color: #fff; border: 1px solid #334155; }
+.metric-value { font-size: 28px; font-weight: 800; margin-top: 8px; }
+.metric-label { color: #cbd5e1; }
+.panel { background: #f8fafc; color: #111827; border-radius: 16px; padding: 16px; }
+.code-text { font-family: Consolas, monospace; }
+.el-table { --el-table-header-bg-color:#f8fafc; }

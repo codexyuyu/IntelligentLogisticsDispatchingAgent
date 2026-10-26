@@ -2,6 +2,8 @@
 import asyncio
 import ipaddress
 import os
+import sys
+from pathlib import Path
 from contextlib import asynccontextmanager
 from dataclasses import dataclass
 from uuid import UUID, uuid4
@@ -188,6 +190,46 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.integration = services.integration
     install_handlers(app)
 
+    # Keep the partner's 0.2 contract in a separate namespace. Never expose its
+    # local-pg demo application or substitute its plans for committed 2.0 plans.
+    partner_root = Path(__file__).resolve().parents[4] / 'partner_engine'
+    if (partner_root / 'backend/app').is_dir():
+        from fastapi.responses import JSONResponse
+        from fastapi.staticfiles import StaticFiles
+        from logistics_backend.api.dependencies import actor
+        from logistics_backend.errors import ServiceError
+        partner_path = str(partner_root / 'backend')
+        for path in (str(partner_root), partner_path):
+            if path not in sys.path:
+                sys.path.append(path)
+        import importlib
+        importlib.import_module('app.api.routes')
+        partner_modules = tuple(importlib.import_module(f'app.api.routes.{name}') for name in (
+            'scenarios', 'requests', 'planning', 'jobs', 'plans', 'events', 'simulations', 'evidence'))
+        partner = FastAPI(title='Partner simulation compatibility', version='0.2.0')
+        for module in partner_modules:
+            partner.include_router(module.router, prefix='/api/v1')
+        @partner.exception_handler(ValueError)
+        async def partner_invalid(request, exc):
+            return JSONResponse({'code': 'invalid_input', 'message': str(exc)}, status_code=400)
+        @partner.exception_handler(KeyError)
+        async def partner_missing(request, exc):
+            return JSONResponse({'code': 'not_found', 'message': str(exc)}, status_code=404)
+        partner.mount('/assets', StaticFiles(directory=partner_root / 'frontend/public'))
+        app.mount('/partner', partner)
+
+        @app.middleware('http')
+        async def partner_authorization(request: Request, call_next):
+            if request.url.path == '/partner' or request.url.path.startswith('/partner/'):
+                try:
+                    current = actor(request, request.headers.get('authorization'))
+                    if current.role != ActorRole.OPERATOR:
+                        raise ServiceError(ErrorCode.FORBIDDEN, 'operator role required')
+                except ServiceError as exc:
+                    status = 401 if exc.code == ErrorCode.UNAUTHENTICATED else 403
+                    return JSONResponse({'code': exc.code.value, 'message': str(exc)}, status_code=status)
+            return await call_next(request)
+
     @app.middleware("http")
     async def request_boundary(request: Request, call_next):
         try:
@@ -203,7 +245,10 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
             chunks.append(chunk)
         request._body = b"".join(chunks)
         try:
-            result = await asyncio.wait_for(call_next(request), settings.request_timeout_s)
+            # Partner planning is synchronous and may consume a 60 s solver
+            # budget; the production queue API retains its configured deadline.
+            timeout = max(settings.request_timeout_s, 120) if request.url.path.startswith('/partner/') else settings.request_timeout_s
+            result = await asyncio.wait_for(call_next(request), timeout)
         except TimeoutError:
             return response(request, ErrorCode.DEPENDENCY_UNAVAILABLE, "request deadline exceeded")
         result.headers["X-Request-ID"] = str(request.state.trace_id)

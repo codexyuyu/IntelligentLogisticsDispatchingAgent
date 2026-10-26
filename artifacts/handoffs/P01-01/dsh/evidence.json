@@ -27,8 +27,8 @@
     },
     "package_lock": {
       "path": "package-lock.json",
-      "bytes": 100681,
-      "sha256": "f99f2d5058f969a5948582f13fc3595c0fcafbd8657d31a423840ce7712e4cd4"
+      "bytes": 104981,
+      "sha256": "c074ecf4c1edee213a0a38129dd500901d461f4492e7c9e682792c9628766221"
     },
     "root_pyproject": {
       "path": "pyproject.toml",
@@ -113,7 +113,7 @@
     "uv_lock_path": "uv.lock",
     "uv_lock_sha256": "feb4552eb4767057943e1464bf7aee78fc84ad20b29803d54e0b3981d90e5123",
     "package_lock_path": "package-lock.json",
-    "package_lock_sha256": "f99f2d5058f969a5948582f13fc3595c0fcafbd8657d31a423840ce7712e4cd4",
+    "package_lock_sha256": "c074ecf4c1edee213a0a38129dd500901d461f4492e7c9e682792c9628766221",
     "locked_package_count": 46,
     "npm_lockfile_version": 3,
     "frozen_install_command": "uv sync --frozen",

@@ -328,7 +328,7 @@ def validate_warehouse(problem: WarehouseProblem,
         candidate_hash=content_hash({"assignments": solution.assignments,
             "storage": solution.storage_allocations, "setup": solution.setup_operations}),
         snapshot_hash=problem.snapshot.hash, rules_version="1.0.0", valid=valid,
-        required_codes=(), checked_codes=tuple(coldchain.checked),
+        required_codes=tuple(sorted(set(coldchain.checked) | set(coldchain.unsupported))), checked_codes=tuple(coldchain.checked),
         unsupported_codes=tuple(coldchain.unsupported),
         violations=tuple(violations),
         validated_at=datetime.now(UTC).replace(microsecond=0))

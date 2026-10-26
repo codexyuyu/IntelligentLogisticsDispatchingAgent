@@ -3,6 +3,7 @@ import SectionHeader from '../../components/SectionHeader';
 import { KpiCard } from '../../components/KpiCard';
 import { StatusPill } from '../../components/StatusPill';
 import { useApp } from '../../appContext';
+import { getJson } from '../../lib/http';
 import { fmtDur, fmtKM } from '../../lib/format';
 import { runBenchmark, fairDistanceReduction, type BenchmarkMetrics, type BenchmarkResult } from '../../lib/benchmark';
 import { runBatchBenchmark, summarizeBatch, budgetForScale, type BenchmarkProfile, type BatchBenchmarkSummary, type BatchSeedRun } from '../../lib/batchBenchmark';
@@ -184,8 +185,7 @@ export default function Page() {
   const [r17EvidenceError, setR17EvidenceError] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/evidence/r17_arithmetic_audit.json', { signal: controller.signal })
-      .then((res) => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json() as Promise<AcceptedAudit>; })
+    getJson<AcceptedAudit>('/evidence/r17_arithmetic_audit.json', controller.signal)
       .then(setR17Accepted)
       .catch((err: unknown) => { if ((err as { name?: string })?.name !== 'AbortError') setR17EvidenceError(true); });
     return () => controller.abort();

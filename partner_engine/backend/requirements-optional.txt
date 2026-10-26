@@ -1,0 +1,6 @@
+# Install only when implementing the relevant adapter; not needed for skeleton startup.
+ortools==9.15.6755
+simpy==4.1.1
+sqlalchemy>=2,<3
+alembic>=1.14,<2
+psycopg[binary]>=3.2,<4
