@@ -7,6 +7,7 @@ warehouse/transport/exception roles driven by real shared-contract objects.
 from __future__ import annotations
 
 import datetime as dt
+from dataclasses import replace
 
 import pytest
 
@@ -323,6 +324,38 @@ def test_duplicate_role_is_rejected():
 def test_policy_rejects_deadline_shorter_than_response_timeout():
     with pytest.raises(NegotiationError, match='deadline_shorter_than_response_timeout'):
         NegotiationPolicy(respond_timeout_s=60, deadline_s=30)
+
+
+def test_bid_must_still_be_valid_at_award_time():
+    result = net(warehouse=ScriptedRole('warehouse', 10, expires_delta=-1),
+                 transport=ScriptedRole('transport', None),
+                 exception=ScriptedRole('exception', None)).negotiate([task()], 0)
+    assert result.awards == ()
+    assert [m.detail for m in result.transcript if m.kind == 'bid'] == ['bid_expires_before_award']
+
+
+def test_changed_resource_binding_changes_digest():
+    first = net(transport=ScriptedRole('transport', 20, resources=('dock_a',))).negotiate([task()], 0)
+    second = net(transport=ScriptedRole('transport', 20, resources=('dock_b',))).negotiate([task()], 0)
+    assert first.digest != second.digest
+
+
+def test_idempotency_key_cannot_hide_changed_task_window():
+    coordinator = net()
+    coordinator.negotiate([task()], 0, 'same-key')
+    with pytest.raises(NegotiationError, match='idempotency_payload_mismatch'):
+        coordinator.negotiate([replace(task(), window_end_s=200)], 0, 'same-key')
+
+
+def test_role_cannot_quote_as_another_role():
+    class ImpersonatingRole(ScriptedRole):
+        def bid(self, cfp):
+            return replace(super().bid(cfp), role='transport')
+    result = net(warehouse=ImpersonatingRole('warehouse', 1),
+                 transport=ScriptedRole('transport', None),
+                 exception=ScriptedRole('exception', None)).negotiate([task()], 0)
+    assert result.awards == ()
+    assert [m.detail for m in result.transcript if m.kind == 'bid'] == ['role_mismatch']
 
 
 # --------------------------------------------------------------------------- #

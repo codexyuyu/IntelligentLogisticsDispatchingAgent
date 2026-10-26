@@ -52,6 +52,7 @@ from logistics_backend.application.decision import DecisionService
 from logistics_backend.application.experiment import ExperimentService
 from logistics_backend.application.metrics import MetricsService
 from logistics_backend.application.schedule import ScheduleService
+from logistics_backend.application.integration import IntegrationService
 from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
@@ -110,6 +111,7 @@ class Services:
     experiments: ExperimentService
     metrics: MetricsService
     schedules: ScheduleService
+    integration: IntegrationService
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -148,6 +150,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         experiments=ExperimentService(factory, settings.scope_id),
         metrics=MetricsService(factory, settings.scope_id),
         schedules=ScheduleService(factory, settings.scope_id, snapshots, commits, jobs),
+        integration=IntegrationService(factory, settings.scope_id),
     )
     return engine, services
 
@@ -182,6 +185,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.experiments = services.experiments
     app.state.metrics = services.metrics
     app.state.schedules = services.schedules
+    app.state.integration = services.integration
     install_handlers(app)
 
     @app.middleware("http")

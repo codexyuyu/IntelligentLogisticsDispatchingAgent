@@ -8,6 +8,7 @@ silently treated as zero exposure.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from itertools import pairwise
 from uuid import UUID
 
 from logistics_domain.coldchain import CapacityUnit, ExposureScope
@@ -54,6 +55,12 @@ def validate_coldchain(problem: WarehouseProblem, solution: WarehouseSolution) -
     for assignment in solution.assignments:
         by_task.setdefault(assignment.task_id, []).append(assignment)
     task_by_id = {task.id: task for task in problem.tasks}
+    def violation(code, actual, expected, message):
+        outcome.violations.append(Violation(code, Severity.HARD, (), 'coldchain',
+                                           str(actual), str(expected), message))
+    if coldchain.horizon_s != problem.snapshot.scope.horizon_s:
+        violation('coldchain_horizon', coldchain.horizon_s, problem.snapshot.scope.horizon_s,
+                  'coldchain and planning horizons differ')
 
     for requirement in coldchain.precool_requirements:
         precool = by_task.get(requirement.precool_operation_id)
@@ -68,6 +75,8 @@ def validate_coldchain(problem: WarehouseProblem, solution: WarehouseSolution) -
                 expected=f">= {requirement.min_duration_s}",
                 message="pre-cooling task is shorter than its declared minimum"))
         precool_end = max(item.end_s for item in precool)
+        if not any(a.resource_id in requirement.eligible_resource_ids for a in precool):
+            violation('coldchain_precool_resource', 'ineligible', 'eligible resource', 'pre-cooling resource mismatch')
         for loading_id in requirement.loading_operation_ids:
             loading = by_task.get(loading_id)
             if not loading:
@@ -100,6 +109,9 @@ def validate_coldchain(problem: WarehouseProblem, solution: WarehouseSolution) -
             end = min(item.start_s for item in outbound)
         else:
             end = coldchain.horizon_s
+        if end < start or start < 0 or end > coldchain.horizon_s:
+            violation('coldchain_occupancy_window', f'{start}..{end}', f'0..{coldchain.horizon_s}',
+                      'storage occupancy has reversed or out-of-horizon endpoints')
         if end <= start:
             continue
         occupancy_intervals.append((occupancy, start, end))
@@ -122,6 +134,7 @@ def validate_coldchain(problem: WarehouseProblem, solution: WarehouseSolution) -
                 left, right = max(start, window.earliest_s), min(end, window.latest_s)
                 if right > left:
                     clipped.append((left, right))
+            clipped = _merge(clipped)
             covered = sum(right - left for left, right in clipped)
             if covered != end - start:
                 outcome.violations.append(Violation(code="coldchain_storage_window",
@@ -180,11 +193,88 @@ def validate_coldchain(problem: WarehouseProblem, solution: WarehouseSolution) -
         outcome.checked.append("r05.storage_capacity")
         outcome.checked.append("r05.occupancy")
 
+    zones = {z.zone_id: z for z in coldchain.zones}
+    batches = {b.batch_id: b for b in coldchain.batch_compatibility}
+    zone_entries = {}
+    for occupancy, start, end in occupancy_intervals:
+        location = locations.get(occupancy.location_id)
+        zone = zones.get(location.zone_id) if location else None
+        batch = batches.get(occupancy.batch_id)
+        if zone is None or batch is None:
+            outcome.unsupported.append('r05.compatibility:missing_zone_or_batch')
+            continue
+        if (location.warehouse_id != zone.warehouse_id or batch.warehouse_id != zone.warehouse_id
+                or not batch.min_temperature_decic <= zone.setpoint_decic <= batch.max_temperature_decic):
+            violation('coldchain_temperature', zone.setpoint_decic, 'batch temperature/warehouse',
+                      'storage temperature or warehouse is incompatible with batch')
+        for use in occupancy.capacity_use:
+            zone_entries.setdefault((zone.zone_id, use.unit), []).append((start, end, use.amount))
+    for (zone_id, unit), entries in zone_entries.items():
+        capacity = next((c.amount for c in zones[zone_id].capacities if c.unit == unit), 0)
+        peak = _peak(entries)
+        if peak > capacity:
+            violation('coldchain_zone_capacity', peak, capacity, 'aggregate zone capacity exceeded')
+    if coldchain.compatibility_policy:
+        banned = {frozenset(p) for p in coldchain.compatibility_policy.incompatible_class_pairs}
+        for i, (a, start, end) in enumerate(occupancy_intervals):
+            for b, other_start, other_end in occupancy_intervals[i+1:]:
+                if a.batch_id not in batches or b.batch_id not in batches:
+                    continue
+                if a.location_id not in locations or b.location_id not in locations:
+                    continue
+                if (locations[a.location_id].zone_id == locations[b.location_id].zone_id
+                        and start < other_end and other_start < end
+                        and frozenset((batches[a.batch_id].compatibility_class,
+                                       batches[b.batch_id].compatibility_class)) in banned):
+                    violation('coldchain_incompatible_batches', f'{a.batch_id}/{b.batch_id}',
+                              'nonoverlapping storage', 'incompatible batches overlap in one zone')
+
+    # Check declared cleaning even when no separate warehouse SetupPolicy was supplied.
+    primary = {}
+    for assignment in solution.assignments:
+        task = task_by_id.get(assignment.task_id)
+        if task and assignment.resource_id in task.requirements[0].eligible_ids:
+            primary.setdefault(assignment.resource_id, []).append(assignment)
+    for resource, assignments in primary.items():
+        ordered = sorted(assignments, key=lambda a: (a.start_s, str(a.task_id)))
+        for left, right in pairwise(ordered):
+            a, b = task_by_id[left.task_id].setup_class, task_by_id[right.task_id].setup_class
+            if a == b:
+                continue
+            durations = [r.duration_s for p in coldchain.setup_policies for r in p.rules
+                         if r.from_class == a and r.to_class == b]
+            if not durations:
+                durations = [p.default_duration_s for p in coldchain.setup_policies if p.default_duration_s is not None]
+            if durations and (right.start_s-left.end_s < max(durations) or not any(
+                    s.resource_id == resource and s.from_class == a and s.to_class == b
+                    and s.end_s-s.start_s >= max(durations) and left.end_s <= s.start_s
+                    and s.end_s <= right.start_s for s in solution.setup_operations)):
+                violation('coldchain_changeover', f'{a}->{b}', max(durations), 'required cleaning gap missing')
+
     limits = {item.batch_id: item for item in coldchain.exposure_limits}
     for batch_id, intervals in exposure.items():
         limit = limits.get(batch_id)
-        if limit is None or ExposureScope.IN_WAREHOUSE not in limit.scopes:
+        if limit is None:
             outcome.unsupported.append(f"r05.exposure:{batch_id}:no_limit")
+            continue
+        intervals = list(intervals) if ExposureScope.IN_WAREHOUSE in limit.scopes else []
+        for req in coldchain.precool_requirements:
+            if req.batch_id != batch_id or req.precool_operation_id not in by_task:
+                continue
+            ready = max(a.end_s for a in by_task[req.precool_operation_id])
+            for loading_id in req.loading_operation_ids:
+                loading = by_task.get(loading_id, ())
+                if not loading:
+                    continue
+                start, end = min(a.start_s for a in loading), max(a.end_s for a in loading)
+                if ExposureScope.WAITING in limit.scopes and start > ready:
+                    intervals.append((ready, start))
+                if ExposureScope.LOADING in limit.scopes:
+                    intervals.append((start, end))
+        if ExposureScope.TRANSPORT in limit.scopes:
+            outcome.unsupported.append(f'r05.exposure:{batch_id}:transport_requires_joint_evidence')
+        if not intervals:
+            outcome.unsupported.append(f'r05.exposure:{batch_id}:no_measured_segments')
             continue
         total = sum(end - start for start, end in _merge(intervals))
         if total > limit.max_exposure_s:

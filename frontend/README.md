@@ -1,3 +1,5 @@
+> 历史源码参考：本目录不再作为正式运行入口。中文界面已移植至 `apps/frontend`，统一访问 http://localhost:8080。
+
 # R23 React 本机 PostgreSQL 调度入口
 
 安装依赖：`npm ci`。保持 `backend/start_pg_r22_local.ps1` 所启动的服务运行，在 frontend 目录执行 `npm run dev`，浏览器访问 `http://127.0.0.1:5173` → 左侧 `PostgreSQL 实库调度`。

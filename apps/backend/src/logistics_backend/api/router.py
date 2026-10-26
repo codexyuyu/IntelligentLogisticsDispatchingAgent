@@ -15,6 +15,7 @@ from logistics_backend.api.simulations import router as simulations_router
 from logistics_backend.api.validation import router as validation_router
 from logistics_backend.api.warehouse import router as warehouse_router
 from logistics_backend.api.workbench import router as workbench_router
+from logistics_backend.api.integration import router as integration_router
 
 router = APIRouter()
 router.include_router(master_data_router)
@@ -33,3 +34,4 @@ router.include_router(validation_router)
 router.include_router(reschedule_router)
 router.include_router(schedules_router)
 router.include_router(workbench_router)
+router.include_router(integration_router)

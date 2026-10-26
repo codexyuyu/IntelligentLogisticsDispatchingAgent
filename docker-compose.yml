@@ -52,18 +52,8 @@ services:
 
   frontend:
     build:
-      context: apps/frontend
-      dockerfile: Dockerfile
-    depends_on:
-      backend:
-        condition: service_healthy
-    ports:
-      - "8081:80"
-
-  frontend-legacy:
-    build:
-      context: apps/frontend-legacy
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: apps/frontend/Dockerfile
     depends_on:
       backend:
         condition: service_healthy

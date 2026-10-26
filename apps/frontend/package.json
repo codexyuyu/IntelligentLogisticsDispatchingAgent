@@ -16,10 +16,14 @@
     "contracts:check": "node ./scripts/generate-contracts.mjs --check"
   },
   "dependencies": {
+    "openapi-fetch": "^0.14.0",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "three": "^0.184.0"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/three": "^0.186.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.0",

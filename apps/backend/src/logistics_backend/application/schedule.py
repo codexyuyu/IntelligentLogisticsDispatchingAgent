@@ -65,6 +65,7 @@ from logistics_domain.planning import (
 from logistics_domain.states import EntityState, ErrorCode
 from logistics_optimization.validation.transport import validate_transport
 from logistics_optimization.validation.warehouse import validate_warehouse
+from logistics_optimization.validation.joint import validate_joint
 
 
 class ScheduleService:
@@ -185,6 +186,8 @@ class ScheduleService:
             "solver_evidence_refs": command.solver_evidence_refs}
         digest = content_hash(body)
         transport_report = validate_transport(plan, problem, stops)
+        if command.warehouse_problem is not None and command.warehouse_solution is not None:
+            transport_report = validate_joint(plan, problem, stops, warehouse_problem, warehouse_solution)
         report = dataclasses.replace(transport_report,
             valid=transport_report.valid and warehouse_valid,
             violations=transport_report.violations + warehouse_violations,

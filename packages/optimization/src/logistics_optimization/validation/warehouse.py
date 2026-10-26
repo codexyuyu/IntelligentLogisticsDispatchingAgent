@@ -77,7 +77,7 @@ def validate_warehouse(problem: WarehouseProblem,
                     expected=f"<= {equipment_item.quantity_capacity}",
                     message="assignment exceeds equipment quantity capacity"))
             worker = workers.get(assignment.resource_id)
-            if task.required_skills:
+            if task.required_skills and worker is not None:
                 if worker is None:
                     violations.append(Violation(code="skill_resource",
                         severity=Severity.HARD, entity_refs=(),
@@ -142,6 +142,20 @@ def validate_warehouse(problem: WarehouseProblem,
     for resource_id, assignments in by_resource.items():
         assignments.sort(key=lambda item: item.start_s)
         equipment_item = equipment.get(resource_id)
+        resource = resource_by_id.get(resource_id)
+        if resource is not None:
+            capacity = equipment_item.quantity_capacity if equipment_item else 1
+            points = {p for a in assignments for p in (a.start_s, a.end_s)}
+            points.update(p for iv in resource.calendar.intervals for p in (iv.start_s, iv.end_s))
+            for left, right in pairwise(sorted(points)):
+                load = sum(a.units for a in assignments if a.start_s < right and left < a.end_s)
+                allowed = min(capacity, resource.calendar.available_units_at(left))
+                if load > allowed:
+                    violations.append(Violation('resource_calendar_capacity', Severity.HARD, (),
+                        'assignment.resource_id', str(load), str(allowed), 'resource calendar capacity exceeded'))
+            if resource.calendar.epoch_utc != problem.snapshot.scope.epoch_utc:
+                violations.append(Violation('calendar_epoch', Severity.HARD, (), 'resource.calendar',
+                    str(resource_id), 'scope epoch', 'calendar epoch differs from planning scope'))
         if equipment_item is not None:
             events = []
             for item in assignments:
@@ -169,6 +183,17 @@ def validate_warehouse(problem: WarehouseProblem,
         if not task_assignments:
             continue
         task_start = min(item.start_s for item in task_assignments)
+        if len({(a.start_s, a.end_s) for a in task_assignments}) != 1:
+            violations.append(Violation('operation_alignment', Severity.HARD, (), 'assignments',
+                str(task.id), 'same start/end', 'simultaneous requirements have different intervals'))
+        warehouse = resource_by_id.get(task.warehouse_id)
+        task_end = max(a.end_s for a in task_assignments)
+        if warehouse is not None:
+            points = {task_start, task_end} | {p for iv in warehouse.calendar.intervals
+                for p in (iv.start_s, iv.end_s) if task_start < p < task_end}
+            if any(warehouse.calendar.available_units_at(t) <= 0 for t in sorted(points)[:-1]):
+                violations.append(Violation('warehouse_closed', Severity.HARD, (), 'warehouse.calendar',
+                    str(task.id), 'open throughout operation', 'warehouse closed during operation'))
         for predecessor_id in task.predecessor_ids:
             predecessor_assignments = assigned_by_task.get(predecessor_id, ())
             if predecessor_assignments:
@@ -298,7 +323,7 @@ def validate_warehouse(problem: WarehouseProblem,
         violations.append(Violation(code="negative_cost", severity=Severity.HARD,
             entity_refs=(), field_path="objective.business_cost_cents", actual=str(cost),
             expected=">= 0", message="objective cost is negative"))
-    valid = not any(violation.severity == Severity.HARD for violation in violations)
+    valid = not coldchain.unsupported and not any(violation.severity == Severity.HARD for violation in violations)
     return ValidationReport(id=uuid4(),
         candidate_hash=content_hash({"assignments": solution.assignments,
             "storage": solution.storage_allocations, "setup": solution.setup_operations}),

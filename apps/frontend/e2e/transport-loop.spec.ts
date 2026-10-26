@@ -49,9 +49,11 @@ test("transport dispatch browser loop commits and survives refresh", async ({ pa
   await page.reload({ waitUntil: "networkidle" });
 
   operations.push("login");
-  await page.getByPlaceholder("Bearer token").first().fill(TOKEN);
-  await page.getByRole("button", { name: "sign in" }).click();
-  await page.getByRole("link", { name: "Transport optimization" }).click();
+  await page.getByPlaceholder("输入 API Key").fill(TOKEN);
+  await page.getByRole("button", { name: "验证并进入" }).click();
+  await expect(page.getByText("县域冷链调度", { exact: true })).toBeVisible();
+  await expect(page.getByText("Dispatch Workbench", { exact: true })).toHaveCount(0);
+  await page.getByRole("button", { name: "运输计划", exact: true }).click();
 
   operations.push("read database orders, vehicles, warehouses and matrices");
   await expect(page.getByText(/已从数据库读取 \d+ 个订单/)).toBeVisible();

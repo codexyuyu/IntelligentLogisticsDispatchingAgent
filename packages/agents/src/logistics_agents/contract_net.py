@@ -27,8 +27,9 @@ the transcript is append-only with a monotonic sequence and a SHA-256 digest.
 from __future__ import annotations
 
 import hashlib
+import json
 from collections.abc import Iterable, Sequence
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from typing import Literal, Protocol
 
 BiddingRole = Literal['warehouse', 'transport', 'exception']
@@ -76,6 +77,7 @@ class TaskSpec:
     quantity_units: int = 1
     required_resource_kind: str | None = None
     exclusive_resource_ids: tuple[str, ...] = ()
+    source_hash: str = ''
 
     def __post_init__(self):
         if self.window_end_s < self.window_start_s:
@@ -178,10 +180,7 @@ class Role(Protocol):
 
 
 def _digest(transcript: Sequence[Message]) -> str:
-    payload = '\n'.join(
-        f'{m.seq}|{m.round_no}|{m.at_s}|{m.kind}|{m.role}|{m.task_id}|{m.bid_id or ""}|{m.detail}'
-        for m in transcript
-    )
+    payload = json.dumps([asdict(m) for m in transcript], sort_keys=True, separators=(',', ':'))
     return hashlib.sha256(payload.encode('utf-8')).hexdigest()
 
 
@@ -204,6 +203,8 @@ class ContractNet:
         self._transcript: list[Message] = []
         self._results: dict[str, NegotiationResult] = {}
         self._awards: dict[str, Award] = {}
+        self._accepted_bids: dict[str, Bid] = {}
+        self._requests: dict[str, tuple] = {}
 
     # -- public API --------------------------------------------------------
 
@@ -218,9 +219,13 @@ class ContractNet:
             raise NegotiationError('negative_clock')
 
         key = idempotency_key or 'auto:' + ','.join(sorted(task.task_id for task in tasks))
+        request = (tasks, now_s)
         if key in self._results:
+            if self._requests[key] != request:
+                raise NegotiationError('idempotency_payload_mismatch')
             # Replay is byte-identical: no new messages, no new awards.
             return self._results[key]
+        self._requests[key] = request
         already = [task.task_id for task in tasks if task.task_id in self._awards]
         if already:
             return self._remember(key, self._result(
@@ -233,6 +238,7 @@ class ContractNet:
 
     def revoke(self, task_id: str, now_s: int, reason: str = 'operator_revoked') -> NegotiationResult:
         award = self._awards.pop(task_id, None)
+        self._accepted_bids.pop(task_id, None)
         if award is None:
             return self._result(
                 status='revoked', rounds_used=0, awards=(), conflicts=(),
@@ -272,6 +278,7 @@ class ContractNet:
         confirmed: dict[str, Award] = {}
         rounds_used = 0
         reason = 'rounds_exhausted'
+        round_state = {task.task_id: 'no_bid' for task in tasks}
 
         for round_no in range(1, policy.max_rounds + 1):
             round_start = now_s + (round_no - 1) * policy.respond_timeout_s
@@ -292,7 +299,8 @@ class ContractNet:
                 )
                 cfps[task.task_id] = cfp
                 self._emit(round_start, round_no, 'cfp', 'coordinator', task.task_id, None,
-                           f'respond_by={respond_by}')
+                           f'respond_by={respond_by};task=' + json.dumps(
+                               asdict(task), sort_keys=True, separators=(',', ':')))
 
             round_state: dict[str, str] = {task.task_id: 'no_bid' for task in pending}
             bids_by_task: dict[str, list[Bid]] = {task.task_id: [] for task in pending}
@@ -304,9 +312,12 @@ class ContractNet:
                     if bid is None:
                         continue
                     responses += 1
-                    detail = self._reject_reason(bid, cfp, round_start)
+                    detail = ('role_mismatch' if bid.role != name else
+                              self._reject_reason(bid, cfp, round_start))
+                    resources = json.dumps(sorted(bid.exclusive_resource_ids), separators=(',', ':'))
                     self._emit(round_start, round_no, 'bid', name, task.task_id, bid.bid_id,
-                               detail or f'cost={bid.cost};window=[{bid.valid_from_s},{bid.valid_to_s})')
+                               detail or f'cost={bid.cost};window=[{bid.valid_from_s},{bid.valid_to_s});'
+                               f'resources={resources};expires={bid.expires_at_s}')
                     if detail:
                         if round_state[task.task_id] == 'no_bid':
                             round_state[task.task_id] = 'bid_rejected'
@@ -327,7 +338,8 @@ class ContractNet:
                 # round is ordinary competition, not a resource conflict.
                 if any(chosen.task_id == bid.task_id for chosen in selected):
                     continue
-                blocking = next((chosen for chosen in selected if chosen.overlaps(bid)), None)
+                blocking = next((chosen for chosen in (*self._accepted_bids.values(), *selected)
+                                 if chosen.overlaps(bid)), None)
                 if blocking is None:
                     selected.append(bid)
                     continue
@@ -351,11 +363,13 @@ class ContractNet:
                            bid.bid_id, f'role={bid.role}')
                 if not policy.require_confirmation:
                     self._awards[bid.task_id] = award
+                    self._accepted_bids[bid.task_id] = bid
                     confirmed[bid.task_id] = award
                     awards.append(award)
                     continue
                 if self._roles[bid.role].confirm(award):
                     self._awards[bid.task_id] = award
+                    self._accepted_bids[bid.task_id] = bid
                     confirmed[bid.task_id] = award
                     awards.append(award)
                     self._emit(respond_by, round_no, 'confirm', bid.role, bid.task_id,
@@ -420,6 +434,8 @@ class ContractNet:
             return 'empty_window'
         if bid.is_expired(now_s):
             return 'bid_expired'
+        if bid.is_expired(cfp.respond_by_s):
+            return 'bid_expires_before_award'
         if bid.cost < 0:
             return 'negative_cost'
         if not bid.inside(cfp.task):
