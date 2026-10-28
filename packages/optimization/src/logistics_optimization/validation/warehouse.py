@@ -205,7 +205,50 @@ def validate_warehouse(problem: WarehouseProblem,
                         message="task starts before its predecessor finishes"))
     location_intervals = defaultdict(list)
     zone_intervals = defaultdict(list)
+    # A cold-chain occupancy is identified by its occupancy UUID, rather than by
+    # a registered Cargo.id. Cold-chain locations similarly live in the R05
+    # snapshot, not necessarily in the legacy resources.locations collection.
+    # Validate these records against their source occupancy and task assignments;
+    # leave ordinary cargo/storage allocations on the existing validation path.
+    coldchain = problem.snapshot.coldchain
+    cold_occupancies = {item.occupancy_id: item for item in coldchain.occupancies} if coldchain else {}
+    reuse = {item.location_id: item for item in coldchain.reuse_rules} if coldchain else {}
+    cold_seen = set()
     for interval in solution.storage_allocations:
+        occupancy = cold_occupancies.get(interval.cargo_id)
+        if occupancy is not None:
+            if interval.cargo_id in cold_seen:
+                violations.append(Violation(code="coldchain_storage_duplicate", severity=Severity.HARD,
+                    entity_refs=(), field_path="storage.cargo_id", actual=str(interval.cargo_id),
+                    expected="one interval per occupancy", message="cold-chain occupancy is exported twice"))
+            cold_seen.add(interval.cargo_id)
+            quantities = {item.unit.value: item.amount for item in occupancy.capacity_use}
+            declared = (quantities.get("quantity_units", 0), quantities.get("weight_g", 0),
+                        quantities.get("volume_cm3", 0))
+            actual = (interval.quantity_units, interval.weight_g, interval.volume_cm3)
+            if interval.location_id != occupancy.location_id or actual != declared:
+                violations.append(Violation(code="coldchain_storage_mismatch", severity=Severity.HARD,
+                    entity_refs=(), field_path="storage", actual=str((interval.location_id, actual)),
+                    expected=str((occupancy.location_id, declared)),
+                    message="storage allocation differs from the declared cold-chain occupancy"))
+            inbound = assigned_by_task.get(occupancy.inbound_operation_id) if occupancy.inbound_operation_id else None
+            outbound = assigned_by_task.get(occupancy.outbound_operation_id) if occupancy.outbound_operation_id else None
+            if ((occupancy.inbound_operation_id and not inbound)
+                    or (occupancy.outbound_operation_id and not outbound)):
+                violations.append(Violation(code="coldchain_storage_unverified", severity=Severity.HARD,
+                    entity_refs=(), field_path="storage", actual=str(interval.cargo_id),
+                    expected="linked warehouse assignments", message="storage endpoints lack operation evidence"))
+            else:
+                start = max(item.end_s for item in inbound) if inbound else (occupancy.declared_start_s or 0)
+                end = min(item.start_s for item in outbound) if outbound else coldchain.horizon_s
+                if not outbound and occupancy.location_id in reuse:
+                    end = min(end, start + reuse[occupancy.location_id].max_batch_age_s)
+                if (interval.start_s, interval.end_s) != (start, end):
+                    violations.append(Violation(code="coldchain_storage_time", severity=Severity.HARD,
+                        entity_refs=(), field_path="storage.start_s/end_s",
+                        actual=f"{interval.start_s}..{interval.end_s}", expected=f"{start}..{end}",
+                        message="storage interval differs from independently derived operation times"))
+            continue
         location = locations.get(interval.location_id)
         if location is None:
             violations.append(Violation(code="unknown_location", severity=Severity.HARD,

@@ -45,7 +45,7 @@ def union_duration(model, spans, horizon, name):
 def add_coldchain(model, problem, starts, ends, use):
     cold = problem.snapshot.coldchain
     if cold is None:
-        return
+        return {}
     horizon = problem.snapshot.scope.horizon_s
     if cold.horizon_s != horizon:
         raise ValueError('coldchain horizon differs from planning scope')
@@ -141,3 +141,5 @@ def add_coldchain(model, problem, starts, ends, use):
         intervals = [span for scope in limit.scopes for span in exposure[(limit.batch_id, scope)]]
         if intervals:
             model.Add(union_duration(model, intervals, horizon, f'exposure_{limit.limit_id}') <= limit.max_exposure_s)
+    # Export the exact modeled endpoints; callers may read them only after a feasible solve.
+    return spans
