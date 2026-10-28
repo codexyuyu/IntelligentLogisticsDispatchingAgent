@@ -4,7 +4,9 @@
 
 `D:\Agent\Codex\IntelligentLogisticsDispatchingAgent` 是另一执行树，规划及 Gate 状态不同；本副本证据不作为另一树的通过证明。分发前核对 agent 实际工作根，见[完整派发清单](docs/agent-toolchain/12-project-completion-dispatch.md)。
 
-**2026-10-01 返工后：P01-02 四项限定修复已 READY_FOR_ZCODE 并停写；Codex 补 AGENTS.md 所有权规则后完整 unit/integration 为 226 passed，G01 仍未有效签收。先按[完整派发清单](docs/agent-toolchain/12-project-completion-dispatch.md)解阻 G00 与重验 Phase 01，再进入余下 103 个任务；领域、数据库、API、worker 和完整前端尚未交付。遵守根 [AGENTS.md](AGENTS.md)。**
+当前运行入口见 [INTEGRATION.md](INTEGRATION.md)，后端结构与兼容变化见
+[后端统一实现](docs/architecture/BACKEND_CONSOLIDATION.md)。正式代码已包含 API、持久任务、求解、协商和指标模块；
+这些实现事实不等于历史 Gate 已重新签收。阶段计划及旧交接记录不得代替当前源码检查。
 
 ## 前期调研记录
 

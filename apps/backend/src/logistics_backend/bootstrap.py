@@ -12,6 +12,41 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 from starlette.concurrency import run_in_threadpool
 
+from logistics_agents.llm import DeepSeekProvider, LLMSettings
+from logistics_agents.service import AgentChatService
+from logistics_backend.api.errors import install_handlers, response
+from logistics_backend.application.agent import AgentRunService
+from logistics_backend.application.decision import DecisionService
+from logistics_backend.application.events import EventService
+from logistics_backend.application.exceptions import ExceptionService
+from logistics_backend.application.experiment import ExperimentService
+from logistics_backend.application.integration import IntegrationJobHandler, IntegrationService
+from logistics_backend.application.jobs import HandlerRegistry, JobService
+from logistics_backend.application.master_data import MasterDataService
+from logistics_backend.application.metrics import MetricsService
+from logistics_backend.application.optimization import (
+    TransportJobHandler,
+    TransportOptimizationService,
+    TransportResultStore,
+)
+from logistics_backend.application.schedule import ScheduleService
+from logistics_backend.application.simulation import (
+    SimulationJobHandler,
+    SimulationResultStore,
+    SimulationService,
+)
+from logistics_backend.application.tools import ToolService
+from logistics_backend.application.warehouse import (
+    WarehouseJobHandler,
+    WarehouseOptimizationService,
+    WarehouseResultStore,
+)
+from logistics_backend.persistence.jobs import JobRepository
+from logistics_backend.persistence.resource_models import TABLES
+from logistics_backend.persistence.snapshots import PlanningSnapshotStore
+from logistics_backend.persistence.uow import UnitOfWork
+from logistics_backend.persistence.version_store import PlanCommitStore
+from logistics_contracts.http import HealthResponse, ReadinessResponse
 from logistics_domain.states import (
     ActorRole,
     ErrorCode,
@@ -19,41 +54,6 @@ from logistics_domain.states import (
     JobOptimizationMode,
     RuntimeMode,
 )
-from logistics_contracts.http import HealthResponse, ReadinessResponse
-from logistics_backend.persistence.resource_models import TABLES
-from logistics_backend.persistence.uow import UnitOfWork
-from logistics_backend.persistence.jobs import JobRepository
-from logistics_backend.persistence.snapshots import PlanningSnapshotStore
-from logistics_backend.persistence.version_store import PlanCommitStore
-from logistics_backend.application.master_data import MasterDataService
-from logistics_backend.application.jobs import HandlerRegistry, JobService
-from logistics_backend.application.optimization import (
-    TransportJobHandler,
-    TransportOptimizationService,
-    TransportResultStore,
-)
-from logistics_backend.application.warehouse import (
-    WarehouseJobHandler,
-    WarehouseOptimizationService,
-    WarehouseResultStore,
-)
-from logistics_backend.application.events import EventService
-from logistics_backend.application.exceptions import ExceptionService
-from logistics_backend.application.simulation import (
-    SimulationJobHandler,
-    SimulationResultStore,
-    SimulationService,
-)
-from logistics_agents.llm import DeepSeekProvider, LLMSettings
-from logistics_agents.service import AgentChatService
-from logistics_backend.application.agent import AgentRunService
-from logistics_backend.application.tools import ToolService
-from logistics_backend.application.decision import DecisionService
-from logistics_backend.application.experiment import ExperimentService
-from logistics_backend.application.metrics import MetricsService
-from logistics_backend.application.schedule import ScheduleService
-from logistics_backend.application.integration import IntegrationService
-from logistics_backend.api.errors import install_handlers, response
 
 SecretValue = SecretStr
 
@@ -126,6 +126,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         registry.register(JobKind.OPTIMIZATION, WarehouseJobHandler(),
                           mode=JobOptimizationMode.WAREHOUSE)
         registry.register(JobKind.SIMULATION, SimulationJobHandler())
+        registry.register(JobKind.OPTIMIZATION, IntegrationJobHandler(), mode=JobOptimizationMode.JOINT)
     jobs = JobService(repository, registry)
     snapshots = PlanningSnapshotStore(factory, settings.scope_id)
     commits = PlanCommitStore(factory, settings.scope_id)
@@ -150,7 +151,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         experiments=ExperimentService(factory, settings.scope_id),
         metrics=MetricsService(factory, settings.scope_id),
         schedules=ScheduleService(factory, settings.scope_id, snapshots, commits, jobs),
-        integration=IntegrationService(factory, settings.scope_id),
+        integration=IntegrationService(factory, settings.scope_id, jobs),
     )
     return engine, services
 
@@ -203,7 +204,11 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
             chunks.append(chunk)
         request._body = b"".join(chunks)
         try:
-            result = await asyncio.wait_for(call_next(request), settings.request_timeout_s)
+            # Compatibility endpoint waits for a durable job; solver work stays in the worker.
+            timeout = (60 if request.method == "POST" and request.url.path == "/api/v1/integration/runs"
+                       and request.query_params.get("wait", "true").lower() not in ("false", "0")
+                       else settings.request_timeout_s)
+            result = await asyncio.wait_for(call_next(request), timeout)
         except TimeoutError:
             return response(request, ErrorCode.DEPENDENCY_UNAVAILABLE, "request deadline exceeded")
         result.headers["X-Request-ID"] = str(request.state.trace_id)

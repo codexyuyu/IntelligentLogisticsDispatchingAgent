@@ -119,7 +119,9 @@ def test_transport_metrics_keep_missing_values_explicit():
     plan, _ = _plan(order_id)
     plan = TransportPlan(routes=plan.routes, unserved_order_ids=(uuid4(),), cost=plan.cost)
     values = {item.code: item for item in transport_plan_metrics(plan, 2, 1)}
-    assert values["delivery_rate"].value == 0.5
+    assert values["planned_assignment_rate"].value == 0.5
+    assert values["delivery_rate"].value is None
+    assert values["delivery_rate"].reason.value == "missing_data"
     assert values["total_distance_m"].value == 5000
     assert values["changed_tasks"].value is None
     assert values["changed_tasks"].reason.value == "not_applicable"

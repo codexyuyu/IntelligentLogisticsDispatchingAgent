@@ -7,6 +7,7 @@ from time import monotonic_ns
 
 from logistics_domain.planning import content_hash
 from logistics_evaluation.complete import MetricReport
+from logistics_evaluation.values import comparable_values
 
 
 @dataclass(frozen=True)
@@ -32,10 +33,7 @@ def compare_reports(left: MetricReport, right: MetricReport):
         return (r.scope_id, r.source, r.window_start_s, r.window_end_s, r.definition_version)
     if identity(left) != identity(right):
         raise ValueError('INCOMPARABLE_METRICS')
-    a, b = ({m.code: m for m in report.values} for report in (left, right))
-    if set(a) != set(b) or any((a[k].unit, a[k].definition_version, a[k].source) !=
-                             (b[k].unit, b[k].definition_version, b[k].source) for k in a):
-        raise ValueError('INCOMPARABLE_METRICS')
+    a, b = comparable_values(left.values, right.values)
     return {k: b[k].value-a[k].value if a[k].value is not None and b[k].value is not None else None for k in a}
 
 

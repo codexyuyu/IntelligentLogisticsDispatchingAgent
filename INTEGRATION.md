@@ -43,6 +43,10 @@ http://localhost:8080/#/negotiation
 
 ## 2.0 功能
 
+后端实现与兼容说明见 [后端统一实现](docs/architecture/BACKEND_CONSOLIDATION.md)。
+联合求解与运输、仓储、仿真共用 Job/Worker；现有同步接口保留，`POST /api/v1/integration/runs?wait=false`
+可异步提交。部署时必须同时启动 backend 和 worker。
+
 - 本地中文总览、3D 仓库视图
 - 运输求解、候选创建、版本提交、刷新回读
 - 2.0 integration 页面：

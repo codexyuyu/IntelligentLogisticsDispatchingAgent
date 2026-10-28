@@ -4135,6 +4135,27 @@
         "title": "JobView",
         "type": "object"
       },
+      "JointResultView": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "const": "joint",
+            "title": "Kind",
+            "type": "string"
+          },
+          "value": {
+            "additionalProperties": true,
+            "title": "Value",
+            "type": "object"
+          }
+        },
+        "required": [
+          "kind",
+          "value"
+        ],
+        "title": "JointResultView",
+        "type": "object"
+      },
       "JointValidationRequest": {
         "additionalProperties": false,
         "properties": {
@@ -11320,6 +11341,16 @@
         "operationId": "run_integration",
         "parameters": [
           {
+            "in": "query",
+            "name": "wait",
+            "required": false,
+            "schema": {
+              "default": true,
+              "title": "Wait",
+              "type": "boolean"
+            }
+          },
+          {
             "in": "header",
             "name": "Idempotency-Key",
             "required": true,
@@ -11936,6 +11967,7 @@
                 "schema": {
                   "discriminator": {
                     "mapping": {
+                      "joint": "#/components/schemas/JointResultView",
                       "simulation": "#/components/schemas/SimulationResultView",
                       "transport": "#/components/schemas/TransportResultView",
                       "warehouse": "#/components/schemas/WarehouseResultView"
@@ -11951,6 +11983,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SimulationResultView"
+                    },
+                    {
+                      "$ref": "#/components/schemas/JointResultView"
                     }
                   ],
                   "title": "Response Get Job Result"

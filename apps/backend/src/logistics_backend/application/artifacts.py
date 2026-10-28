@@ -41,4 +41,19 @@ class ResultArtifactStore:
         return payload
 
 
+class TypedResultStore:
+    """Common readiness and integrity boundary; subclasses specify only their DTO."""
+    result_type = None
+
+    def __init__(self, result_store: ResultArtifactStore | None = None):
+        self.result_store = result_store or ResultArtifactStore()
+
+    def read(self, job):
+        from logistics_domain.states import JobStatus
+        if job.status != JobStatus.COMPLETED or job.result_ref is None:
+            raise ServiceError(ErrorCode.RESULT_NOT_READY, "job result is not ready")
+        payload = self.result_store.read(job.result_ref.result_id, job.result_ref.hash)
+        return self.result_type.model_validate_json(payload)
+
+
 __all__ = ["RESULT_DIR", "ResultArtifactStore", "canonical_bytes"]

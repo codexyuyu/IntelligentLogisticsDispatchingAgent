@@ -16,6 +16,7 @@ from logistics_contracts.metrics import (
     SimulationMetricsRequest,
     TransportMetricsRequest,
 )
+from logistics_domain.errors import InvalidInputError
 from logistics_domain.metrics import MetricRecord, MetricValue
 from logistics_domain.states import EntityState
 from logistics_evaluation.metrics import simulation_metrics, transport_plan_metrics
@@ -27,12 +28,18 @@ class MetricsService:
         self.workspace_id = workspace_id
 
     def transport(self, command: TransportMetricsRequest, actor) -> MetricPage:
-        values = transport_plan_metrics(command.plan.to_domain(), command.orders_total,
-                                        command.vehicle_count)
+        try:
+            values = transport_plan_metrics(command.plan.to_domain(), command.orders_total,
+                                            command.vehicle_count)
+        except ValueError as exc:
+            raise InvalidInputError(str(exc)) from exc
         return self._page(values, actor, command.persist)
 
     def simulation(self, command: SimulationMetricsRequest, actor) -> MetricPage:
-        values = simulation_metrics(command.result.to_domain(), command.orders_total)
+        try:
+            values = simulation_metrics(command.result.to_domain(), command.orders_total)
+        except ValueError as exc:
+            raise InvalidInputError(str(exc)) from exc
         return self._page(values, actor, command.persist)
 
     def _page(self, values: tuple[MetricValue, ...], actor, persist: bool) -> MetricPage:

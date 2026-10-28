@@ -6,22 +6,7 @@ from logistics_domain.experiment import ExperimentComparison, MetricDelta
 from logistics_domain.metrics import MetricSource, MetricValue, MissingReason
 from logistics_domain.planning import TransportPlan
 from logistics_domain.simulation import SimulationResult
-
-DEFINITION_VERSION = "1.0.0"
-
-
-def _value(code: str, source: MetricSource, unit: str, value: float,
-           numerator: float | None = None, denominator: float | None = None,
-           sample_count: int = 1) -> MetricValue:
-    return MetricValue(code=code, definition_version=DEFINITION_VERSION, source=source,
-        unit=unit, value=float(value), numerator=numerator, denominator=denominator,
-        reason=None, sample_count=sample_count)
-
-
-def _missing(code: str, source: MetricSource, unit: str, reason: MissingReason) -> MetricValue:
-    return MetricValue(code=code, definition_version=DEFINITION_VERSION, source=source,
-        unit=unit, value=None, numerator=None, denominator=None, reason=reason,
-        sample_count=0)
+from logistics_evaluation.values import _missing, _value, comparable_values, ratio_value
 
 
 def transport_plan_metrics(plan: TransportPlan, orders_total: int,
@@ -30,7 +15,9 @@ def transport_plan_metrics(plan: TransportPlan, orders_total: int,
         raise ValueError("orders_total and vehicle_count must be non-negative")
     routes = len(plan.routes)
     distance = sum(route.total_distance_m for route in plan.routes)
-    served = max(0, orders_total - len(plan.unserved_order_ids))
+    if len(set(plan.unserved_order_ids)) != len(plan.unserved_order_ids) or len(plan.unserved_order_ids) > orders_total:
+        raise ValueError("invalid unserved order count")
+    served = orders_total - len(plan.unserved_order_ids)
     metrics = [
         _value("route_count", MetricSource.PLANNED, "count", routes, sample_count=routes),
         _value("total_distance_m", MetricSource.PLANNED, "m", distance),
@@ -39,12 +26,11 @@ def transport_plan_metrics(plan: TransportPlan, orders_total: int,
         _value("unserved_orders", MetricSource.PLANNED, "count",
                len(plan.unserved_order_ids), sample_count=orders_total),
     ]
-    if orders_total:
-        metrics.append(_value("delivery_rate", MetricSource.PLANNED, "ratio",
-                              served / orders_total, served, orders_total, orders_total))
-    else:
-        metrics.append(_missing("delivery_rate", MetricSource.PLANNED, "ratio",
-                                MissingReason.DIVISION_BY_ZERO))
+    # A plan has assignments, not completion timestamps or an observation window.
+    # Do not publish allocation coverage as delivery performance.
+    metrics.append(_missing("delivery_rate", MetricSource.PLANNED, "ratio", MissingReason.MISSING_DATA))
+    metrics.append(ratio_value("planned_assignment_rate", MetricSource.PLANNED, "ratio",
+                               served, orders_total, orders_total))
     if routes:
         metrics.append(_value("average_route_distance_m", MetricSource.PLANNED, "m",
                               distance / routes, distance, routes, routes))
@@ -64,6 +50,8 @@ def transport_plan_metrics(plan: TransportPlan, orders_total: int,
 
 def simulation_metrics(result: SimulationResult, orders_total: int) -> tuple[MetricValue, ...]:
     delivered = len(result.delivered_order_ids)
+    if orders_total < 0 or delivered > orders_total or len(set(result.delivered_order_ids)) != delivered:
+        raise ValueError("invalid delivered order count")
     metrics = [
         _value("simulated_events", MetricSource.SIMULATION, "count", len(result.events),
                sample_count=len(result.events)),
@@ -71,20 +59,15 @@ def simulation_metrics(result: SimulationResult, orders_total: int) -> tuple[Met
                sample_count=delivered),
         _value("simulation_final_time_s", MetricSource.SIMULATION, "s", result.final_time_s),
     ]
-    if orders_total:
-        metrics.append(_value("simulated_delivery_rate", MetricSource.SIMULATION, "ratio",
-                              delivered / orders_total, delivered, orders_total, orders_total))
-    else:
-        metrics.append(_missing("simulated_delivery_rate", MetricSource.SIMULATION, "ratio",
-                                MissingReason.DIVISION_BY_ZERO))
+    metrics.append(ratio_value("simulated_delivery_rate", MetricSource.SIMULATION, "ratio",
+                               delivered, orders_total, orders_total))
     return tuple(metrics)
 
 
 def compare_metrics(base_label: str, candidate_label: str,
                     base: tuple[MetricValue, ...],
                     candidate: tuple[MetricValue, ...]) -> ExperimentComparison:
-    base_by_code = {metric.code: metric for metric in base}
-    candidate_by_code = {metric.code: metric for metric in candidate}
+    base_by_code, candidate_by_code = comparable_values(base, candidate)
     deltas = []
     for code in sorted(set(base_by_code) | set(candidate_by_code)):
         left = base_by_code.get(code)

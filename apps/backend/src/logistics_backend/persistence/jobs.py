@@ -1,16 +1,19 @@
 """PostgreSQL job queue with row locks, fencing epochs and bounded retries."""
 import hashlib
 import json
+from contextlib import nullcontext
 from datetime import datetime, timedelta, timezone
+from types import SimpleNamespace
 from uuid import uuid4
 
-from sqlalchemy import select, insert, update, or_, func
+from sqlalchemy import func, insert, or_, select, text, update
 from sqlalchemy.dialects.postgresql import insert as pg_insert
-from logistics_backend.persistence.runtime_models import jobs, attempts, requests, idempotency
+
 from logistics_backend.application.jobs import LeaseToken, WorkLeaseLost, WorkRetryScheduled, WorkTerminal
 from logistics_backend.errors import ServiceError
-from logistics_contracts.runtime import JobRequest, JobRef, JobView, JobResultRef
+from logistics_backend.persistence.runtime_models import attempts, idempotency, jobs, requests
 from logistics_contracts.common import ErrorEnvelope
+from logistics_contracts.runtime import JobRef, JobRequest, JobResultRef, JobView
 from logistics_domain.states import ErrorCode
 
 
@@ -26,6 +29,37 @@ def stored_failure(error):
 class JobRepository:
     def __init__(self, uow_factory):
         self.uow_factory = uow_factory
+
+    def submit_once(self, actor, key, trace_id, operation, input_hash, prepare, *, connection=None):
+        """Serialize matching submissions and atomically persist input, job and receipt.
+
+        The lock covers preparation too: retries reuse the original pinned snapshot.
+        Different actors, operations and scopes retain independent idempotency keys.
+        """
+        if not key or len(key) > 256:
+            raise ServiceError(ErrorCode.INVALID_INPUT, "invalid idempotency key")
+        lock_identity = json.dumps([str(actor.scope_id), str(actor.actor_id), operation, key])
+        lock_id = int.from_bytes(hashlib.sha256(lock_identity.encode()).digest()[:8], "big", signed=True)
+        context = self.uow_factory() if connection is None else nullcontext(SimpleNamespace(connection=connection))
+        with context as uow:
+            connection = uow.connection
+            connection.execute(text("SELECT pg_advisory_xact_lock(:identity)"), {"identity": lock_id})
+            prior = connection.execute(select(idempotency).where(
+                idempotency.c.scope_id == actor.scope_id, idempotency.c.actor_id == actor.actor_id,
+                idempotency.c.operation == operation, idempotency.c.key == key)).mappings().first()
+            if prior is not None:
+                if prior["request_hash"] != input_hash:
+                    raise ServiceError(ErrorCode.IDEMPOTENCY_CONFLICT, "idempotency key has a different request")
+                return JobRef.model_validate(prior["receipt"])
+            command, content = prepare()
+            reference = command.payload.request_ref
+            if hashlib.sha256(content).hexdigest() != reference.hash:
+                raise ServiceError(ErrorCode.INVALID_INPUT, "request hash mismatch")
+            connection.execute(insert(requests).values(request_id=reference.request_id,
+                version=reference.version, scope_id=actor.scope_id, family=reference.family.value,
+                schema_version=reference.schema_version, hash=reference.hash, content=content))
+            return self._enqueue(connection, command, actor, key, trace_id,
+                                 operation=operation, input_hash=input_hash)
 
     def store_request(self, reference, scope_id, content: bytes):
         if hashlib.sha256(content).hexdigest() != reference.hash:
@@ -55,37 +89,43 @@ class JobRepository:
 
     def load_job_request(self, job_id, scope_id):
         """Load the immutable request pinned to a job, after checking job visibility."""
+        command = self.command(job_id, scope_id)
+        return self.load_request(command.payload.request_ref, scope_id)
+
+    def command(self, job_id, scope_id):
         with self.uow_factory() as uow:
             row = uow.connection.execute(select(jobs.c.command).where(
                 jobs.c.id == job_id, jobs.c.scope_id == scope_id)).first()
         if row is None:
             raise ServiceError(ErrorCode.NOT_FOUND, "job not found")
-        command = JobRequest.model_validate(row[0])
-        return self.load_request(command.payload.request_ref, scope_id)
+        return JobRequest.model_validate(row[0])
 
     def enqueue(self, command, actor, key, trace_id):
+        with self.uow_factory() as uow:
+            return self._enqueue(uow.connection, command, actor, key, trace_id)
+
+    def _enqueue(self, connection, command, actor, key, trace_id, *, operation="submit_job", input_hash=None):
         now = utcnow()
         if not key or len(key) > 256:
             raise ServiceError(ErrorCode.INVALID_INPUT, "invalid idempotency key")
         if not now < command.deadline_utc <= now + timedelta(seconds=60):
             raise ServiceError(ErrorCode.INVALID_INPUT, "job deadline must be within 60 seconds")
         body = command.model_dump(mode="json")
-        digest = hashlib.sha256(json.dumps(body, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        digest = input_hash or hashlib.sha256(json.dumps(body, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
         job_id = uuid4()
         receipt = JobRef(schema_version="2.0.0", job_id=job_id, status="queued",
             status_url=f"/api/v1/jobs/{job_id}", result_url=f"/api/v1/jobs/{job_id}/result", trace_id=trace_id)
-        with self.uow_factory() as uow:
-            result = uow.connection.execute(pg_insert(idempotency).values(scope_id=actor.scope_id,
-                actor_id=actor.actor_id, operation="submit_job", key=key, request_hash=digest,
+        result = connection.execute(pg_insert(idempotency).values(scope_id=actor.scope_id,
+                actor_id=actor.actor_id, operation=operation, key=key, request_hash=digest,
                 receipt=receipt.model_dump(mode="json"), expires_at=now + timedelta(hours=24)).on_conflict_do_nothing())
-            if result.rowcount == 0:
-                prior = uow.connection.execute(select(idempotency).where(idempotency.c.scope_id == actor.scope_id,
-                    idempotency.c.actor_id == actor.actor_id, idempotency.c.operation == "submit_job",
-                    idempotency.c.key == key)).mappings().one()
-                if prior["request_hash"] != digest:
-                    raise ServiceError(ErrorCode.IDEMPOTENCY_CONFLICT, "idempotency key has a different request")
-                return JobRef.model_validate(prior["receipt"])
-            uow.connection.execute(insert(jobs).values(id=job_id, scope_id=actor.scope_id, actor_id=actor.actor_id,
+        if result.rowcount == 0:
+            prior = connection.execute(select(idempotency).where(idempotency.c.scope_id == actor.scope_id,
+                idempotency.c.actor_id == actor.actor_id, idempotency.c.operation == operation,
+                idempotency.c.key == key)).mappings().one()
+            if prior["request_hash"] != digest:
+                raise ServiceError(ErrorCode.IDEMPOTENCY_CONFLICT, "idempotency key has a different request")
+            return JobRef.model_validate(prior["receipt"])
+        connection.execute(insert(jobs).values(id=job_id, scope_id=actor.scope_id, actor_id=actor.actor_id,
                 created_by=actor.actor_id, request_id=command.payload.request_ref.request_id,
                 request_version=command.payload.request_ref.version,
                 trace_id=trace_id, schema_version="2.0.0", kind=command.kind.value, status="queued", command=body,

@@ -4,9 +4,9 @@ from datetime import datetime
 from typing import Literal, Protocol, TypeAlias
 from uuid import UUID
 
-from logistics_contracts.runtime import JobRequest, JobResultRef
-from logistics_domain.states import JobKind, JobOptimizationMode, ErrorCode
 from logistics_backend.errors import ServiceError
+from logistics_contracts.runtime import JobRequest, JobResultRef
+from logistics_domain.states import ErrorCode, JobKind, JobOptimizationMode
 
 
 @dataclass(frozen=True)
@@ -76,6 +76,14 @@ class JobService:
         """Persist immutable job input; callers never reach the repository directly."""
         self.repository.store_request(reference, actor.scope_id, content)
 
+    def submit_prepared(self, actor, key, trace_id, operation, input_hash, prepare, *, connection=None):
+        def validated():
+            command, content = prepare()
+            self.registry.require(command).validate(content)
+            return command, content
+        return self.repository.submit_once(actor, key, trace_id, operation, input_hash,
+                                           validated, connection=connection)
+
     def submit(self, command: JobRequest, actor, key: str, trace_id: UUID):
         handler = self.registry.require(command)
         content = self.repository.load_request(command.payload.request_ref, actor.scope_id)
@@ -84,6 +92,11 @@ class JobService:
 
     def get(self, job_id, actor):
         return self.repository.get(job_id, actor.scope_id)
+
+    def result_kind(self, job_id, actor):
+        command = self.repository.command(job_id, actor.scope_id)
+        return (command.payload.mode.value if command.kind == JobKind.OPTIMIZATION
+                else command.kind.value)
 
     def load_request(self, job_id, actor) -> bytes:
         return self.repository.load_job_request(job_id, actor.scope_id)

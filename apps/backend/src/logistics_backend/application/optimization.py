@@ -11,18 +11,13 @@ No OR-Tools type, SQLAlchemy row or FastAPI request crosses these boundaries.
 
 from __future__ import annotations
 
-import hashlib
 import json
-from datetime import datetime, timedelta, timezone
 from uuid import UUID, uuid4, uuid5
 
-from logistics_backend.application.artifacts import ResultArtifactStore, canonical_bytes
+from logistics_backend.application.artifacts import ResultArtifactStore, TypedResultStore
+from logistics_backend.application.budgets import solver_budget
+from logistics_backend.application.submission import submit_job
 from logistics_contracts.mapping import problem_dto, solution_dto
-from logistics_contracts.runtime import (
-    JobRequest,
-    OptimizationJobPayload,
-    RequestRef as RequestRefDTO,
-)
 from logistics_contracts.transport import (
     TransportJobContent,
     TransportProblemDTO,
@@ -30,9 +25,8 @@ from logistics_contracts.transport import (
     TransportSolutionDTO,
 )
 from logistics_domain.errors import InvalidInputError
-from logistics_domain.planning import MatrixRef, SolveBudget
+from logistics_domain.planning import MatrixRef
 from logistics_domain.primitives import Load, TimeWindow
-from logistics_domain.runtime import RequestRef
 from logistics_domain.states import JobKind, JobOptimizationMode
 from logistics_domain.transport import (
     RoutingNode,
@@ -46,10 +40,6 @@ from logistics_optimization.transport.solver import OrToolsTransportSolver
 NODE_NAMESPACE = UUID("6a6c6e4e-0e7a-5b8f-9f0d-7c5b8a1d2e3f")
 
 
-def _now() -> datetime:
-    return datetime.now(timezone.utc).replace(microsecond=0)
-
-
 def _matrix_for(snapshot, reference: MatrixRef):
     for matrix in snapshot.matrices:
         if (matrix.id == reference.matrix_id and matrix.version == reference.version
@@ -60,7 +50,6 @@ def _matrix_for(snapshot, reference: MatrixRef):
 
 def build_transport_problem(snapshot, request: TransportRequestDTO) -> TransportProblem:
     """Map one HTTP request plus a pinned snapshot into the pure solver problem."""
-    from logistics_contracts.mapping import budget_dto, policy_dto
 
     scope = request.scope.to_domain()
     if snapshot.scope != scope:
@@ -158,30 +147,12 @@ class TransportJobHandler:
                             hash=digest, family=JobKind.OPTIMIZATION)
 
 
-def problem_budget(problem: TransportProblem, deadline, requested=None) -> SolveBudget:
-    """Use the request budget, capped by the deadline and a 5s server limit."""
-    cap = requested.wall_time_ms if requested is not None else 5_000
-    remaining = max(1, min(5_000, int((deadline.expires_at_utc - _now()).total_seconds() * 1000)))
-    wall_time_ms = max(1, min(cap, remaining, 5_000))
-    return SolveBudget(wall_time_ms=wall_time_ms, deadline_utc=deadline.expires_at_utc,
-        max_candidates=1, seed=requested.seed if requested is not None else 0,
-        worker_count=1, deterministic_test_mode=False)
+def problem_budget(problem, deadline, requested=None):
+    return solver_budget(deadline, requested)
 
 
-class TransportResultStore:
-    """Read immutable result artifacts; hash is verified against the job reference."""
-
-    def __init__(self, result_store: ResultArtifactStore | None = None):
-        self.result_store = result_store or ResultArtifactStore()
-
-    def read(self, job) -> TransportSolutionDTO:
-        from logistics_backend.errors import ServiceError
-        from logistics_domain.states import ErrorCode, JobStatus
-
-        if job.status != JobStatus.COMPLETED or job.result_ref is None:
-            raise ServiceError(ErrorCode.RESULT_NOT_READY, "job result is not ready")
-        payload = self.result_store.read(job.result_ref.result_id, job.result_ref.hash)
-        return TransportSolutionDTO.model_validate_json(payload)
+class TransportResultStore(TypedResultStore):
+    result_type = TransportSolutionDTO
 
 
 class TransportOptimizationService:
@@ -190,20 +161,12 @@ class TransportOptimizationService:
         self.job_service = job_service
 
     def submit(self, request: TransportRequestDTO, actor, key: str, trace_id: UUID):
-        snapshot = self.snapshot_store.capture(request.scope.to_domain())
-        problem = build_transport_problem(snapshot, request)
-        content = canonical_bytes(json.loads(TransportJobContent(
-            problem=problem_dto(problem), budget=request.budget).model_dump_json()))
-        request_id, version = uuid4(), 1
-        digest = hashlib.sha256(content).hexdigest()
-        reference = RequestRef(request_id=request_id, version=version, schema_version="2.0.0",
-                               hash=digest, family=JobKind.OPTIMIZATION)
-        self.job_service.store_request(reference, content, actor)
-        deadline = _now() + timedelta(seconds=55)
-        command = JobRequest(schema_version="2.0.0", kind=JobKind.OPTIMIZATION,
-            payload=OptimizationJobPayload(family="optimization",
-                request_ref=RequestRefDTO(request_id=request_id, version=version,
-                    schema_version="2.0.0", hash=digest, family=JobKind.OPTIMIZATION),
-                mode=JobOptimizationMode.TRANSPORT),
-            deadline_utc=deadline)
-        return self.job_service.submit(command, actor, key, trace_id)
+        def build_content():
+            snapshot = self.snapshot_store.capture(request.scope.to_domain())
+            problem = build_transport_problem(snapshot, request)
+            return TransportJobContent(problem=problem_dto(problem),
+                         budget=request.budget).model_dump(mode="json")
+
+        return submit_job(self.job_service, request, actor, key, trace_id,
+                          kind=JobKind.OPTIMIZATION, mode=JobOptimizationMode.TRANSPORT,
+                          build_content=build_content)

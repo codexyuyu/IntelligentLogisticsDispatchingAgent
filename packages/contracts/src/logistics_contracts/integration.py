@@ -39,6 +39,13 @@ class IntegrationRun(Boundary):
     recoveries: tuple[RecoveryInput, ...] = ()
 
 
+class IntegrationJobContent(Boundary):
+    scenario: ScenarioImport
+    request: IntegrationRun
+    scope_id: UUID
+    actor_id: UUID
+
+
 class RevokeInput(Boundary):
     task_id: UUID
     now_s: StrictInt = Field(ge=0)

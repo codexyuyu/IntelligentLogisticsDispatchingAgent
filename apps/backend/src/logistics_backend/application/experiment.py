@@ -17,9 +17,11 @@ from logistics_contracts.experiment import (
     ExperimentView,
 )
 from logistics_contracts.mapping import experiment_comparison_dto
+from logistics_domain.errors import InvalidInputError
 from logistics_domain.experiment import ExperimentRecord
 from logistics_domain.states import EntityState, ErrorCode
 from logistics_evaluation.metrics import compare_metrics, simulation_metrics
+from logistics_evaluation.values import DEFINITION_VERSION
 
 
 class ExperimentService:
@@ -28,10 +30,13 @@ class ExperimentService:
         self.workspace_id = workspace_id
 
     def compare(self, command: ExperimentCompareRequest, actor) -> ExperimentComparisonDTO:
-        base = simulation_metrics(command.base.to_domain(), command.orders_total)
-        candidate = simulation_metrics(command.candidate.to_domain(), command.orders_total)
-        comparison = experiment_comparison_dto(compare_metrics(command.base_label,
-            command.candidate_label, base, candidate))
+        try:
+            base = simulation_metrics(command.base.to_domain(), command.orders_total)
+            candidate = simulation_metrics(command.candidate.to_domain(), command.orders_total)
+            comparison = experiment_comparison_dto(compare_metrics(command.base_label,
+                command.candidate_label, base, candidate))
+        except ValueError as exc:
+            raise InvalidInputError(str(exc)) from exc
         if not command.persist:
             return comparison
         now = datetime.now(timezone.utc).replace(microsecond=0)
@@ -40,7 +45,7 @@ class ExperimentService:
             created_at=now, updated_at=now, row_version=0, schema_version="2.0.0",
             created_by=actor.actor_id, base_label=command.base_label,
             candidate_label=command.candidate_label, orders_total=command.orders_total,
-            metric_version="1.0.0",
+            metric_version=DEFINITION_VERSION,
             base_result_json=command.base.model_dump_json(),
             candidate_result_json=command.candidate.model_dump_json(),
             comparison_json=comparison_json)

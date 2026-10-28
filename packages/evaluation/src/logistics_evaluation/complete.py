@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from itertools import pairwise
 
 from logistics_domain.metrics import MetricSource, MetricValue, MissingReason
-from logistics_evaluation.metrics import _missing, _value
+from logistics_evaluation.values import DEFINITION_VERSION, _missing, _value, ratio_value
 
 
 @dataclass(frozen=True)
@@ -122,10 +122,7 @@ def calculate_metrics(data: MetricInput) -> MetricReport:
         else:
             metrics.append(_value(code, source, unit, value, value, None, n))
     def ratio(code, unit, a, b, n):
-        if b == 0:
-            missing(code, unit, MissingReason.DIVISION_BY_ZERO)
-        else:
-            metrics.append(_value(code, source, unit, a/b, a, b, n))
+        metrics.append(ratio_value(code, source, unit, a, b, n))
     cancelled = overdue = None
     fallback = []
     if data.orders is None:
@@ -194,5 +191,5 @@ def calculate_metrics(data: MetricInput) -> MetricReport:
         disturbance = .4*assignment + .3*time + .2*order + .1*len(added | removed)/n
         number('changed_tasks', 'count', len(changed), len(future | added))
         number('plan_disturbance', 'ratio', disturbance, len(future | added))
-    return MetricReport(data.scope_id, source, data.window_start_s, data.window_end_s, '1.0.0',
+    return MetricReport(data.scope_id, source, data.window_start_s, data.window_end_s, DEFINITION_VERSION,
                         tuple(metrics), cancelled, overdue, tuple(sorted(fallback)))

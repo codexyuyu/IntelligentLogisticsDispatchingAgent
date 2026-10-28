@@ -1,28 +1,16 @@
-"""R08 concrete roles: the warehouse, transport and exception bidders.
+"""Compatibility fact adapters over the shared role window/confirmation engine.
 
-Companion to ``contract_net.py`` (the coordinator/protocol half). Each role
-receives only bounded facts — one operation's release/deadline/duration, one
-resource calendar, one vehicle shift with handoff readiness, one disruption —
-never a full snapshot, stock ledger or price list, so the four-role boundary
-of the partner R08 delivery is preserved.
-
-Semantics (ported from the partner implementation, unchanged):
-
-* the warehouse role bids the earliest calendar slot that fits the operation;
-* the transport role bids the window bounded by the vehicle shift, its earliest
-  free instant and the warehouse handoff readiness;
-* the exception role bids a recovery window only when a disruption was
-  declared — otherwise it stays silent instead of inventing a free slot.
-
-``build_negotiator`` composes the coordinator plus the three roles; everything
-stays deterministic because the windows come from the shared-contract
-``TimeWindowDTO`` clock and the coordinator is never given a wall clock.
+New integrations use negotiation_roles and immutable domain evidence. These small
+adapters preserve the original bounded-fact constructors, not a second protocol.
 """
 from __future__ import annotations
 
 from collections.abc import Iterable
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
+from logistics_agents.negotiation_roles import ExceptionRecoveryRole as RecoveryRole
+from logistics_agents.negotiation_roles import RecoveryDeclaration
+from logistics_agents.windows import WindowRole, find_slot
 from logistics_contracts.entities import TimeWindowDTO
 
 from .contract_net import (
@@ -81,8 +69,22 @@ class HandoffFact:
     ready_at_s: int
 
 
+@dataclass(frozen=True)
+class _Interval:
+    start_s: int
+    end_s: int
+
+
+class _Calendar:
+    def __init__(self, windows):
+        self.intervals = tuple(_Interval(w.earliest_s, w.latest_s) for w in windows)
+
+    def available_units_at(self, time_s):
+        return int(any(i.start_s <= time_s < i.end_s for i in self.intervals))
+
+
 @dataclass
-class WarehouseWindowRole:
+class WarehouseWindowRole(WindowRole):
     """Bids the earliest feasible operation slot inside one resource calendar.
 
     Only the operation duration, its release/deadline and the resource's
@@ -93,6 +95,9 @@ class WarehouseWindowRole:
     calendar: ResourceCalendar
     role: BiddingRole = field(default='warehouse', init=False)
 
+    def __post_init__(self):
+        super().__init__()
+
     def bid(self, cfp: CallForProposals) -> Bid | None:
         task = cfp.task
         operation = next((item for item in self.operations
@@ -102,30 +107,24 @@ class WarehouseWindowRole:
         earliest = max(task.window_start_s, operation.release_at_s)
         latest = min(task.window_end_s, operation.deadline_at_s)
         duration = operation.duration_s
-        for window in sorted(self.calendar.windows, key=lambda item: item.earliest_s):
-            start = max(earliest, window.earliest_s)
-            if start + duration <= min(latest, window.latest_s):
-                return Bid(
-                    bid_id=f'bid_{cfp.round_no}_{self.role}_{task.task_id}',
-                    cfp_id=cfp.cfp_id, task_id=task.task_id, round_no=cfp.round_no,
-                    role=self.role, valid_from_s=start, valid_to_s=start + duration,
-                    expires_at_s=cfp.respond_by_s + 300, cost=duration,
-                    exclusive_resource_ids=(self.calendar.resource_id,),
-                    note='warehouse window from resource calendar',
-                )
-        return None
-
-    def confirm(self, award: Award) -> bool:
-        return True
+        slot = find_slot(((_Calendar(self.calendar.windows), 1),),
+                     max(earliest, cfp.issued_at_s), latest, duration)
+        if slot is None:
+            return None
+        return self._offer(cfp, *slot, (self.calendar.resource_id,),
+                           'warehouse window from resource calendar')
 
 
 @dataclass
-class TransportWindowRole:
+class TransportWindowRole(WindowRole):
     """Bids the vehicle window that respects shift bounds and warehouse handoff."""
 
     vehicle: VehicleAvailability
     handoffs: tuple[HandoffFact, ...] = ()
     role: BiddingRole = field(default='transport', init=False)
+
+    def __post_init__(self):
+        super().__init__()
 
     def bid(self, cfp: CallForProposals) -> Bid | None:
         task = cfp.task
@@ -134,22 +133,13 @@ class TransportWindowRole:
              if handoff.warehouse_id == task.warehouse_id),
             default=0,
         )
-        start = max(task.window_start_s, self.vehicle.shift.earliest_s,
+        start = max(task.window_start_s, cfp.issued_at_s, self.vehicle.shift.earliest_s,
                     self.vehicle.available_at_s, ready)
         end = min(task.window_end_s, self.vehicle.shift.latest_s)
         if end <= start:
             return None
-        return Bid(
-            bid_id=f'bid_{cfp.round_no}_{self.role}_{task.task_id}',
-            cfp_id=cfp.cfp_id, task_id=task.task_id, round_no=cfp.round_no,
-            role=self.role, valid_from_s=start, valid_to_s=end,
-            expires_at_s=cfp.respond_by_s + 300, cost=end - start,
-            exclusive_resource_ids=(self.vehicle.vehicle_id,),
-            note='transport window bounded by shift and handoff',
-        )
-
-    def confirm(self, award: Award) -> bool:
-        return True
+        return self._offer(cfp, start, end, (self.vehicle.vehicle_id,),
+                           'transport window bounded by shift and handoff')
 
 
 @dataclass
@@ -165,25 +155,19 @@ class ExceptionRecoveryRole:
     resource_id: str
     role: BiddingRole = field(default='exception', init=False)
 
+    def __post_init__(self):
+        self._delegate = RecoveryRole()
+
     def bid(self, cfp: CallForProposals) -> Bid | None:
-        if self.disruption_at_s is None:
-            return None
-        task = cfp.task
-        start = max(task.window_start_s, self.disruption_at_s)
-        end = start + self.recovery_s
-        if end > task.window_end_s:
-            return None
-        return Bid(
-            bid_id=f'bid_{cfp.round_no}_{self.role}_{task.task_id}',
-            cfp_id=cfp.cfp_id, task_id=task.task_id, round_no=cfp.round_no,
-            role=self.role, valid_from_s=start, valid_to_s=end,
-            expires_at_s=cfp.respond_by_s + 300, cost=self.recovery_s,
-            exclusive_resource_ids=(self.resource_id,),
-            note='recovery window after disruption',
-        )
+        declaration = RecoveryDeclaration(cfp.task.task_id, self.resource_id,
+                                          self.disruption_at_s, self.recovery_s)
+        self._delegate.declarations[cfp.task.task_id] = declaration
+        # Legacy facts name their resource outside TaskSpec; project it explicitly.
+        task = replace(cfp.task, exclusive_resource_ids=(self.resource_id,))
+        return self._delegate.bid(replace(cfp, task=task))
 
     def confirm(self, award: Award) -> bool:
-        return True
+        return self._delegate.confirm(award)
 
 
 def build_negotiator(*, calendar: ResourceCalendar, vehicle: VehicleAvailability,

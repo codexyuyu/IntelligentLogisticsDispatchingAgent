@@ -2,19 +2,14 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 from dataclasses import replace
-from datetime import datetime, timedelta, timezone
 from uuid import UUID, uuid4
 
-from logistics_backend.application.artifacts import ResultArtifactStore, canonical_bytes
+from logistics_backend.application.artifacts import ResultArtifactStore, TypedResultStore
+from logistics_backend.application.budgets import solver_budget
+from logistics_backend.application.submission import submit_job
 from logistics_contracts.mapping import warehouse_problem_dto, warehouse_solution_dto
-from logistics_contracts.runtime import (
-    JobRequest,
-    OptimizationJobPayload,
-    RequestRef as RequestRefDTO,
-)
 from logistics_contracts.warehouse import (
     WarehouseJobContent,
     WarehouseProblemDTO,
@@ -23,15 +18,10 @@ from logistics_contracts.warehouse import (
 )
 from logistics_domain.errors import InvalidInputError
 from logistics_domain.planning import SolveStatus
-from logistics_domain.runtime import RequestRef
 from logistics_domain.states import JobKind, JobOptimizationMode
 from logistics_domain.warehouse import WarehouseProblem
-from logistics_optimization.warehouse.solver import CpSatWarehouseScheduler
 from logistics_optimization.validation.warehouse import validate_warehouse
-
-
-def _now() -> datetime:
-    return datetime.now(timezone.utc).replace(microsecond=0)
+from logistics_optimization.warehouse.solver import CpSatWarehouseScheduler
 
 
 def build_warehouse_problem(snapshot, request: WarehouseRequestDTO) -> WarehouseProblem:
@@ -86,29 +76,12 @@ class WarehouseJobHandler:
                             hash=digest, family=JobKind.OPTIMIZATION)
 
 
-def problem_budget(problem: WarehouseProblem, deadline, requested=None):
-    from logistics_domain.planning import SolveBudget
-
-    cap = requested.wall_time_ms if requested is not None else problem.budget.wall_time_ms
-    remaining = max(1, min(5_000, int((deadline.expires_at_utc - _now()).total_seconds() * 1000)))
-    wall_time_ms = max(1, min(cap, remaining, 5_000))
-    return SolveBudget(wall_time_ms=wall_time_ms, deadline_utc=deadline.expires_at_utc,
-        max_candidates=1, seed=requested.seed if requested is not None else problem.budget.seed,
-        worker_count=1, deterministic_test_mode=False)
+def problem_budget(problem, deadline, requested=None):
+    return solver_budget(deadline, requested or problem.budget)
 
 
-class WarehouseResultStore:
-    def __init__(self, result_store: ResultArtifactStore | None = None):
-        self.result_store = result_store or ResultArtifactStore()
-
-    def read(self, job) -> WarehouseSolutionDTO:
-        from logistics_backend.errors import ServiceError
-        from logistics_domain.states import ErrorCode, JobStatus
-
-        if job.status != JobStatus.COMPLETED or job.result_ref is None:
-            raise ServiceError(ErrorCode.RESULT_NOT_READY, "job result is not ready")
-        payload = self.result_store.read(job.result_ref.result_id, job.result_ref.hash)
-        return WarehouseSolutionDTO.model_validate_json(payload)
+class WarehouseResultStore(TypedResultStore):
+    result_type = WarehouseSolutionDTO
 
 
 class WarehouseOptimizationService:
@@ -117,19 +90,12 @@ class WarehouseOptimizationService:
         self.job_service = job_service
 
     def submit(self, request: WarehouseRequestDTO, actor, key: str, trace_id: UUID):
-        snapshot = self.snapshot_store.capture(request.scope.to_domain())
-        problem = build_warehouse_problem(snapshot, request)
-        content = canonical_bytes(json.loads(WarehouseJobContent(
-            problem=warehouse_problem_dto(problem), budget=request.budget).model_dump_json()))
-        request_id, version = uuid4(), 1
-        digest = hashlib.sha256(content).hexdigest()
-        reference = RequestRef(request_id=request_id, version=version, schema_version="2.0.0",
-                               hash=digest, family=JobKind.OPTIMIZATION)
-        self.job_service.store_request(reference, content, actor)
-        command = JobRequest(schema_version="2.0.0", kind=JobKind.OPTIMIZATION,
-            payload=OptimizationJobPayload(family="optimization",
-                request_ref=RequestRefDTO(request_id=request_id, version=version,
-                    schema_version="2.0.0", hash=digest, family=JobKind.OPTIMIZATION),
-                mode=JobOptimizationMode.WAREHOUSE),
-            deadline_utc=_now() + timedelta(seconds=55))
-        return self.job_service.submit(command, actor, key, trace_id)
+        def build_content():
+            snapshot = self.snapshot_store.capture(request.scope.to_domain())
+            problem = build_warehouse_problem(snapshot, request)
+            return WarehouseJobContent(problem=warehouse_problem_dto(problem),
+                         budget=request.budget).model_dump(mode="json")
+
+        return submit_job(self.job_service, request, actor, key, trace_id,
+                          kind=JobKind.OPTIMIZATION, mode=JobOptimizationMode.WAREHOUSE,
+                          build_content=build_content)

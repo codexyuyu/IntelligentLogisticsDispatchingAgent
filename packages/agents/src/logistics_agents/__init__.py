@@ -5,13 +5,14 @@ results. It never freely generates the final schedule, never writes the database
 never bypasses a service. Agents reach business capability exclusively through
 ``ToolContext``-scoped tools; SQL and storage handles are forbidden in this layer.
 
-Nothing is implemented yet: P17-01 onwards delivers the tool protocol, P18 the model
-provider abstraction and P19-P23 the four roles, orchestration and session API.
+The implemented protocol is contract_net; negotiation_roles adapts domain evidence,
+and negotiation_link connects validated plans. contract_net_roles preserves the old
+bounded-fact constructors through shared window and confirmation rules.
 """
 
 from __future__ import annotations
 
-from . import contract_net, contract_net_roles, llm, service, tools
+from . import contract_net, contract_net_roles, llm, negotiation_link, negotiation_roles, service, tools
 
 SCHEMA_VERSION = "1.0.0"
 PACKAGE_NAME = "logistics-agents"
@@ -28,6 +29,8 @@ __all__ = [
     "SCHEMA_VERSION",
     "contract_net",
     "contract_net_roles",
+    "negotiation_roles",
+    "negotiation_link",
     "llm",
     "service",
     "tools",

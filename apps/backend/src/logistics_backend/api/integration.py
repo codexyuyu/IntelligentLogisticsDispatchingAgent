@@ -41,8 +41,9 @@ def list_scenarios(current: Annotated[Any, Depends(actor)], app: Annotated[Any, 
 
 @router.post('/runs', operation_id='run_integration')
 def run(command: IntegrationRun, current: Annotated[Any, Depends(operator)], app: Annotated[Any, Depends(service)],
-        key: str = Header(alias='Idempotency-Key', min_length=1, max_length=128)):
-    return app.run(command, current, key)
+        request: Request, key: str = Header(alias='Idempotency-Key', min_length=1, max_length=128),
+        wait: bool = True):
+    return app.run(command, current, key, request.state.trace_id, wait=wait)
 
 
 @router.get('/runs/{run_id}', operation_id='read_integration_run')

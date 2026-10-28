@@ -6,62 +6,16 @@ Only the coordinator's public TaskSpec and bounded windows enter the transcript.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from itertools import pairwise
 from uuid import UUID
 
-from logistics_agents.contract_net import Award, Bid, CallForProposals, NegotiationError
+from logistics_agents.contract_net import Bid, CallForProposals, NegotiationError
+from logistics_agents.windows import WindowRole, find_slot, require_nonnegative
 from logistics_domain.planning import OperationAssignment, PlanningSnapshot, WarehouseTask
-from logistics_domain.primitives import ResourceCalendar, TimeWindow
+from logistics_domain.primitives import TimeWindow
 from logistics_domain.resources import Vehicle
 
 
-def _nonnegative(value: int, name: str) -> None:
-    if type(value) is not int or value < 0:
-        raise NegotiationError(f'invalid_{name}')
-
-
-def _slot(calendars: tuple[tuple[ResourceCalendar, int], ...], start: int,
-          end: int, duration: int) -> tuple[int, int] | None:
-    """Intersect piecewise capacity calendars; gaps and zero capacity stay closed."""
-    if not calendars or duration <= 0 or start + duration > end:
-        return None
-    boundaries = sorted({start, end} | {
-        point for calendar, _ in calendars for interval in calendar.intervals
-        for point in (interval.start_s, interval.end_s) if start < point < end})
-    run = None
-    for left, right in pairwise(boundaries):
-        if all(calendar.available_units_at(left) >= units for calendar, units in calendars):
-            run = left if run is None else run
-            if run + duration <= right:
-                return run, run + duration
-        else:
-            run = None
-    return None
-
-
-class _WindowRole:
-    """Confirmation must refer to an actual, unexpired offer made by this role."""
-
-    def __init__(self):
-        self._offers: dict[str, Bid] = {}
-
-    def _offer(self, cfp, start, end, resources, note):
-        bid = Bid(bid_id=f'bid_{cfp.round_no}_{self.role}_{cfp.task.task_id}',
-                  cfp_id=cfp.cfp_id, task_id=cfp.task.task_id, round_no=cfp.round_no,
-                  role=self.role, valid_from_s=start, valid_to_s=end,
-                  expires_at_s=cfp.respond_by_s + 300, cost=end - start,
-                  exclusive_resource_ids=tuple(sorted(resources)), note=note)
-        self._offers[bid.bid_id] = bid
-        return bid
-
-    def confirm(self, award: Award) -> bool:
-        bid = self._offers.get(award.bid_id)
-        return bool(bid and (award.task_id, award.role, award.round_no) ==
-                    (bid.task_id, bid.role, bid.round_no)
-                    and not bid.is_expired(award.awarded_at_s))
-
-
-class WarehouseWindowRole(_WindowRole):
+class WarehouseWindowRole(WindowRole):
     """Earliest joint calendar slot on exactly the resources assigned by the solver."""
 
     role = 'warehouse'
@@ -109,7 +63,7 @@ class WarehouseWindowRole(_WindowRole):
         start = max(cfp.task.window_start_s, task.window.earliest_s, cfp.issued_at_s,
                     *predecessor_ends)
         end = min(cfp.task.window_end_s, task.window.latest_s, self.snapshot.scope.horizon_s)
-        slot = _slot(tuple(calendars), start, end, task.duration_s)
+        slot = find_slot(tuple(calendars), start, end, task.duration_s)
         if slot is None:
             return None
         return self._offer(cfp, *slot, (str(a.resource_id) for a in assigned),
@@ -128,12 +82,12 @@ class TransportBinding:
 
     def __post_init__(self):
         for name in ('available_at_s', 'handoff_ready_at_s', 'duration_s'):
-            _nonnegative(getattr(self, name), name)
+            require_nonnegative(getattr(self, name), name)
         if self.duration_s == 0:
             raise NegotiationError('empty_transport_duration')
 
 
-class TransportWindowRole(_WindowRole):
+class TransportWindowRole(WindowRole):
     """Vehicle calendar ∩ declared shift, released by availability AND task handoff."""
 
     role = 'transport'
@@ -155,7 +109,7 @@ class TransportWindowRole(_WindowRole):
         start = max(cfp.task.window_start_s, cfp.issued_at_s, binding.shift.earliest_s,
                     binding.available_at_s, binding.handoff_ready_at_s)
         end = min(cfp.task.window_end_s, binding.shift.latest_s)
-        slot = _slot(((vehicle.calendar, 1),), start, end, binding.duration_s)
+        slot = find_slot(((vehicle.calendar, 1),), start, end, binding.duration_s)
         if slot is None:
             return None
         return self._offer(cfp, *slot, (str(vehicle.id),), 'vehicle shift, availability and task handoff')
@@ -170,13 +124,13 @@ class RecoveryDeclaration:
 
     def __post_init__(self):
         if self.disruption_at_s is not None:
-            _nonnegative(self.disruption_at_s, 'disruption_at_s')
-        _nonnegative(self.recovery_s, 'recovery_s')
+            require_nonnegative(self.disruption_at_s, 'disruption_at_s')
+        require_nonnegative(self.recovery_s, 'recovery_s')
         if self.recovery_s == 0:
             raise NegotiationError('empty_recovery_duration')
 
 
-class ExceptionRecoveryRole(_WindowRole):
+class ExceptionRecoveryRole(WindowRole):
     """A declared recovery applies only to its named task and bound resource."""
 
     role = 'exception'

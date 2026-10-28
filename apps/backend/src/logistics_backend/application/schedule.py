@@ -10,6 +10,7 @@ from uuid import UUID, uuid4
 from sqlalchemy import func, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
+from logistics_backend.application.candidates import build_candidate
 from logistics_backend.application.optimization import TransportResultStore
 from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.planning_models import (
@@ -21,20 +22,13 @@ from logistics_backend.persistence.planning_models import (
 )
 from logistics_backend.persistence.validation_models import validation_reports
 from logistics_contracts.mapping import (
-    operation_assignment_dto,
-    setup_operation_dto,
     snapshot_dto,
-    storage_interval_dto,
 )
 from logistics_contracts.planning import (
     CandidatePlanDTO,
     CommitReceiptDTO,
-    CostBreakdownDTO,
-    ObjectiveBreakdownDTO,
     ScheduleDTO,
-    ScheduleTaskDTO,
     ValidationReportDTO,
-    WarehousePlanDTO,
 )
 from logistics_contracts.schedules import (
     CandidateCreate,
@@ -53,19 +47,13 @@ from logistics_contracts.schedules import (
 )
 from logistics_contracts.transport import TransportJobContent, TransportProblemDTO
 from logistics_domain.planning import (
-    CandidatePlan,
-    CostBreakdown,
-    ObjectiveBreakdown,
     Schedule,
-    ScheduleTask,
-    TaskKind,
-    WarehousePlan,
     content_hash,
 )
 from logistics_domain.states import EntityState, ErrorCode
+from logistics_optimization.validation.joint import validate_joint
 from logistics_optimization.validation.transport import validate_transport
 from logistics_optimization.validation.warehouse import validate_warehouse
-from logistics_optimization.validation.joint import validate_joint
 
 
 class ScheduleService:
@@ -119,114 +107,25 @@ class ScheduleService:
         self._persist_snapshot(snapshot, actor)
         plan = command.plan.to_domain()
         stops = tuple(stop.to_domain() for stop in command.stops)
-        routes = {route.id: route for route in plan.routes}
-        candidate_id = uuid4()
         now = datetime.now(UTC).replace(microsecond=0)
-        tasks = []
-        seen_tasks = set()
-        for stop in stops:
-            route = routes.get(stop.route_id)
-            if route is None:
-                raise ServiceError(ErrorCode.INVALID_INPUT, "stop route is not in the plan")
-            for task_id in stop.task_ids:
-                if task_id in seen_tasks:
-                    continue
-                seen_tasks.add(task_id)
-                tasks.append(ScheduleTask(id=uuid4(), status=EntityState.PLANNED,
-                    created_at=now, updated_at=now, row_version=0, schema_version="2.0.0",
-                    created_by=actor.actor_id, version_id=candidate_id, task_id=task_id,
-                    task_kind=TaskKind.TRANSPORT,
-                    assigned_resource_ids=(route.vehicle_id,),
-                    planned_start_s=stop.service_start_s,
-                    planned_end_s=max(stop.departure_s, stop.service_start_s + 1),
-                    sequence=stop.sequence))
-        warehouse_plan = WarehousePlan((), (), (), plan.cost)
-        warehouse_violations = ()
-        warehouse_valid = True
         if (command.warehouse_problem is None) != (command.warehouse_solution is None):
             raise ServiceError(ErrorCode.INVALID_INPUT,
                 "warehouse problem and solution must be supplied together")
-        if command.warehouse_problem is not None and command.warehouse_solution is not None:
-            warehouse_problem = command.warehouse_problem.to_domain()
-            warehouse_solution = command.warehouse_solution.to_domain()
-            warehouse_report = validate_warehouse(warehouse_problem, warehouse_solution)
-            warehouse_valid = warehouse_report.valid
-            warehouse_violations = warehouse_report.violations
-            warehouse_business = (warehouse_solution.objective.business_cost_cents
-                                  if warehouse_solution.objective is not None else 0)
-            warehouse_cost = CostBreakdown(0, 0, warehouse_business, 0, 0, warehouse_business)
-            warehouse_plan = WarehousePlan(warehouse_solution.assignments,
-                warehouse_solution.storage_allocations, warehouse_solution.setup_operations,
-                warehouse_cost)
-            grouped = {}
-            for assignment in warehouse_solution.assignments:
-                grouped.setdefault(assignment.task_id, []).append(assignment)
-            for task_id, values in grouped.items():
-                if any(task.task_id == task_id for task in tasks):
-                    raise ServiceError(ErrorCode.INVALID_INPUT,
-                        "warehouse task id collides with a transport task")
-                tasks.append(ScheduleTask(id=uuid4(), status=EntityState.PLANNED,
-                    created_at=now, updated_at=now, row_version=0, schema_version="2.0.0",
-                    created_by=actor.actor_id, version_id=candidate_id,
-                    task_id=task_id, task_kind=TaskKind.WAREHOUSE,
-                    assigned_resource_ids=tuple(sorted(
-                        {value.resource_id for value in values}, key=str)),
-                    planned_start_s=min(value.start_s for value in values),
-                    planned_end_s=max(value.end_s for value in values),
-                    sequence=None))
-        total_business = plan.cost.total_cents + warehouse_plan.cost.total_cents
-        objective = ObjectiveBreakdown(business_cost_cents=total_business,
-            optional_unserved_penalty=0, soft_late_penalty=0, disturbance_penalty=0,
-            makespan_penalty=0, objective_total=total_business)
-        body = {"schedule_id": schedule_id, "snapshot_id": snapshot.id,
-            "snapshot_hash": snapshot.hash, "epoch_utc": scope.epoch_utc,
-            "horizon_s": scope.horizon_s, "transport_plan": plan,
-            "warehouse_plan": warehouse_plan,
-            "task_assignments": tuple(tasks), "objective": objective,
-            "solver_evidence_refs": command.solver_evidence_refs}
-        digest = content_hash(body)
+        warehouse_solution = command.warehouse_solution.to_domain() if command.warehouse_solution else None
+        candidate = build_candidate(schedule_id=schedule_id, snapshot=snapshot, plan=plan,
+            stops=stops, actor_id=actor.actor_id, now=now, warehouse_solution=warehouse_solution,
+            base_version_id=command.base_version_id, solver_evidence_refs=command.solver_evidence_refs)
+        candidate_id, digest = candidate.id, candidate.content_hash
         transport_report = validate_transport(plan, problem, stops)
-        if command.warehouse_problem is not None and command.warehouse_solution is not None:
+        if command.warehouse_problem is not None:
+            warehouse_problem = command.warehouse_problem.to_domain()
+            warehouse_report = validate_warehouse(warehouse_problem, warehouse_solution)
             transport_report = validate_joint(plan, problem, stops, warehouse_problem, warehouse_solution)
-        report = dataclasses.replace(transport_report,
-            valid=transport_report.valid and warehouse_valid,
-            violations=transport_report.violations + warehouse_violations,
-            candidate_hash=digest, snapshot_hash=snapshot.hash)
-        candidate = CandidatePlan(id=candidate_id, schedule_id=schedule_id,
-            base_version_id=command.base_version_id, snapshot_id=snapshot.id,
-            snapshot_hash=snapshot.hash, epoch_utc=scope.epoch_utc,
-            horizon_s=scope.horizon_s, transport_plan=plan,
-            warehouse_plan=warehouse_plan,
-            task_assignments=tuple(tasks), objective=objective, content_hash=digest,
-            solver_evidence_refs=command.solver_evidence_refs)
-        dto = CandidatePlanDTO(id=candidate.id, schedule_id=schedule_id,
-            base_version_id=command.base_version_id, snapshot_id=snapshot.id,
-            snapshot_hash=snapshot.hash, epoch_utc=scope.epoch_utc,
-            horizon_s=scope.horizon_s, transport_plan=command.plan,
-            warehouse_plan=WarehousePlanDTO(
-                assignments=tuple(operation_assignment_dto(value)
-                                  for value in warehouse_plan.assignments),
-                storage_intervals=tuple(storage_interval_dto(value)
-                                        for value in warehouse_plan.storage_intervals),
-                setup_operations=tuple(setup_operation_dto(value)
-                                       for value in warehouse_plan.setup_operations),
-                cost=CostBreakdownDTO(
-                    distance_cents=warehouse_plan.cost.distance_cents,
-                    fixed_vehicle_cents=warehouse_plan.cost.fixed_vehicle_cents,
-                    service_cents=warehouse_plan.cost.service_cents,
-                    overtime_cents=warehouse_plan.cost.overtime_cents,
-                    setup_cents=warehouse_plan.cost.setup_cents,
-                    total_cents=warehouse_plan.cost.total_cents)),
-            task_assignments=tuple(ScheduleTaskDTO(id=task.id, status=task.status,
-                created_at=now, updated_at=now, row_version=0, schema_version="2.0.0",
-                created_by=actor.actor_id, version_id=candidate_id, task_id=task.task_id,
-                task_kind=task.task_kind, assigned_resource_ids=task.assigned_resource_ids,
-                planned_start_s=task.planned_start_s, planned_end_s=task.planned_end_s,
-                sequence=task.sequence) for task in tasks),
-            objective=ObjectiveBreakdownDTO(business_cost_cents=objective.business_cost_cents,
-                optional_unserved_penalty=0, soft_late_penalty=0, disturbance_penalty=0,
-                makespan_penalty=0, objective_total=objective.objective_total),
-            content_hash=digest, solver_evidence_refs=command.solver_evidence_refs)
+            transport_report = dataclasses.replace(transport_report,
+                valid=transport_report.valid and warehouse_report.valid,
+                violations=transport_report.violations + warehouse_report.violations)
+        report = dataclasses.replace(transport_report, candidate_hash=digest, snapshot_hash=snapshot.hash)
+        dto = CandidatePlanDTO.model_validate(dataclasses.asdict(candidate))
         report_payload = json.loads(ValidationReportDTO.model_validate(
             dataclasses.asdict(report)).model_dump_json())
         with self.uow_factory() as uow:
