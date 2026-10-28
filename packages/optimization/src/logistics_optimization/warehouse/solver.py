@@ -16,6 +16,7 @@ from uuid import uuid4
 
 from ortools.sat.python import cp_model
 
+from logistics_domain.coldchain import CapacityUnit
 from logistics_domain.planning import (
     CostBreakdown,
     EngineMetadata,
@@ -25,6 +26,7 @@ from logistics_domain.planning import (
     SetupOperation,
     SolverEvidence,
     SolveStatus,
+    StorageInterval,
     content_hash,
 )
 from logistics_domain.warehouse import Diagnostic, WarehouseProblem, WarehouseSolution
@@ -125,7 +127,7 @@ class CpSatWarehouseScheduler:
 
         coldchain = problem.snapshot.coldchain
         try:
-            add_coldchain(model, problem, starts, ends, use)
+            storage_spans = add_coldchain(model, problem, starts, ends, use)
         except ValueError as exc:
             return self._failed(problem, SolveStatus.UNKNOWN, str(exc), int((time.monotonic()-started)*1000))
         if coldchain is not None:
@@ -201,6 +203,25 @@ class CpSatWarehouseScheduler:
                 assignments.append(OperationAssignment(
                     task_id=task.id, resource_id=chosen, start_s=start,
                     end_s=start + task.duration_s, units=requirement.units))
+        storage_intervals = []
+        if coldchain is not None:
+            for occupancy in coldchain.occupancies:
+                start_expr, end_expr = storage_spans[occupancy.occupancy_id]
+                start_s = start_expr if isinstance(start_expr, int) else solver.Value(start_expr)
+                end_s = end_expr if isinstance(end_expr, int) else solver.Value(end_expr)
+                # StorageInterval is a strictly positive half-open interval. Zero-length
+                # occupancies consume no capacity and have no interval to export.
+                if start_s == end_s:
+                    continue
+                quantities = {amount.unit: amount.amount for amount in occupancy.capacity_use}
+                storage_intervals.append(StorageInterval(
+                    cargo_id=occupancy.occupancy_id,
+                    location_id=occupancy.location_id,
+                    start_s=start_s, end_s=end_s,
+                    quantity_units=quantities.get(CapacityUnit.QUANTITY_UNITS, 0),
+                    weight_g=quantities.get(CapacityUnit.WEIGHT_G, 0),
+                    volume_cm3=quantities.get(CapacityUnit.VOLUME_CM3, 0),
+                ))
         setup_operations = self._setups(problem, assignments, eligible)
         service_cents = len(problem.tasks) * 100
         setup_cents = sum(item.cost_cents for item in setup_operations)
@@ -223,7 +244,7 @@ class CpSatWarehouseScheduler:
                 {"workers": solver.parameters.num_search_workers}),
             solve_status=status, trusted_job_id=None)
         result = WarehouseSolution(status=status, engine_metadata=metadata,
-            assignments=tuple(assignments), storage_allocations=(),
+            assignments=tuple(assignments), storage_allocations=tuple(storage_intervals),
             setup_operations=tuple(setup_operations), objective=objective,
             validation=None, diagnostics=(), solver_evidence=(evidence,))
         from dataclasses import replace
