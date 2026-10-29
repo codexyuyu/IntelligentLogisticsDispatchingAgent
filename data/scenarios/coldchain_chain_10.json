@@ -1,0 +1,3912 @@
+{
+  "schema_version": "2.0.0",
+  "name": "县域冷链十订单入库-分拣-装车联动演示 (合成数据)",
+  "source_kind": "synthetic",
+  "source_ref": "deterministic synthetic 10x3 chain derived from partner coldchain fixture",
+  "snapshot": {
+    "id": "fca6f819-5e74-5df7-b22d-f2e55c4e5908",
+    "scope": {
+      "order_ids": [
+        "7b0852b4-793b-5aeb-af51-da4fcf7c6b5d",
+        "3985e5f1-d2d2-515d-b0b0-e1aa2c172c72",
+        "483471bd-1f91-5c6b-9d99-03291409c6f5",
+        "97a9295e-f485-5f02-a7a7-a189b06f4b9f",
+        "15c248eb-aeb3-5c53-a22f-793212e34bcd",
+        "e98edc32-2f9b-5ddc-8469-22d9d5f60b76",
+        "c874a1a7-2453-5c5b-aba2-f6a9590035fd",
+        "9cec597e-0d4f-5ff4-8d3d-adef0f219506",
+        "10d5fcc1-e23c-5a56-9ba3-b57479ba3126",
+        "dce9eb27-41eb-5a8f-879e-bc554fbf6ac4"
+      ],
+      "warehouse_ids": [
+        "3095eda4-48b4-5601-8934-a3f5d2e60272"
+      ],
+      "vehicle_ids": [
+        "1bc924dc-83ed-5e2e-a6b4-adb3bcee1873",
+        "b62f848e-dc0d-53df-a592-2127d8f8006a",
+        "e8b7fa6e-2495-53d6-8a82-e70642ff1f6b",
+        "62beb8d6-ee40-5363-b2dd-36c76cbd7723"
+      ],
+      "epoch_utc": "2026-01-01T00:00:00Z",
+      "horizon_s": 86400
+    },
+    "orders": [
+      {
+        "id": "7b0852b4-793b-5aeb-af51-da4fcf7c6b5d",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O01",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+        "cargo_ids": [
+          "a3c7b80b-4242-5f3e-afa1-3c1173f91605"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      },
+      {
+        "id": "3985e5f1-d2d2-515d-b0b0-e1aa2c172c72",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O02",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+        "cargo_ids": [
+          "ceedb08d-656c-5dbd-bfb0-b95cfc44b99d"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      },
+      {
+        "id": "483471bd-1f91-5c6b-9d99-03291409c6f5",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O03",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+        "cargo_ids": [
+          "5e4a7417-2aa3-55a3-80c4-92e93ed3f405"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      },
+      {
+        "id": "97a9295e-f485-5f02-a7a7-a189b06f4b9f",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O04",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+        "cargo_ids": [
+          "2b1a1638-0ef0-576b-b240-393dcce3cb2b"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      },
+      {
+        "id": "15c248eb-aeb3-5c53-a22f-793212e34bcd",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O05",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+        "cargo_ids": [
+          "8b96ac0a-0e9a-5826-adad-82a241384976"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      },
+      {
+        "id": "e98edc32-2f9b-5ddc-8469-22d9d5f60b76",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O06",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+        "cargo_ids": [
+          "6fc771ed-0e67-5813-bef5-0eea58642679"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      },
+      {
+        "id": "c874a1a7-2453-5c5b-aba2-f6a9590035fd",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O07",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+        "cargo_ids": [
+          "3092d7f3-95a3-5727-9690-0edb3a0f8a80"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      },
+      {
+        "id": "9cec597e-0d4f-5ff4-8d3d-adef0f219506",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O08",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+        "cargo_ids": [
+          "749dee4f-89cb-5787-93fa-222eec7b668d"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      },
+      {
+        "id": "10d5fcc1-e23c-5a56-9ba3-b57479ba3126",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O09",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+        "cargo_ids": [
+          "3d72cf4f-bc1f-53f6-aa66-0206f93045e2"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      },
+      {
+        "id": "dce9eb27-41eb-5a8f-879e-bc554fbf6ac4",
+        "status": "draft",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "external_ref": "CC10-O10",
+        "pickup_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "delivery_node_id": "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+        "cargo_ids": [
+          "35905ea4-65a0-5a50-a34c-13bfbd01aded"
+        ],
+        "pickup_window": {
+          "earliest_s": 100,
+          "latest_s": 3600
+        },
+        "delivery_window": {
+          "earliest_s": 0,
+          "latest_s": 7200
+        },
+        "service_s": 30,
+        "soft_due_at_s": null,
+        "must_serve": true,
+        "priority": 1
+      }
+    ],
+    "cargo": [
+      {
+        "id": "a3c7b80b-4242-5f3e-afa1-3c1173f91605",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "7b0852b4-793b-5aeb-af51-da4fcf7c6b5d",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 12000,
+        "volume_cm3": 8000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-01"
+      },
+      {
+        "id": "ceedb08d-656c-5dbd-bfb0-b95cfc44b99d",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "3985e5f1-d2d2-515d-b0b0-e1aa2c172c72",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 8000,
+        "volume_cm3": 5000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-02"
+      },
+      {
+        "id": "5e4a7417-2aa3-55a3-80c4-92e93ed3f405",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "483471bd-1f91-5c6b-9d99-03291409c6f5",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 12000,
+        "volume_cm3": 8000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-03"
+      },
+      {
+        "id": "2b1a1638-0ef0-576b-b240-393dcce3cb2b",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "97a9295e-f485-5f02-a7a7-a189b06f4b9f",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 8000,
+        "volume_cm3": 5000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-04"
+      },
+      {
+        "id": "8b96ac0a-0e9a-5826-adad-82a241384976",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "15c248eb-aeb3-5c53-a22f-793212e34bcd",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 12000,
+        "volume_cm3": 8000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-05"
+      },
+      {
+        "id": "6fc771ed-0e67-5813-bef5-0eea58642679",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "e98edc32-2f9b-5ddc-8469-22d9d5f60b76",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 8000,
+        "volume_cm3": 5000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-06"
+      },
+      {
+        "id": "3092d7f3-95a3-5727-9690-0edb3a0f8a80",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "c874a1a7-2453-5c5b-aba2-f6a9590035fd",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 12000,
+        "volume_cm3": 8000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-07"
+      },
+      {
+        "id": "749dee4f-89cb-5787-93fa-222eec7b668d",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "9cec597e-0d4f-5ff4-8d3d-adef0f219506",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 8000,
+        "volume_cm3": 5000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-08"
+      },
+      {
+        "id": "3d72cf4f-bc1f-53f6-aa66-0206f93045e2",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "10d5fcc1-e23c-5a56-9ba3-b57479ba3126",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 12000,
+        "volume_cm3": 8000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-09"
+      },
+      {
+        "id": "35905ea4-65a0-5a50-a34c-13bfbd01aded",
+        "status": "registered",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "order_id": "dce9eb27-41eb-5a8f-879e-bc554fbf6ac4",
+        "cargo_type": "GENERAL",
+        "quantity_units": 1,
+        "weight_g": 8000,
+        "volume_cm3": 5000,
+        "min_temp_decic": 0,
+        "max_temp_decic": 80,
+        "max_exposure_s": 3600,
+        "batch_ref": "cc10-batch-10"
+      }
+    ],
+    "vehicles": [
+      {
+        "id": "1bc924dc-83ed-5e2e-a6b4-adb3bcee1873",
+        "status": "available",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "code": "CC-V1",
+        "capacity_weight_g": 60000,
+        "capacity_volume_cm3": 40000,
+        "setpoint_decic": 40,
+        "allowed_cargo_types": [
+          "GENERAL"
+        ],
+        "start_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "end_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "calendar": {
+          "schema_version": "2.0.0",
+          "epoch_utc": "2026-01-01T00:00:00Z",
+          "version": 0,
+          "intervals": [
+            {
+              "start_s": 0,
+              "end_s": 86400,
+              "available_units": 1
+            }
+          ]
+        },
+        "driver_id": "08a98d91-eba5-5978-aa29-a900ae787f40",
+        "fixed_cost_cents": 5000,
+        "rate_cents_per_km": 220
+      },
+      {
+        "id": "b62f848e-dc0d-53df-a592-2127d8f8006a",
+        "status": "available",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "code": "CC-V2",
+        "capacity_weight_g": 60000,
+        "capacity_volume_cm3": 40000,
+        "setpoint_decic": 40,
+        "allowed_cargo_types": [
+          "GENERAL"
+        ],
+        "start_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "end_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "calendar": {
+          "schema_version": "2.0.0",
+          "epoch_utc": "2026-01-01T00:00:00Z",
+          "version": 0,
+          "intervals": [
+            {
+              "start_s": 0,
+              "end_s": 86400,
+              "available_units": 1
+            }
+          ]
+        },
+        "driver_id": "26a1dc87-39d2-570d-9420-45f42c0b69a8",
+        "fixed_cost_cents": 5000,
+        "rate_cents_per_km": 220
+      },
+      {
+        "id": "e8b7fa6e-2495-53d6-8a82-e70642ff1f6b",
+        "status": "available",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "code": "CC-V3",
+        "capacity_weight_g": 60000,
+        "capacity_volume_cm3": 40000,
+        "setpoint_decic": 40,
+        "allowed_cargo_types": [
+          "GENERAL"
+        ],
+        "start_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "end_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "calendar": {
+          "schema_version": "2.0.0",
+          "epoch_utc": "2026-01-01T00:00:00Z",
+          "version": 0,
+          "intervals": [
+            {
+              "start_s": 0,
+              "end_s": 86400,
+              "available_units": 1
+            }
+          ]
+        },
+        "driver_id": "97f7354a-99bf-555f-91b6-b25e5711b50e",
+        "fixed_cost_cents": 5000,
+        "rate_cents_per_km": 220
+      },
+      {
+        "id": "62beb8d6-ee40-5363-b2dd-36c76cbd7723",
+        "status": "available",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "code": "CC-V4",
+        "capacity_weight_g": 60000,
+        "capacity_volume_cm3": 40000,
+        "setpoint_decic": 40,
+        "allowed_cargo_types": [
+          "GENERAL"
+        ],
+        "start_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "end_node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+        "calendar": {
+          "schema_version": "2.0.0",
+          "epoch_utc": "2026-01-01T00:00:00Z",
+          "version": 0,
+          "intervals": [
+            {
+              "start_s": 0,
+              "end_s": 86400,
+              "available_units": 1
+            }
+          ]
+        },
+        "driver_id": "9e533f37-c3c7-5990-959d-6e465c83783e",
+        "fixed_cost_cents": 5000,
+        "rate_cents_per_km": 220
+      }
+    ],
+    "drivers": [
+      {
+        "id": "08a98d91-eba5-5978-aa29-a900ae787f40",
+        "status": "active",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "code": "CC-DR1",
+        "qualifications": [
+          "general"
+        ],
+        "shift": {
+          "earliest_s": 0,
+          "latest_s": 86400
+        },
+        "max_drive_s": 28800,
+        "max_work_s": 36000
+      },
+      {
+        "id": "26a1dc87-39d2-570d-9420-45f42c0b69a8",
+        "status": "active",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "code": "CC-DR2",
+        "qualifications": [
+          "general"
+        ],
+        "shift": {
+          "earliest_s": 0,
+          "latest_s": 86400
+        },
+        "max_drive_s": 28800,
+        "max_work_s": 36000
+      },
+      {
+        "id": "97f7354a-99bf-555f-91b6-b25e5711b50e",
+        "status": "active",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "code": "CC-DR3",
+        "qualifications": [
+          "general"
+        ],
+        "shift": {
+          "earliest_s": 0,
+          "latest_s": 86400
+        },
+        "max_drive_s": 28800,
+        "max_work_s": 36000
+      },
+      {
+        "id": "9e533f37-c3c7-5990-959d-6e465c83783e",
+        "status": "active",
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "row_version": 0,
+        "schema_version": "2.0.0",
+        "created_by": "00000000-0000-0000-0000-000000000001",
+        "code": "CC-DR4",
+        "qualifications": [
+          "general"
+        ],
+        "shift": {
+          "earliest_s": 0,
+          "latest_s": 86400
+        },
+        "max_drive_s": 28800,
+        "max_work_s": 36000
+      }
+    ],
+    "resources": {
+      "warehouses": [
+        {
+          "id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "status": "active",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "code": "WH1",
+          "name": "Tiny Warehouse",
+          "node_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+          "timezone": "UTC",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        }
+      ],
+      "zones": [
+        {
+          "id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+          "status": "active",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "code": "Z1",
+          "setpoint_decic": 40,
+          "capacity_weight_g": 1000000,
+          "capacity_volume_cm3": 1000000,
+          "allowed_cargo_types": [
+            "GENERAL"
+          ]
+        }
+      ],
+      "locations": [
+        {
+          "id": "db2a8f91-1c03-5b72-a2e4-20bfd075bede",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+          "code": "L1",
+          "capacity_weight_g": 500000,
+          "capacity_volume_cm3": 100000,
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "79ba5e94-8f67-52f9-b9b1-b874150f23a9",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+          "code": "L2",
+          "capacity_weight_g": 500000,
+          "capacity_volume_cm3": 100000,
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "428a5fd7-92a1-5d52-a696-2e5708ad7aef",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+          "code": "L3",
+          "capacity_weight_g": 500000,
+          "capacity_volume_cm3": 100000,
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "63efb1bc-165e-5a25-b225-96ab7886dcc2",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+          "code": "L4",
+          "capacity_weight_g": 500000,
+          "capacity_volume_cm3": 100000,
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "180f6355-f9c9-5abc-a058-a4ab8a381848",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+          "code": "L5",
+          "capacity_weight_g": 500000,
+          "capacity_volume_cm3": 100000,
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "e20b4661-1bea-5886-9a93-ec09c0578c56",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+          "code": "L6",
+          "capacity_weight_g": 500000,
+          "capacity_volume_cm3": 100000,
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        }
+      ],
+      "docks": [
+        {
+          "id": "8a048501-4d97-5a2a-afeb-a5f6b0f69d63",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "code": "D1",
+          "supported_operations": [
+            "receive",
+            "load"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "25a33d27-3279-5e36-a6e8-879c43f6235c",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "code": "D2",
+          "supported_operations": [
+            "receive",
+            "load"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "6668be8f-5fda-5a55-aef8-8f3bc6c7d1b7",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "code": "D3",
+          "supported_operations": [
+            "receive",
+            "load"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "5c58b0a3-e613-5c0a-bfd3-a8507ee9914d",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "code": "D4",
+          "supported_operations": [
+            "receive",
+            "load"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "cf1cec5f-f60a-5355-b871-faa0663ebfaf",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "code": "D5",
+          "supported_operations": [
+            "receive",
+            "load"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "f6c0a0db-e031-5b36-be44-d84fff22559b",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "code": "D6",
+          "supported_operations": [
+            "receive",
+            "load"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        }
+      ],
+      "workers": [
+        {
+          "id": "8a6e106f-0acf-5d6c-8632-c02121f73a17",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "skills": [
+            "picking"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "pool_id": null
+        },
+        {
+          "id": "74de40a7-db33-51ed-9b0b-0887e669609a",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "skills": [
+            "picking"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "pool_id": null
+        },
+        {
+          "id": "81b86cc6-d977-50dc-a4f9-8a47e9d530bb",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "skills": [
+            "picking"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "pool_id": null
+        },
+        {
+          "id": "c892efd5-e89c-5235-82ed-67651b969f86",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "skills": [
+            "picking"
+          ],
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "pool_id": null
+        }
+      ],
+      "equipment": [
+        {
+          "id": "a79d7d97-8cf3-5cf4-9026-3890bb1ea127",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "kind": "handling",
+          "quantity_capacity": 2,
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 2
+              }
+            ]
+          }
+        },
+        {
+          "id": "d4b5638f-de8d-53aa-87a8-cbff5452b1c2",
+          "status": "available",
+          "created_at": "2026-01-01T00:00:00Z",
+          "updated_at": "2026-01-01T00:00:00Z",
+          "row_version": 0,
+          "schema_version": "2.0.0",
+          "created_by": "00000000-0000-0000-0000-000000000001",
+          "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "kind": "handling",
+          "quantity_capacity": 2,
+          "allowed_zone_ids": [
+            "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0"
+          ],
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 2
+              }
+            ]
+          }
+        }
+      ],
+      "calendars": [
+        {
+          "resource_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "2a26f62afd7bfebd179bda969901d176db4e9183db7367d271dbde81446b4b4d",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "8a048501-4d97-5a2a-afeb-a5f6b0f69d63",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "2a26f62afd7bfebd179bda969901d176db4e9183db7367d271dbde81446b4b4d",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "25a33d27-3279-5e36-a6e8-879c43f6235c",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "2a26f62afd7bfebd179bda969901d176db4e9183db7367d271dbde81446b4b4d",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "6668be8f-5fda-5a55-aef8-8f3bc6c7d1b7",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "2a26f62afd7bfebd179bda969901d176db4e9183db7367d271dbde81446b4b4d",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "5c58b0a3-e613-5c0a-bfd3-a8507ee9914d",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "2a26f62afd7bfebd179bda969901d176db4e9183db7367d271dbde81446b4b4d",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "cf1cec5f-f60a-5355-b871-faa0663ebfaf",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "2a26f62afd7bfebd179bda969901d176db4e9183db7367d271dbde81446b4b4d",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "f6c0a0db-e031-5b36-be44-d84fff22559b",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "2a26f62afd7bfebd179bda969901d176db4e9183db7367d271dbde81446b4b4d",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 1,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "8a6e106f-0acf-5d6c-8632-c02121f73a17",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "74de40a7-db33-51ed-9b0b-0887e669609a",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "81b86cc6-d977-50dc-a4f9-8a47e9d530bb",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "c892efd5-e89c-5235-82ed-67651b969f86",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "a79d7d97-8cf3-5cf4-9026-3890bb1ea127",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 2
+              }
+            ]
+          },
+          "source_hash": "1ab7efef8bb82c5fa9056f71491b7029441a5065261c0277441a24fffc9155a7",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 2
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "d4b5638f-de8d-53aa-87a8-cbff5452b1c2",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 2
+              }
+            ]
+          },
+          "source_hash": "1ab7efef8bb82c5fa9056f71491b7029441a5065261c0277441a24fffc9155a7",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 2
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "db2a8f91-1c03-5b72-a2e4-20bfd075bede",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "79ba5e94-8f67-52f9-b9b1-b874150f23a9",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "428a5fd7-92a1-5d52-a696-2e5708ad7aef",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "63efb1bc-165e-5a25-b225-96ab7886dcc2",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "180f6355-f9c9-5abc-a058-a4ab8a381848",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        },
+        {
+          "resource_id": "e20b4661-1bea-5886-9a93-ec09c0578c56",
+          "source_calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          },
+          "source_hash": "27bf41b5c2a9348d8e5baa9b700714084db6ca5ddd6ce165779d210460ac0c04",
+          "calendar": {
+            "schema_version": "2.0.0",
+            "epoch_utc": "2026-01-01T00:00:00Z",
+            "version": 0,
+            "intervals": [
+              {
+                "start_s": 0,
+                "end_s": 86400,
+                "available_units": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "inventory": [],
+    "revisions": [
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "7b0852b4-793b-5aeb-af51-da4fcf7c6b5d",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "3985e5f1-d2d2-515d-b0b0-e1aa2c172c72",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "483471bd-1f91-5c6b-9d99-03291409c6f5",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "97a9295e-f485-5f02-a7a7-a189b06f4b9f",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "15c248eb-aeb3-5c53-a22f-793212e34bcd",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "e98edc32-2f9b-5ddc-8469-22d9d5f60b76",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "c874a1a7-2453-5c5b-aba2-f6a9590035fd",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "9cec597e-0d4f-5ff4-8d3d-adef0f219506",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "10d5fcc1-e23c-5a56-9ba3-b57479ba3126",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "order",
+          "id": "dce9eb27-41eb-5a8f-879e-bc554fbf6ac4",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "a3c7b80b-4242-5f3e-afa1-3c1173f91605",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "ceedb08d-656c-5dbd-bfb0-b95cfc44b99d",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "5e4a7417-2aa3-55a3-80c4-92e93ed3f405",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "2b1a1638-0ef0-576b-b240-393dcce3cb2b",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "8b96ac0a-0e9a-5826-adad-82a241384976",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "6fc771ed-0e67-5813-bef5-0eea58642679",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "3092d7f3-95a3-5727-9690-0edb3a0f8a80",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "749dee4f-89cb-5787-93fa-222eec7b668d",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "3d72cf4f-bc1f-53f6-aa66-0206f93045e2",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "cargo",
+          "id": "35905ea4-65a0-5a50-a34c-13bfbd01aded",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "vehicle",
+          "id": "1bc924dc-83ed-5e2e-a6b4-adb3bcee1873",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "vehicle",
+          "id": "b62f848e-dc0d-53df-a592-2127d8f8006a",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "vehicle",
+          "id": "e8b7fa6e-2495-53d6-8a82-e70642ff1f6b",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "vehicle",
+          "id": "62beb8d6-ee40-5363-b2dd-36c76cbd7723",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "driver",
+          "id": "08a98d91-eba5-5978-aa29-a900ae787f40",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "driver",
+          "id": "26a1dc87-39d2-570d-9420-45f42c0b69a8",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "driver",
+          "id": "97f7354a-99bf-555f-91b6-b25e5711b50e",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "driver",
+          "id": "9e533f37-c3c7-5990-959d-6e465c83783e",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "warehouse",
+          "id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "zone",
+          "id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "location",
+          "id": "db2a8f91-1c03-5b72-a2e4-20bfd075bede",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "location",
+          "id": "79ba5e94-8f67-52f9-b9b1-b874150f23a9",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "location",
+          "id": "428a5fd7-92a1-5d52-a696-2e5708ad7aef",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "location",
+          "id": "63efb1bc-165e-5a25-b225-96ab7886dcc2",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "location",
+          "id": "180f6355-f9c9-5abc-a058-a4ab8a381848",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "location",
+          "id": "e20b4661-1bea-5886-9a93-ec09c0578c56",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "dock",
+          "id": "8a048501-4d97-5a2a-afeb-a5f6b0f69d63",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "dock",
+          "id": "25a33d27-3279-5e36-a6e8-879c43f6235c",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "dock",
+          "id": "6668be8f-5fda-5a55-aef8-8f3bc6c7d1b7",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "dock",
+          "id": "5c58b0a3-e613-5c0a-bfd3-a8507ee9914d",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "dock",
+          "id": "cf1cec5f-f60a-5355-b871-faa0663ebfaf",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "dock",
+          "id": "f6c0a0db-e031-5b36-be44-d84fff22559b",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "worker",
+          "id": "8a6e106f-0acf-5d6c-8632-c02121f73a17",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "worker",
+          "id": "74de40a7-db33-51ed-9b0b-0887e669609a",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "worker",
+          "id": "81b86cc6-d977-50dc-a4f9-8a47e9d530bb",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "worker",
+          "id": "c892efd5-e89c-5235-82ed-67651b969f86",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "equipment",
+          "id": "a79d7d97-8cf3-5cf4-9026-3890bb1ea127",
+          "revision": 0
+        },
+        "row_version": 0
+      },
+      {
+        "entity_ref": {
+          "kind": "equipment",
+          "id": "d4b5638f-de8d-53aa-87a8-cbff5452b1c2",
+          "revision": 0
+        },
+        "row_version": 0
+      }
+    ],
+    "matrices": [
+      {
+        "id": "31600f98-77d8-5164-bd20-a817876cfd2d",
+        "version": 1,
+        "node_ids": [
+          "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+          "70fd19ad-68b9-5ed2-be9f-44ac431fb557",
+          "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+          "dff2c260-6c2b-55ef-b801-1ee0cf0370c5",
+          "dd6e5ffa-d613-5797-92ff-f2665b30761c"
+        ],
+        "distance_m": [
+          [
+            0,
+            5000,
+            9000,
+            7000,
+            12000
+          ],
+          [
+            5000,
+            0,
+            4000,
+            3000,
+            8000
+          ],
+          [
+            9000,
+            4000,
+            0,
+            6000,
+            3000
+          ],
+          [
+            7000,
+            3000,
+            6000,
+            0,
+            5000
+          ],
+          [
+            12000,
+            8000,
+            3000,
+            5000,
+            0
+          ]
+        ],
+        "travel_s": [
+          [
+            0,
+            500,
+            900,
+            700,
+            1200
+          ],
+          [
+            500,
+            0,
+            400,
+            300,
+            800
+          ],
+          [
+            900,
+            400,
+            0,
+            600,
+            300
+          ],
+          [
+            700,
+            300,
+            600,
+            0,
+            500
+          ],
+          [
+            1200,
+            800,
+            300,
+            500,
+            0
+          ]
+        ],
+        "source": "fixture",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    ],
+    "hash": "72b0cc30548effd7fdd402a715f47913f48f78b35971abc0f42e61bd94f5f478",
+    "coldchain": null
+  },
+  "warehouse_tasks": [
+    {
+      "id": "be1ebcc7-ef23-5d29-bd9f-818be869887e",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "7b0852b4-793b-5aeb-af51-da4fcf7c6b5d",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "8a048501-4d97-5a2a-afeb-a5f6b0f69d63"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "8a6e106f-0acf-5d6c-8632-c02121f73a17"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "8e841dca-b4b7-5e51-81bc-46ea7ae65c02",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "7b0852b4-793b-5aeb-af51-da4fcf7c6b5d",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "be1ebcc7-ef23-5d29-bd9f-818be869887e"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "74de40a7-db33-51ed-9b0b-0887e669609a"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "d4b5638f-de8d-53aa-87a8-cbff5452b1c2"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "3b3e8b86-1d93-5326-b4b8-cde3547cc551",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "7b0852b4-793b-5aeb-af51-da4fcf7c6b5d",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "8e841dca-b4b7-5e51-81bc-46ea7ae65c02"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "6668be8f-5fda-5a55-aef8-8f3bc6c7d1b7"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "81b86cc6-d977-50dc-a4f9-8a47e9d530bb"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    },
+    {
+      "id": "7b38af65-adfd-5bce-af88-a864b9059a5c",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "3985e5f1-d2d2-515d-b0b0-e1aa2c172c72",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "25a33d27-3279-5e36-a6e8-879c43f6235c"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "74de40a7-db33-51ed-9b0b-0887e669609a"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "8ba05cce-2823-587e-8450-0f3bb9bf2255",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "3985e5f1-d2d2-515d-b0b0-e1aa2c172c72",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "7b38af65-adfd-5bce-af88-a864b9059a5c"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "81b86cc6-d977-50dc-a4f9-8a47e9d530bb"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "a79d7d97-8cf3-5cf4-9026-3890bb1ea127"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "9270cd6d-3ece-5fec-b433-30467d034f8f",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "3985e5f1-d2d2-515d-b0b0-e1aa2c172c72",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "8ba05cce-2823-587e-8450-0f3bb9bf2255"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "5c58b0a3-e613-5c0a-bfd3-a8507ee9914d"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "c892efd5-e89c-5235-82ed-67651b969f86"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    },
+    {
+      "id": "8854e5ed-bd9c-59fe-abf0-5d0d142da02b",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "483471bd-1f91-5c6b-9d99-03291409c6f5",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "6668be8f-5fda-5a55-aef8-8f3bc6c7d1b7"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "81b86cc6-d977-50dc-a4f9-8a47e9d530bb"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "492c76a6-223a-545c-a325-75fa8bdc2157",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "483471bd-1f91-5c6b-9d99-03291409c6f5",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "8854e5ed-bd9c-59fe-abf0-5d0d142da02b"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "c892efd5-e89c-5235-82ed-67651b969f86"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "d4b5638f-de8d-53aa-87a8-cbff5452b1c2"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "93251d9e-b326-5a8b-876d-bebff1152969",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "483471bd-1f91-5c6b-9d99-03291409c6f5",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "492c76a6-223a-545c-a325-75fa8bdc2157"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "cf1cec5f-f60a-5355-b871-faa0663ebfaf"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "8a6e106f-0acf-5d6c-8632-c02121f73a17"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    },
+    {
+      "id": "47207308-ee8c-557c-aff1-994166e4dba4",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "97a9295e-f485-5f02-a7a7-a189b06f4b9f",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "5c58b0a3-e613-5c0a-bfd3-a8507ee9914d"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "c892efd5-e89c-5235-82ed-67651b969f86"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "58f5dd3e-3a32-58fb-9fe8-3bb4b425d5d2",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "97a9295e-f485-5f02-a7a7-a189b06f4b9f",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "47207308-ee8c-557c-aff1-994166e4dba4"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "8a6e106f-0acf-5d6c-8632-c02121f73a17"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "a79d7d97-8cf3-5cf4-9026-3890bb1ea127"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "81014690-3c93-5967-8026-41f7118eb373",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "97a9295e-f485-5f02-a7a7-a189b06f4b9f",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "58f5dd3e-3a32-58fb-9fe8-3bb4b425d5d2"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "f6c0a0db-e031-5b36-be44-d84fff22559b"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "74de40a7-db33-51ed-9b0b-0887e669609a"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    },
+    {
+      "id": "8819fdd4-2dfd-5a0d-9fa9-de438b19ebf1",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "15c248eb-aeb3-5c53-a22f-793212e34bcd",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "cf1cec5f-f60a-5355-b871-faa0663ebfaf"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "8a6e106f-0acf-5d6c-8632-c02121f73a17"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "567b0cd7-95c3-5e5c-93f4-3b8f5daff106",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "15c248eb-aeb3-5c53-a22f-793212e34bcd",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "8819fdd4-2dfd-5a0d-9fa9-de438b19ebf1"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "74de40a7-db33-51ed-9b0b-0887e669609a"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "d4b5638f-de8d-53aa-87a8-cbff5452b1c2"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "23e88eba-2af3-516d-a62b-d6148190abf0",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "15c248eb-aeb3-5c53-a22f-793212e34bcd",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "567b0cd7-95c3-5e5c-93f4-3b8f5daff106"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "8a048501-4d97-5a2a-afeb-a5f6b0f69d63"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "81b86cc6-d977-50dc-a4f9-8a47e9d530bb"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    },
+    {
+      "id": "950a300a-5989-54ba-8143-e420c7c444ad",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "e98edc32-2f9b-5ddc-8469-22d9d5f60b76",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "f6c0a0db-e031-5b36-be44-d84fff22559b"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "74de40a7-db33-51ed-9b0b-0887e669609a"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "ea63fcf4-0ca2-5b6a-90e3-2c2f94f8a40c",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "e98edc32-2f9b-5ddc-8469-22d9d5f60b76",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "950a300a-5989-54ba-8143-e420c7c444ad"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "81b86cc6-d977-50dc-a4f9-8a47e9d530bb"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "a79d7d97-8cf3-5cf4-9026-3890bb1ea127"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "96313222-3651-5572-8a12-507219f62953",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "e98edc32-2f9b-5ddc-8469-22d9d5f60b76",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "ea63fcf4-0ca2-5b6a-90e3-2c2f94f8a40c"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "25a33d27-3279-5e36-a6e8-879c43f6235c"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "c892efd5-e89c-5235-82ed-67651b969f86"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    },
+    {
+      "id": "904cced7-f191-5406-85b6-bc794ce4667c",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "c874a1a7-2453-5c5b-aba2-f6a9590035fd",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "8a048501-4d97-5a2a-afeb-a5f6b0f69d63"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "81b86cc6-d977-50dc-a4f9-8a47e9d530bb"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "1624ce5d-6bed-56cc-a9b2-48acdac8abdf",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "c874a1a7-2453-5c5b-aba2-f6a9590035fd",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "904cced7-f191-5406-85b6-bc794ce4667c"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "c892efd5-e89c-5235-82ed-67651b969f86"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "d4b5638f-de8d-53aa-87a8-cbff5452b1c2"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "96df09a0-0e61-52ed-95d8-9f69599a4b81",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "c874a1a7-2453-5c5b-aba2-f6a9590035fd",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "1624ce5d-6bed-56cc-a9b2-48acdac8abdf"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "6668be8f-5fda-5a55-aef8-8f3bc6c7d1b7"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "8a6e106f-0acf-5d6c-8632-c02121f73a17"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    },
+    {
+      "id": "6b57d64a-005b-54d0-933a-650096db42b1",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "9cec597e-0d4f-5ff4-8d3d-adef0f219506",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "25a33d27-3279-5e36-a6e8-879c43f6235c"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "c892efd5-e89c-5235-82ed-67651b969f86"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "53d28edd-7778-5a59-b746-2f1b5070ad23",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "9cec597e-0d4f-5ff4-8d3d-adef0f219506",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "6b57d64a-005b-54d0-933a-650096db42b1"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "8a6e106f-0acf-5d6c-8632-c02121f73a17"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "a79d7d97-8cf3-5cf4-9026-3890bb1ea127"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "def88e69-d88a-5a27-857b-5f1b4bd443a5",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "9cec597e-0d4f-5ff4-8d3d-adef0f219506",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "53d28edd-7778-5a59-b746-2f1b5070ad23"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "5c58b0a3-e613-5c0a-bfd3-a8507ee9914d"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "74de40a7-db33-51ed-9b0b-0887e669609a"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    },
+    {
+      "id": "a7dcf123-00da-57dc-a2e0-dc5c1b7405ef",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "10d5fcc1-e23c-5a56-9ba3-b57479ba3126",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "6668be8f-5fda-5a55-aef8-8f3bc6c7d1b7"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "8a6e106f-0acf-5d6c-8632-c02121f73a17"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "fb833ecb-83fc-59f1-9682-5611d2f7c5ed",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "10d5fcc1-e23c-5a56-9ba3-b57479ba3126",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "a7dcf123-00da-57dc-a2e0-dc5c1b7405ef"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "74de40a7-db33-51ed-9b0b-0887e669609a"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "d4b5638f-de8d-53aa-87a8-cbff5452b1c2"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "93b4cad8-a00a-52fc-9901-5e0c0b2786a8",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "10d5fcc1-e23c-5a56-9ba3-b57479ba3126",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "fb833ecb-83fc-59f1-9682-5611d2f7c5ed"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "cf1cec5f-f60a-5355-b871-faa0663ebfaf"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "81b86cc6-d977-50dc-a4f9-8a47e9d530bb"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    },
+    {
+      "id": "84920017-9cff-5c41-a9d6-ae8ebda6cfa4",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "dce9eb27-41eb-5a8f-879e-bc554fbf6ac4",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "receive",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "5c58b0a3-e613-5c0a-bfd3-a8507ee9914d"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "74de40a7-db33-51ed-9b0b-0887e669609a"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "receive",
+      "required_skills": []
+    },
+    {
+      "id": "27c36b5d-ebe5-547d-8600-9fca250c2a28",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "dce9eb27-41eb-5a8f-879e-bc554fbf6ac4",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "sort",
+      "duration_s": 30,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "84920017-9cff-5c41-a9d6-ae8ebda6cfa4"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "81b86cc6-d977-50dc-a4f9-8a47e9d530bb"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "equipment",
+          "eligible_ids": [
+            "a79d7d97-8cf3-5cf4-9026-3890bb1ea127"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "sort",
+      "required_skills": []
+    },
+    {
+      "id": "db9f5f5d-9664-5234-b026-5143984b94d5",
+      "status": "pending",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z",
+      "row_version": 0,
+      "schema_version": "2.0.0",
+      "created_by": "00000000-0000-0000-0000-000000000001",
+      "order_id": "dce9eb27-41eb-5a8f-879e-bc554fbf6ac4",
+      "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+      "kind": "load",
+      "duration_s": 25,
+      "window": {
+        "earliest_s": 0,
+        "latest_s": 3600
+      },
+      "predecessor_ids": [
+        "27c36b5d-ebe5-547d-8600-9fca250c2a28"
+      ],
+      "requirements": [
+        {
+          "resource_kind": "dock",
+          "eligible_ids": [
+            "f6c0a0db-e031-5b36-be44-d84fff22559b"
+          ],
+          "units": 1
+        },
+        {
+          "resource_kind": "worker",
+          "eligible_ids": [
+            "c892efd5-e89c-5235-82ed-67651b969f86"
+          ],
+          "units": 1
+        }
+      ],
+      "setup_class": "load",
+      "required_skills": []
+    }
+  ],
+  "coldchain_fields": {
+    "rule_version": "cc10-1",
+    "horizon_s": 86400,
+    "zones": [
+      {
+        "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "version": 1,
+        "setpoint_decic": 40,
+        "capacities": [
+          {
+            "unit": "volume_cm3",
+            "amount": 1000000
+          }
+        ]
+      }
+    ],
+    "storage_locations": [
+      {
+        "location_id": "db2a8f91-1c03-5b72-a2e4-20bfd075bede",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+        "version": 1,
+        "capacities": [
+          {
+            "unit": "volume_cm3",
+            "amount": 100000
+          }
+        ],
+        "available_windows": [],
+        "capacity_periods": [
+          {
+            "start_s": 0,
+            "end_s": 86400,
+            "capacities": [
+              {
+                "unit": "volume_cm3",
+                "amount": 100000
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "location_id": "79ba5e94-8f67-52f9-b9b1-b874150f23a9",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+        "version": 1,
+        "capacities": [
+          {
+            "unit": "volume_cm3",
+            "amount": 100000
+          }
+        ],
+        "available_windows": [],
+        "capacity_periods": [
+          {
+            "start_s": 0,
+            "end_s": 86400,
+            "capacities": [
+              {
+                "unit": "volume_cm3",
+                "amount": 100000
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "location_id": "428a5fd7-92a1-5d52-a696-2e5708ad7aef",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+        "version": 1,
+        "capacities": [
+          {
+            "unit": "volume_cm3",
+            "amount": 100000
+          }
+        ],
+        "available_windows": [],
+        "capacity_periods": [
+          {
+            "start_s": 0,
+            "end_s": 86400,
+            "capacities": [
+              {
+                "unit": "volume_cm3",
+                "amount": 100000
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "location_id": "63efb1bc-165e-5a25-b225-96ab7886dcc2",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+        "version": 1,
+        "capacities": [
+          {
+            "unit": "volume_cm3",
+            "amount": 100000
+          }
+        ],
+        "available_windows": [],
+        "capacity_periods": [
+          {
+            "start_s": 0,
+            "end_s": 86400,
+            "capacities": [
+              {
+                "unit": "volume_cm3",
+                "amount": 100000
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "location_id": "180f6355-f9c9-5abc-a058-a4ab8a381848",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+        "version": 1,
+        "capacities": [
+          {
+            "unit": "volume_cm3",
+            "amount": 100000
+          }
+        ],
+        "available_windows": [],
+        "capacity_periods": [
+          {
+            "start_s": 0,
+            "end_s": 86400,
+            "capacities": [
+              {
+                "unit": "volume_cm3",
+                "amount": 100000
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "location_id": "e20b4661-1bea-5886-9a93-ec09c0578c56",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "zone_id": "8d4ad290-8a9f-5bfd-9727-7c2d5459c4c0",
+        "version": 1,
+        "capacities": [
+          {
+            "unit": "volume_cm3",
+            "amount": 100000
+          }
+        ],
+        "available_windows": [],
+        "capacity_periods": [
+          {
+            "start_s": 0,
+            "end_s": 86400,
+            "capacities": [
+              {
+                "unit": "volume_cm3",
+                "amount": 100000
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "occupancies": [
+      {
+        "occupancy_id": "425c0704-8e76-5355-94e7-0f782b3c84d1",
+        "batch_id": "cc10-batch-01",
+        "location_id": "db2a8f91-1c03-5b72-a2e4-20bfd075bede",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 8000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "be1ebcc7-ef23-5d29-bd9f-818be869887e",
+        "outbound_operation_id": "3b3e8b86-1d93-5326-b4b8-cde3547cc551",
+        "declared_start_s": null
+      },
+      {
+        "occupancy_id": "616f7007-5808-5e75-b050-911ee4e329f0",
+        "batch_id": "cc10-batch-02",
+        "location_id": "79ba5e94-8f67-52f9-b9b1-b874150f23a9",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 5000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "7b38af65-adfd-5bce-af88-a864b9059a5c",
+        "outbound_operation_id": "9270cd6d-3ece-5fec-b433-30467d034f8f",
+        "declared_start_s": null
+      },
+      {
+        "occupancy_id": "6b6afb29-cd47-5282-8186-12806ec44f79",
+        "batch_id": "cc10-batch-03",
+        "location_id": "428a5fd7-92a1-5d52-a696-2e5708ad7aef",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 8000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "8854e5ed-bd9c-59fe-abf0-5d0d142da02b",
+        "outbound_operation_id": "93251d9e-b326-5a8b-876d-bebff1152969",
+        "declared_start_s": null
+      },
+      {
+        "occupancy_id": "de4e04c4-05d8-5d37-b8c8-6b0e5bfe879e",
+        "batch_id": "cc10-batch-04",
+        "location_id": "63efb1bc-165e-5a25-b225-96ab7886dcc2",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 5000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "47207308-ee8c-557c-aff1-994166e4dba4",
+        "outbound_operation_id": "81014690-3c93-5967-8026-41f7118eb373",
+        "declared_start_s": null
+      },
+      {
+        "occupancy_id": "eef7e0a2-30b2-5751-958d-314ff0f68276",
+        "batch_id": "cc10-batch-05",
+        "location_id": "180f6355-f9c9-5abc-a058-a4ab8a381848",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 8000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "8819fdd4-2dfd-5a0d-9fa9-de438b19ebf1",
+        "outbound_operation_id": "23e88eba-2af3-516d-a62b-d6148190abf0",
+        "declared_start_s": null
+      },
+      {
+        "occupancy_id": "2e5ed47e-d0a8-545c-a7d2-45ebaadd4b3b",
+        "batch_id": "cc10-batch-06",
+        "location_id": "e20b4661-1bea-5886-9a93-ec09c0578c56",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 5000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "950a300a-5989-54ba-8143-e420c7c444ad",
+        "outbound_operation_id": "96313222-3651-5572-8a12-507219f62953",
+        "declared_start_s": null
+      },
+      {
+        "occupancy_id": "10d1c01c-81b1-590c-8cf4-fdd48080423a",
+        "batch_id": "cc10-batch-07",
+        "location_id": "db2a8f91-1c03-5b72-a2e4-20bfd075bede",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 8000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "904cced7-f191-5406-85b6-bc794ce4667c",
+        "outbound_operation_id": "96df09a0-0e61-52ed-95d8-9f69599a4b81",
+        "declared_start_s": null
+      },
+      {
+        "occupancy_id": "ad4b40f9-c614-59bc-b1c0-303654ac2518",
+        "batch_id": "cc10-batch-08",
+        "location_id": "79ba5e94-8f67-52f9-b9b1-b874150f23a9",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 5000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "6b57d64a-005b-54d0-933a-650096db42b1",
+        "outbound_operation_id": "def88e69-d88a-5a27-857b-5f1b4bd443a5",
+        "declared_start_s": null
+      },
+      {
+        "occupancy_id": "b62cf471-fac2-53d6-a4af-f0d654510b6c",
+        "batch_id": "cc10-batch-09",
+        "location_id": "428a5fd7-92a1-5d52-a696-2e5708ad7aef",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 8000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "a7dcf123-00da-57dc-a2e0-dc5c1b7405ef",
+        "outbound_operation_id": "93b4cad8-a00a-52fc-9901-5e0c0b2786a8",
+        "declared_start_s": null
+      },
+      {
+        "occupancy_id": "3114648e-7d57-52f0-b979-f5bf8492e88d",
+        "batch_id": "cc10-batch-10",
+        "location_id": "63efb1bc-165e-5a25-b225-96ab7886dcc2",
+        "capacity_use": [
+          {
+            "unit": "volume_cm3",
+            "amount": 5000
+          }
+        ],
+        "origin": "planned_inbound",
+        "inbound_operation_id": "84920017-9cff-5c41-a9d6-ae8ebda6cfa4",
+        "outbound_operation_id": "db9f5f5d-9664-5234-b026-5143984b94d5",
+        "declared_start_s": null
+      }
+    ],
+    "setup_policies": [],
+    "precool_requirements": [],
+    "exposure_limits": [
+      {
+        "limit_id": "8f793e48-7d9d-5340-a507-324d304fa9c6",
+        "batch_id": "cc10-batch-01",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      },
+      {
+        "limit_id": "78a61159-5d27-54a0-869d-6e20f49c1496",
+        "batch_id": "cc10-batch-02",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      },
+      {
+        "limit_id": "8080898b-e536-5708-b4ca-f3cb9f816b1b",
+        "batch_id": "cc10-batch-03",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      },
+      {
+        "limit_id": "6b8bed5f-9aaa-5154-b169-80efad858fb2",
+        "batch_id": "cc10-batch-04",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      },
+      {
+        "limit_id": "d89c73b1-ed75-5816-9293-3a0ce0b61174",
+        "batch_id": "cc10-batch-05",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      },
+      {
+        "limit_id": "32c5d807-94c2-5321-b15d-b0507ae8a218",
+        "batch_id": "cc10-batch-06",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      },
+      {
+        "limit_id": "61174fa3-fce1-5ba6-99df-fcde4cc6f587",
+        "batch_id": "cc10-batch-07",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      },
+      {
+        "limit_id": "ad37a432-e9af-5729-bd3c-11d6b650bb90",
+        "batch_id": "cc10-batch-08",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      },
+      {
+        "limit_id": "a1779e6d-6c2f-5213-9165-0372458b562f",
+        "batch_id": "cc10-batch-09",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      },
+      {
+        "limit_id": "76417d70-fab2-52d8-9c6b-0624ebbf57e6",
+        "batch_id": "cc10-batch-10",
+        "max_exposure_s": 86400,
+        "scopes": [
+          "in_warehouse"
+        ],
+        "rule_version": "cc10-1",
+        "source": "synthetic"
+      }
+    ],
+    "batch_compatibility": [
+      {
+        "batch_id": "cc10-batch-01",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      },
+      {
+        "batch_id": "cc10-batch-02",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      },
+      {
+        "batch_id": "cc10-batch-03",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      },
+      {
+        "batch_id": "cc10-batch-04",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      },
+      {
+        "batch_id": "cc10-batch-05",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      },
+      {
+        "batch_id": "cc10-batch-06",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      },
+      {
+        "batch_id": "cc10-batch-07",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      },
+      {
+        "batch_id": "cc10-batch-08",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      },
+      {
+        "batch_id": "cc10-batch-09",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      },
+      {
+        "batch_id": "cc10-batch-10",
+        "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272",
+        "temperature_zone": "chilled",
+        "min_temperature_decic": 0,
+        "max_temperature_decic": 80,
+        "compatibility_class": null
+      }
+    ],
+    "reuse_rules": [],
+    "compatibility_policy": null
+  },
+  "setup_policy": {
+    "version": "1.0.0",
+    "transitions": [],
+    "initial_states": []
+  },
+  "available_at_s": {
+    "1bc924dc-83ed-5e2e-a6b4-adb3bcee1873": 0,
+    "b62f848e-dc0d-53df-a592-2127d8f8006a": 0,
+    "e8b7fa6e-2495-53d6-8a82-e70642ff1f6b": 0,
+    "62beb8d6-ee40-5363-b2dd-36c76cbd7723": 0
+  }
+}
