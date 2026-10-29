@@ -62,14 +62,28 @@ def _live_problem():
     return problem, solution.candidate, solution.stops
 
 
-@pytest.mark.xfail(
-    reason="PlanCommitStore 提交时要求 resources/vehicles 主数据已入库；"
-           "场景导入链路只写 planning_snapshots，不写主数据，需另行补 ensure_master_data",
-    strict=True,
-)
+MASTER_SCOPE = UUID("11111111-1111-4111-8111-111111111111")
+"""主数据由既有 seed 命令灌入该固定 scope；合成场景与 tiny_master 共用同一套 id。"""
+
+
+def _cleanup(engine) -> None:
+    """清掉流程性表，保留主数据；与既有 P03-04 集成测试的清理口径一致。"""
+
+    with engine.begin() as connection:
+        connection.execute(text(
+            "TRUNCATE reservations, audit_entries, outbox, schedule_tasks, "
+            "schedule_versions, candidate_plans, validation_reports, decision_records, "
+            "planning_snapshots, schedules, idempotency RESTART IDENTITY CASCADE"))
+
+
 def test_propose_and_approve_commits_new_version(database_url: str):
+    from logistics_backend.cli.seed import seed
+
     engine = create_engine(database_url, pool_pre_ping=True)
-    scope = uuid4()
+    _cleanup(engine)
+    seed("tiny_master", database_url)  # 幂等：on_conflict_do_nothing
+
+    scope = MASTER_SCOPE
     actor = ActorContext(actor_id=uuid4(), role=ActorRole.OPERATOR, scope_id=scope)
 
     def factory(**options):
@@ -86,7 +100,8 @@ def test_propose_and_approve_commits_new_version(database_url: str):
     approval = VehicleDelayApprovalService(uow_factory=factory, scope_id=scope,
                                            decisions=decisions, schedules=schedules)
 
-    created = schedules.create(ScheduleCreate(name="vehicle-delay", scope=scope_dto(problem.snapshot.scope)), actor)
+    created = schedules.create(ScheduleCreate(name=f"vehicle-delay-{uuid4().hex[:8]}",
+                                              scope=scope_dto(problem.snapshot.scope)), actor)
     schedule_id = created.schedule_id
 
     proposal = approval.propose(actor=actor, schedule_id=schedule_id, problem=problem,
@@ -119,8 +134,10 @@ def test_propose_and_approve_commits_new_version(database_url: str):
 
     # 基线可还原：下次局部重解能拿到已批准方案的方案与停靠点
     restored_plan, restored_stops = approval.load_base_plan(actor=actor, schedule_id=schedule_id)
-    assert len(restored_plan.routes) == len(json.loads(json.dumps(asdict(base_plan)))["routes"])
-    assert len(restored_stops) > 0
+    assert len(restored_plan.routes) == len(base_plan.routes)
+    assert len(restored_stops) == len(base_stops)
+    assert restored_plan.cost == base_plan.cost
+    assert [s.service_start_s for s in restored_stops] == [s.service_start_s for s in base_stops]
 
 
 def test_reject_does_not_commit(database_url: str):
@@ -140,8 +157,9 @@ def test_reject_does_not_commit(database_url: str):
     decisions = DecisionService(factory, scope)
     approval = VehicleDelayApprovalService(uow_factory=factory, scope_id=scope,
                                            decisions=decisions, schedules=schedules)
-    schedule_id = schedules.create(
-        ScheduleCreate(name="vehicle-delay", scope=scope_dto(problem.snapshot.scope)), actor).schedule_id
+    schedule_id = schedules.create(ScheduleCreate(
+        name=f"vehicle-delay-{uuid4().hex[:8]}",
+        scope=scope_dto(problem.snapshot.scope)), actor).schedule_id
 
     proposal = approval.propose(actor=actor, schedule_id=schedule_id, problem=problem,
                                 base_plan=base_plan, base_stops=base_stops, outcome=outcome)
