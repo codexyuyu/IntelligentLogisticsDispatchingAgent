@@ -8,6 +8,8 @@ import type { TwinRoute } from '../appTypes';
 import { layoutNodes } from '../lib/twin';
 import { buildRouteMotion, geoProjection, sampleMotion } from '../lib/replayPaths';
 import { fmtClock } from '../lib/format';
+import { concreteMaterial } from '../lib/warehouseMaterials';
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 export type TwinWarehouse = { id: string; zones: ('chilled' | 'frozen')[] };
 
@@ -136,6 +138,9 @@ export default function DigitalTwin3D({
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(width, heightPx);
+    renderer.outputColorSpace=THREE.SRGBColorSpace;
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
+    renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
     container.replaceChildren(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -148,16 +153,19 @@ export default function DigitalTwin3D({
     scene.add(new THREE.HemisphereLight(0xeceee8, 0x1a1b19, 1.25));
     const key = new THREE.DirectionalLight(0xffffff, 1.5);
     key.position.set(18, 40, 16);
+    key.castShadow=true;key.shadow.mapSize.set(1024,1024);
+    Object.assign(key.shadow.camera,{left:-55,right:55,top:45,bottom:-45,near:1,far:120});key.shadow.normalBias=.04;
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0x4caf73, 0.4);
+    const rim = new THREE.DirectionalLight(0xd9e3e7, 0.7);
     rim.position.set(-24, 14, -18);
     scene.add(rim);
 
     const floor = new THREE.Mesh(
       new THREE.BoxGeometry(96, 0.3, 72),
-      new THREE.MeshStandardMaterial({ color: COLORS.floor, roughness: 0.95, metalness: 0.08 }),
+      concreteMaterial(),
     );
     floor.position.set(4, -0.15, 0);
+    floor.receiveShadow=true;
     scene.add(floor);
     const grid = new THREE.GridHelper(96, 48, COLORS.grid1, COLORS.grid2);
     grid.position.set(4, 0.02, 0);
@@ -336,10 +344,10 @@ export default function DigitalTwin3D({
       });
       const truck = new THREE.Group();
       const light = new THREE.MeshStandardMaterial({ color: 0xf1f2ee, roughness: 0.38, metalness: 0.18, emissive: 0x1f2a1f, emissiveIntensity: 0.24 });
-      const body = new THREE.Mesh(new THREE.BoxGeometry(1.65, 0.86, 0.93), light);
+      const body = new THREE.Mesh(new RoundedBoxGeometry(1.65, 0.86, 0.93,2,.035), light);
       body.position.set(0, 0.92, 0);
       truck.add(body);
-      const cabin = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.82, 0.85),
+      const cabin = new THREE.Mesh(new RoundedBoxGeometry(0.65, 0.82, 0.85,2,.07),
         new THREE.MeshStandardMaterial({ color, roughness: 0.32, metalness: 0.25 }));
       cabin.position.set(1.12, 0.78, 0);
       truck.add(cabin);
@@ -353,6 +361,29 @@ export default function DigitalTwin3D({
         new THREE.MeshStandardMaterial({ color: 0xd8dbd2, roughness: 0.4, metalness: 0.28 }));
       chiller.position.set(0.63, 1.53, 0);
       truck.add(chiller);
+      const trim=new THREE.MeshStandardMaterial({color:0xaeb6b0,metalness:.72,roughness:.36});
+      function detail(size:[number,number,number],position:[number,number,number],material:THREE.Material) {
+        const mesh=new THREE.Mesh(new THREE.BoxGeometry(...size),material);mesh.position.set(...position);truck.add(mesh);return mesh;
+      }
+      // Insulated rear doors, locking rods and lower crash bar.
+      detail([.035,.75,.86],[-.846,.95,0],trim);
+      detail([.045,.7,.018],[-.87,.96,0],wheelMaterial);
+      for(const side of [-1,1]) {
+        detail([.045,.63,.023],[-.879,.95,side*.24],trim);
+        detail([.055,.035,.12],[-.895,.93,side*.24],wheelMaterial);
+        for(const y of [.69,1.2])detail([.045,.06,.13],[-.88,y,side*.36],trim);
+        detail([.15,.07,.045],[1.33,.98,side*.48],trim);
+        detail([.055,.19,.11],[1.38,1.05,side*.5],wheelMaterial);
+        detail([.38,.3,.025],[1.08,1.02,side*.438],windscreen.material);
+        detail([.31,.035,.06],[1.08,.49,side*.48],trim);
+        const headlight=new THREE.MeshStandardMaterial({color:0xfff1c9,emissive:0xffe3a2,emissiveIntensity:.6});
+        detail([.035,.12,.17],[1.46,.6,side*.28],headlight);
+      }
+      detail([.12,.12,.9],[1.47,.4,0],trim);
+      detail([.08,.12,.84],[-.88,.4,0],trim);
+      for(let vent=0;vent<7;vent++)detail([.015,.2,.035],[.818,1.53,-.28+vent*.09],wheelMaterial);
+      detail([.04,.18,.31],[1.48,.61,0],wheelMaterial);
+      for(let rib=0;rib<6;rib++)detail([.012,.025,.32],[1.505,.54+rib*.027,0],trim);
       const stripe = new THREE.Mesh(new THREE.BoxGeometry(1.37, 0.12, 0.045),
         new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.2 }));
       stripe.position.set(0, 1.06, 0.49);
@@ -378,6 +409,7 @@ export default function DigitalTwin3D({
       tag.scale.set(3.0, 0.75, 1);
       truck.add(tag);
       truck.userData.vehicleId = route.vehicleId;
+      truck.traverse(object=>{if(object instanceof THREE.Mesh){object.castShadow=true;object.receiveShadow=true;}});
       const point = sampleMotion(motion, 0);
       truck.position.set(point.x, 0.12, point.z);
       pickables.push(truck);
@@ -491,7 +523,7 @@ export default function DigitalTwin3D({
           mat.dispose();
         });
       });
-      renderer.dispose();
+      key.shadow.dispose();renderer.dispose();
       container.replaceChildren();
       scene.clear();
     };

@@ -55,6 +55,17 @@ export function createDetailedForklift(index:number,materials:EquipmentMaterials
     const name=plate(root,`FK-0${index+1}\nELECTRIC`,[.59,.26],[-.61,1.02,side*.574],'side','#292b22','#e7cd8c');
     if(side<0)name.rotation.y=Math.PI;
   }
+  // Enclosed cold-store cab: glazing, seals, wiper and roof insulation.
+  const glass=new THREE.MeshPhysicalMaterial({color:0xb6d9df,transparent:true,opacity:.22,roughness:.12,metalness:0,depthWrite:false});
+  box(root,[.025,1.12,.94],[.59,1.88,0],glass);
+  box(root,[.025,1.1,.94],[-.68,1.88,0],glass);
+  for(const side of [-1,1]) {
+    box(root,[1.16,1.13,.018],[-.04,1.88,side*.52],glass);
+    box(root,[.24,.035,.04],[-.3,1.44,side*.55],black,.01);
+    rod(root,[-.64,1.3,side*.52],[.55,1.3,side*.52],.025,black);
+  }
+  rod(root,[.615,1.35,-.3],[.615,2.15,.12],.014,black);
+  box(root,[1.38,.065,1.05],[-.05,2.57,0],paint,.025);
   // Sculpted seat, backrest, arm supports and an accessible footwell.
   box(root,[.72,.11,.83],[.16,.88,0],black,.025);
   box(root,[.5,.17,.57],[-.3,1.12,0],black,.06);

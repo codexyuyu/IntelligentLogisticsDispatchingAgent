@@ -5,12 +5,14 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { CHARGING_POINTS, FORKLIFT_IDS, forkliftPose, dockConveyorPosition, conveyorPosition,
   COLD_PARTITION_X, COLD_PARTITION_PANELS, QUALITY_SORTING_PATH, type TwinWarehouseData } from '../lib/warehouseTwin';
-import { cartonMaterials, palletMaterial, insulatedPanelMaterial } from '../lib/warehouseMaterials';
+import { cartonMaterials, palletMaterial, insulatedPanelMaterial, concreteMaterial } from '../lib/warehouseMaterials';
 import { createDetailedForklift, createChargingStation } from '../lib/warehouseEquipment';
+import { createInspectionBench, createEvaporator, createReceivingDoor } from '../lib/warehouseFixtures';
 
-export type WarehouseSelection = { kind: 'zone' | 'rack' | 'forklift' | 'dock' | 'charger'; id: string };
+export type WarehouseSelection = { kind: 'zone' | 'rack' | 'forklift' | 'dock' | 'charger' | 'cargo'; id: string };
 export type WarehouseCamera = 'isometric' | 'top' | 'dock' | 'equipment';
 type Props = {
   data: TwinWarehouseData;
@@ -51,22 +53,29 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
     const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
     renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));renderer.setSize(w,h);
     renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure=1.38;
+    renderer.toneMappingExposure=1.05;
+    renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+    const room=new RoomEnvironment(),environmentGenerator=new THREE.PMREMGenerator(renderer);
+    const environment=environmentGenerator.fromScene(room,.04);scene.environment=environment.texture;
+    room.dispose();environmentGenerator.dispose();scene.environmentIntensity=.45;
     container.replaceChildren(renderer.domElement);
     const controls=new OrbitControls(camera,renderer.domElement);
     controls.enableDamping=true;controls.dampingFactor=0.065;controls.target.set(0,0,0);
     controls.maxPolarAngle=Math.PI*0.49;controls.minDistance=13;controls.maxDistance=120;
-    scene.add(new THREE.HemisphereLight(0xeceee8,0x2a2c29,2.15));
-    const sun=new THREE.DirectionalLight(0xfafaf6,2.3);sun.position.set(-18,52,28);scene.add(sun);
-    const fill=new THREE.DirectionalLight(0xd9c9a3,1.0);fill.position.set(30,21,-22);scene.add(fill);
+    scene.add(new THREE.HemisphereLight(0xf1f5ee,0x414940,1.6));
+    const sun=new THREE.DirectionalLight(0xfff5e2,3.1);sun.position.set(-18,52,28);
+    sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+    Object.assign(sun.shadow.camera,{left:-48,right:48,top:45,bottom:-45,near:1,far:110});
+    sun.shadow.normalBias=.035;sun.shadow.bias=-.00015;sun.shadow.radius=3;scene.add(sun);
+    const fill=new THREE.DirectionalLight(0xe6eff2,.9);fill.position.set(30,21,-22);scene.add(fill);
     const cartons=cartonMaterials();
     const mat=(c:number,metalness=0.12,roughness=0.7)=>new THREE.MeshStandardMaterial({color:c,metalness,roughness});
-    const mats={ slab:mat(0x2b2d2a),wall:mat(0x353733),beam:mat(0x4b4e47,0.48),rack:mat(0x6b6f66,0.65),shelf:mat(0x474a44,0.5),
+    const mats={ slab:concreteMaterial(),wall:mat(0xb7c0b5),beam:mat(0x555e57,0.48),rack:mat(0x6b6f66,0.65),shelf:mat(0x606861,0.5),
       pallet:palletMaterial(),dock:mat(0x50544c),glass:mat(0xc2c6bc,0.6,0.15),yellow:mat(0xe3bf51),white:mat(0xe6e7e2)};
     const steel=mat(0xb6bdb7,.76,.31),rubber=mat(0x252926,0,.95);
     function box(parent:THREE.Object3D, size:[number,number,number], pos:[number,number,number],material:THREE.Material|THREE.Material[], pick?:WarehouseSelection) {
       const o=new THREE.Mesh(new THREE.BoxGeometry(...size),material);o.position.set(...pos);
-      if(pick)o.userData.pick=pick;parent.add(o);return o;
+      if(pick)o.userData.pick=pick;o.receiveShadow=true;parent.add(o);return o;
     }
     const pickables:THREE.Object3D[]=[];
     const cutawayStructure:THREE.Object3D[]=[];
@@ -83,7 +92,7 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
     // Floor, perimeter, column grid, transparent roof: warehouse is visible in cutaway mode.
     box(scene,[69,0.5,48],[0,-0.26,0],mats.slab);
     const grid=new THREE.GridHelper(68,34,0x4a4d47,0x333530);grid.position.y=0.012;
-    (grid.material as THREE.Material).transparent=true;(grid.material as THREE.Material).opacity=0.3;scene.add(grid);
+    (grid.material as THREE.Material).transparent=true;(grid.material as THREE.Material).opacity=0.08;scene.add(grid);
     for(const px of [-33.6,33.6])for(const pz of [-22,22]){
       const column=box(scene,[0.65,8.5,0.65],[px,4.15,pz],mats.beam);
       if(pz===22)cutawayStructure.push(column);
@@ -98,6 +107,13 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
     }
     box(scene,[68,3.3,0.28],[0,1.65,-22],mats.wall);
     box(scene,[0.28,3.3,44],[-33.6,1.65,0],mats.wall);
+    // Wall panel seams, skirting and protected services; the front remains cut away.
+    for(let x=-32;x<=32;x+=2.7)box(scene,[.035,3.15,.035],[x,1.67,-21.83],steel);
+    for(let z=-21;z<22;z+=2.7)box(scene,[.035,3.15,.035],[-33.43,1.67,z],steel);
+    box(scene,[67,.25,.12],[0,.18,-21.78],mats.beam);
+    box(scene,[.12,.25,43],[-33.38,.18,0],mats.beam);
+    for(const y of [3.7,4])bar(scene,new THREE.Vector3(-31,y,-21.7),new THREE.Vector3(28,y,-21.7),.045,steel);
+    const receiving=createReceivingDoor(steel,mats.beam,mats.white);receiving.position.set(-26,0,-21.67);scene.add(receiving);
     // East side is open except for the three outbound portals below.
     // No detached thin wall blocks between the exits.
     box(scene,[9,.22,16],[37.5,-.12,8.45],mats.slab);
@@ -121,6 +137,18 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
     }
     const separationSign=label('冷藏  2–8°C   │   冷冻  −18°C','#e6eee8',9,32);
     separationSign.position.set(COLD_PARTITION_X,7.5,-10);scene.add(separationSign);
+    const evaporators=[-9.5,11.5].map(x=>{
+      const unit=createEvaporator(steel,mats.white,mats.beam);unit.root.position.set(x,5.8,-20.4);scene.add(unit.root);return unit;
+    });
+    // Physical strip fittings provide recognizable warehouse infrastructure.
+    // Only the main light casts a shadow, keeping the replay render cost bounded.
+    const lampMat=new THREE.MeshStandardMaterial({color:0xf2f4e9,emissive:0xf2edda,emissiveIntensity:1.8});
+    const luminaires=new THREE.Group();scene.add(luminaires);
+    for(const x of [-15,-5,7,17])for(const z of [-15,-6,9]) {
+      box(luminaires,[3.4,.12,.32],[x,8.05,z],mats.beam);
+      box(luminaires,[3.1,.035,.23],[x,7.97,z],lampMat);
+      for(const side of [-1,1])bar(luminaires,new THREE.Vector3(x+side*1.35,8.1,z),new THREE.Vector3(x+side*1.35,8.65,z),.015,steel);
+    }
     // Functional zones and labels; slabs are click targets.
     const zonePlates=new Map<string,THREE.MeshStandardMaterial>();
     for(const z of data.zones){
@@ -137,12 +165,7 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
       box(scene,[4.7,0.08,2.7],[-27+i*3.0,0.14,-12],mats.dock);
     }
     // Quality inspection sits immediately behind sorting; leave the truck aisle clear.
-    for(const x of [-4,0]) {
-      box(scene,[2.6,.12,1.1],[x,1.0,4.6],steel);
-      for(const side of [-1,1])for(const z of [4.2,5])box(scene,[.1,.95,.1],[x+side*1.05,.5,z],mats.beam);
-      box(scene,[.7,.08,.55],[x,.11+1,4.6],mats.dock);
-      box(scene,[.08,.36,.45],[x+.5,1.27,4.6],mats.beam);
-    }
+    for(const x of [-4,0]) {const bench=createInspectionBench(steel,mats.beam);bench.position.set(x,0,4.6);scene.add(bench);}
     const inspectionSign=label('到货质检 → 分拣复核','#e6d49b',6,30);inspectionSign.position.set(-8.7,3,4.8);scene.add(inspectionSign);
     for(let i=0;i<6;i++){
       const x=-16+i*5.9;
@@ -159,13 +182,15 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
         box(g,[3.05,0.13,1.45],[0,y,0],mats.shelf);
         for(let bay=0;bay<rack.bays;bay++) {
           const occupied=((level*7+bay*4+Math.round(rack.occupied*10))%10)<7;
-          if(occupied) occupiedCells.push({x:rack.x-0.96+bay*0.96,y,z:rack.z,zone:rack.zone});
+          if(occupied && !(level===0 && bay===1 && data.jobs.some(j=>j.rackId===rack.id))) occupiedCells.push({x:rack.x-0.96+bay*0.96,y,z:rack.z,zone:rack.zone});
         }
       }
       for(const side of [-1,1]) {
         bar(g,new THREE.Vector3(side*1.45,.3,-.61),new THREE.Vector3(side*1.45,5.15,.61),.035,steel);
         bar(g,new THREE.Vector3(side*1.45,.3,.61),new THREE.Vector3(side*1.45,5.15,-.61),.035,steel);
         box(g,[.32,.08,1.6],[side*1.45,.06,0],mats.yellow);
+        box(g,[.23,.58,.15],[side*1.45,.35,.74],mats.yellow);
+        for(let band=0;band<3;band++)box(g,[.235,.07,.02],[side*1.45,.16+band*.15,.823],rubber);
       }
       const hit=box(g,[3.3,5.4,1.55],[0,2.7,0],new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,colorWrite:false}),{kind:'rack',id:rack.id});
       pickables.push(hit);
@@ -177,7 +202,9 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
     const putInstances=(geo:THREE.BoxGeometry,material:THREE.Material|THREE.Material[],offsetY:number,only?:'chilled'|'frozen')=>{
       const positions=only?occupiedCells.filter(p=>p.zone===only):occupiedCells;
       const mesh=new THREE.InstancedMesh(geo,material,positions.length);
-      positions.forEach((p,i)=>{stamp.position.set(p.x,p.y+offsetY,p.z);stamp.rotation.set(0,0,0);stamp.updateMatrix();mesh.setMatrixAt(i,stamp.matrix);});
+      positions.forEach((p,i)=>{stamp.position.set(p.x,p.y+offsetY,p.z);stamp.rotation.set(0,0,0);stamp.updateMatrix();mesh.setMatrixAt(i,stamp.matrix);
+        mesh.setColorAt(i,new THREE.Color(i%4===0?0xdedaca:i%4===1?0xf8f4e9:0xffffff));});
+      if(offsetY>.2){mesh.userData.pick={kind:'cargo',id:'库存箱'};pickables.push(mesh);}
       mesh.instanceMatrix.needsUpdate=true;mesh.frustumCulled=false;scene.add(mesh);
     };
     putInstances(new THREE.BoxGeometry(0.86,0.12,1.04),mats.pallet,0.15);
@@ -199,7 +226,9 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
       }
       const count=Math.ceil(length/.45);
       for(let i=0;i<count;i++) {
-        const rotor=new THREE.Group();rotor.position.set((i+.5)*length/count,1.05,0);
+        const along=(i+.5)*length/count;
+        if(along<trimStart+.11 || along>length-trimEnd-.11)continue;
+        const rotor=new THREE.Group();rotor.position.set(along,1.05,0);
         const roller=new THREE.Mesh(new THREE.CylinderGeometry(.105,.105,1.4,10),mats.shelf);
         roller.rotation.x=Math.PI/2;rotor.add(roller);
         box(rotor,[.045,.025,1.4],[0,.108,0],mats.white);
@@ -217,12 +246,21 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
       const cargo=new THREE.Group();
       box(cargo,[1.1,0.65,1.0],[0,0.325,0],cartons);
       const initial=conveyorPosition(i,0);cargo.position.set(initial.x,1.18,initial.z);cargo.rotation.y=initial.heading;
+      cargo.traverse(o=>{if(o instanceof THREE.Mesh){o.userData.pick={kind:'cargo',id:`输送箱-${i+1}`};pickables.push(o);}});
       scene.add(cargo);conveyorCargo.push(cargo);
     }
     for(let i=0;i<8;i++){
-      const x=5+i%4*3.7,z=7+Math.floor(i/4)*4;
-      pallet(scene,x,.08,z,1.55,1.35);
-      box(scene,[1.33,0.85,1.15],[x,0.72,z],cartons);
+      const x=5+i%4*3.7,z=11+Math.floor(i/4)*3.5;
+      for(const dx of [-.95,.95])for(const dz of [-.8,.8]){
+        box(scene,[.1,1.45,.1],[x+dx,.78,z+dz],mats.shelf);
+        box(scene,[.24,.07,.24],[x+dx,.11,z+dz],mats.yellow);
+      }
+      for(const dz of [-.8,.8])box(scene,[2,.16,.09],[x,.65,z+dz],mats.yellow);
+      box(scene,[2,.08,1.6],[x,.76,z],steel);
+      box(scene,[2,.09,.09],[x,1.46,z-.8],mats.shelf);
+      pallet(scene,x,.8,z,1.55,1.35);
+      const stock=box(scene,[1.33,.85,1.15],[x,1.44,z],cartons,{kind:'cargo',id:`暂存箱-${i+1}`});pickables.push(stock);
+      const tag=label(`ST-${String(i+1).padStart(2,'0')}`,'#f7e5a0',1.2,32);tag.position.set(x,.59,z+.87);scene.add(tag);
     }
     // Open outbound portals connected to continuous powered roller beds.
     const outboundRollers:THREE.Group[]=[];
@@ -278,6 +316,7 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
       const cargo=new THREE.Group();
       box(cargo,[0.97,0.13,0.95],[0,0.17,0],mats.pallet);
       box(cargo,[0.86,0.76,0.78],[0,0.62,0],cartons);
+      cargo.traverse(o=>{if(o instanceof THREE.Mesh){o.userData.pick={kind:'cargo',id:job.id};pickables.push(o);}});
       cargo.visible=false;scene.add(cargo);
       return {job,cargo};
     });
@@ -287,9 +326,17 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
       const actor=createDetailedForklift(i,{steel,dark:mats.beam,pallet:mats.pallet,cartons});
       const idLabel=label(id,'#f7e5a0',2.2,36);idLabel.position.set(-.1,3.2,0);actor.root.add(idLabel);
       const pickMesh=box(actor.root,[2.6,2.8,1.65],[0,1.4,0],new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,colorWrite:false}),{kind:'forklift',id});
-      pickables.push(pickMesh);
+      pickMesh.userData.pick=undefined;
+      actor.root.traverse(o=>{if(o instanceof THREE.Mesh && o!==pickMesh){o.userData.pick={kind:'forklift',id};pickables.push(o);}});
       const p=CHARGING_POINTS[i];actor.root.position.set(p.x,.08,p.z);scene.add(actor.root);
       actors.set(id,actor);
+    });
+    const pickupCargo=data.racks.filter(r=>data.jobs.some(j=>j.rackId===r.id)).map(rack=>{
+      const template=actors.values().next().value!;
+      const cargo=template.cargo.clone(true);cargo.position.set(rack.x,.36,rack.z+2);cargo.rotation.y=Math.PI/2;
+      // The template's pallet centre is local x=2; rotate it onto the rack centre.
+      scene.add(cargo);cargo.traverse(o=>{if(o instanceof THREE.Mesh){o.userData.pick={kind:'cargo',id:`取货位-${rack.id}`};pickables.push(o);}});
+      return {rack,cargo};
     });
     // Click details via standard raycaster; supports rack, zone, vehicle and dock.
     const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
@@ -298,15 +345,26 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
       pointer.x=((event.clientX-rect.left)/rect.width)*2-1;
       pointer.y=-((event.clientY-rect.top)/rect.height)*2+1;
       raycaster.setFromCamera(pointer,camera);
-      const hits=raycaster.intersectObjects(pickables,false);
+      const hits=raycaster.intersectObjects(pickables,false).filter(hit=>{let o:THREE.Object3D|null=hit.object;while(o){if(!o.visible)return false;o=o.parent;}return true;});
+      hits.sort((a,b)=>Number(['zone','rack'].includes(a.object.userData.pick?.kind))-Number(['zone','rack'].includes(b.object.userData.pick?.kind)) || a.distance-b.distance);
       for(const hit of hits){
         const pick=hit.object.userData.pick as WarehouseSelection|undefined;
-        if(pick){onSelectRef.current(pick);break;}
+        if(pick){onSelectRef.current(hit.instanceId!==undefined?{kind:'cargo',id:`${pick.id}-${hit.instanceId+1}`} : pick);break;}
       }
     }
     renderer.domElement.addEventListener('click',onClick);
     const target=new THREE.Vector3(),desired=new THREE.Vector3();
     let lastPreset:WarehouseCamera|null=null;
+    // Repeated small bolts need no separate shadows; larger components and stock do.
+    scene.traverse(object=>{
+      if(!(object instanceof THREE.Mesh))return;
+      const materials=Array.isArray(object.material)?object.material:[object.material];
+      if(materials.every(m=>m.transparent && m.opacity<.5))return;
+      object.receiveShadow=true;
+      object.geometry.computeBoundingBox();
+      const size=object.geometry.boundingBox!.getSize(new THREE.Vector3());
+      object.castShadow=object instanceof THREE.InstancedMesh || (size.x*size.y*size.z>.08 && size.y>.2);
+    });
     let raf=0,lastT=0;
     const animate=(_now:number)=>{
       if(cameraRef.current!==lastPreset){
@@ -318,10 +376,12 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
         camera.position.copy(desired);controls.target.copy(target);controls.update();
       }
       roof.visible=roofRef.current;
+      luminaires.visible=roofRef.current;
       // A cutaway removes foreground roof supports as well as the roof itself.
       // Otherwise the front beam masks an entire forklift during dock departure.
       cutawayStructure.forEach(mesh=>{mesh.visible=roofRef.current;});
       const t=timeRef.current();
+      evaporators.forEach(unit=>unit.fans.forEach(fan=>{fan.rotation.z=t*1.8;}));
       conveyorCargo.forEach((cargo,i)=>{const p=conveyorPosition(i,t);cargo.position.set(p.x,1.18,p.z);cargo.rotation.y=p.heading;});
       const rollerAngle=conveyorPosition(0,t).rollerAngle;
       conveyorRollers.forEach(rotor=>{rotor.rotation.z=rollerAngle;});
@@ -336,11 +396,17 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
         station.screen.visible=!connected;station.chargingScreen.visible=connected;
         station.status.emissiveIntensity=connected ? .65+.3*Math.sin(t*1.6) : .12;
       });
+      pickupCargo.forEach(({rack,cargo})=>{
+        const jobs=data.jobs.filter(j=>j.rackId===rack.id).sort((a,b)=>a.startS-b.startS);
+        const next=jobs.find(j=>t<j.startS+(j.endS-j.startS)*.33);
+        cargo.visible=!!next;
+      });
       actors.forEach((entry,id)=>{
         const pose=forkliftPose(id,t,data.jobs,data.racks);
         entry.root.position.set(pose.x,0.08,pose.z);
         entry.root.rotation.y=pose.heading;
         entry.forks.position.y=pose.lift;
+        entry.forks.position.x=pose.reach??0;
         entry.cargo.visible=pose.carrying;
         entry.amber.emissiveIntensity=.5+.35*Math.sin(t*3.2);
         if(pose.stage==='to_rack'||pose.stage==='to_dock'||pose.stage==='returning')
@@ -370,7 +436,7 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
         }
       });
       geometries.forEach(g=>g.dispose());textures.forEach(t=>t.dispose());materials.forEach(m=>m.dispose());
-      renderer.dispose();renderer.forceContextLoss();if(container.contains(renderer.domElement))container.removeChild(renderer.domElement);
+      environment.dispose();sun.shadow.dispose();renderer.dispose();renderer.forceContextLoss();if(container.contains(renderer.domElement))container.removeChild(renderer.domElement);
     };
   },[data,height]); // Camera selection, roof, selection, and simulation time never recreate WebGL.
   return <div ref={mount} className="r26-warehouse-canvas" style={{height,minHeight:380}} aria-label="单仓冷链数字孪生 3D 场景" />;

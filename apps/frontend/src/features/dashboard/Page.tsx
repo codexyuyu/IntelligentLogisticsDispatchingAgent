@@ -1,5 +1,6 @@
 
 import { useMemo, useState } from 'react';
+import LiveOverview from './LiveOverview';
 import DigitalTwin3D from '../../components/DigitalTwin3D';
 import { KpiCard } from '../../components/KpiCard';
 import { StatusPill } from '../../components/StatusPill';
@@ -14,6 +15,11 @@ export function navigate(key: string) {
 }
 
 export default function DashboardPage() {
+  const { snapshot } = useApp();
+  return snapshot ? <SnapshotDashboard /> : <LiveOverview />;
+}
+
+function SnapshotDashboard() {
   const {
     connection, bootPhase, snapshot, snapshotVersion, scenarioId,
     anomaly, anomalyResult, simulation,

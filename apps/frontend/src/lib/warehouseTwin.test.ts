@@ -169,3 +169,14 @@ describe('叉车巷道避让', () => {
     expect(conveyorPosition(0,70).z).toBeGreaterThan(picking.z-picking.depth/2);
   });
 });
+it('取货时先伸叉再举升，并在离架前收回',()=>{
+  const job={...data.jobs[0],startS:0,endS:100};
+  const pose=(t:number)=>forkliftPose(job.forkliftId,t,[job],data.racks);
+  expect(pose(31).reach).toBeGreaterThan(0);
+  expect(pose(31).carrying).toBe(false);
+  expect(pose(34).reach).toBeCloseTo(1.5);
+  expect(pose(34).carrying).toBe(true);
+  expect(pose(37).reach).toBeLessThan(pose(34).reach!);
+  expect(pose(38).reach??0).toBe(0);
+  expect(pose(37.999).lift).toBeCloseTo(pose(38).lift);
+});

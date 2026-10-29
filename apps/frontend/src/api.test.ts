@@ -29,3 +29,22 @@ describe('single backend frontend boundary', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 });
+
+it('reports proxy failures without leaking HTML or a JSON parser error', async () => {
+  vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('<html>bad gateway</html>', { status: 502 })));
+  await expect(request('/orders')).rejects.toThrow('HTTP 502');
+});
+it('rejects malformed success responses', async () => {
+  vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('invalid', { status: 200 })));
+  await expect(request('/orders')).rejects.toThrow('无效的 JSON');
+});
+it('propagates caller cancellation', async () => {
+  const controller = new AbortController();
+  controller.abort();
+  const fetchMock = vi.fn((_url: string, options: RequestInit) => {
+    expect(options.signal?.aborted).toBe(true);
+    return Promise.reject(new DOMException('cancelled', 'AbortError'));
+  });
+  vi.stubGlobal('fetch', fetchMock);
+  await expect(request('/orders', { signal: controller.signal })).rejects.toThrow('cancelled');
+});

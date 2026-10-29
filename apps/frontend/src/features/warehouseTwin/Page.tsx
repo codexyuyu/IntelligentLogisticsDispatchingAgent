@@ -31,7 +31,14 @@ export default function WarehouseTwinPage(){
     }
     if(selected.kind==='forklift'){
       const pose=forkliftPose(selected.id,clock.t,data.jobs,data.racks);
-      return {title:selected.id,lines:[`任务状态：${STAGE_LABELS[pose.stage]}`,`当前作业：${pose.job?.id??'无'}`,`关联库位：${pose.job?.rackId??'—'}`,`任务来源：${pose.job?.source==='planned_timing'?'排程时间展示映射':'合成演示事件'}`, '没有接入真实叉车定位或硬件控制。']};
+      return {title:selected.id,lines:[`任务状态：${STAGE_LABELS[pose.stage]}`,`当前作业：${pose.job?.id??'无'}`,`关联库位：${pose.job?.rackId??'—'}`,
+        ...(pose.job?[`原任务时间：${fmtClock(pose.job.sourceStartS??pose.job.startS)} — ${fmtClock(pose.job.sourceEndS??pose.job.endS)}`,
+          `通道等待：${Math.round(pose.job.startS-(pose.job.sourceStartS??pose.job.startS))} 秒`]:[]),
+        `任务来源：${pose.job?.source==='planned_timing'?'排程任务的避让回放':'合成演示事件'}`, '没有接入真实叉车定位或硬件控制。']};
+    }
+    if(selected.kind==='cargo'){
+      const job=data.jobs.find(j=>j.id===selected.id);
+      return {title:selected.id,lines:job?[`批次：${job.batchId}`,`订单：${job.orderId}`,`关联库位：${job.rackId}`]:['单件可视化货物','此箱体为演示模型，未绑定实时库存。']};
     }
     if(selected.kind==='charger'){
       return {title:`${selected.id} 叉车充电桩`,lines:['机柜、操作屏、急停按钮、通风格栅与充电线缆。','叉车停回待命位时显示连接线；离开后线缆归位。','状态灯和屏幕为回放演示，未连接真实电池管理系统。']};
@@ -52,7 +59,7 @@ export default function WarehouseTwinPage(){
     <div className="r26-toolbar">
       <div className="r26-toolbar-group"><span>数据</span>
         <button className={`btn btn-sm ${mode==='showcase'?'btn-primary':'btn-ghost'}`} onClick={()=>{setMode('showcase');clock.pause();clock.seek(0);}}>完整演示</button>
-        <button className={`btn btn-sm ${mode==='plan'?'btn-primary':'btn-ghost'}`} disabled={!canShowPlan} title={canShowPlan?'按当前仓储排程时间展示任务':'请先在联合调度页求解 CP-SAT 仓储排程'} onClick={()=>{setMode('plan');clock.pause();clock.seek(0);}}>按 CP-SAT 时间映射</button>
+        <button className={`btn btn-sm ${mode==='plan'?'btn-primary':'btn-ghost'}`} disabled={!canShowPlan} title={canShowPlan?'回放当前排程任务，通道冲突会增加演示等待时间，原任务时间保留在详情中':'请先在联合调度页求解 CP-SAT 仓储排程'} onClick={()=>{setMode('plan');clock.pause();clock.seek(0);}}>排程任务回放</button>
       </div>
       <div className="r26-toolbar-group"><span>视角</span>
         {([['isometric','剖切俯视'],['top','垂直俯视'],['dock','装车月台'],['equipment','叉车与充电桩']] as const).map(([key,title])=><button key={key} className={`btn btn-sm ${camera===key?'btn-primary':'btn-ghost'}`} onClick={()=>setCamera(key)}>{title}</button>)}
@@ -83,7 +90,8 @@ export default function WarehouseTwinPage(){
       })}<div className="r26-work-counter">运行中 <b>{activeJobs.length}</b> 项 / 已完成 <b>{completedJobs.length}</b> 项</div></div>
     </div>
     <div className="panel r26-work-log"><div className="panel-title-row"><div><h3>叉车搬运任务</h3></div><span className="soft-badge">{data.jobs.length} 条</span></div>
-      <div className="table-wrap"><table><thead><tr><th>任务</th><th>叉车</th><th>库位</th><th>批次</th><th>订单</th><th>开始</th><th>结束</th><th>状态</th></tr></thead><tbody>{data.jobs.map(job=><tr key={job.id} onClick={()=>setSelected({kind:'forklift',id:job.forkliftId})} style={{cursor:'pointer'}}><td>{job.id}</td><td>{job.forkliftId}</td><td>{job.rackId}</td><td>{job.batchId}</td><td>{job.orderId}</td><td>{fmtClock(job.startS)}</td><td>{fmtClock(job.endS)}</td><td>{clock.t>=job.endS?'已完成':clock.t>=job.startS?'进行中':'待执行'}</td></tr>)}</tbody></table></div>
+      <p>共用通道按预约顺序通行。冲突车辆在停车位等待；下表显示避让后的回放时间，原任务时间可在叉车详情查看。</p>
+      <div className="table-wrap"><table><thead><tr><th>任务</th><th>叉车</th><th>库位</th><th>批次</th><th>订单</th><th>开始</th><th>结束</th><th>状态</th></tr></thead><tbody>{data.jobs.map(job=><tr key={job.id} onClick={()=>setSelected({kind:'forklift',id:job.forkliftId})} style={{cursor:'pointer'}}><td>{job.id}</td><td>{job.forkliftId}</td><td>{job.rackId}</td><td>{job.batchId}</td><td>{job.orderId}</td><td>{fmtClock(job.startS)}</td><td>{fmtClock(job.endS)}</td><td>{clock.t>=job.endS?'已完成':clock.t>=job.startS?'进行中':clock.t>=(job.sourceStartS??job.startS)?'等待通道':'待执行'}</td></tr>)}</tbody></table></div>
     </div>
   </div>;
 }

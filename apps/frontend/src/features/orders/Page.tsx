@@ -74,6 +74,8 @@ export default function Page() {
     return null;
   }, [activeOrder, activePlan]);
 
+  if (!snapshot) return <div><PgResourcePanel kind="orders" /><p className="panel">当前显示数据库订单。库存批次和配送链路需关联已计算的计划后才能查看。</p></div>;
+
   return <div>
     <PgResourcePanel kind="orders" />
     <SectionHeader title="订单与库存" desc="订单、温区、时间窗与调度状态实时联动；点击任意订单查看从仓储作业到配送签收的完整链路。"

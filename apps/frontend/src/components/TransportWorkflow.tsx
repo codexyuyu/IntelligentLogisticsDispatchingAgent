@@ -257,6 +257,7 @@ export function TransportWorkflow() {
         body: JSON.stringify(body),
       });
       setJob(accepted);
+      try { localStorage.setItem('dsh_transport_job_id', accepted.job_id); } catch { /* The visible job ID remains available for manual recovery. */ }
       setMessage(`作业 ${accepted.job_id} 已入队，等待 worker…`);
       await poll(accepted.job_id, schedule.schedule_id);
     } catch (reason) {

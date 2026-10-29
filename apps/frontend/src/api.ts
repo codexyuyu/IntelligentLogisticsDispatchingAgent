@@ -43,14 +43,34 @@ export async function request<T>(path: string, init: RequestInit = {}): Promise<
   if (init.body) headers.set("Content-Type", "application/json");
   const token = getToken();
   if (token) headers.set("Authorization", `Bearer ${token}`);
-  const response = await fetch(`${BASE}${path}`, { ...init, headers });
-  const text = await response.text();
-  const body = text ? JSON.parse(text) : null;
-  if (!response.ok) {
-    const problem = body as ErrorEnvelope | null;
-    throw new Error(problem ? `${problem.code}: ${problem.message}` : `HTTP ${response.status}`);
+  const controller = new AbortController();
+  const abort = () => controller.abort(init.signal?.reason);
+  if (init.signal?.aborted) abort();
+  else init.signal?.addEventListener('abort', abort, { once: true });
+  let timedOut = false;
+  const timer = setTimeout(() => { timedOut = true; controller.abort(); }, 30_000);
+  try {
+    const response = await fetch(`${BASE}${path}`, { ...init, headers, signal: controller.signal });
+    const text = await response.text();
+    let body: unknown = null;
+    try { body = text ? JSON.parse(text) : null; }
+    catch {
+      throw new Error(response.ok ? '服务返回了无效的 JSON 数据，请重试。' : `HTTP ${response.status}：服务暂时无法响应，请重试。`);
+    }
+    if (!response.ok) {
+      const problem = body as Partial<ErrorEnvelope> | null;
+      throw new Error(typeof problem?.message === 'string'
+        ? `${problem.code ?? `HTTP ${response.status}`}: ${problem.message}`
+        : `HTTP ${response.status}`);
+    }
+    return body as T;
+  } catch (error) {
+    if (timedOut) throw new Error('请求超过 30 秒。任务可能已被接收，请先查询状态再决定是否重新提交。');
+    throw error;
+  } finally {
+    clearTimeout(timer);
+    init.signal?.removeEventListener('abort', abort);
   }
-  return body as T;
 }
 
 export function idempotencyKey(): string {

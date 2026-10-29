@@ -21,7 +21,7 @@ export type TwinWarehouseData = {
   warehouseWarning: string | null;
 };
 export type ForkliftStage = 'waiting' | 'yielding' | 'to_rack' | 'pickup' | 'to_dock' | 'dropoff' | 'returning' | 'done';
-export type ForkliftPose = { x: number; z: number; heading: number; lift: number; carrying: boolean; stage: ForkliftStage; job: TwinForkliftJob | null };
+export type ForkliftPose = { x: number; z: number; heading: number; lift: number; reach?: number; carrying: boolean; stage: ForkliftStage; job: TwinForkliftJob | null };
 
 export const ZONES: TwinZone[] = [
   { id: 'receiving', name: '收货区', temp: '到货验收', x: -24.5, z: -11.5, width: 9, depth: 12, color: 0x8a8f85 },
@@ -203,7 +203,12 @@ export function forkliftPose(id: string, timeS: number, jobs: TwinForkliftJob[],
     if (p<=1) {
       if (p<0.28) { const q=follow(routes.approach,p/0.28);
         return {...q,lift:0.2,carrying:false,stage:'to_rack',job}; }
-      if (p<0.38) return {...pickup,heading:Math.PI/2,lift:0.2+(p-0.28)/0.1*1.1,carrying:p>=0.32,stage:'pickup',job};
+      if (p<0.38) {
+        const u=(p-.28)/.1;
+        const reach=u<.2?0:u<.5?(u-.2)/.3*1.5:u<.7?1.5:(1-u)/.3*1.5;
+        const lift=u<.2?.2+u/.2*.08:u<.5?.28:u<.7?.28+(u-.5)/.2*.92:1.2;
+        return {...pickup,heading:Math.PI/2,lift,reach,carrying:u>=.5,stage:'pickup',job};
+      }
       if (p<0.76) {const q=follow(routes.outbound,(p-0.38)/0.38);
         return {...q,lift:1.2,carrying:true,stage:'to_dock',job};}
       if (p<0.84) {
