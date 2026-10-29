@@ -18,6 +18,10 @@ import AgentPage from './features/agent/Page';
 import { TransportWorkflow } from './components/TransportWorkflow';
 import { ExceptionPanel } from './components/ExceptionPanel';
 import ClosedLoopPage from './features/closedLoop/Page';
+import S5GanttPage from './features/s5/GanttPage';
+import S5InventoryPage from './features/s5/InventoryPage';
+import S5TimelinePage from './features/s5/TimelinePage';
+import './features/s5/s5.css';
 
 type NavItem = { key: string; title: string; icon: string };
 // 导航只保留唯一入口：联合调度覆盖协商/指标/冷链标签，运输计划覆盖原“本机数据库调度”。
@@ -27,6 +31,7 @@ const groups: { label: string; items: NavItem[] }[] = [
   { label: '业务数据', items: [{ key: 'orders', title: '订单与库存', icon: 'package' }, { key: 'vehicles', title: '运输计划', icon: 'truck' }] },
   { label: '仓储管理', items: [{ key: 'warehouseTwin', title: '单仓三维视图', icon: 'warehouse' }, { key: 'warehouseOps', title: '仓储运营', icon: 'warehouse' }, { key: 'warehouses', title: '仓储排程', icon: 'clock' }] },
   { label: '调度', items: [{ key: 'plans', title: '联合调度', icon: 'route' }, { key: 'agent', title: '调度助手', icon: 'bot' }, { key: 'events', title: '异常处置', icon: 'alert' }, { key: 'simulations', title: '仿真回放', icon: 'play' }] },
+  { label: 'S5 · 仓运全流程', items: [{ key: 's5Gantt', title: '仓储作业甘特', icon: 'clock' }, { key: 's5Inventory', title: '实际库存台账', icon: 'database' }, { key: 's5Timeline', title: '联合事件回放', icon: 'play' }] },
   { label: '评测', items: [{ key: 'experiments', title: '对照实验', icon: 'chart' }] },
 ];
 
@@ -36,6 +41,7 @@ const pageMap: Record<string, ComponentType> = {
   negotiation: IntegrationPage, observations: ObservationPage, coldchain: ColdChainPage,
   // R30-E 仓运闭环（出入库 → 排程 → 异常重排 → 回放），走 /local-pg 代理到 R30-E 后端
   r30e: ClosedLoopPage,
+  s5Gantt: S5GanttPage, s5Inventory: S5InventoryPage, s5Timeline: S5TimelinePage,
 };
 
 // 旧路由保留直达能力，标题仍按真实页面显示。
@@ -46,6 +52,7 @@ const titles: Record<string, string> = {
   observations: '业务观测', coldchain: '冷链与交接',
   agent: '调度助手', events: '异常处置', simulations: '仿真回放', experiments: '对照实验',
   r30e: '仓运闭环（R30-E）',
+  s5Gantt: '仓储作业甘特', s5Inventory: '实际库存台账', s5Timeline: '联合事件回放',
 };
 
 function currentPage() {
