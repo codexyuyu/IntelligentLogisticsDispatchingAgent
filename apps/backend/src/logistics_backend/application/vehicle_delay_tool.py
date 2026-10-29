@@ -15,7 +15,9 @@ from logistics_agents.tools import ToolSpec
 from logistics_backend.application.vehicle_delay_reschedule import (
     VehicleDelayRequest,
     resolve_vehicle_delay,
+    vehicle_for_transport_task,
 )
+from logistics_domain.execution import EventKind
 from logistics_domain.planning import RouteStop, TransportPlan
 from logistics_domain.runtime import ActorContext
 from logistics_domain.transport import TransportProblem
@@ -83,31 +85,44 @@ class VehicleDelayPlanner:
         if not isinstance(payload, Mapping):
             return {"status": "not_resolved", "reason": "event_payload_not_an_object",
                     "event_id": str(event_id), "event_kind": kind}
-        if kind != "vehicle_delay":
+        if kind != EventKind.TRANSPORT_DELAY.value:
             return {"status": "not_resolved", "reason": "unsupported_event_kind",
-                    "event_id": str(event_id), "event_kind": kind}
+                    "event_id": str(event_id), "event_kind": kind,
+                    "supported_kind": EventKind.TRANSPORT_DELAY.value}
 
+        # 合法载荷：TransportDelayPayload —— 实体是运输任务，延误时长是 additional_seconds。
         try:
-            request = VehicleDelayRequest(
-                vehicle_id=_as_uuid(payload.get("vehicle_id"), "vehicle_id"),
-                delay_s=_as_int(payload.get("delay_s"), "delay_s"),
-                event_time_s=_as_int(payload.get("event_time_s"), "event_time_s"),
-                budget_ms=budget_ms,
-            )
+            transport_task_id = _as_uuid(payload.get("transport_task_id"), "transport_task_id")
+            delay_s = _as_int(payload.get("additional_seconds"), "additional_seconds")
+            event_time_s = _as_int(payload.get("effective_at_s"), "effective_at_s")
+            if delay_s <= 0:
+                raise ValueError("additional_seconds must be a positive integer")
+            if event_time_s < 0:
+                raise ValueError("effective_at_s must be non-negative")
         except (TypeError, ValueError) as exc:
             return {"status": "not_resolved", "reason": "invalid_event_payload",
                     "event_id": str(event_id), "event_kind": kind, "detail": str(exc)}
 
         problem, plan, stops = self.base_plan(actor)
+        # 车辆不由载荷指定：从基础方案按运输任务反查，避免把延误挂到别的车上。
+        vehicle_id = vehicle_for_transport_task(plan, stops, transport_task_id)
+        if vehicle_id is None:
+            return {"status": "not_resolved", "reason": "transport_task_not_in_base_plan",
+                    "event_id": str(event_id), "event_kind": kind,
+                    "transport_task_id": str(transport_task_id)}
+
+        request = VehicleDelayRequest(vehicle_id=vehicle_id, delay_s=delay_s,
+                                      event_time_s=event_time_s, budget_ms=budget_ms)
         outcome = resolve_vehicle_delay(problem, plan, stops, request)
         return {
             "status": outcome.status,
             "reason": outcome.reason,
             "event_id": str(event_id),
             "event_kind": kind,
-            "vehicle_id": str(request.vehicle_id),
-            "delay_s": request.delay_s,
-            "event_time_s": request.event_time_s,
+            "transport_task_id": str(transport_task_id),
+            "vehicle_id": str(vehicle_id),
+            "delay_s": delay_s,
+            "event_time_s": event_time_s,
             "affected_order_ids": [str(o) for o in outcome.affected_order_ids],
             "committed": False,
             "requires_human_approval": outcome.resolved,

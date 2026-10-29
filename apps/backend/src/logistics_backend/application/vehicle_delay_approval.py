@@ -206,21 +206,32 @@ class VehicleDelayApprovalService:
         from logistics_backend.application.vehicle_delay_reschedule import (
             VehicleDelayRequest,
             resolve_vehicle_delay,
+            vehicle_for_transport_task,
         )
+        from logistics_domain.execution import EventKind
 
         event = read_event(event_id, actor)
-        if str(event.get("kind", "")) != "vehicle_delay":
+        if str(event.get("kind", "")) != EventKind.TRANSPORT_DELAY.value:
             return {"status": "not_resolved", "reason": "unsupported_event_kind",
-                    "event_id": str(event_id), "event_kind": str(event.get("kind"))}
+                    "event_id": str(event_id), "event_kind": str(event.get("kind")),
+                    "supported_kind": EventKind.TRANSPORT_DELAY.value}
 
         payload = event.get("payload") or {}
         base_plan, base_stops = self.load_base_plan(actor=actor, schedule_id=schedule_id)
         problem = self._rebuild_problem(actor, schedule_id, base_plan, budget_ms)
 
+        # 载荷只给运输任务；车辆由基础方案反查，不接受载荷直接指定车辆。
+        transport_task_id = UUID(str(payload["transport_task_id"]))
+        vehicle_id = vehicle_for_transport_task(base_plan, base_stops, transport_task_id)
+        if vehicle_id is None:
+            return {"status": "not_resolved", "reason": "transport_task_not_in_base_plan",
+                    "event_id": str(event_id),
+                    "transport_task_id": str(transport_task_id)}
+
         request = VehicleDelayRequest(
-            vehicle_id=UUID(str(payload["vehicle_id"])),
-            delay_s=int(payload["delay_s"]),
-            event_time_s=int(payload["event_time_s"]),
+            vehicle_id=vehicle_id,
+            delay_s=int(payload["additional_seconds"]),
+            event_time_s=int(payload["effective_at_s"]),
             budget_ms=budget_ms,
         )
         outcome = resolve_vehicle_delay(problem, base_plan, base_stops, request)
