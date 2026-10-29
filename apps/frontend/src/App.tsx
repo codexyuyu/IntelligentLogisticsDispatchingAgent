@@ -17,6 +17,7 @@ import IntegrationPage, { ObservationPage, ColdChainPage } from './features/inte
 import AgentPage from './features/agent/Page';
 import { TransportWorkflow } from './components/TransportWorkflow';
 import { ExceptionPanel } from './components/ExceptionPanel';
+import ClosedLoopPage from './features/closedLoop/Page';
 
 type NavItem = { key: string; title: string; icon: string };
 // 导航只保留唯一入口：联合调度覆盖协商/指标/冷链标签，运输计划覆盖原“本机数据库调度”。
@@ -33,6 +34,8 @@ const pageMap: Record<string, ComponentType> = {
   dashboard: DashboardPage, orders: OrdersPage, warehouseTwin: WarehouseTwinPage, warehouseOps: WarehouseManagementPage, warehouses: WarehousesPage, vehicles: TransportWorkflow,
   plans: IntegrationPage, closedLoop: IntegrationPage, agent: AgentPage, postgres: TransportWorkflow, events: ExceptionPanel, simulations: SimulationsPage, experiments: ExperimentsPage,
   negotiation: IntegrationPage, observations: ObservationPage, coldchain: ColdChainPage,
+  // R30-E 仓运闭环（出入库 → 排程 → 异常重排 → 回放），走 /local-pg 代理到 R30-E 后端
+  r30e: ClosedLoopPage,
 };
 
 // 旧路由保留直达能力，标题仍按真实页面显示。
@@ -42,6 +45,7 @@ const titles: Record<string, string> = {
   plans: '联合调度', closedLoop: '联合调度', negotiation: '联合调度',
   observations: '业务观测', coldchain: '冷链与交接',
   agent: '调度助手', events: '异常处置', simulations: '仿真回放', experiments: '对照实验',
+  r30e: '仓运闭环（R30-E）',
 };
 
 function currentPage() {
