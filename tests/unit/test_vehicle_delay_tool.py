@@ -154,3 +154,81 @@ def test_planner_is_independent_of_registry(actor, base_plan):
     content = planner.prepare(actor, uuid4())
     assert set(content) >= {"status", "reason", "affected_order_ids", "validation", "committed"}
     assert content["committed"] is False
+
+
+class _ScriptedModel:
+    """模拟模型决策：首轮只给 event_id 要求调工具，次轮据此作答。"""
+
+    def __init__(self, event_id):
+        self.event_id = event_id
+        self.round = 0
+        self.tool_names_offered: tuple = ()
+        self.fed_back: dict | None = None
+
+    @property
+    def configured(self) -> bool:
+        return True
+
+    def complete(self, messages, tools=None):
+        from logistics_agents.llm import LLMReply, ToolCall
+
+        self.round += 1
+        if self.round == 1:
+            self.tool_names_offered = tuple(
+                t["function"]["name"] for t in (tools or []))
+            return LLMReply(content="", model="scripted", tool_calls=(
+                ToolCall(id="c1", name=vdt.TOOL_NAME,
+                         arguments=json.dumps({"event_id": str(self.event_id)})),))
+        self.fed_back = json.loads([m for m in messages if m.role == "tool"][-1].content)
+        return LLMReply(content="已生成待审方案，请人工确认。", model="scripted")
+
+
+def test_model_driven_loop_reaches_real_solver(actor, base_plan):
+    """模型只给 event_id；车辆、时长、时刻全部来自事件载荷，末端是真实求解器。
+
+    这证明协议与链路可用，不证明真模型会做同样的选择——那需要真实 provider。
+    """
+
+    from logistics_agents.service import AgentChatService
+
+    problem, plan, _ = base_plan
+    event_id = uuid4()
+    service = _tool_service()
+    _register(service, kind="vehicle_delay",
+              payload={"vehicle_id": str(plan.routes[0].vehicle_id),
+                       "delay_s": 60, "event_time_s": 0},
+              plan_fixture=base_plan)
+
+    model = _ScriptedModel(event_id)
+    run = AgentChatService(model).run_with_tools(
+        f"事件 {event_id} 怎么处理？",
+        tools=[spec.to_openai_tool() for spec in service.specs()],
+        executor=lambda name, args: service.invoke(name, actor, args),
+        max_turns=3)
+
+    assert run.stopped_reason == "final_answer"
+    assert vdt.TOOL_NAME in model.tool_names_offered
+    assert len(run.turns) == 1 and run.turns[0].ok is True
+
+    content = dict(run.turns[0].content)
+    assert content["status"] == RESOLVED, (content.get("reason"), content.get("detail"))
+    assert content["committed"] is False
+    assert content["requires_human_approval"] is True
+    assert content["validation"]["valid"] is True
+    assert content["detail"]["engine"]  # 真实求解器证据，非 mock
+
+    # 模型看到的回填内容就是工具真实产出
+    assert model.fed_back is not None and model.fed_back["ok"] is True
+    assert model.fed_back["content"]["status"] == RESOLVED
+
+
+def test_tool_schema_declares_event_id_only(actor):
+    """参数契约：模型只能指定事件，不能指定延误对象或时长。"""
+
+    service = _tool_service()
+    _register(service, kind="vehicle_delay", payload={}, plan_fixture=None)
+    schema = {s.name: s.to_openai_tool() for s in service.specs()}[vdt.TOOL_NAME]
+    params = schema["function"]["parameters"]
+    assert params["required"] == ["event_id"]
+    assert set(params["properties"]) == {"event_id", "budget_ms"}
+    assert "vehicle_id" not in params["properties"]

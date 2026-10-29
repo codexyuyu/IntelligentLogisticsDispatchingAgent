@@ -24,6 +24,25 @@ TOOL_NAME = "prepare_vehicle_delay_reschedule"
 TOOL_DESCRIPTION = (
     "读取车辆延误事件，对受影响车辆做局部重解并通过独立校验，返回待人工确认的候选方案"
 )
+# 关键：模型只能指定「哪条事件」。车辆、延误时长、发生时刻全部由事件载荷决定，
+# 否则模型可以在对话里编造一个不存在的延误对象。
+TOOL_PARAMETERS = {
+    "type": "object",
+    "properties": {
+        "event_id": {
+            "type": "string",
+            "description": "已持久化的车辆延误事件 ID（UUID）。延误对象与时长由该事件载荷决定。",
+        },
+        "budget_ms": {
+            "type": "integer",
+            "minimum": 500,
+            "maximum": 30000,
+            "description": "局部重解的求解预算（毫秒），默认 4000。",
+        },
+    },
+    "required": ["event_id"],
+    "additionalProperties": False,
+}
 
 
 class BasePlan(Protocol):
@@ -113,6 +132,6 @@ def register_vehicle_delay_tool(tool_service, planner: VehicleDelayPlanner) -> N
 
     tool_service.register(
         ToolSpec(name=TOOL_NAME, description=TOOL_DESCRIPTION,
-                 allowed_roles=("operator",)),
+                 allowed_roles=("operator",), parameters=TOOL_PARAMETERS),
         handler,
     )

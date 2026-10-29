@@ -26,10 +26,19 @@ class ToolService:
         self.registry = ToolRegistry()
         self.registry.register(ToolSpec(name="job_status",
             description="Read a job's status and result reference by job_id",
-            allowed_roles=("operator", "viewer")), self._job_status)
+            allowed_roles=("operator", "viewer"),
+            parameters={"type": "object",
+                        "properties": {"job_id": {"type": "string",
+                                                  "description": "Job UUID"}},
+                        "required": ["job_id"],
+                        "additionalProperties": False}), self._job_status)
         self.registry.register(ToolSpec(name="agent_runs",
             description="List recent agent chat runs for the current scope",
-            allowed_roles=("operator", "viewer")), self._agent_runs)
+            allowed_roles=("operator", "viewer"),
+            parameters={"type": "object",
+                        "properties": {"limit": {"type": "integer",
+                                                 "minimum": 1, "maximum": 200}},
+                        "additionalProperties": False}), self._agent_runs)
 
     def specs(self):
         return self.registry.specs()
