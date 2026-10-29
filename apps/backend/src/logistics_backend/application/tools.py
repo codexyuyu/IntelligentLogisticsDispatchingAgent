@@ -34,13 +34,18 @@ class ToolService:
     def specs(self):
         return self.registry.specs()
 
+    def register(self, spec: ToolSpec, handler) -> None:
+        """允许其他应用服务把自己的工具挂进同一份白名单与审计通道。"""
+
+        self.registry.register(spec, handler)
+
     def invoke(self, name: str, actor: ActorContext, arguments: Mapping[str, Any],
-               trace_id: UUID | None = None) -> ToolResult:
+               trace_id: UUID | None = None, run_id: UUID | None = None) -> ToolResult:
         started = monotonic()
         result = self.registry.invoke(name, actor, arguments)
         duration_ms = int((monotonic() - started) * 1000)
         if self.uow_factory is not None and trace_id is not None:
-            self._record(actor, name, arguments, result, duration_ms, trace_id)
+            self._record(actor, name, arguments, result, duration_ms, trace_id, run_id)
         return result
 
     def calls(self, actor: ActorContext, limit: int = 50) -> AgentToolCallPage:
@@ -58,7 +63,8 @@ class ToolService:
             error_code=row["error_code"], duration_ms=row["duration_ms"],
             trace_id=row["trace_id"]) for row in rows))
 
-    def _record(self, actor, name, arguments, result: ToolResult, duration_ms, trace_id):
+    def _record(self, actor, name, arguments, result: ToolResult, duration_ms, trace_id,
+                run_id: UUID | None = None):
         from logistics_backend.persistence.tool_models import tool_calls
 
         now = datetime.now(timezone.utc).replace(microsecond=0)
@@ -67,7 +73,7 @@ class ToolService:
                   EntityState.FAILED)
         call = ToolCall(id=uuid4(), status=status, created_at=now, updated_at=now,
             row_version=0, schema_version="2.0.0", created_by=actor.actor_id,
-            run_id=None, tool_name=name,
+            run_id=run_id, tool_name=name,
             arguments_json=json.dumps(arguments, default=str, sort_keys=True),
             result_json=json.dumps(result.content, default=str, sort_keys=True),
             error_code=result.error_code, duration_ms=duration_ms, trace_id=trace_id)
@@ -75,7 +81,7 @@ class ToolService:
             uow.connection.execute(tool_calls.insert().values(
                 id=call.id, scope_id=actor.scope_id, status=call.status.value,
                 created_at=now, updated_at=now, created_by=actor.actor_id, row_version=0,
-                schema_version="2.0.0", run_id=None, tool_name=call.tool_name,
+                schema_version="2.0.0", run_id=run_id, tool_name=call.tool_name,
                 arguments=json.loads(call.arguments_json), result=json.loads(call.result_json),
                 error_code=call.error_code, duration_ms=call.duration_ms,
                 trace_id=call.trace_id))
