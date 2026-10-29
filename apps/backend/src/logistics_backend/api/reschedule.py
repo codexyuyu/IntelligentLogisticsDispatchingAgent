@@ -39,6 +39,29 @@ def propose_reschedule(command: RescheduleProposalRequest,
     return service.propose(command)
 
 
+class VehicleDelayFromEventRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    event_id: UUID
+    schedule_id: UUID
+    budget_ms: int = Field(default=4000, ge=100, le=12000)
+
+
+@router.post("/reschedules/vehicle-delay/from-event",
+             operation_id="prepare_vehicle_delay_from_event")
+def prepare_vehicle_delay_from_event(command: VehicleDelayFromEventRequest,
+                                     request: Request,
+                                     current: ActorContext = Depends(operator),
+                                     service: VehicleDelayApprovalService = Depends(vehicle_delay_service)):
+    """事件驱动入口：读取持久化事件，基于已批准基线重解并生成待审决策。"""
+
+    def read_event(event_id: UUID, actor: ActorContext) -> dict:
+        return request.app.state.events.payload(event_id, actor)
+
+    return service.prepare_from_event(actor=current, event_id=command.event_id,
+                                      schedule_id=command.schedule_id,
+                                      read_event=read_event, budget_ms=command.budget_ms)
+
+
 @router.post("/reschedules/vehicle-delay/decisions/{decision_id}/approve",
              operation_id="approve_vehicle_delay_decision")
 def approve_vehicle_delay(decision_id: UUID,

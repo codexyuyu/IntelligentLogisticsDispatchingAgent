@@ -139,6 +139,18 @@ def test_propose_and_approve_commits_new_version(database_url: str):
     assert restored_plan.cost == base_plan.cost
     assert [s.service_start_s for s in restored_stops] == [s.service_start_s for s in base_stops]
 
+    # 事件驱动入口：基于上一次批准的基线再处置一次
+    def read_event(event_id, _actor):
+        return {"kind": "vehicle_delay",
+                "payload": {"vehicle_id": str(base_plan.routes[0].vehicle_id),
+                            "delay_s": 30, "event_time_s": 0}}
+
+    second = approval.prepare_from_event(
+        actor=actor, event_id=uuid4(), schedule_id=schedule_id, read_event=read_event)
+    assert second["candidate_valid"] is True, second
+    assert second["committed"] is False
+    assert second["decision_id"] != proposal["decision_id"]
+
 
 def test_reject_does_not_commit(database_url: str):
     engine = create_engine(database_url, pool_pre_ping=True)
