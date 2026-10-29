@@ -149,10 +149,16 @@ def main() -> None:
     payload = build()
     text = json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
     (OUT / "tiny_master.json").write_text(text, encoding="utf-8")
+    scenario_entries = [{"name": "tiny_master", "path": "tiny_master.json",
+                         "sha256": hashlib.sha256(text.encode()).hexdigest()}]
+    # The 10-order integration fixture has its own generator; keep its entry
+    # when regenerating the canonical tiny master-data fixture.
+    chain_path = OUT / "coldchain_chain_10.json"
+    if chain_path.is_file():
+        scenario_entries.append({"name": "coldchain_chain_10", "path": chain_path.name,
+                                 "sha256": hashlib.sha256(chain_path.read_bytes()).hexdigest()})
     (OUT / "manifest.json").write_text(json.dumps({
-        "schema_version": "2.0.0",
-        "scenarios": [{"name": "tiny_master", "path": "tiny_master.json",
-                       "sha256": hashlib.sha256(text.encode()).hexdigest()}],
+        "schema_version": "2.0.0", "scenarios": scenario_entries,
     }, ensure_ascii=False, sort_keys=True, indent=2) + "\n", encoding="utf-8")
     invalid = {"schema_version": "2.0.0", "scenarios": {
         "tiny_master": [{"code": "invalid_temperature", "field": "cargo.min_temp_decic",

@@ -44,6 +44,7 @@ from logistics_backend.application.warehouse import (
     WarehouseOptimizationService,
     WarehouseResultStore,
 )
+from logistics_backend.application.warehouse_execution import WarehouseExecutionService
 from logistics_backend.persistence.jobs import JobRepository
 from logistics_backend.persistence.resource_models import TABLES
 from logistics_backend.persistence.snapshots import PlanningSnapshotStore
@@ -104,6 +105,7 @@ class Services:
     results: TransportResultStore
     warehouse: WarehouseOptimizationService
     warehouse_results: WarehouseResultStore
+    warehouse_execution: WarehouseExecutionService
     events: EventService
     exceptions: ExceptionService
     simulations: SimulationService
@@ -136,6 +138,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
     commits = PlanCommitStore(factory, settings.scope_id)
     agents = AgentRunService(factory,
         AgentChatService(DeepSeekProvider(LLMSettings.from_env())), settings.scope_id)
+    integration = IntegrationService(factory, settings.scope_id, jobs)
     services = Services(
         master_data=MasterDataService(factory, TABLES),
         jobs=jobs,
@@ -145,6 +148,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         results=TransportResultStore(),
         warehouse=WarehouseOptimizationService(snapshots, jobs),
         warehouse_results=WarehouseResultStore(),
+        warehouse_execution=WarehouseExecutionService(factory, settings.scope_id, integration),
         events=EventService(factory, settings.scope_id),
         exceptions=ExceptionService(factory, settings.scope_id),
         simulations=SimulationService(jobs),
@@ -155,7 +159,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         experiments=ExperimentService(factory, settings.scope_id),
         metrics=MetricsService(factory, settings.scope_id),
         schedules=ScheduleService(factory, settings.scope_id, snapshots, commits, jobs),
-        integration=IntegrationService(factory, settings.scope_id, jobs),
+        integration=integration,
         vehicle_delay=VehicleDelayApprovalService(
             uow_factory=factory, scope_id=settings.scope_id,
             decisions=DecisionService(factory, settings.scope_id),
@@ -184,6 +188,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.results = services.results
     app.state.warehouse = services.warehouse
     app.state.warehouse_results = services.warehouse_results
+    app.state.warehouse_execution = services.warehouse_execution
     app.state.events = services.events
     app.state.exceptions = services.exceptions
     app.state.simulations = services.simulations
