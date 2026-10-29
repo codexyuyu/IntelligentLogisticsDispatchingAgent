@@ -5,7 +5,11 @@ import SectionHeader from '../../components/SectionHeader';
 type Scenario = { id: string; name: string; source_kind: string };
 type Message = { seq: number; at_s: number; kind: string; role: string; task_id: string; detail: string };
 type Metric = { code: string; value: number | null; unit: string; reason: string | null; sample_count: number };
-type Run = { run_id: string; status: string; reason?: string; source_kind: string;
+type Run = { run_id: string; job_id?: string; status: string; reason?: string; source_kind?: string;
+  warehouse_solution?: { status: string; storage_allocations: unknown[] };
+  transport_solution?: { status: string };
+  joint_validation?: { valid: boolean; violations: unknown[] };
+  candidate?: { id: string; task_assignments: { task_kind: string }[] };
   negotiation?: { result: { status: string; digest: string; transcript: Message[] } | null };
   observations?: { metrics: { values: Metric[] }; handoffs: { task_id: string; warehouse_ready_s: number; pickup_start_s: number | null }[];
     coldchain: { rule_version: string; occupancies: { occupancy_id: string; batch_id: string; location_id: string; start_s: number; end_s: number }[] } };
@@ -62,12 +66,26 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
     await loadScenarios(); setSelected(result.scenario_id); setNotice('比赛样本已准备，可开始计算。');
   }
   async function compute() {
-    const value = await request<Run>('/integration/runs', { method: 'POST', headers: { 'Idempotency-Key': idempotencyKey() },
+    const value = await request<Run>('/integration/runs?wait=false', { method: 'POST', headers: { 'Idempotency-Key': idempotencyKey() },
       body: JSON.stringify({ schema_version: '2.0.0', scenario_id: selected, budget_ms: budget, seed, recoveries: [] }) });
     setRun(value); localStorage.setItem('integration_last_run', value.run_id);
+    // Keep the durable run ID even if the worker is not ready or polling times out.
+    for (let attempt = 0; attempt < 50; attempt++) {
+      const latest = await refreshRun(value.run_id);
+      if (latest.status !== 'queued' && latest.status !== 'running') return;
+      await new Promise<void>(resolve => setTimeout(resolve, 1000));
+    }
+    throw new Error('任务仍在队列或执行中，请稍后点击“刷新状态”。');
+  }
+  async function refreshRun(runId: string): Promise<Run> {
+    const latest = await request<Run>(`/integration/runs/${encodeURIComponent(runId)}`);
+    setRun(latest);
+    return latest;
   }
   const negotiation = run?.negotiation?.result;
   const transcript = negotiation?.transcript ?? [];
+  const warehouseIntervals = run?.warehouse_solution?.storage_allocations.length ?? 0;
+  const candidateTasks = run?.candidate?.task_assignments ?? [];
   const confirmed = new Map<string, Message>();
   for (const message of transcript) {
     if (message.kind === 'confirm') confirmed.set(message.task_id, message);
@@ -104,8 +122,21 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
       {error && <p role="alert" className="callout callout-error">{error}</p>}{notice && <p role="status">{notice}</p>}
     </section>
     {run && <section className="panel">
-      <h3>运行记录</h3><p>来源：{run.source_kind === 'synthetic' ? '合成测试数据' : '企业来源声明（尚未独立核实）'} · {run.status === 'checked' ? '求解证据已校验' : '未完成校验'} · {run.reason}</p>
-      <small>记录编号：{run.run_id}</small>
+      <h3>运行记录</h3><p>来源：{run.source_kind === 'synthetic' ? '合成测试数据' : run.source_kind ? '企业来源声明（尚未独立核实）' : '等待任务结果'} · {run.status === 'queued' ? '已入队' : run.status === 'running' ? 'Worker 执行中' : run.status === 'checked' ? '求解证据已校验' : '未完成校验'} · {run.reason}</p>
+      <small>记录编号：{run.run_id}{run.job_id ? ` · Job：${run.job_id}` : ''}</small>
+      <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => void action(async () => { await refreshRun(run.run_id); })}>刷新状态</button>
+      {(run.warehouse_solution || run.transport_solution) && <>
+      <h4>实际求解与校验证据</h4>
+      <div className="mini-stats" style={{ flexWrap: 'wrap' }}>
+        <span><b>{run.warehouse_solution?.status ?? '未返回'}</b><small>仓储 CP-SAT 状态</small></span>
+        <span><b>{run.transport_solution?.status ?? '未返回'}</b><small>运输 OR-Tools 状态</small></span>
+        <span><b>{run.joint_validation ? (run.joint_validation.valid ? '通过' : '未通过') : '未返回'}</b><small>独立联合校验</small></span>
+        <span><b>{warehouseIntervals}</b><small>R05 实际占用区间</small></span>
+        <span><b>{candidateTasks.length}</b><small>候选方案任务</small></span>
+      </div>
+      <p>候选方案：{run.candidate?.id ?? '尚未生成'} · 仓储任务 {candidateTasks.filter(t => t.task_kind === 'warehouse_task').length} 项，运输任务 {candidateTasks.filter(t => t.task_kind === 'transport_task').length} 项。</p>
+      <small>此处展示的是后端求解、校验与候选生成证据；协商确认不代表已正式提交派单。</small>
+      </>}
       <div className="seg">{[['negotiation', '协商记录'], ['metrics', '14 项指标'], ['coldchain', '冷链与交接']].map(([key, title]) =>
         <button key={key} className={`seg-btn ${view === key ? 'is-active' : ''}`} onClick={() => setView(key)}>{title}</button>)}</div>
       {view === 'negotiation' && <>

@@ -95,14 +95,17 @@ def _observations(problem, warehouse, transport_problem, transport, scope_id):
     occupancies, zone_use = [], {}
     cold = snapshot.coldchain
     locations = {location.location_id: location for location in cold.storage_locations}
-    for item in cold.occupancies:
-        start = task_ends[item.inbound_operation_id] if item.inbound_operation_id else (item.declared_start_s or 0)
-        end = task_starts[item.outbound_operation_id] if item.outbound_operation_id else cold.horizon_s
+    declared = {item.occupancy_id: item for item in cold.occupancies}
+    # Use R05's solved storage intervals, including any reuse-rule capped end.
+    # Reconstructing these from operation times would silently discard that cap.
+    for allocation in warehouse.storage_allocations:
+        item = declared[allocation.cargo_id]  # R05 compatibility ID is occupancy_id.
         occupancies.append({'occupancy_id': str(item.occupancy_id), 'batch_id': item.batch_id,
-                            'location_id': str(item.location_id), 'start_s': start, 'end_s': end})
-        volume = next((c.amount for c in item.capacity_use if c.unit.value == 'volume_cm3'), None)
-        if volume is not None:
-            zone_use.setdefault(locations[item.location_id].zone_id, []).append(Span(start, end, volume))
+                            'location_id': str(allocation.location_id),
+                            'start_s': allocation.start_s, 'end_s': allocation.end_s})
+        if allocation.volume_cm3:
+            zone_use.setdefault(locations[allocation.location_id].zone_id, []).append(
+                Span(allocation.start_s, allocation.end_s, allocation.volume_cm3))
     zones = tuple(ResourceUse(str(z.zone_id), tuple(zone_use.get(z.zone_id, ())),
         (Span(0, cold.horizon_s, next(c.amount for c in z.capacities if c.unit.value == 'volume_cm3')),))
         for z in cold.zones if any(c.unit.value == 'volume_cm3' for c in z.capacities))
