@@ -1,0 +1,118 @@
+"""车辆延误重调度的智能体工具绑定。
+
+职责边界：
+* 工具只做「读事件 → 局部重解 → 独立校验 → 产出待审方案」，**不提交**、不写版本；
+* 事件事实一律来自持久化事件载荷，不由模型在对话里提供，避免模型编造延误对象；
+* 求解与校验失败时返回 ok=True 但 status=not_resolved，让模型据实解释，而不是抛异常掩盖。
+"""
+
+from __future__ import annotations
+
+from typing import Any, Callable, Mapping, Protocol
+from uuid import UUID
+
+from logistics_agents.tools import ToolSpec
+from logistics_backend.application.vehicle_delay_reschedule import (
+    VehicleDelayRequest,
+    resolve_vehicle_delay,
+)
+from logistics_domain.planning import RouteStop, TransportPlan
+from logistics_domain.runtime import ActorContext
+from logistics_domain.transport import TransportProblem
+
+TOOL_NAME = "prepare_vehicle_delay_reschedule"
+TOOL_DESCRIPTION = (
+    "读取车辆延误事件，对受影响车辆做局部重解并通过独立校验，返回待人工确认的候选方案"
+)
+
+
+class BasePlan(Protocol):
+    """基础方案的读取端口；由持久化层实现，测试中可注入内存实现。"""
+
+    def __call__(self, actor: ActorContext) -> tuple[TransportProblem, TransportPlan, tuple[RouteStop, ...]]: ...
+
+
+class EventPayloadReader(Protocol):
+    def __call__(self, event_id: UUID, actor: ActorContext) -> dict: ...
+
+
+def _as_int(value: Any, field: str) -> int:
+    if isinstance(value, bool) or not isinstance(value, int):
+        raise ValueError(f"{field} must be an integer")
+    return value
+
+
+def _as_uuid(value: Any, field: str) -> UUID:
+    if isinstance(value, UUID):
+        return value
+    if isinstance(value, str):
+        return UUID(value)
+    raise ValueError(f"{field} must be a UUID")
+
+
+class VehicleDelayPlanner:
+    """把「事件 → 局部重解 → 候选」串成一次可复现的编排。"""
+
+    def __init__(self, read_event: EventPayloadReader, base_plan: BasePlan):
+        self.read_event = read_event
+        self.base_plan = base_plan
+
+    def prepare(self, actor: ActorContext, event_id: UUID, budget_ms: int = 4000) -> dict:
+        event = self.read_event(event_id, actor)
+        kind = str(event.get("kind", ""))
+        payload = event.get("payload") or {}
+        if not isinstance(payload, Mapping):
+            return {"status": "not_resolved", "reason": "event_payload_not_an_object",
+                    "event_id": str(event_id), "event_kind": kind}
+        if kind != "vehicle_delay":
+            return {"status": "not_resolved", "reason": "unsupported_event_kind",
+                    "event_id": str(event_id), "event_kind": kind}
+
+        try:
+            request = VehicleDelayRequest(
+                vehicle_id=_as_uuid(payload.get("vehicle_id"), "vehicle_id"),
+                delay_s=_as_int(payload.get("delay_s"), "delay_s"),
+                event_time_s=_as_int(payload.get("event_time_s"), "event_time_s"),
+                budget_ms=budget_ms,
+            )
+        except (TypeError, ValueError) as exc:
+            return {"status": "not_resolved", "reason": "invalid_event_payload",
+                    "event_id": str(event_id), "event_kind": kind, "detail": str(exc)}
+
+        problem, plan, stops = self.base_plan(actor)
+        outcome = resolve_vehicle_delay(problem, plan, stops, request)
+        return {
+            "status": outcome.status,
+            "reason": outcome.reason,
+            "event_id": str(event_id),
+            "event_kind": kind,
+            "vehicle_id": str(request.vehicle_id),
+            "delay_s": request.delay_s,
+            "event_time_s": request.event_time_s,
+            "affected_order_ids": [str(o) for o in outcome.affected_order_ids],
+            "committed": False,
+            "requires_human_approval": outcome.resolved,
+            "validation": (None if outcome.validation is None else {
+                "valid": outcome.validation.valid,
+                "checked_codes": list(outcome.validation.checked_codes),
+                "violations": [
+                    {"code": v.code, "severity": v.severity.value} for v in outcome.validation.violations[:10]
+                ],
+            }),
+            "detail": outcome.detail,
+        }
+
+
+def register_vehicle_delay_tool(tool_service, planner: VehicleDelayPlanner) -> None:
+    """把车辆延误工具挂到统一白名单，复用既有 tool_calls 审计。"""
+
+    def handler(actor: ActorContext, arguments: Mapping[str, Any]) -> dict:
+        event_id = _as_uuid(arguments.get("event_id"), "event_id")
+        budget_ms = arguments.get("budget_ms", 4000)
+        return planner.prepare(actor, event_id, _as_int(budget_ms, "budget_ms"))
+
+    tool_service.register(
+        ToolSpec(name=TOOL_NAME, description=TOOL_DESCRIPTION,
+                 allowed_roles=("operator",)),
+        handler,
+    )

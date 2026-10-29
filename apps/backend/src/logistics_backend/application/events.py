@@ -68,6 +68,30 @@ class EventService:
                 simulation_id=row["simulation_id"], trace_id=row["trace_id"])
 
 
+    def payload(self, event_id: UUID, actor) -> dict:
+        """读取事件的完整载荷（含 payload），供服务端编排使用。
+
+        刻意不放进 EventViewDTO：公开契约新增字段会牵连前端生成类型，
+        这里只作为内部读取通道，返回纯 dict，由调用方自行校验字段。
+        """
+
+        with self.uow_factory() as uow:
+            row = uow.connection.execute(select(
+                events.c.id, events.c.kind, events.c.status, events.c.payload,
+                events.c.occurred_at_utc, events.c.trace_id).where(
+                events.c.id == event_id, events.c.scope_id == actor.scope_id)).mappings().first()
+            if row is None:
+                raise ServiceError(ErrorCode.NOT_FOUND, "event not found")
+            return {
+                "event_id": row["id"],
+                "kind": row["kind"],
+                "status": row["status"],
+                "occurred_at_utc": row["occurred_at_utc"],
+                "trace_id": row["trace_id"],
+                "payload": row["payload"],
+            }
+
+
 def _receipt(receipt: EventReceipt) -> dict:
     return {"event_id": receipt.event_id, "sequence": receipt.sequence,
             "status": receipt.status, "duplicate": receipt.duplicate,
