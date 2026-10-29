@@ -78,6 +78,24 @@ def _default_budget(budget_ms: int) -> SolveBudget:
     )
 
 
+def vehicle_for_transport_task(
+    plan: TransportPlan,
+    stops: tuple[RouteStop, ...],
+    transport_task_id: UUID,
+) -> UUID | None:
+    """按运输任务反查承担它的车辆。
+
+    合法的事件类型 ``transport_delay`` 只能引用运输任务，不能直接指定车辆；车辆身份
+    由基础方案决定。这样模型（或任何调用方）都无法借事件载荷把延误挂到别的车上。
+    """
+
+    route_vehicle = {route.id: route.vehicle_id for route in plan.routes}
+    for stop in stops:
+        if transport_task_id in stop.task_ids:
+            return route_vehicle.get(stop.route_id)
+    return None
+
+
 def remaining_stop_order_ids(
     problem: TransportProblem,
     plan: TransportPlan,

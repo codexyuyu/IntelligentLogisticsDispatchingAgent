@@ -140,10 +140,12 @@ def test_propose_and_approve_commits_new_version(database_url: str):
     assert [s.service_start_s for s in restored_stops] == [s.service_start_s for s in base_stops]
 
     # 事件驱动入口：基于上一次批准的基线再处置一次
+    transport_task_id = next(s.task_ids[0] for s in base_stops if s.task_ids)
+
     def read_event(event_id, _actor):
-        return {"kind": "vehicle_delay",
-                "payload": {"vehicle_id": str(base_plan.routes[0].vehicle_id),
-                            "delay_s": 30, "event_time_s": 0}}
+        return {"kind": "transport_delay",
+                "payload": {"transport_task_id": str(transport_task_id),
+                            "additional_seconds": 30, "effective_at_s": 0}}
 
     second = approval.prepare_from_event(
         actor=actor, event_id=uuid4(), schedule_id=schedule_id, read_event=read_event)
