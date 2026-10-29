@@ -1,6 +1,9 @@
 x-backend-env: &backend-env
   DATABASE_URL: postgresql+psycopg://logistics:logistics@db:5432/logistics
   LOGISTICS_DATABASE_URL: postgresql+psycopg://logistics:logistics@db:5432/logistics
+  DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+  DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-chat}
+  DEEPSEEK_TIMEOUT_S: ${DEEPSEEK_TIMEOUT_S:-30}
   # Development-only credential: token is `dev-operator-token`; replace in a real deployment.
   LOGISTICS_SETTINGS_JSON: '{"mode":"production","database_url":"postgresql+psycopg://logistics:logistics@db:5432/logistics","scope_id":"11111111-1111-4111-8111-111111111111","credentials":[{"actor_id":"22222222-2222-4222-8222-222222222222","role":"operator","token_sha256":"277e6a75a6980887d1bc5c738e59a2504e3e2696d8f9fbf675b7fc49dabd2cf8"}],"bind_host":"0.0.0.0","bind_port":8000}'
 
@@ -11,6 +14,9 @@ services:
       POSTGRES_USER: logistics
       POSTGRES_PASSWORD: logistics
       POSTGRES_DB: logistics
+    ports:
+      # 只为本机测试暴露；应用容器仍走 db:5432。
+      - "127.0.0.1:5433:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U logistics -d logistics"]
       interval: 3s

@@ -5,10 +5,13 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { CHARGING_POINTS, FORKLIFT_IDS, forkliftPose, type TwinWarehouseData } from '../lib/warehouseTwin';
+import { CHARGING_POINTS, FORKLIFT_IDS, forkliftPose, dockConveyorPosition, conveyorPosition,
+  COLD_PARTITION_X, COLD_PARTITION_PANELS, QUALITY_SORTING_PATH, type TwinWarehouseData } from '../lib/warehouseTwin';
+import { cartonMaterials, palletMaterial, insulatedPanelMaterial } from '../lib/warehouseMaterials';
+import { createDetailedForklift, createChargingStation } from '../lib/warehouseEquipment';
 
-export type WarehouseSelection = { kind: 'zone' | 'rack' | 'forklift' | 'dock'; id: string };
-export type WarehouseCamera = 'isometric' | 'top' | 'dock';
+export type WarehouseSelection = { kind: 'zone' | 'rack' | 'forklift' | 'dock' | 'charger'; id: string };
+export type WarehouseCamera = 'isometric' | 'top' | 'dock' | 'equipment';
 type Props = {
   data: TwinWarehouseData;
   getTime: () => number;
@@ -56,27 +59,68 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
     scene.add(new THREE.HemisphereLight(0xeceee8,0x2a2c29,2.15));
     const sun=new THREE.DirectionalLight(0xfafaf6,2.3);sun.position.set(-18,52,28);scene.add(sun);
     const fill=new THREE.DirectionalLight(0xd9c9a3,1.0);fill.position.set(30,21,-22);scene.add(fill);
+    const cartons=cartonMaterials();
     const mat=(c:number,metalness=0.12,roughness=0.7)=>new THREE.MeshStandardMaterial({color:c,metalness,roughness});
     const mats={ slab:mat(0x2b2d2a),wall:mat(0x353733),beam:mat(0x4b4e47,0.48),rack:mat(0x6b6f66,0.65),shelf:mat(0x474a44,0.5),
-      carton:mat(0xb79b76),pallet:mat(0x7a6650),dock:mat(0x50544c),glass:mat(0xc2c6bc,0.6,0.15),yellow:mat(0xe3bf51),white:mat(0xe6e7e2)};
-    function box(parent:THREE.Object3D, size:[number,number,number], pos:[number,number,number],material:THREE.Material, pick?:WarehouseSelection) {
+      pallet:palletMaterial(),dock:mat(0x50544c),glass:mat(0xc2c6bc,0.6,0.15),yellow:mat(0xe3bf51),white:mat(0xe6e7e2)};
+    const steel=mat(0xb6bdb7,.76,.31),rubber=mat(0x252926,0,.95);
+    function box(parent:THREE.Object3D, size:[number,number,number], pos:[number,number,number],material:THREE.Material|THREE.Material[], pick?:WarehouseSelection) {
       const o=new THREE.Mesh(new THREE.BoxGeometry(...size),material);o.position.set(...pos);
       if(pick)o.userData.pick=pick;parent.add(o);return o;
     }
     const pickables:THREE.Object3D[]=[];
+    const cutawayStructure:THREE.Object3D[]=[];
+    function bar(parent:THREE.Object3D,a:THREE.Vector3,b:THREE.Vector3,radius:number,material:THREE.Material) {
+      const direction=b.clone().sub(a);
+      const mesh=new THREE.Mesh(new THREE.CylinderGeometry(radius,radius,direction.length(),8),material);
+      mesh.position.copy(a).add(b).multiplyScalar(.5);
+      mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),direction.normalize());parent.add(mesh);return mesh;
+    }
+    function pallet(parent:THREE.Object3D,x:number,y:number,z:number,width=1.4,depth=1.2) {
+      for(const dx of [-.38,0,.38])box(parent,[width*.18,.13,depth],[x+dx*width,y+.065,z],mats.pallet);
+      for(let i=0;i<5;i++)box(parent,[width,.065,depth*.16],[x,y+.16,z-depth*.4+i*depth*.2],mats.pallet);
+    }
     // Floor, perimeter, column grid, transparent roof: warehouse is visible in cutaway mode.
     box(scene,[69,0.5,48],[0,-0.26,0],mats.slab);
     const grid=new THREE.GridHelper(68,34,0x4a4d47,0x333530);grid.position.y=0.012;
     (grid.material as THREE.Material).transparent=true;(grid.material as THREE.Material).opacity=0.3;scene.add(grid);
-    for(const px of [-33.6,33.6])for(const pz of [-22,22])box(scene,[0.65,8.5,0.65],[px,4.15,pz],mats.beam);
-    for(const pz of [-22,22])box(scene,[68,0.42,0.5],[0,8.4,pz],mats.beam);
-    for(const px of [-33.6,33.6])box(scene,[0.5,0.42,44],[px,8.4,0],mats.beam);
+    for(const px of [-33.6,33.6])for(const pz of [-22,22]){
+      const column=box(scene,[0.65,8.5,0.65],[px,4.15,pz],mats.beam);
+      if(pz===22)cutawayStructure.push(column);
+    }
+    for(const pz of [-22,22]){
+      const beam=box(scene,[68,0.42,0.5],[0,8.4,pz],mats.beam);
+      if(pz===22)cutawayStructure.push(beam);
+    }
+    for(const px of [-33.6,33.6]){
+      const beam=box(scene,[0.5,0.42,44],[px,8.4,0],mats.beam);
+      if(px>0)cutawayStructure.push(beam);
+    }
     box(scene,[68,3.3,0.28],[0,1.65,-22],mats.wall);
     box(scene,[0.28,3.3,44],[-33.6,1.65,0],mats.wall);
-    // Right wall remains open at three vehicle loading docks; roof is toggleable.
-    for(const z of [-20,-7,6,20])box(scene,[0.35,3.2,2.5],[33.6,1.6,z],mats.wall);
+    // East side is open except for the three outbound portals below.
+    // No detached thin wall blocks between the exits.
+    box(scene,[9,.22,16],[37.5,-.12,8.45],mats.slab);
     const roofMaterial=new THREE.MeshStandardMaterial({color:0x9a9e94,transparent:true,opacity:0.25,metalness:0.55,roughness:0.35,depthWrite:false});
     const roof=box(scene,[68,0.25,44],[0,8.7,0],roofMaterial);roof.visible=roofRef.current;
+    // Insulated separation between chilled and frozen storage. The two 6 m
+    // openings coincide with the actual cross aisles; the front aisle stays open.
+    const panelMat=insulatedPanelMaterial();
+    for(const section of COLD_PARTITION_PANELS) {
+      const depth=section.endZ-section.startZ,center=(section.startZ+section.endZ)/2;
+      box(scene,[.32,6.8,depth],[COLD_PARTITION_X,3.4,center],panelMat);
+      box(scene,[.42,.2,depth],[COLD_PARTITION_X,.12,center],steel);
+      box(scene,[.4,.16,depth],[COLD_PARTITION_X,6.8,center],steel);
+    }
+    for(const z of [-13.5,-6.5]) {
+      box(scene,[.38,1.1,6],[COLD_PARTITION_X,6.25,z],panelMat);
+      for(const side of [-3,3])box(scene,[.48,5.7,.12],[COLD_PARTITION_X,2.85,z+side],steel);
+      // Upper air curtain leaves the complete forklift envelope unobstructed.
+      const curtainMat=new THREE.MeshStandardMaterial({color:0xc9e1d4,transparent:true,opacity:.2,roughness:.3,side:THREE.DoubleSide,depthWrite:false});
+      for(let strip=0;strip<12;strip++)box(scene,[.035,1.45,.46],[COLD_PARTITION_X,4.95,z-2.75+strip*.5],curtainMat);
+    }
+    const separationSign=label('冷藏  2–8°C   │   冷冻  −18°C','#e6eee8',9,32);
+    separationSign.position.set(COLD_PARTITION_X,7.5,-10);scene.add(separationSign);
     // Functional zones and labels; slabs are click targets.
     const zonePlates=new Map<string,THREE.MeshStandardMaterial>();
     for(const z of data.zones){
@@ -91,8 +135,15 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
     // Warehouse road markings, receiving bays and quality benches.
     for(let i=0;i<3;i++) {
       box(scene,[4.7,0.08,2.7],[-27+i*3.0,0.14,-12],mats.dock);
-      box(scene,[2.5,1.0,1.3],[-26+i*2.8,0.58,1+i*2.0],mats.beam);
     }
+    // Quality inspection sits immediately behind sorting; leave the truck aisle clear.
+    for(const x of [-4,0]) {
+      box(scene,[2.6,.12,1.1],[x,1.0,4.6],steel);
+      for(const side of [-1,1])for(const z of [4.2,5])box(scene,[.1,.95,.1],[x+side*1.05,.5,z],mats.beam);
+      box(scene,[.7,.08,.55],[x,.11+1,4.6],mats.dock);
+      box(scene,[.08,.36,.45],[x+.5,1.27,4.6],mats.beam);
+    }
+    const inspectionSign=label('到货质检 → 分拣复核','#e6d49b',6,30);inspectionSign.position.set(-8.7,3,4.8);scene.add(inspectionSign);
     for(let i=0;i<6;i++){
       const x=-16+i*5.9;
       box(scene,[0.2,0.03,2.5],[x,0.12,1.0],mats.yellow);
@@ -111,6 +162,11 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
           if(occupied) occupiedCells.push({x:rack.x-0.96+bay*0.96,y,z:rack.z,zone:rack.zone});
         }
       }
+      for(const side of [-1,1]) {
+        bar(g,new THREE.Vector3(side*1.45,.3,-.61),new THREE.Vector3(side*1.45,5.15,.61),.035,steel);
+        bar(g,new THREE.Vector3(side*1.45,.3,.61),new THREE.Vector3(side*1.45,5.15,-.61),.035,steel);
+        box(g,[.32,.08,1.6],[side*1.45,.06,0],mats.yellow);
+      }
       const hit=box(g,[3.3,5.4,1.55],[0,2.7,0],new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,colorWrite:false}),{kind:'rack',id:rack.id});
       pickables.push(hit);
       const sign=label(rack.id,rack.zone==='chilled'?'#9ED9AE':'#E6E7E2',2.5,29);
@@ -118,72 +174,123 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
       scene.add(g);
     }
     const stamp=new THREE.Object3D();
-    const putInstances=(geo:THREE.BoxGeometry,material:THREE.Material,offsetY:number,only?:'chilled'|'frozen')=>{
+    const putInstances=(geo:THREE.BoxGeometry,material:THREE.Material|THREE.Material[],offsetY:number,only?:'chilled'|'frozen')=>{
       const positions=only?occupiedCells.filter(p=>p.zone===only):occupiedCells;
       const mesh=new THREE.InstancedMesh(geo,material,positions.length);
       positions.forEach((p,i)=>{stamp.position.set(p.x,p.y+offsetY,p.z);stamp.rotation.set(0,0,0);stamp.updateMatrix();mesh.setMatrixAt(i,stamp.matrix);});
       mesh.instanceMatrix.needsUpdate=true;mesh.frustumCulled=false;scene.add(mesh);
     };
     putInstances(new THREE.BoxGeometry(0.86,0.12,1.04),mats.pallet,0.15);
-    putInstances(new THREE.BoxGeometry(0.72,0.68,0.79),mats.carton,0.55);
-    putInstances(new THREE.BoxGeometry(0.74,0.025,0.80),new THREE.MeshBasicMaterial({color:0x5cb882}),0.91,'chilled');
-    putInstances(new THREE.BoxGeometry(0.74,0.025,0.80),new THREE.MeshBasicMaterial({color:0xe6e7e2}),0.91,'frozen');
-    // Picking conveyor and staging pallets.
-    for(let i=0;i<8;i++){
-      const x=-13+i*3.4;
-      box(scene,[2.85,0.56,1.7],[x,0.55,8],mats.beam);
-      box(scene,[2.6,0.17,1.48],[x,0.95,8],mats.dock);
-      if(i%2===0)box(scene,[1.1,0.75,1.0],[x,1.43,8],mats.carton);
+    putInstances(new THREE.BoxGeometry(0.72,0.68,0.79),cartons,0.55);
+    // Continuous roller conveyor: all motion follows the replay clock, including seeks.
+    const conveyorRollers:THREE.Group[]=[];
+    const conveyorCargo:THREE.Group[]=[];
+    for(let segment=1;segment<QUALITY_SORTING_PATH.length;segment++) {
+      const from=QUALITY_SORTING_PATH[segment-1],to=QUALITY_SORTING_PATH[segment];
+      const length=Math.hypot(to.x-from.x,to.z-from.z);
+      const line=new THREE.Group();line.position.set(from.x,0,from.z);
+      line.rotation.y=Math.atan2(-(to.z-from.z),to.x-from.x);scene.add(line);
+      box(line,[length,.56,1.7],[length/2,.55,0],mats.beam);
+      box(line,[length,.17,1.48],[length/2,.95,0],mats.dock);
+      const trimStart=segment>1?.9:0,trimEnd=segment<QUALITY_SORTING_PATH.length-1?.9:0;
+      for(const side of [-1,1]) {
+        box(line,[length-trimStart-trimEnd,.16,.09],[trimStart+(length-trimStart-trimEnd)/2,1.17,side*.92],steel);
+        for(let x=.35;x<length;x+=2.6)box(line,[.09,.83,.09],[x,.46,side*.92],mats.beam);
+      }
+      const count=Math.ceil(length/.45);
+      for(let i=0;i<count;i++) {
+        const rotor=new THREE.Group();rotor.position.set((i+.5)*length/count,1.05,0);
+        const roller=new THREE.Mesh(new THREE.CylinderGeometry(.105,.105,1.4,10),mats.shelf);
+        roller.rotation.x=Math.PI/2;rotor.add(roller);
+        box(rotor,[.045,.025,1.4],[0,.108,0],mats.white);
+        line.add(rotor);conveyorRollers.push(rotor);
+      }
+    }
+    // Ball-transfer corner tables bridge the belts without a gap or a blocking rail.
+    for(const corner of QUALITY_SORTING_PATH.slice(1,-1)) {
+      box(scene,[1.75,.14,1.75],[corner.x,.98,corner.z],steel);
+      for(let x=-.6;x<=.6;x+=.3)for(let z=-.6;z<=.6;z+=.3) {
+        const ball=new THREE.Mesh(new THREE.SphereGeometry(.09,8,6),steel);ball.position.set(corner.x+x,1.08,corner.z+z);scene.add(ball);
+      }
+    }
+    for(let i=0;i<4;i++){
+      const cargo=new THREE.Group();
+      box(cargo,[1.1,0.65,1.0],[0,0.325,0],cartons);
+      const initial=conveyorPosition(i,0);cargo.position.set(initial.x,1.18,initial.z);cargo.rotation.y=initial.heading;
+      scene.add(cargo);conveyorCargo.push(cargo);
     }
     for(let i=0;i<8;i++){
       const x=5+i%4*3.7,z=7+Math.floor(i/4)*4;
-      box(scene,[1.55,0.19,1.35],[x,0.18,z],mats.pallet);
-      box(scene,[1.33,0.85,1.15],[x,0.72,z],mats.carton);
+      pallet(scene,x,.08,z,1.55,1.35);
+      box(scene,[1.33,0.85,1.15],[x,0.72,z],cartons);
     }
-    // Three dock lanes and delivery-bay door frames, not three warehouses.
+    // Open outbound portals connected to continuous powered roller beds.
+    const outboundRollers:THREE.Group[]=[];
     for(let i=0;i<3;i++){
       const z=4+i*4.45;
-      const plate=box(scene,[5.65,0.23,3.4],[28.2,0.22,z],mats.dock,{kind:'dock',id:`DOCK-${i+1}`});pickables.push(plate);
-      box(scene,[0.26,4,3.65],[33.1,2.1,z],mat(0x575a53,0.42));
-      const lane=label(`D0${i+1}`,'#D7E8DB',3.1,36);lane.position.set(30.9,4.65,z);scene.add(lane);
-      for(let k=0;k<4;k++)box(scene,[0.3,0.03,0.33],[27+k*1.25,0.36,z-1.54],mats.yellow);
-    }
-    // Charging stations and battery panels.
-    FORKLIFT_IDS.forEach((_,i)=>{
-      const p=CHARGING_POINTS[i];
-      box(scene,[2.8,0.1,2.5],[p.x,0.1,p.z],mat(0x5c5f58));
-      box(scene,[0.7,1.75,0.42],[p.x-1.1,0.94,p.z+1.1],mat(0x4f8a5e,0.6));
-    });
-    // Forklift: raised forks + pallet, cab roll bar, visible wheels and steering turn.
-    const actors=new Map<string,{root:THREE.Group;forks:THREE.Group;cargo:THREE.Group;wheels:THREE.Mesh[]}>();
-    const tires=mat(0x202220,0,0.94);
-    for(let i=0;i<3;i++){
-      const id=FORKLIFT_IDS[i];
-      const root=new THREE.Group();
-      const frameMat=mat([0xf3bf49,0xd9dbd3,0xf39b4d][i],0.28,0.37);
-      box(root,[2,0.75,1.05],[-0.2,0.68,0],frameMat);
-      box(root,[0.65,0.8,0.99],[-1.01,0.88,0],mat(0x3d403a,0.25));
-      for(const x of [-0.54,0.48])for(const z of [-0.43,0.43])box(root,[0.1,1.52,0.1],[x,1.72,z],mats.beam);
-      box(root,[1.3,0.12,1.13],[-0.06,2.50,0],mats.beam);
-      box(root,[0.18,2.8,1.35],[1.0,1.5,0],mats.beam);
-      const forks=new THREE.Group();
-      box(forks,[1.27,0.12,0.18],[1.66,0.05,-0.34],mats.white);
-      box(forks,[1.27,0.12,0.18],[1.66,0.05,0.34],mats.white);
-      const cargo=new THREE.Group();
-      box(cargo,[0.97,0.13,0.95],[2.0,0.17,0],mats.pallet);
-      box(cargo,[0.86,0.76,0.78],[2.0,0.62,0],mats.carton);
-      forks.add(cargo);root.add(forks);
-      const wheels:THREE.Mesh[]=[];
-      for(const x of [-0.86,0.66])for(const z of [-0.58,0.58]){
-        const wheel=new THREE.Mesh(new THREE.CylinderGeometry(0.31,0.31,0.18,14),tires);
-        wheel.rotation.x=Math.PI/2;wheel.position.set(x,0.36,z);root.add(wheel);wheels.push(wheel);
+      const hit=box(scene,[12,.35,3.4],[32,.18,z],new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,colorWrite:false}),{kind:'dock',id:`DOCK-${i+1}`});pickables.push(hit);
+      box(scene,[12,.12,3.4],[32,.12,z],mats.beam);
+      for(const side of [-1,1]) {
+        box(scene,[12,.14,.12],[32,.39,z+side*1.74],steel);
+        for(const x of [26.4,29.7,33,37.5])box(scene,[.16,.28,.16],[x,.12,z+side*1.48],mats.beam);
+        // Portal posts flank the opening; no filled door slab.
+        box(scene,[.45,4.9,.26],[33.5,2.45,z+side*1.87],panelMat);
+        box(scene,[.55,4.55,.16],[33.45,2.3,z+side*1.66],rubber);
+        box(scene,[.7,.85,.22],[33.15,.45,z+side*1.88],mats.yellow);
+        box(scene,[.5,.16,.2],[33.13,.6,z+side*1.88],rubber);
       }
-      const idLabel=label(id,'#f7e5a0',3.3,40);idLabel.position.set(-0.1,3.2,0);root.add(idLabel);
-      const pickMesh=box(root,[2.2,2.8,1.8],[0,1.4,0],new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,colorWrite:false}),{kind:'forklift',id});
-      pickables.push(pickMesh);
-      const p=CHARGING_POINTS[i];root.position.set(p.x,0.08,p.z);scene.add(root);
-      actors.set(id,{root,forks,cargo,wheels});
+      box(scene,[.5,.5,4],[33.5,5.05,z],panelMat);
+      const drum=new THREE.Mesh(new THREE.CylinderGeometry(.24,.24,3.4,16),steel);
+      drum.rotation.x=Math.PI/2;drum.position.set(33.5,4.65,z);scene.add(drum);
+      for(let slat=0;slat<3;slat++)box(scene,[.13,.12,3.2],[33.52,4.34+slat*.12,z],steel);
+      const lane=label(`D0${i+1}  出口`,'#D7E8DB',4,36);lane.position.set(33.5,5.8,z);scene.add(lane);
+      for(let k=0;k<29;k++) {
+        const rotor=new THREE.Group();rotor.position.set(26.15+k*.415,.225,z);
+        const cylinder=new THREE.Mesh(new THREE.CylinderGeometry(.11,.11,3.2,10),steel);
+        cylinder.rotation.x=Math.PI/2;rotor.add(cylinder);
+        box(rotor,[.04,.018,3.15],[0,.11,0],mats.white);
+        scene.add(rotor);outboundRollers.push(rotor);
+      }
+      for(const x of [28,31,35,37]) {
+        const arrow=label('››','#d6d9bf',1.4,40);arrow.rotation.x=-Math.PI/2;
+        arrow.position.set(x,.47,z);scene.add(arrow);
+      }
+      // Drive motor, local controls and a small green running beacon.
+      box(scene,[.65,.4,.45],[30.5,.38,z+1.97],mats.beam);
+      box(scene,[.35,.55,.22],[32.5,1.1,z+1.97],panelMat);
+      const light=new THREE.Mesh(new THREE.SphereGeometry(.075,8,6),new THREE.MeshStandardMaterial({color:0x68bd70,emissive:0x2a5c30}));
+      light.position.set(32.3,1.22,z+1.97);scene.add(light);
     }
+    // Detailed charging cabinets with a stowed hose and a connected lead only at home.
+    const chargers=FORKLIFT_IDS.map((id,i)=>{
+      const home=CHARGING_POINTS[i];
+      box(scene,[3.3,.07,2.4],[home.x-.25,.07,home.z],mats.dock);
+      for(const side of [-1,1])box(scene,[3.3,.015,.055],[home.x-.25,.115,home.z+side*1.2],mats.yellow);
+      const station=createChargingStation(i,steel,mats.beam);
+      station.root.position.set(home.x-2.25,.08,home.z);scene.add(station.root);
+      station.cabinet.userData.pick={kind:'charger',id:`CH-0${i+1}`};pickables.push(station.cabinet);
+      const stationLabel=label(`CH-0${i+1}`,'#cce4cd',2.2,32);
+      stationLabel.position.set(home.x-2.25,3.05,home.z);scene.add(stationLabel);
+      return {...station,forkliftId:id,home};
+    });
+    // Once lowered, cargo belongs to the dock, not to the departing forklift.
+    const dockCargo=data.jobs.map(job=>{
+      const cargo=new THREE.Group();
+      box(cargo,[0.97,0.13,0.95],[0,0.17,0],mats.pallet);
+      box(cargo,[0.86,0.76,0.78],[0,0.62,0],cartons);
+      cargo.visible=false;scene.add(cargo);
+      return {job,cargo};
+    });
+    // All detailed geometry stays inside the existing collision-clearance envelope.
+    const actors=new Map<string,ReturnType<typeof createDetailedForklift>>();
+    FORKLIFT_IDS.forEach((id,i)=>{
+      const actor=createDetailedForklift(i,{steel,dark:mats.beam,pallet:mats.pallet,cartons});
+      const idLabel=label(id,'#f7e5a0',2.2,36);idLabel.position.set(-.1,3.2,0);actor.root.add(idLabel);
+      const pickMesh=box(actor.root,[2.6,2.8,1.65],[0,1.4,0],new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,colorWrite:false}),{kind:'forklift',id});
+      pickables.push(pickMesh);
+      const p=CHARGING_POINTS[i];actor.root.position.set(p.x,.08,p.z);scene.add(actor.root);
+      actors.set(id,actor);
+    });
     // Click details via standard raycaster; supports rack, zone, vehicle and dock.
     const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
     function onClick(event:MouseEvent){
@@ -206,20 +313,40 @@ export default function WarehouseTwin3D({data,getTime,cameraPreset,showRoof,sele
         lastPreset=cameraRef.current;
         if(lastPreset==='top'){desired.set(0,83,0.01);target.set(0,0,0);}
         else if(lastPreset==='dock'){desired.set(43,21,40);target.set(18,0,8);}
+        else if(lastPreset==='equipment'){desired.set(-15,8.5,23);target.set(-25,1.2,13.1);}
         else{desired.set(47,49,63);target.set(0,0,0);}
         camera.position.copy(desired);controls.target.copy(target);controls.update();
       }
       roof.visible=roofRef.current;
+      // A cutaway removes foreground roof supports as well as the roof itself.
+      // Otherwise the front beam masks an entire forklift during dock departure.
+      cutawayStructure.forEach(mesh=>{mesh.visible=roofRef.current;});
       const t=timeRef.current();
+      conveyorCargo.forEach((cargo,i)=>{const p=conveyorPosition(i,t);cargo.position.set(p.x,1.18,p.z);cargo.rotation.y=p.heading;});
+      const rollerAngle=conveyorPosition(0,t).rollerAngle;
+      conveyorRollers.forEach(rotor=>{rotor.rotation.z=rollerAngle;});
+      outboundRollers.forEach(rotor=>{rotor.rotation.z=rollerAngle;});
+      dockCargo.forEach(({job,cargo})=>{
+        const p=dockConveyorPosition(job,t,data.jobs);cargo.visible=p.visible;cargo.position.set(p.x,p.y,p.z);
+      });
+      chargers.forEach(station=>{
+        const pose=forkliftPose(station.forkliftId,t,data.jobs,data.racks);
+        const connected=(pose.stage==='waiting'||pose.stage==='yielding'||pose.stage==='done') && Math.hypot(pose.x-station.home.x,pose.z-station.home.z)<.05;
+        station.lead.visible=connected;
+        station.screen.visible=!connected;station.chargingScreen.visible=connected;
+        station.status.emissiveIntensity=connected ? .65+.3*Math.sin(t*1.6) : .12;
+      });
       actors.forEach((entry,id)=>{
         const pose=forkliftPose(id,t,data.jobs,data.racks);
         entry.root.position.set(pose.x,0.08,pose.z);
         entry.root.rotation.y=pose.heading;
         entry.forks.position.y=pose.lift;
         entry.cargo.visible=pose.carrying;
+        entry.amber.emissiveIntensity=.5+.35*Math.sin(t*3.2);
         if(pose.stage==='to_rack'||pose.stage==='to_dock'||pose.stage==='returning')
           for(const wheel of entry.wheels)wheel.rotation.z-=(Math.max(0,t-lastT))*0.08;
-        entry.root.scale.setScalar(selectedRef.current?.kind==='forklift'&&selectedRef.current.id===id?1.15:1);
+        // Selection must not enlarge physical geometry into the neighbouring rack.
+        entry.root.scale.setScalar(1);
       });
       lastT=t;
       zonePlates.forEach((material,id)=>{material.opacity=selectedRef.current?.kind==='zone'&&selectedRef.current.id===id?0.41:0.19;});

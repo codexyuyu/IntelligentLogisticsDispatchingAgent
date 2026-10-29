@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { request } from '../../api';
 import SectionHeader from '../../components/SectionHeader';
 import { KpiCard } from '../../components/KpiCard';
 import { StatusPill } from '../../components/StatusPill';
@@ -7,6 +8,8 @@ import { fmtClock } from '../../lib/format';
 
 type Tab = 'overview' | 'inbound' | 'inventory' | 'outbound' | 'resources';
 type FlowStatus = '待处理' | '预冷中' | '已入库';
+type WarehouseOption = { id: string; code: string; name: string };
+type ZoneOption = { id: string; warehouse_id: string; code: string; setpoint_decic: number };
 
 type LocalLot = {
   batch_id: string;
@@ -23,6 +26,9 @@ type InboundTask = {
   id: string;
   batchId: string;
   warehouseId: string;
+  warehouseName: string;
+  zoneId: string;
+  zoneLabel: string;
   zone: 'chilled' | 'frozen';
   quantity: number;
   etaS: number;
@@ -51,9 +57,54 @@ export default function Page() {
   const [inboundTasks, setInboundTasks] = useState<InboundTask[]>([]);
   const [lots, setLots] = useState<LocalLot[]>([]);
   const [selectedLot, setSelectedLot] = useState<string | null>(null);
-  const [receipt, setReceipt] = useState({ warehouseId: 'wh_1', zone: 'chilled' as 'chilled' | 'frozen', quantity: 20, etaS: 3600 });
+  const [receipt, setReceipt] = useState({ warehouseId: '', quantity: 20, etaS: 3600 });
+  const [warehouses, setWarehouses] = useState<WarehouseOption[]>([]);
+  const [zones, setZones] = useState<ZoneOption[]>([]);
+  const [zoneId, setZoneId] = useState('');
+  const [warehouseLoading, setWarehouseLoading] = useState(true);
+  const [zoneLoading, setZoneLoading] = useState(false);
+  const [warehouseError, setWarehouseError] = useState('');
+  const [zoneError, setZoneError] = useState('');
+  const [reload, setReload] = useState(0);
   const [outbound, setOutbound] = useState({ orderId: '', quantity: 5 });
   const [notice, setNotice] = useState<string | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    setWarehouseLoading(true); setWarehouseError('');
+    void request<{ items: WarehouseOption[] }>('/warehouses?limit=100').then(page => {
+      if (!active) return;
+      setWarehouses(page.items);
+      setReceipt(current => ({ ...current, warehouseId: page.items.some(w => w.id === current.warehouseId)
+        ? current.warehouseId : page.items[0]?.id ?? '' }));
+    }).catch(cause => { if (active) { setWarehouseError(String(cause)); setWarehouses([]); } })
+      .finally(() => { if (active) setWarehouseLoading(false); });
+    return () => { active = false; };
+  }, [reload]);
+
+  useEffect(() => {
+    let active = true;
+    setZones([]); setZoneId(''); setZoneError('');
+    if (!receipt.warehouseId) { setZoneLoading(false); return; }
+    setZoneLoading(true);
+    void request<{ items: ZoneOption[] }>(`/warehouses/${encodeURIComponent(receipt.warehouseId)}/zones?limit=100`).then(page => {
+      if (!active) return;
+      const ownZones = page.items.filter(z => z.warehouse_id === receipt.warehouseId);
+      setZones(ownZones); setZoneId(ownZones[0]?.id ?? '');
+    }).catch(cause => { if (active) setZoneError(String(cause)); })
+      .finally(() => { if (active) setZoneLoading(false); });
+    return () => { active = false; };
+  }, [receipt.warehouseId, reload]);
+
+  const availableZones = zones.filter(z => z.warehouse_id === receipt.warehouseId);
+  const selectedZone = availableZones.find(z => z.id === zoneId);
+  const canCreateInbound = !warehouseLoading && !zoneLoading && !warehouseError && !zoneError
+    && warehouses.some(w => w.id === receipt.warehouseId) && Boolean(selectedZone)
+    && Number.isInteger(receipt.quantity) && receipt.quantity > 0;
+  function selectWarehouse(id: string) {
+    setReceipt(current => ({ ...current, warehouseId: id }));
+    setZoneId(''); setZones([]); setNotice(null);
+  }
 
   const baseLots = useMemo<LocalLot[]>(() => (snapshot?.stock_lots ?? []).map((lot) => ({ ...lot, source: '场景快照' })), [snapshot]);
   const mergedLots = useMemo(() => {
@@ -85,9 +136,13 @@ export default function Page() {
   };
 
   function createInbound() {
+    if (!canCreateInbound || !selectedZone) { setNotice('请选择有效仓库及其温区，并填写正整数数量。'); return; }
     const taskId = `IN-${String(inboundTasks.length + 1).padStart(3, '0')}`;
     const batchId = `LOCAL-${Date.now().toString().slice(-6)}`;
-    setInboundTasks((prev) => [{ id: taskId, batchId, warehouseId: receipt.warehouseId, zone: receipt.zone, quantity: receipt.quantity, etaS: receipt.etaS, status: '待处理' }, ...prev]);
+    setInboundTasks((prev) => [{ id: taskId, batchId, warehouseId: receipt.warehouseId,
+      warehouseName: warehouses.find(w => w.id === receipt.warehouseId)?.name || warehouses.find(w => w.id === receipt.warehouseId)?.code || '仓库',
+      zoneId: selectedZone.id, zoneLabel: `${selectedZone.code}（${selectedZone.setpoint_decic / 10}°C）`,
+      zone: selectedZone.setpoint_decic < 0 ? 'frozen' : 'chilled', quantity: receipt.quantity, etaS: receipt.etaS, status: '待处理' }, ...prev]);
     setNotice(`已创建入库任务 ${taskId}，下一步执行预冷和确认入库。`);
   }
 
@@ -142,8 +197,28 @@ export default function Page() {
     </>}
 
     {tab === 'inbound' && <div className="card-grid two">
-      <div className="panel"><div className="panel-title-row"><div><h3>到货登记</h3><p>沿用原项目的“收货 → 预冷 → 入库”业务链。当前为前端工作台演示，不写回后端。</p></div></div><div className="form-grid two"><label>仓库<select value={receipt.warehouseId} onChange={(e) => setReceipt((v) => ({ ...v, warehouseId: e.target.value }))}>{(snapshot?.warehouses ?? []).map((w) => <option key={w.warehouse_id} value={w.warehouse_id}>{w.warehouse_id}</option>)}</select></label><label>温区<select value={receipt.zone} onChange={(e) => setReceipt((v) => ({ ...v, zone: e.target.value as 'chilled' | 'frozen' }))}><option value="chilled">冷藏</option><option value="frozen">冷冻</option></select></label><label>数量<input type="number" min={1} value={receipt.quantity} onChange={(e) => setReceipt((v) => ({ ...v, quantity: Math.max(1, Number(e.target.value) || 1) }))} /></label><label>预计到货<input value={fmtClock(receipt.etaS)} disabled /></label></div><div className="section-actions"><button className="btn btn-primary" onClick={createInbound}>创建入库任务</button><button className="btn btn-ghost" onClick={() => { setReceipt((v) => ({ ...v, etaS: v.etaS + 1800 })); setNotice('预计到货已顺延 30 分钟，可用于演示动态到货。'); }}>模拟到货延迟 +30min</button></div></div>
-      <div className="panel"><div className="panel-title-row"><div><h3>入库任务</h3><p>点击“开始预冷”再“确认入库”，观察库存变化。</p></div><span className="soft-badge">{inboundTasks.length} 项</span></div><div className="table-wrap"><table><thead><tr><th>任务</th><th>批次</th><th>仓库</th><th>温区</th><th>数量</th><th>状态</th><th>操作</th></tr></thead><tbody>{inboundTasks.map((task) => <tr key={task.id}><td><strong>{task.id}</strong></td><td>{task.batchId}</td><td>{task.warehouseId}</td><td>{task.zone === 'chilled' ? '冷藏' : '冷冻'}</td><td>{task.quantity}</td><td><StatusPill tone={badgeTone(task.status)}>{task.status}</StatusPill></td><td>{task.status === '待处理' ? <button className="link-btn" onClick={() => startPreCooling(task.id)}>开始预冷</button> : task.status === '预冷中' ? <button className="link-btn" onClick={() => completeInbound(task)}>确认入库</button> : <span className="muted-line">已完成</span>}</td></tr>)}</tbody></table></div></div>
+      <div className="panel">
+        <div className="panel-title-row"><div><h3>到货登记</h3><p>仓库与温区从后端读取；本页入库流程为工作台演示，不写回后端。</p></div>
+          <button className="btn btn-ghost btn-sm" disabled={warehouseLoading || zoneLoading} onClick={() => setReload(value => value + 1)}>刷新仓库与温区</button>
+        </div>
+        {(warehouseError || zoneError) && <p role="alert" className="callout callout-error">{warehouseError ? `仓库读取失败：${warehouseError}` : `温区读取失败：${zoneError}`}，请刷新重试。</p>}
+        {!warehouseLoading && !warehouseError && !warehouses.length && <p role="status">暂无可选仓库，请先导入仓库主数据。</p>}
+        {!warehouseLoading && !zoneLoading && !zoneError && receipt.warehouseId && !availableZones.length && <p role="status">所选仓库暂无温区，请先配置温区后再创建入库任务。</p>}
+        <div className="form-grid two">
+          <label>仓库<select aria-label="入库仓库" value={warehouses.some(w => w.id === receipt.warehouseId) ? receipt.warehouseId : ''} disabled={warehouseLoading || !warehouses.length} onChange={e => selectWarehouse(e.target.value)}>
+            <option value="" disabled>{warehouseLoading ? '正在加载仓库…' : warehouseError ? '仓库读取失败' : '请选择仓库'}</option>
+            {warehouses.map(w => <option key={w.id} value={w.id}>{w.name || w.code}{w.name && w.code ? `（${w.code}）` : ''}</option>)}
+          </select></label>
+          <label>温区<select aria-label="入库温区" value={selectedZone?.id ?? ''} disabled={warehouseLoading || zoneLoading || !availableZones.length} onChange={e => setZoneId(e.target.value)}>
+            <option value="" disabled>{zoneLoading ? '正在加载温区…' : zoneError ? '温区读取失败' : receipt.warehouseId ? '请选择温区' : '请先选择仓库'}</option>
+            {availableZones.map(z => <option key={z.id} value={z.id}>{z.code} · {z.setpoint_decic < 0 ? '冷冻' : '冷藏'}（{z.setpoint_decic / 10}°C）</option>)}
+          </select></label>
+          <label>数量<input type="number" min={1} step={1} value={receipt.quantity} onChange={e => setReceipt(v => ({ ...v, quantity: Number(e.target.value) }))} /></label>
+          <label>预计到货<input value={fmtClock(receipt.etaS)} disabled /></label>
+        </div>
+        <div className="section-actions"><button className="btn btn-primary" disabled={!canCreateInbound} onClick={createInbound}>创建入库任务</button><button className="btn btn-ghost" onClick={() => { setReceipt(v => ({ ...v, etaS: v.etaS + 1800 })); setNotice('预计到货已顺延 30 分钟，可用于演示动态到货。'); }}>模拟到货延迟 +30min</button></div>
+      </div>
+      <div className="panel"><div className="panel-title-row"><div><h3>入库任务</h3><p>点击“开始预冷”再“确认入库”，观察库存变化。</p></div><span className="soft-badge">{inboundTasks.length} 项</span></div><div className="table-wrap"><table><thead><tr><th>任务</th><th>批次</th><th>仓库</th><th>温区</th><th>数量</th><th>状态</th><th>操作</th></tr></thead><tbody>{inboundTasks.map((task) => <tr key={task.id}><td><strong>{task.id}</strong></td><td>{task.batchId}</td><td>{task.warehouseName}</td><td>{task.zoneLabel}</td><td>{task.quantity}</td><td><StatusPill tone={badgeTone(task.status)}>{task.status}</StatusPill></td><td>{task.status === '待处理' ? <button className="link-btn" onClick={() => startPreCooling(task.id)}>开始预冷</button> : task.status === '预冷中' ? <button className="link-btn" onClick={() => completeInbound(task)}>确认入库</button> : <span className="muted-line">已完成</span>}</td></tr>)}</tbody></table></div></div>
     </div>}
 
     {tab === 'inventory' && <>

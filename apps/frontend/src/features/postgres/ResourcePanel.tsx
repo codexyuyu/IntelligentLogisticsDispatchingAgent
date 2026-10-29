@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { request, type Page } from '../../api';
+import { statusLabel } from '../../lib/labels';
 
 type MasterRow = { id: string; code?: string; external_ref?: string; status: string;
   capacity_weight_g?: number; setpoint_decic?: number };
@@ -24,6 +25,6 @@ export default function ResourcePanel({ kind }: { kind: 'orders' | 'vehicles' })
     {loading ? <p>正在读取…</p> : error ? <p role="alert">{error}</p> :
       <div className="table-wrap"><table><thead><tr><th>编号</th><th>状态</th><th>资源 ID</th></tr></thead>
         <tbody>{data.map(row => <tr key={row.id}><td>{row.external_ref ?? row.code ?? row.id}</td>
-          <td>{row.status}</td><td>{row.id}</td></tr>)}</tbody></table></div>}
+          <td>{statusLabel(row.status)}</td><td>{row.id}</td></tr>)}</tbody></table></div>}
   </section>;
 }

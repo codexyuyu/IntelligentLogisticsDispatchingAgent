@@ -347,7 +347,7 @@ export function TransportWorkflow() {
 
   return (
     <section className="workflow">
-      <h2>Transport dispatch</h2>
+      <h2>运输调度</h2>
       <ol className="steps">
         {["读取主数据", "提交求解", "路线与校验", "候选", "提交版本", "数据库回读"].map((label, index) => (
           <li key={label} className={index <= activeStep ? "done" : ""}>{label}</li>
@@ -489,3 +489,4 @@ export function TransportWorkflow() {
     </section>
   );
 }
+

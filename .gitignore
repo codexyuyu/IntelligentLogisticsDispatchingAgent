@@ -25,7 +25,7 @@ artifacts/results/
 tools/bin/
 
 # 本地 agent 状态、缓存与独立 clone（不随实现仓库交付）
-/.mimosa/
+.mimosa/
 /.workbuddy/
 /.workbuddy-ai/
 /.uv-cache/

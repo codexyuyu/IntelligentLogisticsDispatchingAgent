@@ -54,6 +54,13 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
     if (result.status !== 'checked') throw new Error(`资料不完整：${result.issues?.join('；')}`);
     await loadScenarios(); setSelected(result.scenario_id!); setNotice('场景已校验并保存。');
   }
+  async function importSample() {
+    const template = await request<unknown>('/integration/template');
+    const result = await request<{ status: string; scenario_id?: string; issues?: string[] }>('/integration/scenarios',
+      { method: 'POST', body: JSON.stringify(template) });
+    if (result.status !== 'checked' || !result.scenario_id) throw new Error(`样本导入失败：${result.issues?.join('；') ?? result.status}`);
+    await loadScenarios(); setSelected(result.scenario_id); setNotice('比赛样本已准备，可开始计算。');
+  }
   async function compute() {
     const value = await request<Run>('/integration/runs', { method: 'POST', headers: { 'Idempotency-Key': idempotencyKey() },
       body: JSON.stringify({ schema_version: '2.0.0', scenario_id: selected, budget_ms: budget, seed, recoveries: [] }) });
@@ -76,7 +83,9 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
   return <div>
     <SectionHeader title="冷链调度、协商与业务观测" desc="从已导入的场景计算仓储与运输方案，经独立校验后协商。协商确认不会直接提交派车计划。" />
     <section className="panel">
-      <h3>场景数据</h3><p>企业数据尚未提供。合成样本仅用于验证流程，页面始终保留数据来源。</p>
+      <h3>准备调度数据</h3><p>选择已保存的场景，或导入比赛合成样本，然后计算仓储与运输联合方案。</p>
+      <button className="btn btn-primary" disabled={busy} onClick={() => void action(importSample)}>一键准备比赛样本</button>
+      <details><summary>导入自有场景文件</summary>
       <input aria-label="导入场景文件" type="file" accept=".json,application/json" disabled={busy}
         onChange={event => { const file = event.target.files?.[0]; if (file) void action(async () => setSource(await file.text())); }} />
       <button className="btn btn-ghost" disabled={busy} onClick={() => void action(async () => {
@@ -84,6 +93,7 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
       })}>加载合成测试样本</button>
       <textarea aria-label="场景 JSON" rows={5} value={source} onChange={event => setSource(event.target.value)} placeholder="选择 JSON 文件或加载合成测试样本" />
       <button className="btn btn-primary" disabled={busy || !source.trim()} onClick={() => void action(importData)}>校验并导入</button>
+      </details>
       <hr />
       <label>已导入场景 <select value={selected} onChange={e => setSelected(e.target.value)} disabled={busy}>
         <option value="">请选择</option>{scenarios.map(s => <option key={s.id} value={s.id}>{s.name} · {s.source_kind === 'synthetic' ? '合成测试' : '企业来源声明'}</option>)}

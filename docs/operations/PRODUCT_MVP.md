@@ -73,13 +73,13 @@ The login token is the development operator token configured on the backend
 ```powershell
 docker compose config
 docker compose build
-docker compose up -d db backend worker frontend frontend-legacy
+docker compose up -d db backend worker frontend
 docker compose run --rm seed
 ```
 
-Open <http://localhost:8081> for the React product workbench. The PR #1 interface (including the
-single-warehouse 3D view) is served at <http://localhost:8080> from `apps/frontend-legacy`; it is
-the PR #1 static build and its legacy `/api/auth/*` calls are not wired to the current backend.
+Open <http://localhost:8080> for the current React product. The legacy frontend is not part
+of the current stack. On Windows, `./scripts/start_competition.ps1` builds and starts the
+database, backend, worker and frontend, then imports the repeatable tiny master dataset.
 
 Known environment note: Docker Hub token exchange timed out over IPv6, but base images were pulled
 from a registry mirror and tagged locally; backend/frontend/seed built successfully, the stack
@@ -106,3 +106,4 @@ Verified end-to-end in the Docker stack:
 - Local rescheduling is a typed proposal, not a solved plan.
 - Realtime events, full auth/user management, paired-seed experiment UI and release Gates remain
   out of MVP scope.
+
