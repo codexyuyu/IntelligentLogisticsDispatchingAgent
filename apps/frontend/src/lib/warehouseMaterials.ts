@@ -79,3 +79,23 @@ export function insulatedPanelMaterial() {
   });
   return new THREE.MeshStandardMaterial({map,roughness:.62,metalness:.25});
 }
+
+export function concreteMaterial() {
+  const map=texture(ctx=>{
+    ctx.fillStyle='#8d938c';ctx.fillRect(0,0,512,512);
+    let seed=821;
+    for(let i=0;i<22000;i++) {
+      seed=(seed*1664525+1013904223)>>>0;const x=seed%512;
+      seed=(seed*1664525+1013904223)>>>0;const y=seed%512;
+      ctx.fillStyle=i%2?'rgba(232,234,225,.12)':'rgba(45,53,46,.1)';ctx.fillRect(x,y,1+i%3,1);
+    }
+    ctx.strokeStyle='rgba(42,52,43,.28)';ctx.lineWidth=2;
+    ctx.strokeRect(1,1,510,510);
+    ctx.strokeStyle='rgba(221,226,217,.24)';ctx.lineWidth=1;ctx.strokeRect(4,4,504,504);
+    // Subtle curved rubber scuffs rather than a perfectly uniform slab.
+    ctx.strokeStyle='rgba(37,44,39,.06)';ctx.lineWidth=5;
+    ctx.beginPath();ctx.arc(230,210,154,.2,1.9);ctx.stroke();
+  });
+  map.wrapS=map.wrapT=THREE.RepeatWrapping;map.repeat.set(13,9);
+  return new THREE.MeshStandardMaterial({map,roughness:.83,metalness:.02});
+}

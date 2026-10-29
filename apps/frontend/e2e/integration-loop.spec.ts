@@ -7,13 +7,21 @@ test('local Chinese UI imports, solves, observes and reloads the integrated pipe
   await page.getByRole('button', { name: '验证并进入' }).click();
   await expect(page.getByText('县域冷链调度', { exact: true })).toBeVisible();
   await page.goto('/#/negotiation');
+  await page.getByText('导入自有场景文件', { exact: true }).click();
   await page.getByRole('button', { name: '加载合成测试样本' }).click();
   await expect(page.getByLabel('场景 JSON')).not.toHaveValue('');
   await page.getByRole('button', { name: '校验并导入' }).click();
   await expect(page.getByText('场景已校验并保存。')).toBeVisible();
-  const response = page.waitForResponse(r => r.url().endsWith('/integration/runs') && r.request().method() === 'POST');
+  const response = page.waitForResponse(r => new URL(r.url()).pathname.endsWith('/integration/runs') && r.request().method() === 'POST');
   await page.getByRole('button', { name: '计算并协商', exact: true }).click();
-  const result = await (await response).json();
+  const accepted = await (await response).json();
+  expect(accepted.run_id).toBeTruthy();
+  await expect(page.getByText('实际求解与校验证据', { exact: true })).toBeVisible({ timeout: 90_000 });
+  const finished = await page.request.get(`/api/v1/integration/runs/${accepted.run_id}`, {
+    headers: { Authorization: `Bearer ${process.env.E2E_TOKEN ?? 'dev-operator-token'}` },
+  });
+  expect(finished.ok()).toBe(true);
+  const result = await finished.json();
   expect(result.status).toBe('checked');
   expect(result.joint_validation.valid).toBe(true);
   expect(result.negotiation.result.status).toBe('confirmed');

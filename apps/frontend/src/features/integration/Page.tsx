@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { request, idempotencyKey } from '../../api';
 import SectionHeader from '../../components/SectionHeader';
+import { isPending, pollStatus, readStored, saveStored, useTaskRunner, validInteger } from '../../lib/asyncJobs';
+import { statusLabel } from '../../lib/labels';
 
 type Scenario = { id: string; name: string; source_kind: string };
 type Message = { seq: number; at_s: number; kind: string; role: string; task_id: string; detail: string };
@@ -27,60 +29,59 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
   const [source, setSource] = useState('');
   const [run, setRun] = useState<Run | null>(null);
   const [view, setView] = useState(initialView);
-  const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
-  const [busy, setBusy] = useState(false);
+  const { busy, error, setError, run: action } = useTaskRunner();
   const [budget, setBudget] = useState(4000);
   const [seed, setSeed] = useState(0);
-  async function loadScenarios() {
-    const data = await request<{ items: Scenario[] }>('/integration/scenarios');
+  const validInput = validInteger(budget, 100, 12000) && validInteger(seed, 0);
+  async function loadScenarios(signal: AbortSignal) {
+    const data = await request<{ items: Scenario[] }>('/integration/scenarios', { signal });
+    signal.throwIfAborted();
     setScenarios(data.items);
-    setSelected(previous => previous || data.items[0]?.id || '');
+    setSelected(previous => data.items.some(item => item.id === previous) ? previous : data.items[0]?.id ?? '');
+  }
+  async function refreshRun(runId: string, signal: AbortSignal): Promise<Run> {
+    const latest = await request<Run>(`/integration/runs/${encodeURIComponent(runId)}`, { signal });
+    signal.throwIfAborted(); setRun(latest);
+    return latest;
+  }
+  async function followRun(runId: string, signal: AbortSignal) {
+    await pollStatus(() => refreshRun(runId, signal), signal, setRun);
   }
   useEffect(() => {
-    let active = true;
-    void loadScenarios().catch(e => { if (active) setError(String(e)); });
-    const last = localStorage.getItem('integration_last_run');
-    if (last) void request<Run>(`/integration/runs/${encodeURIComponent(last)}`).then(value => {
-      if (active) setRun(value);
-    }).catch(e => { if (active) setError(String(e)); });
-    return () => { active = false; };
+    void action(async signal => {
+      const last = readStored('integration_last_run');
+      // A failed scenario list must not hide a recoverable run, or vice versa.
+      await Promise.all([
+        loadScenarios(signal).catch(cause => { if (!signal.aborted) setError(String(cause)); }),
+        last ? followRun(last, signal).catch(cause => { if (!signal.aborted) setError(String(cause)); }) : Promise.resolve(),
+      ]);
+    });
   }, []);
-  async function action(fn: () => Promise<void>) {
-    setError(''); setNotice(''); setBusy(true);
-    try { await fn(); } catch (e) { setError(e instanceof Error ? e.message : String(e)); }
-    finally { setBusy(false); }
-  }
-  async function importData() {
+  async function importData(signal: AbortSignal) {
     const value = JSON.parse(source);
     const result = await request<{ status: string; scenario_id?: string; issues?: string[] }>('/integration/scenarios',
-      { method: 'POST', body: JSON.stringify(value) });
-    if (result.status !== 'checked') throw new Error(`资料不完整：${result.issues?.join('；')}`);
-    await loadScenarios(); setSelected(result.scenario_id!); setNotice('场景已校验并保存。');
+      { method: 'POST', body: JSON.stringify(value), signal });
+    if (result.status !== 'checked' || !result.scenario_id) throw new Error(`资料不完整：${result.issues?.join('；') ?? result.status}`);
+    await loadScenarios(signal); setSelected(result.scenario_id); setNotice('场景已校验并保存。');
   }
-  async function importSample() {
-    const template = await request<unknown>('/integration/template');
+  async function importSample(signal: AbortSignal) {
+    const template = await request<unknown>('/integration/template', { signal });
     const result = await request<{ status: string; scenario_id?: string; issues?: string[] }>('/integration/scenarios',
-      { method: 'POST', body: JSON.stringify(template) });
+      { method: 'POST', body: JSON.stringify(template), signal });
     if (result.status !== 'checked' || !result.scenario_id) throw new Error(`样本导入失败：${result.issues?.join('；') ?? result.status}`);
-    await loadScenarios(); setSelected(result.scenario_id); setNotice('比赛样本已准备，可开始计算。');
+    await loadScenarios(signal); setSelected(result.scenario_id); setNotice('比赛样本已准备，可开始计算。');
   }
-  async function compute() {
+  async function compute(signal: AbortSignal) {
+    if (!selected || !validInput) throw new Error('预算须为 100–12000 的整数，种子须为非负整数。');
+    setNotice('');
+    // Keep the accepted ID even if the user leaves while POST is returning.
     const value = await request<Run>('/integration/runs?wait=false', { method: 'POST', headers: { 'Idempotency-Key': idempotencyKey() },
       body: JSON.stringify({ schema_version: '2.0.0', scenario_id: selected, budget_ms: budget, seed, recoveries: [] }) });
-    setRun(value); localStorage.setItem('integration_last_run', value.run_id);
-    // Keep the durable run ID even if the worker is not ready or polling times out.
-    for (let attempt = 0; attempt < 50; attempt++) {
-      const latest = await refreshRun(value.run_id);
-      if (latest.status !== 'queued' && latest.status !== 'running') return;
-      await new Promise<void>(resolve => setTimeout(resolve, 1000));
-    }
-    throw new Error('任务仍在队列或执行中，请稍后点击“刷新状态”。');
-  }
-  async function refreshRun(runId: string): Promise<Run> {
-    const latest = await request<Run>(`/integration/runs/${encodeURIComponent(runId)}`);
-    setRun(latest);
-    return latest;
+    const saved = saveStored('integration_last_run', value.run_id);
+    signal.throwIfAborted(); setRun(value);
+    if (!saved) setNotice('浏览器无法保存运行编号，请复制记录编号以便回查。');
+    if (isPending(value.status)) await followRun(value.run_id, signal);
   }
   const negotiation = run?.negotiation?.result;
   const transcript = negotiation?.transcript ?? [];
@@ -91,12 +92,12 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
     if (message.kind === 'confirm') confirmed.set(message.task_id, message);
     if (message.kind === 'revoke') confirmed.delete(message.task_id);
   }
-  async function revoke(taskId: string) {
+  async function revoke(taskId: string, signal: AbortSignal) {
     if (!run || !negotiation) return;
-    const value = await request<Run>(`/integration/runs/${run.run_id}/revoke`, { method: 'POST', body: JSON.stringify({
+    const value = await request<Run>(`/integration/runs/${run.run_id}/revoke`, { method: 'POST', signal, body: JSON.stringify({
       schema_version: '2.0.0', task_id: taskId, now_s: Math.max(0, ...transcript.map(m => m.at_s)), expected_digest: negotiation.digest,
     }) });
-    setRun(value);
+    signal.throwIfAborted(); setRun(value);
   }
   return <div>
     <SectionHeader title="冷链调度、协商与业务观测" desc="从已导入的场景计算仓储与运输方案，经独立校验后协商。协商确认不会直接提交派车计划。" />
@@ -105,26 +106,28 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
       <button className="btn btn-primary" disabled={busy} onClick={() => void action(importSample)}>一键准备比赛样本</button>
       <details><summary>导入自有场景文件</summary>
       <input aria-label="导入场景文件" type="file" accept=".json,application/json" disabled={busy}
-        onChange={event => { const file = event.target.files?.[0]; if (file) void action(async () => setSource(await file.text())); }} />
-      <button className="btn btn-ghost" disabled={busy} onClick={() => void action(async () => {
-        const template = await request<unknown>('/integration/template'); setSource(JSON.stringify(template, null, 2));
+        onChange={event => { const file = event.target.files?.[0]; if (file) void action(async signal => { const text = await file.text(); signal.throwIfAborted(); setSource(text); }); }} />
+      <button className="btn btn-ghost" disabled={busy} onClick={() => void action(async signal => {
+        const template = await request<unknown>('/integration/template', { signal }); signal.throwIfAborted(); setSource(JSON.stringify(template, null, 2));
       })}>加载合成测试样本</button>
-      <textarea aria-label="场景 JSON" rows={5} value={source} onChange={event => setSource(event.target.value)} placeholder="选择 JSON 文件或加载合成测试样本" />
+      <textarea aria-label="场景 JSON" rows={5} disabled={busy} value={source} onChange={event => setSource(event.target.value)} placeholder="选择 JSON 文件或加载合成测试样本" />
       <button className="btn btn-primary" disabled={busy || !source.trim()} onClick={() => void action(importData)}>校验并导入</button>
       </details>
       <hr />
       <label>已导入场景 <select value={selected} onChange={e => setSelected(e.target.value)} disabled={busy}>
         <option value="">请选择</option>{scenarios.map(s => <option key={s.id} value={s.id}>{s.name} · {s.source_kind === 'synthetic' ? '合成测试' : '企业来源声明'}</option>)}
       </select></label>
-      <label>计算预算（毫秒） <input type="number" min={100} max={12000} value={budget} onChange={e => setBudget(Number(e.target.value))} /></label>
-      <label>随机种子 <input type="number" min={0} value={seed} onChange={e => setSeed(Number(e.target.value))} /></label>
-      <button className="btn btn-primary" disabled={busy || !selected} onClick={() => void action(compute)}>{busy ? '处理中…' : '计算并协商'}</button>
+      <label>计算预算（毫秒） <input type="number" min={100} max={12000} step={1} disabled={busy} value={budget} onChange={e => setBudget(Number(e.target.value))} /></label>
+      <label>随机种子 <input type="number" min={0} step={1} disabled={busy} value={seed} onChange={e => setSeed(Number(e.target.value))} /></label>
+      <button className="btn btn-primary" disabled={busy || !selected || !validInput || !!run && isPending(run.status)} onClick={() => void action(compute)}>{busy ? '处理中…' : '计算并协商'}</button>
+      {!validInput && <p role="alert">预算须为 100–12000 的整数，种子须为非负整数。</p>}
+      <button className="btn btn-ghost" disabled={busy} onClick={() => void action(loadScenarios)}>刷新场景列表</button>
       {error && <p role="alert" className="callout callout-error">{error}</p>}{notice && <p role="status">{notice}</p>}
     </section>
     {run && <section className="panel">
-      <h3>运行记录</h3><p>来源：{run.source_kind === 'synthetic' ? '合成测试数据' : run.source_kind ? '企业来源声明（尚未独立核实）' : '等待任务结果'} · {run.status === 'queued' ? '已入队' : run.status === 'running' ? 'Worker 执行中' : run.status === 'checked' ? '求解证据已校验' : '未完成校验'} · {run.reason}</p>
+      <h3>运行记录</h3><p>来源：{run.source_kind === 'synthetic' ? '合成测试数据' : run.source_kind ? '企业来源声明（尚未独立核实）' : '等待任务结果'} · {statusLabel(run.status)} · {run.reason}</p>
       <small>记录编号：{run.run_id}{run.job_id ? ` · Job：${run.job_id}` : ''}</small>
-      <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => void action(async () => { await refreshRun(run.run_id); })}>刷新状态</button>
+      <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => void action(signal => followRun(run.run_id, signal))}>刷新状态</button>
       {(run.warehouse_solution || run.transport_solution) && <>
       <h4>实际求解与校验证据</h4>
       <div className="mini-stats" style={{ flexWrap: 'wrap' }}>
@@ -143,7 +146,7 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
         {!negotiation ? <p>缺少有效求解证据，未生成报价。</p> : <>
           <p>当前已确认 {confirmed.size} 个任务。未声明扰动时，异常恢复角色不报价。</p>
           {[...confirmed].map(([id, message]) => <p key={id}>{id} · {roles[message.role]} <button disabled={busy}
-            className="btn btn-ghost" onClick={() => void action(() => revoke(id))}>撤销确认</button></p>)}
+            className="btn btn-ghost" onClick={() => void action(signal => revoke(id, signal))}>撤销确认</button></p>)}
           <div className="table-wrap"><table><thead><tr><th>序号</th><th>时间（秒）</th><th>角色</th><th>动作</th><th>任务</th><th>记录</th></tr></thead>
             <tbody>{transcript.map(m => <tr key={m.seq}><td>{m.seq}</td><td>{m.at_s}</td><td>{roles[m.role]}</td><td>{messages[m.kind]}</td><td>{m.task_id}</td><td style={{ overflowWrap: 'anywhere', maxWidth: 450 }}>{m.detail}</td></tr>)}</tbody></table></div>
           <small style={{ overflowWrap: 'anywhere' }}>摘要：{negotiation.digest}</small>
