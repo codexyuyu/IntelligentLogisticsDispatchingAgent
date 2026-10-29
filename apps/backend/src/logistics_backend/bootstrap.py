@@ -17,6 +17,9 @@ from logistics_agents.service import AgentChatService
 from logistics_backend.api.errors import install_handlers, response
 from logistics_backend.application.agent import AgentRunService
 from logistics_backend.application.decision import DecisionService
+from logistics_backend.application.vehicle_delay_approval import (
+    VehicleDelayApprovalService,
+)
 from logistics_backend.application.events import EventService
 from logistics_backend.application.exceptions import ExceptionService
 from logistics_backend.application.experiment import ExperimentService
@@ -112,6 +115,7 @@ class Services:
     metrics: MetricsService
     schedules: ScheduleService
     integration: IntegrationService
+    vehicle_delay: "VehicleDelayApprovalService"
 
 
 def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tuple[object, Services]:
@@ -152,6 +156,10 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         metrics=MetricsService(factory, settings.scope_id),
         schedules=ScheduleService(factory, settings.scope_id, snapshots, commits, jobs),
         integration=IntegrationService(factory, settings.scope_id, jobs),
+        vehicle_delay=VehicleDelayApprovalService(
+            uow_factory=factory, scope_id=settings.scope_id,
+            decisions=DecisionService(factory, settings.scope_id),
+            schedules=ScheduleService(factory, settings.scope_id, snapshots, commits, jobs)),
     )
     return engine, services
 
@@ -182,6 +190,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.simulation_results = services.simulation_results
     app.state.agents = services.agents
     app.state.tools = services.tools
+    app.state.vehicle_delay = services.vehicle_delay
     app.state.decisions = services.decisions
     app.state.experiments = services.experiments
     app.state.metrics = services.metrics

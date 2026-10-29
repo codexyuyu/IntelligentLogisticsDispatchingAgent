@@ -8286,6 +8286,25 @@
         "title": "VehicleDTO",
         "type": "object"
       },
+      "VehicleDelayApproveRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "expected_active_version_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Active Version Id"
+          }
+        },
+        "title": "VehicleDelayApproveRequest",
+        "type": "object"
+      },
       "VehicleFailurePayloadDTO": {
         "additionalProperties": false,
         "properties": {
@@ -12770,6 +12789,197 @@
           }
         },
         "summary": "Propose Reschedule",
+        "tags": [
+          "reschedule"
+        ]
+      }
+    },
+    "/api/v1/reschedules/vehicle-delay/base-plan/{schedule_id}": {
+      "get": {
+        "description": "读取该排程最近一次已批准处置方案，作为下一次局部重解的基线。",
+        "operationId": "get_vehicle_delay_base_plan",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "schedule_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Schedule Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Read Vehicle Delay Base Plan",
+        "tags": [
+          "reschedule"
+        ]
+      }
+    },
+    "/api/v1/reschedules/vehicle-delay/decisions/{decision_id}/approve": {
+      "post": {
+        "description": "人工批准：提交新版本。未批准前不会产生任何版本。",
+        "operationId": "approve_vehicle_delay_decision",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "decision_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Decision Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/VehicleDelayApproveRequest"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Command"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Approve Vehicle Delay",
+        "tags": [
+          "reschedule"
+        ]
+      }
+    },
+    "/api/v1/reschedules/vehicle-delay/decisions/{decision_id}/reject": {
+      "post": {
+        "description": "人工拒绝：只关闭决策，不提交版本。",
+        "operationId": "reject_vehicle_delay_decision",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "decision_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Decision Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Reject Vehicle Delay",
         "tags": [
           "reschedule"
         ]
