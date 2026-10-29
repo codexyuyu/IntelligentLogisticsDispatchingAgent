@@ -17,8 +17,14 @@ from logistics_backend.application.candidates import build_candidate
 from logistics_backend.application.optimization import build_transport_problem
 from logistics_backend.application.scenario_import import prepare_scenario
 from logistics_backend.application.submission import submit_job
+from logistics_backend.application.timeline import TimelineValidationError, build_timeline, state_at_time
 from logistics_backend.errors import ServiceError
-from logistics_backend.persistence.integration_models import integration_runs, integration_scenarios
+from logistics_backend.persistence.integration_models import (
+    integration_runs,
+    integration_scenarios,
+    integration_timeline_events,
+)
+from logistics_backend.persistence.scenario_projection import project_checked_scenario
 from logistics_contracts.integration import IntegrationJobContent, IntegrationRun, ScenarioImport
 from logistics_contracts.mapping import (
     budget_dto,
@@ -263,6 +269,8 @@ class IntegrationService:
             return prepared
         identity = uuid5(NAMESPACE, f'{actor.scope_id}:{prepared["input_hash"]}')
         with self.uow_factory() as uow:
+            project_checked_scenario(uow.connection, actor.scope_id,
+                                     ScenarioImport.model_validate(prepared['payload']))
             uow.connection.execute(insert(integration_scenarios).values(id=identity, scope_id=actor.scope_id,
                 input_hash=prepared['input_hash'], created_at=datetime.now(UTC), created_by=actor.actor_id,
                 payload=prepared['payload']).on_conflict_do_nothing())
@@ -356,6 +364,40 @@ class IntegrationService:
                 return current['payload']
             uow.connection.execute(update(integration_runs).where(integration_runs.c.id == identity).values(payload=result))
         return result
+
+    def timeline(self, identity, actor):
+        """Persist only validated, reconciled *planned* event evidence."""
+        result = self.get(identity, actor)
+        try:
+            replay = build_timeline(result, run_id=identity)
+        except TimelineValidationError as exc:
+            raise ServiceError(ErrorCode.UNVERIFIED_SOLVER_RESULT, str(exc)) from exc
+        events = replay["events"]
+        with self.uow_factory() as uow:
+            connection = uow.connection
+            existing = connection.execute(select(integration_timeline_events).where(
+                integration_timeline_events.c.run_id == identity,
+                integration_timeline_events.c.scope_id == actor.scope_id)
+                .order_by(integration_timeline_events.c.sequence)).mappings().all()
+            if not existing:
+                now = datetime.now(UTC).replace(microsecond=0)
+                connection.execute(insert(integration_timeline_events).values([{
+                    'id': UUID(event['id']), 'scope_id': actor.scope_id,
+                    'run_id': identity, 'sequence': event['sequence'], 'time_s': event['time_s'],
+                    'kind': event['kind'], 'created_at': now, 'payload': event}
+                    for event in events]).on_conflict_do_nothing())
+                existing = connection.execute(select(integration_timeline_events).where(
+                    integration_timeline_events.c.run_id == identity,
+                    integration_timeline_events.c.scope_id == actor.scope_id)
+                    .order_by(integration_timeline_events.c.sequence)).mappings().all()
+            if len(existing) != len(events) or any(row['payload'] != event
+                    for row, event in zip(existing, events)):
+                raise ServiceError(ErrorCode.RESOURCE_CONFLICT, 'persisted timeline differs from checked plan')
+        return {**replay, 'run_id': str(identity)}
+
+    def state_at(self, identity, at_s, actor):
+        replay = self.timeline(identity, actor)
+        return {'run_id': str(identity), **state_at_time(replay, self.get(identity, actor), at_s)}
 
     def revoke(self, identity, command, actor):
         self._scope(actor)

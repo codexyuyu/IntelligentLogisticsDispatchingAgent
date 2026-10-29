@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Annotated, Any
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Header, Request
+from fastapi import APIRouter, Depends, Header, Query, Request
 
 from logistics_backend.api.dependencies import actor, operator
 from logistics_backend.application.scenario_import import prepare_scenario
@@ -56,6 +56,17 @@ def observations(run_id: UUID, current: Annotated[Any, Depends(actor)], app: Ann
     result = app.get(run_id, current)
     return {'status': result['status'], 'source_kind': result.get('source_kind'),
             'observations': result.get('observations'), 'reason': result.get('reason')}
+
+
+@router.get('/runs/{run_id}/timeline', operation_id='read_integration_timeline')
+def timeline(run_id: UUID, current: Annotated[Any, Depends(actor)], app: Annotated[Any, Depends(service)]):
+    return app.timeline(run_id, current)
+
+
+@router.get('/runs/{run_id}/state-at', operation_id='read_integration_state_at')
+def state_at(run_id: UUID, current: Annotated[Any, Depends(actor)], app: Annotated[Any, Depends(service)],
+             time_s: int = Query(ge=0)):
+    return app.state_at(run_id, time_s, current)
 
 
 @router.post('/runs/{run_id}/revoke', operation_id='revoke_integration_award')

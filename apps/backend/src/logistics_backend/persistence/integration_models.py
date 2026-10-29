@@ -1,5 +1,5 @@
 """Immutable scenario evidence and durable negotiation/observation records."""
-from sqlalchemy import Column, DateTime, ForeignKey, Index, String, Table, UniqueConstraint
+from sqlalchemy import BigInteger, CheckConstraint, Column, DateTime, ForeignKey, Index, String, Table, UniqueConstraint
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 
 from logistics_backend.persistence.resource_models import metadata
@@ -24,3 +24,22 @@ integration_runs = Table('integration_runs', metadata,
     Column('payload', JSONB, nullable=False),
     UniqueConstraint('scope_id', 'idempotency_key', name='uq_integration_runs_key'))
 Index('ix_integration_runs_scope', integration_runs.c.scope_id, integration_runs.c.created_at)
+
+
+# Planned replay stream, deliberately separate from real incident `events` and
+# from actual task state transitions.  One immutable sequence per checked run.
+integration_timeline_events = Table('integration_timeline_events', metadata,
+    Column('id', UUID(as_uuid=True), primary_key=True),
+    Column('scope_id', UUID(as_uuid=True), nullable=False),
+    Column('run_id', UUID(as_uuid=True), ForeignKey('integration_runs.id', ondelete='RESTRICT'), nullable=False),
+    Column('sequence', BigInteger, nullable=False),
+    Column('time_s', BigInteger, nullable=False),
+    Column('kind', String(40), nullable=False),
+    Column('created_at', DateTime(timezone=True), nullable=False),
+    Column('payload', JSONB, nullable=False),
+    UniqueConstraint('run_id', 'sequence', name='uq_integration_timeline_run_sequence'),
+    CheckConstraint('sequence >= 0 AND time_s >= 0', name='timeline_nonnegative'),
+    CheckConstraint("payload->>'id' = id::text AND (payload->>'sequence')::bigint = sequence "
+                    "AND payload->>'kind' = kind", name='timeline_payload_identity'))
+Index('ix_integration_timeline_scope_run', integration_timeline_events.c.scope_id,
+      integration_timeline_events.c.run_id, integration_timeline_events.c.sequence)
