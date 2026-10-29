@@ -25,6 +25,9 @@ class ToolSpec:
     name: str
     description: str
     allowed_roles: tuple[str, ...]
+    # JSON Schema for the arguments object. Optional so pre-existing registrations keep working;
+    # when omitted the model is told the tool takes no arguments.
+    parameters: Mapping[str, Any] | None = None
 
     def __post_init__(self) -> None:
         if not self.name or len(self.name) > 64:
@@ -33,6 +36,16 @@ class ToolSpec:
             raise ValueError("tool description must be 1..256 characters")
         if not self.allowed_roles:
             raise ValueError("tool requires at least one allowed role")
+        if self.parameters is not None and self.parameters.get("type") != "object":
+            raise ValueError("tool parameters must be a JSON schema of type object")
+
+    def to_openai_tool(self) -> dict[str, Any]:
+        return {"type": "function", "function": {
+            "name": self.name,
+            "description": self.description,
+            "parameters": dict(self.parameters) if self.parameters is not None
+            else {"type": "object", "properties": {}},
+        }}
 
 
 @dataclass(frozen=True, slots=True)
