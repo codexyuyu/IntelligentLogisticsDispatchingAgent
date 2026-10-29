@@ -187,3 +187,103 @@ def test_reject_does_not_commit(database_url: str):
     # 没有已批准记录时，基线还原必须显式失败而不是返回半成品
     with pytest.raises(Exception):
         approval.load_base_plan(actor=actor, schedule_id=schedule_id)
+
+
+def _proposal(database_url: str):
+    """在共享主数据 scope 上准备一份待审方案（propose 之前不发版本）。"""
+
+    from logistics_backend.cli.seed import seed
+
+    engine = create_engine(database_url, pool_pre_ping=True)
+    _cleanup(engine)
+    seed("tiny_master", database_url)
+
+    scope = MASTER_SCOPE
+    actor = ActorContext(actor_id=uuid4(), role=ActorRole.OPERATOR, scope_id=scope)
+
+    def factory(**options):
+        return UnitOfWork(engine, **options)
+
+    problem, base_plan, base_stops = _live_problem()
+    outcome = resolve_vehicle_delay(
+        problem, base_plan, base_stops,
+        VehicleDelayRequest(vehicle_id=base_plan.routes[0].vehicle_id, delay_s=60, event_time_s=0))
+    assert outcome.status == "resolved", (outcome.reason, outcome.detail)
+
+    schedules = ScheduleService(factory, scope, commits=PlanCommitStore(factory, scope))
+    approval = VehicleDelayApprovalService(
+        uow_factory=factory, scope_id=scope,
+        decisions=DecisionService(factory, scope), schedules=schedules)
+    schedule_id = schedules.create(ScheduleCreate(
+        name=f"vehicle-delay-{uuid4().hex[:8]}",
+        scope=scope_dto(problem.snapshot.scope)), actor).schedule_id
+
+    proposal = approval.propose(actor=actor, schedule_id=schedule_id, problem=problem,
+                                base_plan=base_plan, base_stops=base_stops,
+                                outcome=outcome, event_id=uuid4())
+    return engine, actor, approval, schedule_id, proposal
+
+
+def _version_count(engine, schedule_id) -> int:
+    with engine.connect() as connection:
+        return connection.execute(text(
+            "select count(*) from schedule_versions where schedule_id = :s"),
+            {"s": schedule_id}).scalar_one()
+
+
+def test_approve_is_idempotent(database_url: str):
+    engine, actor, approval, schedule_id, proposal = _proposal(database_url)
+    decision_id = UUID(proposal["decision_id"])
+
+    first = approval.approve(actor=actor, decision_id=decision_id, trace_id=uuid4())
+    assert first["committed"] is True
+    assert first["idempotent"] is False
+    assert first["version_no"] == 1
+    assert _version_count(engine, schedule_id) == 1
+
+    second = approval.approve(actor=actor, decision_id=decision_id, trace_id=uuid4())
+    assert second["idempotent"] is True
+    assert second["committed"] is True
+    assert second["version_id"] == first["version_id"]
+    assert second["version_no"] == first["version_no"]
+    assert second["content_hash"] == first["content_hash"]
+
+    # 关键：重复批准不得再产生一个版本
+    assert _version_count(engine, schedule_id) == 1
+
+    third = approval.approve(actor=actor, decision_id=decision_id, trace_id=uuid4())
+    assert third["version_id"] == first["version_id"]
+    assert _version_count(engine, schedule_id) == 1
+
+
+def test_rejected_decision_cannot_be_approved(database_url: str):
+    from logistics_backend.errors import ServiceError
+    from logistics_domain.states import ErrorCode
+
+    engine, actor, approval, schedule_id, proposal = _proposal(database_url)
+    decision_id = UUID(proposal["decision_id"])
+
+    first = approval.reject(actor=actor, decision_id=decision_id)
+    assert first["committed"] is False and first["idempotent"] is False
+
+    again = approval.reject(actor=actor, decision_id=decision_id)
+    assert again["idempotent"] is True
+
+    with pytest.raises(ServiceError) as exc:
+        approval.approve(actor=actor, decision_id=decision_id, trace_id=uuid4())
+    assert exc.value.code is ErrorCode.INVALID_TRANSITION
+    assert _version_count(engine, schedule_id) == 0
+
+
+def test_approved_decision_cannot_be_rejected(database_url: str):
+    from logistics_backend.errors import ServiceError
+    from logistics_domain.states import ErrorCode
+
+    engine, actor, approval, schedule_id, proposal = _proposal(database_url)
+    decision_id = UUID(proposal["decision_id"])
+    approval.approve(actor=actor, decision_id=decision_id, trace_id=uuid4())
+
+    with pytest.raises(ServiceError) as exc:
+        approval.reject(actor=actor, decision_id=decision_id)
+    assert exc.value.code is ErrorCode.INVALID_TRANSITION
+    assert _version_count(engine, schedule_id) == 1

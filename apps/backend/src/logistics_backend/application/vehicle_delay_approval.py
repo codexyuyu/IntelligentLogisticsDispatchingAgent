@@ -1,13 +1,14 @@
 """车辆延误重调度的人工审批闭环。
 
 propose：局部重解结果 → 合并回完整方案 → 建候选（内部二次校验）→ 落 proposed 决策
-approve：决策转 accepted → 提交新版本 → 把该版本路由与停靠点落库
+approve：决策转 accepted → 提交新版本 → 把提交回执写回决策载荷（重复批准原样返回）
 reject ：只转决策状态，不提交
 
 安全边界：
 * 工具/模型只能到 propose；提交必须 operator 显式 approve；
 * 提交走 ScheduleService.commit，快照哈希、校验报告、活跃版本都会再核对一次；
-* 审批当时批准的方案与停靠点存放在决策载荷里，事后可追溯"到底批了什么"。
+* 审批当时批准的方案与停靠点存放在决策载荷里，事后可追溯"到底批了什么"；
+* 已批准的决策再被批准时不重复提交，直接返回首次回执；已拒绝的决策不能批准。
 """
 
 from __future__ import annotations
@@ -17,7 +18,7 @@ from dataclasses import asdict
 from datetime import UTC, datetime, timedelta
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import select, update
 
 from logistics_backend.application.decision import DecisionService
 from logistics_backend.application.plan_route_store import (
@@ -96,6 +97,14 @@ class VehicleDelayApprovalService:
     # ------------------------------------------------------------------ approve
     def approve(self, *, actor, decision_id: UUID, trace_id: UUID,
                 expected_active_version_id: UUID | None = None) -> dict:
+        status = self._decision_status(decision_id, actor)
+        if status is EntityState.ACCEPTED:
+            # 重复批准：返回首次提交的回执，不走状态机也不再次 commit
+            return self._approved_replay(decision_id, actor)
+        if status is EntityState.REJECTED:
+            raise ServiceError(ErrorCode.INVALID_TRANSITION,
+                               "decision was rejected; create a new proposal instead")
+
         payload = self._payload(decision_id, actor)
         self.decisions.transition(decision_id, EntityState.ACCEPTED, actor)
 
@@ -113,6 +122,9 @@ class VehicleDelayApprovalService:
             confirmation_token=None,
         )), actor, trace_id)
 
+        # 把回执写回决策载荷，下一次重复批准据此原样返回
+        self._remember_commit(decision_id, actor, payload, receipt)
+
         return {
             "decision_id": str(decision_id),
             "decision_status": EntityState.ACCEPTED.value,
@@ -123,13 +135,68 @@ class VehicleDelayApprovalService:
             "approved_routes": len(TransportPlanDTO.model_validate(payload["plan"]).routes),
             "approved_stops": len(payload["stops"]),
             "committed": True,
+            "idempotent": False,
         }
+
+    def _approved_replay(self, decision_id: UUID, actor) -> dict:
+        payload = self._payload(decision_id, actor)
+        record = payload.get("commit") or {}
+        if record.get("version_id"):
+            return {
+                "decision_id": str(decision_id),
+                "decision_status": EntityState.ACCEPTED.value,
+                "schedule_id": str(payload["schedule_id"]),
+                "version_id": str(record["version_id"]),
+                "version_no": record.get("version_no"),
+                "content_hash": record.get("content_hash"),
+                "approved_routes": len(TransportPlanDTO.model_validate(payload["plan"]).routes),
+                "approved_stops": len(payload["stops"]),
+                "committed": True,
+                "idempotent": True,
+            }
+        # 兜底：commit 已成功但回执未来得及落盘（进程中断）。此时以当前生效版本作答，
+        # 并显式标注来源，避免把"猜到的版本"说成"当时批准的版本"。
+        schedule_id = UUID(str(payload["schedule_id"]))
+        detail = self.schedules.current_version(schedule_id, actor)
+        return {
+            "decision_id": str(decision_id),
+            "decision_status": EntityState.ACCEPTED.value,
+            "schedule_id": str(schedule_id),
+            "version_id": str(detail.version.version_id),
+            "version_no": detail.version.version_no,
+            "content_hash": detail.version.content_hash,
+            "approved_routes": len(TransportPlanDTO.model_validate(payload["plan"]).routes),
+            "approved_stops": len(payload["stops"]),
+            "committed": True,
+            "idempotent": True,
+            "recovered_from": "active_version",
+        }
+
+    def _remember_commit(self, decision_id: UUID, actor, payload: dict, receipt) -> None:
+        record = dict(payload)
+        record["commit"] = {
+            "version_id": str(receipt.version_id),
+            "version_no": receipt.version_no,
+            "content_hash": receipt.content_hash,
+            "committed_at": datetime.now(UTC).replace(microsecond=0).isoformat(),
+        }
+        with self.uow_factory() as uow:
+            uow.connection.execute(update(decision_records).where(
+                decision_records.c.id == decision_id,
+                decision_records.c.scope_id == actor.scope_id).values(payload=record))
 
     # ------------------------------------------------------------------- reject
     def reject(self, *, actor, decision_id: UUID, reason: str = "rejected") -> dict:
+        status = self._decision_status(decision_id, actor)
+        if status is EntityState.REJECTED:
+            return {"decision_id": str(decision_id), "decision_status": status.value,
+                    "committed": False, "reason": reason, "idempotent": True}
+        if status is EntityState.ACCEPTED:
+            raise ServiceError(ErrorCode.INVALID_TRANSITION,
+                               "decision was already approved and committed; cannot reject")
         view = self.decisions.transition(decision_id, EntityState.REJECTED, actor)
         return {"decision_id": str(decision_id), "decision_status": view.status,
-                "committed": False, "reason": reason}
+                "committed": False, "reason": reason, "idempotent": False}
 
     # --------------------------------------------------------------- from event
     def prepare_from_event(self, *, actor, event_id: UUID, schedule_id: UUID,
@@ -210,6 +277,15 @@ class VehicleDelayApprovalService:
         if row is None:
             raise ServiceError(ErrorCode.NOT_FOUND, "decision not found")
         return row[0]
+
+    def _decision_status(self, decision_id: UUID, actor) -> EntityState:
+        with self.uow_factory() as uow:
+            row = uow.connection.execute(select(decision_records.c.status).where(
+                decision_records.c.id == decision_id,
+                decision_records.c.scope_id == actor.scope_id)).first()
+        if row is None:
+            raise ServiceError(ErrorCode.NOT_FOUND, "decision not found")
+        return EntityState(row[0])
 
     def _candidate_hashes(self, candidate_id: UUID, actor) -> tuple[str, str]:
         with self.uow_factory() as uow:
