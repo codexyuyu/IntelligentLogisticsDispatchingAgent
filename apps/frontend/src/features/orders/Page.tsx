@@ -91,7 +91,7 @@ export default function Page() {
     </div>
 
     <div className="panel">
-      <div className="panel-title-row"><div><h3>订单清单</h3><p>点击行展开完整调度链路（仓储作业 → 装车 → 配送 → 返回）</p></div><span className="soft-badge">{activePlan ? '方案已联动' : '等待基线方案'}</span></div>
+      <div className="panel-title-row"><div><h3>订单清单</h3></div><span className="soft-badge">{activePlan ? '方案已联动' : '等待基线方案'}</span></div>
       <div className="table-wrap">
         <table>
           <thead><tr><th>订单</th><th>仓库</th><th>批次</th><th>温区</th><th>数量</th><th>服务时间窗</th><th>当前车辆</th><th>送达时刻</th><th>状态</th></tr></thead>
