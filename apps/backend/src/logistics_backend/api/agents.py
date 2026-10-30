@@ -10,6 +10,8 @@ from logistics_backend.api.dependencies import actor, operator
 from logistics_backend.application.agent import AgentRunService
 from logistics_contracts.agents import (
     AgentChatRequest,
+    DispatchRequest,
+    DispatchResponse,
     AgentChatResponse,
     AgentRunPage,
     AgentToolCallPage,
@@ -43,6 +45,25 @@ def agent_chat(request: Request, command: AgentChatRequest,
                current: ActorContext = Depends(operator),
                service: AgentRunService = Depends(agent_service)):
     return service.chat_once(command, current, request.state.trace_id)
+
+
+def dispatch_service(request: Request):
+    return request.app.state.dispatch_agent
+
+
+@router.post("/agents/dispatch", response_model=DispatchResponse,
+             operation_id="agent_dispatch_analysis")
+def dispatch(command: DispatchRequest, request: Request,
+             current: ActorContext = Depends(operator),
+             service=Depends(dispatch_service)):
+    return service.execute(command, current, request.state.trace_id)
+
+
+@router.get("/agents/dispatch/{agent_run_id}", response_model=DispatchResponse,
+            operation_id="get_agent_dispatch_analysis")
+def get_dispatch(agent_run_id: UUID, current: ActorContext = Depends(actor),
+                 service: AgentRunService = Depends(agent_service)):
+    return service.get_dispatch(agent_run_id, current)
 
 
 @router.get("/agents/runs", response_model=AgentRunPage, operation_id="list_agent_runs")

@@ -22,6 +22,7 @@ from logistics_backend.application.integration_simulation_tracks import (
     sample_track,
 )
 from logistics_backend.application.timeline import state_at_time
+from logistics_backend.application.midroad_reroute import optimize_midroad_continuation
 from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.integration_models import (
     integration_simulation_incidents,
@@ -102,6 +103,9 @@ class IntegrationSimulationService:
         incident = self._incident(row['id'], actor)
         return {
             **row['payload'],
+            'horizon_s': max(row['payload']['horizon_s'],
+                             max((event['time_s'] for event in incident['payload']['candidate_events']), default=0)
+                             if incident is not None else 0),
             'simulation_id': str(row['id']),
             'status': 'ready' if incident is None else incident['status'],
             'incident': None if incident is None else self._incident_view(incident),
@@ -112,17 +116,40 @@ class IntegrationSimulationService:
         }
 
     @staticmethod
+    def project_delay(result, simulation_payload, vehicle_id, at_s, delay_s, budget_ms, incident_id):
+        """Shared, read-only projection for Agent preview and human registration.
+
+        A verified mid-road continuation wins when feasible. Otherwise fall back
+        to the existing independently validated hold/resume projection; never
+        publish a solver failure as a successful reroute.
+        """
+        tracks = simulation_payload['tracks']
+        events = simulation_payload['events']
+        fallback_tracks = hold_and_shift(tracks, vehicle_id, at_s, delay_s)
+        impact = delay_impact(result, events, vehicle_id, at_s, delay_s)
+        fallback_events = retime_events(events, vehicle_id, at_s, delay_s, incident_id)
+        optimized = optimize_midroad_continuation(result, tracks, events, vehicle_id,
+                                                   at_s, delay_s, budget_ms, incident_id)
+        if optimized['status'] == 'resolved':
+            return {**optimized, 'local_solver': {'status': 'resolved',
+                'applied_to_simulation': True, 'route_changed': optimized['route_changed'],
+                'engine': optimized['solver_engine']}}
+        return {'strategy': 'simulated_hold_resume', 'route_changed': False,
+                'candidate_tracks': fallback_tracks, 'candidate_events': fallback_events,
+                'impact': impact, 'proposal_valid': impact['valid'],
+                'local_solver': optimized}
+
+    @staticmethod
     def _incident_view(row):
         return {**row['payload'], 'status': row['status'],
                 'row_version': row['row_version'], 'event_id': str(row['event_id'])}
 
     @staticmethod
     def _s1_advice(result, vehicle_id, at_s, delay_s, budget_ms):
-        """Run the S1 local solver, but do not splice its depot-origin plan mid-road.
+        """Legacy S1 diagnostic only; never splice its depot-origin route mid-road.
 
-        S1's current local problem starts at the vehicle's depot; using that as a
-        mid-road continuation would teleport a truck.  The approved P0 policy is
-        the separately checked hold-and-resume projection instead.
+        The production projection now uses the separate, onboard-load-aware
+        midroad_reroute module. Keep this advisory for backward compatibility.
         """
         from logistics_backend.application.vehicle_delay_reschedule import (
             VehicleDelayRequest,
@@ -164,12 +191,9 @@ class IntegrationSimulationService:
         if vehicle_id not in baseline_state['in_transit_vehicle_ids']:
             raise ServiceError(ErrorCode.INVALID_INPUT, 'vehicle not in transit at incident time')
         try:
-            candidate_tracks = hold_and_shift(tracks, vehicle_id, command.time_s, command.delay_s)
             result = self._run(run_id, actor)
-            impact = delay_impact(result, original['events'], vehicle_id,
-                                  command.time_s, command.delay_s)
-            candidate_events = retime_events(original['events'], vehicle_id, command.time_s,
-                                             command.delay_s, str(identity))
+            projection = self.project_delay(result, original, vehicle_id, command.time_s,
+                                             command.delay_s, command.budget_ms, str(identity))
         except SimulationTrackError as exc:
             raise ServiceError(ErrorCode.INVALID_INPUT, str(exc)) from exc
 
@@ -181,7 +205,7 @@ class IntegrationSimulationService:
 
         # S1's persisted event contract remains legal: kind=transport_delay,
         # entity=transport_task.  The stable source ID makes retries idempotent.
-        s1 = self._s1_advice(result, vehicle_id, command.time_s, command.delay_s, command.budget_ms)
+        s1 = projection['local_solver']
         envelope = EventEnvelopeDTO.model_validate({
             'schema_version': '2.0.0', 'source': 'integration-simulation',
             'source_event_id': f'{simulation["id"]}:{command.source_event_id}',
@@ -197,10 +221,11 @@ class IntegrationSimulationService:
             'vehicle_id': vehicle_id, 'time_s': command.time_s,
             'delay_s': command.delay_s, 'reason': command.reason,
             'source_event_id': command.source_event_id,
-            'strategy': 'simulated_hold_resume', 'candidate_version': 1, 'impact': impact,
-            's1_local_solver': s1, 'candidate_tracks': candidate_tracks,
-            'candidate_events': candidate_events,
-            'proposal_valid': impact['valid'],
+            'strategy': projection['strategy'], 'candidate_version': 1,
+            'route_changed': projection['route_changed'], 'impact': projection['impact'],
+            's1_local_solver': s1, 'candidate_tracks': projection['candidate_tracks'],
+            'candidate_events': projection['candidate_events'],
+            'proposal_valid': projection['proposal_valid'],
         }
         now = datetime.now(UTC).replace(microsecond=0)
         with self.uow_factory() as uow:
@@ -280,7 +305,7 @@ class IntegrationSimulationService:
         payload = simulation['payload']
         tracks = payload['tracks'] if selected == 'baseline' else incident['payload']['candidate_tracks']
         events = payload['events'] if selected == 'baseline' else incident['payload']['candidate_events']
-        source = 'simulated_from_planned' if selected == 'baseline' else 'simulated_delay_projection'
+        source = 'simulated_from_planned' if selected == 'baseline' else incident['payload']['strategy']
         state = state_at_time({'events': events}, self._run(run_id, actor), at_s)
         positions = {track['vehicle_id']: sample_track(track, at_s) for track in tracks}
         # The S4 position set was derived from unshifted planned stops.  In a
@@ -294,7 +319,7 @@ class IntegrationSimulationService:
             **state, 'run_id': str(run_id), 'simulation_id': str(simulation['id']),
             'source_kind': source, 'view': selected, 'time_s': at_s,
             'incident_status': None if incident is None else incident['status'],
-            'active_version': 1 if selected == 'candidate' else 0,
+            'active_version': 1 if incident is not None and incident['status'] == 'approved' else 0,
             'vehicle_positions': positions,
             'events': [event for event in events if event['time_s'] <= at_s],
             'event_count': len(events),

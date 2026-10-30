@@ -48,7 +48,8 @@ export async function request<T>(path: string, init: RequestInit = {}): Promise<
   if (init.signal?.aborted) abort();
   else init.signal?.addEventListener('abort', abort, { once: true });
   let timedOut = false;
-  const timer = setTimeout(() => { timedOut = true; controller.abort(); }, 30_000);
+  const timeoutMs = path === '/agents/dispatch' ? 65_000 : 30_000;
+  const timer = setTimeout(() => { timedOut = true; controller.abort(); }, timeoutMs);
   try {
     const response = await fetch(`${BASE}${path}`, { ...init, headers, signal: controller.signal });
     const text = await response.text();
@@ -65,7 +66,7 @@ export async function request<T>(path: string, init: RequestInit = {}): Promise<
     }
     return body as T;
   } catch (error) {
-    if (timedOut) throw new Error('请求超过 30 秒。任务可能已被接收，请先查询状态再决定是否重新提交。');
+    if (timedOut) throw new Error(`请求超过 ${timeoutMs / 1000} 秒。请先查看运行记录，不要立即重复提交。`);
     throw error;
   } finally {
     clearTimeout(timer);

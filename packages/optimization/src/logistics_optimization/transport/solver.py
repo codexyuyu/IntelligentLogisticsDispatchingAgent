@@ -82,12 +82,16 @@ class OrToolsTransportSolver:
                 diagnostics=(Diagnostic("transport_infeasible", DiagnosticSeverity.ERROR,
                                         "no feasible vehicle assignment was found"),),
                 solver_evidence=(self._evidence(problem, status, ()),))
-        routes, cost, unserved, all_stops = self._extract(problem, manager, routing, assignment, data)
+        routes, cost, unserved, all_stops, soft_late = self._extract(problem, manager, routing, assignment, data)
+        times = routing.GetDimensionOrDie("time")
+        active = [i for i in range(len(problem.vehicles)) if routing.IsVehicleUsed(assignment, i)]
+        makespan_s = (max(assignment.Value(times.CumulVar(routing.End(i))) for i in active)
+                      - min(assignment.Value(times.CumulVar(routing.Start(i))) for i in active)) if active else 0
         plan = TransportPlan(routes=tuple(routes), unserved_order_ids=tuple(unserved), cost=cost)
         status = (SolveStatus.OPTIMAL
                   if routing.status() == routing_enums_pb2.RoutingSearchStatus.ROUTING_OPTIMAL
                   else SolveStatus.FEASIBLE)
-        objective = self._objective(problem, cost, len(unserved), 0)
+        objective = self._objective(problem, cost, len(unserved), soft_late, makespan_s)
         validation = self._validate(problem, plan, all_stops)
         metadata = self._metadata(problem, status, solve_ms, build_ms, True)
         return TransportSolution(status=status, engine_metadata=metadata, candidate=plan,
@@ -120,8 +124,22 @@ class OrToolsTransportSolver:
             to_node = manager.IndexToNode(to_index)
             return _matrix_cell(matrix, locations[from_node], locations[to_node], "travel")
 
-        distance_index = routing.RegisterTransitCallback(distance_cb)
-        routing.SetArcCostEvaluatorOfAllVehicles(distance_index)
+        # Search the same monetary model reported in CostBreakdown.  A zero
+        # distance rate keeps distance as a deterministic tie-breaker.
+        prices = {v.id: v for v in problem.snapshot.vehicles}
+        for i, vehicle in enumerate(problem.vehicles):
+            commercial = prices.get(vehicle.vehicle_id)
+            rate = commercial.rate_cents_per_km if commercial else 0
+            fixed = commercial.fixed_cost_cents if commercial else 0
+            def arc_cost(from_index, to_index, *, unit_rate=rate):
+                distance = distance_cb(from_index, to_index)
+                if distance >= LARGE:
+                    return LARGE
+                return max(0, (distance * unit_rate + 500) // 1000) if unit_rate else distance
+            idx = routing.RegisterTransitCallback(arc_cost)
+            routing.SetArcCostEvaluatorOfVehicle(idx, i)
+            if fixed:
+                routing.SetFixedCostOfVehicle(fixed, i)
         travel_index = routing.RegisterTransitCallback(travel_cb)
 
         def weight_demand(from_index):
@@ -134,12 +152,18 @@ class OrToolsTransportSolver:
 
         weight_index = routing.RegisterUnaryTransitCallback(weight_demand)
         volume_index = routing.RegisterUnaryTransitCallback(volume_demand)
+        # Actual onboard loads matter during a mid-route continuation.
         routing.AddDimensionWithVehicleCapacity(weight_index, 0,
-            [max(0, vehicle.capacity_weight_g - vehicle.start_load.weight_g)
-             for vehicle in problem.vehicles], True, "weight")
+            [v.capacity_weight_g for v in problem.vehicles], False, "weight")
         routing.AddDimensionWithVehicleCapacity(volume_index, 0,
-            [max(0, vehicle.capacity_volume_cm3 - vehicle.start_load.volume_cm3)
-             for vehicle in problem.vehicles], True, "volume")
+            [v.capacity_volume_cm3 for v in problem.vehicles], False, "volume")
+        for i, vehicle in enumerate(problem.vehicles):
+            for dimension_name, start_load in (("weight", vehicle.start_load.weight_g),
+                                               ("volume", vehicle.start_load.volume_cm3)):
+                dim = routing.GetDimensionOrDie(dimension_name)
+                if start_load > (vehicle.capacity_weight_g if dimension_name == "weight" else vehicle.capacity_volume_cm3):
+                    raise InvalidInputError("initial vehicle load exceeds capacity")
+                dim.CumulVar(routing.Start(i)).SetRange(start_load, start_load)
 
         def service_time_cb(from_index, to_index):
             from_node = manager.IndexToNode(from_index)
@@ -154,9 +178,43 @@ class OrToolsTransportSolver:
             index = manager.NodeToIndex(node_index)
             time_dimension.CumulVar(index).SetRange(node.hard_window.earliest_s,
                                                     node.hard_window.latest_s)
+
+            if node.kind == RoutingNodeKind.DELIVERY and node.soft_due_at_s is not None:
+                rate = max(0, problem.policy.soft_late_cents_per_s)
+                if rate:
+                    time_dimension.SetCumulVarSoftUpperBound(index, node.soft_due_at_s, rate)
+        if problem.policy.makespan_cents_per_s > 0:
+            time_dimension.SetGlobalSpanCostCoefficient(problem.policy.makespan_cents_per_s)
+
+        # Pin cargo/temperature compatibility INSIDE the solver, not only in
+        # post-validation. Empty allowed_cargo_types means no restricted list.
+        cargo_by_order = {}
+        for cargo in problem.snapshot.cargo:
+            cargo_by_order.setdefault(cargo.order_id, []).append(cargo)
+        for node_index, node in enumerate(nodes):
+            if node.order_id is None:
+                continue
+            cargo = cargo_by_order.get(node.order_id, ())
+            allowed = [i for i, vehicle in enumerate(problem.vehicles) if all(
+                item.min_temp_decic <= vehicle.setpoint_decic <= item.max_temp_decic and
+                (not vehicle.allowed_cargo_types or item.cargo_type in vehicle.allowed_cargo_types)
+                for item in cargo)]
+            idx = manager.NodeToIndex(node_index)
+            # NOTE: this OR-Tools build does not expose a usable
+            # `SetAllowedVehiclesForIndex` binding (it raises TypeError on any
+            # list), so the same restriction is expressed with per-vehicle
+            # inequalities. Semantics are identical: the node can only be served
+            # by vehicles whose setpoint/cargo types are compatible, and an empty
+            # allowed set makes the node unservable (hence infeasible unless a
+            # disjunction deliberately drops it).
+            allowed_set = set(allowed)
+            for vehicle_index in range(len(problem.vehicles)):
+                if vehicle_index not in allowed_set:
+                    routing.solver().Add(routing.VehicleVar(idx) != vehicle_index)
         for vehicle_index, vehicle in enumerate(problem.vehicles):
             start_index = routing.Start(vehicle_index)
             end_index = routing.End(vehicle_index)
+
             time_dimension.CumulVar(start_index).SetRange(
                 vehicle.available_window.earliest_s, vehicle.available_window.latest_s)
             time_dimension.CumulVar(end_index).SetRange(
@@ -169,6 +227,10 @@ class OrToolsTransportSolver:
             if node.kind in (RoutingNodeKind.PICKUP, RoutingNodeKind.DELIVERY):
                 pairs.setdefault(node.pair_id, {})[node.kind.value] = node_index
         for pair in pairs.values():
+            # A delivery without its pickup is legal in a continuation only:
+            # cargo is already onboard and its start_load is pinned above.
+            if "delivery" in pair and "pickup" not in pair:
+                continue
             if "pickup" not in pair or "delivery" not in pair:
                 raise InvalidInputError("pickup/delivery pair is incomplete")
             pickup = manager.NodeToIndex(pair["pickup"])
@@ -188,24 +250,30 @@ class OrToolsTransportSolver:
         routes: list[Route] = []
         all_stops: list[RouteStop] = []
         visited_orders: set[UUID] = set()
+        total_soft_late = 0
         now = _now()
         candidate_id = uuid4()
         for vehicle_index, vehicle in enumerate(problem.vehicles):
             route_id = uuid4()
             index = routing.Start(vehicle_index)
             stops: list[RouteStop] = []
+            seq_nodes: list[int] = []
             route_distance = 0
             current_weight = vehicle.start_load.weight_g
             current_volume = vehicle.start_load.volume_cm3
             while not routing.IsEnd(index):
                 node_index = manager.IndexToNode(index)
                 next_index = assignment.Value(routing.NextVar(index))
-                route_distance += routing.GetArcCostForVehicle(index, next_index, vehicle_index)
+                from_location = locations[manager.IndexToNode(index)]
+                to_location = locations[manager.IndexToNode(next_index)]
+                route_distance += _matrix_cell(problem.matrix, from_location, to_location, "distance")
                 if node_index < len(nodes):
                     node = nodes[node_index]
+                    seq_nodes.append(node_index)
                     arrival = assignment.Value(time_dimension.CumulVar(index))
                     if node.order_id is not None and node.kind == RoutingNodeKind.DELIVERY:
                         visited_orders.add(node.order_id)
+
                     load_before = Load(current_weight, current_volume)
                     current_weight = max(0, current_weight + node.load_delta.weight_g)
                     current_volume = max(0, current_volume + node.load_delta.volume_cm3)
@@ -218,6 +286,43 @@ class OrToolsTransportSolver:
                         load_before=load_before,
                         load_after=Load(current_weight, current_volume)))
                 index = next_index
+            if stops:
+                # The routing solution fixes the visit order; re-assign the times
+                # as early as the real hard windows allow. OR-Tools may leave a
+                # service exactly on its hard deadline (zero slack) when arc cost
+                # dominates the objective, and such a plan turns every later
+                # delay into a hard-window violation. This forward pass never
+                # relaxes a window: it only picks the earliest legal times.
+                start_location = locations[manager.IndexToNode(routing.Start(vehicle_index))]
+                first_node = nodes[seq_nodes[0]]
+                first_travel = _matrix_cell(problem.matrix, start_location,
+                                            locations[seq_nodes[0]], "travel")
+                depart = max(vehicle.available_window.earliest_s,
+                             first_node.hard_window.earliest_s - first_travel)
+                prev_location = start_location
+                rebuilt: list[RouteStop] = []
+                soft_late = 0
+                for stop, nidx in zip(stops, seq_nodes):
+                    node = nodes[nidx]
+                    travel = _matrix_cell(problem.matrix, prev_location, locations[nidx], "travel")
+                    arrival = depart + travel
+                    service = max(arrival, node.hard_window.earliest_s)
+                    if service > node.hard_window.latest_s:
+                        # Cannot happen for a solution that passed validation; keep
+                        # the solver value rather than inventing an infeasible time.
+                        rebuilt.append(stop)
+                    else:
+                        rebuilt.append(replace(stop, arrival_s=arrival,
+                                               service_start_s=service,
+                                               departure_s=service + node.service_s))
+                    if node.order_id is not None and node.kind == RoutingNodeKind.DELIVERY \
+                            and node.soft_due_at_s is not None:
+                        soft_late += max(0, service - node.soft_due_at_s) * max(
+                            0, problem.policy.soft_late_cents_per_s)
+                    depart = rebuilt[-1].departure_s
+                    prev_location = locations[nidx]
+                stops = rebuilt
+                total_soft_late += soft_late
             if not stops:
                 continue
             all_stops.extend(stops)
@@ -248,14 +353,15 @@ class OrToolsTransportSolver:
             service_cents=sum(route.cost.service_cents for route in routes),
             overtime_cents=0, setup_cents=0,
             total_cents=sum(route.cost.total_cents for route in routes))
-        return routes, cost, unserved, tuple(all_stops)
+        return routes, cost, unserved, tuple(all_stops), total_soft_late
 
-    def _objective(self, problem, cost, unserved, soft_late):
+    def _objective(self, problem, cost, unserved, soft_late, makespan_s=0):
         penalty = unserved * problem.policy.optional_unserved_penalty_cents
-        total = cost.total_cents + penalty + soft_late
+        makespan = makespan_s * max(0, problem.policy.makespan_cents_per_s)
+        total = cost.total_cents + penalty + soft_late + makespan
         return ObjectiveBreakdown(business_cost_cents=cost.total_cents,
             optional_unserved_penalty=penalty, soft_late_penalty=soft_late,
-            disturbance_penalty=0, makespan_penalty=0, objective_total=total)
+            disturbance_penalty=0, makespan_penalty=makespan, objective_total=total)
 
     def _validate(self, problem, plan, stops=()):
         from logistics_optimization.validation.transport import validate_transport

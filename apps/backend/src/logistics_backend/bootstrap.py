@@ -16,6 +16,7 @@ from logistics_agents.llm import DeepSeekProvider, LLMSettings
 from logistics_agents.service import AgentChatService
 from logistics_backend.api.errors import install_handlers, response
 from logistics_backend.application.agent import AgentRunService
+from logistics_backend.application.dispatch_agent import DispatchOrchestrator
 from logistics_backend.application.decision import DecisionService
 from logistics_backend.application.vehicle_delay_approval import (
     VehicleDelayApprovalService,
@@ -111,6 +112,7 @@ class Services:
     simulations: SimulationService
     simulation_results: SimulationResultStore
     agents: AgentRunService
+    dispatch_agent: DispatchOrchestrator
     tools: ToolService
     decisions: DecisionService
     experiments: ExperimentService
@@ -142,6 +144,9 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
     integration = IntegrationService(factory, settings.scope_id, jobs)
     from logistics_backend.application.integration_simulation import IntegrationSimulationService
     event_service = EventService(factory, settings.scope_id)
+    simulation = IntegrationSimulationService(
+        uow_factory=factory, scope_id=settings.scope_id,
+        integration=integration, events=event_service)
     services = Services(
         master_data=MasterDataService(factory, TABLES),
         jobs=jobs,
@@ -157,15 +162,14 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         simulations=SimulationService(jobs),
         simulation_results=SimulationResultStore(),
         agents=agents,
+        dispatch_agent=DispatchOrchestrator(integration, simulation, agents),
         tools=ToolService(jobs, agents, factory, settings.scope_id),
         decisions=DecisionService(factory, settings.scope_id),
         experiments=ExperimentService(factory, settings.scope_id),
         metrics=MetricsService(factory, settings.scope_id),
         schedules=ScheduleService(factory, settings.scope_id, snapshots, commits, jobs),
         integration=integration,
-        integration_simulation=IntegrationSimulationService(
-            uow_factory=factory, scope_id=settings.scope_id,
-            integration=integration, events=event_service),
+        integration_simulation=simulation,
         vehicle_delay=VehicleDelayApprovalService(
             uow_factory=factory, scope_id=settings.scope_id,
             decisions=DecisionService(factory, settings.scope_id),
@@ -200,6 +204,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.simulations = services.simulations
     app.state.simulation_results = services.simulation_results
     app.state.agents = services.agents
+    app.state.dispatch_agent = services.dispatch_agent
     app.state.tools = services.tools
     app.state.vehicle_delay = services.vehicle_delay
     app.state.decisions = services.decisions
@@ -226,7 +231,8 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
         request._body = b"".join(chunks)
         try:
             # Compatibility endpoint waits for a durable job; solver work stays in the worker.
-            timeout = (60 if request.method == "POST" and request.url.path == "/api/v1/integration/runs"
+            timeout = (60 if request.method == "POST" and request.url.path == "/api/v1/agents/dispatch"
+                       else 60 if request.method == "POST" and request.url.path == "/api/v1/integration/runs"
                        and request.query_params.get("wait", "true").lower() not in ("false", "0")
                        else settings.request_timeout_s)
             result = await asyncio.wait_for(call_next(request), timeout)

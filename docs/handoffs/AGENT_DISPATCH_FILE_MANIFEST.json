@@ -1,0 +1,50 @@
+{
+  "basis": "bec4c5b full source",
+  "changes": [
+    {
+      "status": "modified",
+      "path": "apps/backend/src/logistics_backend/api/agents.py"
+    },
+    {
+      "status": "modified",
+      "path": "apps/backend/src/logistics_backend/application/agent.py"
+    },
+    {
+      "status": "added",
+      "path": "apps/backend/src/logistics_backend/application/dispatch_agent.py"
+    },
+    {
+      "status": "modified",
+      "path": "apps/backend/src/logistics_backend/bootstrap.py"
+    },
+    {
+      "status": "modified",
+      "path": "apps/frontend/src/api.ts"
+    },
+    {
+      "status": "modified",
+      "path": "apps/frontend/src/features/agent/Page.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "apps/frontend/src/features/stageB/Incident.tsx"
+    },
+    {
+      "status": "added",
+      "path": "docs/handoffs/AGENT_DISPATCH_IMPLEMENTATION_20261030.md"
+    },
+    {
+      "status": "modified",
+      "path": "packages/agents/src/logistics_agents/service.py"
+    },
+    {
+      "status": "modified",
+      "path": "packages/contracts/src/logistics_contracts/agents.py"
+    },
+    {
+      "status": "added",
+      "path": "tests/unit/test_dispatch_agent_orchestration.py"
+    }
+  ],
+  "tests": "24 passed offline; real PostgreSQL and browser not exercised"
+}
