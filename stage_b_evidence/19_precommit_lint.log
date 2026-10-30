@@ -1,0 +1,27 @@
+########## ruff ##########
+    |                                   ^^
+812 |         report_path.write_text(content,encoding='utf-8')
+813 |     print(json.dumps(summary,ensure_ascii=False,indent=2))
+    |
+
+E701 Multiple statements on one line (colon)
+   --> tools\ai_coding_plan\validate_plan.py:816:24
+    |
+814 |     return 1 if errors else 0
+815 |
+816 | if __name__=='__main__':sys.exit(main())
+    |                        ^
+
+Found 4095 errors.
+[*] 473 fixable with the `--fix` option (118 hidden fixes can be enabled with the `--unsafe-fixes` option).
+RUFF_EXIT=1
+########## check_architecture ##########
+  layer agents: 9 module(s)
+  layer backend: 75 module(s)
+  layer contracts: 22 module(s)
+  layer domain: 25 module(s)
+  layer evaluation: 5 module(s)
+  layer optimization: 11 module(s)
+  layer simulation: 2 module(s)
+architecture-layers: scanned 149 module(s) across 7 layer(s); violations=0
+ARCH_EXIT=0

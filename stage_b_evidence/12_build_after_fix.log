@@ -1,0 +1,9 @@
+[2mdist/[22m[35massets/index-D1QVVmda.css  [39m[1m[2m   56.05 kB[22m[1m[22m[2m │ gzip:  10.49 kB[22m
+[2mdist/[22m[36massets/index-BkB713tj.js   [39m[1m[33m1,036.73 kB[39m[22m[2m │ gzip: 294.13 kB[22m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 2.50s[39m
+BUILD_EXIT=0

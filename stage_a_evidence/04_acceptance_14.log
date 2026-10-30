@@ -1,0 +1,33 @@
+[A01] PASS scenario stored in PG (synthetic) and run b387da41-7a94-5d53-9f5b-3e511c13ea88 is checked
+[A02] PASS orders=10 tasks=30 by_kind={'sort': 10, 'load': 10, 'receive': 10}
+[PROBE] load task keys=['created_at', 'created_by', 'duration_s', 'id', 'kind', 'order_id', 'predecessor_ids', 'required_skills', 'requirements', 'row_version', 'schema_version', 'setup_class', 'status', 'updated_at', 'warehouse_id', 'window']
+[PROBE] load task sample={"id": "23e88eba-2af3-516d-a62b-d6148190abf0", "status": "pending", "created_at": "2026-01-01T00:00:00Z", "updated_at": "2026-01-01T00:00:00Z", "row_version": 0, "schema_version": "2.0.0", "created_by": "00000000-0000-0000-0000-000000000001", "order_id": "15c248eb-aeb3-5c53-a22f-793212e34bcd", "warehouse_id": "3095eda4-48b4-5601-8934-a3f5d2e60272", "kind": "load", "duration_s": 25, "window": {"ear
+[A03] PASS 10 orders loading-ready before their departure; S4 reconciliation 7 checks passed
+[A04] PASS vehicles=2 segments=42
+[A05] PASS tracks round-trip from integration_simulations.payload (2 vehicles)
+[A06] PASS transport_delay event 9aa27062-5510-43d7-8543-53e2f3ac8a3a persisted (source=integration-simulation)
+[A07] PASS affected_orders=4 max_shift=60s valid=True s1_applied=False
+[A08] PASS positions and events identical before t=246 in both views
+[A09] PASS pending incident leaves active view on baseline v0
+[A10] PASS approval moved active version 0 -> 1 (source simulated_delay_projection)
+[A11] PASS repeated approval is idempotent (incidents=1, version stays 1)
+[A12] PASS rejection keeps baseline v0 active
+[A13] PASS state-at replay at [0, 123, 246, 2795]: events/in-transit {0: (4, 0), 123: (36, 0), 246: (77, 2), 2795: (95, 0)}
+[A14] PASS inventory/schedule row counts unchanged: {'inventory_ledger': 0, 'schedules': 0, 'schedule_versions': 0, 'schedule_tasks': 0, 'warehouse_tasks': 30}
+.
+============================== warnings summary ===============================
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+<frozen importlib._bootstrap>:488
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Bitwise inversion '~' on bool is deprecated and will be removed in Python 3.16. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 5 warnings in 32.48s
