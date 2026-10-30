@@ -45,6 +45,12 @@ logistics-backend = { workspace = true }
 [tool.pytest.ini_options]
 minversion = "8.0"
 testpaths = ["tests"]
+# importlib mode does not put the repository root on sys.path, so helper
+# modules under scripts/ (imported by the scenario-fixture tests) were only
+# importable when pytest was launched as `python -m pytest` from the root.
+# Under `uv run pytest` (what CI runs) that import failed with
+# ModuleNotFoundError and aborted collection. Declare it explicitly instead.
+pythonpath = ["."]
 # Unit and integration tests deliberately share the same module basename
 # (test_pXX_YY_*.py) as required by the task manifest, so module-name import would
 # collide; importlib mode keeps same-named test modules isolated per directory.
