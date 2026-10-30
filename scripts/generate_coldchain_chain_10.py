@@ -264,7 +264,9 @@ def build() -> dict:
 
 def main() -> None:
     result = build()
-    OUTPUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # newline="\n" keeps the emitted bytes identical on every platform; the
+    # manifest digest is computed over raw file bytes.
+    OUTPUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(
         f"Generated {OUTPUT.relative_to(ROOT)}: {len(result['snapshot']['orders'])} orders, "
         f"{len(result['warehouse_tasks'])} warehouse tasks"
