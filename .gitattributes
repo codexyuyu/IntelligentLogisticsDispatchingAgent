@@ -1,0 +1,9 @@
+# The three files below are byte-pinned by data/scenarios/manifest.json, whose
+# digests are computed over raw file bytes. Pin LF so a clean checkout on Linux,
+# macOS and Windows all produce byte-identical files: with core.autocrlf a
+# Windows checkout turned them into CRLF and the hash check failed on CI.
+# Scoped to the manifest-pinned files only, so unrelated fixtures keep their
+# current bytes and the diff stays reviewable.
+data/scenarios/manifest.json text eol=lf
+data/scenarios/tiny_master.json text eol=lf
+data/scenarios/coldchain_chain_10.json text eol=lf

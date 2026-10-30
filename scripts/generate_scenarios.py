@@ -148,7 +148,10 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     payload = build()
     text = json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
-    (OUT / "tiny_master.json").write_text(text, encoding="utf-8")
+    # newline="\n" pins the bytes on every platform: manifest digests are taken
+    # over raw file bytes, so a CRLF checkout on Windows would otherwise break
+    # the hash check on a clean Linux checkout (and in CI).
+    (OUT / "tiny_master.json").write_text(text, encoding="utf-8", newline="\n")
     scenario_entries = [{"name": "tiny_master", "path": "tiny_master.json",
                          "sha256": hashlib.sha256(text.encode()).hexdigest()}]
     # The 10-order integration fixture has its own generator; keep its entry
@@ -159,13 +162,13 @@ def main() -> None:
                                  "sha256": hashlib.sha256(chain_path.read_bytes()).hexdigest()})
     (OUT / "manifest.json").write_text(json.dumps({
         "schema_version": "2.0.0", "scenarios": scenario_entries,
-    }, ensure_ascii=False, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+    }, ensure_ascii=False, sort_keys=True, indent=2) + "\n", encoding="utf-8", newline="\n")
     invalid = {"schema_version": "2.0.0", "scenarios": {
         "tiny_master": [{"code": "invalid_temperature", "field": "cargo.min_temp_decic",
                          "expected": "min<=max"}]}}
     (OUT / "invalid_cases.json").write_text(
         json.dumps(invalid, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
-        encoding="utf-8")
+        encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":
