@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { candidateAllowed, decideDelay, loadSimulation, selectIncident, submitDelay, short } from './api';
 import type { SimIncident } from './api';
 import { RunBar, useStageRun } from './RunContext';
+import { readStored } from '../../lib/asyncJobs';
 
 /** Stage A simulation approval deliberately does not submit a real dispatch plan. */
 export default function StageIncident() {
@@ -18,6 +19,24 @@ export default function StageIncident() {
   useEffect(() => {
     const departure = stage.simulation?.events.find(event => event.kind === 'vehicle_departure' && !!event.vehicle_id);
     if (departure) { setVehicle(departure.vehicle_id!); setOccurredAt(departure.time_s + 1); }
+    // Transfer Agent's read-only preview into the EXISTING human-confirmed form.
+    // Stored input is never trusted as authorization and is revalidated by the backend.
+    const saved = readStored('dispatch_delay_handoff');
+    if (saved && stage.simulation) {
+      try {
+        const handoff: unknown = JSON.parse(saved);
+        if (handoff && typeof handoff === 'object' && 'run_id' in handoff
+          && 'vehicle_id' in handoff && 'time_s' in handoff && 'delay_s' in handoff
+          && handoff.run_id === stage.runId && typeof handoff.vehicle_id === 'string'
+          && stage.simulation.tracks.some(track => track.vehicle_id === handoff.vehicle_id)
+          && typeof handoff.time_s === 'number' && Number.isSafeInteger(handoff.time_s)
+          && typeof handoff.delay_s === 'number' && Number.isSafeInteger(handoff.delay_s)) {
+          setVehicle(handoff.vehicle_id); setOccurredAt(handoff.time_s); setDelay(handoff.delay_s);
+          setNotice('已带入调度 Agent 的延误预分析参数；登记仍须由你确认。');
+        }
+      } catch { /* Invalid local data is ignored; backend remains the authority. */ }
+      try { localStorage.removeItem('dispatch_delay_handoff'); } catch { /* optional */ }
+    }
   }, [stage.simulation?.simulation_id]);
   const valid = Number.isInteger(occurredAt) && occurredAt >= 0 && occurredAt <= (stage.simulation?.horizon_s ?? 0)
     && Number.isInteger(delay) && delay > 0 && reason.trim().length > 0;
@@ -69,7 +88,9 @@ export default function StageIncident() {
         <p>受影响订单：{impact?.affected_order_ids?.length ?? 0} · 最大预计顺延：{delays.length ? Math.max(...delays.map(d => d.shift)) : '—'} 秒</p>
         {delays.length > 0 && <div className="table-wrap"><table><thead><tr><th>订单</th><th>预计顺延（秒）</th></tr></thead><tbody>
           {delays.map(item => <tr key={item.order}><td>{short(item.order)}</td><td>{item.shift}</td></tr>)}</tbody></table></div>}
-        <p className="s5-muted">当前可批准候选为原地等待＋后续顺延；S1 局部求解仅为诊断，不直接替换在途路线。</p>
+        <p className="s5-muted">候选策略：{incident.strategy === 'simulated_local_reroute' ? '局部路线重新优化（剩余停靠顺序已改变）'
+          : incident.strategy === 'simulated_local_retimed' ? '局部求解接续（停靠顺序未变）'
+          : '安全等待＋顺延（局部优化不可行或未优于保底方案）'}。{incident.s1_local_solver?.reason ? ` 局部求解状态：${incident.s1_local_solver.reason}` : ''}仅影响数据库模拟，不写入真实运营排程。</p>
         {incident.status === 'pending' && <div className="stageb-actions">
           <button className="btn btn-primary" disabled={busy || !candidateAllowed(incident)} onClick={() => void run(() => decide('approve'))}>人工批准模拟方案</button>
           <button className="btn btn-ghost" disabled={busy} onClick={() => void run(() => decide('reject'))}>拒绝 · 保留原方案</button></div>}

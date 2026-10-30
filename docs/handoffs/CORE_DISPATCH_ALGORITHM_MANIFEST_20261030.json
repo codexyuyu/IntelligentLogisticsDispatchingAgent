@@ -1,0 +1,29 @@
+{
+  "source": "coldchain_agent_acceptance_20261030.zip",
+  "date": "2026-10-30",
+  "changed_files": [
+    "apps/backend/src/logistics_backend/application/dispatch_agent.py",
+    "apps/backend/src/logistics_backend/application/integration_simulation.py",
+    "apps/frontend/src/features/stageB/Incident.tsx",
+    "apps/frontend/src/features/stageB/Replay.tsx",
+    "apps/frontend/src/features/stageB/api.ts",
+    "packages/optimization/src/logistics_optimization/transport/solver.py",
+    "packages/optimization/src/logistics_optimization/validation/transport.py",
+    "tests/integration/test_integration_simulation.py",
+    "tests/unit/test_integration_simulation_tracks.py"
+  ],
+  "added_files": [
+    "apps/backend/src/logistics_backend/application/midroad_reroute.py",
+    "docs/handoffs/CORE_DISPATCH_ALGORITHM_ENHANCEMENT_20261030.md",
+    "docs/handoffs/CORE_DISPATCH_ALGORITHM_MANIFEST_20261030.json",
+    "tests/unit/test_midroad_reroute.py"
+  ],
+  "missing_original_files": [],
+  "validation": {
+    "python_compileall": "passed",
+    "typescript_syntax": "3/3 parsed",
+    "ortools_tests": "not run: unavailable / pytest collection error",
+    "postgresql": "not run",
+    "frontend_build": "not run"
+  }
+}

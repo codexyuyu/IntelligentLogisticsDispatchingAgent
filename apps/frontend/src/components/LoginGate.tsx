@@ -28,13 +28,7 @@ export function LoginGate({ onSuccess }: { onSuccess: () => void }) {
   return (
     <div className="auth-screen">
       <section className="auth-hero">
-        <div className="auth-brand">
-          <div className="auth-logo">冷</div>
-          <div>
-            <strong>县域冷链调度</strong>
-            <span>仓储与运输协同</span>
-          </div>
-        </div>
+        <div />
         <div className="auth-copy">
           <h1>一仓一链，<br />把每一次调度算清楚。</h1>
           <p>仓储作业、冷间时间窗与运输计划在同一张调度单上对齐。</p>

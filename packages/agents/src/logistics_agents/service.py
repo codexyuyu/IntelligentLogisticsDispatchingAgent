@@ -62,7 +62,8 @@ class AgentChatService:
         ))
 
     def run_with_tools(self, message: str, *, tools: Sequence[Mapping[str, Any]],
-                       executor: ToolExecutor, max_turns: int = 4) -> AgentRun:
+                       executor: ToolExecutor, max_turns: int = 4,
+                       max_tool_calls: int = 12) -> AgentRun:
         """Drive a bounded model -> tool -> model loop.
 
         The model decides which tool to call; this method only executes what it asks for and
@@ -70,8 +71,8 @@ class AgentChatService:
         ``max_turns`` is exhausted — in the latter case the run is reported as such rather than
         being presented as a completed answer.
         """
-        if max_turns < 1:
-            raise ValueError("max_turns must be >= 1")
+        if max_turns < 1 or max_tool_calls < 1:
+            raise ValueError("turn and tool-call limits must be positive")
         messages: list[ChatMessage] = [
             ChatMessage("system", TOOL_SYSTEM_PROMPT),
             ChatMessage("user", message),
@@ -86,6 +87,9 @@ class AgentChatService:
             messages.append(ChatMessage("assistant", last_reply.content,
                                         tool_calls=last_reply.tool_calls))
             for call in last_reply.tool_calls:
+                if len(turns) >= max_tool_calls:
+                    return AgentRun(reply=last_reply, turns=tuple(turns),
+                                    stopped_reason="max_turns")
                 result, arguments = self._execute(executor, call)
                 turns.append(ToolTurn(turn=turn, tool_call_id=call.id, name=call.name,
                                       arguments=arguments, ok=result.ok,

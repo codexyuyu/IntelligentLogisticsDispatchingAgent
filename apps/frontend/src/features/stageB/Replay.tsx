@@ -16,11 +16,18 @@ export default function StageReplay({ mode = 'replay' }: { mode?: 'transport' | 
   const [state, setState] = useState<SimulationState | null>(null);
   const [error, setError] = useState('');
   const [selected, setSelected] = useState<string | null>(null);
-  const routes = useMemo(() => tracksToTwinRoutes(simulation?.tracks ?? []), [simulation]);
-  const nodes = useMemo(() => [...new Set(routes.flatMap(route => route.stops.map(stop => stop.nodeId)))], [routes]);
-  const warehouses = useMemo(() => [...new Set(routes.map(route => route.warehouseId))]
-    .map(id => ({ id, zones: ['chilled'] as ('chilled' | 'frozen')[] })), [routes]);
   const incident = selectIncident(simulation);
+  const candidateVisible = Boolean(incident && incident.proposal_valid === true &&
+    (view === 'candidate' || (view === 'active' && simulation?.active_version === 1)));
+  const visibleTracks = candidateVisible ? incident?.candidate_tracks ?? simulation?.tracks ?? [] : simulation?.tracks ?? [];
+  const routes = useMemo(() => tracksToTwinRoutes(visibleTracks), [visibleTracks]);
+  // Keep topology node coordinates stable across baseline and reroute views.
+  const nodes = useMemo(() => [...new Set([
+    ...tracksToTwinRoutes(simulation?.tracks ?? []).flatMap(route => route.stops.map(stop => stop.nodeId)),
+    ...tracksToTwinRoutes(incident?.candidate_tracks ?? []).flatMap(route => route.stops.map(stop => stop.nodeId)),
+  ])].sort(), [simulation]);
+  const warehouses = useMemo(() => [...new Set(tracksToTwinRoutes(simulation?.tracks ?? []).map(route => route.warehouseId))]
+    .map(id => ({ id, zones: ['chilled'] as ('chilled' | 'frozen')[] })), [simulation]);
   const horizon = simulation?.horizon_s ?? 0;
   useEffect(() => { setTime(0); setPlaying(false); setView('active'); setState(null); }, [simulation?.simulation_id]);
   useEffect(() => {
@@ -42,8 +49,7 @@ export default function StageReplay({ mode = 'replay' }: { mode?: 'transport' | 
     return () => controller.abort();
   }, [simulation, runId, time, view]);
   const affected = incident?.vehicle_id ? [incident.vehicle_id] : [];
-  const showAdjusted = Boolean(incident && (view === 'candidate' || (view === 'active' && simulation?.active_version === 1))
-    && incident.proposal_valid === true && Number.isFinite(incident.time_s) && Number.isFinite(incident.delay_s));
+  const showAdjusted = candidateVisible && Number.isFinite(incident?.time_s) && Number.isFinite(incident?.delay_s);
   const holds = showAdjusted && incident?.vehicle_id ? { [incident.vehicle_id]: { fromS: incident.time_s!, untilS: incident.time_s! + incident.delay_s! } } : {};
   return <section aria-label="数据库驱动仓运模拟">
     <SectionHeader title={mode === 'transport' ? '本次仓运模拟 · 3D 车辆路线' : '全局仓运仿真回放'}
@@ -73,10 +79,23 @@ export default function StageReplay({ mode = 'replay' }: { mode?: 'transport' | 
         simTimeS={time} eventActive={Boolean(incident && time >= (incident.time_s ?? horizon + 1))}
         affectedVehicleIds={affected} holdWindows={holds} selectedVehicleId={selected} onPickVehicle={setSelected} height={460} />
         : <p className="callout">当前模拟没有可绘制的轨迹节点；请查看事件表或联系后端核对轨迹结构。</p>}
-      <p className="s5-muted">地图绘制的是已持久化路线的示意拓扑；若审批记录包含延误时刻与时长，候选视图将按原地等待＋顺延绘制；后端 state-at 始终是最终状态证据（并非 GPS）。</p>
+      <p className="s5-muted">{candidateVisible && incident?.route_changed
+        ? '当前展示经约束校验的局部重规划候选轨迹；已执行路段保持不变，之后从安全节点接续新的剩余停靠顺序。'
+        : '地图绘制持久化的示意轨迹；如无可用重规划，候选方案保守采用原地等待＋顺延。'} 具体路段位置和进度以服务端 state-at 为准，并非 GPS。</p>
+      {candidateVisible && incident?.route_changed && <div className="panel">
+        <h3>局部重规划：延误车辆剩余停靠顺序</h3>
+        <p className="s5-muted">已发生的行程和其他车辆保持原样，以下仅用于比较原方案与待审批／已批准模拟候选。</p>
+        {(['baseline', 'candidate'] as const).map(label => {
+          const track = (label === 'baseline' ? simulation.tracks : incident.candidate_tracks ?? [])
+            .find(item => item.vehicle_id === incident.vehicle_id);
+          return <p key={label}><strong>{label === 'baseline' ? '原方案 v0' : '局部优化候选'}</strong>：{
+            track?.stops?.map(stop => `${short(stop.node_id)}(${stop.arrival_s}s)`).join(' → ') || '无停靠信息'
+          }</p>;
+        })}
+      </div>}
       <div className="panel"><h3>时刻状态与事件</h3>
         {state && <><p>后端返回车辆位置：{Object.entries(state.vehicle_positions ?? {}).map(([vehicle, position]) =>
-          `${short(vehicle)}：${typeof position === 'string' ? short(position) : short(position.node_id ?? position.to_node_id)}`).join('；') || '暂无'}</p>
+          `${short(vehicle)}：${typeof position === 'string' ? short(position) : `${short(position.from_node_id ?? position.node_id)}→${short(position.to_node_id)} (${Math.round((position.progress ?? 0) * 100)}%)`}`).join('；') || '暂无'}</p>
         <div className="table-wrap"><table><thead><tr><th>模拟时间</th><th>事件</th><th>车辆</th><th>订单</th></tr></thead><tbody>
           {(state.events ?? []).slice(-18).map((item, index) => <tr key={item.id ?? `${item.time_s}-${index}`}><td>{item.time_s}s</td>
             <td>{item.kind}</td><td>{short(item.vehicle_id)}</td><td>{short(item.order_id)}</td></tr>)}</tbody></table></div></>}

@@ -143,7 +143,7 @@ function SnapshotDashboard() {
 
         <aside className="cockpit-col">
           <div className={`panel alert-panel ${eventActive ? 'alert-live' : ''}`}>
-            <div className="panel-title-row"><div><h3>实时异常告警</h3><p>来自事件通道的真实登记</p></div>
+            <div className="panel-title-row"><div><h3>实时异常告警</h3></div>
               {eventActive ? <StatusPill tone="danger">处置中</StatusPill> : <StatusPill tone="success">无异常</StatusPill>}
             </div>
             {eventActive && anomaly.event ? (
@@ -153,9 +153,7 @@ function SnapshotDashboard() {
                 <small>影响订单：{anomaly.event.payload.affected_order_ids.join('、') || '—'}</small>
                 <button className="btn btn-danger btn-sm" onClick={() => navigate('events')}>进入处置</button>
               </div>
-            ) : (
-              <p className="muted-line">系统正常运行，可在「异常处置」页面注入 veh_1 延误 900s 演练。</p>
-            )}
+            ) : null}
           </div>
 
           <div className="panel">

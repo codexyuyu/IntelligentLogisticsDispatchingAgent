@@ -87,3 +87,36 @@ class AgentToolCallPage(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal["2.0.0"] = "2.0.0"
     items: tuple[AgentToolCallView, ...]
+
+
+class DispatchRequest(BaseModel):
+    """Natural-language analysis bound to one existing checked integration run."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    run_id: UUID
+    session_id: UUID | None = None
+    message: str = Field(min_length=1, max_length=4000)
+
+
+class DispatchToolTrace(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    name: str
+    ok: bool
+    arguments: dict[str, object] | None
+    content: dict[str, object]
+    error_code: str | None = None
+
+
+class DispatchResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal["2.0.0"] = "2.0.0"
+    agent_run_id: UUID
+    run_id: UUID
+    session_id: UUID | None = None
+    reply: str
+    model: str
+    provider_configured: bool
+    trace_id: UUID
+    stopped_reason: Literal["final_answer", "max_turns", "no_tool_evidence"]
+    tools: tuple[DispatchToolTrace, ...] = ()

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { CHARGING_POINTS, FORKLIFT_IDS, FORKLIFT_CLEARANCE_RADIUS, RACK_HALF_DEPTH, RACK_HALF_WIDTH,
   forkliftPose, warehouseTwinData, depositedCargo, conveyorPosition, DOCK_TRANSFER_PROGRESS,
   COLD_PARTITION_X, COLD_PARTITION_PANELS, dockConveyorPosition, FORKLIFT_SEPARATION,
-  reserveForkliftTraffic, minimumForkliftSeparation, QUALITY_SORTING_PATH, ZONES, type TwinForkliftJob } from './warehouseTwin';
+  reserveForkliftTraffic, minimumForkliftSeparation, QUALITY_SORTING_PATH, RECEIVING_ENTRY, ZONES, type TwinForkliftJob } from './warehouseTwin';
 
 const data = warehouseTwinData(null, null, 'showcase');
 function rackDistance(x: number, z: number, rack: { x: number; z: number }) {
@@ -76,18 +76,18 @@ describe('叉车巷道避让', () => {
     expect(conveyorPosition(0, 0)).not.toEqual(conveyorPosition(0, 10));
     expect(conveyorPosition(0, 10)).toEqual(conveyorPosition(0, 10));
     const first = conveyorPosition(0, 0);
-    // The continuous inspection + sorting line is now 28.4 units, at .12 units/s.
-    expect(conveyorPosition(0, 28.4/.12).x).toBeCloseTo(first.x);
-    expect(conveyorPosition(0, 28.4/.12).z).toBeCloseTo(first.z);
+    const beltLength=QUALITY_SORTING_PATH.slice(1).reduce((sum,p,i)=>sum+Math.hypot(p.x-QUALITY_SORTING_PATH[i].x,p.z-QUALITY_SORTING_PATH[i].z),0);
+    expect(conveyorPosition(0, beltLength/.12).x).toBeCloseTo(first.x);
+    expect(conveyorPosition(0, beltLength/.12).z).toBeCloseTo(first.z);
     for(let t=0;t<=1800;t++) for(let i=0;i<4;i++) {
       const position=conveyorPosition(i,t);
-      expect(position.x).toBeGreaterThanOrEqual(-13.6);
+      expect(position.x).toBeGreaterThanOrEqual(-29);
       expect(position.x).toBeLessThan(11.6);
       const onLine=QUALITY_SORTING_PATH.slice(1).some((end,index)=>{
         const start=QUALITY_SORTING_PATH[index];
         return Math.abs(start.z-end.z)<1e-9
           ? Math.abs(position.z-start.z)<1e-9 && position.x>=start.x-1e-9 && position.x<=end.x+1e-9
-          : Math.abs(position.x-start.x)<1e-9 && position.z>=start.z-1e-9 && position.z<=end.z+1e-9;
+          : Math.abs(position.x-start.x)<1e-9 && position.z>=Math.min(start.z,end.z)-1e-9 && position.z<=Math.max(start.z,end.z)+1e-9;
       });
       expect(onLine).toBe(true);
     }
@@ -159,14 +159,17 @@ describe('叉车巷道避让', () => {
     const quality=ZONES.find(z=>z.id==='quality')!,picking=ZONES.find(z=>z.id==='picking')!;
     expect(quality.z+quality.depth/2).toBe(picking.z-picking.depth/2);
     expect(quality.x).toBe(picking.x);
-    const transition=QUALITY_SORTING_PATH[0];
+    const transition=QUALITY_SORTING_PATH[2];
     expect(transition.z).toBeGreaterThan(quality.z-quality.depth/2);
     expect(transition.z).toBeLessThan(quality.z+quality.depth/2);
-    for(const seconds of [4.6/.12,7.8/.12]) {
+    let travelled=0;
+    for(let i=1;i<QUALITY_SORTING_PATH.length-1;i++) {
+      travelled+=Math.hypot(QUALITY_SORTING_PATH[i].x-QUALITY_SORTING_PATH[i-1].x,QUALITY_SORTING_PATH[i].z-QUALITY_SORTING_PATH[i-1].z);
+      const seconds=travelled/.12;
       const before=conveyorPosition(0,seconds-.001),after=conveyorPosition(0,seconds+.001);
       expect(Math.hypot(before.x-after.x,before.z-after.z)).toBeLessThan(.001);
     }
-    expect(conveyorPosition(0,70).z).toBeGreaterThan(picking.z-picking.depth/2);
+    expect(conveyorPosition(0,300).z).toBeGreaterThan(picking.z-picking.depth/2);
   });
 });
 it('取货时先伸叉再举升，并在离架前收回',()=>{
@@ -179,4 +182,34 @@ it('取货时先伸叉再举升，并在离架前收回',()=>{
   expect(pose(37).reach).toBeLessThan(pose(34).reach!);
   expect(pose(38).reach??0).toBe(0);
   expect(pose(37.999).lift).toBeCloseTo(pose(38).lift);
+});
+
+ it('收货与充电位置交换，输送起点位于收货区，充电位仍保持车辆净空',()=>{
+   const receiving=ZONES.find(z=>z.id==='receiving')!,charging=ZONES.find(z=>z.id==='charging')!;
+   expect(receiving.z).toBe(12);expect(charging.z).toBe(-11.5);
+   const start=QUALITY_SORTING_PATH[0];
+   expect(Math.abs(start.x-receiving.x)).toBeLessThan(receiving.width/2);
+   expect(start).toEqual(RECEIVING_ENTRY);
+   expect(QUALITY_SORTING_PATH[1].x).toBe(start.x);
+   expect(start.z).toBeGreaterThan(receiving.z);
+   expect(QUALITY_SORTING_PATH[1].z).toBeLessThan(receiving.z);
+   for(const point of CHARGING_POINTS){
+     expect(Math.abs(point.x-charging.x)).toBeLessThan(charging.width/2);
+     expect(Math.abs(point.z-charging.z)).toBeLessThan(charging.depth/2);
+   }
+ });
+
+it('叉车全程与贯通的收货输送线保持净空',()=>{
+  for(const id of FORKLIFT_IDS)for(const rack of data.racks){
+    const job:TwinForkliftJob={id:'belt-clearance',forkliftId:id,rackId:rack.id,batchId:'b',orderId:'o',startS:0,endS:100,source:'synthetic'};
+    for(let step=0;step<=1000;step++){
+      const pose=forkliftPose(id,step/10,[job],data.racks);
+      for(let i=1;i<QUALITY_SORTING_PATH.length;i++){
+        const a=QUALITY_SORTING_PATH[i-1],b=QUALITY_SORTING_PATH[i];
+        const dx=b.x-a.x,dz=b.z-a.z;
+        const u=Math.max(0,Math.min(1,((pose.x-a.x)*dx+(pose.z-a.z)*dz)/(dx*dx+dz*dz)));
+        expect(Math.hypot(pose.x-a.x-u*dx,pose.z-a.z-u*dz)).toBeGreaterThanOrEqual(FORKLIFT_CLEARANCE_RADIUS+1);
+      }
+    }
+  }
 });

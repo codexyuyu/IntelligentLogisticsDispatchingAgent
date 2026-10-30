@@ -120,6 +120,10 @@ def validate_transport(plan: TransportPlan, problem: TransportProblem,
                 previous_load = stop.load_after
             for order_id in order_ids:
                 for cargo in cargo_by_order.get(order_id, ()):
+                    if vehicle.allowed_cargo_types and cargo.cargo_type not in vehicle.allowed_cargo_types:
+                        violations.append(Violation(code="cargo_type", severity=Severity.HARD,
+                            entity_refs=(), field_path="route.vehicle_id", actual=cargo.cargo_type.value,
+                            expected="compatible vehicle cargo class", message="vehicle cargo class mismatch"))
                     if not (cargo.min_temp_decic <= vehicle.setpoint_decic
                             <= cargo.max_temp_decic):
                         violations.append(Violation(code="temperature",

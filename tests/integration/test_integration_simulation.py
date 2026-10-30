@@ -60,7 +60,10 @@ def test_simulation_routes_delay_approval_and_rejection_persist(warehouse_api):
     assert proposal['status'] == 'pending'
     assert proposal['proposal_valid'] is True
     assert proposal['impact']['affected_order_ids']
-    assert proposal['s1_local_solver']['applied_to_simulation'] is False
+    assert proposal['strategy'] in {'simulated_hold_resume', 'simulated_local_reroute', 'simulated_local_retimed'}
+    assert proposal['s1_local_solver']['applied_to_simulation'] is (
+        proposal['strategy'] != 'simulated_hold_resume')
+    assert proposal['impact']['valid'] is True
     # Approval does not apply until the operator acts.
     before = client.get(f'/api/v1/integration/runs/{run_id}/simulation/state-at?time_s={time_s + 5}&view=active')
     assert before.status_code == 200 and before.json()['view'] == 'baseline'

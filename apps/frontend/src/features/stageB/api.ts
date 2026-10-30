@@ -3,13 +3,16 @@ import { request } from '../../api';
 import type { TwinRoute } from '../../appTypes';
 
 export type TrackSegment = { from_node_id: string; to_node_id: string; start_s: number; end_s: number };
-export type VehicleTrack = { vehicle_id: string; start_node_id?: string; end_node_id: string; segments: TrackSegment[] };
+export type VehicleTrack = { vehicle_id: string; start_node_id?: string; end_node_id: string; segments: TrackSegment[];
+  stops?: { node_id: string; sequence: number; kind?: string; order_id?: string | null; arrival_s: number; departure_s: number }[] };
 export type ReplayEvent = { id?: string; kind: string; time_s: number; vehicle_id?: string | null; order_id?: string | null };
 export type SimIncident = {
   id: string; event_id?: string; status: 'pending' | 'approved' | 'rejected'; row_version: number;
   vehicle_id?: string; time_s?: number; delay_s?: number; proposal_valid?: boolean;
+  strategy?: 'simulated_local_reroute' | 'simulated_local_retimed' | 'simulated_hold_resume';
+  route_changed?: boolean; candidate_tracks?: VehicleTrack[];
+  s1_local_solver?: { status?: string; reason?: string; applied_to_simulation?: boolean; route_changed?: boolean };
   impact?: { affected_order_ids?: string[]; before_eta_s?: Record<string, number>; after_eta_s?: Record<string, number> };
-  s1_local_solver?: { applied_to_simulation?: boolean };
 };
 export type Simulation = {
   run_id?: string; simulation_id: string; horizon_s: number; active_version: number;
@@ -34,7 +37,7 @@ export function loadSimulationState(runId: string, timeS: number, view: 'active'
 export function submitDelay(runId: string, vehicleId: string, timeS: number, delayS: number, reason: string) {
   return request<SimIncident>(`${route(runId)}/incidents`, { method: 'POST', body: JSON.stringify({
     vehicle_id: vehicleId, time_s: timeS, delay_s: delayS, reason,
-    source_event_id: crypto.randomUUID(), budget_ms: 500,
+    source_event_id: crypto.randomUUID(), budget_ms: 2000,
   }) });
 }
 export function decideDelay(runId: string, incident: SimIncident, action: 'approve' | 'reject') {

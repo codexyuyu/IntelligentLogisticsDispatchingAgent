@@ -159,3 +159,31 @@ def test_new_simulation_endpoints_extend_existing_integration_router():
     assert ('/integration/runs/{run_id}/simulation/state-at', 'GET') in available
     assert ('/integration/runs/{run_id}/simulation/incidents/{incident_id}/approve', 'POST') in available
     assert ('/integration/runs/{run_id}/simulation/incidents/{incident_id}/reject', 'POST') in available
+
+
+def test_midroad_candidate_is_verified_or_falls_back_safely(checked):
+    """Covers conservation of served orders and immutable unrelated vehicles."""
+    result, timeline = checked
+    vehicle, time_s = incident_time(timeline)
+    tracks = build_tracks(result, timeline)
+    proposal = IntegrationSimulationService.project_delay(
+        result, {'tracks': tracks, 'events': timeline['events']}, vehicle,
+        time_s, 60, 500, 'test-reroute-projection')
+    assert proposal['strategy'] in {'simulated_hold_resume',
+                                    'simulated_local_reroute', 'simulated_local_retimed'}
+    assert tracks == build_tracks(result, timeline)
+    assert all(a == b for a, b in zip(tracks, proposal['candidate_tracks'], strict=True)
+               if a['vehicle_id'] != vehicle)
+    assert proposal['impact']['affected_order_ids']
+    if proposal['strategy'] == 'simulated_hold_resume':
+        assert proposal['local_solver']['status'] == 'not_resolved'
+        assert proposal['route_changed'] is False
+    else:
+        assert proposal['proposal_valid'] is True
+        assert proposal['local_solver']['applied_to_simulation'] is True
+        old_orders = {e['order_id'] for e in timeline['events'] if e['kind'] == 'order_delivered'}
+        new_orders = {e['order_id'] for e in proposal['candidate_events'] if e['kind'] == 'order_delivered'}
+        assert old_orders == new_orders
+        assert all(e['time_s'] >= time_s for e in proposal['candidate_events']
+                   if e['kind'] == 'transport_delay')
+        assert proposal['candidate_tracks'] != tracks
