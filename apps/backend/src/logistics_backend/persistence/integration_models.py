@@ -43,3 +43,39 @@ integration_timeline_events = Table('integration_timeline_events', metadata,
                     "AND payload->>'kind' = kind", name='timeline_payload_identity'))
 Index('ix_integration_timeline_scope_run', integration_timeline_events.c.scope_id,
       integration_timeline_events.c.run_id, integration_timeline_events.c.sequence)
+
+
+# Simulation-only projections.  These never replace planned timeline evidence,
+# warehouse execution transitions, or approved operational schedule versions.
+integration_simulations = Table('integration_simulations', metadata,
+    Column('id', UUID(as_uuid=True), primary_key=True),
+    Column('scope_id', UUID(as_uuid=True), nullable=False),
+    Column('run_id', UUID(as_uuid=True), ForeignKey('integration_runs.id', ondelete='RESTRICT'), nullable=False),
+    Column('created_at', DateTime(timezone=True), nullable=False),
+    Column('created_by', UUID(as_uuid=True), nullable=False),
+    Column('payload', JSONB, nullable=False),
+    UniqueConstraint('run_id', name='uq_integration_simulations_run'),
+    CheckConstraint("payload->>'id' = id::text AND payload->>'run_id' = run_id::text",
+                    name='payload_identity'))
+Index('ix_integration_simulations_scope_run', integration_simulations.c.scope_id,
+      integration_simulations.c.run_id)
+
+integration_simulation_incidents = Table('integration_simulation_incidents', metadata,
+    Column('id', UUID(as_uuid=True), primary_key=True),
+    Column('scope_id', UUID(as_uuid=True), nullable=False),
+    Column('simulation_id', UUID(as_uuid=True), ForeignKey('integration_simulations.id', ondelete='RESTRICT'), nullable=False),
+    Column('event_id', UUID(as_uuid=True), ForeignKey('events.id', ondelete='RESTRICT'), nullable=False),
+    Column('status', String(16), nullable=False),
+    Column('row_version', BigInteger, nullable=False),
+    Column('created_at', DateTime(timezone=True), nullable=False),
+    Column('updated_at', DateTime(timezone=True), nullable=False),
+    Column('created_by', UUID(as_uuid=True), nullable=False),
+    Column('payload', JSONB, nullable=False),
+    UniqueConstraint('simulation_id', name='uq_integration_simulation_one_incident'),
+    UniqueConstraint('event_id', name='uq_integration_simulation_incident_event'),
+    CheckConstraint("status IN ('pending','approved','rejected')", name='status'),
+    CheckConstraint('row_version >= 0', name='row_version_nonnegative'),
+    CheckConstraint("payload->>'id' = id::text AND payload->>'simulation_id' = simulation_id::text",
+                    name='payload_identity'))
+Index('ix_integration_simulation_incidents_scope', integration_simulation_incidents.c.scope_id,
+      integration_simulation_incidents.c.simulation_id)

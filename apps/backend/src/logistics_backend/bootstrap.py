@@ -117,6 +117,7 @@ class Services:
     metrics: MetricsService
     schedules: ScheduleService
     integration: IntegrationService
+    integration_simulation: "IntegrationSimulationService"
     vehicle_delay: "VehicleDelayApprovalService"
 
 
@@ -139,6 +140,8 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
     agents = AgentRunService(factory,
         AgentChatService(DeepSeekProvider(LLMSettings.from_env())), settings.scope_id)
     integration = IntegrationService(factory, settings.scope_id, jobs)
+    from logistics_backend.application.integration_simulation import IntegrationSimulationService
+    event_service = EventService(factory, settings.scope_id)
     services = Services(
         master_data=MasterDataService(factory, TABLES),
         jobs=jobs,
@@ -149,7 +152,7 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         warehouse=WarehouseOptimizationService(snapshots, jobs),
         warehouse_results=WarehouseResultStore(),
         warehouse_execution=WarehouseExecutionService(factory, settings.scope_id, integration),
-        events=EventService(factory, settings.scope_id),
+        events=event_service,
         exceptions=ExceptionService(factory, settings.scope_id),
         simulations=SimulationService(jobs),
         simulation_results=SimulationResultStore(),
@@ -160,6 +163,9 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         metrics=MetricsService(factory, settings.scope_id),
         schedules=ScheduleService(factory, settings.scope_id, snapshots, commits, jobs),
         integration=integration,
+        integration_simulation=IntegrationSimulationService(
+            uow_factory=factory, scope_id=settings.scope_id,
+            integration=integration, events=event_service),
         vehicle_delay=VehicleDelayApprovalService(
             uow_factory=factory, scope_id=settings.scope_id,
             decisions=DecisionService(factory, settings.scope_id),
@@ -201,6 +207,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.metrics = services.metrics
     app.state.schedules = services.schedules
     app.state.integration = services.integration
+    app.state.integration_simulation = services.integration_simulation
     install_handlers(app)
 
     @app.middleware("http")
