@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
+import GanttPage from '../s5/GanttPage';
+import InventoryPage from '../s5/InventoryPage';
 import { request } from '../../api';
 import SectionHeader from '../../components/SectionHeader';
 import { KpiCard } from '../../components/KpiCard';
@@ -50,6 +52,7 @@ function badgeTone(value: string) {
 }
 
 export default function Page() {
+  const [stageView, setStageView] = useState<'legacy' | 'gantt' | 'ledger'>('legacy');
   const { snapshot, baselinePlan } = useApp();
   const [tab, setTab] = useState<Tab>('overview');
   const [query, setQuery] = useState('');
@@ -177,7 +180,18 @@ export default function Page() {
     setNotice(`${outbound.orderId || '当前订单'} 已完成 ${outbound.quantity} 件出库。`);
   }
 
-  return <div className="warehouse-module">
+  if (stageView === 'gantt') return <div><div className="seg" aria-label="仓储运营视图">
+    <button className="seg-btn" onClick={() => setStageView('legacy')}>原有仓储业务</button>
+    <button className="seg-btn is-active" onClick={() => setStageView('gantt')}>联合排程甘特图</button>
+    <button className="seg-btn" onClick={() => setStageView('ledger')}>实际库存台账</button></div><GanttPage /></div>;
+  if (stageView === 'ledger') return <div><div className="seg" aria-label="仓储运营视图">
+    <button className="seg-btn" onClick={() => setStageView('legacy')}>原有仓储业务</button>
+    <button className="seg-btn" onClick={() => setStageView('gantt')}>联合排程甘特图</button>
+    <button className="seg-btn is-active" onClick={() => setStageView('ledger')}>实际库存台账</button></div><InventoryPage /></div>;
+  return <div><div className="seg" aria-label="仓储运营视图">
+    <button className="seg-btn is-active" onClick={() => setStageView('legacy')}>原有仓储业务</button>
+    <button className="seg-btn" onClick={() => setStageView('gantt')}>联合排程甘特图</button>
+    <button className="seg-btn" onClick={() => setStageView('ledger')}>实际库存台账</button></div>
     <SectionHeader title="仓储管理" />
 
     <div className="seg warehouse-tabs">{tabs.map((item) => <button key={item.key} className={`seg-btn ${tab === item.key ? 'is-active' : ''}`} onClick={() => setTab(item.key)}>{item.label}</button>)}</div>

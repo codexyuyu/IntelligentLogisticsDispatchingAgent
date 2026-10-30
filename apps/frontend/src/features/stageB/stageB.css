@@ -1,0 +1,9 @@
+/* Stage B integrates Stage A into existing navigation and layout; no new top-level page. */
+.stageb-run-bar { display:flex; gap:12px; align-items:flex-end; flex-wrap:wrap; }
+.stageb-run-bar label { min-width:270px; flex:1; }
+.stageb-run-bar p { flex-basis:100%; margin:0; }
+.stageb-controls { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.stageb-seek { flex: 1 1 260px; }
+.stageb-seek input { width:100%; display:block; }
+.stageb-state-row { display:flex; gap:18px; flex-wrap:wrap; padding:10px 4px; }
+.stageb-actions { display:flex; gap:12px; margin-top:12px; }

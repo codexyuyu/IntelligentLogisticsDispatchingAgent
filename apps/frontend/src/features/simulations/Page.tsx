@@ -1,3 +1,4 @@
+import StageReplay from '../stageB/Replay';
 
 import { useMemo, useState } from 'react';
 import SectionHeader from '../../components/SectionHeader';
@@ -75,6 +76,8 @@ export default function Page() {
   }
 
   return <div>
+    <StageReplay mode="replay" />
+    <details><summary>旧版仿真 · 本地快照与 SimPy 演示（保留兼容）</summary>
     <SectionHeader title="仿真回放"
       actions={<button className="btn btn-primary" disabled={simPhase === 'running' || !snapshot} onClick={() => void runReplay()}>{simPhase === 'running' ? '仿真运行中…' : '运行当前异常仿真'}</button>} />
 
@@ -191,5 +194,6 @@ export default function Page() {
         </div>
       </div>
     </div>
+  </details>
   </div>;
 }

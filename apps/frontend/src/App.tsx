@@ -11,7 +11,8 @@ import OrdersPage from './features/orders/Page';
 import WarehousesPage from './features/warehouses/Page';
 import WarehouseManagementPage from './features/warehouse/Page';
 import WarehouseTwinPage from './features/warehouseTwin/Page';
-import SimulationsPage from './features/simulations/LiveSimulation';
+// Stage B: 仿真回放入口指向整合页面（数据库驱动回放 + 旧本地仿真）。
+import SimulationsPage from './features/simulations/Page';
 import ExperimentsPage from './features/experiments/IntegrationExperiments';
 import IntegrationPage, { ObservationPage, ColdChainPage } from './features/integration/Page';
 import AgentPage from './features/agent/Page';
@@ -22,6 +23,7 @@ import S5GanttPage from './features/s5/GanttPage';
 import S5InventoryPage from './features/s5/InventoryPage';
 import S5TimelinePage from './features/s5/TimelinePage';
 import './features/s5/s5.css';
+import './features/stageB/stageB.css';
 
 type NavItem = { key: string; title: string; icon: string };
 // 导航只保留唯一入口：联合调度覆盖协商/指标/冷链标签，运输计划覆盖原“本机数据库调度”。
@@ -31,7 +33,6 @@ const groups: { label: string; items: NavItem[] }[] = [
   { label: '业务数据', items: [{ key: 'orders', title: '订单与库存', icon: 'package' }, { key: 'vehicles', title: '运输计划', icon: 'truck' }] },
   { label: '仓储管理', items: [{ key: 'warehouseTwin', title: '单仓三维视图', icon: 'warehouse' }, { key: 'warehouseOps', title: '仓储运营', icon: 'warehouse' }, { key: 'warehouses', title: '仓储排程', icon: 'clock' }] },
   { label: '调度', items: [{ key: 'plans', title: '联合调度', icon: 'route' }, { key: 'agent', title: '调度助手', icon: 'bot' }, { key: 'events', title: '异常处置', icon: 'alert' }, { key: 'simulations', title: '仿真回放', icon: 'play' }] },
-  { label: 'S5 · 仓运全流程', items: [{ key: 's5Gantt', title: '仓储作业甘特', icon: 'clock' }, { key: 's5Inventory', title: '实际库存台账', icon: 'database' }, { key: 's5Timeline', title: '联合事件回放', icon: 'play' }] },
   { label: '评测', items: [{ key: 'experiments', title: '对照实验', icon: 'chart' }] },
 ];
 
