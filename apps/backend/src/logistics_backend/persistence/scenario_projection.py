@@ -1,12 +1,13 @@
 """Project checked scenario facts into FK-backed execution tables.
 
 Imported optimization snapshots are immutable evidence.  Projection never overwrites
-existing master-data revisions, and a duplicate id in a *different* scope is rejected.
+existing master-data revisions, and a duplicate id in a *different* scope is given a
+scope-local surrogate id rather than being rejected as an ownership conflict.
 """
 
 from __future__ import annotations
 
-from uuid import UUID
+from uuid import UUID, uuid5
 
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
@@ -15,6 +16,13 @@ from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.planning_models import warehouse_tasks
 from logistics_backend.persistence.resource_models import TABLES, locations, warehouses, zones
 from logistics_domain.states import ErrorCode
+
+# Entity tables are keyed by a single surrogate id, yet generated scenarios carry
+# deterministic UUIDs: importing the same scenario into a second scope collides on
+# that id with the row the first scope owns.  The namespace below derives a stable
+# scope-local id for the importing scope, so re-imports stay idempotent and no scope
+# can read another scope's master data through a shared UUID.
+_SCOPE_SURROGATE_NAMESPACE = UUID("b3f1c0d2-5a4e-4c7b-9d8e-1f2a3b4c5d6e")
 
 # Only catalogued natural keys are aliases. Workers, equipment, orders and cargo
 # have no DB business uniqueness constraint and must remain distinct by UUID.
@@ -60,23 +68,40 @@ def _common(value, scope_id):
     }
 
 
+def _scope_surrogate_id(scope_id: UUID, entity_id: UUID) -> UUID:
+    return uuid5(_SCOPE_SURROGATE_NAMESPACE, f"{scope_id}:{entity_id}")
+
+
 def _find_existing(connection, table, values, scope_id, business_keys=()):
-    # Primary-key collisions take priority: they must never be hidden by a
-    # coincidental business-key match in the importing scope.
+    """Return the row this scope already owns for `values`, or None.
+
+    A row keyed by the scenario's id but owned by another scope is not this
+    scope's entity.  The lookup continues through the scope-local surrogate and
+    then the business key, so a second scope importing the same deterministic
+    scenario gets its own copy instead of a bogus ownership conflict.  Only a row
+    this scope owns can conflict on business identity.
+    """
     row = connection.execute(select(table).where(table.c.id == values["id"])).mappings().first()
-    if row is None and business_keys:
-        row = (
-            connection.execute(select(table).where(*(table.c[name] == values[name] for name in business_keys)))
-            .mappings()
-            .first()
-        )
-    if row is None:
+    if row is not None:
+        if row["scope_id"] == scope_id:
+            if any(row[name] != values[name] for name in business_keys):
+                raise ServiceError(ErrorCode.RESOURCE_CONFLICT, "scenario id has conflicting business identity")
+            return row
+        surrogate = connection.execute(
+            select(table).where(table.c.id == _scope_surrogate_id(scope_id, values["id"]))
+        ).mappings().first()
+        if surrogate is not None and surrogate["scope_id"] == scope_id:
+            return surrogate
+    if not business_keys:
         return None
-    if row["scope_id"] != scope_id:
-        raise ServiceError(ErrorCode.RESOURCE_CONFLICT, "scenario references an id owned by another scope")
-    if row["id"] == values["id"] and any(row[name] != values[name] for name in business_keys):
-        raise ServiceError(ErrorCode.RESOURCE_CONFLICT, "scenario id has conflicting business identity")
-    return row
+    # Business keys are unique inside one owner: warehouses by (scope, code),
+    # zones/docks by (warehouse, code) and locations by (zone, code).  The parent
+    # reference has already been aliased to a row this scope owns, and an explicit
+    # scope predicate keeps the match from reaching across scopes.
+    conditions = [table.c[name] == values[name] for name in business_keys]
+    if "scope_id" in table.c:
+        conditions.append(table.c.scope_id == scope_id)
+    return connection.execute(select(table).where(*conditions)).mappings().first()
 
 
 def _insert_checked(connection, table, values, scope_id, business_keys=()):
@@ -84,6 +109,22 @@ def _insert_checked(connection, table, values, scope_id, business_keys=()):
     # safely resolved. An unmatched conflict remains a clear resource conflict.
     connection.execute(insert(table).values(**values).on_conflict_do_nothing())
     row = _find_existing(connection, table, values, scope_id, business_keys)
+    if row is None:
+        # Nothing landed: the scenario id is already owned by another scope and
+        # the primary key cannot be reused.  Retry once under this scope's own
+        # surrogate id.  (rowcount is -1 under psycopg, so the row itself is the
+        # only evidence that an insert took.)
+        surrogate = _scope_surrogate_id(scope_id, values["id"])
+        values = {
+            **values,
+            "id": surrogate,
+            # Every entity table asserts payload->>'id' = id, so the stored
+            # evidence has to agree with the surrogate id it now lives under.
+            # Cross-references still resolve through the alias map.
+            "payload": {**values["payload"], "id": str(surrogate)},
+        }
+        connection.execute(insert(table).values(**values).on_conflict_do_nothing())
+        row = _find_existing(connection, table, values, scope_id, business_keys)
     if row is None:
         raise ServiceError(ErrorCode.RESOURCE_CONFLICT, "scenario master-data uniqueness conflict")
     return row
