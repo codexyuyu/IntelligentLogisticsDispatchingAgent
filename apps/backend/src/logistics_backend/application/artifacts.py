@@ -4,13 +4,18 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 from uuid import UUID
 
 from logistics_backend.errors import ServiceError
 from logistics_domain.states import ErrorCode
 
-RESULT_DIR = Path("artifacts/results")
+# Default stays cwd-relative so existing deployments and pytest keep their
+# current behaviour. Multi-copy / multi-process setups must point both the
+# backend and the worker at the same absolute directory through this variable,
+# otherwise a completed job's artifact is invisible to the API process.
+RESULT_DIR = Path(os.environ.get("LOGISTICS_RESULTS_DIR", "artifacts/results")).expanduser()
 
 
 def canonical_bytes(value) -> bytes:

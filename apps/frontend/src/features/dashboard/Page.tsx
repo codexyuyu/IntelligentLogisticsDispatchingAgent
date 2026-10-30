@@ -1,6 +1,6 @@
 
 import { useMemo, useState } from 'react';
-import LiveOverview from './LiveOverview';
+import DispatchCockpit from './DispatchCockpit';
 import DigitalTwin3D from '../../components/DigitalTwin3D';
 import { KpiCard } from '../../components/KpiCard';
 import { StatusPill } from '../../components/StatusPill';
@@ -16,7 +16,8 @@ export function navigate(key: string) {
 
 export default function DashboardPage() {
   const { snapshot } = useApp();
-  return snapshot ? <SnapshotDashboard /> : <LiveOverview />;
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  return <><DispatchCockpit />{snapshot && <details className="dc-details" onToggle={event => setDetailsOpen(event.currentTarget.open)}><summary>车辆三维态势与实时运行明细</summary>{detailsOpen && <SnapshotDashboard />}</details>}</>;
 }
 
 function SnapshotDashboard() {
@@ -143,7 +144,7 @@ function SnapshotDashboard() {
 
         <aside className="cockpit-col">
           <div className={`panel alert-panel ${eventActive ? 'alert-live' : ''}`}>
-            <div className="panel-title-row"><div><h3>实时异常告警</h3></div>
+            <div className="panel-title-row"><div><h3>实时异常告警</h3><p>来自事件通道的真实登记</p></div>
               {eventActive ? <StatusPill tone="danger">处置中</StatusPill> : <StatusPill tone="success">无异常</StatusPill>}
             </div>
             {eventActive && anomaly.event ? (
@@ -153,7 +154,9 @@ function SnapshotDashboard() {
                 <small>影响订单：{anomaly.event.payload.affected_order_ids.join('、') || '—'}</small>
                 <button className="btn btn-danger btn-sm" onClick={() => navigate('events')}>进入处置</button>
               </div>
-            ) : null}
+            ) : (
+              <p className="muted-line">系统正常运行，可在「异常处置」页面注入 veh_1 延误 900s 演练。</p>
+            )}
           </div>
 
           <div className="panel">

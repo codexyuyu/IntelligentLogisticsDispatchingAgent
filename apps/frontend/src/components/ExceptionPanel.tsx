@@ -55,7 +55,7 @@ export function ExceptionPanel() {
     setProposal(await request<Proposal>('/reschedules/proposals', { method: 'POST', body: JSON.stringify({ schema_version: '2.0.0', impact: command,
       policy: { max_extra_delay_s: 300, allow_scope_expansion: false } }) }));
   }
-  return <div><StageIncident /><SectionHeader title="异常登记与影响分析" desc="选择业务订单登记取消事件，再基于已求解的运输方案分析影响。" />
+  return <div><StageIncident /><details className="demo-legacy-workflow"><summary>其他异常功能 · 订单取消（独立旧流程，非本次模拟）</summary><SectionHeader title="异常登记与影响分析" desc="独立的订单取消流程，不与上方数据库模拟延误共享审批状态。" />
     {error && <p role="alert" className="callout callout-error">{error}</p>}{notice && <p role="status">{notice}</p>}
     <section className="panel"><h3>登记订单取消</h3><div className="grid-two">
       <label>关联订单<select disabled={busy} value={orderId} onChange={e => { setOrderId(e.target.value); setEventKey(crypto.randomUUID()); setImpact(null); setProposal(null); }}>
@@ -74,5 +74,5 @@ export function ExceptionPanel() {
     </section>
     <section className="panel"><div className="panel-title-row"><h3>异常记录</h3><button className="btn btn-ghost" disabled={busy} onClick={() => void action(refresh)}>刷新记录</button></div>
       {!exceptions.length ? <p>暂无异常记录。</p> : <table><thead><tr><th>序号</th><th>严重程度</th><th>处理状态</th></tr></thead><tbody>{exceptions.map((item, i) => <tr key={item.exception_id}><td>{i + 1}</td><td>{words[item.severity] ?? item.severity}</td><td>{words[item.status] ?? item.status}</td></tr>)}</tbody></table>}
-    </section></div>;
+    </section></details></div>;
 }

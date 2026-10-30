@@ -9,6 +9,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from logistics_backend.api.dependencies import actor, operator
 from logistics_backend.application.scenario_import import prepare_scenario
+from logistics_backend.application.delay_benchmark import solve_delay_benchmark
 from logistics_contracts.integration import IntegrationRun, RevokeInput, ScenarioImport
 
 router = APIRouter(prefix='/integration', tags=['integration'])
@@ -35,6 +36,24 @@ class SimulationIncidentInput(BaseModel):
 class SimulationDecisionInput(BaseModel):
     model_config = ConfigDict(extra='forbid')
     expected_row_version: int = Field(ge=0)
+
+
+@router.get('/benchmarks/delay-replanning', operation_id='get_delay_replanning_benchmark')
+def delay_replanning_benchmark(current: Annotated[Any, Depends(actor)],
+                               delay_s: int = Query(default=90, ge=0, le=1200)):
+    """Read-only exact counterfactual, not a persisted operational run."""
+    return solve_delay_benchmark(delay_s=delay_s)
+
+
+@router.get('/priority-delay-template', operation_id='get_priority_delay_integration_template')
+def priority_delay_template(current: Annotated[Any, Depends(actor)]):
+    """Read-only checked-scenario source; importing is a separate operator action.
+
+    This fixture is deliberately synthetic and does NOT guarantee a positive
+    saving for every delay/vehicle: actual projection metrics decide that.
+    """
+    path = Path(__file__).resolve().parents[5] / 'data/scenarios/coldchain_chain_10_priority_delay.json'
+    return json.loads(path.read_text(encoding='utf-8'))
 
 
 @router.get('/template', operation_id='get_integration_template')
@@ -99,6 +118,14 @@ def start_simulation(run_id: UUID, current: Annotated[Any, Depends(operator)],
 def read_simulation(run_id: UUID, current: Annotated[Any, Depends(actor)],
                     app: Annotated[Any, Depends(simulation_service)]):
     return app.get(run_id, current)
+
+
+@router.get('/runs/{run_id}/simulation/opportunities', operation_id='find_integration_delay_opportunities')
+def find_delay_opportunities(run_id: UUID, current: Annotated[Any, Depends(actor)],
+                             app: Annotated[Any, Depends(simulation_service)],
+                             delay_s: int = Query(default=90, ge=1, le=1200)):
+    """Read-only, bounded screening of mid-arc reroutes; no database writes."""
+    return app.opportunities(run_id, current, delay_s=delay_s)
 
 
 @router.post('/runs/{run_id}/simulation/incidents', operation_id='inject_integration_simulated_delay')

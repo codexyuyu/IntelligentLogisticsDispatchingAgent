@@ -4,6 +4,7 @@ import DigitalTwin3D from '../../components/DigitalTwin3D';
 import { loadSimulationState, selectIncident, short, tracksToTwinRoutes } from './api';
 import type { SimulationState } from './api';
 import { RunBar, useStageRun } from './RunContext';
+import ProposalComparison from './ProposalComparison';
 
 /** One shared replay widget embedded in the existing transport and simulation pages. */
 export default function StageReplay({ mode = 'replay' }: { mode?: 'transport' | 'replay' }) {
@@ -82,6 +83,8 @@ export default function StageReplay({ mode = 'replay' }: { mode?: 'transport' | 
       <p className="s5-muted">{candidateVisible && incident?.route_changed
         ? '当前展示经约束校验的局部重规划候选轨迹；已执行路段保持不变，之后从安全节点接续新的剩余停靠顺序。'
         : '地图绘制持久化的示意轨迹；如无可用重规划，候选方案保守采用原地等待＋顺延。'} 具体路段位置和进度以服务端 state-at 为准，并非 GPS。</p>
+      {incident?.comparison && <details className="panel"><summary>候选方案的路线、时序与费用评估</summary>
+        <ProposalComparison incident={incident} comparison={incident.comparison} /></details>}
       {candidateVisible && incident?.route_changed && <div className="panel">
         <h3>局部重规划：延误车辆剩余停靠顺序</h3>
         <p className="s5-muted">已发生的行程和其他车辆保持原样，以下仅用于比较原方案与待审批／已批准模拟候选。</p>

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "coldchain_delay_replanning_v1",
+  "name": "多收货点冷链配送 · 途中延误优化对照",
+  "source_scenario": "coldchain_chain_10.json",
+  "description": "基于同一个合成冷链场景的道路距离与时间矩阵，选取三个不同配送点，构造带软时效约束的在途接续子问题。该基准不代表完整十订单求解结果。",
+  "start_location_index": 1,
+  "return_location_index": 0,
+  "prefix_end_s": 600,
+  "delay_s": 90,
+  "distance_rate_cents_per_km": 220,
+  "soft_late_cents_per_s": 5,
+  "fixed_vehicle_cents": 5000,
+  "stop_service_s": 0,
+  "hard_window_latest_s": 7200,
+  "stops": [
+    {"location_index": 2, "name": "城区生鲜收货点", "soft_due_s": 1800},
+    {"location_index": 3, "name": "乡镇冷链收货点", "soft_due_s": 1800},
+    {"location_index": 4, "name": "医药冷链收货点", "soft_due_s": 1500}
+  ]
+}

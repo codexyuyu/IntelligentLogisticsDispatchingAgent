@@ -23,6 +23,7 @@ from logistics_backend.application.integration_simulation_tracks import (
 )
 from logistics_backend.application.timeline import state_at_time
 from logistics_backend.application.midroad_reroute import optimize_midroad_continuation
+from logistics_backend.application.simulation_comparison import compare_simulated_delay
 from logistics_backend.errors import ServiceError
 from logistics_backend.persistence.integration_models import (
     integration_simulation_incidents,
@@ -131,13 +132,20 @@ class IntegrationSimulationService:
         optimized = optimize_midroad_continuation(result, tracks, events, vehicle_id,
                                                    at_s, delay_s, budget_ms, incident_id)
         if optimized['status'] == 'resolved':
-            return {**optimized, 'local_solver': {'status': 'resolved',
+            candidate = {**optimized, 'local_solver': {'status': 'resolved',
                 'applied_to_simulation': True, 'route_changed': optimized['route_changed'],
                 'engine': optimized['solver_engine']}}
-        return {'strategy': 'simulated_hold_resume', 'route_changed': False,
+        else:
+            candidate = {'strategy': 'simulated_hold_resume', 'route_changed': False,
                 'candidate_tracks': fallback_tracks, 'candidate_events': fallback_events,
                 'impact': impact, 'proposal_valid': impact['valid'],
                 'local_solver': optimized}
+        # Evaluate the ACTUAL registered candidate, not the independent three-stop
+        # benchmark, against the same run's explicit wait-and-resume alternative.
+        comparison = compare_simulated_delay(result, tracks, events,
+            fallback_tracks, fallback_events, candidate['candidate_tracks'],
+            candidate['candidate_events'], vehicle_id, at_s)
+        return {**candidate, 'comparison': comparison}
 
     @staticmethod
     def _incident_view(row):
@@ -167,6 +175,64 @@ class IntegrationSimulationService:
                 'affected_order_ids': [str(item) for item in outcome.affected_order_ids],
                 'applied_to_simulation': False,
                 'note': 'S1 depot-origin local route is advisory; mid-road continuation uses safe hold/resume'}
+
+    def opportunities(self, run_id: UUID, actor, *, delay_s: int = 90,
+                      budget_ms: int = 600, max_projections: int = 8) -> dict:
+        """Read-only search for credible, positive reroute choices on a checked run.
+
+        This is an advisory, never a submitted incident or approved change.
+        Every suggestion must survive the SAME project_delay calculation later
+        performed by the operator-approved incident endpoint.
+        """
+        simulation = self._simulation(run_id, actor)
+        if self._incident(simulation['id'], actor) is not None:
+            return {'status': 'incident_exists', 'analysed': 0, 'matches': []}
+        result = self._run(run_id, actor)
+        payload = simulation['payload']
+        options = []
+        for track in payload['tracks']:
+            for leg in track['segments']:
+                if leg['kind'] != 'travel' or leg['end_s']-leg['start_s'] < 3:
+                    continue
+                at_s = (leg['start_s'] + leg['end_s']) // 2
+                remaining = sum(stop['arrival_s'] > leg['end_s']
+                                and stop['kind'] == 'delivery' for stop in track['stops'])
+                if remaining < 2:
+                    continue
+                options.append((remaining, track['vehicle_id'], at_s))
+        # Deterministic, bounded projection count: each item invokes a
+        # genuine OR-Tools local continuation, never an invented route.
+        options.sort(key=lambda item: (-item[0], item[1], item[2]))
+        matches = []
+        analysed = 0
+        seen = set()
+        for _, vehicle_id, at_s in options:
+            if (vehicle_id, at_s) in seen:
+                continue
+            seen.add((vehicle_id, at_s))
+            if analysed >= max_projections:
+                break
+            analysed += 1
+            try:
+                projection = self.project_delay(result, payload, vehicle_id, at_s,
+                    delay_s, budget_ms, f'readonly:{vehicle_id}:{at_s}:{delay_s}')
+            except (SimulationTrackError, ValueError, KeyError):
+                continue
+            comparison = projection['comparison']
+            if not (projection['proposal_valid'] and projection['route_changed']
+                    and comparison['coverage_preserved']
+                    and comparison['delta_vs_hold']['improves_objective']):
+                continue
+            matches.append({'vehicle_id': vehicle_id, 'time_s': at_s,
+                'delay_s': delay_s, 'strategy': projection['strategy'],
+                'objective_saved_cents': comparison['delta_vs_hold']['objective_saved_cents'],
+                'lateness_reduced_s': comparison['delta_vs_hold']['lateness_reduced_s'],
+                'distance_saved_m': comparison['delta_vs_hold']['distance_saved_m']})
+        matches.sort(key=lambda item: (-item['objective_saved_cents'], item['vehicle_id'], item['time_s']))
+        return {'status': 'positive_cases_found' if matches else 'no_positive_case_found',
+                'analysed': analysed, 'max_projections': max_projections,
+                'delay_s': delay_s, 'matches': matches[:3],
+                'note': 'Read-only simulation estimates; rerun and approval are separate actions.'}
 
     def incident(self, run_id: UUID, command, actor, trace_id: UUID) -> dict:
         simulation = self._simulation(run_id, actor)
@@ -226,6 +292,7 @@ class IntegrationSimulationService:
             's1_local_solver': s1, 'candidate_tracks': projection['candidate_tracks'],
             'candidate_events': projection['candidate_events'],
             'proposal_valid': projection['proposal_valid'],
+            'comparison': projection['comparison'],
         }
         now = datetime.now(UTC).replace(microsecond=0)
         with self.uow_factory() as uow:

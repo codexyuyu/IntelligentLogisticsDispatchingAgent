@@ -1,0 +1,164 @@
+{
+  "case_id": "coldchain_delay_replanning_v1",
+  "name": "多收货点冷链配送 · 途中延误优化对照",
+  "description": "基于同一个合成冷链场景的道路距离与时间矩阵，选取三个不同配送点，构造带软时效约束的在途接续子问题。该基准不代表完整十订单求解结果。",
+  "method": "exact_enumeration",
+  "candidate_count": 6,
+  "source_scenario": "coldchain_chain_10.json",
+  "matrix_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "simulation_only": true,
+  "not_production_routing_result": true,
+  "assumptions": {
+    "anchor_time_s": 600,
+    "delay_s": 90,
+    "anchor_location_id": "70fd19ad-68b9-5ed2-be9f-44ac431fb557",
+    "return_location_id": "bb0ddfa7-c1cc-5a54-a9d3-e69f6fd05d5a",
+    "rate_cents_per_km": 220,
+    "penalty_cents_per_late_second": 5,
+    "hard_window_latest_s": 7200,
+    "start_service_state": "already_loaded_at_anchor"
+  },
+  "before_delay": {
+    "order": [
+      "城区生鲜收货点",
+      "医药冷链收货点",
+      "乡镇冷链收货点"
+    ],
+    "order_location_ids": [
+      "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+      "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+      "dff2c260-6c2b-55ef-b801-1ee0cf0370c5"
+    ],
+    "deliveries": [
+      {
+        "location_id": "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+        "name": "城区生鲜收货点",
+        "arrival_s": 1000,
+        "soft_due_s": 1800,
+        "late_s": 0
+      },
+      {
+        "location_id": "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+        "name": "医药冷链收货点",
+        "arrival_s": 1300,
+        "soft_due_s": 1500,
+        "late_s": 0
+      },
+      {
+        "location_id": "dff2c260-6c2b-55ef-b801-1ee0cf0370c5",
+        "name": "乡镇冷链收货点",
+        "arrival_s": 1800,
+        "soft_due_s": 1800,
+        "late_s": 0
+      }
+    ],
+    "distance_m": 19000,
+    "driving_cents": 4180,
+    "fixed_vehicle_cents": 5000,
+    "soft_late_cents": 0,
+    "objective_cents": 9180,
+    "late_orders": 0,
+    "total_late_s": 0,
+    "hard_window_valid": true,
+    "last_return_s": 2500,
+    "delivered_orders": 3
+  },
+  "simple_hold": {
+    "order": [
+      "城区生鲜收货点",
+      "医药冷链收货点",
+      "乡镇冷链收货点"
+    ],
+    "order_location_ids": [
+      "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+      "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+      "dff2c260-6c2b-55ef-b801-1ee0cf0370c5"
+    ],
+    "deliveries": [
+      {
+        "location_id": "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+        "name": "城区生鲜收货点",
+        "arrival_s": 1090,
+        "soft_due_s": 1800,
+        "late_s": 0
+      },
+      {
+        "location_id": "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+        "name": "医药冷链收货点",
+        "arrival_s": 1390,
+        "soft_due_s": 1500,
+        "late_s": 0
+      },
+      {
+        "location_id": "dff2c260-6c2b-55ef-b801-1ee0cf0370c5",
+        "name": "乡镇冷链收货点",
+        "arrival_s": 1890,
+        "soft_due_s": 1800,
+        "late_s": 90
+      }
+    ],
+    "distance_m": 19000,
+    "driving_cents": 4180,
+    "fixed_vehicle_cents": 5000,
+    "soft_late_cents": 450,
+    "objective_cents": 9630,
+    "late_orders": 1,
+    "total_late_s": 90,
+    "hard_window_valid": true,
+    "last_return_s": 2590,
+    "delivered_orders": 3
+  },
+  "optimized_continuation": {
+    "order": [
+      "乡镇冷链收货点",
+      "医药冷链收货点",
+      "城区生鲜收货点"
+    ],
+    "order_location_ids": [
+      "dff2c260-6c2b-55ef-b801-1ee0cf0370c5",
+      "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+      "5d5e4096-ae2b-53e7-b1ed-e07161861b09"
+    ],
+    "deliveries": [
+      {
+        "location_id": "dff2c260-6c2b-55ef-b801-1ee0cf0370c5",
+        "name": "乡镇冷链收货点",
+        "arrival_s": 990,
+        "soft_due_s": 1800,
+        "late_s": 0
+      },
+      {
+        "location_id": "dd6e5ffa-d613-5797-92ff-f2665b30761c",
+        "name": "医药冷链收货点",
+        "arrival_s": 1490,
+        "soft_due_s": 1500,
+        "late_s": 0
+      },
+      {
+        "location_id": "5d5e4096-ae2b-53e7-b1ed-e07161861b09",
+        "name": "城区生鲜收货点",
+        "arrival_s": 1790,
+        "soft_due_s": 1800,
+        "late_s": 0
+      }
+    ],
+    "distance_m": 20000,
+    "driving_cents": 4400,
+    "fixed_vehicle_cents": 5000,
+    "soft_late_cents": 0,
+    "objective_cents": 9400,
+    "late_orders": 0,
+    "total_late_s": 0,
+    "hard_window_valid": true,
+    "last_return_s": 2690,
+    "delivered_orders": 3
+  },
+  "comparison": {
+    "route_changed": true,
+    "distance_saved_m": -1000,
+    "lateness_reduced_s": 90,
+    "late_orders_reduced": 1,
+    "objective_saved_cents": 230,
+    "improves_objective": true
+  }
+}

@@ -1,6 +1,7 @@
 import PgResourcePanel from '../postgres/ResourcePanel';
 
 import { useMemo, useState } from 'react';
+import SectionHeader from '../../components/SectionHeader';
 import { KpiCard } from '../../components/KpiCard';
 import { StatusPill } from '../../components/StatusPill';
 import { useApp } from '../../appContext';
@@ -22,7 +23,8 @@ export default function Page() {
 
   return <div>
     <PgResourcePanel kind="vehicles" />
-    <div className="section-head"><div className="head-actions" style={{ marginLeft: 'auto' }}><StatusPill tone={activePlan ? 'success' : 'warning'}>{activePlan ? `Routing ${activePlan.routing.metadata?.status ?? '—'}` : '尚未求解'}</StatusPill><button className="btn btn-primary btn-sm" disabled={!snapshot || running} onClick={() => void runRouting()}>{running ? 'Routing 求解中…' : activePlan ? '重新规划路线' : '运行 OR-Tools Routing'}</button></div></div>
+    <SectionHeader title="运输计划 · OR-Tools Routing" desc="直接运行 Routing：车辆容量、温区、时间窗与路线成本进入求解，结果会同步到车辆详情和数字孪生。"
+      actions={<div className="section-actions"><StatusPill tone={activePlan ? 'success' : 'warning'}>{activePlan ? `Routing ${activePlan.routing.metadata?.status ?? '—'}` : '尚未求解'}</StatusPill><button className="btn btn-primary btn-sm" disabled={!snapshot || running} onClick={() => void runRouting()}>{running ? 'Routing 求解中…' : activePlan ? '重新规划路线' : '运行 OR-Tools Routing'}</button></div>} />
 
     <div className="kpi-grid">
       <KpiCard label="车辆总数" value={`${vehicles.length}`} sub="当前快照" icon="truck" />

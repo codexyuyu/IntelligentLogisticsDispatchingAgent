@@ -23,6 +23,23 @@ const labels: Record<string, string> = { delivery_rate: '需求满足率', on_ti
   reschedule_time_ms: '重调度时间', changed_tasks: '被修改任务数量', plan_disturbance: '方案扰动程度' };
 const roles: Record<string, string> = { coordinator: '协调者', warehouse: '仓储', transport: '运输', exception: '异常恢复' };
 const messages: Record<string, string> = { cfp: '发布任务', bid: '报价', award: '授标', confirm: '确认', revoke: '撤销', conflict: '冲突', close: '结束' };
+const importantMetrics = [
+  { code: 'total_distance_m', title: '配送总距离' },
+  { code: 'total_cost_cents', title: '预计运输成本' },
+  { code: 'on_time_rate', title: '订单准时率' },
+  { code: 'delivery_rate', title: '需求满足率' },
+];
+function metricValue(metric?: Metric): string {
+  if (!metric || metric.value === null || !Number.isFinite(metric.value)) return '—';
+  switch (metric.code) {
+    case 'total_distance_m': return `${(metric.value / 1000).toLocaleString('zh-CN', { maximumFractionDigits: 2 })} km`;
+    case 'total_cost_cents': return `¥${(metric.value / 100).toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    default:
+      return metric.unit === 'ratio' ? `${(metric.value * 100).toFixed(1)}%` : metric.value.toLocaleString('zh-CN', { maximumFractionDigits: 2 });
+  }
+}
+function jump(page: string) { window.dispatchEvent(new CustomEvent('twin:navigate', { detail: page })); }
+function shortId(id: string) { return id.length > 12 ? `${id.slice(0, 8)}…` : id; }
 
 export default function IntegrationPage({ initialView = 'negotiation' }: { initialView?: string }) {
   const stage = useStageRun();
@@ -53,7 +70,6 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
   useEffect(() => {
     void action(async signal => {
       const last = readStored('integration_last_run');
-      // A failed scenario list must not hide a recoverable run, or vice versa.
       await Promise.all([
         loadScenarios(signal).catch(cause => { if (!signal.aborted) setError(String(cause)); }),
         last ? followRun(last, signal).catch(cause => { if (!signal.aborted) setError(String(cause)); }) : Promise.resolve(),
@@ -67,20 +83,28 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
     if (result.status !== 'checked' || !result.scenario_id) throw new Error(`资料不完整：${result.issues?.join('；') ?? result.status}`);
     await loadScenarios(signal); setSelected(result.scenario_id); setNotice('场景已校验并保存。');
   }
+  async function importPriorityDelay(signal: AbortSignal) {
+    const sample = await request<unknown>('/integration/priority-delay-template', { signal });
+    const result = await request<{ status: string; scenario_id?: string; issues?: string[] }>('/integration/scenarios',
+      { method: 'POST', body: JSON.stringify(sample), signal });
+    if (result.status !== 'checked' || !result.scenario_id) throw new Error(`场景导入失败：${result.issues?.join('；') ?? result.status}`);
+    await loadScenarios(signal); setSelected(result.scenario_id);
+    setNotice('多收货点时效约束场景已准备，可执行联合求解。');
+  }
   async function importSample(signal: AbortSignal) {
     const template = await request<unknown>('/integration/template', { signal });
     const result = await request<{ status: string; scenario_id?: string; issues?: string[] }>('/integration/scenarios',
       { method: 'POST', body: JSON.stringify(template), signal });
-    if (result.status !== 'checked' || !result.scenario_id) throw new Error(`样本导入失败：${result.issues?.join('；') ?? result.status}`);
-    await loadScenarios(signal); setSelected(result.scenario_id); setNotice('比赛样本已准备，可开始计算。');
+    if (result.status !== 'checked' || !result.scenario_id) throw new Error(`场景导入失败：${result.issues?.join('；') ?? result.status}`);
+    await loadScenarios(signal); setSelected(result.scenario_id); setNotice('场景已准备完成。');
   }
   async function compute(signal: AbortSignal) {
     if (!selected || !validInput) throw new Error('预算须为 100–12000 的整数，种子须为非负整数。');
     setNotice('');
-    // Keep the accepted ID even if the user leaves while POST is returning.
     const value = await request<Run>('/integration/runs?wait=false', { method: 'POST', headers: { 'Idempotency-Key': idempotencyKey() },
       body: JSON.stringify({ schema_version: '2.0.0', scenario_id: selected, budget_ms: budget, seed, recoveries: [] }) });
     const saved = saveStored('integration_last_run', value.run_id);
+    window.dispatchEvent(new CustomEvent('stageb:run', { detail: value.run_id }));
     signal.throwIfAborted(); setRun(value);
     if (!saved) setNotice('浏览器无法保存运行编号，请复制记录编号以便回查。');
     if (isPending(value.status)) await followRun(value.run_id, signal);
@@ -89,8 +113,10 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
   }
   const negotiation = run?.negotiation?.result;
   const transcript = negotiation?.transcript ?? [];
-  const warehouseIntervals = run?.warehouse_solution?.storage_allocations.length ?? 0;
+  const warehouseIntervals = run?.warehouse_solution?.storage_allocations?.length ?? 0;
   const candidateTasks = run?.candidate?.task_assignments ?? [];
+  const warehouses = candidateTasks.filter(t => t.task_kind === 'warehouse_task').length;
+  const transports = candidateTasks.filter(t => t.task_kind === 'transport_task').length;
   const confirmed = new Map<string, Message>();
   for (const message of transcript) {
     if (message.kind === 'confirm') confirmed.set(message.task_id, message);
@@ -103,80 +129,142 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
     }) });
     signal.throwIfAborted(); setRun(value);
   }
-  return <div>
-    <SectionHeader title="冷链调度、协商与业务观测" desc="从已导入的场景计算仓储与运输方案，经独立校验后协商。协商确认不会直接提交派车计划。" />
-    <section className="panel">
-      <h3>准备调度数据</h3><p>选择已保存的场景，或导入比赛合成样本，然后计算仓储与运输联合方案。</p>
-      <button className="btn btn-primary" disabled={busy} onClick={() => void action(importSample)}>一键准备比赛样本</button>
-      <details><summary>导入自有场景文件</summary>
-      <input aria-label="导入场景文件" type="file" accept=".json,application/json" disabled={busy}
-        onChange={event => { const file = event.target.files?.[0]; if (file) void action(async signal => { const text = await file.text(); signal.throwIfAborted(); setSource(text); }); }} />
-      <button className="btn btn-ghost" disabled={busy} onClick={() => void action(async signal => {
-        const template = await request<unknown>('/integration/template', { signal }); signal.throwIfAborted(); setSource(JSON.stringify(template, null, 2));
-      })}>加载合成测试样本</button>
-      <textarea aria-label="场景 JSON" rows={5} disabled={busy} value={source} onChange={event => setSource(event.target.value)} placeholder="选择 JSON 文件或加载合成测试样本" />
-      <button className="btn btn-primary" disabled={busy || !source.trim()} onClick={() => void action(importData)}>校验并导入</button>
-      </details>
-      <hr />
-      <label>已导入场景 <select value={selected} onChange={e => setSelected(e.target.value)} disabled={busy}>
-        <option value="">请选择</option>{scenarios.map(s => <option key={s.id} value={s.id}>{s.name} · {s.source_kind === 'synthetic' ? '合成测试' : '企业来源声明'}</option>)}
-      </select></label>
-      <label>计算预算（毫秒） <input type="number" min={100} max={12000} step={1} disabled={busy} value={budget} onChange={e => setBudget(Number(e.target.value))} /></label>
-      <label>随机种子 <input type="number" min={0} step={1} disabled={busy} value={seed} onChange={e => setSeed(Number(e.target.value))} /></label>
-      <button className="btn btn-primary" disabled={busy || !selected || !validInput || !!run && isPending(run.status)} onClick={() => void action(compute)}>{busy ? '处理中…' : '计算并协商'}</button>
-      {!validInput && <p role="alert">预算须为 100–12000 的整数，种子须为非负整数。</p>}
-      <button className="btn btn-ghost" disabled={busy} onClick={() => void action(loadScenarios)}>刷新场景列表</button>
-      {error && <p role="alert" className="callout callout-error">{error}</p>}{notice && <p role="status">{notice}</p>}
-    </section>
-    {run?.status === 'checked' && run.joint_validation?.valid === true && <section className="panel">
-      <h3>下一步 · 启动数据库驱动的仓运模拟</h3>
-      <p>本次 checked run 可直接建立可回放的车辆轨迹；模拟操作不提交真实派车、也不自动记实际库存。</p>
-      <RunBar state={stage} allowCreate />
-      <button className="btn btn-ghost" onClick={() => window.dispatchEvent(new CustomEvent('twin:navigate', { detail: 'warehouseOps' }))}>查看仓储运营</button>
-      <button className="btn btn-ghost" onClick={() => window.dispatchEvent(new CustomEvent('twin:navigate', { detail: 'vehicles' }))}>查看运输计划</button>
-    </section>}
-    {run && <section className="panel">
-      <h3>运行记录</h3><p>来源：{run.source_kind === 'synthetic' ? '合成测试数据' : run.source_kind ? '企业来源声明（尚未独立核实）' : '等待任务结果'} · {statusLabel(run.status)} · {run.reason}</p>
-      <small>记录编号：{run.run_id}{run.job_id ? ` · Job：${run.job_id}` : ''}</small>
-      <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => void action(signal => followRun(run.run_id, signal))}>刷新状态</button>
-      {(run.warehouse_solution || run.transport_solution) && <>
-      <h4>实际求解与校验证据</h4>
-      <div className="mini-stats" style={{ flexWrap: 'wrap' }}>
-        <span><b>{run.warehouse_solution?.status ?? '未返回'}</b><small>仓储 CP-SAT 状态</small></span>
-        <span><b>{run.transport_solution?.status ?? '未返回'}</b><small>运输 OR-Tools 状态</small></span>
-        <span><b>{run.joint_validation ? (run.joint_validation.valid ? '通过' : '未通过') : '未返回'}</b><small>独立联合校验</small></span>
-        <span><b>{warehouseIntervals}</b><small>R05 实际占用区间</small></span>
-        <span><b>{candidateTasks.length}</b><small>候选方案任务</small></span>
+  const metrics = run?.observations?.metrics.values ?? [];
+  const resultValid = run?.status === 'checked' && run.joint_validation?.valid === true;
+  const handoffs = run?.observations?.handoffs ?? [];
+  const maxHandoff = Math.max(1, ...handoffs.flatMap(h => [h.warehouse_ready_s, h.pickup_start_s ?? 0]));
+
+  return <div className="integration-workbench">
+    <SectionHeader title="仓储—运输联合调度" desc="协同仓储作业、车辆配送与冷链时效约束，生成并校验联合调度方案。" />
+
+    <section className="panel integration-task-panel" aria-label="联合调度任务">
+      <div className="integration-section-heading"><div><span className="integration-kicker">调度任务</span><h3>选择场景并开始优化</h3></div>
+        {run && <span className={`pill ${resultValid ? 'pill-success' : isPending(run.status) ? 'pill-warning' : 'pill-neutral'}`}>{statusLabel(run.status)}</span>}</div>
+      <div className="integration-task-form">
+        <label className="integration-select-label">调度场景
+          <select value={selected} onChange={e => setSelected(e.target.value)} disabled={busy}>
+            <option value="">请选择调度场景</option>{scenarios.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+          </select>
+        </label>
+        <button className="btn btn-primary integration-start-btn" disabled={busy || !selected || !validInput || !!run && isPending(run.status)}
+          onClick={() => void action(compute)}>{busy ? '处理中…' : '计算并协商'}</button>
       </div>
-      <p>候选方案：{run.candidate?.id ?? '尚未生成'} · 仓储任务 {candidateTasks.filter(t => t.task_kind === 'warehouse_task').length} 项，运输任务 {candidateTasks.filter(t => t.task_kind === 'transport_task').length} 项。</p>
-      <small>此处展示的是后端求解、校验与候选生成证据；协商确认不代表已正式提交派单。</small>
-      </>}
-      <div className="seg">{[['negotiation', '协商记录'], ['metrics', '14 项指标'], ['coldchain', '冷链与交接']].map(([key, title]) =>
-        <button key={key} className={`seg-btn ${view === key ? 'is-active' : ''}`} onClick={() => setView(key)}>{title}</button>)}</div>
-      {view === 'negotiation' && <>
-        {!negotiation ? <p>缺少有效求解证据，未生成报价。</p> : <>
-          <p>当前已确认 {confirmed.size} 个任务。未声明扰动时，异常恢复角色不报价。</p>
-          {[...confirmed].map(([id, message]) => <p key={id}>{id} · {roles[message.role]} <button disabled={busy}
-            className="btn btn-ghost" onClick={() => void action(signal => revoke(id, signal))}>撤销确认</button></p>)}
-          <div className="table-wrap"><table><thead><tr><th>序号</th><th>时间（秒）</th><th>角色</th><th>动作</th><th>任务</th><th>记录</th></tr></thead>
-            <tbody>{transcript.map(m => <tr key={m.seq}><td>{m.seq}</td><td>{m.at_s}</td><td>{roles[m.role]}</td><td>{messages[m.kind]}</td><td>{m.task_id}</td><td style={{ overflowWrap: 'anywhere', maxWidth: 450 }}>{m.detail}</td></tr>)}</tbody></table></div>
-          <small style={{ overflowWrap: 'anywhere' }}>摘要：{negotiation.digest}</small>
+      {selected && <div className="integration-source-line">数据来源：{scenarios.find(s => s.id === selected)?.source_kind === 'synthetic' ? '合成场景' : '导入场景'} <span>·</span> 求解器：仓储 CP-SAT / 运输 OR-Tools</div>}
+      <details className="integration-advanced"><summary>场景管理与高级设置</summary>
+        <div className="integration-advanced-body">
+          <div className="integration-advanced-buttons"><button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => void action(importSample)}>准备内置场景</button>
+            <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => void action(importPriorityDelay)}>准备时效约束场景</button>
+            <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => void action(loadScenarios)}>刷新场景列表</button></div>
+          <div className="integration-advanced-fields"><label>计算预算（毫秒）<input type="number" min={100} max={12000} step={1} disabled={busy} value={budget} onChange={e => setBudget(Number(e.target.value))} /></label>
+            <label>随机种子<input type="number" min={0} step={1} disabled={busy} value={seed} onChange={e => setSeed(Number(e.target.value))} /></label></div>
+          <details className="integration-file-import"><summary>导入 JSON 场景</summary>
+            <input aria-label="导入场景文件" type="file" accept=".json,application/json" disabled={busy}
+              onChange={event => { const file = event.target.files?.[0]; if (file) void action(async signal => { const text = await file.text(); signal.throwIfAborted(); setSource(text); }); }} />
+            <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => void action(async signal => {
+              const template = await request<unknown>('/integration/template', { signal }); signal.throwIfAborted(); setSource(JSON.stringify(template, null, 2));
+            })}>加载场景模板</button>
+            <textarea aria-label="场景 JSON" rows={5} disabled={busy} value={source} onChange={event => setSource(event.target.value)} placeholder="粘贴场景 JSON 或选择文件" />
+            <button className="btn btn-primary btn-sm" disabled={busy || !source.trim()} onClick={() => void action(importData)}>校验并导入</button>
+          </details>
+        </div>
+      </details>
+      {!validInput && <p role="alert" className="callout callout-error">预算须为 100–12000 的整数，种子须为非负整数。</p>}
+      {error && <p role="alert" className="callout callout-error">{error}</p>}
+      {notice && <p role="status" className="muted-line">{notice}</p>}
+    </section>
+
+    <section className="panel integration-process-panel" aria-label="联合求解状态">
+      <div className="integration-section-heading"><div><span className="integration-kicker">联合决策</span><h3>求解与校验</h3></div>
+        {run && <button className="btn btn-ghost btn-sm" disabled={busy} onClick={() => void action(signal => followRun(run.run_id, signal))}>刷新运行状态</button>}</div>
+      <div className="integration-process-grid">
+        <div className="integration-process-node"><span className="integration-process-icon">仓</span><div><strong>仓储排程</strong><small>CP-SAT</small></div><b>{run?.warehouse_solution?.status ?? '待求解'}</b></div>
+        <div className="integration-process-node"><span className="integration-process-icon">运</span><div><strong>运输规划</strong><small>OR-Tools</small></div><b>{run?.transport_solution?.status ?? '待求解'}</b></div>
+        <div className={`integration-process-node ${resultValid ? 'integration-process-success' : ''}`}><span className="integration-process-icon">验</span><div><strong>联合校验</strong><small>一致性与约束</small></div>
+          <b>{run?.joint_validation ? run.joint_validation.valid ? '已通过' : '未通过' : '待校验'}</b></div>
+      </div>
+      <div className="integration-process-foot">
+        <span>仓储任务 <b>{run?.candidate ? warehouses : '—'}</b></span>
+        <span>运输任务 <b>{run?.candidate ? transports : '—'}</b></span>
+        <span>资源占用区间 <b>{run?.warehouse_solution ? warehouseIntervals : '—'}</b></span>
+        <span>协商确认 <b>{negotiation ? confirmed.size : '—'}</b></span>
+      </div>
+      {run && <details className="integration-record-details"><summary>运行详情</summary>
+        <div className="integration-record-data"><span>记录编号：{run.run_id}</span><span>任务编号：{run.job_id ?? '—'}</span>
+          <span>方案编号：{run.candidate?.id ?? '—'}</span><span>运行状态：{statusLabel(run.status)}{run.reason ? ` · ${run.reason}` : ''}</span>
+          <span>来源：{run.source_kind === 'synthetic' ? '合成场景' : run.source_kind === 'enterprise' ? '企业来源声明' : run.source_kind ?? '—'}</span>
+          <span>约束违例数：{run.joint_validation?.violations.length ?? '—'}</span></div>
+      </details>}
+    </section>
+
+    <section className="panel integration-results-panel" aria-label="联合调度结果">
+      <div className="integration-section-heading"><div><span className="integration-kicker">决策结果</span><h3>调度方案指标</h3></div>
+        {run?.observations && <span className="pill pill-info">计划数据</span>}</div>
+      <div className="integration-metric-grid">
+        {importantMetrics.map(({ code, title }) => {
+          const metric = metrics.find(m => m.code === code);
+          return <div key={code} className="integration-metric-card"><span>{title}</span><strong>{metricValue(metric)}</strong>
+            <small>{metric?.value === null && metric.reason ? '暂无有效测量值' : metric?.value != null ? `样本数 ${metric.sample_count}` : '等待结果'}</small></div>;
+        })}
+      </div>
+      <div className="integration-result-bottom">
+        <div className="integration-validation"><strong>联合方案校验</strong><span className={resultValid ? 'text-ok' : run?.joint_validation ? 'text-bad' : 'text-na'}>
+          {run?.joint_validation ? run.joint_validation.valid ? '约束校验通过' : '存在约束违例' : '等待校验'}</span></div>
+        <span className="integration-result-note">{run?.observations ? '以上为求解方案的计划口径' : '计算完成后展示方案指标'}</span>
+      </div>
+      {resultValid && <div className="integration-next-actions"><div><strong>联合方案已就绪</strong><small>可查看仓储、运输结果或创建可回放的模拟运行。</small></div>
+        <div className="integration-action-buttons"><button className="btn btn-ghost btn-sm" onClick={() => jump('warehouseOps')}>仓储作业</button>
+          <button className="btn btn-ghost btn-sm" onClick={() => jump('vehicles')}>车辆路线</button></div></div>}
+      {resultValid && <RunBar state={stage} allowCreate />}
+    </section>
+
+    {run && <section className="panel integration-detail-panel" aria-label="调度方案明细">
+      <div className="integration-section-heading"><div><span className="integration-kicker">运行分析</span><h3>仓运协同与协商明细</h3></div></div>
+      {handoffs.length > 0 && <div className="integration-handoff-section">
+        <div className="integration-subhead"><h4>仓储—运输交接</h4><span>秒 · 计划时间</span></div>
+        <div className="integration-handoff-legend"><span><i className="integration-ready-dot" />出库就绪</span><span><i className="integration-pickup-dot" />提货开始</span></div>
+        <div className="integration-handoff-list">{handoffs.slice(0, 6).map(h => <div className="integration-handoff-row" key={h.task_id}>
+          <span title={h.task_id}>{shortId(h.task_id)}</span><div className="integration-handoff-track">
+            <i className="integration-handoff-mark integration-handoff-ready" style={{ left: `${Math.min(98, 100 * h.warehouse_ready_s / maxHandoff)}%` }} title={`仓储就绪 ${h.warehouse_ready_s} 秒`} />
+            {h.pickup_start_s !== null && <i className="integration-handoff-mark integration-handoff-pickup" style={{ left: `${Math.min(98, 100 * h.pickup_start_s / maxHandoff)}%` }} title={`提货开始 ${h.pickup_start_s} 秒`} />}
+          </div><span>{h.pickup_start_s === null ? '未安排提货' : `${h.warehouse_ready_s}s → ${h.pickup_start_s}s`}</span>
+        </div>)}</div>
+        {handoffs.length > 6 && <small className="muted-line">其余 {handoffs.length - 6} 项可在冷链与交接明细中查看。</small>}
+      </div>}
+      <div className="seg integration-tabs" role="group" aria-label="调度分析分类">
+        {([['negotiation', '协商记录'], ['metrics', '详细指标'], ['coldchain', '冷链与交接']] as const).map(([key, title]) =>
+          <button key={key} className={`seg-btn ${view === key ? 'is-active' : ''}`} onClick={() => setView(key)}>{title}</button>)}
+      </div>
+      {view === 'negotiation' && <div className="integration-analysis-content">
+        {!negotiation ? <p className="muted-line">当前运行尚未生成协商记录。</p> : <>
+          <div className="integration-negotiation-summary"><span><b>{confirmed.size}</b><small>已确认任务</small></span>
+            <span><b>{transcript.length}</b><small>协商消息</small></span><span><b>{statusLabel(negotiation.status)}</b><small>协商状态</small></span></div>
+          {confirmed.size > 0 && <details className="integration-subdetails"><summary>已确认任务（{confirmed.size}）</summary>
+            <div className="integration-confirmations">{[...confirmed].map(([id, message]) => <div key={id} className="integration-confirmation-row">
+              <span title={id}>{shortId(id)} · {roles[message.role] ?? message.role}</span>
+              <button disabled={busy} className="btn btn-ghost btn-sm" onClick={() => void action(signal => revoke(id, signal))}>撤销确认</button></div>)}</div>
+          </details>}
+          <details className="integration-subdetails"><summary>完整协商日志（{transcript.length}）</summary>
+            <div className="table-wrap"><table><thead><tr><th>序号</th><th>时间（秒）</th><th>角色</th><th>动作</th><th>任务</th><th>记录</th></tr></thead>
+              <tbody>{transcript.map(m => <tr key={m.seq}><td>{m.seq}</td><td>{m.at_s}</td><td>{roles[m.role] ?? m.role}</td><td>{messages[m.kind] ?? m.kind}</td>
+                <td title={m.task_id}>{shortId(m.task_id)}</td><td style={{ overflowWrap: 'anywhere', maxWidth: 450 }}>{m.detail}</td></tr>)}</tbody></table></div>
+            <small className="integration-digest">协商摘要：{negotiation.digest}</small>
+          </details>
         </>}
-      </>}
-      {view === 'metrics' && (!run.observations ? <p>没有通过校验的观测结果。</p> : <div className="table-wrap"><table>
+      </div>}
+      {view === 'metrics' && <div className="integration-analysis-content">{!run.observations ? <p className="muted-line">没有通过校验的观测结果。</p> : <div className="table-wrap"><table>
         <thead><tr><th>指标</th><th>数值</th><th>单位</th><th>样本数</th><th>缺失原因</th></tr></thead>
-        <tbody>{run.observations.metrics.values.map(m => <tr key={m.code}><td>{labels[m.code] ?? m.code}</td>
-          <td>{m.value === null ? '—' : m.unit === 'ratio' ? `${(m.value*100).toFixed(2)}%` : m.value.toLocaleString()}</td>
-          <td>{m.unit}</td><td>{m.sample_count}</td><td>{m.reason === 'missing_data' ? '缺少测量证据' : m.reason === 'division_by_zero' ? '分母为零' : m.reason ?? '—'}</td></tr>)}</tbody>
-      </table><p>以上为计划口径。没有异常检测或重排测量时，相应指标保持缺失。</p></div>)}
-      {view === 'coldchain' && (!run.observations ? <p>没有通过校验的冷链结果。</p> : <>
-        <p>规则版本：{run.observations.coldchain.rule_version}</p><h4>库存占用区间</h4>
+        <tbody>{metrics.map(m => <tr key={m.code}><td>{labels[m.code] ?? m.code}</td>
+          <td>{metricValue(m)}</td><td>{m.unit}</td><td>{m.sample_count}</td>
+          <td>{m.reason === 'missing_data' ? '缺少测量证据' : m.reason === 'division_by_zero' ? '分母为零' : m.reason ?? '—'}</td></tr>)}</tbody>
+      </table></div>}</div>}
+      {view === 'coldchain' && <div className="integration-analysis-content">{!run.observations ? <p className="muted-line">尚无冷链约束观测结果。</p> : <>
+        <p className="muted-line">规则版本：{run.observations.coldchain.rule_version}</p><h4>库存占用区间</h4>
         <div className="table-wrap"><table><thead><tr><th>批次</th><th>库位</th><th>开始（秒）</th><th>结束（秒）</th></tr></thead><tbody>
           {run.observations.coldchain.occupancies.map(o => <tr key={o.occupancy_id}><td>{o.batch_id}</td><td>{o.location_id}</td><td>{o.start_s}</td><td>{o.end_s}</td></tr>)}
         </tbody></table></div><h4>仓运交接</h4><div className="table-wrap"><table><thead><tr><th>任务</th><th>仓储完成（秒）</th><th>提货开始（秒）</th></tr></thead><tbody>
-          {run.observations.handoffs.map(h => <tr key={h.task_id}><td>{h.task_id}</td><td>{h.warehouse_ready_s}</td><td>{h.pickup_start_s ?? '缺少证据'}</td></tr>)}
+          {handoffs.map(h => <tr key={h.task_id}><td>{h.task_id}</td><td>{h.warehouse_ready_s}</td><td>{h.pickup_start_s ?? '缺少证据'}</td></tr>)}
         </tbody></table></div>
-      </>)}
+      </>}</div>}
     </section>}
   </div>;
 }

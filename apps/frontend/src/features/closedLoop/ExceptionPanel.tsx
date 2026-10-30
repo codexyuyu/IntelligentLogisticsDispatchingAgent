@@ -106,7 +106,7 @@ export default function ExceptionPanel({snapshot,plan,source,zone,budget,current
       {kind==='delivery_delay'&&<label>增加行驶时长（秒）<input type="number" min={1} max={86400} value={delay} onChange={e=>setDelay(Number(e.target.value)||1)}/></label>}
     </div>
     <p className="pg-hint">仿真异常时刻：{fmtClock(at)}；时间来源为调度方案，不是车辆 GPS。道路与延误数据为示意模拟；已在途货物不会自动转移至仓库或其他车辆。</p>
-    <button className="btn btn-primary" disabled={busy||!objectId||at>=horizon} onClick={()=>void run()}>{busy?'正在生成 R30-B 后缀方案…':'模拟异常并重新调度'}</button>
+    <button className="btn btn-primary" disabled={busy||!objectId||at>=horizon} onClick={()=>void run()}>{busy?'正在生成 R30-B 后缀方案…':'模拟异常并重新调度（只读）'}</button>
     {error&&<p className="pg-error" role="alert">{error}</p>}
     {currentResult&&<>
       <div className="r27-source-flag demo"><strong>R30-B 后缀独立核验：{currentResult.verification.status} · {currentResult.comparison.unserved_total===0?'全部预计可服务':'部分订单明确不可服务'}</strong>

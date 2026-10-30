@@ -6,7 +6,7 @@ import { useApp } from '../../appContext';
 import { getJson } from '../../lib/http';
 import { fmtDur, fmtKM } from '../../lib/format';
 import { runBenchmark, fairDistanceReduction, type BenchmarkMetrics, type BenchmarkResult } from '../../lib/benchmark';
-import { runBatchBenchmark, summarizeBatch, type BenchmarkProfile, type BatchBenchmarkSummary, type BatchSeedRun } from '../../lib/batchBenchmark';
+import { runBatchBenchmark, summarizeBatch, budgetForScale, type BenchmarkProfile, type BatchBenchmarkSummary, type BatchSeedRun } from '../../lib/batchBenchmark';
 
 type MetricRow = { name: string; baseline: string; optimized: string; note: string };
 
@@ -196,7 +196,7 @@ export default function Page() {
   const [selectedSizes, setSelectedSizes] = useState<number[]>([50]);
   const [seedText, setSeedText] = useState('17');
   const [profile, setProfile] = useState<BenchmarkProfile>('quick');
-  const [batchProgress, setBatchProgress] = useState({ completed: 0, total: 0, message: '' });
+  const [batchProgress, setBatchProgress] = useState({ completed: 0, total: 0, message: '尚未运行批量实验' });
   const [batch, setBatch] = useState<BatchBenchmarkSummary[]>([]);
   const [historySavedAt, setHistorySavedAt] = useState<string | null>(null);
 
@@ -274,6 +274,7 @@ export default function Page() {
     setBatchProgress({ completed: 0, total: 0, message: '历史记录已清除' });
   }
 
+  const previewSeeds = parseSeeds(seedText);
   const b = benchmark ? renderMetric(benchmark.baseline) : null;
   const o = benchmark ? renderMetric(benchmark.optimized) : null;
   const rows: MetricRow[] = benchmark ? [
@@ -300,6 +301,7 @@ export default function Page() {
 
     <div className="panel" style={{ marginTop: 16, marginBottom: 16 }}>
       <div className="panel-title-row">
+        <div><h3>R17 已验收 · 正式同快照同预算 A/B</h3><p>这是从已验收 JSON 独立复算并归档的历史证据，不是本页按钮实时求解，也不是 R18 多场景新成绩。</p></div>
         <StatusPill tone={r17Accepted ? 'success' : 'info'}>{r17Accepted ? '历史证据已核算' : r17EvidenceError ? '证据文件不可用' : '读取归档证据…'}</StatusPill>
       </div>
       {r17Accepted ? <>
@@ -311,6 +313,7 @@ export default function Page() {
         </div>
         <div className="table-wrap"><table><thead><tr><th>求解模式</th><th>订单覆盖</th><th>运输距离</th><th>累计订单等待</th><th>实际耗时</th><th>校验记录</th><th>入选轮次</th></tr></thead>
           <tbody>{r17Accepted.modes.map((m) => <tr key={m.mode}><td>{m.mode === 'deep' ? '深度双向协同' : '单轮顺序衔接'}</td><td>{m.order_count}/{m.order_count}</td><td>{fmtKM(m.distance_m)}</td><td>{(m.handoff_wait_s / 60).toFixed(0)} 分钟</td><td>{(m.wall_ms / 1000).toFixed(3)} 秒</td><td>{m.validation_record}</td><td>第 {m.selected_round} 轮</td></tr>)}</tbody></table></div>
+        <p className="scope-note" style={{ overflowWrap: 'anywhere', marginTop: 12 }}>场景 SHA256：{r17Accepted.scenario_sha256}。交接等待按每订单 ready_at 到车辆仓库出发时刻累计；不是车辆排队、货损率或成本节约。仅单组双仓合成样本，不推断其他业务场景。</p>
       </> : <p className="scope-note" style={{ marginTop: 12 }}>如未显示数字，可在完整工程的 benchmarks/b03/r17_accepted 文件夹查看离线核算及原始资料。</p>}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 12 }}>
         <a className="btn btn-secondary btn-sm" href="/evidence/r17_accepted_original.json" download="r17_accepted_original.json">下载 R17 原始证据</a>
@@ -319,17 +322,17 @@ export default function Page() {
     </div>
 
     <div className="kpi-grid">
-      <KpiCard label="实验状态" value={busy ? '运行中' : phase} sub={snapshot ? `${snapshot.orders.length} 订单 · ${snapshot.warehouses.length} 仓库` : undefined} icon="chart" tone={phase === '实验完成' ? 'green' : 'neutral'} />
-      <KpiCard label="优化方案" value={baselinePlan ? '可用' : '待生成'} sub={baselinePlan ? `${baselinePlan.plan_id} · v${baselinePlan.version}` : undefined} icon="route" tone="green" />
+      <KpiCard label="实验状态" value={busy ? '运行中' : phase} sub={snapshot ? `${snapshot.orders.length} 订单 · ${snapshot.warehouses.length} 仓库` : '场景初始化中'} icon="chart" tone={phase === '实验完成' ? 'green' : 'neutral'} />
+      <KpiCard label="优化方案" value={baselinePlan ? '可用' : '待生成'} sub={baselinePlan ? `${baselinePlan.plan_id} · v${baselinePlan.version}` : '单次实验自动生成'} icon="route" tone="green" />
       <KpiCard label="批量进度" value={`${batchProgress.completed}/${batchProgress.total || 0}`} sub={batchProgress.message} icon="play" tone="orange" />
       <KpiCard label="记录留存" value={`${successCount} 成功 / ${allRuns.length} 次`} sub={historySavedAt ? `最近保存 ${new Date(historySavedAt).toLocaleString()}` : '结果保存在当前浏览器'} icon="list" tone="neutral" />
     </div>
 
     <div className="panel" style={{ marginTop: 16 }}>
-      <div className="panel-title-row"><div><h3>批量实验配置</h3></div><StatusPill tone={batch.length ? 'success' : 'info'}>{batch.length ? '已有结果' : '待运行'}</StatusPill></div>
+      <div className="panel-title-row"><div><h3>批量实验配置</h3><p>逐个生成 S20 / S50 / S100 场景，使用同一套规则基线与现有 Planning Job，不修改后端算法。</p></div><StatusPill tone={batch.length ? 'success' : 'info'}>{batch.length ? '已有结果' : '待运行'}</StatusPill></div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 14 }}>
         <div><div className="scope-note" style={{ marginBottom: 8 }}>订单规模</div><div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>{[20, 50, 100].map((size) => <button key={size} className={`btn ${selectedSizes.includes(size) ? 'btn-primary' : ''}`} type="button" disabled={busy} onClick={() => setSelectedSizes((prev) => prev.includes(size) ? prev.filter((x) => x !== size) : [...prev, size])} aria-pressed={selectedSizes.includes(size)}>S{size} {selectedSizes.includes(size) ? '✓ 已选' : '未选'}</button>)}</div><div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 10 }}><button className="btn" type="button" disabled={busy} onClick={() => { setSelectedSizes([50]); setSeedText('17'); setProfile('quick'); }}>定点快检：S50 / 17</button><button className="btn" type="button" disabled={busy} onClick={() => { setSelectedSizes([20]); setSeedText('17,42,66,88,101'); setProfile('quick'); }}>快速检查：S20 × 5</button><button className="btn" type="button" disabled={busy} onClick={() => { setSelectedSizes([20, 50, 100]); setSeedText('17,42,66,88,101'); setProfile('standard'); }}>完整验证：3规模 × 5</button></div></div>
-        <div><input id="seed-list" value={seedText} disabled={busy} onChange={(e) => setSeedText(e.target.value)} style={{ width: '100%', marginTop: 8 }} /></div>
+        <div><label className="scope-note" htmlFor="seed-list">Seeds（逗号分隔，最多 8 个）</label><input id="seed-list" value={seedText} disabled={busy} onChange={(e) => setSeedText(e.target.value)} style={{ width: '100%', marginTop: 8 }} /><div className="scope-note" style={{ marginTop: 8 }}>当前将运行 {selectedSizes.length * previewSeeds.length} 组实验。</div></div>
       </div>
       <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
         <label className="scope-note" htmlFor="benchmark-profile">求解模式</label>
@@ -337,6 +340,7 @@ export default function Page() {
           <option value="quick">快速排错（S20=8秒 / S50=12秒 / S100=18秒）</option>
           <option value="standard">标准评测（每组60秒，比赛数据）</option>
         </select>
+        <span className="scope-note">{profile === 'quick' ? '当前是短预算验证：失败不代表无解，距离改善只供预览。' : '标准评测：保留既有60秒预算，可用于正式对照。'} {selectedSizes.map(s => `S${s}：${budgetForScale(s, profile) / 1000}s`).join(' · ')}</span>
       </div>
       {busy && <div style={{ marginTop: 14 }}><div style={{ height: 8, background: 'var(--viz-panel)', borderRadius: 999, overflow: 'hidden' }}><div style={{ height: '100%', width: `${batchProgress.total ? Math.round(batchProgress.completed / batchProgress.total * 100) : 0}%`, background: 'var(--viz-accent)', transition: 'width .2s ease' }} /></div><p className="scope-note" style={{ marginTop: 8 }}>{batchProgress.message}</p></div>}
     </div>
@@ -358,6 +362,6 @@ export default function Page() {
       </> : <div className="empty-state"><strong>还没有单次实验结果</strong><span>可以运行“单次 S20 实验”，或者直接运行上面的批量实验。</span></div>}
     </div>
 
-    <div className="card-grid two" style={{ marginTop: 16 }}><div className="panel evidence-card"><div className="evidence-list"><span>① 生成固定规模 + seed 的可复现场景。</span><span>② 导入场景并调用现有 Planning Job：CP-SAT + Routing。</span><span>③ 用确定性规则基线计算同场景指标。</span><span>④ 自动保存每个 seed 的成功/失败结果，并汇总平均值。</span><span>⑤ 失败实验保留阶段、错误码和诊断原因，便于定位规模扩展瓶颈。</span></div></div><div className="panel evidence-card"><div className="panel-title-row"><div><h3>实验边界</h3><p>保持后端架构冻结</p></div></div><p className="scope-note">R16 快速排错 / 标准评测双模式：合成实验 v2，以 S20 为模板，按 Seed 调整订单需求/时间窗，并在同仓、同温区的既有节点中分配配送点；复用真实输入矩阵，不伪造路段。优化后路线必须逐单核验通过才计为成功。规则基线是固定优化仓储交接方案后的运输贪心法（并非独立的完整仓运方案）；两方有漏单时，距离优化率显示不可比。快检失败仅代表短预算未求得方案；快检与标准不混合统计。不同生成器版本也不能混为一组统计。</p></div></div>
+    <div className="card-grid two" style={{ marginTop: 16 }}><div className="panel evidence-card"><div className="panel-title-row"><div><h3>怎么做实验</h3><p>自动化流程</p></div></div><div className="evidence-list"><span>① 生成固定规模 + seed 的可复现场景。</span><span>② 导入场景并调用现有 Planning Job：CP-SAT + Routing。</span><span>③ 用确定性规则基线计算同场景指标。</span><span>④ 自动保存每个 seed 的成功/失败结果，并汇总平均值。</span><span>⑤ 失败实验保留阶段、错误码和诊断原因，便于定位规模扩展瓶颈。</span></div></div><div className="panel evidence-card"><div className="panel-title-row"><div><h3>实验边界</h3><p>保持后端架构冻结</p></div></div><p className="scope-note">R16 快速排错 / 标准评测双模式：合成实验 v2，以 S20 为模板，按 Seed 调整订单需求/时间窗，并在同仓、同温区的既有节点中分配配送点；复用真实输入矩阵，不伪造路段。优化后路线必须逐单核验通过才计为成功。规则基线是固定优化仓储交接方案后的运输贪心法（并非独立的完整仓运方案）；两方有漏单时，距离优化率显示不可比。快检失败仅代表短预算未求得方案；快检与标准不混合统计。不同生成器版本也不能混为一组统计。</p></div></div>
   </div>;
 }

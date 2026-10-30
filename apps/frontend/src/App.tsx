@@ -4,6 +4,7 @@ import { CONTRACT_VERSION } from './client/contractVersion';
 import { useEffect, useMemo, useState } from 'react';
 import { AppProvider, useApp } from './appContext';
 import Icon from './components/Icons';
+import DemoJourney from './components/DemoJourney';
 import { LoginGate } from './components/LoginGate';
 import { clearToken, getToken } from './auth';
 import DashboardPage from './features/dashboard/Page';
@@ -29,7 +30,7 @@ type NavItem = { key: string; title: string; icon: string };
 // 导航只保留唯一入口：联合调度覆盖协商/指标/冷链标签，运输计划覆盖原“本机数据库调度”。
 // 旧 hash（#/negotiation、#/warehouseOps 等）仍可直达，但不重复出现在菜单里。
 const groups: { label: string; items: NavItem[] }[] = [
-  { label: '总览', items: [{ key: 'dashboard', title: '总览', icon: 'grid' }] },
+  { label: '总览', items: [{ key: 'dashboard', title: '调度驾驶舱', icon: 'grid' }] },
   { label: '业务数据', items: [{ key: 'orders', title: '订单与库存', icon: 'package' }, { key: 'vehicles', title: '运输计划', icon: 'truck' }] },
   { label: '仓储管理', items: [{ key: 'warehouseTwin', title: '单仓三维视图', icon: 'warehouse' }, { key: 'warehouseOps', title: '仓储运营', icon: 'warehouse' }, { key: 'warehouses', title: '仓储排程', icon: 'clock' }] },
   { label: '调度', items: [{ key: 'plans', title: '联合调度', icon: 'route' }, { key: 'agent', title: '调度助手', icon: 'bot' }, { key: 'events', title: '异常处置', icon: 'alert' }, { key: 'simulations', title: '仿真回放', icon: 'play' }] },
@@ -47,7 +48,7 @@ const pageMap: Record<string, ComponentType> = {
 
 // 旧路由保留直达能力，标题仍按真实页面显示。
 const titles: Record<string, string> = {
-  dashboard: '总览', orders: '订单与库存', vehicles: '运输计划', postgres: '运输计划',
+  dashboard: '调度驾驶舱', orders: '订单与库存', vehicles: '运输计划', postgres: '运输计划',
   warehouseTwin: '单仓三维视图', warehouseOps: '仓储运营', warehouses: '仓储排程',
   plans: '联合调度', closedLoop: '联合调度', negotiation: '联合调度',
   observations: '业务观测', coldchain: '冷链与交接',
@@ -109,7 +110,7 @@ function Shell({ onSignOut }: { onSignOut: () => void }) {
             <button className="btn btn-ghost btn-sm" onClick={onSignOut}>退出</button>
           </div>
         </header>
-        <div className="content-wrap"><Page /></div>
+        <div className="content-wrap">{active !== 'dashboard' && <DemoJourney />}<Page /></div>
       </main>
     </div>
   );

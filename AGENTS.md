@@ -11,13 +11,6 @@
 - Gate 状态必须同时核验原始记录、输入及日志哈希、依赖证据和实际测试；文件存在、编号较大、记录写着 passed 均不足以证明通过。`--check-only` 退出 0 也不能单独证明已签收，必须确认官方记录存在且有效。
 - 当前目录未建立 Git 仓库；执行时重新核对。无 Git 使用相关文件清单及内容哈希，不虚构提交、分支、PR 或 worktree。
 
-## 前端所有权
-
-- 唯一正式前端是 `apps/frontend`。前端代码（`apps/frontend/**`）**只能由 codexyuyu 修改**；其他 agent 不得改动、替换或新增前端目录，需要前端变更时提交说明交由 codexyuyu 处理。
-- 仓库曾并存多套前端（根 `frontend/`、`merged/frontend`、`tmp/pr1-frontend`、`tmp/pr2-frontend`、`tmp/pr6-check`、`tmp/repo-inspect`、`tmp/demo-integration/frontend`），已于 2026-10-30 删除。删除原因是改了一套却在另一套里看效果、误判为“改动没生效”。不得重新引入并行前端副本。
-- 以下目录不是可运行前端，不能用来判断前端是否生效：`demo/frontend`（未跟踪，`demo/` 只读）、`archive/frontend-legacy`、`archive/partner_engine/frontend`（历史归档）。
-- 后端不存在同类重复：顶层 `backend/` 只是 7 个 README 设计占位（停在 `d2f07bd`），实现只在 `apps/backend`、`packages/`。
-
 ## 当前 DSH 调度边界
 
 - 2026-10-01 返工后：P01-02 为 READY_FOR_ZCODE，20 项交付哈希复算一致；仍待独立验收。Codex 已补 AGENTS.md 显式所有权，unit + integration 实跑为 226 passed / exit 0。G00 的问题登记输入漂移，P01-01 旧 precheck 已过期；P01-02/P01-03 precheck 与 G01 Codex review 缺失，G01 未有效签收。完整业务系统未交付。

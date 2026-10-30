@@ -1,3 +1,4 @@
+import type { Comparison } from './ProposalComparison';
 /** Stage A verified simulation endpoints (01-14 acceptance evidence). All operations are scoped to a checked run. */
 import { request } from '../../api';
 import type { TwinRoute } from '../../appTypes';
@@ -10,7 +11,7 @@ export type SimIncident = {
   id: string; event_id?: string; status: 'pending' | 'approved' | 'rejected'; row_version: number;
   vehicle_id?: string; time_s?: number; delay_s?: number; proposal_valid?: boolean;
   strategy?: 'simulated_local_reroute' | 'simulated_local_retimed' | 'simulated_hold_resume';
-  route_changed?: boolean; candidate_tracks?: VehicleTrack[];
+  route_changed?: boolean; candidate_tracks?: VehicleTrack[]; comparison?: Comparison;
   s1_local_solver?: { status?: string; reason?: string; applied_to_simulation?: boolean; route_changed?: boolean };
   impact?: { affected_order_ids?: string[]; before_eta_s?: Record<string, number>; after_eta_s?: Record<string, number> };
 };
@@ -33,6 +34,12 @@ export function loadSimulation(runId: string, signal?: AbortSignal) { return req
 export function startSimulation(runId: string) { return request<Simulation>(route(runId), { method: 'POST', body: '{}' }); }
 export function loadSimulationState(runId: string, timeS: number, view: 'active' | 'baseline' | 'candidate', signal?: AbortSignal) {
   return request<SimulationState>(`${route(runId)}/state-at?time_s=${Math.floor(timeS)}&view=${view}`, { signal });
+}
+export type Opportunity = { vehicle_id: string; time_s: number; delay_s: number;
+  objective_saved_cents: number; lateness_reduced_s: number; distance_saved_m: number };
+export type OpportunityResult = { status: string; analysed: number; matches: Opportunity[] };
+export function findDelayOpportunities(runId: string, delayS = 90) {
+  return request<OpportunityResult>(`${route(runId)}/opportunities?delay_s=${delayS}`);
 }
 export function submitDelay(runId: string, vehicleId: string, timeS: number, delayS: number, reason: string) {
   return request<SimIncident>(`${route(runId)}/incidents`, { method: 'POST', body: JSON.stringify({

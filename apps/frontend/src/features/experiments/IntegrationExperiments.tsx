@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { request, idempotencyKey } from '../../api';
 import SectionHeader from '../../components/SectionHeader';
+import DelayReplanningBenchmark from './DelayReplanningBenchmark';
 import { sourceKindLabel, statusLabel } from '../../lib/labels';
 import { isPending, pollStatus, readStored, saveStored, useTaskRunner, validInteger } from '../../lib/asyncJobs';
 
@@ -90,8 +91,9 @@ export default function IntegrationExperiments() {
   }
   const pending = rows.filter(row => !row.result || isPending(row.result.status));
   const checked = rows.filter(row => !row.error && row.result?.status === 'checked');
-  return <div><SectionHeader title="批量实验" desc="同一场景、相同预算、连续种子重复求解；保存真实指标和失败记录。本页用于重复性评测，不将不同种子称为算法对照。" />
-    <section className="panel">
+  return <div><SectionHeader title="算法对照与批量实验" desc="对照运输延误时的两种决策策略，并保留独立的批量重复性评测。" />
+    <DelayReplanningBenchmark />
+    <section className="panel"><h3>联合求解重复性评测</h3>
       <label>场景 <select value={scenario} disabled={busy} onChange={e => setScenario(e.target.value)}>
         <option value="">请先在协商记录导入场景</option>{scenarios.map(s => <option key={s.id} value={s.id}>{s.name} · {sourceKindLabel(s.source_kind)}</option>)}
       </select></label>
