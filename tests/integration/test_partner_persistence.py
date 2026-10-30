@@ -6,6 +6,7 @@ from sqlalchemy import create_engine, delete
 from tests.integration.test_partner_pipeline import synthetic_import
 
 from logistics_backend.application.artifacts import ResultArtifactStore
+from logistics_backend.cli.seed import seed
 from logistics_backend.application.integration import IntegrationJobHandler, IntegrationService
 from logistics_backend.application.jobs import HandlerRegistry, JobService
 from logistics_backend.errors import ServiceError
@@ -22,6 +23,12 @@ pytestmark = pytest.mark.requires_postgres
 
 def test_import_run_refresh_idempotency_revoke_and_scope_isolation(database_url, tmp_path):
     engine = create_engine(database_url)
+    # tiny_master pins deterministic UUIDs for its master data and the synthetic
+    # scenario reuses exactly those UUIDs.  Seeding first hands them to the seeded
+    # scope, so importing here under a throw-away scope derives scope-local ids
+    # rather than claiming them and leaving the seeded suites with derived ids the
+    # fixture references no longer resolve to.
+    seed("tiny_master", database_url)
     scope = uuid4()
     actor = ActorContext(actor_id=uuid4(), role=ActorRole.OPERATOR, scope_id=scope)
     def factory(**options):
