@@ -56,6 +56,7 @@
     ".python-version": "A",
     ".node-version": "A",
     ".gitignore": "A",
+    ".gitattributes": "A",
     ".env.example": "A",
     "Dockerfile": "A",
     ".dockerignore": "A",
