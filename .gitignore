@@ -40,3 +40,8 @@ tools/bin/
 /赛题.zip
 /*.pdf
 /data/external/
+
+# Stage B 验收：UI 截图体量大，归档在分发包中本地留存，不进代码仓库
+/stage_b_evidence/shots/
+# 本地填充后的环境变量（模板 env_stage_b.example.sh 除外）
+/stage_b_evidence/.env.local

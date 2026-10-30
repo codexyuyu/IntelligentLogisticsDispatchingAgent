@@ -1,0 +1,31 @@
+已登录
+
+===== A. 仿真回放：StageReplay 是否已挂载并以真实接口工作 =====
+PASS | StageReplay 区块出现在仿真回放页
+PASS | 全局时间轴滑块存在 | range=2
+PASS | 方案视图下拉存在（当前生效/原方案v0/延误候选）
+PASS | 回放页 3D canvas 渲染 | canvas=2
+PASS | 批准后当前生效模拟版本为 v1 | v1
+  t=1400 active 车辆位置: 62beb8d6…7723：bb0ddfa7…5d5a；e8b7fa6e…1f6b：524656e0…9fc0
+  状态行: 模拟版本：v1方案：candidate在途车辆：2已完成作业：30已送达订单：5冷链物流数字孪生1
+  状态行(baseline): 模拟版本：v0方案：baseline在途车辆：2已完成作业：30已送达订单：5冷链物流数字孪生1
+  t=1400 baseline 车辆位置: 62beb8d6…7723：bb0ddfa7…5d5a；e8b7fa6e…1f6b：524656e0…9fc0
+PASS | baseline 与 candidate 在 t=1400 存在差异（顺延生效）
+  已回到起点
+
+===== B. 拒绝路径：新建 run -> 启动模拟 -> 60s 延误 -> 拒绝 -> 保持 v0 =====
+PASS | 新 run 返回 checked
+  RUN2 = fd05f7b7-4472-54ee-a7a8-0498aa7e3a7d
+PASS | run2 模拟已启动
+PASS | 延误登记成功
+PASS | 拒绝操作完成
+  审批状态: 异常：74d2f70a…b8cd · 状态：rejected · 候选独立校验：通过受影响订单：4 · 最大预计顺延：60 秒
+PASS | 刷新后拒绝状态从数据库恢复
+PASS | 拒绝后模拟版本保持 v0 | v0
+
+===== 汇总 =====
+RUN_APPROVED = 929e8f73-d2e7-56cd-8213-d361f686e721
+RUN_REJECTED = fd05f7b7-4472-54ee-a7a8-0498aa7e3a7d
+console/page errors = 1
+  - Failed to load resource: the server responded with a status of 404 (Not Found)
+404 responses = 0

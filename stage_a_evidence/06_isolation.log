@@ -1,0 +1,16 @@
+== 5433 演示库容器 ==
+Status=exited StartedAt=2026-10-29T18:01:35.604440063Z FinishedAt=2026-10-30T05:59:07.27685901Z
+== 5433 端口监听 ==
+无监听（未启动）
+== 5434 测试库容器 ==
+Status=running StartedAt=2026-10-30T08:50:21.658985902Z
+== 5434 数据库清单 ==
+logistics_stage_a_test
+logistics_test
+postgres
+== 迁移/测试目标核对 ==
+host=127.0.0.1 port=5434 db=logistics_stage_a_test (DATABASE_URL == TEST_DATABASE_URL)
+== 未使用的库（未被连接/修改）==
+logistics_test (5434 上既存共享库，未清空、未迁移 0012)
+== 密码处理 ==
+仅通过进程环境变量传递，未写入本日志或报告

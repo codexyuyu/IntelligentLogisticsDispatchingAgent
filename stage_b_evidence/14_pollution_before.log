@@ -1,0 +1,9 @@
+         t         | c  
+-------------------+----
+ inventory_ledger  |  0
+ schedules         |  0
+ schedule_versions |  0
+ warehouse_tasks   | 30
+ events            | 12
+(5 rows)
+

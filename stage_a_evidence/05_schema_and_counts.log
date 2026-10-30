@@ -1,0 +1,59 @@
+== alembic_version ==
+0012_integration_simulation
+== public 表总数 ==
+45
+== 新表 ==
+integration_simulation_incidents
+integration_simulations
+== 新表列 ==
+            table_name            |  column_name  |        data_type         | is_nullable 
+----------------------------------+---------------+--------------------------+-------------
+ integration_simulation_incidents | id            | uuid                     | NO
+ integration_simulation_incidents | scope_id      | uuid                     | NO
+ integration_simulation_incidents | simulation_id | uuid                     | NO
+ integration_simulation_incidents | event_id      | uuid                     | NO
+ integration_simulation_incidents | status        | character varying        | NO
+ integration_simulation_incidents | row_version   | bigint                   | NO
+ integration_simulation_incidents | created_at    | timestamp with time zone | NO
+ integration_simulation_incidents | updated_at    | timestamp with time zone | NO
+ integration_simulation_incidents | created_by    | uuid                     | NO
+ integration_simulation_incidents | payload       | jsonb                    | NO
+ integration_simulations          | id            | uuid                     | NO
+ integration_simulations          | scope_id      | uuid                     | NO
+ integration_simulations          | run_id        | uuid                     | NO
+ integration_simulations          | created_at    | timestamp with time zone | NO
+ integration_simulations          | created_by    | uuid                     | NO
+ integration_simulations          | payload       | jsonb                    | NO
+(16 rows)
+
+== 约束 ==
+               tbl                |                           conname                           | contype 
+----------------------------------+-------------------------------------------------------------+---------
+ integration_simulations          | ck_integration_simulations_payload_identity                 | c
+ integration_simulations          | integration_simulations_pkey                                | p
+ integration_simulations          | integration_simulations_run_id_fkey                         | f
+ integration_simulations          | uq_integration_simulations_run                              | u
+ integration_simulation_incidents | ck_integration_simulation_incidents_payload_identity        | c
+ integration_simulation_incidents | ck_integration_simulation_incidents_row_version_nonnegative | c
+ integration_simulation_incidents | ck_integration_simulation_incidents_status                  | c
+ integration_simulation_incidents | integration_simulation_incidents_event_id_fkey              | f
+ integration_simulation_incidents | integration_simulation_incidents_pkey                       | p
+ integration_simulation_incidents | integration_simulation_incidents_simulation_id_fkey         | f
+ integration_simulation_incidents | uq_integration_simulation_incident_event                    | u
+ integration_simulation_incidents | uq_integration_simulation_one_incident                      | u
+(12 rows)
+
+== 索引 ==
+integration_simulation_incidents | integration_simulation_incidents_pkey
+integration_simulation_incidents | ix_integration_simulation_incidents_scope
+integration_simulation_incidents | uq_integration_simulation_incident_event
+integration_simulation_incidents | uq_integration_simulation_one_incident
+integration_simulations | integration_simulations_pkey
+integration_simulations | ix_integration_simulations_scope_run
+integration_simulations | uq_integration_simulations_run
+== 累计行数（本轮多次验收写入）==
+ simulations | incidents | warehouse_tasks | inventory_ledger | schedules | schedule_versions 
+-------------+-----------+-----------------+------------------+-----------+-------------------
+          13 |        11 |              30 |                0 |         0 |                 0
+(1 row)
+

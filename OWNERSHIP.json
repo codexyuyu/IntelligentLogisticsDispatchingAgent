@@ -66,6 +66,8 @@
     ".github/": "A",
     "tools/": "A",
     "tmp/": "A",
+    "stage_a_evidence/": "A",
+    "stage_b_evidence/": "A",
     "PROJECT_MASTER_PLAN.md": "A",
     "TASK_GRAPH.md": "A",
     "AI-CODING-PLAN.md": "A",
