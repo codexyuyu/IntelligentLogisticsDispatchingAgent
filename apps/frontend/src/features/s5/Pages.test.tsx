@@ -59,7 +59,7 @@ describe('S5 API-connected presentation', () => {
     });
     await act(async () => root.render(<GanttPage />));
     expect(document.body.textContent).toContain('CC10-O01');
-    const bar = document.querySelector<HTMLButtonElement>('[aria-label*="CC10-O01 入库"]');
+    const bar = document.querySelector<HTMLButtonElement>('[aria-label*="CC10-O01 收货"]');
     expect(bar).not.toBeNull();
     expect(vi.mocked(request).mock.calls.some(call => call[0] === `/warehouses/${warehouseId}/tasks?limit=500`)).toBe(true);
     await act(async () => bar!.click());
@@ -83,7 +83,7 @@ describe('S5 API-connected presentation', () => {
       positions: [{ cargo_id: 'cargo', location_id: 'location', quantity_units: 4 }],
     });
     await act(async () => root.render(<InventoryPage />));
-    expect(document.body.textContent).toContain('入库完成');
+    expect(document.body.textContent).toContain('收货完成');
     expect(vi.mocked(request).mock.calls.map(call => call[0])).toContain('/inventory?limit=500');
     expect(vi.mocked(request).mock.calls.every(call => call[1]?.method !== 'POST')).toBe(true);
   });

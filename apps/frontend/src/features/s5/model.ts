@@ -128,7 +128,7 @@ export type StateAtResponse = {
 const STAGES: Record<string, number> = { receive: 0, sort: 1, load: 2 };
 
 export const operationLabel: Record<string, string> = {
-  receive: '入库', sort: '分拣', load: '装车',
+  receive: '收货', sort: '分拣', load: '装车',
 };
 
 export const taskStatusLabel: Record<string, string> = {
