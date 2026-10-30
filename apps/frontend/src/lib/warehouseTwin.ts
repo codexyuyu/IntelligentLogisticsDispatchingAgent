@@ -24,18 +24,18 @@ export type ForkliftStage = 'waiting' | 'yielding' | 'to_rack' | 'pickup' | 'to_
 export type ForkliftPose = { x: number; z: number; heading: number; lift: number; reach?: number; carrying: boolean; stage: ForkliftStage; job: TwinForkliftJob | null };
 
 export const ZONES: TwinZone[] = [
-  { id: 'receiving', name: '收货区', temp: '到货验收', x: -24.5, z: -11.5, width: 9, depth: 12, color: 0x8a8f85 },
+  { id: 'receiving', name: '收货区', temp: '到货验收', x: -27, z: 12, width: 8, depth: 18, color: 0x8a8f85 },
   { id: 'quality', name: '质检区', temp: '质量检验', x: -5.5, z: 4.5, width: 17, depth: 4, color: 0xb7943f },
   { id: 'chilled', name: '冷藏区', temp: '2–8°C · 演示设定', x: -9.5, z: -10.0, width: 19, depth: 18, color: 0x3f9a62 },
   { id: 'frozen', name: '冷冻区', temp: '-18°C · 演示设定', x: 11.5, z: -10.0, width: 19, depth: 18, color: 0xd4d6d0 },
   { id: 'picking', name: '分拣复核区', temp: '出库复核', x: -5.5, z: 11.5, width: 17, depth: 10, color: 0x6e7368 },
   { id: 'staging', name: '出库暂存区', temp: '待装车', x: 11.5, z: 9, width: 15, depth: 12, color: 0xc98a2a },
   { id: 'dock', name: '装卸月台', temp: '冷链交接', x: 25.5, z: 9, width: 9, depth: 12, color: 0x5c7d4a },
-  { id: 'charging', name: '叉车充电区', temp: '设备待命', x: -27, z: 12, width: 8, depth: 18, color: 0x575a54 },
+  { id: 'charging', name: '叉车充电区', temp: '设备待命', x: -24.5, z: -11.5, width: 9, depth: 12, color: 0x575a54 },
 ];
 
 export const FORKLIFT_IDS = ['FK-01', 'FK-02', 'FK-03'] as const;
-export const CHARGING_POINTS: GroundPoint[] = [{ x: -27, z: 6 }, { x: -27, z: 12 }, { x: -27, z: 18 }];
+export const CHARGING_POINTS: GroundPoint[] = [{ x: -26.5, z: -17 }, { x: -26.5, z: -11.5 }, { x: -26.5, z: -6 }];
 
 // Includes the carried pallet (nose at x=2.485), wheels and a clearance margin.
 // Every travel waypoint must clear rack footprints by this turning radius.
@@ -46,7 +46,8 @@ export const RACK_HALF_DEPTH = 0.775;
 const RACK_ROW_SPACING = 7;
 const LEFT_CORRIDOR_X = -21;
 const RIGHT_CORRIDOR_X = 22;
-const RETURN_AISLE_Z = 18;
+// Return north of the receiving/inspection conveyor, without crossing its rollers.
+const RETURN_AISLE_Z = .5;
 export const DOCK_TRANSFER_PROGRESS = 0.83;
 export const DOCK_FORK_LIFT = 0.15;
 export const COLD_PARTITION_X = 1;
@@ -56,8 +57,9 @@ export const COLD_PARTITION_PANELS = [
   { startZ: -3.5, endZ: -2.5 },
 ];
 export const DOCK_CONVEYOR_END_X = 38;
+export const RECEIVING_ENTRY: GroundPoint = {x:-25,z:21.67};
 export const QUALITY_SORTING_PATH: GroundPoint[] = [
-  {x:-13.6,z:4.8},{x:-9,z:4.8},{x:-9,z:8},{x:11.6,z:8},
+  {...RECEIVING_ENTRY},{x:-25,z:4.8},{x:-9,z:4.8},{x:-9,z:8},{x:11.6,z:8},
 ];
 
 export function dockStop(job: TwinForkliftJob, jobs: TwinForkliftJob[]): GroundPoint {

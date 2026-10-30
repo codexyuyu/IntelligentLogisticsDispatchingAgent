@@ -21,6 +21,19 @@ export default function WarehouseTwinPage(){
   const completedJobs=data.jobs.filter((job)=>clock.t>=job.endS);
   const currentDetail=useMemo(()=>{
     if(!selected)return {title:'单仓总览',lines:['点击库区、货架、叉车或月台查看详情。']};
+    if(selected.kind==='evaporator'){
+      const frozen=selected.id==='EV-02';
+      return {title:`${selected.id} 吊顶冷风机`,lines:[
+        `所属温区：${frozen?'冷冻区':'冷藏区'}`,
+        '设备连接：未接入 · 演示模型',
+        '演示工况：制冷送风；双轴流风扇随回放转动',
+        `温区目标（演示配置）：${frozen?'−18°C':'2–8°C'}`,
+        '实测温度 / 风机转速 / 功率：未采集',
+        '除霜状态 / 故障告警：未知（无设备遥测）',
+        '结构：双风机护网、翅片换热器、检修侧盖、接水盘、排水弯管、保温回气管与吊架',
+        'COLDLINE 为演示铭牌，非厂家型号或真实设备参数。',
+      ]};
+    }
     if(selected.kind==='zone'){
       const z=data.zones.find(x=>x.id===selected.id);
       return {title:z?.name??selected.id,lines:[`类型：${z?.temp??'未知'}`,`空间范围：${z?.width??0} × ${z?.depth??0}（示意单位）`, '温度与布局为演示配置，未连接冷库传感器。']};
@@ -69,12 +82,14 @@ export default function WarehouseTwinPage(){
     <div className="r26-scene-layout">
       <div className="r26-scene-panel">
         <WarehouseTwin3D data={data} getTime={clock.getTime} cameraPreset={camera} showRoof={showRoof} selected={selected} onSelect={setSelected} height={590} />
-        <div className="r26-scene-hint">左键拖动旋转 · 滚轮缩放 · 右键平移 · 点击货架、库区、叉车、月台查看属性</div>
+        <div className="r26-scene-hint">左键拖动旋转 · 滚轮缩放 · 右键平移 · 点击冷风机、货架、库区、叉车、月台查看属性</div>
       </div>
       <aside className="r26-inspector">
         <div className="r26-inspector-title"><small>场景检视</small><h3>{currentDetail.title}</h3></div>
         <div className="r26-inspector-body">{currentDetail.lines.map((line,i)=><div key={i}>{line}</div>)}</div>
-        <div className="r26-inspector-title"><small>库区目录</small><h3>仓内区域</h3></div>
+        <div className="r26-inspector-title"><small>制冷设备</small><h3>冷风机</h3></div>
+          <div className="r26-zone-list">{['EV-01','EV-02'].map((id,i)=><button key={id} className={selected?.kind==='evaporator'&&selected.id===id?'is-selected':''} onClick={()=>setSelected({kind:'evaporator',id})}>{id}<small>{i===0?'冷藏区':'冷冻区'} · 未接入</small></button>)}</div>
+          <div className="r26-inspector-title"><small>库区目录</small><h3>仓内区域</h3></div>
         <div className="r26-zone-list">{data.zones.map((zone)=><button key={zone.id} className={selected?.kind==='zone'&&selected.id===zone.id?'is-selected':''} onClick={()=>setSelected({kind:'zone',id:zone.id})}><i style={{background:`#${zone.color.toString(16).padStart(6,'0')}`}}/>{zone.name}<small>{zone.temp}</small></button>)}</div>
       </aside>
     </div>
