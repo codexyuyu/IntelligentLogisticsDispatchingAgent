@@ -1,3 +1,4 @@
+import StageReplay from '../features/stageB/Replay';
 import { useEffect, useMemo, useState } from "react";
 import { idempotencyKey, request, type JobRef } from "../api";
 
@@ -348,6 +349,7 @@ export function TransportWorkflow() {
 
   return (
     <section className="workflow">
+      <details open><summary>本次联合运行 · 仓运模拟 3D 地图</summary><StageReplay mode="transport" /></details>
       <h2>运输调度</h2>
       <ol className="steps">
         {["读取主数据", "提交求解", "路线与校验", "候选", "提交版本", "数据库回读"].map((label, index) => (

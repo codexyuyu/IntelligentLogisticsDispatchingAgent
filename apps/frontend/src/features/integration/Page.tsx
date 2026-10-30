@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { request, idempotencyKey } from '../../api';
 import SectionHeader from '../../components/SectionHeader';
+import { RunBar, useStageRun } from '../stageB/RunContext';
 import { isPending, pollStatus, readStored, saveStored, useTaskRunner, validInteger } from '../../lib/asyncJobs';
 import { statusLabel } from '../../lib/labels';
 
@@ -24,6 +25,7 @@ const roles: Record<string, string> = { coordinator: '协调者', warehouse: '�
 const messages: Record<string, string> = { cfp: '发布任务', bid: '报价', award: '授标', confirm: '确认', revoke: '撤销', conflict: '冲突', close: '结束' };
 
 export default function IntegrationPage({ initialView = 'negotiation' }: { initialView?: string }) {
+  const stage = useStageRun();
   const [scenarios, setScenarios] = useState<Scenario[]>([]);
   const [selected, setSelected] = useState('');
   const [source, setSource] = useState('');
@@ -82,6 +84,8 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
     signal.throwIfAborted(); setRun(value);
     if (!saved) setNotice('浏览器无法保存运行编号，请复制记录编号以便回查。');
     if (isPending(value.status)) await followRun(value.run_id, signal);
+    signal.throwIfAborted();
+    window.dispatchEvent(new CustomEvent('stageb:run', { detail: value.run_id }));
   }
   const negotiation = run?.negotiation?.result;
   const transcript = negotiation?.transcript ?? [];
@@ -124,6 +128,13 @@ export default function IntegrationPage({ initialView = 'negotiation' }: { initi
       <button className="btn btn-ghost" disabled={busy} onClick={() => void action(loadScenarios)}>刷新场景列表</button>
       {error && <p role="alert" className="callout callout-error">{error}</p>}{notice && <p role="status">{notice}</p>}
     </section>
+    {run?.status === 'checked' && run.joint_validation?.valid === true && <section className="panel">
+      <h3>下一步 · 启动数据库驱动的仓运模拟</h3>
+      <p>本次 checked run 可直接建立可回放的车辆轨迹；模拟操作不提交真实派车、也不自动记实际库存。</p>
+      <RunBar state={stage} allowCreate />
+      <button className="btn btn-ghost" onClick={() => window.dispatchEvent(new CustomEvent('twin:navigate', { detail: 'warehouseOps' }))}>查看仓储运营</button>
+      <button className="btn btn-ghost" onClick={() => window.dispatchEvent(new CustomEvent('twin:navigate', { detail: 'vehicles' }))}>查看运输计划</button>
+    </section>}
     {run && <section className="panel">
       <h3>运行记录</h3><p>来源：{run.source_kind === 'synthetic' ? '合成测试数据' : run.source_kind ? '企业来源声明（尚未独立核实）' : '等待任务结果'} · {statusLabel(run.status)} · {run.reason}</p>
       <small>记录编号：{run.run_id}{run.job_id ? ` · Job：${run.job_id}` : ''}</small>

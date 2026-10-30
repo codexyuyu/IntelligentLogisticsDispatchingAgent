@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { request } from '../api';
 import SectionHeader from './SectionHeader';
+import StageIncident from '../features/stageB/Incident';
 type Order = { id: string; external_ref: string };
 type Exception = { exception_id: string; severity: string; status: string };
 type Impact = { report: { affected_orders: string[]; affected_tasks: string[]; affected_resources: string[] }; boundary: { frozen_task_ids: string[]; interrupted_task_ids: string[]; mutable_task_ids: string[] } };
@@ -54,7 +55,7 @@ export function ExceptionPanel() {
     setProposal(await request<Proposal>('/reschedules/proposals', { method: 'POST', body: JSON.stringify({ schema_version: '2.0.0', impact: command,
       policy: { max_extra_delay_s: 300, allow_scope_expansion: false } }) }));
   }
-  return <div><SectionHeader title="异常登记与影响分析" desc="选择业务订单登记取消事件，再基于已求解的运输方案分析影响。" />
+  return <div><StageIncident /><SectionHeader title="异常登记与影响分析" desc="选择业务订单登记取消事件，再基于已求解的运输方案分析影响。" />
     {error && <p role="alert" className="callout callout-error">{error}</p>}{notice && <p role="status">{notice}</p>}
     <section className="panel"><h3>登记订单取消</h3><div className="grid-two">
       <label>关联订单<select disabled={busy} value={orderId} onChange={e => { setOrderId(e.target.value); setEventKey(crypto.randomUUID()); setImpact(null); setProposal(null); }}>
