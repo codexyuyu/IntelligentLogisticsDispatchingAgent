@@ -56,7 +56,7 @@ export default function GanttPage() {
     if (!selected || !run || selected.rowVersion === null || !selected.status) return;
     const target = NEXT[selected.status];
     if (!target) return;
-    const message = `确认将 ${selected.orderLabel} 的「${operationLabel[selected.kind] ?? selected.kind}」从 ${taskStatusLabel[selected.status] ?? selected.status} 推进为 ${taskStatusLabel[target] ?? target}？\n这是实际作业写操作；完成入库/装车会生成库存流水。`;
+    const message = `确认将 ${selected.orderLabel} 的「${operationLabel[selected.kind] ?? selected.kind}」从 ${taskStatusLabel[selected.status] ?? selected.status} 推进为 ${taskStatusLabel[target] ?? target}？\n这是实际作业写操作；完成收货/装车会生成库存流水。`;
     if (!window.confirm(message)) return;
     const updated = await request<ActualTask>(
       `/warehouses/${encodeURIComponent(selected.warehouseId)}/tasks/${encodeURIComponent(selected.id)}/transitions`,
@@ -70,7 +70,8 @@ export default function GanttPage() {
   }
 
   return <div>
-    <SectionHeader title="S5 · 仓储作业甘特图" desc="读取 checked 联合运行的 CP-SAT 分配：每个订单的入库、分拣、装车各显示一次；实际执行状态来自 S3。" />
+    <SectionHeader title="S5 · 仓储作业甘特图" desc="读取 checked 联合运行的 CP-SAT 分配：每个订单的收货、分拣、装车各显示一次；实际执行状态来自 S3。" />
+    <p className="callout callout-warn" role="note">写操作页：本页的「手动推进」是真实作业写操作，会写入当前连接的数据库并在完成时生成库存流水；只读回放请看「仓运事件时间线」页。</p>
     <RunSelector {...lookup} />
     {run && <>
       <div className="kpi-grid">
@@ -97,7 +98,7 @@ export default function GanttPage() {
             </div>
           </div>)}
         </div></div> : <p className="s5-muted">当前运行没有可展示的仓储作业分配。</p>}
-        <div className="s5-legend"><span><i className="s5-legend-dot s5-stage-receive" />入库</span><span><i className="s5-legend-dot s5-stage-sort" />分拣</span><span><i className="s5-legend-dot s5-stage-load" />装车</span></div>
+        <div className="s5-legend"><span><i className="s5-legend-dot s5-stage-receive" />收货</span><span><i className="s5-legend-dot s5-stage-sort" />分拣</span><span><i className="s5-legend-dot s5-stage-load" />装车</span></div>
         {executionError && <p role="alert" className="callout callout-warn">{executionError}</p>}
         {selected ? <div className="s5-detail" aria-live="polite">
           <div><strong>{selected.orderLabel} · {operationLabel[selected.kind] ?? selected.kind}</strong><small title={selected.id}>任务 {shortId(selected.id)} · 仓库 {shortId(selected.warehouseId)}</small></div>

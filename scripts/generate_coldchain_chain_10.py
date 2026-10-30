@@ -46,7 +46,7 @@ def revision(kind: str, identity: str) -> dict:
 def build() -> dict:
     base = json.loads(BASE.read_text(encoding="utf-8"))
     raw = deepcopy(base)
-    raw["name"] = "县域冷链十订单入库-分拣-装车联动演示 (合成数据)"
+    raw["name"] = "县域冷链十订单收货-分拣-装车联动演示 (合成数据)"
     raw["source_ref"] = "deterministic synthetic 10x3 chain derived from partner coldchain fixture"
     snapshot = raw["snapshot"]
     resources = snapshot["resources"]

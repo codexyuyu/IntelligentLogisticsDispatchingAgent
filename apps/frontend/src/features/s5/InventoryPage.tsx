@@ -7,7 +7,7 @@ import { shortId } from './model';
 import type { InventoryResponse } from './model';
 
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-const movementLabels: Record<string, string> = { receive: '入库完成', load: '装车出库' };
+const movementLabels: Record<string, string> = { receive: '收货完成', load: '装车出库' };
 
 export default function InventoryPage() {
   const [inventory, setInventory] = useState<InventoryResponse | null>(null);
@@ -39,7 +39,7 @@ export default function InventoryPage() {
   }, [inventory, latestRun]);
 
   return <div>
-    <SectionHeader title="S5 · 实际库存台账" desc="读取 S3 追加式库存流水及按货物/库位汇总的结存；只有仓储任务被显式完成后才产生出入库记录。" />
+    <SectionHeader title="S5 · 实际库存台账" desc="读取 S3 追加式库存流水及按货物/库位汇总的结存；只有仓储任务被显式完成后才产生收货/出库记录。" />
     <section className="panel">
       <form className="s5-filter-bar" onSubmit={event => { event.preventDefault(); void run(load); }}>
         <label>货物 UUID（可选）<input aria-label="筛选货物 UUID" value={cargoFilter} onChange={event => setCargoFilter(event.target.value)} placeholder="不填则显示全部" /></label>
@@ -59,7 +59,7 @@ export default function InventoryPage() {
     {inventory && <>
       <div className="kpi-grid">
         <KpiCard label="流水总数" value={`${inventory.total_entries}`} sub={inventory.has_more ? '仅展示最新 500 条' : '全部符合条件的记录'} icon="package" />
-        <KpiCard label="入库记录" value={`${summary.received}`} sub="当前已加载流水" icon="check" tone="green" />
+        <KpiCard label="收货记录" value={`${summary.received}`} sub="当前已加载流水" icon="check" tone="green" />
         <KpiCard label="出库记录" value={`${summary.shipped}`} sub="当前已加载流水" icon="truck" />
         <KpiCard label="关联最近运行" value={`${summary.matchingRun}`} sub={latestRun ? shortId(latestRun) : '尚无运行编号'} icon="route" />
       </div>
@@ -71,10 +71,10 @@ export default function InventoryPage() {
             <td title={position.cargo_id}>{shortId(position.cargo_id)}</td><td title={position.location_id}>{shortId(position.location_id)}</td>
             <td><strong className={position.quantity_units < 0 ? 's5-negative' : ''}>{position.quantity_units}</strong></td>
           </tr>)}</tbody>
-        </table></div> : <p className="s5-muted">还没有可汇总的实际库存变化；可先在仓储作业甘特图中显式完成入库任务。</p>}
+        </table></div> : <p className="s5-muted">还没有可汇总的实际库存变化；可先在仓储作业甘特图中显式完成收货任务。</p>}
       </section>
       <section className="panel">
-        <div className="panel-title-row"><div><h3>出入库流水</h3><p>原始追加式记录；同一操作不会因刷新而重复入账。</p></div><span className="soft-badge">显示 {inventory.items.length} / {inventory.total_entries}</span></div>
+        <div className="panel-title-row"><div><h3>收货/出库流水</h3><p>原始追加式记录；同一操作不会因刷新而重复入账。</p></div><span className="soft-badge">显示 {inventory.items.length} / {inventory.total_entries}</span></div>
         {inventory.items.length ? <div className="table-wrap"><table>
           <thead><tr><th>操作时间</th><th>业务类型</th><th>货物</th><th>库位</th><th>数量变化</th><th>关联运行 / 任务</th></tr></thead>
           <tbody>{inventory.items.map(item => <tr key={item.id}>
