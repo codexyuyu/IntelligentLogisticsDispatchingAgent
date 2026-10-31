@@ -9,10 +9,10 @@ import { fmtClock, fmtKM, fmtMs } from '../../lib/format';
 
 const eventTypes = [
   { value: 'departure_delayed', label: '车辆出发延误', supported: true },
-  { value: 'dock_unavailable', label: '月台不可用（尚未接入 B-04）', supported: false },
-  { value: 'cargo_quarantined', label: '货物隔离（尚未接入 B-04）', supported: false },
-  { value: 'weather_changed', label: '天气变化（尚未接入 B-04）', supported: false },
-  { value: 'demand_changed', label: '需求变化（尚未接入 B-04）', supported: false },
+  { value: 'dock_unavailable', label: '月台不可用（暂不可用）', supported: false },
+  { value: 'cargo_quarantined', label: '货物隔离（暂不可用）', supported: false },
+  { value: 'weather_changed', label: '天气变化（暂不可用）', supported: false },
+  { value: 'demand_changed', label: '需求变化（暂不可用）', supported: false },
 ] as const;
 
 export default function Page() {
@@ -73,7 +73,7 @@ export default function Page() {
     <div className="incident-grid">
       <div className="incident-col">
         <div className="panel form-panel">
-          <div className="panel-title-row"><div><h3>异常注入</h3><p>目前 B-04 真实局部重排已完成并可实跑的是 departure_delayed；其他类型先明确标注未接入，避免比赛演示误操作。</p></div><StatusPill tone="warning">受控演练</StatusPill></div>
+          <div className="panel-title-row"><div><h3>异常注入</h3><p>支持车辆出发延误处理；其他类型暂未开放。</p></div><StatusPill tone="warning">受控演练</StatusPill></div>
           <label>异常类型<select value={type} onChange={(e) => setType(e.target.value as typeof type)}>{eventTypes.map((x) => <option key={x.value} value={x.value} disabled={!x.supported}>{x.label}</option>)}</select></label>
           <label>异常对象（车辆）<input value={vehicle} onChange={(e) => setVehicle(e.target.value)} /></label>
           <label>受影响订单（逗号分隔）<input value={affected} onChange={(e) => setAffected(e.target.value)} /></label>

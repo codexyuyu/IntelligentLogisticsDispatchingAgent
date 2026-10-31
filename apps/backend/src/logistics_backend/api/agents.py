@@ -24,6 +24,7 @@ from logistics_contracts.decision import DecisionCreate, DecisionPage, DecisionV
 from logistics_domain.runtime import ActorContext
 from logistics_backend.application.decision import DecisionService
 from logistics_backend.application.tools import ToolService
+from logistics_contracts.dispatch_tasks import DispatchTaskCreate, DispatchTaskRevision, DispatchTaskView
 
 router = APIRouter(tags=["agents"])
 
@@ -129,3 +130,97 @@ def reject_agent_decision(decision_id: UUID, current: ActorContext = Depends(ope
     from logistics_domain.states import EntityState
 
     return service.transition(decision_id, EntityState.REJECTED, current)
+
+
+# Controlled natural-language scheduling, separate from the read-only analysis API.
+def natural_dispatch_service(request: Request):
+    return request.app.state.natural_dispatch
+
+
+@router.post("/agents/dispatch-tasks", response_model=DispatchTaskView,
+             operation_id="create_natural_dispatch_task")
+def create_dispatch_task(command: DispatchTaskCreate,
+                         current: ActorContext = Depends(operator),
+                         service=Depends(natural_dispatch_service)):
+    return service.create(command, current)
+
+
+@router.get("/agents/dispatch-tasks", operation_id="list_natural_dispatch_tasks")
+def list_dispatch_tasks(current: ActorContext = Depends(actor),
+                        service=Depends(natural_dispatch_service)):
+    return service.list(current)
+
+
+@router.get("/agents/dispatch-tasks/{task_id}", response_model=DispatchTaskView,
+            operation_id="get_natural_dispatch_task")
+def get_dispatch_task(task_id: UUID, current: ActorContext = Depends(actor),
+                      service=Depends(natural_dispatch_service)):
+    return service.get(task_id, current)
+
+
+@router.post("/agents/dispatch-tasks/{task_id}/preview", response_model=DispatchTaskView,
+             operation_id="preview_natural_dispatch_task")
+def preview_dispatch_task(task_id: UUID, command: DispatchTaskRevision,
+                          current: ActorContext = Depends(operator),
+                          service=Depends(natural_dispatch_service)):
+    return service.preview(task_id, current, command.expected_row_version)
+
+
+@router.post("/agents/dispatch-tasks/{task_id}/approve", response_model=DispatchTaskView,
+             operation_id="approve_natural_dispatch_task")
+def approve_dispatch_task(task_id: UUID, command: DispatchTaskRevision, request: Request,
+                          current: ActorContext = Depends(operator),
+                          service=Depends(natural_dispatch_service)):
+    return service.decide(task_id, current, command.expected_row_version, True, request.state.trace_id)
+
+
+@router.post("/agents/dispatch-tasks/{task_id}/reject", response_model=DispatchTaskView,
+             operation_id="reject_natural_dispatch_task")
+def reject_dispatch_task(task_id: UUID, command: DispatchTaskRevision, request: Request,
+                         current: ActorContext = Depends(operator),
+                         service=Depends(natural_dispatch_service)):
+    return service.decide(task_id, current, command.expected_row_version, False, request.state.trace_id)
+
+
+# A bounded, read-only evidence review. Does NOT invoke approve/reject/incident writes.
+from logistics_contracts.decision_analysis import DecisionAnalysisRequest, DecisionAnalysisView
+
+
+def decision_analysis_service(request: Request):
+    return request.app.state.decision_analysis
+
+
+@router.get('/agents/dispatch-tasks/{task_id}/ai-analysis',
+            response_model=DecisionAnalysisView | None,
+            operation_id='get_dispatch_task_ai_analysis')
+def get_task_ai_analysis(task_id: UUID, current: ActorContext = Depends(actor),
+                         service=Depends(decision_analysis_service)):
+    return service.latest('dispatch_task', task_id, current)
+
+
+@router.post('/agents/dispatch-tasks/{task_id}/ai-analysis',
+             response_model=DecisionAnalysisView,
+             operation_id='analyze_dispatch_task_candidate')
+def analyze_task_candidate(task_id: UUID, command: DecisionAnalysisRequest,
+                           current: ActorContext = Depends(operator),
+                           service=Depends(decision_analysis_service)):
+    return service.analyze('dispatch_task', task_id, current, command.question)
+
+
+@router.get('/agents/runs/{run_id}/incidents/{incident_id}/ai-analysis',
+            response_model=DecisionAnalysisView | None,
+            operation_id='get_incident_ai_analysis')
+def get_incident_ai_analysis(run_id: UUID, incident_id: UUID,
+                             current: ActorContext = Depends(actor),
+                             service=Depends(decision_analysis_service)):
+    return service.latest_incident(run_id, incident_id, current)
+
+
+@router.post('/agents/runs/{run_id}/incidents/{incident_id}/ai-analysis',
+             response_model=DecisionAnalysisView,
+             operation_id='analyze_incident_candidate')
+def analyze_incident_candidate(run_id: UUID, incident_id: UUID,
+                               command: DecisionAnalysisRequest,
+                               current: ActorContext = Depends(operator),
+                               service=Depends(decision_analysis_service)):
+    return service.analyze('incident', incident_id, current, command.question, run_id=run_id)

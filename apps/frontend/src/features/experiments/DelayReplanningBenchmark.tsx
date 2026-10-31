@@ -79,23 +79,19 @@ export default function DelayReplanningBenchmark() {
       </div>
     </div>
     {error && <p role="alert" className="callout callout-error">对照计算失败：{error}</p>}
-    {data && data.before_delay && data.simple_hold && data.optimized_continuation ? <>
+    {data && <>
       <p className="s5-muted">{data.name} · {data.source_scenario} 的道路矩阵 · {data.candidate_count} 种接续顺序穷举求优。
         这是独立合成的三收货点子问题，不代表已执行的十订单联合调度或 PostgreSQL 中的审批记录。</p>
       <div className="form-grid">
-        {data.comparison ? <>
-          <div className="panel" style={{ padding: 14 }}><div className="s5-muted">综合目标差额（顺延 − 重规划）</div>
-            <h2 style={{ margin: '6px 0' }}>{money(data.comparison.objective_saved_cents)}</h2>
-            <small>{data.comparison.improves_objective ? '重新规划目标值更低' : '未获得目标值改善'}</small></div>
-          <div className="panel" style={{ padding: 14 }}><div className="s5-muted">累计软时效逾期减少</div>
-            <h2 style={{ margin: '6px 0' }}>{time(data.comparison.lateness_reduced_s)}</h2>
-            <small>逾期订单减少 {data.comparison.late_orders_reduced} 单</small></div>
-          <div className="panel" style={{ padding: 14 }}><div className="s5-muted">里程变化（重规划 − 顺延）</div>
-            <h2 style={{ margin: '6px 0' }}>{((candidate!.distance_m - hold!.distance_m) / 1000).toFixed(1)} km</h2>
-            <small>路程变长也可能换来更少的配送迟到</small></div>
-        </> : <p className="s5-muted" style={{ margin: 0 }}>
-          该结果未包含对照摘要（旧版本数据），以下仅显示明细指标。
-        </p>}
+        <div className="panel" style={{ padding: 14 }}><div className="s5-muted">综合目标差额（顺延 − 重规划）</div>
+          <h2 style={{ margin: '6px 0' }}>{money(data.comparison.objective_saved_cents)}</h2>
+          <small>{data.comparison.improves_objective ? '重新规划目标值更低' : '未获得目标值改善'}</small></div>
+        <div className="panel" style={{ padding: 14 }}><div className="s5-muted">累计软时效逾期减少</div>
+          <h2 style={{ margin: '6px 0' }}>{time(data.comparison.lateness_reduced_s)}</h2>
+          <small>逾期订单减少 {data.comparison.late_orders_reduced} 单</small></div>
+        <div className="panel" style={{ padding: 14 }}><div className="s5-muted">里程变化（重规划 − 顺延）</div>
+          <h2 style={{ margin: '6px 0' }}>{((candidate!.distance_m - hold!.distance_m) / 1000).toFixed(1)} km</h2>
+          <small>路程变长也可能换来更少的配送迟到</small></div>
       </div>
       <div className="table-wrap"><table><thead><tr><th>指标</th><th>无延误原方案</th><th>简单等待并顺延</th><th>延误后重新规划</th></tr></thead>
         <tbody>
@@ -126,6 +122,6 @@ export default function DelayReplanningBenchmark() {
           })}
         </tbody></table></div>
       </details>
-    </> : <p className="s5-muted" style={{ margin: 0 }}>当前版本的后端没有返回延误对照数据（旧接口），本面板暂不显示。</p>}
+    </>}
   </section>;
 }

@@ -1,3 +1,4 @@
+import DefenseImpactPanel from './DefenseImpactPanel';
 import type { SimIncident } from './api';
 import './proposal-comparison.css';
 
@@ -32,19 +33,22 @@ export default function ProposalComparison({ incident, comparison }: { incident:
     <p className="proposal-intro">{incident.strategy === 'simulated_local_reroute' ? '已计算途中接续路线；以下是实际生成的候选方案与延误后保持原路线的比较。'
       : incident.strategy === 'simulated_local_retimed' ? '已重新计算接续时序，停靠顺序保持不变。'
       : '当前候选为等待后保持原路线，未产生新的停靠顺序。'}所有指标均由当前运行记录计算。</p>
+    <DefenseImpactPanel comparison={comparison} validated={incident.proposal_valid === true} />
+    <details><summary>展开完整指标表（含费用分项）</summary>
     <div className="proposal-table-wrap"><table className="proposal-metrics"><thead><tr><th>指标</th><th>原定计划 v0</th><th>简单顺延</th><th>候选方案</th></tr></thead><tbody>
       <tr><th>路线距离</th><td>{distance(comparison.baseline.distance_m)}</td><td>{distance(hold.distance_m)}</td><td>{distance(candidate.distance_m)}</td></tr>
       <tr><th>行驶费用</th><td>{money(comparison.baseline.driving_cents)}</td><td>{money(hold.driving_cents)}</td><td>{money(candidate.driving_cents)}</td></tr>
       <tr><th>软时效迟到单数</th><td>{comparison.baseline.late_orders}</td><td>{hold.late_orders}</td><td>{candidate.late_orders}</td></tr>
       <tr><th>累计迟到</th><td>{comparison.baseline.total_late_s}s</td><td>{hold.total_late_s}s</td><td>{candidate.total_late_s}s</td></tr>
       <tr><th>估算综合费用</th><td>{money(comparison.baseline.objective_cents)}</td><td>{money(hold.objective_cents)}</td><td><strong>{money(candidate.objective_cents)}</strong></td></tr>
-    </tbody></table></div>
+    </tbody></table></div></details>
     <div className="proposal-summary">
-      <div><small>相较简单顺延 · 综合费用变化</small><strong className={delta.objective_saved_cents > 0 ? 'proposal-benefit' : ''}>{delta.objective_saved_cents > 0 ? `节省 ${money(delta.objective_saved_cents)}` : delta.objective_saved_cents < 0 ? `增加 ${money(-delta.objective_saved_cents)}` : '无变化'}</strong></div>
+      <div><small>相较简单顺延 · 综合费用变化</small><strong className={delta.objective_saved_cents > 0 && comparison.coverage_preserved && incident.proposal_valid === true ? 'proposal-benefit' : ''}>{delta.objective_saved_cents > 0 ? `节省 ${money(delta.objective_saved_cents)}` : delta.objective_saved_cents < 0 ? `增加 ${money(-delta.objective_saved_cents)}` : '无变化'}</strong></div>
       <div><small>减少迟到</small><strong>{delta.lateness_reduced_s > 0 ? `${delta.lateness_reduced_s} 秒` : '无改善'}</strong></div>
       <div><small>剩余配送顺序</small><strong>{noReroute ? '保持不变' : '已重新安排'}</strong></div>
     </div>
     <p className="proposal-context">{!comparison.coverage_preserved ? '候选与简单顺延的交付范围不同，不能据此认定优化。'
+      : !incident.proposal_valid ? '候选未通过校验，不能认定优化收益。'
       : delta.improves_objective ? '当前方案在上述估算口径下优于简单顺延。'
         : '当前方案未在上述估算口径下优于简单顺延；审批代表接受模拟处置，不代表已获得优化收益。'}
       {!comparison.soft_due_configured && ' 当前订单未配置软时效截止，因此不能计算软时效改善。'}</p>

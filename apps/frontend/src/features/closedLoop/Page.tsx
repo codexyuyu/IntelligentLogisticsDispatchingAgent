@@ -122,12 +122,12 @@ export default function ClosedLoopPage(){
   }
   return <div className="r27-page">
     <SectionHeader title="仓运闭环与异常重排" />
-    <div className="pg-warning"><strong>业务边界：</strong>“单仓演示”使用合成场景；“PostgreSQL 数据驱动”要求 WH001、R24/R27 资料齐全；R30-A 导入的合成 CSV 将永久标记为演示，不能视为实际经营数据。当前不连接设备遥测、不自动修改库存或派车；道路未配置 OSRM 时仍是示意路线。</div>
+    <div className="pg-warning"><strong>业务边界：</strong>“单仓演示”使用合成场景；“PostgreSQL 数据驱动”要求 WH001、R24/R27 资料齐全；导入的合成 CSV 将永久标记为演示，不能视为实际经营数据。当前不连接设备遥测、不自动修改库存或派车；道路未配置 OSRM 时仍是示意路线。</div>
     <div className="panel r27-config"><div className="panel-title-row"><div><h3>选择数据来源并生成全流程方案</h3><p>不会从演示模式静默切换成真实业务，也不会在真实资料缺失时补假值。</p></div><span className="soft-badge">CP-SAT + OR-Tools · 独立校验</span></div>
       <div className="r27-source-pills"><button className={`btn ${dataSource==='single_warehouse_demo'?'btn-primary':'btn-ghost'}`} onClick={()=>setDataSource('single_warehouse_demo')}>单仓演示 · 开箱即用</button><button className={`btn ${dataSource==='verified_postgres'?'btn-primary':'btn-ghost'}`} onClick={()=>setDataSource('verified_postgres')}>PostgreSQL 核验 · 数据驱动（来源标识）</button></div>
       {dataSource==='verified_postgres'&&<div className="r27-readiness">{readinessError&&<p className="pg-error">实库状态：{readinessError}</p>}
         {readiness&&<><p><b>单仓检查：</b>{readiness.single_warehouse?'WH001 已统一':'尚未统一，需运行 R26 只读预检'}　 <b>R27 作业表：</b>{readiness.r27_table_installed?'已建表':'未创建'}　 <b>已录入任务：</b>{readiness.work_operation_count} 条</p>
-          <p className="pg-hint"><strong>R30-A 数据来源：</strong>{readiness.provenance?.source_kind==='explicit_synthetic_demo'?'R30-A 合成演示数据（已在 PostgreSQL 中标记）':readiness.provenance?.source_kind==='unmarked_operator_or_legacy_rows'?'原有人工/历史记录（来源未经独立核实）':'尚未安装来源标记'}。此页面始终是只读求解预览。</p>
+          <p className="pg-hint"><strong>数据来源：</strong>{readiness.provenance?.source_kind==='explicit_synthetic_demo'?'合成演示数据（已在 PostgreSQL 中标记）':readiness.provenance?.source_kind==='unmarked_operator_or_legacy_rows'?'原有人工/历史记录（来源未经独立核实）':'尚未安装来源标记'}。此页面始终是只读求解预览。</p>
           <div className="r27-missing">{Object.entries(readiness.missing).map(([key,n])=><span key={key} className={n===0?'ok':''}>{key}: {n}</span>)}</div>
           {diagnostics&&<div className="r28-diagnostic-stages">{diagnostics.stages.map(step=><div key={step.stage} className={step.ready?'ready':'pending'}><strong>{DIAG_LABEL[step.stage]??step.stage}</strong><span>{step.ready?'已齐备 / 等待业务校验':'待处理'}</span></div>)}</div>}
           {diagnostics&&!diagnostics.business.single_warehouse&&<p className="pg-hint">单仓迁移预检：{diagnostics.warehouse.can_apply?'当前检查允许走 R26 受保护迁移（仍须备份并单独授权）':'存在历史关联或不符合安全迁移条件；不会改动 WH002'}。关联阻挡：{diagnostics.warehouse.dependent_rows.filter(x=>x.blocking).map(x=>`${x.relation}.${x.column} (${x.count??'未知'})`).join('、')||'无'}。</p>}
@@ -149,7 +149,7 @@ export default function ClosedLoopPage(){
       onSelectReplanned={()=>{setReplayMode('replanned');clock.pause();clock.seek(0);}}
       replayMode={replayMode}/>}
     {workflow&&data&&<>
-      <div className={`r27-source-flag ${workflow.source==='scenario_demo'||workflow.source==='postgres_synthetic_demo'?'demo':''}`}><strong>{workflow.source==='scenario_demo'?'纯场景合成演示 · 已运行求解算法':workflow.source==='postgres_synthetic_demo'?'PostgreSQL 合成演示资料 · 已运行求解算法（非真实经营数据）':'PostgreSQL 人工/历史业务记录 · 已运行求解算法（来源未独立核实）'}</strong><span>{exceptionResult&&replayMode==='replanned'?'R30-E 后缀账户核对通过 · 回放仅是展示投影（非 R28 新 Plan）':`R28 原方案独立校验 ${workflow.plan.validation.status}`} · 不写 PostgreSQL · 未实际派车 · 仓库/道路 3D 路径是展示映射</span></div>
+      <div className={`r27-source-flag ${workflow.source==='scenario_demo'||workflow.source==='postgres_synthetic_demo'?'demo':''}`}><strong>{workflow.source==='scenario_demo'?'纯场景合成演示 · 已运行求解算法':workflow.source==='postgres_synthetic_demo'?'PostgreSQL 合成演示资料 · 已运行求解算法（非真实经营数据）':'PostgreSQL 人工/历史业务记录 · 已运行求解算法（来源未独立核实）'}</strong><span>{exceptionResult&&replayMode==='replanned'?'异常后状态核对通过 · 回放为模拟结果':`原方案独立校验 ${workflow.plan.validation.status}`} · 不写 PostgreSQL · 未实际派车 · 仓库/道路 3D 路径是展示映射</span></div>
       <div className="pg-hint">本次仿真时钟基点：{new Date(workflow.snapshot.origin_at).toLocaleString('zh-CN',{hour12:false})}；进度条显示相对此基点的时间。</div>
       <div className="r27-metrics">
         <div><small>业务仓库</small><strong>{workflow.snapshot.warehouses[0]?.warehouse_id}</strong><span>唯一配送中心</span></div>
@@ -157,10 +157,10 @@ export default function ClosedLoopPage(){
         <div><small>仓库 CP-SAT 作业</small><strong>{workflow.plan.warehouse.operations.length}</strong><span>已完成 {finished} 项</span></div>
         <div><small>装车交接</small><strong>{workflow.plan.warehouse.warehouse_handoffs.length}</strong><span>就绪 {handoffs} 单</span></div>
         <div><small>实际求解车辆</small><strong>{routes.length}</strong><span>已发车 {departed} 辆</span></div>
-        <div><small>全程计划配送</small><strong>{totalPlanned} / {workflow.reconciliation.scope_order_count}</strong><span>{exceptionResult&&replayMode==='replanned'?'R30-E 后缀对账':'R28 对账'} {workflow.reconciliation.status}</span></div>
+        <div><small>全程计划配送</small><strong>{totalPlanned} / {workflow.reconciliation.scope_order_count}</strong><span>{exceptionResult&&replayMode==='replanned'?'异常后对账':'原方案对账'} {workflow.reconciliation.status}</span></div>
         <div><small>当前已回放配送</small><strong>{delivered} / {totalPlanned}</strong><span>后续仍待回放 {pendingPlanned} 单 · 未服务 {workflow.reconciliation.unserved_order_count} 单</span></div>
       </div>
-      <div className="panel r28-audit"><div className="panel-title-row"><div><h3>{exceptionResult&&replayMode==='replanned'?'R30-E 历史事实 + 异常后续订单预测（非执行方案）':'R28 订单级业务对账'}</h3><p>全程预计交付 {totalPlanned} 单；当前进度条仅展示已回放 {delivered} 单。异常模式含已完成前缀及新预测，不代表真实签收。</p></div><span className="soft-badge">完整范围 {workflow.reconciliation.scope_order_count} 单 · {workflow.reconciliation.status}</span></div>
+      <div className="panel r28-audit"><div className="panel-title-row"><div><h3>{exceptionResult&&replayMode==='replanned'?'历史状态与异常后订单预测':'订单级业务对账'}</h3><p>全程预计交付 {totalPlanned} 单；当前进度条仅展示已回放 {delivered} 单。异常模式含已完成前缀及新预测，不代表真实签收。</p></div><span className="soft-badge">完整范围 {workflow.reconciliation.scope_order_count} 单 · {workflow.reconciliation.status}</span></div>
         <div className="r28-order-scroll"><table><thead><tr><th>订单</th><th>仓储任务</th><th>装车就绪</th><th>运输计划</th><th>预计交付时点</th><th>回放进度</th></tr></thead><tbody>{workflow.reconciliation.order_statuses.map(x=><tr key={x.order_id}><td>{x.order_id}</td><td>{x.warehouse_task_count} 项</td><td>{fmtClock(x.loading_ready_at_s)}</td><td>{x.planned_vehicle_id??`未服务：${x.unserved_reason??'待核查'}`}</td><td>{x.planned_delivery_at_s===null?'—':fmtClock(x.planned_delivery_at_s)}</td><td>{x.planned_delivery_at_s===null?'未规划':clock.t>=x.planned_delivery_at_s?'已播放':'待播放'}</td></tr>)}</tbody></table></div>
         <button className="btn btn-ghost btn-sm" onClick={()=>clock.seek(horizon)}>跳至回放结尾 · 核对全程配送</button>
       </div>

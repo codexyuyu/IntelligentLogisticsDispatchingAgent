@@ -1,3 +1,4 @@
+import FaultRescueDemo from './FaultRescueDemo';
 import { useEffect, useState } from 'react';
 import { candidateAllowed, decideDelay, findDelayOpportunities, loadSimulation, selectIncident, submitDelay, short } from './api';
 import type { OpportunityResult } from './api';
@@ -77,8 +78,8 @@ export default function StageIncident() {
   const impact = incident?.impact;
   const delays = Object.entries(impact?.after_eta_s ?? {}).map(([order, after]) => ({ order,
     shift: after - (impact?.before_eta_s?.[order] ?? after) }));
-  return <section className="panel" aria-label="模拟车辆延误及人工审批">
-    <h3>车辆延误 · 人机协同处置</h3>
+  return <><FaultRescueDemo/><details className="panel stageb-legacy-incident"><summary>历史功能：车辆途中延误与局部优化</summary><section aria-label="模拟车辆延误及人工审批">
+    <h3>原有车辆延误 · 人工审批</h3>
     <p>Stage A 合法事件 <code>transport_delay</code>；先生成影响候选，再由调度员批准或拒绝。一次模拟仅支持一条延误。</p>
     <RunBar state={stage} allowCreate />
     {stage.simulation && <>
@@ -123,7 +124,7 @@ export default function StageIncident() {
           : '安全等待＋顺延（局部优化不可行或未优于保底方案）'}。{incident.s1_local_solver?.reason ? ` 局部求解状态：${incident.s1_local_solver.reason}` : ''}仅影响数据库模拟，不写入真实运营排程。</p>
         {incident.comparison ? <ProposalComparison incident={incident} comparison={incident.comparison} /> : <p className="callout">当前历史异常没有可核对的路线对比记录，请在仿真回放中查看候选轨迹；批准前请确认方案内容。</p>}
         {incident.status === 'pending' && <div className="stageb-actions">
-          <button className="btn btn-ghost" disabled={busy} onClick={() => window.dispatchEvent(new CustomEvent('twin:navigate', { detail: 'simulations' }))}>预览三维候选轨迹</button>
+          <button className="btn btn-ghost" disabled={busy} onClick={() => window.dispatchEvent(new CustomEvent('twin:navigate', { detail: 'simulations' }))}>预览二维地图候选轨迹</button>
           <button className="btn btn-primary" disabled={busy || !candidateAllowed(incident)} onClick={() => void run(() => decide('approve'))}>人工批准模拟方案</button>
           <button className="btn btn-ghost" disabled={busy} onClick={() => void run(() => decide('reject'))}>拒绝 · 保留原方案</button></div>}
         </>}
@@ -132,5 +133,5 @@ export default function StageIncident() {
     {error && <p role="alert" className="callout callout-error">{error}</p>}
     {notice && <p role="status">{notice}</p>}
     {incident && incident.status !== 'pending' && <div className="stageb-actions"><button className="btn btn-primary" onClick={() => window.dispatchEvent(new CustomEvent('twin:navigate', { detail: 'simulations' }))}>下一步：查看方案回放与路线对比</button></div>}
-  </section>;
+  </section></details></>;
 }

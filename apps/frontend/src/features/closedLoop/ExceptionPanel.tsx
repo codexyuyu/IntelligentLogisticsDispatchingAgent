@@ -106,10 +106,10 @@ export default function ExceptionPanel({snapshot,plan,source,zone,budget,current
       {kind==='delivery_delay'&&<label>增加行驶时长（秒）<input type="number" min={1} max={86400} value={delay} onChange={e=>setDelay(Number(e.target.value)||1)}/></label>}
     </div>
     <p className="pg-hint">仿真异常时刻：{fmtClock(at)}；时间来源为调度方案，不是车辆 GPS。道路与延误数据为示意模拟；已在途货物不会自动转移至仓库或其他车辆。</p>
-    <button className="btn btn-primary" disabled={busy||!objectId||at>=horizon} onClick={()=>void run()}>{busy?'正在生成 R30-B 后缀方案…':'模拟异常并重新调度（只读）'}</button>
+    <button className="btn btn-primary" disabled={busy||!objectId||at>=horizon} onClick={()=>void run()}>{busy?'正在生成异常后方案…':'模拟异常并重新调度（只读）'}</button>
     {error&&<p className="pg-error" role="alert">{error}</p>}
     {currentResult&&<>
-      <div className="r27-source-flag demo"><strong>R30-B 后缀独立核验：{currentResult.verification.status} · {currentResult.comparison.unserved_total===0?'全部预计可服务':'部分订单明确不可服务'}</strong>
+      <div className="r27-source-flag demo"><strong>异常后方案校验：{currentResult.verification.status} · {currentResult.comparison.unserved_total===0?'全部预计可服务':'部分订单明确不可服务'}</strong>
         <span>原方案 v{currentResult.previous_plan_version} → 异常预览 v{currentResult.new_plan_version}。R28 原方案对账 {currentResult.verification.baseline_r28}；后缀账户对账 {currentResult.verification.suffix_accounting}。原数据库及历史计划均未改写。</span></div>
       <div className="r27-metrics">
         <div><small>异常前已完成配送</small><strong>{currentResult.comparison.delivered_before_event}</strong><span>冻结，不再配送</span></div>
@@ -120,13 +120,13 @@ export default function ExceptionPanel({snapshot,plan,source,zone,budget,current
       </div>
       <div className="r27-controls"><button className={`btn ${replayMode==='original'?'btn-primary':'btn-ghost'}`} onClick={onSelectOriginal}>回放原方案</button>
         <button className={`btn ${replayMode==='replanned'?'btn-primary':'btn-ghost'}`} onClick={onSelectReplanned}>回放重调度预览</button><button className="btn btn-ghost" onClick={exportResult}>导出本次原/新方案和核验 JSON</button></div>
-      <p className="pg-hint">R30-B 重排求解状态：仓储 {currentResult.solver.warehouse_status}；运输 {currentResult.solver.routing_status}。车载故障时旧路线仅用于定位，车辆在异常时刻冻结；不意味着未来仍沿旧路线配送。</p>
+      <p className="pg-hint">重排求解状态：仓储 {currentResult.solver.warehouse_status}；运输 {currentResult.solver.routing_status}。车载故障时旧路线仅用于定位，车辆在异常时刻冻结；不意味着未来仍沿旧路线配送。</p>
       <p className="pg-hint">异常时正在路上的车辆：{currentResult.state.in_transit_vehicle_ids.join('、')||'无'}；已送达订单：{currentResult.state.completed_order_ids.length}；车载待送货物：{currentResult.state.onboard_pending_order_ids.length}。</p>
       {Object.entries(currentResult.state.halted_vehicle_positions).map(([vid,loc])=><p className="pg-hint" key={vid}>车辆 {vid} 故障/停靠位置：{loc.state==='in_transit_between_nodes'?`${loc.from_node_id} → ${loc.to_node_id}（仅已知路段，非 GPS 点）`:loc.node_id??loc.state}。</p>)}
       {currentResult.comparison.warnings.map(w=><p key={w} className="pg-hint">适用范围提示：{w}</p>)}
       {currentResult.comparison.unserved_orders.length>0&&<div className="r28-order-scroll"><table><thead><tr><th>不可服务订单</th><th>业务约束 / 原因</th></tr></thead><tbody>{currentResult.comparison.unserved_orders.map(x=><tr key={x.order_id}><td>{x.order_id}</td><td>{briefReason(x.reason_code)}</td></tr>)}</tbody></table></div>}
       {currentResult.impact_evidence&&<>
-        <h4>R30-E · 经过事件核对的异常影响明细</h4>
+        <h4>事件影响明细</h4>
         <p className="pg-hint">受影响订单 {currentResult.impact_evidence.counts.affected_orders}；预计送达时间变化 {currentResult.impact_evidence.counts.delivery_time_changed_orders}；仍可服务但更换车辆 {currentResult.impact_evidence.counts.vehicle_reassigned_served_orders}；仓储中断作业 {currentResult.impact_evidence.counts.interrupted_operations}。仅计入事件流中的预计送达，不把故障车旧路线当作新方案。</p>
         <h4>逐车原始订单 / 异常后预计送达订单</h4>
         <div className="r28-order-scroll"><table><thead><tr><th>车辆</th><th>原订单顺序</th><th>后续事件预测可送达（含历史已送达）</th><th>异常状态</th></tr></thead><tbody>{currentResult.impact_evidence.vehicles.map(v=><tr key={v.vehicle_id}><td>{v.vehicle_id}</td><td>{v.previous_order_sequence.join(' → ')||'—'}</td><td>{v.forecast_delivery_order_ids.join(' → ')||'无'}</td><td>{v.halted_at_event?'模拟停驶，未来旧路线不计为交付':'按当前事件预测'}</td></tr>)}</tbody></table></div>

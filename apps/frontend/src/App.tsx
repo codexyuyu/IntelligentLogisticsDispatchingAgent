@@ -53,7 +53,7 @@ const titles: Record<string, string> = {
   plans: '联合调度', closedLoop: '联合调度', negotiation: '联合调度',
   observations: '业务观测', coldchain: '冷链与交接',
   agent: '调度助手', events: '异常处置', simulations: '仿真回放', experiments: '对照实验',
-  r30e: '仓运闭环（R30-E）',
+  r30e: '仓运闭环',
   s5Gantt: '仓储作业甘特', s5Inventory: '实际库存台账', s5Timeline: '联合事件回放',
 };
 

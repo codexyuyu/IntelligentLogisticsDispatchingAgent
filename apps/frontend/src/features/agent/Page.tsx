@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { request } from '../../api';
 import SectionHeader from '../../components/SectionHeader';
+import NaturalDispatch from './NaturalDispatch';
 import { readStored, saveStored } from '../../lib/asyncJobs';
 import { runKey, short } from '../stageB/api';
 
@@ -28,6 +29,7 @@ export default function AgentPage() {
   const [reply, setReply] = useState<DispatchReply | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
+  const [mode, setMode] = useState<'task' | 'analysis'>('task');
 
   useEffect(() => {
     const syncRun = (event: Event) => {
@@ -38,7 +40,7 @@ export default function AgentPage() {
     const last = readStored(previousKey);
     if (last && UUID.test(last)) {
       void request<DispatchReply>(`/agents/dispatch/${encodeURIComponent(last)}`)
-        .then(value => { setReply(value); setRunId(value.run_id); })
+        .then(value => { setReply(value); if (!readStored(runKey)) setRunId(value.run_id); })
         .catch(() => { /* Old or inaccessible saved analysis is not authoritative. */ });
     }
     return () => window.removeEventListener('stageb:run', syncRun);
@@ -59,7 +61,19 @@ export default function AgentPage() {
 
   return <div>
     <SectionHeader title="调度助手" />
-    <section className="panel">
+    <div className="row" style={{ gap: 8, marginBottom: 12 }}>
+      <button className={`btn ${mode === 'task' ? 'btn-primary' : 'btn-ghost'}`} onClick={() => setMode('task')}>调度指令</button>
+      <button className={`btn ${mode === 'analysis' ? 'btn-primary' : 'btn-ghost'}`} onClick={() => setMode('analysis')}>业务问答</button>
+    </div>
+    {mode === 'task' && <div className="row" style={{ alignItems: 'center', flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
+      <span className="muted">当前联合运行：{short(runId)}</span>
+      <button className="btn btn-ghost btn-sm" onClick={() => setRunId(readStored(runKey) ?? '')}>同步当前运行</button>
+      <button className="btn btn-ghost btn-sm" onClick={() => navigate('plans')}>选择联合运行</button>
+      <details><summary>切换运行</summary><input aria-label="联合运行编号" value={runId}
+        onChange={e => setRunId(e.target.value)} placeholder="联合运行 UUID" /></details>
+    </div>}
+    {mode === 'task' && <NaturalDispatch currentRun={runId.trim()} />}
+    <section className="panel" style={{ display: mode === 'analysis' ? undefined : 'none' }}>
       <p className="muted">读取已校验的联合运行与数据库模拟状态；模型负责选择只读工具并解释结果，不能登记异常或自动批准。</p>
       <label htmlFor="agent-run-id">当前联合运行 UUID</label>
       <input id="agent-run-id" value={runId} onChange={event => setRunId(event.target.value)}
@@ -80,17 +94,17 @@ export default function AgentPage() {
       {error && <p role="alert" className="callout callout-error">{error}</p>}
       {reply && <div role="status" style={{ marginTop: 16 }}>
         {reply.stopped_reason !== 'final_answer' &&
-          <p role="alert" className="callout callout-error">本次分析未完整结束，不应将回答作为业务事实。</p>}
+          <p role="alert" className="callout callout-error">本次分析未完整结束，请重试。</p>}
         <p style={{ whiteSpace: 'pre-wrap' }}>{reply.reply}</p>
         <p><small>模型：{reply.model} · 联合运行：{short(reply.run_id)} · 审计编号：{short(reply.agent_run_id)}</small></p>
         <h3>工具执行证据（{reply.tools.length} 次）</h3>
-        {reply.tools.length === 0 && <p>本次模型未调用业务工具；系统不会把无证据的回答认定为调度结论。</p>}
+        {reply.tools.length === 0 && <p>本次没有业务工具调用记录。</p>}
         {reply.tools.map((tool, index) => <details key={`${tool.name}-${index}`}>
           <summary>{tool.ok ? '✓' : '✕'} {tool.name} {tool.error_code ? `· ${tool.error_code}` : ''}</summary>
           <small>输入：{JSON.stringify(tool.arguments ?? {}, null, 2)}</small>
           <pre style={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', maxHeight: 220, overflowY: 'auto' }}>{JSON.stringify(tool.content, null, 2)}</pre>
         </details>)}
-        <p className="muted">候选分析只用于模拟；异常登记、批准、拒绝仍在现有页面由人工操作。</p>
+        <p className="muted">异常登记与方案审批请在「异常处置」操作。</p>
         <button className="btn btn-ghost btn-sm" onClick={() => {
           saveStored(runKey, reply.run_id);
           const preview = reply.tools.find(item => item.ok && item.name === 'preview_vehicle_delay');

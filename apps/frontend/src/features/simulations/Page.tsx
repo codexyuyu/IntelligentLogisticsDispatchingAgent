@@ -1,8 +1,9 @@
 import StageReplay from '../stageB/Replay';
+import FaultRescueDemo from '../stageB/FaultRescueDemo';
 
 import { useMemo, useState } from 'react';
 import SectionHeader from '../../components/SectionHeader';
-import DigitalTwin3D from '../../components/DigitalTwin3D';
+import DigitalTwinMap2D from '../../components/DigitalTwinMap2D';
 import { KpiCard } from '../../components/KpiCard';
 import { StatusPill } from '../../components/StatusPill';
 import { useApp } from '../../appContext';
@@ -21,6 +22,7 @@ export default function Page() {
   const clock = useSimClock(HORIZON, false);
 
   const [showcase, setShowcase] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
   const [followVehicle, setFollowVehicle] = useState(false);
   const [occurredAt, setOccurredAt] = useState(900);
@@ -31,11 +33,6 @@ export default function Page() {
   const solvedRoutes = useMemo(() => routesToTwinRoutes(activePlan, vehicles), [activePlan, vehicles]);
   const demoRoutes = useMemo(() => buildFourVehicleShowcase(orders, vehicles, snapshot?.warehouses ?? []), [orders, vehicles, snapshot]);
   const routes = showcase && demoRoutes.length === 4 ? demoRoutes : solvedRoutes;
-  const nodeZones = useMemo(() => {
-    const map: Record<string, 'chilled' | 'frozen'> = {};
-    for (const o of orders) map[o.delivery_node_id] = o.temperature_zone;
-    return map;
-  }, [orders]);
   const nodeIds = useMemo(() => {
     const set = new Set<string>();
     for (const o of orders) set.add(o.delivery_node_id);
@@ -49,17 +46,6 @@ export default function Page() {
   const eventFired = clock.t >= triggerAt && Boolean(trigger);
   const affectedOrders = trigger ? trigger.payload.affected_order_ids : [];
   const affectedVehicles = trigger ? [trigger.object_id] : [];
-  const holdWindows = useMemo(() => {
-    const windows: Record<string, { fromS: number; untilS: number }> = {};
-    if (trigger && trigger.event_type === 'departure_delayed' && (trigger.payload.delay_s ?? 0) > 0) {
-      windows[trigger.object_id] = {
-        fromS: trigger.occurred_at_s,
-        untilS: Math.min(HORIZON, trigger.occurred_at_s + (trigger.payload.delay_s ?? 0)),
-      };
-    }
-    return windows;
-  }, [trigger]);
-
   const planVersion = eventFired && anomalyResult ? anomalyResult.replanned_plan.version : (activePlan?.version ?? null);
   const phaseLabel = !trigger
     ? '正常基线推演'
@@ -76,8 +62,10 @@ export default function Page() {
   }
 
   return <div>
-    <StageReplay mode="replay" />
-    <details><summary>旧版仿真 · 本地快照与 SimPy 演示（保留兼容）</summary>
+    <FaultRescueDemo mode="replay" />
+    <details className="panel" style={{ marginTop: 14 }} onToggle={event => setShowHistory(event.currentTarget.open)}><summary>历史联合运行与原有仿真回放</summary>
+    {showHistory && <><StageReplay mode="replay" />
+    <details><summary>本地快照与 SimPy 仿真</summary>
     <SectionHeader title="仿真回放"
       actions={<button className="btn btn-primary" disabled={simPhase === 'running' || !snapshot} onClick={() => void runReplay()}>{simPhase === 'running' ? '仿真运行中…' : '运行当前异常仿真'}</button>} />
 
@@ -90,7 +78,7 @@ export default function Page() {
 
     {simPhase === 'failed' && <div className="callout callout-error">仿真失败：{simError}</div>}
     <div className="panel simulation-controls">
-      <div className="panel-title-row"><div><h3>仿真场景参数</h3></div><StatusPill tone="warning">B-05/B-06</StatusPill></div>
+      <div className="panel-title-row"><div><h3>仿真场景参数</h3></div><StatusPill tone="warning">模拟参数</StatusPill></div>
       <div className="form-grid">
         <label>异常对象<select value="veh_1" disabled><option value="veh_1">veh_1 · 车辆</option></select></label>
         <label>受影响订单<select value="ord_001" disabled><option value="ord_001">ord_001</option></select></label>
@@ -100,34 +88,28 @@ export default function Page() {
     </div>
 
     <div className="r25-showcase-toolbar">
-      <div><strong>R25 · 四车道路动态回放</strong><small>{showcase && demoRoutes.length === 4
-        ? '四车演示：基于场景订单生成的独立示意路线；并非 OR-Tools 求解结果或真实导航。'
-        : '真实规划模式：车辆数量以求解器实际启用数为准；未接 OSRM 时路形仍为示意。'}</small></div>
+      <div><strong>四车轨迹回放</strong><small>{showcase && demoRoutes.length === 4
+        ? '四车独立模拟轨迹'
+        : '联合运行轨迹 · 模拟地图路线'}</small></div>
       <button type="button" className={`btn ${!showcase ? 'btn-primary' : 'btn-ghost'}`} onClick={() => setShowcase(false)}>真实规划</button>
       <button type="button" className={`btn ${showcase ? 'btn-primary' : 'btn-ghost'}`} disabled={demoRoutes.length !== 4} onClick={() => { setShowcase(true); clock.seek(0); }}>四车演示</button>
     </div>
-    {showcase && <div className="r25-showcase-note" role="status">当前显示四车展示动画；实际 SimPy 事件和业务 KPI 仍来自原始仿真数据，不代表这四条演示路线已通过调度校验。</div>}
+    {showcase && <div className="r25-showcase-note" role="status">四车模拟轨迹与实际联合运行独立。</div>}
     {showcase && demoRoutes.length !== 4 && <div className="callout">四车演示需要场景快照中有至少四辆车辆及仓库、订单；请先运行或导入基线场景。</div>}
     <div className="r25-fleet-picker">
       <span>镜头视角：</span><button type="button" className={`btn btn-sm ${!followVehicle ? 'btn-primary' : 'btn-ghost'}`} onClick={() => setFollowVehicle(false)}>全局自由视角</button>
       {routes.map((r) => <button type="button" key={r.vehicleId} className={`btn btn-sm ${followVehicle && selectedVehicle === r.vehicleId ? 'btn-primary' : 'btn-ghost'}`} onClick={() => { setSelectedVehicle(r.vehicleId); setFollowVehicle(true); }}>{r.vehicleId} · 跟车</button>)}
     </div>
-    <DigitalTwin3D
+    <DigitalTwinMap2D
       routes={routes}
-      warehouses={(snapshot?.warehouses ?? []).map((w) => ({ id: w.warehouse_id, zones: w.temperature_zones }))}
       nodeIds={nodeIds}
-      nodeZones={nodeZones}
-      orderCount={orders.length}
       simTimeS={clock.t}
-      getTime={clock.getTime}
       selectedVehicleId={selectedVehicle}
       followVehicleId={followVehicle ? selectedVehicle : null}
       onPickVehicle={setSelectedVehicle}
       eventActive={!showcase && eventFired}
       affectedVehicleIds={!showcase && eventFired ? affectedVehicles : []}
-      holdWindows={showcase ? {} : holdWindows}
       height={460}
-      waitingText={simPhase === 'running' ? 'SimPy 仿真运行中…' : '请先运行仿真或完成基线规划'}
     />
 
     <div className="panel player-panel">
@@ -194,6 +176,7 @@ export default function Page() {
         </div>
       </div>
     </div>
+  </details></>}
   </details>
   </div>;
 }

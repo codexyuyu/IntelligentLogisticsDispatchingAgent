@@ -15,18 +15,7 @@ from logistics_domain.states import ErrorCode
 # current behaviour. Multi-copy / multi-process setups must point both the
 # backend and the worker at the same absolute directory through this variable,
 # otherwise a completed job's artifact is invisible to the API process.
-def resolve_result_dir(environ: dict | None = None) -> Path:
-    """Resolve the artifact directory without touching module import state.
-
-    Keeping this as a pure function lets tests check the override without
-    reloading the module (a reload would create a second ResultArtifactStore
-    class and break pickling in the worker subprocess tests).
-    """
-    source = os.environ if environ is None else environ
-    return Path(source.get("LOGISTICS_RESULTS_DIR", "artifacts/results")).expanduser()
-
-
-RESULT_DIR = resolve_result_dir()
+RESULT_DIR = Path(os.environ.get("LOGISTICS_RESULTS_DIR", "artifacts/results")).expanduser()
 
 
 def canonical_bytes(value) -> bytes:
@@ -72,4 +61,4 @@ class TypedResultStore:
         return self.result_type.model_validate_json(payload)
 
 
-__all__ = ["RESULT_DIR", "ResultArtifactStore", "canonical_bytes", "resolve_result_dir"]
+__all__ = ["RESULT_DIR", "ResultArtifactStore", "canonical_bytes"]

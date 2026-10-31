@@ -48,7 +48,8 @@ export async function request<T>(path: string, init: RequestInit = {}): Promise<
   if (init.signal?.aborted) abort();
   else init.signal?.addEventListener('abort', abort, { once: true });
   let timedOut = false;
-  const timeoutMs = path === '/agents/dispatch' ? 65_000 : 30_000;
+  const timeoutMs = path === '/integration/showcase/vehicle-breakdown/ai-collaborate' ? 145_000 :
+    (path === '/agents/dispatch' || path === '/agents/dispatch-tasks') ? 65_000 : 30_000;
   const timer = setTimeout(() => { timedOut = true; controller.abort(); }, timeoutMs);
   try {
     const response = await fetch(`${BASE}${path}`, { ...init, headers, signal: controller.signal });

@@ -109,7 +109,7 @@ function SnapshotDashboard() {
         </aside>
 
         <section className="cockpit-center">
-          <div className="r25-showcase-toolbar"><div><strong>R25 · 城市车队可视化</strong><small>{showcase ? '四车示意动画，不作为真实路线和调度结果' : '实际求解车辆；道路未接 OSRM 时为示意'}</small></div>
+          <div className="r25-showcase-toolbar"><div><strong>城市车队可视化</strong><small>{showcase ? '四车示意动画，不作为真实路线和调度结果' : '实际求解车辆；道路未接 OSRM 时为示意'}</small></div>
           <button type="button" className={`btn btn-sm ${!showcase ? 'btn-primary' : 'btn-ghost'}`} onClick={() => setShowcase(false)}>真实规划</button>
           <button type="button" className={`btn btn-sm ${showcase ? 'btn-primary' : 'btn-ghost'}`} disabled={demoRoutes.length !== 4} onClick={() => { setShowcase(true); clock.seek(0); }}>四车演示</button></div>
           <div className="r25-fleet-picker"><button className={`btn btn-sm ${!followVehicle ? 'btn-primary' : 'btn-ghost'}`} onClick={() => setFollowVehicle(false)}>全局视角</button>

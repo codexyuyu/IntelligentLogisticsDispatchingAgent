@@ -143,8 +143,8 @@ export default function PostgresPage() {
   }
 
   return <div className="pg-console">
-    <SectionHeader title="PostgreSQL 冷链调度台" desc="R30-A：补录业务字段来源可辨认；可选 OSRM 道路估计及模拟方案归档。" />
-    <div className="pg-warning"><b>模拟预览 · 不可执行</b>：可选择 PostGIS 直线假设或 OSRM 道路估计；OSRM 不含实时拥堵。R24 业务字段仅在补录完整后可用；R30-A 合成扩展数据必须明确标注为演示，不代表真实运营。归档仅在独立演示表。</div>
+    <SectionHeader title="PostgreSQL 冷链调度台" desc="业务数据管理、道路估算与模拟方案归档" />
+    <div className="pg-warning"><b>模拟预览 · 不可执行</b>：可选择 PostGIS 直线假设或 OSRM 道路估计；OSRM 不含实时拥堵。业务字段完整时可执行估算；合成数据与运营数据分别保存。</div>
     {error && <div className="pg-error" role="alert">{error}</div>}
     {actionMessage && <div className="pg-ok" role="status">{actionMessage}</div>}
     <div className="pg-stats pg-top-stats">
@@ -156,7 +156,7 @@ export default function PostgresPage() {
     </div>
     {summary && <div className={`pg-hint ${summary.r26_single_warehouse_ready ? "pg-ok" : "pg-warning"}`} role="status">R29 单仓业务检查：{summary.r29_active_warehouse ? "现役仓库仅 WH001；四辆车统一归属 WH001。WH002 只作为 4 条历史路线的外键存根保留，不参与新调度；原历史数据未改写。" : summary.r26_single_warehouse_ready ? "当前调度输入只有 WH001，请先核查数据库迁移状态与历史数据。" : `当前数据库仓库节点：${(summary.warehouse_nodes ?? summary.warehouses).join("、")}；尚未执行 R29 单仓现役迁移。请在 backend 运行 .\migrate_pg_r29_local.ps1 做只读预检；本页面不自动写数据库。`}</div>}
     <div className="pg-hint" role="status">R24 扩展业务数据：{readiness ? (readiness.complete ? '已录入基础资料（仍需核查业务一致性）' : readiness.tables_installed ? '资料尚未齐全：' + Object.entries(readiness.missing ?? {}).map(([k,v])=>`${k} ${v}`).join(' / ') : '尚未安装增量表（旧功能可继续使用）') : '扩展资料状态不可用'}。</div>
-    {readiness?.provenance?.source_kind==='explicit_synthetic_demo'&&<div className="pg-warning" role="status"><b>R30-A PostgreSQL 合成演示资料</b>：订单编号和基础重量来自实库；新补的库存批次、体积、班次和工时是生成的演示参数，不能当作真实经营数据。</div>}
+    {readiness?.provenance?.source_kind==='explicit_synthetic_demo'&&<div className="pg-warning" role="status"><b>PostgreSQL 场景数据</b>：订单编号和基础重量来自实库；新补的库存批次、体积、班次和工时是生成的演示参数，不能当作真实经营数据。</div>}
     <div className="pg-toolbar"><div className="pg-tabs" role="tablist" aria-label="实库调度功能">
       {tabs.map((item) => <button key={item.id} type="button" role="tab" aria-selected={tab === item.id} className={tab === item.id ? 'active' : ''} onClick={() => setTab(item.id)}>{item.name}</button>)}
     </div><button className="btn btn-ghost btn-sm" disabled={loading || busy} onClick={() => { void refreshData(); void refreshSaved(); }}>{loading ? '正在刷新…' : '刷新实库数据'}</button></div>
@@ -182,8 +182,8 @@ export default function PostgresPage() {
       </div>
       <div className="pg-actions"><button className="btn btn-primary" disabled={busy || loading || !summary} onClick={() => void solve()}>{busy ? '正在处理…' : '运行模拟路线预览'}</button>
       <span className="pg-hint">OSRM 模式需要后端 OSRM_BASE_URL；失败时不会偷偷回退到直线。</span></div>
-      {preview && <>{preview.business_fact_origin==='r30a_explicit_synthetic_demo'&&<div className="pg-warning" role="status">本路线使用了 PostgreSQL 内已标记的 R30-A 合成演示业务参数，非真实库存或车辆班次。</div>}<RouteSummary preview={preview}/>
-        <div className="r25-showcase-toolbar"><div><strong>R25 · 3D 道路动态回放</strong>
+      {preview && <>{preview.business_fact_origin==='r30a_explicit_synthetic_demo'&&<div className="pg-warning" role="status">本路线使用了 PostgreSQL 内已标记的 合成场景业务参数，非真实库存或车辆班次。</div>}<RouteSummary preview={preview}/>
+        <div className="r25-showcase-toolbar"><div><strong>道路动态回放</strong>
           <small>{hasOsrmPaths ? '路线几何来自 OSRM driving，预计行驶时间不含实时拥堵；车速动画按规划时间映射。' : '当前是 PostGIS 直线矩阵，3D 使用示意道路布局，不是实际道路。'} 求解器使用的车辆数为 {previewRoutes.length} 辆。</small></div>
           <button type="button" className="btn btn-primary" onClick={() => { setShow3D((old) => !old); replay.seek(0); }}>
             {show3D ? '收起 3D 回放' : '打开 3D 回放'}
@@ -223,6 +223,6 @@ export default function PostgresPage() {
           {detail && <RouteSummary preview={detail.preview}/>}</> : <div className="pg-map-empty">从左侧选择一个已保存的模拟方案，即可查看路线地图和站点。</div>}
       </div></div>
     </section>}
-    <p className="pg-footer-note">R24 仍仅供本机演示。正式生产业务表 dispatch_plans / routes / route_stops 未由本模块写入；原有数字孪生模块使用独立场景数据。</p>
+    <p className="pg-footer-note">当前为模拟预览，不会向正式派车表写入记录。</p>
   </div>;
 }

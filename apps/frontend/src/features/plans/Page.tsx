@@ -125,7 +125,7 @@ export default function Page() {
           <td>{step.routing_solve_ms == null ? '—' : `${step.warehouse_solve_ms ?? 0} / ${step.routing_solve_ms} ms`}</td>
           <td>{step.reason}</td>
         </tr>)}</tbody></table></div>
-      <p className="scope-note">优先级：未服务订单数 → 运输距离 → 订单级交接等待 → 仓储完工时间 → 路线时长。仅比较同一快照、同一约束下真实计算的候选方案；不承诺每一轮都会改善距离。R16 的 B-06 快检/标准评测仍使用单轮模式，历史统计口径不变。</p>
+      <p className="scope-note">优先级：未服务订单数 → 运输距离 → 订单级交接等待 → 仓储完工时间 → 路线时长。仅比较同一快照、同一约束下真实计算的候选方案；不承诺每一轮都会改善距离。评测数据使用统一统计口径。</p>
     </div>}
 
     <div className="kpi-grid">

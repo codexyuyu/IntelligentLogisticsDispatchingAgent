@@ -6,11 +6,23 @@ export type Leg = { fromS: number; untilS: number; points: Vec2[]; cumulative: n
 export type RouteMotion = { legs: Leg[]; start: Vec2; end: Vec2 };
 
 export function roadLikeLeg(a: Vec2, b: Vec2, offset = 0): Vec2[] {
-  // Diagram roads ONLY. Right-angled streets are not claimed to be OSRM geometry.
-  if (Math.abs(a.x - b.x) < 0.01 || Math.abs(a.z - b.z) < 0.01) return [a, b];
-  return offset % 2 === 0
-    ? [a, { x: b.x, z: a.z }, b]
-    : [a, { x: a.x, z: b.z }, b];
+  // Deterministic schematic street geometry: orthogonal streets with a rounded
+  // corner, never sold as real GPS navigation. Stops remain EXACTLY a and b.
+  const dx = b.x - a.x, dz = b.z - a.z;
+  if (Math.abs(dx) < 0.05 || Math.abs(dz) < 0.05) return [a, b];
+  const turn = offset % 2 === 0 ? { x: b.x, z: a.z } : { x: a.x, z: b.z };
+  const first = { x: turn.x - Math.sign(turn.x - a.x) * Math.min(1.3, Math.abs(turn.x - a.x) / 3),
+    z: turn.z - Math.sign(turn.z - a.z) * Math.min(1.3, Math.abs(turn.z - a.z) / 3) };
+  const last = { x: turn.x + Math.sign(b.x - turn.x) * Math.min(1.3, Math.abs(b.x - turn.x) / 3),
+    z: turn.z + Math.sign(b.z - turn.z) * Math.min(1.3, Math.abs(b.z - turn.z) / 3) };
+  const rounded: Vec2[] = [a, first];
+  for (let i = 1; i <= 5; i++) {
+    const t = i / 6;
+    rounded.push({ x: (1-t)*(1-t)*first.x + 2*(1-t)*t*turn.x + t*t*last.x,
+      z: (1-t)*(1-t)*first.z + 2*(1-t)*t*turn.z + t*t*last.z });
+  }
+  rounded.push(last, b);
+  return rounded;
 }
 
 function leg(fromS: number, untilS: number, points: Vec2[]): Leg {

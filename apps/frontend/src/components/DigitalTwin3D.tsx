@@ -1,14 +1,14 @@
 // Owner: CODEX_FRONTEND. 3D digital twin rendered from real plan routes and the
 // shared simulation clock. Node positions are schematic (see lib/twin.ts) because
 // the contract carries travel matrices, not geo coordinates.
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import type { TwinRoute } from '../appTypes';
 import { layoutNodes } from '../lib/twin';
-import { buildRouteMotion, geoProjection, sampleMotion } from '../lib/replayPaths';
+import { buildRouteMotion, geoProjection } from '../lib/replayPaths';
 import { fmtClock } from '../lib/format';
-import { concreteMaterial } from '../lib/warehouseMaterials';
+import { routeDisplayColor, vehicleDisplayName, visualVehiclePose, vehicleReplayStatus, countDistinctVehicles } from '../lib/replayVisual';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 export type TwinWarehouse = { id: string; zones: ('chilled' | 'frozen')[] };
@@ -81,16 +81,29 @@ export default function DigitalTwin3D({
   waitingText = '等待调度方案…',
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [focusedVehicle, setFocusedVehicle] = useState<string | null>(null);
+  const [showAllRoutes, setShowAllRoutes] = useState(false);
+  const [cameraMode, setCameraMode] = useState<'overview' | 'follow'>('overview');
+  const effectiveSelected = selectedVehicleId ?? focusedVehicle;
+  const focusRef = useRef<string | null>(effectiveSelected);
+  focusRef.current = effectiveSelected;
+  const showAllRef = useRef(showAllRoutes);
+  showAllRef.current = showAllRoutes;
+  const resetCameraRef = useRef(false);
+  const cameraModeRef = useRef(cameraMode);
+  cameraModeRef.current = cameraMode;
+  const selectVehicle = (id: string | null) => { setFocusedVehicle(id); onPickVehicle?.(id); };
+
   const simTimeRef = useRef(simTimeS);
   simTimeRef.current = simTimeS;
   const getTimeRef = useRef(getTime);
   getTimeRef.current = getTime;
   const selectedRef = useRef(selectedVehicleId);
-  selectedRef.current = selectedVehicleId;
+  selectedRef.current = effectiveSelected;
   const followRef = useRef(followVehicleId);
   followRef.current = followVehicleId;
-  const pickRef = useRef(onPickVehicle);
-  pickRef.current = onPickVehicle;
+  const pickRef = useRef((id: string | null) => { setFocusedVehicle(id); onPickVehicle?.(id); });
+  pickRef.current = (id: string | null) => { setFocusedVehicle(id); onPickVehicle?.(id); };
   const pickWarehouseRef = useRef(onPickWarehouse);
   pickWarehouseRef.current = onPickWarehouse;
   const affectedRef = useRef(affectedVehicleIds);
@@ -120,6 +133,11 @@ export default function DigitalTwin3D({
     }
     return result;
   }, [sceneKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  const motionSummary = useMemo(() => routes.map(route => {
+    const projected = geoProjection(routes);
+    const roadPoints = projected && route.roadCoordinates ? route.roadCoordinates.map(([lng, lat]) => projected(lng, lat)) : undefined;
+    return { route, motion: buildRouteMotion(route, positions, roadPoints) };
+  }), [sceneKey]); // eslint-disable-line react-hooks/exhaustive-deps
   const roadProjection = useMemo(() => geoProjection(routes), [sceneKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -127,13 +145,13 @@ export default function DigitalTwin3D({
     if (!container) return;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x1e201e);
-    scene.fog = new THREE.Fog(0x1e201e, 55, 120);
+    scene.background = new THREE.Color(0xbacbd2);
+    scene.fog = new THREE.Fog(0xbacbd2, 100, 195);
 
     const width = container.clientWidth || 960;
     const heightPx = container.clientHeight || height;
     const camera = new THREE.PerspectiveCamera(46, width / heightPx, 0.1, 400);
-    camera.position.set(4, 34, 46);
+    camera.position.set(10, 54, 55);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
@@ -149,8 +167,9 @@ export default function DigitalTwin3D({
     controls.minDistance = 16;
     controls.maxDistance = 110;
     controls.maxPolarAngle = Math.PI * 0.47;
+    controls.minPolarAngle = 0.15;
 
-    scene.add(new THREE.HemisphereLight(0xeceee8, 0x1a1b19, 1.25));
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x687d81, 1.6));
     const key = new THREE.DirectionalLight(0xffffff, 1.5);
     key.position.set(18, 40, 16);
     key.castShadow=true;key.shadow.mapSize.set(1024,1024);
@@ -161,32 +180,34 @@ export default function DigitalTwin3D({
     scene.add(rim);
 
     const floor = new THREE.Mesh(
-      new THREE.BoxGeometry(96, 0.3, 72),
-      concreteMaterial(),
+      new THREE.BoxGeometry(140, 0.3, 116),
+      new THREE.MeshStandardMaterial({color: 0xb6bcb2, roughness: 0.99}),
     );
-    floor.position.set(4, -0.15, 0);
-    floor.receiveShadow=true;
+    floor.position.set(4, -0.21, 0);
+    floor.receiveShadow = true;
     scene.add(floor);
-    const grid = new THREE.GridHelper(96, 48, COLORS.grid1, COLORS.grid2);
-    grid.position.set(4, 0.02, 0);
-    (grid.material as THREE.Material).transparent = true;
-    (grid.material as THREE.Material).opacity = 0.5;
-    scene.add(grid);
+    // Landscape framing: the streets and buildings, not the editor grid,
+    // communicate the layout. Geometry is presentation-only for schematic data.
+    const vergeMaterial = new THREE.MeshStandardMaterial({color: 0x91aa8d, roughness: 1});
+    for (const z of [-43, 43]) {
+      const verge = new THREE.Mesh(new THREE.BoxGeometry(120, 0.03, 6), vergeMaterial);
+      verge.position.set(3, -0.025, z); verge.receiveShadow = true; scene.add(verge);
+    }
 
-    // R25 lightweight city massing for the *schematic* mode. No photorealism
-    // claims: avoid fabricating urban buildings when OSRM geodata is available.
+    // Keep buildings away from the mapped route corridors; never use anonymous
+    // black blocks standing on top of roads. A few landscape props give scale.
     if (!roadProjection) {
-      const cityColors = [0x2b2d2a, 0x323430, 0x363833, 0x2f312d];
-      for (let col = 0; col < 7; col++) {
-        for (let row = 0; row < 5; row++) {
-          const x = -5 + col * 6.8;
-          const z = -19 + row * 8.5;
-          const buildingH = 1.5 + ((col * 7 + row * 3) % 6) * 0.72;
-          const block = new THREE.Mesh(new THREE.BoxGeometry(2.1, buildingH, 1.7),
-            new THREE.MeshStandardMaterial({ color: cityColors[(col + row) % cityColors.length], metalness: 0.18, roughness: 0.7 }));
-          block.position.set(x, buildingH / 2, z);
-          scene.add(block);
-        }
+      const trunk = new THREE.MeshStandardMaterial({ color: 0x646d63, roughness: 0.97 });
+      const leaf = new THREE.MeshStandardMaterial({ color: 0x527c61, roughness: 0.98 });
+      for (let i = 0; i < 13; i++) {
+        const x = -33 + i * 5.8;
+        const z = i % 2 ? 43.7 : -43.7;
+        const tree = new THREE.Group();
+        const stem = new THREE.Mesh(new THREE.CylinderGeometry(.14, .18, 2, 6), trunk);
+        stem.position.y = 1; tree.add(stem);
+        const crown = new THREE.Mesh(new THREE.IcosahedronGeometry(1.2 + (i % 3) * .16, 1), leaf);
+        crown.position.y = 2.75; crown.castShadow = true; tree.add(crown);
+        tree.position.set(x, 0, z); scene.add(tree);
       }
     }
 
@@ -199,70 +220,50 @@ export default function DigitalTwin3D({
       const at = actual ? new THREE.Vector3(actual.x, 0, actual.z) : whPositions[index % whPositions.length];
       const group = new THREE.Group();
       group.position.copy(at);
+      // The solver's depot node is the gate, not the middle of the building.
+      group.position.x -= 9;
       group.userData.warehouseId = wh.id;
-      const base = new THREE.Mesh(
-        new THREE.BoxGeometry(13, 0.5, 16),
-        new THREE.MeshStandardMaterial({ color: 0x2a2c29, roughness: 0.8 }),
-      );
-      base.position.y = 0.25;
-      group.add(base);
-      const zones = wh.zones.length ? wh.zones : (['chilled', 'frozen'] as const);
-      zones.forEach((zone, zi) => {
-        const color = zone === 'frozen' ? COLORS.frozen : COLORS.chilled;
-        const cold = new THREE.Mesh(
-          new THREE.BoxGeometry(4.4, 3.4, 6.4),
-          new THREE.MeshStandardMaterial({
-            color, transparent: true, opacity: 0.2, emissive: color, emissiveIntensity: 0.32, roughness: 0.4, metalness: 0.2,
-          }),
-        );
-        cold.position.set(-2.6, 1.7, -4.6 + zi * 9.2);
-        group.add(cold);
-        const frame = new THREE.Mesh(
-          new THREE.BoxGeometry(4.7, 0.14, 6.7),
-          new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.9 }),
-        );
-        frame.position.set(-2.6, 3.55, -4.6 + zi * 9.2);
-        group.add(frame);
-        for (let r = 0; r < 3; r += 1) {
-          const rack = new THREE.Mesh(
-            new THREE.BoxGeometry(0.5, 2.2, 1.4),
-            new THREE.MeshStandardMaterial({ color: 0x50534c, roughness: 0.6, metalness: 0.4 }),
-          );
-          rack.position.set(-3.6 + r * 1.9, 1.1, -4.6 + zi * 9.2);
-          group.add(rack);
-        }
-      });
-      const roof = new THREE.Mesh(
-        new THREE.BoxGeometry(14.2, 0.26, 17.2),
-        new THREE.MeshStandardMaterial({ color: 0x9ea396, transparent: true, opacity: 0.24, roughness: 0.35, metalness: 0.3, depthWrite: false }),
-      );
-      roof.position.set(0, 4.3, 0);
-      group.add(roof);
-      for (const px of [-6.4, 6.4]) {
-        for (const pz of [-7.6, 7.6]) {
-          const pillar = new THREE.Mesh(
-            new THREE.BoxGeometry(0.5, 4.2, 0.5),
-            new THREE.MeshStandardMaterial({ color: 0x464943, roughness: 0.5, metalness: 0.5 }),
-          );
-          pillar.position.set(px, 2.1, pz);
-          group.add(pillar);
-        }
-      }
+      const concrete = new THREE.MeshStandardMaterial({color: 0x636f76, roughness: .85});
+      const wall = new THREE.MeshStandardMaterial({color: 0xdce6e8, metalness: .18, roughness: .75});
+      const roofMaterial = new THREE.MeshStandardMaterial({color: 0x8198a3, metalness: .26, roughness: .67});
+      const base = new THREE.Mesh(new THREE.BoxGeometry(17.5, .28, 17.8), concrete);
+      base.position.y = .17; base.receiveShadow = true; group.add(base);
+      const main = new THREE.Mesh(new THREE.BoxGeometry(12.4, 5.0, 13.8), wall);
+      main.position.set(-1.9, 2.65, 0); main.castShadow = true; main.receiveShadow = true; group.add(main);
+      const roof = new THREE.Mesh(new THREE.BoxGeometry(13.3, .36, 14.7), roofMaterial);
+      roof.position.set(-1.9, 5.32, 0); roof.castShadow = true; group.add(roof);
       for (let d = 0; d < 3; d += 1) {
-        const dock = new THREE.Mesh(
-          new THREE.BoxGeometry(1.6, 0.18, 2.1),
-          new THREE.MeshStandardMaterial({ color: COLORS.dock, emissive: 0x2c3a2c, emissiveIntensity: 0.6, roughness: 0.5 }),
-        );
-        dock.position.set(7.6, 0.32, -5 + d * 5);
-        group.add(dock);
+        const doorZ = -4.6 + d * 4.55;
+        const roller = new THREE.Mesh(new THREE.BoxGeometry(.08, 2.55, 2.6),
+          new THREE.MeshStandardMaterial({color: 0x7196aa, metalness: .45, roughness: .48}));
+        roller.position.set(4.37, 1.55, doorZ); group.add(roller);
+        const dock = new THREE.Mesh(new THREE.BoxGeometry(3.5, .42, 3.1),
+          new THREE.MeshStandardMaterial({color: 0x556368, roughness: .88}));
+        dock.position.set(6.2, .34, doorZ); dock.receiveShadow = true; group.add(dock);
+        const marker = makeLabel(`月台 ${d+1}`, '#fff', 28);
+        marker.position.set(4.8, 3.35, doorZ); marker.scale.set(2.4, .55, 1); group.add(marker);
+        for (let stripe = 0; stripe < 3; stripe++) {
+          const yellow = new THREE.Mesh(new THREE.BoxGeometry(.13, .015, .55),
+            new THREE.MeshBasicMaterial({color: 0xf2cb64}));
+          yellow.position.set(7.4 + stripe * .5, .58, doorZ); group.add(yellow);
+        }
       }
-      const label = makeLabel(wh.id, '#BFE3C9');
-      label.position.set(0, 6.4, 0);
-      group.add(label);
-      const zoneLabel = makeLabel(zones.map((z) => (z === 'frozen' ? '冷冻' : '冷藏')).join(' / '), '#C2C5BD', 34);
-      zoneLabel.position.set(0, 5.3, 0);
-      zoneLabel.scale.set(3.6, 0.9, 1);
-      group.add(zoneLabel);
+      const cooling = new THREE.Mesh(new THREE.BoxGeometry(1.7, .9, 2.4),
+        new THREE.MeshStandardMaterial({color: 0xe7edf0, metalness: .3, roughness: .48}));
+      cooling.position.set(-6.6, 5.9, -3.4); cooling.castShadow = true; group.add(cooling);
+      const zones = wh.zones.length ? wh.zones : (['chilled', 'frozen'] as const);
+      const badge = makeLabel(`冷链配送中心 ${index+1}`, '#effefa', 30);
+      badge.position.set(-1.5, 7.6, 0); badge.scale.set(6.9, 1.0, 1); group.add(badge);
+      const zoneLabel = makeLabel(zones.map(z => z === 'frozen' ? '冷冻区' : '冷藏区').join(' · '), '#f5fffb', 29);
+      zoneLabel.position.set(-1.5, 6.6, 0); zoneLabel.scale.set(4, .75, 1); group.add(zoneLabel);
+      // Clear numbered vehicle bays. Vehicle visuals use these locations while
+      // waiting at their logical depot; scheduling timestamps remain unchanged.
+      for (let bay = 0; bay < 5; bay++) {
+        const outline = new THREE.Mesh(new THREE.BoxGeometry(2.3, .014, 2.2),
+          new THREE.MeshBasicMaterial({color: 0xecf5ec}));
+        outline.position.set(14.1 + Math.floor(bay / 4) * 2.6, .045, -4.4 + (bay % 4) * 2.65);
+        group.add(outline);
+      }
       scene.add(group);
       pickablesWarehouse.push(group);
     });
@@ -276,6 +277,20 @@ export default function DigitalTwin3D({
       const color = zone === 'frozen' ? COLORS.frozen : COLORS.chilled;
       const group = new THREE.Group();
       group.position.set(pos.x, 0, pos.z);
+      const pad = new THREE.Mesh(new THREE.BoxGeometry(3.4, .16, 3.5),
+        new THREE.MeshStandardMaterial({color:0x738187, roughness:.92}));
+      pad.position.set(2.0, .09, 2.2); pad.receiveShadow=true; group.add(pad);
+      const store = new THREE.Mesh(new THREE.BoxGeometry(2.65, 2.3, 2.4),
+        new THREE.MeshStandardMaterial({color: zone === 'frozen' ? 0xc9e4ee : 0xe8e8dd, roughness:.79}));
+      store.position.set(2.0, 1.28, 2.6); store.castShadow=true; group.add(store);
+      const storeRoof = new THREE.Mesh(new THREE.BoxGeometry(3.0,.25,2.7),
+        new THREE.MeshStandardMaterial({color:0x52707b, roughness:.64}));
+      storeRoof.position.set(2.0,2.56,2.6);group.add(storeRoof);
+      const door = new THREE.Mesh(new THREE.BoxGeometry(.95,1.4,.06),
+        new THREE.MeshStandardMaterial({color:0x628f9a, metalness:.25, roughness:.45}));
+      door.position.set(2.0,.92,1.35);group.add(door);
+      const title = makeLabel(`配送点 ${String(pickables.length+1).padStart(2,'0')}`, '#ffffff', 28);
+      title.position.set(2.0,4.15,2.5);title.scale.set(4.0,.82,1);group.add(title);
       const post = new THREE.Mesh(
         new THREE.CylinderGeometry(0.16, 0.16, 1.5, 8),
         new THREE.MeshStandardMaterial({ color: 0x55584f, roughness: 0.6, metalness: 0.35 }),
@@ -313,34 +328,49 @@ export default function DigitalTwin3D({
     const wheelGeometry = new THREE.CylinderGeometry(0.23, 0.23, 0.15, 12);
     const wheelMaterial = new THREE.MeshStandardMaterial({ color: 0x1c1d1b, roughness: 0.95 });
     const bounds = new THREE.Box3();
+    const vehicleIds = [...new Set(routes.map(route => route.vehicleId))];
+    const roadSegmentKeys = new Set<string>();
+    const asphaltMat = new THREE.MeshStandardMaterial({color: 0x505b62, roughness: .95});
+    const shoulderMat = new THREE.MeshStandardMaterial({color: 0x8a999a, roughness: .96});
+    const lineMarkMat = new THREE.MeshBasicMaterial({color: 0xdbe8e8});
+    // One road surface for shared paths, independent route overlays for trucks.
     routes.forEach((route) => {
       const projectedRoad = roadProjection && route.roadCoordinates
         ? route.roadCoordinates.map(([lng, lat]) => roadProjection(lng, lat)) : undefined;
       const motion = buildRouteMotion(route, positions, projectedRoad);
       if (!motion) return;
-      const color = route.zone === 'frozen' ? COLORS.frozen : COLORS.chilled;
+      const color = routeDisplayColor(route.vehicleId, routes);
       const routeLines: THREE.Line[] = [];
       motion.legs.forEach((leg) => {
         if (!projectedRoad) {
           for (let j = 1; j < leg.points.length; j++) {
-            const a = leg.points[j - 1], b = leg.points[j];
-            const length = Math.hypot(b.x - a.x, b.z - a.z);
-            if (length < 0.03) continue;
-            const asphalt = new THREE.Mesh(new THREE.BoxGeometry(length, 0.07, 0.82),
-              new THREE.MeshStandardMaterial({ color: 0x3e413b, roughness: 0.96 }));
-            asphalt.position.set((a.x + b.x) / 2, 0.09, (a.z + b.z) / 2);
-            asphalt.rotation.y = Math.atan2(-(b.z - a.z), b.x - a.x);
-            scene.add(asphalt);
+            const a = leg.points[j-1], b = leg.points[j];
+            const distance = Math.hypot(b.x-a.x, b.z-a.z);
+            if (distance < .03) continue;
+            const key = [a,b].map(p => `${p.x.toFixed(2)}:${p.z.toFixed(2)}`).sort().join('|');
+            if (roadSegmentKeys.has(key)) continue;
+            roadSegmentKeys.add(key);
+            const heading = Math.atan2(-(b.z-a.z), b.x-a.x);
+            for (const [width, y, mat] of [[3.4,.022,shoulderMat],[2.92,.055,asphaltMat]] as [number, number, THREE.Material][]) {
+              const road = new THREE.Mesh(new THREE.BoxGeometry(distance + .1, .055, width), mat);
+              road.position.set((a.x+b.x)/2, y, (a.z+b.z)/2);
+              road.rotation.y = heading; road.receiveShadow=true;scene.add(road);
+            }
+            if (distance > 2.2) {
+              for (let dash = 1.8; dash < distance - .4; dash += 3.4) {
+                const m = new THREE.Mesh(new THREE.BoxGeometry(Math.min(1.3,distance-dash),.015,.065),lineMarkMat);
+                const u = dash/distance;
+                m.position.set(a.x+(b.x-a.x)*u,.104,a.z+(b.z-a.z)*u);
+                m.rotation.y=heading;scene.add(m);
+              }
+            }
           }
         }
-        const vertices = leg.points.map((p) => new THREE.Vector3(p.x, 0.25, p.z));
+        const vertices = leg.points.map(p => new THREE.Vector3(p.x,.21,p.z));
         for (const point of vertices) bounds.expandByPoint(point);
-        const path = new THREE.Line(
-          new THREE.BufferGeometry().setFromPoints(vertices),
-          new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.55 }),
-        );
-        scene.add(path);
-        routeLines.push(path);
+        const path = new THREE.Line(new THREE.BufferGeometry().setFromPoints(vertices),
+          new THREE.LineBasicMaterial({color,transparent:true,opacity:.15,depthTest:false}));
+        path.renderOrder=12;scene.add(path);routeLines.push(path);
       });
       const truck = new THREE.Group();
       const light = new THREE.MeshStandardMaterial({ color: 0xf1f2ee, roughness: 0.38, metalness: 0.18, emissive: 0x1f2a1f, emissiveIntensity: 0.24 });
@@ -404,14 +434,15 @@ export default function DigitalTwin3D({
         brake.position.set(-0.85, 0.85, z);
         truck.add(brake);
       }
-      const tag = makeLabel(route.vehicleId, '#F2F3EF', 32);
-      tag.position.set(0, 2.15, 0);
-      tag.scale.set(3.0, 0.75, 1);
+      const tag = makeLabel(vehicleDisplayName(route.vehicleId, routes), '#ffffff', 30);
+      tag.position.set(0, 2.35, 0);
+      tag.scale.set(3.3, .82, 1);
       truck.add(tag);
       truck.userData.vehicleId = route.vehicleId;
       truck.traverse(object=>{if(object instanceof THREE.Mesh){object.castShadow=true;object.receiveShadow=true;}});
-      const point = sampleMotion(motion, 0);
-      truck.position.set(point.x, 0.12, point.z);
+      const point = visualVehiclePose(motion, 0, vehicleIds.indexOf(route.vehicleId), vehicleIds.length,
+        positions[route.stops[0]?.nodeId] ?? motion.start, !projectedRoad);
+      truck.position.set(point.x, .12, point.z);
       pickables.push(truck);
       scene.add(truck);
       trucks.set(route.vehicleId, { motion, truck, line: routeLines, wheels, light });
@@ -421,13 +452,15 @@ export default function DigitalTwin3D({
       const center = bounds.getCenter(new THREE.Vector3());
       const size = bounds.getSize(new THREE.Vector3());
       controls.target.copy(center);
-      const d = Math.max(34, size.x * 1.1, size.z * 1.3);
-      camera.position.set(center.x + d * 0.12, d * 0.85, center.z + d);
+      const d = Math.max(34, size.x * 1.25, size.z * 1.25);
+      camera.position.set(center.x + d * .24, d * 1.15, center.z + d * 1.0);
       camera.far = Math.max(400, d * 6);
       camera.updateProjectionMatrix();
       controls.maxDistance = Math.max(110, d * 3);
     }
 
+    const overviewPosition = camera.position.clone();
+    const overviewTarget = controls.target.clone();
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
     {
@@ -470,8 +503,11 @@ export default function DigitalTwin3D({
         if (hold && t > hold.fromS) {
           effectiveT = t >= hold.untilS ? t - (hold.untilS - hold.fromS) : hold.fromS;
         }
-        const p = sampleMotion(entry.motion, effectiveT);
-        entry.truck.position.set(p.x, 0.12, p.z);
+        const index = vehicleIds.indexOf(vehicleId);
+        const route = routes.find(item => item.vehicleId === vehicleId);
+        const depot = route ? positions[route.stops[0]?.nodeId] ?? entry.motion.start : entry.motion.start;
+        const p = visualVehiclePose(entry.motion, effectiveT, index, vehicleIds.length, depot, !roadProjection);
+        entry.truck.position.set(p.x, .12, p.z);
         if (p.moving) entry.truck.rotation.y = p.heading;
         const movingSeconds = p.moving ? Math.max(0, effectiveT - lastSimulationTime) : 0;
         for (const wheel of entry.wheels) wheel.rotation.z -= Math.min(0.3, movingSeconds * 0.08);
@@ -479,11 +515,23 @@ export default function DigitalTwin3D({
         const affected = affectedRef.current.includes(vehicleId);
         entry.light.emissive.setHex(affected ? COLORS.alert : selected ? COLORS.chilled : 0x1f2a1f);
         entry.light.emissiveIntensity = affected ? 0.4 + 0.15 * Math.sin(now / 170) : selected ? 0.5 : 0.24;
-        for (const line of entry.line) (line.material as THREE.LineBasicMaterial).opacity = selected ? 0.96 : affected ? 0.85 : 0.48;
-        if (followRef.current === vehicleId) cameraTarget.copy(entry.truck.position);
+        const highlighted = selectedRef.current ? selected : showAllRef.current || affected;
+        for (const line of entry.line) (line.material as THREE.LineBasicMaterial).opacity = highlighted ? .96 : .085;
+        entry.truck.scale.setScalar(selected ? 1.12 : 1);
+        if (cameraModeRef.current === 'follow' && (followRef.current ?? focusRef.current) === vehicleId) cameraTarget.copy(entry.truck.position);
       });
       lastSimulationTime = t;
-      if (followRef.current && trucks.has(followRef.current)) {
+      if (resetCameraRef.current && cameraModeRef.current === 'overview') {
+        const factor = Math.min(1, frameDt * 3.8);
+        camera.position.lerp(overviewPosition, factor);
+        controls.target.lerp(overviewTarget, factor);
+        if (camera.position.distanceTo(overviewPosition) < .06 && controls.target.distanceTo(overviewTarget) < .06) {
+          camera.position.copy(overviewPosition);
+          controls.target.copy(overviewTarget);
+          resetCameraRef.current = false;
+        }
+      }
+      if (cameraModeRef.current === 'follow' && (followRef.current ?? focusRef.current) && trucks.has((followRef.current ?? focusRef.current)!)) {
         const delta = cameraTarget.clone().sub(controls.target).multiplyScalar(Math.min(1, frameDt * 2.5));
         controls.target.add(delta);
         camera.position.add(delta);
@@ -531,8 +579,15 @@ export default function DigitalTwin3D({
 
   const servedOrders = routes.reduce((n, r) => n + r.stops.filter((s) => s.kind === 'delivery').length, 0);
   const affectedHere = affectedVehicleIds.length > 0;
-  const hasRoadGeometry = routes.length > 0 && routes.every((r) => (r.roadCoordinates?.length ?? 0) > 1 && r.stopCoordinates?.length === r.stops.length);
-  const horizon = Math.max(1800, ...routes.flatMap((r) => r.stops.map((s) => s.arrivalS)));
+  const hasRoadGeometry = routes.length > 0 && routes.every(r => (r.roadCoordinates?.length ?? 0) > 1 && r.stopCoordinates?.length === r.stops.length);
+  const cars = motionSummary.filter(item => item.motion).map(({route,motion}) => ({
+    id:route.vehicleId,
+    name:vehicleDisplayName(route.vehicleId, routes),
+    status: vehicleReplayStatus(motion!, simTimeS),
+    nextStop: route.stops.find(s => s.arrivalS > simTimeS)?.nodeId,
+    color: `#${routeDisplayColor(route.vehicleId, routes).toString(16).padStart(6, '0')}`,
+    affected:affectedVehicleIds.includes(route.vehicleId),
+  }));
 
   return (
     <div className="twin-shell">
@@ -543,29 +598,52 @@ export default function DigitalTwin3D({
         </div>
         <div className="twin-topstats">
           <span><b>{warehouses.length}</b> 仓库</span>
-          <span><b>{routes.length}</b> 路线</span>
+          <span><b>{countDistinctVehicles(routes)}</b> 车辆</span>
           <span><b>{orderCount}</b> 订单</span>
           <span><b>{fmtClock(simTimeS)}</b> 仿真时间</span>
           <span className={eventActive || affectedHere ? 'alert-text' : ''}><i />{eventActive || affectedHere ? '异常处置中' : '运行正常'}</span>
         </div>
       </div>
+      <div className="twin-toolbar">
+        <div className="twin-toolbar-left"><b>配送网络沙盘</b><span>{hasRoadGeometry ? '地理道路坐标' : '拓扑示意道路 · 非 GPS'}</span></div>
+        <div className="twin-toolbar-actions">
+          <button type="button" className={cameraMode === 'overview' ? 'twin-tool active' : 'twin-tool'} onClick={() => {setCameraMode('overview');resetCameraRef.current=true;}}>全局鸟瞰</button>
+          <button type="button" className={cameraMode === 'follow' ? 'twin-tool active' : 'twin-tool'}
+            disabled={!effectiveSelected} onClick={() => setCameraMode('follow')}>跟随车辆</button>
+          <button type="button" className={showAllRoutes ? 'twin-tool active' : 'twin-tool'}
+            onClick={() => setShowAllRoutes(v => !v)}>{showAllRoutes ? '隐藏全部路线' : '显示全部路线'}</button>
+        </div>
+      </div>
       <div className="twin-stage" style={{ height }}>
         <div ref={containerRef} className="twin-canvas" />
         <div className="twin-legend">
-          <span><i className="legend-dot chilled" />冷藏 chilled</span>
-          <span><i className="legend-dot frozen" />冷冻 frozen</span>
-          <span><i className="legend-dot warning" />受影响车辆</span>
-          <span><i className="legend-dot route" />{hasRoadGeometry ? 'OSRM 道路估计' : '示意道路'}</span>
+          <span><i className="legend-dot chilled"/>冷藏配送中心</span>
+          <span><i className="legend-dot frozen"/>配送站</span>
+          <span><i className="legend-dot warning"/>异常车辆</span>
+          <span><i className="legend-dot route"/>{hasRoadGeometry ? '实际道路形状' : '示意道路（非导航）'}</span>
         </div>
         <div className="twin-overlay-card">
-          <span className="overlay-title">当前仿真时刻</span>
-          <div><b>{fmtClock(simTimeS)}</b><small>{simTimeS >= horizon ? '回放结束' : '推进中'}</small></div>
-          <div><b>{affectedHere ? affectedVehicleIds.join(', ') : '—'}</b><small>{affectedHere ? '受异常影响' : '无异常车辆'}</small></div>
-          <div><b>{servedOrders || '—'}</b><small>路线配送点</small></div>
+          <span className="overlay-title">当前仿真时刻 · {fmtClock(simTimeS)}</span>
+          <div><b>{cars.length}</b><small>轨迹车辆 / 可选择</small></div>
+          <div><b>{cars.filter(c => c.status === 'moving').length}</b><small>按轨迹计算在途</small></div>
+          <div><b>{servedOrders || '—'}</b><small>配送停靠点</small></div>
+          <div><b>{affectedHere ? affectedVehicleIds.length : 0}</b><small>异常关联车辆</small></div>
         </div>
         {routes.length === 0 && (
           <div className="twin-waiting"><span>{waitingText}</span></div>
         )}
+      </div>
+      <div className="twin-vehicle-roster" aria-label="车辆运行列表">
+        <div className="twin-roster-head"><strong>车队监控</strong><span>点击车辆可高亮路线与车辆 · 位置偏移仅用于示意画面避让</span></div>
+        <div className="twin-roster-grid">
+          {cars.map(car => <button type="button" key={car.id} className={`twin-car-card ${effectiveSelected === car.id ? 'selected' : ''}`}
+            onClick={() => selectVehicle(effectiveSelected === car.id ? null : car.id)}>
+            <span className="twin-car-swatch" style={{ backgroundColor: car.color }}/>
+            <span className="twin-car-body"><b>{car.name}</b><small title={car.id}>{car.id.slice(0, 8)} · {car.nextStop ? `下一站 ${car.nextStop.slice(0, 8)}` : '无后续停靠'}</small></span>
+            <span className={car.affected ? 'twin-car-status impacted' : 'twin-car-status'}>{car.affected ? '异常关注 · ' : ''}{({waiting:'待发车',moving:'行驶中',stopped:'站点停靠',completed:'已完成'} as const)[car.status]}</span>
+          </button>)}
+        </div>
+        {!hasRoadGeometry && <p className="twin-visual-note">本页道路、车位与建筑是示意建模；算法节点顺序、时间、距离与费用保持原始数据。多车共线时仅将车模移到邻近可视车道，不改变真实轨迹。</p>}
       </div>
     </div>
   );

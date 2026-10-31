@@ -338,7 +338,7 @@ export default function Page() {
         <label className="scope-note" htmlFor="benchmark-profile">求解模式</label>
         <select id="benchmark-profile" value={profile} disabled={busy} onChange={(e) => setProfile(e.target.value as BenchmarkProfile)} style={{ padding: '8px 12px', borderRadius: 8, border: '1px solid var(--line)', background: 'var(--panel2)', color: 'var(--text)' }}>
           <option value="quick">快速排错（S20=8秒 / S50=12秒 / S100=18秒）</option>
-          <option value="standard">标准评测（每组60秒，比赛数据）</option>
+          <option value="standard">标准评测（每组60秒）</option>
         </select>
         <span className="scope-note">{profile === 'quick' ? '当前是短预算验证：失败不代表无解，距离改善只供预览。' : '标准评测：保留既有60秒预算，可用于正式对照。'} {selectedSizes.map(s => `S${s}：${budgetForScale(s, profile) / 1000}s`).join(' · ')}</span>
       </div>
@@ -362,6 +362,6 @@ export default function Page() {
       </> : <div className="empty-state"><strong>还没有单次实验结果</strong><span>可以运行“单次 S20 实验”，或者直接运行上面的批量实验。</span></div>}
     </div>
 
-    <div className="card-grid two" style={{ marginTop: 16 }}><div className="panel evidence-card"><div className="panel-title-row"><div><h3>怎么做实验</h3><p>自动化流程</p></div></div><div className="evidence-list"><span>① 生成固定规模 + seed 的可复现场景。</span><span>② 导入场景并调用现有 Planning Job：CP-SAT + Routing。</span><span>③ 用确定性规则基线计算同场景指标。</span><span>④ 自动保存每个 seed 的成功/失败结果，并汇总平均值。</span><span>⑤ 失败实验保留阶段、错误码和诊断原因，便于定位规模扩展瓶颈。</span></div></div><div className="panel evidence-card"><div className="panel-title-row"><div><h3>实验边界</h3><p>保持后端架构冻结</p></div></div><p className="scope-note">R16 快速排错 / 标准评测双模式：合成实验 v2，以 S20 为模板，按 Seed 调整订单需求/时间窗，并在同仓、同温区的既有节点中分配配送点；复用真实输入矩阵，不伪造路段。优化后路线必须逐单核验通过才计为成功。规则基线是固定优化仓储交接方案后的运输贪心法（并非独立的完整仓运方案）；两方有漏单时，距离优化率显示不可比。快检失败仅代表短预算未求得方案；快检与标准不混合统计。不同生成器版本也不能混为一组统计。</p></div></div>
+    <div className="card-grid two" style={{ marginTop: 16 }}><div className="panel evidence-card"><div className="panel-title-row"><div><h3>怎么做实验</h3><p>自动化流程</p></div></div><div className="evidence-list"><span>① 生成固定规模 + seed 的可复现场景。</span><span>② 导入场景并调用现有 Planning Job：CP-SAT + Routing。</span><span>③ 用确定性规则基线计算同场景指标。</span><span>④ 自动保存每个 seed 的成功/失败结果，并汇总平均值。</span><span>⑤ 失败实验保留阶段、错误码和诊断原因，便于定位规模扩展瓶颈。</span></div></div><div className="panel evidence-card"><div className="panel-title-row"><div><h3>实验边界</h3><p>评测范围</p></div></div><p className="scope-note">快速检查 / 标准评测双模式：合成实验 v2，以 S20 为模板，按 Seed 调整订单需求/时间窗，并在同仓、同温区的既有节点中分配配送点；复用真实输入矩阵，不伪造路段。优化后路线必须逐单核验通过才计为成功。规则基线是固定优化仓储交接方案后的运输贪心法（并非独立的完整仓运方案）；两方有漏单时，距离优化率显示不可比。快检失败仅代表短预算未求得方案；快检与标准不混合统计。不同生成器版本也不能混为一组统计。</p></div></div>
   </div>;
 }

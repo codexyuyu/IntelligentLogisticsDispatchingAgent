@@ -162,3 +162,31 @@ def simulation_state_at(run_id: UUID, current: Annotated[Any, Depends(actor)],
 @router.post('/runs/{run_id}/revoke', operation_id='revoke_integration_award')
 def revoke(run_id: UUID, command: RevokeInput, current: Annotated[Any, Depends(operator)], app: Annotated[Any, Depends(service)]):
     return app.revoke(run_id, command, current)
+
+
+class BreakdownShowcaseInput(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    budget_ms: int = Field(default=1800, ge=100, le=5000)
+
+
+@router.post('/showcase/vehicle-breakdown/solve', operation_id='solve_vehicle_breakdown_showcase')
+def solve_vehicle_breakdown_showcase(command: BreakdownShowcaseInput,
+                                    current: Annotated[Any, Depends(operator)]):
+    """Real OR-Tools cross-vehicle cargo handoff; synthetic read-only showcase.
+
+    Returns the complete baseline, stranded plan and validated candidate.
+    No operational assignment, PostgreSQL state, inventory or approval is changed.
+    """
+    from logistics_backend.application.fault_rescue_showcase import solve_breakdown_showcase
+    return solve_breakdown_showcase(command.budget_ms)
+
+
+@router.post('/showcase/vehicle-breakdown/ai-collaborate',
+             operation_id='collaborate_vehicle_breakdown_showcase')
+def collaborate_vehicle_breakdown_showcase(command: BreakdownShowcaseInput,
+                                          current: Annotated[Any, Depends(operator)],
+                                          request: Request):
+    """Bounded DeepSeek tool calls, real solver, no DB writes or auto approval."""
+    from logistics_backend.application.ai_fault_rescue import collaborate
+    provider = request.app.state.natural_dispatch.provider
+    return collaborate(provider, command.budget_ms)

@@ -17,6 +17,8 @@ from logistics_agents.service import AgentChatService
 from logistics_backend.api.errors import install_handlers, response
 from logistics_backend.application.agent import AgentRunService
 from logistics_backend.application.dispatch_agent import DispatchOrchestrator
+from logistics_backend.application.natural_dispatch import NaturalDispatchService
+from logistics_backend.application.decision_analysis import DecisionAnalysisService
 from logistics_backend.application.decision import DecisionService
 from logistics_backend.application.vehicle_delay_approval import (
     VehicleDelayApprovalService,
@@ -113,6 +115,8 @@ class Services:
     simulation_results: SimulationResultStore
     agents: AgentRunService
     dispatch_agent: DispatchOrchestrator
+    natural_dispatch: NaturalDispatchService
+    decision_analysis: DecisionAnalysisService
     tools: ToolService
     decisions: DecisionService
     experiments: ExperimentService
@@ -163,6 +167,10 @@ def compose(settings: Settings, registry: HandlerRegistry | None = None) -> tupl
         simulation_results=SimulationResultStore(),
         agents=agents,
         dispatch_agent=DispatchOrchestrator(integration, simulation, agents),
+        natural_dispatch=NaturalDispatchService(integration, simulation, agents.chat.provider, factory),
+        decision_analysis=DecisionAnalysisService(
+            NaturalDispatchService(integration, simulation, agents.chat.provider, factory),
+            integration, simulation, agents.chat.provider, factory),
         tools=ToolService(jobs, agents, factory, settings.scope_id),
         decisions=DecisionService(factory, settings.scope_id),
         experiments=ExperimentService(factory, settings.scope_id),
@@ -205,6 +213,8 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
     app.state.simulation_results = services.simulation_results
     app.state.agents = services.agents
     app.state.dispatch_agent = services.dispatch_agent
+    app.state.natural_dispatch = services.natural_dispatch
+    app.state.decision_analysis = services.decision_analysis
     app.state.tools = services.tools
     app.state.vehicle_delay = services.vehicle_delay
     app.state.decisions = services.decisions
@@ -231,7 +241,7 @@ def create_app(settings: Settings | None = None, registry: HandlerRegistry | Non
         request._body = b"".join(chunks)
         try:
             # Compatibility endpoint waits for a durable job; solver work stays in the worker.
-            timeout = (60 if request.method == "POST" and request.url.path == "/api/v1/agents/dispatch"
+            timeout = (60 if request.method == "POST" and request.url.path in ("/api/v1/agents/dispatch", "/api/v1/agents/dispatch-tasks") or (request.method == "POST" and request.url.path.endswith("/ai-analysis"))
                        else 60 if request.method == "POST" and request.url.path == "/api/v1/integration/runs"
                        and request.query_params.get("wait", "true").lower() not in ("false", "0")
                        else settings.request_timeout_s)
