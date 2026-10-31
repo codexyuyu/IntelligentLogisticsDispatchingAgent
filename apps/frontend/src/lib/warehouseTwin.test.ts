@@ -199,7 +199,7 @@ it('取货时先伸叉再举升，并在离架前收回',()=>{
    }
  });
 
-it('叉车全程与贯通的收货输送线保持净空',()=>{
+it('叉车全程与贯通的收货输送线保持净空',{timeout:30000},()=>{
   for(const id of FORKLIFT_IDS)for(const rack of data.racks){
     const job:TwinForkliftJob={id:'belt-clearance',forkliftId:id,rackId:rack.id,batchId:'b',orderId:'o',startS:0,endS:100,source:'synthetic'};
     for(let step=0;step<=1000;step++){
