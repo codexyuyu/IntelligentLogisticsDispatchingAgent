@@ -79,7 +79,7 @@ export default function DelayReplanningBenchmark() {
       </div>
     </div>
     {error && <p role="alert" className="callout callout-error">对照计算失败：{error}</p>}
-    {data && <>
+    {data && data.before_delay && data.simple_hold && data.optimized_continuation ? <>
       <p className="s5-muted">{data.name} · {data.source_scenario} 的道路矩阵 · {data.candidate_count} 种接续顺序穷举求优。
         这是独立合成的三收货点子问题，不代表已执行的十订单联合调度或 PostgreSQL 中的审批记录。</p>
       <div className="form-grid">
@@ -122,6 +122,6 @@ export default function DelayReplanningBenchmark() {
           })}
         </tbody></table></div>
       </details>
-    </>}
+    </> : <p className="s5-muted" style={{ margin: 0 }}>当前后端未返回延误对照数据（旧接口或旧记录），本面板暂不显示。</p>}
   </section>;
 }

@@ -20,6 +20,7 @@ export default function IntegrationExperiments() {
   const [scenario, setScenario] = useState('');
   const [count, setCount] = useState(10);
   const [budget, setBudget] = useState(4000);
+  const [showBenchmark, setShowBenchmark] = useState(false);
   const [rows, setRows] = useState<Row[]>(saved);
   const { busy, error, run } = useTaskRunner();
   const [notice, setNotice] = useState('');
@@ -92,7 +93,7 @@ export default function IntegrationExperiments() {
   const pending = rows.filter(row => !row.result || isPending(row.result.status));
   const checked = rows.filter(row => !row.error && row.result?.status === 'checked');
   return <div><SectionHeader title="算法对照与批量实验" desc="对照运输延误时的两种决策策略，并保留独立的批量重复性评测。" />
-    <DelayReplanningBenchmark />
+    <section className="panel"><div className="s5-flex-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}><strong>途中延误 · 路线优化对照</strong><button className="btn btn-ghost btn-sm" onClick={() => setShowBenchmark(v => !v)}>{showBenchmark ? '收起对照' : '打开对照'}</button></div>{showBenchmark && <DelayReplanningBenchmark />}</section>
     <section className="panel"><h3>联合求解重复性评测</h3>
       <label>场景 <select value={scenario} disabled={busy} onChange={e => setScenario(e.target.value)}>
         <option value="">请先在协商记录导入场景</option>{scenarios.map(s => <option key={s.id} value={s.id}>{s.name} · {sourceKindLabel(s.source_kind)}</option>)}

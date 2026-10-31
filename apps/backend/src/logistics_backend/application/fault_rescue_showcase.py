@@ -337,7 +337,9 @@ def _validate_candidate(
 
 def solve_breakdown_showcase(budget_ms: int = 1800) -> dict:
     """Compute an actual vehicle rescue solve, no persisted operational action."""
-    from ortools.constraint_solver import pywrapcp, routing_enums_pb2
+    from logistics_optimization.fault_rescue import routing_bindings
+
+    pywrapcp, routing_enums_pb2 = routing_bindings()
 
     if not isinstance(budget_ms, int) or not (100 <= budget_ms <= 5000):
         raise ValueError('budget_ms must be 100..5000')
